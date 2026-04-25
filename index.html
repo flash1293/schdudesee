@@ -679,6 +679,12 @@ async function loadSources() {
 }
 
 const LOCATION_TAGS = ['Blankenloch','Büchig','Friedrichstal','Spöck','Staffort','Weingarten'];
+const TAG_EMOJIS = {
+  'Sport':'⚽','Musik':'🎵','Kultur':'🎭','Kirche':'⛪','Kinder':'🧒','Fest':'🎉',
+  'Markt':'🛒','Workshop':'🔧','Bildung':'📚','Natur':'🌿','Senioren':'👴','Digital':'💻',
+  'Handwerk':'✂️','Essen':'🍽️','Treff':'☕','Politik':'🗳️','Verein':'🤝','Wohltätigkeit':'❤️',
+  'Sonstiges':'📌'
+};
 let themeTags = [];
 let locationTags = [];
 
@@ -690,42 +696,47 @@ async function loadTags() {
 
   const themeDropdown = document.getElementById('theme-dropdown');
   themeDropdown.innerHTML = themeTags.map(t =>
-    `<span class="chip" data-tag="${esc(t)}" onclick="selectTag('theme','${esc(t)}')">${esc(t)}</span>`
+    `<span class="chip${selectedThemes.includes(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="selectTag('theme','${esc(t)}')">${TAG_EMOJIS[t] || ''} ${esc(t)}</span>`
   ).join('');
 
   const locationDropdown = document.getElementById('location-dropdown');
   locationDropdown.innerHTML = locationTags.map(t =>
-    `<span class="chip chip-location" data-tag="${esc(t)}" onclick="selectTag('location','${esc(t)}')">${esc(t)}</span>`
+    `<span class="chip chip-location${selectedLocations.includes(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="selectTag('location','${esc(t)}')">📍 ${esc(t)}</span>`
   ).join('');
 }
 
-let selectedTheme = '';
-let selectedLocation = '';
+let selectedThemes = [];
+let selectedLocations = [];
 
 function selectTag(type, tag) {
   if (type === 'theme') {
-    selectedTheme = selectedTheme === tag ? '' : tag;
+    const idx = selectedThemes.indexOf(tag);
+    if (idx >= 0) selectedThemes.splice(idx, 1); else selectedThemes.push(tag);
     document.querySelectorAll('#theme-dropdown .chip').forEach(c => {
-      c.classList.toggle('active', c.dataset.tag === selectedTheme);
+      c.classList.toggle('active', selectedThemes.includes(c.dataset.tag));
     });
-    document.getElementById('theme-btn').classList.toggle('active', !!selectedTheme);
+    document.getElementById('theme-btn').classList.toggle('active', selectedThemes.length > 0);
+    document.getElementById('theme-btn').textContent = selectedThemes.length > 0
+      ? `Kategorie (${selectedThemes.length}) ▾` : 'Kategorie ▾';
   } else {
-    selectedLocation = selectedLocation === tag ? '' : tag;
+    const idx = selectedLocations.indexOf(tag);
+    if (idx >= 0) selectedLocations.splice(idx, 1); else selectedLocations.push(tag);
     document.querySelectorAll('#location-dropdown .chip').forEach(c => {
-      c.classList.toggle('active', c.dataset.tag === selectedLocation);
+      c.classList.toggle('active', selectedLocations.includes(c.dataset.tag));
     });
-    document.getElementById('location-btn').classList.toggle('active', !!selectedLocation);
+    document.getElementById('location-btn').classList.toggle('active', selectedLocations.length > 0);
+    document.getElementById('location-btn').textContent = selectedLocations.length > 0
+      ? `Ortsteil (${selectedLocations.length}) ▾` : 'Ortsteil ▾';
   }
   updateActiveTags();
-  closeAllPopovers();
   loadEvents(1);
 }
 
 function updateActiveTags() {
   const container = document.getElementById('active-tags');
   let html = '';
-  if (selectedTheme) html += `<span class="active-tag">${esc(selectedTheme)} <span class="remove" onclick="selectTag('theme','${esc(selectedTheme)}')">×</span></span>`;
-  if (selectedLocation) html += `<span class="active-tag location-tag">${esc(selectedLocation)} <span class="remove" onclick="selectTag('location','${esc(selectedLocation)}')">×</span></span>`;
+  selectedThemes.forEach(t => html += `<span class="active-tag">${TAG_EMOJIS[t] || ''} ${esc(t)} <span class="remove" onclick="selectTag('theme','${esc(t)}')">×</span></span>`);
+  selectedLocations.forEach(t => html += `<span class="active-tag location-tag">📍 ${esc(t)} <span class="remove" onclick="selectTag('location','${esc(t)}')">×</span></span>`);
   container.innerHTML = html;
 }
 
@@ -778,8 +789,8 @@ async function loadEvents(page) {
   if (dateFrom) params.set('date_from', dateFrom);
   if (dateTo) params.set('date_to', dateTo);
   if (source) params.set('source', source);
-  if (selectedTheme) params.append('tag', selectedTheme);
-  if (selectedLocation) params.append('tag', selectedLocation);
+  selectedThemes.forEach(t => params.append('tag', t));
+  selectedLocations.forEach(t => params.append('tag', t));
   showLoading();
   const r = await fetch(`/api/events?${params}`);
   const data = await r.json();
@@ -813,7 +824,11 @@ function renderEvents(events) {
         <div class="event-tags">
           ${e.sources ? e.sources.split(', ').map(s => `<span class="tag tag-source">${esc(s)}</span>`).join('') : ''}
           ${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}
-          ${e.tags ? e.tags.split(',').map(t => `<span class="tag ${LOCATION_TAGS.includes(t.trim()) ? 'tag-location' : 'tag-tag'}">${esc(t.trim())}</span>`).join('') : ''}
+          ${e.tags ? e.tags.split(',').map(t => {
+            const trimmed = t.trim();
+            const emoji = LOCATION_TAGS.includes(trimmed) ? '📍 ' : (TAG_EMOJIS[trimmed] ? TAG_EMOJIS[trimmed] + ' ' : '');
+            return `<span class="tag ${LOCATION_TAGS.includes(trimmed) ? 'tag-location' : 'tag-tag'}">${emoji}${esc(trimmed)}</span>`;
+          }).join('') : ''}
         </div>
         ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="toggleRecurring(${e.id}, ${e.recurring_group_id})">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
