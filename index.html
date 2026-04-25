@@ -10,9 +10,9 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --primary: #dc2626;
-  --primary-dark: #b91c1c;
-  --primary-light: #fef2f2;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --primary-light: #eff6ff;
   --accent: #d97706;
   --accent-hover: #b45309;
   --gold: #f59e0b;
@@ -395,7 +395,7 @@ header::after {
 .tag-source { background: #dbeafe; color: #1e40af; }
 .tag-location { background: #ede9fe; color: #5b21b6; }
 .tag-organizer { background: #fef3c7; color: #92400e; }
-.tag-tag { background: #d1fae5; color: #065f46; }
+.tag-tag { background: var(--gold-light); color: #92400e; }
 
 /* Recurring */
 .recurring-toggle {
@@ -578,25 +578,25 @@ header::after {
 
 <header>
   <div class="header-inner">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" class="schdudesee-logo" style="height:48px;width:auto;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" class="schdudesee-logo" style="height:48px;width:auto;">
       <defs>
         <style>
-          @keyframes lf-wave1 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(4px)} }
+          @keyframes lf-wave1 { 0%,100%{transform:translateX(-2px)} 50%{transform:translateX(3px)} }
           @keyframes lf-wave2 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(-3px)} }
-          @keyframes lf-s-glow { 0%,100%{opacity:0.1;transform:scale(1)} 50%{opacity:0.25;transform:scale(1.08)} }
-          .wave-1 { animation:lf-wave1 4s ease-in-out infinite; }
-          .wave-2 { animation:lf-wave2 4.5s ease-in-out infinite; }
-          .logo-hover:hover .s-glow { animation:lf-s-glow 2s ease-in-out infinite; }
+          .wave-inner-1 { animation:lf-wave1 4s ease-in-out infinite; }
+          .wave-inner-2 { animation:lf-wave2 4.5s ease-in-out infinite; }
         </style>
+        <clipPath id="s-clip">
+          <text x="42" y="56" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="52" fill="#dc2626">S</text>
+        </clipPath>
       </defs>
-      <g class="logo-hover">
-        <circle class="s-glow" cx="42" cy="40" r="34" fill="#dc2626" opacity="0.08"/>
-        <text x="42" y="56" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="52" fill="#dc2626">S</text>
-        <path class="wave-1" d="M10 68 Q30 63 50 68 Q70 73 90 68" stroke="#2563eb" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
-        <path class="wave-2" d="M6 74 Q26 69 46 74 Q66 79 86 74" stroke="#60a5fa" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.4"/>
+      <text x="42" y="56" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="52" fill="#d97706">S</text>
+      <g clip-path="url(#s-clip)">
+        <path class="wave-inner-1" d="M-10 40 Q15 34 40 40 Q65 46 90 40" stroke="#2563eb" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.8"/>
+        <path class="wave-inner-2" d="M-10 48 Q15 42 40 48 Q65 54 90 48" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
       </g>
-      <text x="100" y="42" font-family="Outfit,system-ui,sans-serif" font-weight="700" font-size="22" fill="#b91c1c">Schdudesee</text>
-      <text x="100" y="62" font-family="Nunito,system-ui,sans-serif" font-weight="400" font-size="11" fill="#92400e">Alle Veranstaltungen in Stutensee</text>
+      <text x="100" y="38" font-family="Outfit,system-ui,sans-serif" font-weight="700" font-size="22" fill="#2563eb">Schdudesee</text>
+      <text x="100" y="58" font-family="Nunito,system-ui,sans-serif" font-weight="400" font-size="11" fill="#92400e">Alle Veranstaltungen in Stutensee</text>
     </svg>
   </div>
 </header>
