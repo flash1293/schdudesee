@@ -16,16 +16,16 @@ class Handler(SimpleHTTPRequestHandler):
 
         if path == "/":
             self.serve_file("index.html")
-        elif path == "/api/events":
+        elif path == "/api/list":
             self.serve_events(params)
         elif path == "/api/sources":
             self.serve_sources()
-        elif path == "/api/stats":
+        elif path == "/api/info":
             self.serve_stats()
-        elif path == "/api/tags":
+        elif path == "/api/theme":
             self.serve_tags()
-        elif path.startswith("/api/recurring/"):
-            group_id = path.split("/api/recurring/")[1]
+        elif path.startswith("/api/same/"):
+            group_id = path.split("/api/same/")[1]
             self.serve_recurring(group_id)
         else:
             super().do_GET()

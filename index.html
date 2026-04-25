@@ -675,7 +675,7 @@ let themeTags = [];
 let locationTags = [];
 
 async function loadTags() {
-  const r = await fetch('/api/tags');
+  const r = await fetch('/api/theme');
   const tags = await r.json();
   themeTags = tags.filter(t => !LOCATION_TAGS.includes(t));
   locationTags = tags.filter(t => LOCATION_TAGS.includes(t));
@@ -776,7 +776,7 @@ async function loadEvents(page) {
   selectedThemes.forEach(t => params.append('tag', t));
   selectedLocations.forEach(t => params.append('tag', t));
   showLoading();
-  const r = await fetch(`/api/events?${params}`);
+  const r = await fetch(`/api/list?${params}`);
   const data = await r.json();
   totalPages = data.total_pages;
   renderEvents(data.events);
@@ -829,7 +829,7 @@ async function toggleRecurring(eventId, groupId) {
     list.style.display = 'block';
     return;
   }
-  const r = await fetch('/api/recurring/' + groupId);
+  const r = await fetch('/api/same/' + groupId);
   const events = await r.json();
   list.innerHTML = events.map(e =>
     `<div>${e.date_start || '?'}${e.date_end && e.date_end !== e.date_start ? ' – ' + e.date_end : ''}${e.time_raw ? ' · ' + e.time_raw : ''} — ${esc(e.location || '?')}</div>`
