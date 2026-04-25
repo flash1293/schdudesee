@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { overflow-x: hidden; width: 100%; }
 :root {
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
@@ -578,23 +579,24 @@ header::after {
 
 <header>
   <div class="header-inner">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 90" class="schdudesee-logo" style="height:60px;width:auto;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 100" class="schdudesee-logo" style="height:68px;width:auto;">
       <defs>
         <style>
           @keyframes lf-wave { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(5px)} }
           .wave-inner { animation:lf-wave 3s ease-in-out infinite; }
         </style>
         <clipPath id="s-clip">
-          <text x="48" y="68" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="68">S</text>
+          <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80">S</text>
         </clipPath>
       </defs>
-      <text x="48" y="68" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="68" fill="#d97706">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80" fill="#d97706">S</text>
       <g clip-path="url(#s-clip)">
-        <path class="wave-inner" d="M-5 54 Q5 48 15 54 Q25 60 35 54 Q45 48 55 54 Q65 60 75 54 Q85 48 95 54" stroke="#2563eb" stroke-width="9" fill="none" stroke-linecap="round" opacity="1"/>
-        <path class="wave-inner" d="M-5 62 Q5 56 15 62 Q25 68 35 62 Q45 56 55 62 Q65 68 75 62 Q85 56 95 62" stroke="#60a5fa" stroke-width="9" fill="none" stroke-linecap="round" opacity="1" style="animation-delay:-1s"/>
-        <path class="wave-inner" d="M-5 70 Q5 64 15 70 Q25 76 35 70 Q45 64 55 70 Q65 76 75 70 Q85 64 95 70" stroke="#93c5fd" stroke-width="9" fill="none" stroke-linecap="round" opacity="1" style="animation-delay:-2s"/>
+        <path class="wave-inner" d="M-5 60 Q5 54 15 60 Q25 66 35 60 Q45 54 55 60 Q65 66 75 60 Q85 54 95 60" stroke="#2563eb" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/>
+        <path class="wave-inner" d="M-5 69 Q5 63 15 69 Q25 75 35 69 Q45 63 55 69 Q65 75 75 69 Q85 63 95 69" stroke="#60a5fa" stroke-width="10" fill="none" stroke-linecap="round" opacity="1" style="animation-delay:-1s"/>
+        <path class="wave-inner" d="M-5 78 Q5 72 15 78 Q25 84 35 78 Q45 72 55 78 Q65 84 75 78 Q85 72 95 78" stroke="#93c5fd" stroke-width="10" fill="none" stroke-linecap="round" opacity="1" style="animation-delay:-2s"/>
       </g>
-      <text x="125" y="50" font-family="Nunito,system-ui,sans-serif" font-weight="600" font-size="22" fill="#ffffff">Alle Veranstaltungen in Stutensee</text>
+      <text x="125" y="54" font-family="Nunito,system-ui,sans-serif" font-weight="600" font-size="24" fill="#ffffff">Alle Veranstaltungen in Stutensee</text>
     </svg>
   </div>
 </header>
@@ -603,9 +605,6 @@ header::after {
   <div class="controls">
     <div class="controls-row">
       <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
-      <select id="source-filter" onchange="loadEvents(1)">
-        <option value="">Alle Quellen</option>
-      </select>
       <div class="sort-group">
   <input type="date" id="date-from" onchange="loadEvents(1)" title="Von">
   <input type="date" id="date-to" onchange="loadEvents(1)" title="Bis">
@@ -655,18 +654,6 @@ function showLoading() {
 function debounceSearch() {
   clearTimeout(searchTimeout);
   searchTimeout = setTimeout(() => loadEvents(1), 300);
-}
-
-async function loadSources() {
-  const r = await fetch('/api/sources');
-  const sources = await r.json();
-  const sel = document.getElementById('source-filter');
-  sources.forEach(s => {
-    const o = document.createElement('option');
-    o.value = s;
-    o.textContent = s;
-    sel.appendChild(o);
-  });
 }
 
 const LOCATION_TAGS = ['Blankenloch','Büchig','Friedrichstal','Spöck','Staffort','Weingarten'];
@@ -772,14 +759,12 @@ function formatDateBadge(dateStr) {
 async function loadEvents(page) {
   currentPage = page;
   const search = document.getElementById('search').value;
-  const source = document.getElementById('source-filter').value;
   const fromToday = document.getElementById('from-today').checked;
   const dateFrom = document.getElementById('date-from').value;
   const dateTo = document.getElementById('date-to').value;
   const params = new URLSearchParams({page, per_page: 50, search, from_today: fromToday});
   if (dateFrom) params.set('date_from', dateFrom);
   if (dateTo) params.set('date_to', dateTo);
-  if (source) params.set('source', source);
   selectedThemes.forEach(t => params.append('tag', t));
   selectedLocations.forEach(t => params.append('tag', t));
   showLoading();
@@ -863,8 +848,7 @@ function esc(s) {
   return d.innerHTML;
 }
 
-loadSources();
-loadTags();
+  loadTags();
 loadEvents(1);
 </script>
 </body>
