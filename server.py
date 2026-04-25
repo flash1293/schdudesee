@@ -1,5 +1,6 @@
 import json
 import sqlite3
+import html
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import urllib.parse
 import os
@@ -96,8 +97,8 @@ class Handler(SimpleHTTPRequestHandler):
                 "location": r[5],
                 "organizer": r[6],
                 "description": r[7][:300] + "..." if r[7] and len(r[7]) > 300 else (r[7] or ""),
-                "event_url": r[8],
-                "sources": r[9],
+                "event_url": html.unescape(r[8]) if r[8] else "",
+                "sources": html.unescape(r[9]) if r[9] else "",
             })
 
         self.send_response(200)
