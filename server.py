@@ -90,6 +90,7 @@ class Handler(SimpleHTTPRequestHandler):
             args.append(f"{month}%")
 
         where_clause = " AND ".join(where) if where else "1=1"
+        where_clause += " AND tags != 'blocked'"
 
         valid_sorts = {"date_start", "title", "location"}
         if sort not in valid_sorts:
@@ -166,7 +167,7 @@ class Handler(SimpleHTTPRequestHandler):
     def serve_tags(self):
         conn = sqlite3.connect(DB_PATH)
         c = conn.cursor()
-        rows = c.execute("SELECT DISTINCT tags FROM curated_events WHERE tags IS NOT NULL AND tags != ''").fetchall()
+        rows = c.execute("SELECT DISTINCT tags FROM curated_events WHERE tags IS NOT NULL AND tags != '' AND tags != 'blocked'").fetchall()
         conn.close()
         tags = set()
         for r in rows:

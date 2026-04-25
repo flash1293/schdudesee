@@ -152,6 +152,8 @@ def insert_raw(source_data):
     c = conn.cursor()
     count = 0
     for ev in source_data["events"]:
+        if ev.get("title", "") in BLOCKED_TITLES:
+            continue
         h = hashlib.sha256(json.dumps(ev, sort_keys=True).encode()).hexdigest()
         try:
             c.execute("""INSERT OR IGNORE INTO raw_events
@@ -195,7 +197,9 @@ def dedup_sql():
     return count
 
 
-DISTRICTS = {
+BLOCKED_TITLES = [
+    "Krabbelkäfer Stutensee-Büchig – gemütliches Beisammensein mit Frühstück",
+]
     "Blankenloch": ["blankenloch", "bl."],
     "Büchig": ["büchig", "buechig"],
     "Friedrichstal": ["friedrichstal"],
