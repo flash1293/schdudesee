@@ -112,16 +112,16 @@ class Handler(SimpleHTTPRequestHandler):
         for r in rows:
             events.append({
                 "id": r[0],
-                "title": r[1],
+                "title": html.unescape(r[1]) if r[1] else "",
                 "date_start": r[2],
                 "date_end": r[3],
                 "time_raw": r[4],
-                "location": r[5],
-                "organizer": r[6],
-                "description": r[7][:300] + "..." if r[7] and len(r[7]) > 300 else (r[7] or ""),
+                "location": html.unescape(r[5]) if r[5] else "",
+                "organizer": html.unescape(r[6]) if r[6] else "",
+                "description": html.unescape(r[7][:300] + "..." if r[7] and len(r[7]) > 300 else (r[7] or "")),
                 "event_url": html.unescape(r[8]) if r[8] else "",
                 "sources": html.unescape(r[9]) if r[9] else "",
-                "tags": r[10] or "",
+                "tags": html.unescape(r[10]) if r[10] else "",
                 "recurring_group_id": r[11],
             })
 
@@ -192,16 +192,16 @@ class Handler(SimpleHTTPRequestHandler):
         for r in rows:
             events.append({
                 "id": r[0],
-                "title": r[1],
+                "title": html.unescape(r[1]) if r[1] else "",
                 "date_start": r[2],
                 "date_end": r[3],
                 "time_raw": r[4],
-                "location": r[5],
-                "organizer": r[6],
-                "description": r[7][:300] + "..." if r[7] and len(r[7]) > 300 else (r[7] or ""),
+                "location": html.unescape(r[5]) if r[5] else "",
+                "organizer": html.unescape(r[6]) if r[6] else "",
+                "description": html.unescape(r[7][:300] + "..." if r[7] and len(r[7]) > 300 else (r[7] or "")),
                 "event_url": html.unescape(r[8]) if r[8] else "",
                 "sources": html.unescape(r[9]) if r[9] else "",
-                "tags": r[10] or "",
+                "tags": html.unescape(r[10]) if r[10] else "",
                 "recurring_group_id": r[11],
             })
         self.send_response(200)
