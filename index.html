@@ -578,24 +578,27 @@ header::after {
 
 <header>
   <div class="header-inner">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 80" class="schdudesee-logo" style="height:52px;width:auto;">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 80" class="schdudesee-logo" style="height:52px;width:auto;">
       <defs>
         <style>
-          @keyframes lf-wave1 { 0%,100%{transform:translateX(-2px)} 50%{transform:translateX(3px)} }
+          @keyframes lf-wave1 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(4px)} }
           @keyframes lf-wave2 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(-3px)} }
-          .wave-inner-1 { animation:lf-wave1 4s ease-in-out infinite; }
-          .wave-inner-2 { animation:lf-wave2 4.5s ease-in-out infinite; }
+          .wave-inner-1 { animation:lf-wave1 3s ease-in-out infinite; }
+          .wave-inner-2 { animation:lf-wave2 3.5s ease-in-out infinite; }
+          .wave-inner-3 { animation:lf-wave1 2.5s ease-in-out infinite reverse; }
         </style>
         <clipPath id="s-clip">
           <text x="44" y="60" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="60">S</text>
         </clipPath>
       </defs>
       <text x="44" y="60" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="60" fill="#d97706">S</text>
+      <text x="43" y="58" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="60" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.5">S</text>
       <g clip-path="url(#s-clip)">
-        <path class="wave-inner-1" d="M5 52 Q20 47 40 52 Q60 57 80 52" stroke="#2563eb" stroke-width="4.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-        <path class="wave-inner-2" d="M0 58 Q18 53 38 58 Q58 63 78 58" stroke="#60a5fa" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path class="wave-inner-1" d="M0 48 Q8 42 16 48 Q24 54 32 48 Q40 42 48 48 Q56 54 64 48 Q72 42 80 48" stroke="#2563eb" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.85"/>
+        <path class="wave-inner-2" d="M0 55 Q9 49 18 55 Q27 61 36 55 Q45 49 54 55 Q63 61 72 55 Q81 49 90 55" stroke="#60a5fa" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.65"/>
+        <path class="wave-inner-3" d="M-5 62 Q6 56 17 62 Q28 68 39 62 Q50 56 61 62 Q72 68 83 62" stroke="#93c5fd" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
       </g>
-      <text x="110" y="46" font-family="Nunito,system-ui,sans-serif" font-weight="600" font-size="18" fill="#ffffff">Alle Veranstaltungen in Stutensee</text>
+      <text x="120" y="48" font-family="Nunito,system-ui,sans-serif" font-weight="600" font-size="22" fill="#ffffff">Alle Veranstaltungen in Stutensee</text>
     </svg>
   </div>
 </header>
