@@ -132,6 +132,71 @@ def scrape_optional(url, name, source_url=None):
         return None
 
 
+def scrape_buechigerleben():
+    from bs4 import BeautifulSoup
+    events = []
+    try:
+        html = fetch_url("https://www.buechigerleben.de/", timeout=10)
+    except Exception as e:
+        print(f"  Error: {e}", flush=True)
+        return {"source_url": "https://www.buechigerleben.de/", "events": []}
+    soup = BeautifulSoup(html, "lxml")
+    lines = [l.strip() for l in soup.get_text(separator="\n").split("\n") if l.strip()]
+    section_start = None
+    for i, line in enumerate(lines):
+        if "Veranstaltungen" in line and "Projekte" in line:
+            section_start = i + 1
+            break
+    if section_start is None:
+        return {"source_url": "https://www.buechigerleben.de/", "events": []}
+    i = section_start
+    while i < len(lines):
+        line = lines[i]
+        dm = re.match(r'(\d{2})\.(\d{2})\.(\d{2})$', line)
+        if dm:
+            d, mth, y = dm.group(1), dm.group(2), "20" + dm.group(3)
+            iso = f"{y}-{mth.zfill(2)}-{d.zfill(2)}"
+            i += 1
+            time_str = ""
+            title = ""
+            # Next line might be time
+            if i < len(lines) and re.match(r'[\d:ab\s-]+Uhr', lines[i]):
+                time_str = lines[i].split(",")[0].strip()  # strip trailing location
+                i += 1
+            # Next lines might be location
+            loc = ""
+            if i < len(lines) and re.match(r'^[A-Za-z]', lines[i]) and "Mittagstisch" not in lines[i] and "Maifest" not in lines[i] and "Sommerfest" not in lines[i] and "Laternenfest" not in lines[i] and "Adventsfest" not in lines[i] and not re.match(r'\d{2}\.', lines[i]):
+                loc = lines[i]
+                i += 1
+            # Next line is the event title
+            if i < len(lines):
+                title = lines[i]
+                i += 1
+                if title in ("Maifest", "Sommerfest", "Laternenfest", "Adventsfest"):
+                    title += " Büchig"
+            # Next line might be the food description (for Mittagstisch)
+            desc = ""
+            if title.startswith("Mittagstisch") and i < len(lines) and not re.match(r'\d{2}\.', lines[i]) and "Büchig(er)" not in lines[i]:
+                desc = lines[i]
+                i += 1
+                title = f"Mittagstisch – {desc}"
+            if title:
+                events.append({"title": title, "date_start": iso, "date_end": None,
+                    "time_raw": time_str, "location": loc or "Büchig",
+                    "organizer": "Büchig(er)leben", "description": "",
+                    "event_url": "https://www.buechigerleben.de/"})
+        else:
+            i += 1
+    seen = set()
+    deduped = []
+    for e in events:
+        key = (e["title"], e["date_start"])
+        if key not in seen:
+            seen.add(key)
+            deduped.append(e)
+    return {"source_url": "https://www.buechigerleben.de/", "events": deduped}
+
+
 def scrape_flohmarkt():
     events = []
     html_content = fetch_url("https://www.flohmarkt-buechig.de/")
@@ -184,13 +249,14 @@ def dedup_sql():
 
     c.execute("DELETE FROM curated_events")
     c.execute("DELETE FROM raw_to_curated")
-    c.execute("""
+    blocked_placeholders = ",".join("?" for _ in BLOCKED_TITLES)
+    c.execute(f"""
         INSERT INTO curated_events (title, date_start, date_end, time_raw, location, organizer, description, event_url, sources)
         SELECT title, date_start, date_end, time_raw, location, organizer, description, event_url, GROUP_CONCAT(DISTINCT source_url)
-        FROM raw_events WHERE title IS NOT NULL AND title != ''
+        FROM raw_events WHERE title IS NOT NULL AND title != '' AND title NOT IN ({blocked_placeholders})
         GROUP BY LOWER(TRIM(title)), COALESCE(date_start, ''), COALESCE(location, '')
         ORDER BY date_start ASC
-    """)
+    """, BLOCKED_TITLES)
     conn.commit()
     count = c.execute("SELECT COUNT(*) FROM curated_events").fetchone()[0]
     conn.close()
@@ -200,7 +266,8 @@ def dedup_sql():
 BLOCKED_TITLES = [
     "Krabbelkäfer Stutensee-Büchig – gemütliches Beisammensein mit Frühstück",
 ]
-    "Blankenloch": ["blankenloch", "bl."],
+
+DISTRICTS = {
     "Büchig": ["büchig", "buechig"],
     "Friedrichstal": ["friedrichstal"],
     "Spöck": ["spöck", "spoeck"],
@@ -289,6 +356,7 @@ if __name__ == "__main__":
         ("Kinderkalender", scrape_kinderkalender),
         ("meinstutensee.de", scrape_meinstutensee),
         ("Bürgerwerkstatt events", scrape_buergerwerkstatt),
+        ("Büchigerleben", scrape_buechigerleben),
         ("Flohmarkt", scrape_flohmarkt),
     ]
     optional_sources = [
