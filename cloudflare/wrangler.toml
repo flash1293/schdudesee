@@ -2,12 +2,7 @@ name = "was-geht-stutensee"
 main = "src/worker.js"
 compatibility_date = "2025-04-01"
 
-routes = [
-  { pattern = "was-geht-stutensee.de", custom_domain = true },
-  { pattern = "www.was-geht-stutensee.de", custom_domain = true },
-]
-
 [[d1_databases]]
 binding = "STUTENSEE_DB"
 database_name = "was-geht-stutensee"
-database_id = ""
+database_id = "ed273231-91e6-4c9b-bb72-02d0658baf62"
