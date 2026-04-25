@@ -21,9 +21,15 @@ wrangler d1 execute was-geht-stutensee --file dump.sql
 
 ## Custom Domain
 
-The domain `was-geht-stutensee.de` must be added to your Cloudflare account first
-(needs nameservers pointing to Cloudflare). The worker will then serve on it
-automatically via `wrangler deploy`.
+The worker deploys to `was-geht-stutensee.<your-account>.workers.dev` by default.
+
+To use `was-geht-stutensee.de`, add a CNAME record in your DNS provider pointing to the workers.dev URL:
+
+```
+CNAME was-geht-stutensee.de → was-geht-stutensee.<your-account>.workers.dev
+```
+
+Or point the nameservers to Cloudflare and set it via the dashboard (Workers & Pages → your worker → Triggers → Custom Domain).
 
 ## Full Re-Deploy
 
