@@ -262,15 +262,14 @@ def auto_tag(title, description="", location="", organizer=""):
 def tag_untagged():
     conn = sqlite3.connect(DB)
     c = conn.cursor()
-    rows = c.execute("SELECT id, title, COALESCE(description,''), COALESCE(location,''), COALESCE(organizer,'') FROM curated_events WHERE tags IS NULL OR tags = ''").fetchall()
+    rows = c.execute("SELECT id, title, COALESCE(description,''), COALESCE(location,''), COALESCE(organizer,''), COALESCE(tags,'') FROM curated_events").fetchall()
     count = 0
     for r in rows:
-        tags = auto_tag(r[1], r[2], r[3], r[4])
-        if tags:
-            c.execute("UPDATE curated_events SET tags = ? WHERE id = ?", (",".join(tags), r[0]))
-            count += 1
-        else:
-            c.execute("UPDATE curated_events SET tags = 'Sonstiges' WHERE id = ?", (r[0],))
+        existing = set(t.strip() for t in r[5].split(",") if t.strip())
+        all_desired = set(auto_tag(r[1], r[2], r[3], r[4]))
+        merged = existing | all_desired
+        if merged != existing:
+            c.execute("UPDATE curated_events SET tags = ? WHERE id = ?", (",".join(sorted(merged)), r[0]))
             count += 1
     conn.commit()
     conn.close()
