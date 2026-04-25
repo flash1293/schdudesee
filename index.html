@@ -55,6 +55,9 @@ select{background:#fff;cursor:pointer}
     <option value="asc">Aufsteigend</option>
     <option value="desc">Absteigend</option>
   </select>
+  <label style="font-size:13px;display:flex;align-items:center;gap:4px;cursor:pointer">
+    <input type="checkbox" id="from-today" checked onchange="loadEvents(1)"> Nur ab heute
+  </label>
   <span class="stats" id="count-display"></span>
 </div>
 <div id="events" class="events"></div>
@@ -88,7 +91,8 @@ async function loadEvents(page) {
   const source = document.getElementById('source-filter').value;
   const sort = document.getElementById('sort').value;
   const order = document.getElementById('order').value;
-  const params = new URLSearchParams({page, per_page: 50, search, sort, order});
+  const fromToday = document.getElementById('from-today').checked;
+  const params = new URLSearchParams({page, per_page: 50, search, sort, order, from_today: fromToday});
   if (source) params.set('source', source);
   const r = await fetch(`/api/events?${params}`);
   const data = await r.json();

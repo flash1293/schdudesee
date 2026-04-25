@@ -3,6 +3,7 @@ import sqlite3
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 import urllib.parse
 import os
+from datetime import datetime
 
 DB_PATH = "stutensee_events.db"
 
@@ -45,9 +46,14 @@ class Handler(SimpleHTTPRequestHandler):
         sort = params.get("sort", ["date_start"])[0]
         order = params.get("order", ["asc"])[0]
         month = params.get("month", [""])[0]
+        from_today = params.get("from_today", ["true"])[0]
 
         where = []
         args = []
+
+        if from_today == "true":
+            where.append("(date_start >= ? OR date_start = '')")
+            args.append(datetime.now().strftime("%Y-%m-%d"))
 
         if search:
             where.append("(title LIKE ? OR location LIKE ? OR organizer LIKE ?)")
