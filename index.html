@@ -3,72 +3,546 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Stutensee Events</title>
+<title>Schdudesee – Alle Veranstaltungen in Stutensee</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333}
-header{background:#2563eb;color:#fff;padding:16px 24px}
-header h1{font-size:20px;margin-bottom:4px}
-header p{font-size:13px;opacity:0.8}
-.controls{background:#fff;padding:12px 24px;border-bottom:1px solid #ddd;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-.controls input,.controls select{padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:14px}
-.controls input{flex:1;min-width:200px}
-.controls select{min-width:140px}
-.stats{font-size:13px;color:#666;margin-left:auto}
-.events{max-width:1000px;margin:16px auto;padding:0 16px}
-.event{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:16px;margin-bottom:12px}
-.event h2{font-size:16px;color:#2563eb;margin-bottom:4px}
-.event h2 a:hover{text-decoration:underline!important}
-.event h2 .ext-link{font-size:12px;opacity:0.5;vertical-align:super;margin-left:2px}
-.event-meta{font-size:13px;color:#666;margin-bottom:6px}
-.event-meta span{margin-right:16px}
-.event-meta .date{font-weight:600;color:#333}
-.event-desc{font-size:13px;color:#555;line-height:1.5}
-.event-tags{margin-top:8px}
-.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-right:4px;margin-bottom:2px}
-.tag-source{background:#dbeafe;color:#1e40af}
-.tag-location{background:#f3e8ff;color:#6b21a8}
-.tag-organizer{background:#fef3c7;color:#92400e}
-.pagination{display:flex;justify-content:center;align-items:center;gap:12px;padding:20px;font-size:14px}
-.pagination button{padding:8px 16px;border:1px solid #ccc;border-radius:6px;background:#fff;cursor:pointer;font-size:14px}
-.pagination button:disabled{opacity:0.4;cursor:default}
-.pagination button:hover:not(:disabled){background:#f0f0f0}
-.empty{text-align:center;padding:60px;color:#999;font-size:16px}
-select{background:#fff;cursor:pointer}
-@media(max-width:600px){.controls{flex-direction:column}.controls input{min-width:auto;width:100%}}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary: #0d7c66;
+  --primary-dark: #096350;
+  --primary-light: #e8f5f2;
+  --accent: #e85d3a;
+  --accent-hover: #d44d2a;
+  --bg: #f4f6f8;
+  --card-bg: #ffffff;
+  --text: #1a1a2e;
+  --text-muted: #6b7a8f;
+  --border: #e2e8f0;
+  --shadow: 0 2px 8px rgba(13,124,102,0.06);
+  --shadow-hover: 0 8px 24px rgba(13,124,102,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+body {
+  font-family: 'Nunito', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+h1, h2, h3, h4 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Header */
+header {
+  background: linear-gradient(135deg, var(--primary) 0%, #0a5e4e 100%);
+  color: #fff;
+  padding: 20px 24px;
+  position: relative;
+  overflow: hidden;
+}
+header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.header-text h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+.header-text p {
+  font-size: 13px;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+/* Controls bar */
+.controls-wrap {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.controls {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.controls input,
+.controls select {
+  font-family: 'Nunito', sans-serif;
+  padding: 9px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.controls input:focus,
+.controls select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(13,124,102,0.12);
+}
+.controls input { flex: 1; min-width: 180px; }
+.controls select { min-width: 130px; cursor: pointer; }
+.sort-group {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.sort-group select { min-width: 110px; }
+.toggle-label {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--text-muted);
+  user-select: none;
+  white-space: nowrap;
+}
+.toggle-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+.stats-badge {
+  font-size: 13px;
+  color: var(--text-muted);
+  background: var(--bg);
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* Tag filter */
+.tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  max-height: 36px;
+  overflow-y: auto;
+  width: 100%;
+  order: 10;
+}
+.tag-filter .chip {
+  padding: 4px 12px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  background: var(--card-bg);
+  color: var(--text-muted);
+  user-select: none;
+  white-space: nowrap;
+  transition: all var(--transition);
+  font-weight: 500;
+}
+.tag-filter .chip.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.tag-filter .chip:hover:not(.active) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+/* Event list */
+.events-wrap {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Event card */
+.event {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0;
+  display: flex;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: fadeInUp 0.35s ease both;
+  overflow: hidden;
+  gap: 0;
+}
+.event:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+.event-date-badge {
+  flex: 0 0 80px;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 8px;
+  min-height: 100%;
+  text-align: center;
+}
+.event-date-badge .day {
+  font-family: 'Outfit', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+}
+.event-date-badge .month {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.9;
+  margin-top: 2px;
+}
+.event-body {
+  flex: 1;
+  padding: 16px 18px;
+  min-width: 0;
+}
+.event-body h2 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.event-body h2 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.event-body h2 a:hover { color: var(--primary); }
+.event-body h2 .ext-link {
+  font-size: 12px;
+  opacity: 0.4;
+  vertical-align: super;
+  margin-left: 3px;
+  transition: opacity var(--transition);
+}
+.event-body h2 a:hover .ext-link { opacity: 0.8; }
+.event-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+.event-meta .date { font-weight: 600; color: var(--text); }
+.event-desc {
+  font-size: 13px;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.event-tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.2px;
+}
+.tag-source { background: #dbeafe; color: #1e40af; }
+.tag-location { background: #ede9fe; color: #5b21b6; }
+.tag-organizer { background: #fef3c7; color: #92400e; }
+.tag-tag { background: #d1fae5; color: #065f46; }
+
+/* Recurring */
+.recurring-toggle {
+  font-size: 13px;
+  color: var(--accent);
+  cursor: pointer;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+.recurring-toggle:hover { color: var(--accent-hover); }
+.recurring-list {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-left: 3px solid var(--primary);
+  background: var(--primary-light);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.recurring-list div { padding: 3px 0; }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 20px 40px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.pagination button {
+  padding: 8px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  transition: all var(--transition);
+}
+.pagination button:disabled { opacity: 0.35; cursor: default; }
+.pagination button:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+.pagination button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+.pagination span { min-width: 120px; text-align: center; }
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-muted);
+  font-size: 16px;
+}
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+
+/* Loading skeleton */
+.skeleton {
+  animation: shimmer 1.2s ease-in-out infinite;
+  background: linear-gradient(90deg, #e8ecf0 25%, #f0f2f5 50%, #e8ecf0 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+  height: 20px;
+  margin-bottom: 10px;
+}
+.skeleton:last-child { width: 60%; }
+.skeleton-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 16px;
+}
+.skeleton-badge {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, #e8ecf0 25%, #f0f2f5 50%, #e8ecf0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.skeleton-lines { flex: 1; }
+.skeleton-lines .skeleton { width: 100%; }
+.skeleton-lines .skeleton:nth-child(2) { width: 80%; }
+.skeleton-lines .skeleton:nth-child(3) { width: 50%; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Stagger animation delays */
+.event:nth-child(1) { animation-delay: 0s; }
+.event:nth-child(2) { animation-delay: 0.03s; }
+.event:nth-child(3) { animation-delay: 0.06s; }
+.event:nth-child(4) { animation-delay: 0.09s; }
+.event:nth-child(5) { animation-delay: 0.12s; }
+.event:nth-child(6) { animation-delay: 0.15s; }
+.event:nth-child(7) { animation-delay: 0.18s; }
+.event:nth-child(8) { animation-delay: 0.21s; }
+.event:nth-child(9) { animation-delay: 0.24s; }
+.event:nth-child(10) { animation-delay: 0.27s; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .header-inner { gap: 10px; }
+  .header-text h1 { font-size: 18px; }
+  .controls { padding: 10px 14px; }
+  .controls input { min-width: 0; width: 100%; }
+  .controls select { min-width: 0; flex: 1; }
+  .sort-group { width: 100%; }
+  .sort-group select { flex: 1; }
+  .toggle-label { width: 100%; }
+  .stats-badge { margin-left: 0; width: 100%; text-align: center; }
+  .event { flex-direction: column; }
+  .event-date-badge {
+    flex: 0 0 auto;
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px 14px;
+    justify-content: flex-start;
+  }
+  .event-date-badge .day { font-size: 18px; }
+  .event-date-badge .month { font-size: 10px; margin-top: 0; }
+  .events-wrap { padding: 0 12px; }
+  .pagination { flex-wrap: wrap; }
+  .pagination span { order: -1; width: 100%; }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .events-wrap { padding: 0 16px; }
+}
 </style>
 </head>
 <body>
+
 <header>
-<h1>Stutensee Veranstaltungen</h1>
-<p id="stats-line">4.730 Events aus 4 Quellen</p>
+  <div class="header-inner">
+    <div class="logo-mark">S</div>
+    <div class="header-text">
+      <h1>Schdudesee</h1>
+      <p>Alle Veranstaltungen in Stutensee</p>
+    </div>
+  </div>
 </header>
-<div class="controls">
-  <input type="text" id="search" placeholder="Suchen..." oninput="debounceSearch()">
-  <select id="source-filter" onchange="loadEvents(1)">
-    <option value="">Alle Quellen</option>
-  </select>
-  <select id="sort" onchange="loadEvents(1)">
-    <option value="date_start">Datum</option>
-    <option value="title">Titel</option>
-    <option value="location">Ort</option>
-  </select>
-  <select id="order" onchange="loadEvents(1)">
-    <option value="asc">Aufsteigend</option>
-    <option value="desc">Absteigend</option>
-  </select>
-  <label style="font-size:13px;display:flex;align-items:center;gap:4px;cursor:pointer">
-    <input type="checkbox" id="from-today" checked onchange="loadEvents(1)"> Nur ab heute
-  </label>
-  <span class="stats" id="count-display"></span>
+
+<div class="controls-wrap">
+  <div class="controls">
+    <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
+    <select id="source-filter" onchange="loadEvents(1)">
+      <option value="">Alle Quellen</option>
+    </select>
+    <div class="sort-group">
+      <select id="sort" onchange="loadEvents(1)">
+        <option value="date_start">Datum</option>
+        <option value="title">Titel</option>
+        <option value="location">Ort</option>
+      </select>
+      <select id="order" onchange="loadEvents(1)">
+        <option value="asc">Aufst.</option>
+        <option value="desc">Abst.</option>
+      </select>
+    </div>
+    <label class="toggle-label">
+      <input type="checkbox" id="from-today" checked onchange="loadEvents(1)">
+      Nur ab heute
+    </label>
+    <span class="stats-badge" id="count-display"></span>
+    <div id="tag-filter" class="tag-filter"></div>
+  </div>
 </div>
-<div id="events" class="events"></div>
-<div class="pagination" id="pagination"></div>
+
+<div class="events-wrap">
+  <div id="events" class="events"></div>
+  <div class="pagination" id="pagination"></div>
+</div>
 
 <script>
 let currentPage = 1;
 let totalPages = 1;
 let searchTimeout;
+let selectedTag = '';
+
+function showLoading() {
+  const container = document.getElementById('events');
+  container.innerHTML = `
+    <div class="skeleton-card"><div class="skeleton-badge"></div><div class="skeleton-lines"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></div>
+    <div class="skeleton-card"><div class="skeleton-badge"></div><div class="skeleton-lines"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></div>
+    <div class="skeleton-card"><div class="skeleton-badge"></div><div class="skeleton-lines"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></div>
+  `;
+}
 
 function debounceSearch() {
   clearTimeout(searchTimeout);
@@ -87,6 +561,37 @@ async function loadSources() {
   });
 }
 
+async function loadTags() {
+  const r = await fetch('/api/tags');
+  const tags = await r.json();
+  const container = document.getElementById('tag-filter');
+  container.innerHTML = tags.map(t => `<span class="chip" data-tag="${esc(t)}" onclick="toggleTag(this)">${esc(t)}</span>`).join('');
+}
+
+function toggleTag(el) {
+  if (el.classList.contains('active')) {
+    el.classList.remove('active');
+    selectedTag = '';
+  } else {
+    document.querySelectorAll('.tag-filter .chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    selectedTag = el.dataset.tag;
+  }
+  loadEvents(1);
+}
+
+function formatDateBadge(dateStr) {
+  if (!dateStr) return { day: '?', month: '??' };
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    const d = parseInt(parts[2], 10);
+    const months = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+    const m = months[parseInt(parts[1], 10) - 1] || '??';
+    return { day: d, month: m };
+  }
+  return { day: dateStr, month: '' };
+}
+
 async function loadEvents(page) {
   currentPage = page;
   const search = document.getElementById('search').value;
@@ -96,6 +601,8 @@ async function loadEvents(page) {
   const fromToday = document.getElementById('from-today').checked;
   const params = new URLSearchParams({page, per_page: 50, search, sort, order, from_today: fromToday});
   if (source) params.set('source', source);
+  if (selectedTag) params.set('tag', selectedTag);
+  showLoading();
   const r = await fetch(`/api/events?${params}`);
   const data = await r.json();
   totalPages = data.total_pages;
@@ -107,24 +614,52 @@ async function loadEvents(page) {
 function renderEvents(events) {
   const container = document.getElementById('events');
   if (events.length === 0) {
-    container.innerHTML = '<div class="empty">Keine Veranstaltungen gefunden</div>';
+    container.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div>Keine Veranstaltungen gefunden</div>';
     return;
   }
-  container.innerHTML = events.map(e => `
-    <div class="event">
-      <h2>${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
-      <div class="event-meta">
-        <span class="date">${e.date_start || '?'}${e.date_end ? ' – ' + e.date_end : ''}</span>
-        ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
-        ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
+  container.innerHTML = events.map(e => {
+    const badge = formatDateBadge(e.date_start);
+    return `<div class="event" id="event-${e.id}">
+      <div class="event-date-badge">
+        <span class="day">${badge.day}</span>
+        <span class="month">${badge.month}</span>
       </div>
-      ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
-      <div class="event-tags">
-        ${e.sources ? e.sources.split(', ').map(s => `<span class="tag tag-source">${esc(s)}</span>`).join('') : ''}
-        ${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}
+      <div class="event-body">
+        <h2>${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
+        <div class="event-meta">
+          <span class="date">${e.date_start || '?'}${e.date_end && e.date_end !== e.date_start ? ' – ' + e.date_end : ''}</span>
+          ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
+          ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
+        </div>
+        ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
+        <div class="event-tags">
+          ${e.sources ? e.sources.split(', ').map(s => `<span class="tag tag-source">${esc(s)}</span>`).join('') : ''}
+          ${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}
+          ${e.tags ? e.tags.split(',').map(t => `<span class="tag tag-tag">${esc(t.trim())}</span>`).join('') : ''}
+        </div>
+        ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="toggleRecurring(${e.id}, ${e.recurring_group_id})">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
+}
+
+async function toggleRecurring(eventId, groupId) {
+  const list = document.getElementById('recurring-' + eventId);
+  if (list.style.display === 'block') {
+    list.style.display = 'none';
+    return;
+  }
+  if (list.dataset.loaded) {
+    list.style.display = 'block';
+    return;
+  }
+  const r = await fetch('/api/recurring/' + groupId);
+  const events = await r.json();
+  list.innerHTML = events.map(e =>
+    `<div>${e.date_start || '?'}${e.date_end && e.date_end !== e.date_start ? ' – ' + e.date_end : ''}${e.time_raw ? ' · ' + e.time_raw : ''} — ${esc(e.location || '?')}</div>`
+  ).join('');
+  list.dataset.loaded = '1';
+  list.style.display = 'block';
 }
 
 function renderPagination() {
@@ -145,6 +680,7 @@ function esc(s) {
 }
 
 loadSources();
+loadTags();
 loadEvents(1);
 </script>
 </body>
