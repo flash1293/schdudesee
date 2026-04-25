@@ -798,7 +798,6 @@ function renderEvents(events) {
         </div>
         ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
         <div class="event-tags">
-          ${e.sources ? e.sources.split(', ').map(s => `<span class="tag tag-source">${esc(s)}</span>`).join('') : ''}
           ${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}
           ${e.tags ? e.tags.split(',').map(t => {
             const trimmed = t.trim();
