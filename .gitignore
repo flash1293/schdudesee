@@ -15,3 +15,4 @@ parse_ical2.py
 dedup_8_9.py
 /tmp/dedup_*.json
 .wrangler/
+dump_d1.sql
