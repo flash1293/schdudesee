@@ -549,10 +549,7 @@ header::after {
       <div class="sort-group">
   <input type="date" id="date-from" onchange="loadEvents(1)" title="Von">
   <input type="date" id="date-to" onchange="loadEvents(1)" title="Bis">
-        <select id="order" onchange="loadEvents(1)">
-          <option value="asc">Aufst.</option>
-          <option value="desc">Abst.</option>
-        </select>
+
       </div>
       <label class="toggle-switch">
         <input type="checkbox" id="from-today" checked onchange="loadEvents(1)">
@@ -639,8 +636,6 @@ async function loadEvents(page) {
   currentPage = page;
   const search = document.getElementById('search').value;
   const source = document.getElementById('source-filter').value;
-  const sort = document.getElementById('sort').value;
-  const order = document.getElementById('order').value;
   const fromToday = document.getElementById('from-today').checked;
   const dateFrom = document.getElementById('date-from').value;
   const dateTo = document.getElementById('date-to').value;
