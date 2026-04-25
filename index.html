@@ -234,9 +234,13 @@ header::after {
   margin-top: 4px;
 }
 .popover-dropdown.open { display: block; }
-#theme-dropdown { min-width: 240px; columns: 2; column-gap: 2px; }
-#theme-dropdown .chip { display: inline-block; width: 100%; box-sizing: border-box; }
-#location-dropdown .chip { display: block; }
+#theme-dropdown { min-width: 300px; columns: 2; column-gap: 4px; }
+#theme-dropdown .chip { display: inline-block; width: 100%; box-sizing: border-box; padding: 6px 10px; border-radius: 4px; font-size: 13px; cursor: pointer; color: var(--text); transition: background var(--transition); margin: 1px 0; }
+#theme-dropdown .chip:hover { background: #f1f5f9; }
+#theme-dropdown .chip.active { background: var(--primary); color: #fff; }
+#location-dropdown .chip { display: block; padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; color: #5b21b6; transition: background var(--transition); margin: 1px 0; }
+#location-dropdown .chip:hover { background: #f1f5f9; }
+#location-dropdown .chip.active { background: #5b21b6; color: #fff; }
 .active-tags { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; min-height: 28px; }
 .active-tags .active-tag {
   display: inline-flex; align-items: center; gap: 3px;
