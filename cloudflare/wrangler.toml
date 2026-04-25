@@ -1,0 +1,8 @@
+name = "was-geht-stutensee"
+main = "src/worker.js"
+compatibility_date = "2025-04-01"
+
+[[d1_databases]]
+binding = "STUTENSEE_DB"
+database_name = "was-geht-stutensee"
+database_id = ""
