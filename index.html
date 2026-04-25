@@ -201,12 +201,53 @@ header::after {
 /* Tag filter row */
 .tag-filter {
   display: flex;
+  flex-wrap: nowrap;
   gap: 4px;
   overflow-x: auto;
-  white-space: nowrap;
-  padding: 2px 0 3px;
-  -webkit-overflow-scrolling: touch;
+  padding: 2px 0;
   scrollbar-width: thin;
+}
+.tag-filter .chip {
+  flex-shrink: 0;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  cursor: pointer;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1.5px solid transparent;
+  transition: all var(--transition);
+  user-select: none;
+  white-space: nowrap;
+}
+.tag-filter .chip.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.tag-filter .chip:hover:not(.active) {
+  border-color: var(--primary);
+  background: #e2e8f0;
+}
+.tag-filter .chip-location {
+  background: #ede9fe;
+  color: #5b21b6;
+  border-color: #c4b5fd;
+}
+.tag-filter .chip-location.active {
+  background: #5b21b6;
+  color: #fff;
+  border-color: #5b21b6;
+}
+.tag-filter .chip-location:hover:not(.active) {
+  border-color: #5b21b6;
+  background: #ddd6fe;
+}
+.tag-filter .divider {
+  flex-shrink: 0;
+  width: 1px;
+  background: #d1d5db;
+  margin: 2px 6px;
 }
 .tag-filter .chip {
   padding: 2px 9px;
@@ -531,11 +572,35 @@ header::after {
 
 <header>
   <div class="header-inner">
-    <div class="logo-mark">S</div>
-    <div class="header-text">
-      <h1>Schdudesee</h1>
-      <p>Alle Veranstaltungen in Stutensee</p>
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" class="schdudesee-logo" style="height:48px;width:auto;">
+      <defs>
+        <style>
+          @keyframes lf-float { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-3px)} }
+          @keyframes lf-wave1 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(3px)} }
+          @keyframes lf-wave2 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(-2px)} }
+          @keyframes lf-glow { 0%,100%{opacity:0.08;transform:scale(1)} 50%{opacity:0.2;transform:scale(1.06)} }
+          .horse-group { animation:lf-float 3s ease-in-out infinite; transform-origin:50px 38px; }
+          .wave-1 { animation:lf-wave1 4s ease-in-out infinite; }
+          .wave-2 { animation:lf-wave2 4.5s ease-in-out infinite; }
+          .logo-hover:hover .glow-bg { animation:lf-glow 1.5s ease-in-out infinite; }
+        </style>
+      </defs>
+      <g class="logo-hover">
+        <circle class="glow-bg" cx="50" cy="38" r="36" fill="#f59e0b" opacity="0.06"/>
+        <g class="horse-group">
+          <ellipse cx="48" cy="40" rx="22" ry="12" fill="#e85d3a" transform="rotate(-15 48 40)"/>
+          <path d="M58 32 Q72 18 78 10 Q80 8 76 8 Q70 10 60 22 Q56 26 52 30Z" fill="#e85d3a"/>
+          <path d="M44 47 Q42 56 38 64 M50 47 Q50 56 52 64 M40 64 Q44 66 50 64 M56 48 Q60 56 64 60" stroke="#e85d3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M26 38 Q20 32 14 36 M42 34 Q48 26 56 30" stroke="#e85d3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="72" cy="15" r="1.5" fill="#e85d3a" opacity="0.6"/>
+          <circle cx="68" cy="12" r="1" fill="#e85d3a" opacity="0.4"/>
+        </g>
+        <path class="wave-1" d="M10 60 Q30 55 50 60 Q70 65 90 60" stroke="#0ea5e9" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path class="wave-2" d="M6 67 Q26 62 46 67 Q66 72 86 67" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+      </g>
+      <text x="100" y="42" font-family="Outfit,system-ui,sans-serif" font-weight="700" font-size="24" fill="#1e293b">Schdudesee</text>
+      <text x="102" y="62" font-family="Nunito,system-ui,sans-serif" font-weight="400" font-size="11" fill="#64748b">Alle Veranstaltungen in Stutensee</text>
+    </svg>
   </div>
 </header>
 
@@ -601,11 +666,18 @@ async function loadSources() {
   });
 }
 
+const LOCATION_TAGS = ['Blankenloch','Büchig','Friedrichstal','Spöck','Staffort','Weingarten'];
+
 async function loadTags() {
   const r = await fetch('/api/tags');
   const tags = await r.json();
   const container = document.getElementById('tag-filter');
-  container.innerHTML = tags.map(t => `<span class="chip" data-tag="${esc(t)}" onclick="toggleTag(this)">${esc(t)}</span>`).join('');
+  const locations = tags.filter(t => LOCATION_TAGS.includes(t));
+  const themes = tags.filter(t => !LOCATION_TAGS.includes(t));
+  let html = themes.map(t => `<span class="chip" data-tag="${esc(t)}" onclick="toggleTag(this)">${esc(t)}</span>`).join('');
+  if (locations.length && themes.length) html += '<span class="divider"></span>';
+  html += locations.map(t => `<span class="chip chip-location" data-tag="${esc(t)}" onclick="toggleTag(this)">${esc(t)}</span>`).join('');
+  container.innerHTML = html;
 }
 
 function toggleTag(el) {
@@ -677,7 +749,7 @@ function renderEvents(events) {
         <div class="event-tags">
           ${e.sources ? e.sources.split(', ').map(s => `<span class="tag tag-source">${esc(s)}</span>`).join('') : ''}
           ${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}
-          ${e.tags ? e.tags.split(',').map(t => `<span class="tag tag-tag">${esc(t.trim())}</span>`).join('') : ''}
+          ${e.tags ? e.tags.split(',').map(t => `<span class="tag ${LOCATION_TAGS.includes(t.trim()) ? 'tag-location' : 'tag-tag'}">${esc(t.trim())}</span>`).join('') : ''}
         </div>
         ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="toggleRecurring(${e.id}, ${e.recurring_group_id})">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
