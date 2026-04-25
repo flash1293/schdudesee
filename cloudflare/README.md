@@ -36,3 +36,12 @@ Or point the nameservers to Cloudflare and set it via the dashboard (Workers & P
 ```bash
 ./deploy.sh
 ```
+
+## Favicon
+
+Place a `favicon.png` in the project root. The build script inlines it into the
+worker. If missing, the favicon route returns 404.
+
+```bash
+./deploy.sh
+```
