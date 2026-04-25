@@ -629,11 +629,11 @@ header::after {
     </div>
     <div class="controls-row">
       <div class="filter-popover" id="theme-popover">
-        <button class="filter-btn" onclick="togglePopover('theme')" id="theme-btn">Kategorie ▾</button>
+        <button class="filter-btn" onclick="toggleFilterPopover('theme')" id="theme-btn">Kategorie ▾</button>
         <div class="popover-dropdown" id="theme-dropdown"></div>
       </div>
       <div class="filter-popover" id="location-popover">
-        <button class="filter-btn" onclick="togglePopover('location')" id="location-btn">Ortsteil ▾</button>
+        <button class="filter-btn" onclick="toggleFilterPopover('location')" id="location-btn">Ortsteil ▾</button>
         <div class="popover-dropdown" id="location-dropdown"></div>
       </div>
       <span class="active-tags" id="active-tags"></span>
@@ -729,7 +729,7 @@ function updateActiveTags() {
   container.innerHTML = html;
 }
 
-function togglePopover(type) {
+function toggleFilterPopover(type) {
   const dropdown = document.getElementById(type + '-dropdown');
   closeAllPopovers();
   dropdown.classList.toggle('open');
