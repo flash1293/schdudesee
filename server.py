@@ -79,7 +79,7 @@ class Handler(SimpleHTTPRequestHandler):
 
         offset = (page - 1) * per_page
         rows = c.execute(
-            f"SELECT id, title, date_start, date_end, time_raw, location, organizer, description, sources FROM curated_events WHERE {where_clause} ORDER BY {sort} {order}, id LIMIT ? OFFSET ?",
+            f"SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources FROM curated_events WHERE {where_clause} ORDER BY {sort} {order}, id LIMIT ? OFFSET ?",
             args + [per_page, offset]
         ).fetchall()
 
@@ -96,7 +96,8 @@ class Handler(SimpleHTTPRequestHandler):
                 "location": r[5],
                 "organizer": r[6],
                 "description": r[7][:300] + "..." if r[7] and len(r[7]) > 300 else (r[7] or ""),
-                "sources": r[8],
+                "event_url": r[8],
+                "sources": r[9],
             })
 
         self.send_response(200)

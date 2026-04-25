@@ -18,6 +18,8 @@ header p{font-size:13px;opacity:0.8}
 .events{max-width:1000px;margin:16px auto;padding:0 16px}
 .event{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:16px;margin-bottom:12px}
 .event h2{font-size:16px;color:#2563eb;margin-bottom:4px}
+.event h2 a:hover{text-decoration:underline!important}
+.event h2 .ext-link{font-size:12px;opacity:0.5;vertical-align:super;margin-left:2px}
 .event-meta{font-size:13px;color:#666;margin-bottom:6px}
 .event-meta span{margin-right:16px}
 .event-meta .date{font-weight:600;color:#333}
@@ -110,7 +112,7 @@ function renderEvents(events) {
   }
   container.innerHTML = events.map(e => `
     <div class="event">
-      <h2>${esc(e.title)}</h2>
+      <h2>${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
       <div class="event-meta">
         <span class="date">${e.date_start || '?'}${e.date_end ? ' – ' + e.date_end : ''}</span>
         ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
