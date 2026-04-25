@@ -1,0 +1,16 @@
+*.db
+*.db-shm
+*.db-wal
+*.pyc
+__pycache__/
+events.json
+events_output.json
+events_export.json
+results.json
+stderr.log
+scrape.py
+scrape_events.py
+parse_ical.py
+parse_ical2.py
+dedup_8_9.py
+/tmp/dedup_*.json
