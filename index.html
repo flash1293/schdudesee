@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stutensee Events</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f5f5;color:#333}
+header{background:#2563eb;color:#fff;padding:16px 24px}
+header h1{font-size:20px;margin-bottom:4px}
+header p{font-size:13px;opacity:0.8}
+.controls{background:#fff;padding:12px 24px;border-bottom:1px solid #ddd;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.controls input,.controls select{padding:8px 12px;border:1px solid #ccc;border-radius:6px;font-size:14px}
+.controls input{flex:1;min-width:200px}
+.controls select{min-width:140px}
+.stats{font-size:13px;color:#666;margin-left:auto}
+.events{max-width:1000px;margin:16px auto;padding:0 16px}
+.event{background:#fff;border:1px solid #e0e0e0;border-radius:8px;padding:16px;margin-bottom:12px}
+.event h2{font-size:16px;color:#2563eb;margin-bottom:4px}
+.event-meta{font-size:13px;color:#666;margin-bottom:6px}
+.event-meta span{margin-right:16px}
+.event-meta .date{font-weight:600;color:#333}
+.event-desc{font-size:13px;color:#555;line-height:1.5}
+.event-tags{margin-top:8px}
+.tag{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;margin-right:4px;margin-bottom:2px}
+.tag-source{background:#dbeafe;color:#1e40af}
+.tag-location{background:#f3e8ff;color:#6b21a8}
+.tag-organizer{background:#fef3c7;color:#92400e}
+.pagination{display:flex;justify-content:center;align-items:center;gap:12px;padding:20px;font-size:14px}
+.pagination button{padding:8px 16px;border:1px solid #ccc;border-radius:6px;background:#fff;cursor:pointer;font-size:14px}
+.pagination button:disabled{opacity:0.4;cursor:default}
+.pagination button:hover:not(:disabled){background:#f0f0f0}
+.empty{text-align:center;padding:60px;color:#999;font-size:16px}
+select{background:#fff;cursor:pointer}
+@media(max-width:600px){.controls{flex-direction:column}.controls input{min-width:auto;width:100%}}
+</style>
+</head>
+<body>
+<header>
+<h1>Stutensee Veranstaltungen</h1>
+<p id="stats-line">4.730 Events aus 4 Quellen</p>
+</header>
+<div class="controls">
+  <input type="text" id="search" placeholder="Suchen..." oninput="debounceSearch()">
+  <select id="source-filter" onchange="loadEvents(1)">
+    <option value="">Alle Quellen</option>
+  </select>
+  <select id="sort" onchange="loadEvents(1)">
+    <option value="date_start">Datum</option>
+    <option value="title">Titel</option>
+    <option value="location">Ort</option>
+  </select>
+  <select id="order" onchange="loadEvents(1)">
+    <option value="asc">Aufsteigend</option>
+    <option value="desc">Absteigend</option>
+  </select>
+  <span class="stats" id="count-display"></span>
+</div>
+<div id="events" class="events"></div>
+<div class="pagination" id="pagination"></div>
+
+<script>
+let currentPage = 1;
+let totalPages = 1;
+let searchTimeout;
+
+function debounceSearch() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => loadEvents(1), 300);
+}
+
+async function loadSources() {
+  const r = await fetch('/api/sources');
+  const sources = await r.json();
+  const sel = document.getElementById('source-filter');
+  sources.forEach(s => {
+    const o = document.createElement('option');
+    o.value = s;
+    o.textContent = s;
+    sel.appendChild(o);
+  });
+}
+
+async function loadEvents(page) {
+  currentPage = page;
+  const search = document.getElementById('search').value;
+  const source = document.getElementById('source-filter').value;
+  const sort = document.getElementById('sort').value;
+  const order = document.getElementById('order').value;
+  const params = new URLSearchParams({page, per_page: 50, search, sort, order});
+  if (source) params.set('source', source);
+  const r = await fetch(`/api/events?${params}`);
+  const data = await r.json();
+  totalPages = data.total_pages;
+  renderEvents(data.events);
+  renderPagination();
+  document.getElementById('count-display').textContent = `${data.total} Events`;
+}
+
+function renderEvents(events) {
+  const container = document.getElementById('events');
+  if (events.length === 0) {
+    container.innerHTML = '<div class="empty">Keine Veranstaltungen gefunden</div>';
+    return;
+  }
+  container.innerHTML = events.map(e => `
+    <div class="event">
+      <h2>${esc(e.title)}</h2>
+      <div class="event-meta">
+        <span class="date">${e.date_start || '?'}${e.date_end ? ' – ' + e.date_end : ''}</span>
+        ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
+        ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
+      </div>
+      ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
+      <div class="event-tags">
+        ${e.sources ? e.sources.split(', ').map(s => `<span class="tag tag-source">${esc(s)}</span>`).join('') : ''}
+        ${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+function renderPagination() {
+  const el = document.getElementById('pagination');
+  let html = `<button onclick="loadEvents(1)" ${currentPage <= 1 ? 'disabled' : ''}>« Erste</button>`;
+  html += `<button onclick="loadEvents(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}>‹ Zurück</button>`;
+  html += `<span>Seite ${currentPage} von ${totalPages}</span>`;
+  html += `<button onclick="loadEvents(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}>Weiter ›</button>`;
+  html += `<button onclick="loadEvents(${totalPages})" ${currentPage >= totalPages ? 'disabled' : ''}>Letzte »</button>`;
+  el.innerHTML = html;
+}
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+loadSources();
+loadEvents(1);
+</script>
+</body>
+</html>
