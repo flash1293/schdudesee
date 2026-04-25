@@ -41,6 +41,7 @@ def init_db():
             event_url TEXT,
             sources TEXT,
             dedup_round INTEGER,
+            recurring_group_id INTEGER,
             created_at TEXT DEFAULT (datetime('now')),
             updated_at TEXT DEFAULT (datetime('now'))
         );

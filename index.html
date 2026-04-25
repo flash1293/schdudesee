@@ -103,19 +103,23 @@ header::after {
 .controls {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 14px 20px;
+  padding: 6px 20px;
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 3px;
+}
+.controls-row {
+  display: flex;
+  gap: 6px;
   align-items: center;
 }
 .controls input,
 .controls select {
   font-family: 'Nunito', sans-serif;
-  padding: 9px 14px;
+  padding: 5px 8px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 14px;
+  font-size: 13px;
   background: var(--bg);
   color: var(--text);
   transition: border-color var(--transition), box-shadow var(--transition);
@@ -126,55 +130,89 @@ header::after {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(13,124,102,0.12);
 }
-.controls input { flex: 1; min-width: 180px; }
-.controls select { min-width: 130px; cursor: pointer; }
+.controls input { flex: 1; min-width: 120px; }
+.controls select { min-width: 95px; cursor: pointer; }
 .sort-group {
   display: flex;
-  gap: 6px;
+  gap: 4px;
   align-items: center;
 }
-.sort-group select { min-width: 110px; }
-.toggle-label {
-  font-size: 13px;
-  display: flex;
+.sort-group select { min-width: 75px; }
+
+/* Toggle switch */
+.toggle-switch {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  color: var(--text-muted);
   user-select: none;
   white-space: nowrap;
-}
-.toggle-label input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  accent-color: var(--primary);
-  cursor: pointer;
-}
-.stats-badge {
   font-size: 13px;
   color: var(--text-muted);
+}
+.toggle-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.toggle-slider {
+  position: relative;
+  width: 30px;
+  height: 18px;
+  background: #ccc;
+  border-radius: 9px;
+  transition: background var(--transition);
+  flex-shrink: 0;
+}
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform var(--transition);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--primary);
+}
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(12px);
+}
+.toggle-switch input:focus-visible + .toggle-slider {
+  box-shadow: 0 0 0 3px rgba(13,124,102,0.2);
+}
+
+.stats-badge {
+  font-size: 12px;
+  color: var(--text-muted);
   background: var(--bg);
-  padding: 5px 12px;
+  padding: 3px 9px;
   border-radius: 20px;
   margin-left: auto;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-/* Tag filter */
+/* Tag filter row */
 .tag-filter {
   display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  max-height: 36px;
-  overflow-y: auto;
-  width: 100%;
-  order: 10;
+  gap: 4px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 2px 0 3px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 .tag-filter .chip {
-  padding: 4px 12px;
+  padding: 2px 9px;
   border: 1.5px solid var(--border);
   border-radius: 20px;
-  font-size: 12px;
+  font-size: 11px;
   cursor: pointer;
   background: var(--card-bg);
   color: var(--text-muted);
@@ -182,6 +220,7 @@ header::after {
   white-space: nowrap;
   transition: all var(--transition);
   font-weight: 500;
+  flex-shrink: 0;
 }
 .tag-filter .chip.active {
   background: var(--primary);
@@ -462,13 +501,13 @@ header::after {
 @media (max-width: 700px) {
   .header-inner { gap: 10px; }
   .header-text h1 { font-size: 18px; }
-  .controls { padding: 10px 14px; }
-  .controls input { min-width: 0; width: 100%; }
+  .controls { padding: 6px 12px; }
+  .controls-row { flex-wrap: wrap; }
+  .controls input { min-width: 0; flex: 1 1 100%; }
   .controls select { min-width: 0; flex: 1; }
   .sort-group { width: 100%; }
   .sort-group select { flex: 1; }
-  .toggle-label { width: 100%; }
-  .stats-badge { margin-left: 0; width: 100%; text-align: center; }
+  .stats-badge { margin-left: 0; }
   .event { flex-direction: column; }
   .event-date-badge {
     flex: 0 0 auto;
@@ -502,27 +541,29 @@ header::after {
 
 <div class="controls-wrap">
   <div class="controls">
-    <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
-    <select id="source-filter" onchange="loadEvents(1)">
-      <option value="">Alle Quellen</option>
-    </select>
-    <div class="sort-group">
-      <select id="sort" onchange="loadEvents(1)">
-        <option value="date_start">Datum</option>
-        <option value="title">Titel</option>
-        <option value="location">Ort</option>
+    <div class="controls-row">
+      <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
+      <select id="source-filter" onchange="loadEvents(1)">
+        <option value="">Alle Quellen</option>
       </select>
-      <select id="order" onchange="loadEvents(1)">
-        <option value="asc">Aufst.</option>
-        <option value="desc">Abst.</option>
-      </select>
+      <div class="sort-group">
+  <input type="date" id="date-from" onchange="loadEvents(1)" title="Von">
+  <input type="date" id="date-to" onchange="loadEvents(1)" title="Bis">
+        <select id="order" onchange="loadEvents(1)">
+          <option value="asc">Aufst.</option>
+          <option value="desc">Abst.</option>
+        </select>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="from-today" checked onchange="loadEvents(1)">
+        <span class="toggle-slider"></span>
+        <span>Nur ab heute</span>
+      </label>
+      <span class="stats-badge" id="count-display"></span>
     </div>
-    <label class="toggle-label">
-      <input type="checkbox" id="from-today" checked onchange="loadEvents(1)">
-      Nur ab heute
-    </label>
-    <span class="stats-badge" id="count-display"></span>
-    <div id="tag-filter" class="tag-filter"></div>
+    <div class="controls-row">
+      <div id="tag-filter" class="tag-filter"></div>
+    </div>
   </div>
 </div>
 
@@ -601,7 +642,11 @@ async function loadEvents(page) {
   const sort = document.getElementById('sort').value;
   const order = document.getElementById('order').value;
   const fromToday = document.getElementById('from-today').checked;
-  const params = new URLSearchParams({page, per_page: 50, search, sort, order, from_today: fromToday});
+  const dateFrom = document.getElementById('date-from').value;
+  const dateTo = document.getElementById('date-to').value;
+  const params = new URLSearchParams({page, per_page: 50, search, from_today: fromToday});
+  if (dateFrom) params.set('date_from', dateFrom);
+  if (dateTo) params.set('date_to', dateTo);
   if (source) params.set('source', source);
   if (selectedTag) params.set('tag', selectedTag);
   showLoading();

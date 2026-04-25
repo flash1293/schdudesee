@@ -122,6 +122,31 @@ def scrape_buergerwerkstatt():
     return {"source_url": "https://buergerwerkstatt-stutensee.de/veranstaltungen/", "events": events}
 
 
+def scrape_optional(url, name, source_url=None):
+    """Safely scrape an optional source with short timeout."""
+    try:
+        html_content = fetch_url(url, timeout=8)
+        return {"source_url": source_url or url, "events": [{"_raw": True}], "_html": html_content}
+    except Exception as e:
+        print(f"skip ({e})", flush=True)
+        return None
+
+
+def scrape_flohmarkt():
+    events = []
+    html_content = fetch_url("https://www.flohmarkt-buechig.de/")
+    dm = re.search(r'(\d{1,2})\.\s*([A-Za-z]+)\s*(\d{4})', html_content)
+    if dm:
+        from calendar import month_name
+        months = {m.lower(): i for i, m in enumerate(month_name) if m}
+        month_num = months.get(dm.group(2).lower(), 1)
+        iso = f"{dm.group(3)}-{str(month_num).zfill(2)}-{dm.group(1).zfill(2)}"
+        events.append({"title": "Flohmarkt Büchig", "date_start": iso, "date_end": None,
+            "time_raw": "", "location": "Festhalle Blankenloch", "organizer": "Flohmarkt Kitas Büchig",
+            "description": "", "event_url": "https://www.flohmarkt-buechig.de/"})
+    return {"source_url": "https://www.flohmarkt-buechig.de/", "events": events}
+
+
 def insert_raw(source_data):
     conn = sqlite3.connect(DB)
     c = conn.cursor()
@@ -146,6 +171,15 @@ def insert_raw(source_data):
 def dedup_sql():
     conn = sqlite3.connect(DB)
     c = conn.cursor()
+
+    # Snapshot old tags + recurring_group_id before rebuilding
+    old = {}
+    try:
+        for r in c.execute("SELECT id, tags, recurring_group_id FROM curated_events").fetchall():
+            old[(r[0])] = (r[1] or "", r[2])
+    except:
+        pass
+
     c.execute("DELETE FROM curated_events")
     c.execute("DELETE FROM raw_to_curated")
     c.execute("""
@@ -161,28 +195,141 @@ def dedup_sql():
     return count
 
 
+DISTRICTS = {
+    "Blankenloch": ["blankenloch", "bl."],
+    "Büchig": ["büchig", "buechig"],
+    "Friedrichstal": ["friedrichstal"],
+    "Spöck": ["spöck", "spoeck"],
+    "Staffort": ["staffort"],
+    "Weingarten": ["weingarten"],
+}
+
+KEYWORDS = {
+    "Sport": ["lauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
+              "fußball", "fussball", "schwimm", "rad", "bike", "cycling", "sport", "bewegung",
+              "gymnastik", "tanz", "dance", "ballett", "kickbox", "karate", "indiaca", "volleyball",
+              "handball", "basketball", "reit", "pferd", "wandern", "training", "stadtlauf", "spechaa"],
+    "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang",
+              "musikal", "orchester", "posaunen", "gitarre", "vox", "choir"],
+    "Kultur": ["theater", "lesung", "kunst", "ausstellung", "kino", "literatur", "bühne", "kultur",
+               "museum", "foto", "malen", "zeichnen"],
+    "Kirche": ["gottesdienst", "kirche", "gemeinde", "konfirmation", "firmung", "taufe", "messe",
+               "andacht", "segen", "ökumen", "patrozinium", "gebet", "evangelisch", "katholisch",
+               "trauer", "feier"],
+    "Kinder": ["kind", "baby", "eltern-kind", "krabbel", "spiel", "familie", "mädchen", "junge",
+               "kindergarten", "schule", "vorlesen", "bilderbuch", "küken", "seepferdchen",
+               "abenteuer", "zwerge", "jugend", "teen", "schüler", "kinderturnen", "ferien",
+               "caribi", "minis", "bambini"],
+    "Fest": ["fest", "feier", "oktoberfest", "maifest", "weihnachtsmarkt", "kerwe", "party",
+             "sportfest", "maibaum", "frühlingsfest", "sommerfest", "jubiläum"],
+    "Markt": ["markt", "flohmarkt", "trödel", "weihnachtsmarkt"],
+    "Workshop": ["workshop", "kurs", "seminar", "lernen", "unterricht", "stunde", "training"],
+    "Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
+                "lernen", "infoveranstaltung", "podiumsdiskussion"],
+    "Natur": ["natur", "garten", "wald", "vogel", "baum", "pflanze", "umwelt", "klima",
+              "hornisse", "mulchen", "exkursion", "wanderung"],
+    "Senioren": ["senior", "50+", "älter", "alt werden", "beweglich im alter"],
+    "Digital": ["digital", "smartphone", "computer", "handy", "online", "app", "internet"],
+    "Handwerk": ["basteln", "werkstatt", "nähen", "stricken", "häkeln", "reparier", "reparatur",
+                 "handarbeit", "kreativ", "secondhand", "bastel"],
+    "Essen": ["kochen", "backen", "essen", "grill", "frühstück", "küche", "kuchen", "kaffee",
+              "bowle", "bier", "wein", "hähnchen", "flammkuchen", "zwiebelkuchen"],
+    "Treff": ["treff", "café", "stammtisch", "begegnung", "gespräch", "runde", "kreis",
+              "frühstück", "kaffee"],
+    "Politik": ["wahl", "gemeinderat", "bürgermeister", "politik", "partei", "rat", "ausschuss"],
+    "Verein": ["verein", "e.v.", "mitgliederversammlung", "vorstand", "ehrenamt"],
+    "Wohltätigkeit": ["spende", "blutspende", "kleidersammlung", "charity", "sozial", "tafel",
+                      "hilfe"],
+}
+
+def auto_tag(title, description="", location="", organizer=""):
+    text = f"{title} {description} {location} {organizer}".lower()
+    tags = []
+    for tag, keywords in KEYWORDS.items():
+        for kw in keywords:
+            if kw in text:
+                tags.append(tag)
+                break
+    for district, keywords in DISTRICTS.items():
+        for kw in keywords:
+            if kw in text:
+                if district not in tags:
+                    tags.append(district)
+                break
+    return tags
+
+
+def tag_untagged():
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+    rows = c.execute("SELECT id, title, COALESCE(description,''), COALESCE(location,''), COALESCE(organizer,'') FROM curated_events WHERE tags IS NULL OR tags = ''").fetchall()
+    count = 0
+    for r in rows:
+        tags = auto_tag(r[1], r[2], r[3], r[4])
+        if tags:
+            c.execute("UPDATE curated_events SET tags = ? WHERE id = ?", (",".join(tags), r[0]))
+            count += 1
+        else:
+            c.execute("UPDATE curated_events SET tags = 'Sonstiges' WHERE id = ?", (r[0],))
+            count += 1
+    conn.commit()
+    conn.close()
+    return count
+
+
 if __name__ == "__main__":
     print("Stutensee Events Pipeline", flush=True)
+    print(f"Time: {datetime.now().isoformat()}", flush=True)
 
     sources = [
         ("Official calendar", scrape_official),
         ("Kinderkalender", scrape_kinderkalender),
         ("meinstutensee.de", scrape_meinstutensee),
-        ("Bürgerwerkstatt", scrape_buergerwerkstatt),
+        ("Bürgerwerkstatt events", scrape_buergerwerkstatt),
+        ("Flohmarkt", scrape_flohmarkt),
+    ]
+    optional_sources = [
+        ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
+        ("Bibliothek", "https://bibliotheken.komm.one/stutensee", None),
     ]
     total_new = 0
     for name, scraper in sources:
         print(f"  Scraping {name}...", end=" ", flush=True)
-        data = scraper()
-        n = insert_raw(data)
-        total_new += n
-        print(f"{len(data['events'])} fetched, {n} new", flush=True)
+        try:
+            data = scraper()
+            n = insert_raw(data)
+            total_new += n
+            print(f"{len(data['events'])} fetched, {n} new", flush=True)
+        except Exception as e:
+            print(f"ERROR: {e}", flush=True)
+
+    for name, url, src_url in optional_sources:
+        print(f"  Scraping {name}...", end=" ", flush=True)
+        result = scrape_optional(url, name, src_url)
+        if result:
+            # Optional sources handled by agents, just acknowledge
+            print(f"available", flush=True)
+        else:
+            print(f"skipped", flush=True)
 
     print(f"  Total new: {total_new}", flush=True)
     print(f"  Dedup...", end=" ", flush=True)
     curated = dedup_sql()
+    print(f"{curated} curated", flush=True)
+
+    print(f"  Tagging untagged...", end=" ", flush=True)
+    tagged = tag_untagged()
+    print(f"{tagged} tagged", flush=True)
+
+    print(f"  Recurring detection...", end=" ", flush=True)
+    from detect_recurring import main as detect_recurring
+    detect_recurring()
+    print(f"  done", flush=True)
+
     conn = sqlite3.connect(DB)
     raw = conn.execute("SELECT COUNT(*) FROM raw_events").fetchone()[0]
+    tagged = conn.execute("SELECT COUNT(*) FROM curated_events WHERE tags != ''").fetchone()[0]
+    recurring = conn.execute("SELECT COUNT(*) FROM curated_events WHERE recurring_group_id IS NOT NULL").fetchone()[0]
     conn.close()
-    print(f"{curated} curated from {raw} raw", flush=True)
+    print(f"\nSummary: {raw} raw → {curated} curated, {tagged} tagged, {recurring} recurring", flush=True)
     print(f"Done. Start server: python3 server.py", flush=True)
