@@ -578,34 +578,25 @@ header::after {
 
 <header>
   <div class="header-inner">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" class="schdudesee-logo" style="height:48px;width:auto;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 80" class="schdudesee-logo" style="height:48px;width:auto;">
       <defs>
         <style>
-          @keyframes lf-float { 0%,100%{transform:translateY(0px)} 50%{transform:translateY(-3px)} }
-          @keyframes lf-wave1 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(3px)} }
-          @keyframes lf-wave2 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(-2px)} }
-          @keyframes lf-glow { 0%,100%{opacity:0.08;transform:scale(1)} 50%{opacity:0.2;transform:scale(1.06)} }
-          .horse-group { animation:lf-float 3s ease-in-out infinite; transform-origin:50px 38px; }
+          @keyframes lf-wave1 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(4px)} }
+          @keyframes lf-wave2 { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(-3px)} }
+          @keyframes lf-s-glow { 0%,100%{opacity:0.1;transform:scale(1)} 50%{opacity:0.25;transform:scale(1.08)} }
           .wave-1 { animation:lf-wave1 4s ease-in-out infinite; }
           .wave-2 { animation:lf-wave2 4.5s ease-in-out infinite; }
-          .logo-hover:hover .glow-bg { animation:lf-glow 1.5s ease-in-out infinite; }
+          .logo-hover:hover .s-glow { animation:lf-s-glow 2s ease-in-out infinite; }
         </style>
       </defs>
       <g class="logo-hover">
-        <circle class="glow-bg" cx="50" cy="38" r="36" fill="#f59e0b" opacity="0.12"/>
-        <g class="horse-group">
-          <ellipse cx="48" cy="40" rx="22" ry="12" fill="#dc2626" transform="rotate(-15 48 40)"/>
-          <path d="M58 32 Q72 18 78 10 Q80 8 76 8 Q70 10 60 22 Q56 26 52 30Z" fill="#dc2626"/>
-          <path d="M44 47 Q42 56 38 64 M50 47 Q50 56 52 64 M40 64 Q44 66 50 64 M56 48 Q60 56 64 60" stroke="#dc2626" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          <path d="M26 38 Q20 32 14 36 M42 34 Q48 26 56 30" stroke="#dc2626" stroke-width="2" fill="none" stroke-linecap="round"/>
-          <circle cx="72" cy="15" r="1.5" fill="#dc2626" opacity="0.6"/>
-          <circle cx="68" cy="12" r="1" fill="#dc2626" opacity="0.4"/>
-        </g>
-        <path class="wave-1" d="M10 60 Q30 55 50 60 Q70 65 90 60" stroke="#2563eb" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.7"/>
-        <path class="wave-2" d="M6 67 Q26 62 46 67 Q66 72 86 67" stroke="#60a5fa" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+        <circle class="s-glow" cx="42" cy="40" r="34" fill="#dc2626" opacity="0.08"/>
+        <text x="42" y="56" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="52" fill="#dc2626">S</text>
+        <path class="wave-1" d="M10 68 Q30 63 50 68 Q70 73 90 68" stroke="#2563eb" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.6"/>
+        <path class="wave-2" d="M6 74 Q26 69 46 74 Q66 79 86 74" stroke="#60a5fa" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.4"/>
       </g>
-      <text x="100" y="42" font-family="Outfit,system-ui,sans-serif" font-weight="700" font-size="24" fill="#b91c1c">Schdudesee</text>
-      <text x="102" y="62" font-family="Nunito,system-ui,sans-serif" font-weight="400" font-size="11" fill="#92400e">Alle Veranstaltungen in Stutensee</text>
+      <text x="100" y="42" font-family="Outfit,system-ui,sans-serif" font-weight="700" font-size="22" fill="#b91c1c">Schdudesee</text>
+      <text x="100" y="62" font-family="Nunito,system-ui,sans-serif" font-weight="400" font-size="11" fill="#92400e">Alle Veranstaltungen in Stutensee</text>
     </svg>
   </div>
 </header>
