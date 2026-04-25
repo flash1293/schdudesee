@@ -199,56 +199,60 @@ header::after {
 }
 
 /* Tag filter row */
-.tag-filter {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 4px;
-  overflow-x: auto;
-  padding: 2px 0;
-  scrollbar-width: thin;
-}
-.tag-filter .chip {
-  flex-shrink: 0;
-  padding: 3px 10px;
-  border-radius: 20px;
-  font-size: 12px;
+.filter-popover { position: relative; display: inline-block; }
+.filter-btn {
+  padding: 6px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  font-size: 13px;
   cursor: pointer;
-  background: #f1f5f9;
-  color: #475569;
-  border: 1.5px solid transparent;
+  font-family: inherit;
+  color: var(--text);
   transition: all var(--transition);
-  user-select: none;
   white-space: nowrap;
 }
-.tag-filter .chip.active {
-  background: var(--primary);
-  color: #fff;
-  border-color: var(--primary);
+.filter-btn:hover { border-color: var(--primary); }
+.filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.popover-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  min-width: 160px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 4px;
+  margin-top: 4px;
 }
-.tag-filter .chip:hover:not(.active) {
-  border-color: var(--primary);
-  background: #e2e8f0;
+.popover-dropdown.open { display: block; }
+.popover-dropdown .chip {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text);
+  transition: background var(--transition);
+  margin: 1px 0;
 }
-.tag-filter .chip-location {
-  background: #ede9fe;
-  color: #5b21b6;
-  border-color: #c4b5fd;
+.popover-dropdown .chip:hover { background: #f1f5f9; }
+.popover-dropdown .chip.active { background: var(--primary); color: #fff; }
+.popover-dropdown .chip-location { color: #5b21b6; }
+.popover-dropdown .chip-location.active { background: #5b21b6; color: #fff; }
+.active-tags { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; min-height: 28px; }
+.active-tags .active-tag {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 2px 8px; border-radius: 12px; font-size: 12px;
+  background: var(--primary-light); color: var(--primary);
 }
-.tag-filter .chip-location.active {
-  background: #5b21b6;
-  color: #fff;
-  border-color: #5b21b6;
-}
-.tag-filter .chip-location:hover:not(.active) {
-  border-color: #5b21b6;
-  background: #ddd6fe;
-}
-.tag-filter .divider {
-  flex-shrink: 0;
-  width: 1px;
-  background: #d1d5db;
-  margin: 2px 6px;
-}
+.active-tags .active-tag.location-tag { background: #ede9fe; color: #5b21b6; }
+.active-tags .active-tag .remove { cursor: pointer; font-weight: bold; margin-left: 2px; font-size: 14px; line-height: 1; }
 .tag-filter .chip {
   padding: 2px 9px;
   border: 1.5px solid var(--border);
@@ -624,7 +628,15 @@ header::after {
       <span class="stats-badge" id="count-display"></span>
     </div>
     <div class="controls-row">
-      <div id="tag-filter" class="tag-filter"></div>
+      <div class="filter-popover" id="theme-popover">
+        <button class="filter-btn" onclick="togglePopover('theme')" id="theme-btn">Kategorie ▾</button>
+        <div class="popover-dropdown" id="theme-dropdown"></div>
+      </div>
+      <div class="filter-popover" id="location-popover">
+        <button class="filter-btn" onclick="togglePopover('location')" id="location-btn">Ortsteil ▾</button>
+        <div class="popover-dropdown" id="location-dropdown"></div>
+      </div>
+      <span class="active-tags" id="active-tags"></span>
     </div>
   </div>
 </div>
@@ -667,18 +679,69 @@ async function loadSources() {
 }
 
 const LOCATION_TAGS = ['Blankenloch','Büchig','Friedrichstal','Spöck','Staffort','Weingarten'];
+let themeTags = [];
+let locationTags = [];
 
 async function loadTags() {
   const r = await fetch('/api/tags');
   const tags = await r.json();
-  const container = document.getElementById('tag-filter');
-  const locations = tags.filter(t => LOCATION_TAGS.includes(t));
-  const themes = tags.filter(t => !LOCATION_TAGS.includes(t));
-  let html = themes.map(t => `<span class="chip" data-tag="${esc(t)}" onclick="toggleTag(this)">${esc(t)}</span>`).join('');
-  if (locations.length && themes.length) html += '<span class="divider"></span>';
-  html += locations.map(t => `<span class="chip chip-location" data-tag="${esc(t)}" onclick="toggleTag(this)">${esc(t)}</span>`).join('');
+  themeTags = tags.filter(t => !LOCATION_TAGS.includes(t));
+  locationTags = tags.filter(t => LOCATION_TAGS.includes(t));
+
+  const themeDropdown = document.getElementById('theme-dropdown');
+  themeDropdown.innerHTML = themeTags.map(t =>
+    `<span class="chip" data-tag="${esc(t)}" onclick="selectTag('theme','${esc(t)}')">${esc(t)}</span>`
+  ).join('');
+
+  const locationDropdown = document.getElementById('location-dropdown');
+  locationDropdown.innerHTML = locationTags.map(t =>
+    `<span class="chip chip-location" data-tag="${esc(t)}" onclick="selectTag('location','${esc(t)}')">${esc(t)}</span>`
+  ).join('');
+}
+
+let selectedTheme = '';
+let selectedLocation = '';
+
+function selectTag(type, tag) {
+  if (type === 'theme') {
+    selectedTheme = selectedTheme === tag ? '' : tag;
+    document.querySelectorAll('#theme-dropdown .chip').forEach(c => {
+      c.classList.toggle('active', c.dataset.tag === selectedTheme);
+    });
+    document.getElementById('theme-btn').classList.toggle('active', !!selectedTheme);
+  } else {
+    selectedLocation = selectedLocation === tag ? '' : tag;
+    document.querySelectorAll('#location-dropdown .chip').forEach(c => {
+      c.classList.toggle('active', c.dataset.tag === selectedLocation);
+    });
+    document.getElementById('location-btn').classList.toggle('active', !!selectedLocation);
+  }
+  updateActiveTags();
+  closeAllPopovers();
+  loadEvents(1);
+}
+
+function updateActiveTags() {
+  const container = document.getElementById('active-tags');
+  let html = '';
+  if (selectedTheme) html += `<span class="active-tag">${esc(selectedTheme)} <span class="remove" onclick="selectTag('theme','${esc(selectedTheme)}')">×</span></span>`;
+  if (selectedLocation) html += `<span class="active-tag location-tag">${esc(selectedLocation)} <span class="remove" onclick="selectTag('location','${esc(selectedLocation)}')">×</span></span>`;
   container.innerHTML = html;
 }
+
+function togglePopover(type) {
+  const dropdown = document.getElementById(type + '-dropdown');
+  closeAllPopovers();
+  dropdown.classList.toggle('open');
+}
+
+function closeAllPopovers() {
+  document.querySelectorAll('.popover-dropdown').forEach(d => d.classList.remove('open'));
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.filter-popover')) closeAllPopovers();
+});
 
 function toggleTag(el) {
   if (el.classList.contains('active')) {
@@ -715,7 +778,8 @@ async function loadEvents(page) {
   if (dateFrom) params.set('date_from', dateFrom);
   if (dateTo) params.set('date_to', dateTo);
   if (source) params.set('source', source);
-  if (selectedTag) params.set('tag', selectedTag);
+  if (selectedTheme) params.append('tag', selectedTheme);
+  if (selectedLocation) params.append('tag', selectedLocation);
   showLoading();
   const r = await fetch(`/api/events?${params}`);
   const data = await r.json();

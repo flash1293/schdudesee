@@ -79,10 +79,11 @@ class Handler(SimpleHTTPRequestHandler):
             where.append("sources LIKE ?")
             args.append(f"%{source_filter}%")
 
-        tag_filter = params.get("tag", [""])[0]
-        if tag_filter:
-            where.append("tags LIKE ?")
-            args.append(f"%{tag_filter}%")
+        tag_filters = params.get("tag", [])
+        for tag_filter in tag_filters:
+            if tag_filter:
+                where.append("tags LIKE ?")
+                args.append(f"%{tag_filter}%")
 
         if month:
             where.append("date_start LIKE ?")
