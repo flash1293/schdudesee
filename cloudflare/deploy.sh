@@ -10,6 +10,10 @@ python3 -c "
 import sqlite3
 conn = sqlite3.connect('../stutensee_events.db')
 c = conn.cursor()
+# Drop first to avoid conflicts
+print('DROP TABLE IF EXISTS raw_to_curated;')
+print('DROP TABLE IF EXISTS curated_events;')
+print('DROP TABLE IF EXISTS raw_events;')
 for sql, name in c.execute(\"SELECT sql, name FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%' AND name NOT LIKE '%idx_%'\"):
     print(sql + ';')
 print()
