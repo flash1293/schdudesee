@@ -26,7 +26,7 @@ else:
 with open("src/worker.js") as f:
     worker = f.read()
 
-worker = re.sub(r'(import indexHtml from.*\n|// indexHtml is injected.*\n|// faviconB64 is injected.*\n)', '', worker)
+worker = re.sub(r'^const indexHtml = .*\n|^const faviconB64 = .*\n|import indexHtml from.*\n|// indexHtml is injected.*\n|// faviconB64 is injected.*\n', '', worker, flags=re.MULTILINE)
 # Inject at the very start
 worker = inlined + favicon_line + worker
 
