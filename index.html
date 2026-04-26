@@ -582,15 +582,17 @@ header::after {
         <style>
           @keyframes lf-wave { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(5px)} }
           .wave-inner { animation:lf-wave 3s ease-in-out infinite; }
-          .horse-dot { animation: pulse 2s ease-in-out infinite; }
-          @keyframes pulse { 0%,100%{opacity:0.7} 50%{opacity:1} }
         </style>
         <clipPath id="s-clip">
           <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80">S</text>
         </clipPath>
+        <clipPath id="tip-clip">
+          <rect x="45" y="8" width="40" height="25"/>
+        </clipPath>
       </defs>
       <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">S</text>
       <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80" fill="#fab800">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80" fill="#dd291a" clip-path="url(#tip-clip)">S</text>
       <circle class="horse-dot" cx="78" cy="22" r="5" fill="#dd291a"/>
       <g clip-path="url(#s-clip)">
         <path class="wave-inner" d="M-5 60 Q5 54 15 60 Q25 66 35 60 Q45 54 55 60 Q65 66 75 60 Q85 54 95 60" stroke="#0d3a71" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/>
