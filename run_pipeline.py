@@ -103,7 +103,15 @@ def scrape_meinstutensee():
                 start = data.get("startDate", "")
                 loc = data.get("location", {}) or {}
                 org = data.get("organizer", {}) or {}
-                events.append({"title": data.get("name", ""), "date_start": start[:10] if start else "",
+                # Parse properly: handle "2026-4-25T" or "2026-04-25T18:00" etc.
+                iso_date = ""
+                if start:
+                    try:
+                        from datetime import datetime
+                        iso_date = datetime.strptime(start[:10].replace("T",""), "%Y-%m-%d").strftime("%Y-%m-%d")
+                    except:
+                        iso_date = start[:10].replace("T","")
+                events.append({"title": data.get("name", ""), "date_start": iso_date,
                     "date_end": data.get("endDate", "")[:10] if data.get("endDate") else "",
                     "time_raw": start[11:16] if len(start) > 16 else "",
                     "location": loc.get("name", "") if isinstance(loc, dict) else "",
@@ -267,10 +275,13 @@ def dedup_sql():
     c = conn.cursor()
 
     # Snapshot old tags + recurring_group_id before rebuilding
+    # Key by (normalized_title, date, location_prefix) to survive id changes
     old = {}
     try:
-        for r in c.execute("SELECT id, tags, recurring_group_id FROM curated_events").fetchall():
-            old[(r[0])] = (r[1] or "", r[2])
+        for r in c.execute("SELECT id, title, date_start, location, COALESCE(tags,''), recurring_group_id FROM curated_events").fetchall():
+            nt = normalize_title(r[1])
+            dl = normalize_location(r[3])
+            old[(nt, r[2] or "", dl)] = (r[4], r[5])
     except:
         pass
 
@@ -281,13 +292,58 @@ def dedup_sql():
         INSERT INTO curated_events (title, date_start, date_end, time_raw, location, organizer, description, event_url, sources)
         SELECT title, date_start, date_end, time_raw, location, organizer, description, event_url, GROUP_CONCAT(DISTINCT source_url)
         FROM raw_events WHERE title IS NOT NULL AND title != '' AND title NOT IN ({blocked_placeholders})
-        GROUP BY LOWER(TRIM(title)), COALESCE(date_start, ''), COALESCE(location, '')
+        GROUP BY LOWER(TRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+            REPLACE(REPLACE(REPLACE(REPLACE(title,
+                ' in blankenloch',''),' in büchig',''),' in friedrichstal',''),
+                ' in spöck',''),' in staffort',''),
+                ' blankenloch',''),' büchig',''),' friedrichstal',''),
+                ' spöck',''),' staffort','')
+        )), COALESCE(date_start, ''), COALESCE(TRIM(SUBSTR(location, 1, INSTR(location || ',', ',') - 1)), TRIM(location), '')
         ORDER BY date_start ASC
     """, BLOCKED_TITLES)
     conn.commit()
+
+    # Restore old tags + recurring_group_id by matching on normalized key
+    restored_tags = 0
+    restored_rec = 0
+    for r in c.execute("SELECT id, title, date_start, location FROM curated_events").fetchall():
+        nt = normalize_title(r[1])
+        dl = normalize_location(r[3])
+        key = (nt, r[2] or "", dl)
+        if key in old:
+            tags, rec_id = old[key]
+            if tags:
+                c.execute("UPDATE curated_events SET tags = ? WHERE id = ?", (tags, r[0]))
+                restored_tags += 1
+            if rec_id:
+                c.execute("UPDATE curated_events SET recurring_group_id = ? WHERE id = ?", (rec_id, r[0]))
+                restored_rec += 1
+
+    conn.commit()
     count = c.execute("SELECT COUNT(*) FROM curated_events").fetchone()[0]
     conn.close()
+    print(f"  Restored: {restored_tags} tags, {restored_rec} recurring", flush=True)
     return count
+
+
+def normalize_title(title):
+    if not title:
+        return ""
+    t = title.lower().strip()
+    for suffix in [' in blankenloch', ' in büchig', ' in friedrichstal', ' in spöck', ' in staffort',
+                    ' blankenloch', ' büchig', ' friedrichstal', ' spöck', ' staffort']:
+        t = t.replace(suffix, '')
+    return t
+
+
+def normalize_location(location):
+    if not location:
+        return ""
+    loc = location.strip()
+    idx = loc.find(',')
+    if idx > 0:
+        return loc[:idx].strip()
+    return loc
 
 
 BLOCKED_TITLES = [
@@ -384,16 +440,15 @@ def auto_tag(title, description="", location="", organizer=""):
 
 
 def tag_untagged():
+    """Only tag events that have no tags yet (preserves restored/manual tags)."""
     conn = sqlite3.connect(DB)
     c = conn.cursor()
-    rows = c.execute("SELECT id, title, COALESCE(description,''), COALESCE(location,''), COALESCE(organizer,''), COALESCE(tags,'') FROM curated_events").fetchall()
+    rows = c.execute("SELECT id, title, COALESCE(description,''), COALESCE(location,''), COALESCE(organizer,''), COALESCE(tags,'') FROM curated_events WHERE tags IS NULL OR tags = ''").fetchall()
     count = 0
     for r in rows:
-        existing = set(t.strip() for t in r[5].split(",") if t.strip())
-        all_desired = set(auto_tag(r[1], r[2], r[3], r[4]))
-        merged = existing | all_desired
-        if merged != existing:
-            c.execute("UPDATE curated_events SET tags = ? WHERE id = ?", (",".join(sorted(merged)), r[0]))
+        tags = auto_tag(r[1], r[2], r[3], r[4])
+        if tags:
+            c.execute("UPDATE curated_events SET tags = ? WHERE id = ?", (",".join(tags), r[0]))
             count += 1
     conn.commit()
     conn.close()
