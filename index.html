@@ -6,9 +6,6 @@
 <title>Was geht, Stutensee? – Veranstaltungen und Termine in Stutensee</title>
 <meta name="description" content="Alle Veranstaltungen in Stutensee auf einen Blick: Feste, Märkte, Sport, Kirche, Kinderangebote und mehr. Gefiltert nach Ortsteil und Kategorie.">
 <link rel="icon" type="image/png" href="/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { overflow-x: hidden; width: 100%; }
@@ -32,14 +29,14 @@ body { overflow-x: hidden; width: 100%; }
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
-  font-family: 'Nunito', system-ui, sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
 }
 h1, h2, h3, h4 {
-  font-family: 'Outfit', sans-serif;
+  font-family: system-ui, -apple-system, sans-serif; font-weight: 600;
   font-weight: 600;
   line-height: 1.3;
 }
@@ -81,7 +78,7 @@ header::after {
   align-items: center;
   justify-content: center;
   font-size: 22px;
-  font-family: 'Outfit', sans-serif;
+  font-family: system-ui, -apple-system, sans-serif; font-weight: 600;
   font-weight: 700;
   flex-shrink: 0;
 }
@@ -120,7 +117,7 @@ header::after {
 }
 .controls input,
 .controls select {
-  font-family: 'Nunito', sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   padding: 5px 8px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
@@ -320,7 +317,7 @@ header::after {
   text-align: center;
 }
 .event-date-badge .day {
-  font-family: 'Outfit', sans-serif;
+  font-family: system-ui, -apple-system, sans-serif; font-weight: 600;
   font-size: 24px;
   font-weight: 700;
   line-height: 1;
@@ -439,7 +436,7 @@ header::after {
   background: var(--card-bg);
   cursor: pointer;
   font-size: 13px;
-  font-family: 'Nunito', sans-serif;
+  font-family: system-ui, -apple-system, sans-serif;
   font-weight: 600;
   color: var(--text);
   transition: all var(--transition);
@@ -584,21 +581,21 @@ header::after {
           .wave-inner { animation:lf-wave 3s ease-in-out infinite; }
         </style>
         <clipPath id="s-clip">
-          <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80">S</text>
+          <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80">S</text>
         </clipPath>
         <clipPath id="tip-clip">
           <rect x="52" y="8" width="24" height="32"/>
         </clipPath>
       </defs>
-      <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">S</text>
-      <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80" fill="#fab800">S</text>
-      <text x="54" y="78" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="80" fill="#dd291a" clip-path="url(#tip-clip)">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#fab800">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#dd291a" clip-path="url(#tip-clip)">S</text>
       <g clip-path="url(#s-clip)">
         <path class="wave-inner" d="M-5 60 Q5 54 15 60 Q25 66 35 60 Q45 54 55 60 Q65 66 75 60 Q85 54 95 60" stroke="#0d3a71" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/>
         <path class="wave-inner" d="M-5 69 Q5 63 15 69 Q25 75 35 69 Q45 63 55 69 Q65 75 75 69 Q85 63 95 69" stroke="#1a5299" stroke-width="10" fill="none" stroke-linecap="round" opacity="1" style="animation-delay:-1s"/>
         <path class="wave-inner" d="M-5 78 Q5 72 15 78 Q25 84 35 78 Q45 72 55 78 Q65 84 75 78 Q85 72 95 78" stroke="#3a7bc8" stroke-width="10" fill="none" stroke-linecap="round" opacity="1" style="animation-delay:-2s"/>
       </g>
-      <text x="140" y="60" font-family="Nunito,system-ui,sans-serif" font-weight="700" font-size="26" fill="#ffffff">Was geht, Stutensee?</text>
+      <text x="140" y="60" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="26" fill="#ffffff">Was geht, Stutensee?</text>
     </svg>
   </div>
 </header>
