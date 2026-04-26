@@ -407,17 +407,19 @@ header::after {
 .recurring-toggle:hover { color: #92400e; }
 .recurring-list {
   margin-top: 8px;
-  padding: 8px 12px;
+  padding: 8px 0 0 0;
   border-left: 3px solid var(--primary);
   background: var(--primary-light);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   font-size: 13px;
-  color: #374151;
-  max-height: 200px;
+  max-height: 260px;
   overflow-y: auto;
 }
-.recurring-list div { padding: 3px 0; }
-.recurring-list a { color: var(--primary); }
+.recurring-list table { width: 100%; border-collapse: collapse; }
+.recurring-list th { text-align: left; padding: 4px 12px; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.recurring-list td { padding: 5px 12px; border-bottom: 1px solid #e2e8f0; color: #374151; }
+.recurring-list tr:last-child td { border-bottom: none; }
+.recurring-list tr:hover td { background: rgba(0,0,0,0.02); }
 
 /* Pagination */
 .pagination {
@@ -669,7 +671,12 @@ function debounceSearch() {
   searchTimeout = setTimeout(() => loadEvents(1), 300);
 }
 
-const LOCATION_TAGS = ['Blankenloch','Büchig','Friedrichstal','Spöck','Staffort','Weingarten'];
+const LOCATION_TAGS = ['Blankenloch','Büchig','Friedrichstal','Spöck','Staffort'];
+function fmtDate(iso) {
+  if (!iso) return '?';
+  const p = iso.split('-');
+  return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : iso;
+}
 const TAG_EMOJIS = {
   'Sport':'⚽','Musik':'🎵','Kultur':'🎭','Kirche':'⛪','Kinder':'🧒','Fest':'🎉',
   'Markt':'🛒','Workshop':'🔧','Bildung':'📚','Natur':'🌿','Senioren':'👴','Digital':'💻',
@@ -812,7 +819,7 @@ function renderEvents(events) {
       <div class="event-body">
         <h2>${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
         <div class="event-meta">
-          <span class="date">${e.date_start || '?'}${e.date_end && e.date_end !== e.date_start ? ' – ' + e.date_end : ''}</span>
+          <span class="date">${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? ' – ' + fmtDate(e.date_end) : ''}</span>
           ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
           ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
         </div>
@@ -843,9 +850,9 @@ async function toggleRecurring(eventId, groupId) {
   }
   const r = await fetch('/api/same/' + groupId);
   const events = await r.json();
-  list.innerHTML = events.map(e =>
-    `<div>${e.date_start || '?'}${e.date_end && e.date_end !== e.date_start ? ' – ' + e.date_end : ''}${e.time_raw ? ' · ' + e.time_raw : ''} — ${esc(e.location || '?')}</div>`
-  ).join('');
+  list.innerHTML = '<table><tr><th>Datum</th><th>Zeit</th><th>Ort</th></tr>' + events.map(e =>
+    `<tr><td>${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? '–' + fmtDate(e.date_end) : ''}</td><td>${e.time_raw || '—'}</td><td>${esc(e.location || '?')}</td></tr>`
+  ).join('') + '</table>';
   list.dataset.loaded = '1';
   list.style.display = 'block';
 }
