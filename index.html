@@ -726,7 +726,6 @@ function updateActiveTags() {
   const container = document.getElementById('active-tags');
   let html = '';
   selectedThemes.forEach(t => html += `<span class="active-tag">${TAG_EMOJIS[t] || ''} ${esc(t)} <span class="remove" onclick="selectTag('theme','${esc(t)}')">×</span></span>`);
-  selectedLocations.forEach(t => html += `<span class="active-tag location-tag">📍 ${esc(t)} <span class="remove" onclick="selectTag('location','${esc(t)}')">×</span></span>`);
   container.innerHTML = html;
 }
 
