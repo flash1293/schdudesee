@@ -267,7 +267,7 @@ BLOCKED_TITLES = [
     "Krabbelkäfer Stutensee-Büchig – gemütliches Beisammensein mit Frühstück",
 ]
 
- DISTRICTS = {
+DISTRICTS = {
     "Blankenloch": ["blankenloch", "bl.", "mehrgenerationenhaus", "bürgerwerkstatt", "seegrabenweg", "gymnasiumstr", "zukunftshaus"],
     "Büchig": ["büchig", "buechig"],
     "Friedrichstal": ["friedrichstal", "spöcker weg", "spoecker weg"],
