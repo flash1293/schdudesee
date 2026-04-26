@@ -3,10 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Was geht, Stutensee? – Veranstaltungen und Termine in Stutensee</title>
+<meta name="description" content="Alle Veranstaltungen in Stutensee auf einen Blick: Feste, Märkte, Sport, Kirche, Kinderangebote und mehr. Gefiltert nach Ortsteil und Kategorie.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body { overflow-x: hidden; width: 100%; }
@@ -20,8 +22,8 @@ body { overflow-x: hidden; width: 100%; }
   --gold-light: #fef3c7;
   --bg: #f4f6f8;
   --card-bg: #ffffff;
-  --text: #1a1a2e;
-  --text-muted: #6b7a8f;
+  --text: #111827;
+  --text-muted: #4b5563;
   --border: #e2e8f0;
   --shadow: 0 2px 8px rgba(13,124,102,0.06);
   --shadow-hover: 0 8px 24px rgba(13,124,102,0.12);
@@ -199,6 +201,8 @@ header::after {
   margin-left: auto;
   white-space: nowrap;
   flex-shrink: 0;
+  min-width: 60px;
+  text-align: center;
 }
 
 /* Tag filter row */
@@ -594,7 +598,7 @@ header::after {
   </div>
 </header>
 
-<div class="controls-wrap">
+  <div class="controls-wrap">
   <div class="controls">
     <div class="controls-row">
       <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
@@ -608,7 +612,7 @@ header::after {
         <span class="toggle-slider"></span>
         <span>Nur ab heute</span>
       </label>
-      <span class="stats-badge" id="count-display"></span>
+      <span class="stats-badge" id="count-display">Lade…</span>
     </div>
     <div class="controls-row">
       <div class="filter-popover" id="theme-popover">
@@ -620,10 +624,9 @@ header::after {
         <div class="popover-dropdown" id="location-dropdown"></div>
       </div>
       <span class="active-tags" id="active-tags"></span>
-    </div>
   </div>
 </div>
-
+<main>
 <div class="events-wrap">
   <div id="events" class="events"></div>
   <div class="pagination" id="pagination"></div>
@@ -643,7 +646,7 @@ header::after {
     kein Tracking durchgeführt und keine Analysedienste genutzt.
   </div>
 </footer>
-
+</main>
 <script>
 let currentPage = 1;
 let totalPages = 1;
