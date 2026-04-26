@@ -7,10 +7,14 @@ export default {
     if (url.pathname === '/') {
       return new Response(indexHtml, { headers: { 'content-type': 'text/html;charset=utf-8' } });
     }
-    if (url.pathname === '/api/events') return serveEvents(env, url);
-    if (url.pathname === '/api/tags') return serveTags(env);
-    if (url.pathname === '/api/stats') return serveStats(env);
-    if (url.pathname.startsWith('/api/recurring/')) return serveRecurring(env, url.pathname.split('/').pop());
+    if (url.pathname === '/favicon.png' && typeof faviconB64 !== 'undefined' && faviconB64) {
+      const img = Uint8Array.from(atob(faviconB64), c => c.charCodeAt(0));
+      return new Response(img, { headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' } });
+    }
+    if (url.pathname === '/api/list') return serveEvents(env, url);
+    if (url.pathname === '/api/theme') return serveTags(env);
+    if (url.pathname === '/api/info') return serveStats(env);
+    if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
     return new Response('Not found', { status: 404 });
   }
 };
