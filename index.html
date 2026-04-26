@@ -705,7 +705,11 @@ function selectTag(type, tag) {
     document.getElementById('theme-btn').textContent = selectedThemes.length > 0
       ? `Kategorie (${selectedThemes.length}) ▾` : 'Kategorie ▾';
   } else {
-    selectedLocations = [tag];
+    if (selectedLocations[0] === tag) {
+      selectedLocations = [];
+    } else {
+      selectedLocations = [tag];
+    }
     document.querySelectorAll('#location-dropdown .chip').forEach(c => {
       c.classList.toggle('active', selectedLocations.includes(c.dataset.tag));
     });
@@ -728,8 +732,12 @@ function updateActiveTags() {
 
 function toggleFilterPopover(type) {
   const dropdown = document.getElementById(type + '-dropdown');
-  closeAllPopovers();
-  dropdown.classList.toggle('open');
+  if (dropdown.classList.contains('open')) {
+    dropdown.classList.remove('open');
+  } else {
+    closeAllPopovers();
+    dropdown.classList.add('open');
+  }
 }
 
 function closeAllPopovers() {
