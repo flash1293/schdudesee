@@ -705,14 +705,14 @@ function selectTag(type, tag) {
     document.getElementById('theme-btn').textContent = selectedThemes.length > 0
       ? `Kategorie (${selectedThemes.length}) ▾` : 'Kategorie ▾';
   } else {
-    const idx = selectedLocations.indexOf(tag);
-    if (idx >= 0) selectedLocations.splice(idx, 1); else selectedLocations.push(tag);
+    selectedLocations = [tag];
     document.querySelectorAll('#location-dropdown .chip').forEach(c => {
       c.classList.toggle('active', selectedLocations.includes(c.dataset.tag));
     });
     document.getElementById('location-btn').classList.toggle('active', selectedLocations.length > 0);
     document.getElementById('location-btn').textContent = selectedLocations.length > 0
-      ? `Ortsteil (${selectedLocations.length}) ▾` : 'Ortsteil ▾';
+      ? `📍 ${tag}` : 'Ortsteil';
+    closeAllPopovers();
   }
   updateActiveTags();
   loadEvents(1);
