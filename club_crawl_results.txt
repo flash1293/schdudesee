@@ -1,0 +1,96 @@
+
+http://sk-blankenloch.bsv-schach.de/ | SKIP | Simple HTML site; has Termine.pdf link but no structured event listings on page
+http://stutensee.bund.net/ | SKIP | Old BUND page - "Diese Seite wird nicht mehr gepflegt". Points to new site at bund-mittlerer-oberrhein.de. Has a "Termine" page (likely empty) and PDF Jahresprogramm.
+http://stutensee.bund.net/ | SKIP | Outdated site - redirects to bund-mittlerer-oberrhein.de; old site has Termine but no current events
+http://tvspoeck.de/ | SKIP | Joomla site for TV 1896 Spöck e.V. with many departments (Fußball, Turnen, etc.); RSS feed; no dedicated event calendar found on homepage; has Berichte section instead
+http://www.1482ev.de/ | SKIP | Blocked by Cloudflare JS challenge, cannot access content
+http://www.autumnus-medievalis.de/ | SKIP | Transport error - could not load (site may be down).
+http://www.blankenlocher-hardtwaldhexen.de/ | SKIP | Static WordPress site. No events, no calendar, no Termine page. Only general club info.
+http://www.cvjm-blankenloch-buechig.de/ | SKIP | Old frameset HTML site. No structured events visible from frameset root.
+http://www.fluechtlingshilfe-stutensee.de | SKIP | Termine page shows "Keine Termine"; site has news/blog but no structured events
+http://www.gsv-saengerbund.de/ | SKIP | Basic site with rehearsal schedule; "Chorproben/Termine" page exists but no dated events
+http://www.gv-concordia-blankenloch.de/ | 3 | Aktuelles: Jahreshauptversammlung on 17. Apr 2026, Weihnachtsfeier (Dec 2025), Männerchor beim Volkstrauertag (Nov 2025)
+http://www.little-creek.de/ | 3 | Western hobby club with dedicated Veranstaltungen page (archiv, current events)
+http://www.msc-blankenloch.de/ | 7 | Motorsport club with Termine page listing club evenings (April-May 2026), RSS feed
+http://www.stutensee.com/klzv-c317/ | SKIP | Very basic static homepage; no events
+http://www.ttc-staffort.de | SKIP | Joomla site with news/blog articles about table tennis; RSS feed; regular training schedule listed but no event calendar
+http://www.ttf-spoeck.de/ | 1 | 2er Mannschaftsturnier on 09.05.2026 at 14:00 in Spechaahalle; registration via Google Forms; regular training times listed; match results on mytischtennis.de
+http://www.vdh-stutensee.de/ | SKIP | Google Sites page; mentions 1.Mai Hähnchengrillfest but no structured event calendar
+http://www.vogelfreunde-staffort.de/ | SKIP | Domain parked (redirects to web.de parking page); no content
+http://www.werkstatt87.de | 6 | Model railway club with Termine page; has upcoming events (Stammtisch 06.05.2026, exhibitions in 2026)
+https://bc-spoeck.de/ | 1 | Badminton Club Spöck. WordPress blog with RSS feed (https://bc-spoeck.de/feed/). Blog posts about club activities but no structured events calendar.
+https://blankenloch.dlrg.de/ | 1 | DLRG Blankenloch. Has "Termine" page at /die-ortsgruppe/termine/. News section with event posts (e.g. Frühjahrsaktion der DLRG-Jugend).
+https://briefmarken-karlsruhe.de/kontakt/ | SKIP | Stamp collectors club Karlsruhe; has Termine page in navigation; contact page only
+https://drk-staffort.de/ | 1 | DRK Staffort. WordPress blog. News posts about events: Mitgliederversammlung (2025), Blutspendeaktion (March 2025), Dienstabende 2025.
+https://feuerhexen-stutensee.de.tl/ | SKIP | Simple static homepage with no events or calendar
+https://gewerbeverein-stutensee.org/ | SKIP | Business association info page; no events
+https://gvl-spoeck.clubdesk.com | 2 | Waldfest am 14. Mai 2026 listed prominently; "Nächste Termine" section with upcoming events
+https://gvl-spoeck.clubdesk.com | SKIP | Duplicate of URL 5
+https://handball-stutensee.de/ | SKIP | News/blog only; no event calendar; login required for schedule
+https://hugenotten-museum-friedrichstal.de/ | 1 | Informationsnachmittag am 25. Januar 2025; "Aktuell" section has calls for help but museum is currently closed
+https://kfw-spoeck.de/ | 5+ | Dedicated Termine section with Training, Fahrtenplan, Online-Kalender; Pfingstfahrt 2026 announced; multiple planned trips/events
+https://kg-staffort-buechenau.de/ | 1 | Kirchengemeinde Staffort-Büchenau. Part of ekistuwei.de network. Has event functionality.
+https://kg-staffort-buechenau.de/gruppen-und-kreise/posaunenchor/ | SKIP | 404 error - page not found.
+https://kreuzundquer.bplaced.net/ | SKIP | WordPress blog for a second-hand shop (Kreuz+Quer e.V.), no events calendar, only holiday notices
+https://musikverein-blankenloch.de/ | 9 | Music club with JEvents calendar; upcoming events listed (Maibaumstellen, 1. Mai, Fassanstich, Vatertagsfest, etc.)
+https://musikverein-spoeck.de/ | 8 | Music club with full Termine 2026 table (JHV, Frühlingskonzert, Maibaumstellen, Hoffest, Adventskonzert, etc.)
+https://pferdefreunde-blankenloch.de/ | 10 | Riding club with Veranstaltungen page showing upcoming events via image posts (April 2026 events)
+https://reitverein-friedrichstal.de/ | SKIP | WordPress site with news/blog posts about club activities, no dedicated events calendar
+https://saengerbund-friedrichstal.de/ | 4 | Stage Fever Klangdialog concert 25. Apr 2026; Sing & Connect 26. Sep 2026; Konzerte 26.-27. Sep 2026; "Veranstaltungen" page
+https://schaukelpferd.name/ | SKIP | Charity (Kinderhilfe Ukraine) with news posts about aid projects; RSS feed; no structured events
+https://sgsw.de/ | 12 | Handball club with game schedule via handball.net widget; many team fixtures listed
+https://spoeck.dlrg.de/ | 2+ | DLRG Spöck. Has "Termine" page at /termine/. News section with events: Fahrradtour am 1. Mai 2026, Baggerseefest 2025.
+https://staffort.lgv.org/ | 2 | Liebenzeller Gemeinschaft Staffort with Kalender + Veranstaltungen pages; specific events listed (Frauenabend 27.02.2026, Gemeindefreizeit)
+https://tcspoeck.hpage.com/ | SKIP | Site could not be loaded (transport error)
+https://ttvbw.click-tt.de/cgi-bin/WebObjects/nuLigaTTDE.woa/wa/clubInfoDisplay?club=27303 | 0 | click-TT league management page for TTG Spöck 2010; shows past match results but no upcoming events in next week; links to mytischtennis.de for schedules
+https://vffug-staffort.de/ | SKIP | Fishing club WordPress site; has Termine page link in navigation; RSS feed; homepage shows no specific upcoming events
+https://vg0705.dskv.de/vereine/ | SKIP | Skat club directory page (DSKV Verbandsgruppe); no events listed
+https://vsv-buechig.net | SKIP | Sports club with match news only, no dedicated events/calendar page
+https://vsv-buechig.net/ | SKIP | Sports club (VSV Büchig) with news/blog about football matches; separate pages for departments; RSS feed; no events calendar
+https://www.awo-ka-land.de/index.php | SKIP | Kreisverband-level site (not Stutensee-specific). Has "Terminkalender" page but no specific events listed.
+https://www.bdp-adler.de/ | 3+ | BdP Stamm Adler Pfadfinder. Uses The Events Calendar plugin. Has iCal feed (https://www.bdp-adler.de/events/?ical=1) and JSON REST API (https://www.bdp-adler.de/wp-json/tribe/events/v1/). Blog posts with dates for past events. Structured event data available.
+https://www.buergerwerkstatt-stutensee.de/ | 5 | Mehrgenerationenhaus with extensive weekly program; many regular events (Abendessen, Kaffee-Nachmittag, Reparatur-Café, TrauerCafé, etc.)
+https://www.cvjm-spoeck.de/ | 5+ | CVJM Spöck. Has live event calendar with upcoming events: Wanderpreis (26.04.2026), 18+ Freizeit (30.04-03.05.2026), Radtour (25.05.2026), Badentreff (03.06-06.06.2026), Vorstandssitzung+BL (25.06.2026). Full calendar at /eventcalendar.
+https://www.drk-friedrichstal.de/ | SKIP | Transport error - could not load.
+https://www.drk-notfallhilfe.de/ | 1 | DRK Blankenloch (drk-blankenloch.de). WordPress with RSS feed. News posts with events mentioned (e.g. Blutspendeaktionen).
+https://www.drkspoeck.de/ | 2 | DRK Spöck. Has "Veranstaltungen" page with Blutspendetermine and Termine sub-pages. Regular Übungsabende every Friday.
+https://www.eintracht-spoeck.de/ | SKIP | Simple site with choir rehearsal info only; no events
+https://www.ek-spoeck.de/ | 1 | Kirchengemeinde Spöck. Part of ekistuwei.de network. Church community page with event functionality.
+https://www.ekistuwei.de/gemeinden/kirchengemeinde-staffort-buechenau/foerderverein-kind-und-kegel/ | SKIP | Förderverein subpage has no events; parent site has Kalender but not specific to this page
+https://www.ev-kirche-friedrichstal.de/ | 1 | Evangelische Kirche Friedrichstal. Part of ekistuwei.de network. Has event/calendar functionality with REST API endpoints for terminte/export.
+https://www.ev-kirche-friedrichstal.de/gruppen-kreise/choere | SKIP | 404 error - page not found.
+https://www.ev-kirche-friedrichstal.de/gruppen-kreise/choere | SKIP | Duplicate of #18, 404 error.
+https://www.fcfriedrichstal.de/ | 10+ | Full match schedule with dates (bfv-Kreisliga and Kreisklasse B1); dedicated "Termine" and "Vereinstermine" pages in menu
+https://www.fcspoeck.de/ | SKIP | News section only; last post from 2023; no events or calendar
+https://www.friedrichstaler-backhaus.de/ | 2 | Aktuelles blog posts about events: Zwetschgenkuchenfest, "Glutenfreies Backen" courses; Weihnachtsmarkt 2022
+https://www.gospel-unlimited.de/ | 5 | Termine page: Gottesdienst 1. Feb 2026, Konfirmationsgottesdienst 10. Mai 2026, Jubiläumsgottesdienst 21. Jun 2026, Gospelkirche 12. Jul 2026, Adventsstimmung 29. Nov 2026
+https://www.hundesportverein-friedrichstal.de/ | SKIP | Dog sports club with Termine and Kalender pages; extensive training schedule; RSS feed; but no structured upcoming events visible on homepage
+https://www.kath-stutensee.de/gemeinde-leben/angebote-fuer-kinder-und-jugendliche/kjg-friedrichstal/ | SKIP | Group info page with meeting times only; no events
+https://www.kath-stutensee.de/kinderbetreuung-institutionen/kirchenchor-stutensee-blankenloch/ | SKIP | 404 Not Found
+https://www.kath-weistu.de/essen-fuer-alle-stutensee-e-v/ | SKIP | Single page describing "Essen für Alle Stutensee e.V." initiative. No events calendar.
+https://www.kleintierzuchtverein-friedrichstal.de/ | 5 | Termine page: Geflügelimpfung 13. Jun, Hähnchenfest 8.-10. Aug, Geflügelimpfung 12. Sep, Friedrichstaler Kerwe 24.-25. Okt, Geflügelimpfung 12. Dez 2026
+https://www.lembacher-weg.de/ | SKIP | Charity site with past event write-ups (Sommerfest, Halloween), no future event calendar
+https://www.lgv-blankenloch.de/ | 1 | Church community with ChurchTools calendar (iframe), Kalender + Veranstaltungen pages, RSS/Atom feeds; events embedded
+https://www.meinstutensee.de/ | 4 | News portal with EventON calendar plugin, dedicated Kalender page, RSS feed; many events listed
+https://www.michaelisgemeinde.de/index.php | 1 | Michaelisgemeinde Blankenloch. Part of ekistuwei.de network. Church community with event calendar via REST API.
+https://www.pfadfinder-blankenloch.de/ | SKIP | Transport error - could not load.
+https://www.piraten-stutensee.de/ | 5+ | Veranstaltungen/Kalender page; 5. Vatertagsfest 14. Mai 2026; 12. Piratenmontag 16. Feb 2026; Oktoberfest; Glühweinfest; Prunksitzungen; Kinderfasching
+https://www.posaunenchor-blankenloch.de/ | 2 | Posaunenchor Blankenloch. Joomla site with RSS/Atom feeds. Has "Termine" page with Kalender. News about Sommerkonzert 2025 (July 2025) and Erwachsene Jungbläser.
+https://www.reiterverein-spoeck.de/ | SKIP | Frameset redirect to Wix.com site, could not fetch content
+https://www.schuetzenverein-blankenloch-1913.de/ | 11 | Shooting club with Termine page; has training times and competition schedule
+https://www.stage-art.info/ | SKIP | Has "Termine & Aktuelles" page but no specific upcoming events listed; only general info about past shows
+https://www.sv-blankenloch.de/ | SKIP | Multi-sport club (SVB) with news slides but no dedicated events calendar
+https://www.svstaffort.de | SKIP | Redirects to bin/index.php, could not access content
+https://www.tc-staffort.de/ | SKIP | WordPress site with WP Event Manager plugin and /veranstaltungen/ page; RSS feed at /feed/; page exists but no upcoming events currently displayed
+https://www.theatergruppehoffmann.de/ | 1 | Theater performance on 06.11.2026 and 07.11.2026; details on Veranstaltungen page
+https://www.tkd-spoeck.de/ | SKIP | News section with past articles (Kup-Prüfung, Schnupperstunde); RSS feed available but no event calendar
+https://www.tsg-blankenloch.de/ | 4 | Major sports club (~1300 members). Events found: 19. Stutenseer Stadtlauf on 22.03.2026, 32. Heinz Beierstorf Triathlon on 21.06.2026, Termine 2026 poster, Stutensee CUP; dedicated Veranstaltungen page; RSS feed available
+https://www.ttf-spoeck.de/ | 1 | 2er Mannschaftsturnier on 9 May 2026 at Spechaahalle; also training schedule
+https://www.ttv-friedrichstal.com/ | SKIP | Joomla site with news articles about table tennis; training times and match results; RSS feed but no event calendar found
+https://www.tv-friedrichstal.de | 18 | Sports club ~1000 members. Full Veranstaltungskalender 2026 with 18 dates: Gründerversammlung Tennis (28.01), Jugendtag (31.01), Helferessen (07.02), Ski-Wochenende (27.02-01.03), Stadtputzete (28.02), Bürgerball (14.03), Jugendversammlung (21.03), Hauptversammlung (21.03), Stutenseer Stadtlauf (22.03), Beach Volleyball Camp (09-16.05), Spechaa Lauf (07.06), Triathlon (21.06), Sommerfest (18-19.07), Bewegungspasstag (26.09), Topiblüten Lauf (27.09), Waldlauf (25.10), Tag des Kinderturnens (08.11), Weihnachtsmarkt (5-6.12). Also has Google Calendar embed and training schedule
+https://www.vdk.de/ov-friedrichstal/ | SKIP | VdK social association; general info page with no events listed
+https://www.vdk.de/ov-spoeck/ID145186 | SKIP | VdK social association Spöck; general info page with no events listed
+https://www.vogelpark-stutensee-friedrichstal.de | SKIP | Bird park/attraction website with opening hours info; no events calendar
+https://www.waldorf-stutensee.de | SKIP | Waldorfkindergarten website; no events
+Sites with events found: 4
+Total events extracted: ~24
