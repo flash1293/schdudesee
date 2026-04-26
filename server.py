@@ -52,24 +52,14 @@ class Handler(SimpleHTTPRequestHandler):
         sort = "date_start"
         order = "asc"
         month = params.get("month", [""])[0]
-        from_today = params.get("from_today", ["true"])[0]
         date_from = params.get("date_from", [""])[0]
-        date_to = params.get("date_to", [""])[0]
 
         where = []
         args = []
 
-        if from_today == "true":
-            where.append("(date_start >= ? OR date_start = '')")
-            args.append(datetime.now().strftime("%Y-%m-%d"))
-
         if date_from:
             where.append("(date_start >= ? OR date_start = '')")
             args.append(date_from)
-
-        if date_to:
-            where.append("(date_start <= ? OR date_start = '')")
-            args.append(date_to)
 
         if search:
             where.append("(title LIKE ? OR location LIKE ? OR organizer LIKE ?)")
