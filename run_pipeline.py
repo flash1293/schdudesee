@@ -267,13 +267,14 @@ BLOCKED_TITLES = [
     "Krabbelkäfer Stutensee-Büchig – gemütliches Beisammensein mit Frühstück",
 ]
 
-DISTRICTS = {
+ DISTRICTS = {
+    "Blankenloch": ["blankenloch", "bl.", "mehrgenerationenhaus", "bürgerwerkstatt", "seegrabenweg", "gymnasiumstr", "zukunftshaus"],
     "Büchig": ["büchig", "buechig"],
     "Friedrichstal": ["friedrichstal"],
     "Spöck": ["spöck", "spoeck"],
     "Staffort": ["staffort"],
     "Weingarten": ["weingarten"],
-}
+ }
 
 KEYWORDS = {
     "Sport": ["lauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
