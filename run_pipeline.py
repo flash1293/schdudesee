@@ -270,11 +270,15 @@ BLOCKED_TITLES = [
  DISTRICTS = {
     "Blankenloch": ["blankenloch", "bl.", "mehrgenerationenhaus", "bürgerwerkstatt", "seegrabenweg", "gymnasiumstr", "zukunftshaus"],
     "Büchig": ["büchig", "buechig"],
-    "Friedrichstal": ["friedrichstal"],
+    "Friedrichstal": ["friedrichstal", "spöcker weg", "spoecker weg"],
     "Spöck": ["spöck", "spoeck"],
     "Staffort": ["staffort"],
     "Weingarten": ["weingarten"],
  }
+
+DISTRICT_EXCLUSIONS = {
+    "Spöck": ["spöcker weg", "spoecker weg"],
+}
 
 KEYWORDS = {
     "Sport": ["lauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
@@ -325,7 +329,12 @@ def auto_tag(title, description="", location="", organizer=""):
     for district, keywords in DISTRICTS.items():
         for kw in keywords:
             if kw in text:
-                if district not in tags:
+                excluded = False
+                for excl in DISTRICT_EXCLUSIONS.get(district, []):
+                    if excl in text:
+                        excluded = True
+                        break
+                if not excluded and district not in tags:
                     tags.append(district)
                 break
     return tags
