@@ -6,6 +6,17 @@ Usage:  python3 run_pipeline.py
 """
 
 import json, sys, os, sqlite3, urllib.request, re, html, hashlib
+import importlib.util
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt"]:
+    spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
+    m = importlib.util.module_from_spec(spec)
+    sys.modules[mod] = m
+    spec.loader.exec_module(m)
+scrape_vhs = sys.modules["scraper_vhs"].scrape_vhs
+scrape_gewerbeverein = sys.modules["scraper_gewerbeverein"].scrape_gewerbeverein
+scrape_blutspende = sys.modules["scraper_blutspende"].scrape_blutspende
+scrape_pestalozzi = sys.modules["scraper_pestalozzi"].scrape_pestalozzi
+scrape_wochenmarkt = sys.modules["scraper_wochenmarkt"].scrape_wochenmarkt
 from datetime import datetime
 
 DB = "stutensee_events.db"
@@ -400,6 +411,11 @@ if __name__ == "__main__":
         ("Bürgerwerkstatt events", scrape_buergerwerkstatt),
         ("Büchigerleben", scrape_buechigerleben),
         ("Flohmarkt", scrape_flohmarkt),
+        ("VHS Stutensee", scrape_vhs),
+        ("Gewerbeverein", scrape_gewerbeverein),
+        ("Blutspende", scrape_blutspende),
+        ("Pestalozzi Schule", scrape_pestalozzi),
+        ("Wochenmarkt", scrape_wochenmarkt),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),

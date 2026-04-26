@@ -148,8 +148,7 @@ def scrape_gewerbeverein():
             "location": item.get('location', ''),
             "organizer": "Gewerbeverein Stutensee",
             "description": "",
-            "event_url": "",
-            "sources": SOURCE_URL,
+            "event_url": SOURCE_URL,
         }
 
         # Enrich with detail card data if available
