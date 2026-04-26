@@ -212,6 +212,22 @@ def scrape_flohmarkt():
     return {"source_url": "https://www.flohmarkt-buechig.de/", "events": events}
 
 
+def cleanup_kath_urls():
+    """Add ?vt=1&cb-id=12179900 to kath-weistu.de event URLs (required for rendering)."""
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+    total = 0
+    for table, id_col in [("raw_events", "rowid"), ("curated_events", "id")]:
+        rows = c.execute(f"SELECT {id_col}, event_url FROM {table} WHERE event_url LIKE 'https://www.kath-weistu.de/%' AND event_url NOT LIKE '%vt=1%'").fetchall()
+        for eid, url in rows:
+            fixed = url + ("&" if "?" in url else "?") + "vt=1&cb-id=12179900"
+            c.execute(f"UPDATE {table} SET event_url = ? WHERE {id_col} = ?", (fixed, eid))
+            total += 1
+    conn.commit()
+    conn.close()
+    return total
+
+
 def insert_raw(source_data):
     conn = sqlite3.connect(DB)
     c = conn.cursor()
@@ -284,60 +300,76 @@ KEYWORDS = {
     "Sport": ["lauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
               "fußball", "fussball", "schwimm", "rad", "bike", "cycling", "sport", "bewegung",
               "gymnastik", "tanz", "dance", "ballett", "kickbox", "karate", "indiaca", "volleyball",
-              "handball", "basketball", "reit", "pferd", "wandern", "training", "stadtlauf", "spechaa"],
+              "handball", "basketball", "reit", "pferd", "wandern", "training", "stadtlauf", "spechaa",
+              "turnier", "kajak", "kanu", "dressur", "springturnier", "reitturnier"],
     "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang",
-              "musikal", "orchester", "posaunen", "gitarre", "vox", "choir"],
+              "musikal", "orchester", "posaunen", "gitarre", "vox", "choir", "swing", "liederabend",
+              "gospel", "rockfestival"],
     "Kultur": ["theater", "lesung", "kunst", "ausstellung", "kino", "literatur", "bühne", "kultur",
-               "museum", "foto", "malen", "zeichnen"],
-    "Kirche": ["gottesdienst", "kirche", "gemeinde", "konfirmation", "firmung", "taufe", "messe",
+               "museum", "foto", "malen", "zeichnen", "denkmals"],
+    "Kirche": ["gottesdienst", "kirche", "konfirmation", "firmung", "taufe", "messe",
                "andacht", "segen", "ökumen", "patrozinium", "gebet", "evangelisch", "katholisch",
-               "trauer", "feier"],
+               "trauer", "abendmahl", "kommunion", "herzensgebet", "maiandacht", "bibelkreis",
+               "bibelgespräch", "bibelstunde", "vesper", "kreuzweg", "volkstrauertag",
+               "allerseelen", "allerheiligen", "glaubenskurs", "religionsunterricht"],
     "Kinder": ["kind", "baby", "eltern-kind", "krabbel", "spiel", "familie", "mädchen", "junge",
                "kindergarten", "schule", "vorlesen", "bilderbuch", "küken", "seepferdchen",
                "abenteuer", "zwerge", "jugend", "teen", "schüler", "kinderturnen", "ferien",
-               "caribi", "minis", "bambini"],
-    "Fest": ["fest", "feier", "oktoberfest", "maifest", "weihnachtsmarkt", "kerwe", "party",
-             "sportfest", "maibaum", "frühlingsfest", "sommerfest", "jubiläum"],
+               "caribi", "minis", "bambini", "steckenpferd", "drachen", "lager", "ballontag",
+               "halloween", "gruselnacht"],
+    "Fest": ["fest", "oktoberfest", "maifest", "weihnachtsmarkt", "kerwe", "party",
+             "sportfest", "maibaum", "frühlingsfest", "sommerfest", "jubiläum", "vatertagsfest",
+             "heimattage", "steinwiesenfest", "kürbisfest", "hähnchenfest", "fischerfest",
+             "apfelblütenfest", "kinderspielfest", "pfingstfeier"],
     "Markt": ["markt", "flohmarkt", "trödel", "weihnachtsmarkt"],
     "Workshop": ["workshop", "kurs", "seminar", "lernen", "unterricht", "stunde", "training"],
     "Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
-                "lernen", "infoveranstaltung", "podiumsdiskussion"],
+                "lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform"],
     "Natur": ["natur", "garten", "wald", "vogel", "baum", "pflanze", "umwelt", "klima",
               "hornisse", "mulchen", "exkursion", "wanderung"],
     "Senioren": ["senior", "50+", "älter", "alt werden", "beweglich im alter"],
     "Digital": ["digital", "smartphone", "computer", "handy", "online", "app", "internet"],
     "Handwerk": ["basteln", "werkstatt", "nähen", "stricken", "häkeln", "reparier", "reparatur",
-                 "handarbeit", "kreativ", "secondhand", "bastel"],
+                 "handarbeit", "kreativ", "secondhand", "bastel", "sonnenfänger"],
     "Essen": ["kochen", "backen", "essen", "grill", "frühstück", "küche", "kuchen", "kaffee",
-              "bowle", "bier", "wein", "hähnchen", "flammkuchen", "zwiebelkuchen"],
+              "bowle", "bier", "wein", "hähnchen", "flammkuchen", "zwiebelkuchen", "mittagstisch",
+              "dampfnudel"],
     "Treff": ["treff", "café", "stammtisch", "begegnung", "gespräch", "runde", "kreis",
-              "frühstück", "kaffee"],
-    "Politik": ["wahl", "gemeinderat", "bürgermeister", "politik", "partei", "rat", "ausschuss"],
-    "Verein": ["verein", "e.v.", "mitgliederversammlung", "vorstand", "ehrenamt"],
+              "spieleabend", "badentreff", "männerrunde"],
+    "Politik": ["wahl", "gemeinderat", "bürgermeister", "politik", "partei", "rat", "ausschuss",
+                "bürgermeisterkandidaten", "einwohnerversammlung"],
+    "Verein": ["verein", "e.v.", "mitgliederversammlung", "vorstand", "ehrenamt",
+               "clubabend", "hobbyday", "vorstandsmeeting", "arbeitseinsatz",
+               "stammesklausur", "hobbylager"],
     "Wohltätigkeit": ["spende", "blutspende", "kleidersammlung", "charity", "sozial", "tafel",
-                      "hilfe"],
+                      "hilfe", "sanitätsdienst"],
 }
 
 def auto_tag(title, description="", location="", organizer=""):
-    text = f"{title} {description} {location} {organizer}".lower()
-    tags = []
+    # Content tags from title+description only (avoid false positives from organizer "Kirchengemeinde")
+    content_text = f"{title} {description}".lower()
+    content_tags = []
     for tag, keywords in KEYWORDS.items():
         for kw in keywords:
-            if kw in text:
-                tags.append(tag)
+            if kw in content_text:
+                content_tags.append(tag)
                 break
+    content_tags = content_tags[:2]
+    # District tags from full text
+    full_text = f"{title} {description} {location} {organizer}".lower()
+    district_tags = []
     for district, keywords in DISTRICTS.items():
         for kw in keywords:
-            if kw in text:
+            if kw in full_text:
                 excluded = False
                 for excl in DISTRICT_EXCLUSIONS.get(district, []):
-                    if excl in text:
+                    if excl in full_text:
                         excluded = True
                         break
-                if not excluded and district not in tags:
-                    tags.append(district)
+                if not excluded and district not in district_tags:
+                    district_tags.append(district)
                 break
-    return tags
+    return content_tags + district_tags
 
 
 def tag_untagged():
@@ -394,6 +426,10 @@ if __name__ == "__main__":
             print(f"skipped", flush=True)
 
     print(f"  Total new: {total_new}", flush=True)
+    print(f"  URL cleanup...", end=" ", flush=True)
+    cleaned = cleanup_kath_urls()
+    print(f"{cleaned} urls fixed", flush=True)
+
     print(f"  Dedup...", end=" ", flush=True)
     curated = dedup_sql()
     print(f"{curated} curated", flush=True)
