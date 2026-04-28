@@ -150,6 +150,18 @@ Write all extracted events as JSON array:
 Convert German dates (DD.MM.YYYY) to ISO format (YYYY-MM-DD).
 ```
 
+## Update Workflow
+
+Always follow this process when updating events:
+
+1. **Backup the DB** — `cp stutensee_events.db stutensee_events.db.backup-$(date +%Y%m%d_%H%M%S)`
+2. **Run the pipeline** — `python3 run_pipeline.py`
+3. **Validate manually** — check new events, dates, descriptions, check for duplicates
+4. **Adjust & rerun if needed** — fix scrapers, rerun, validate again (things change all the time)
+5. **Deploy** — `cd cloudflare && ./deploy.sh`
+
+The pipeline now: removes past events, fixes malformed dates, extracts rich data (location, organizer, description) from JSON-LD sources, and filters past events at insert time.
+
 ## Cloudflare
 
 The site runs on Cloudflare Workers + D1:
