@@ -93,6 +93,40 @@ def scrape_kinderkalender():
     return {"source_url": "https://stutenseekinderkalender.de", "events": events}
 
 
+def parse_meinstutensee_date(start):
+    """Parse non-padded ISO dates like '2026-5-7T19:00+2:00' or '2026-5-1'."""
+    if not start:
+        return "", ""
+    date_part = start.split("T")[0]
+    time_part = ""
+    if "T" in start:
+        tm = re.search(r'(\d{1,2}:\d{2})', start.split("T")[1])
+        if tm:
+            time_part = tm.group(1)
+    try:
+        parts = date_part.split("-")
+        y = parts[0]
+        m = parts[1].zfill(2) if len(parts) > 1 else "01"
+        d = parts[2].zfill(2) if len(parts) > 2 else "01"
+        iso_date = f"{y}-{m}-{d}"
+        datetime.strptime(iso_date, "%Y-%m-%d")
+        return iso_date, time_part
+    except:
+        return "", ""
+
+
+def extract_jsonld_value(data, key):
+    """Extract name from a JSON-LD object or list of objects."""
+    val = data.get(key, {}) or {}
+    if isinstance(val, list):
+        if val and isinstance(val[0], dict):
+            return val[0].get("name", "")
+        return ""
+    if isinstance(val, dict):
+        return val.get("name", "")
+    return ""
+
+
 def scrape_meinstutensee():
     events = []
     html_content = fetch_url("https://meinstutensee.de/termine/")
@@ -101,22 +135,21 @@ def scrape_meinstutensee():
             data = json.loads(schema)
             if isinstance(data, dict) and data.get("@type") == "Event":
                 start = data.get("startDate", "")
-                loc = data.get("location", {}) or {}
-                org = data.get("organizer", {}) or {}
-                # Parse properly: handle "2026-4-25T" or "2026-04-25T18:00" etc.
-                iso_date = ""
-                if start:
-                    try:
-                        from datetime import datetime
-                        iso_date = datetime.strptime(start[:10].replace("T",""), "%Y-%m-%d").strftime("%Y-%m-%d")
-                    except:
-                        iso_date = start[:10].replace("T","")
+                iso_date, time_str = parse_meinstutensee_date(start)
+                if not iso_date:
+                    continue
+                end = data.get("endDate", "")
+                end_date = ""
+                if end:
+                    end_date, _ = parse_meinstutensee_date(end)
+                desc = data.get("description", "") or ""
+                desc = re.sub(r'<[^>]+>', '', desc).strip()
                 events.append({"title": data.get("name", ""), "date_start": iso_date,
-                    "date_end": data.get("endDate", "")[:10] if data.get("endDate") else "",
-                    "time_raw": start[11:16] if len(start) > 16 else "",
-                    "location": loc.get("name", "") if isinstance(loc, dict) else "",
-                    "organizer": org.get("name", "") if isinstance(org, dict) else "",
-                    "description": "", "event_url": data.get("url", "")})
+                    "date_end": end_date,
+                    "time_raw": time_str,
+                    "location": extract_jsonld_value(data, "location"),
+                    "organizer": extract_jsonld_value(data, "organizer"),
+                    "description": html.unescape(desc), "event_url": data.get("url", "")})
         except:
             pass
     return {"source_url": "https://meinstutensee.de/termine/", "events": events}
@@ -216,15 +249,34 @@ def scrape_buechigerleben():
     return {"source_url": "https://www.buechigerleben.de/", "events": deduped}
 
 
+def parse_german_date(text):
+    """Parse '26. January 2026' style dates from German text. Returns ISO date or empty string."""
+    dm = re.search(r'(\d{1,2})\.\s*([A-Za-z]+)\s*(\d{4})', text)
+    if not dm:
+        return ""
+    from calendar import month_name
+    months = {m.lower(): i for i, m in enumerate(month_name) if m}
+    month_num = months.get(dm.group(2).lower())
+    if not month_num:
+        return ""
+    return f"{dm.group(3)}-{str(month_num).zfill(2)}-{dm.group(1).zfill(2)}"
+
+
+def is_past(iso_date):
+    """Check if an ISO date string is in the past."""
+    if not iso_date:
+        return False
+    try:
+        return datetime.strptime(iso_date, "%Y-%m-%d").date() < datetime.now().date()
+    except:
+        return True  # if we can't parse, treat as past to be safe
+
+
 def scrape_flohmarkt():
     events = []
     html_content = fetch_url("https://www.flohmarkt-buechig.de/")
-    dm = re.search(r'(\d{1,2})\.\s*([A-Za-z]+)\s*(\d{4})', html_content)
-    if dm:
-        from calendar import month_name
-        months = {m.lower(): i for i, m in enumerate(month_name) if m}
-        month_num = months.get(dm.group(2).lower(), 1)
-        iso = f"{dm.group(3)}-{str(month_num).zfill(2)}-{dm.group(1).zfill(2)}"
+    iso = parse_german_date(html_content)
+    if iso and not is_past(iso):
         events.append({"title": "Flohmarkt Büchig", "date_start": iso, "date_end": None,
             "time_raw": "", "location": "Festhalle Blankenloch", "organizer": "Flohmarkt Kitas Büchig",
             "description": "", "event_url": "https://www.flohmarkt-buechig.de/"})
@@ -254,6 +306,8 @@ def insert_raw(source_data):
     for ev in source_data["events"]:
         if ev.get("title", "") in BLOCKED_TITLES:
             continue
+        if is_past(ev.get("date_start", "")):
+            continue
         h = hashlib.sha256(json.dumps(ev, sort_keys=True).encode()).hexdigest()
         try:
             c.execute("""INSERT OR IGNORE INTO raw_events
@@ -268,6 +322,29 @@ def insert_raw(source_data):
     conn.commit()
     conn.close()
     return count
+
+
+def cleanup_past_events():
+    """Remove past events from raw_events so they don't appear in curated."""
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+    today = datetime.now().date().isoformat()
+    deleted = c.execute("DELETE FROM raw_events WHERE date_start IS NOT NULL AND date_start != '' AND date_start < ?", (today,)).rowcount
+    conn.commit()
+    conn.close()
+    print(f"  Removed {deleted} past events from raw_events", flush=True)
+    return deleted
+
+
+def cleanup_malformed_dates():
+    """Remove rows with malformed dates (from old buggy parser runs)."""
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+    deleted = c.execute("DELETE FROM raw_events WHERE date_start IS NOT NULL AND date_start != '' AND date_start NOT LIKE '____-__-__'").rowcount
+    conn.commit()
+    conn.close()
+    print(f"  Removed {deleted} malformed date rows from raw_events", flush=True)
+    return deleted
 
 
 def dedup_sql():
@@ -292,6 +369,7 @@ def dedup_sql():
         INSERT INTO curated_events (title, date_start, date_end, time_raw, location, organizer, description, event_url, sources)
         SELECT title, date_start, date_end, time_raw, location, organizer, description, event_url, GROUP_CONCAT(DISTINCT source_url)
         FROM raw_events WHERE title IS NOT NULL AND title != '' AND title NOT IN ({blocked_placeholders})
+            AND (date_start IS NULL OR date_start = '' OR date_start >= date('now'))
         GROUP BY LOWER(TRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
             REPLACE(REPLACE(REPLACE(REPLACE(title,
                 ' in blankenloch',''),' in büchig',''),' in friedrichstal',''),
@@ -476,6 +554,10 @@ if __name__ == "__main__":
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
         ("Bibliothek", "https://bibliotheken.komm.one/stutensee", None),
     ]
+
+    cleanup_malformed_dates()
+    cleanup_past_events()
+
     total_new = 0
     for name, scraper in sources:
         print(f"  Scraping {name}...", end=" ", flush=True)
