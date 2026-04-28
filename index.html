@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { overflow-x: hidden; width: 100%; }
+
 :root {
   --primary: #0d3a71;
   --primary-dark: #0a2d59;
@@ -29,6 +29,7 @@ body { overflow-x: hidden; width: 100%; }
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 body {
+  overflow-x: hidden;
   font-family: system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
@@ -532,8 +533,7 @@ header::after {
 }
 </style>
 </head>
-<body style="overflow-x:hidden;">
-
+<body>
 <header>
   <div class="header-inner">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 100" class="schdudesee-logo" style="height:68px;width:auto;">
@@ -587,6 +587,7 @@ header::after {
       </div>
       <span class="active-tags" id="active-tags"></span>
   </div>
+</div>
 </div>
 <main>
 <div class="events-wrap">
