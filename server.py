@@ -77,6 +77,9 @@ class Handler(SimpleHTTPRequestHandler):
                 where.append("tags LIKE ?")
                 args.append(f"%{tag_filter}%")
 
+        if params.get("hide_recurring", [""])[0]:
+            where.append("recurring_group_id IS NULL")
+
         if month:
             where.append("date_start LIKE ?")
             args.append(f"{month}%")
