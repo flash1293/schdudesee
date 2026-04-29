@@ -7,7 +7,7 @@ Usage:  python3 run_pipeline.py
 
 import json, sys, os, sqlite3, urllib.request, re, html, hashlib
 import importlib.util
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -17,6 +17,7 @@ scrape_gewerbeverein = sys.modules["scraper_gewerbeverein"].scrape_gewerbeverein
 scrape_blutspende = sys.modules["scraper_blutspende"].scrape_blutspende
 scrape_pestalozzi = sys.modules["scraper_pestalozzi"].scrape_pestalozzi
 scrape_wochenmarkt = sys.modules["scraper_wochenmarkt"].scrape_wochenmarkt
+scrape_waldstadt = sys.modules["scraper_waldstadt"].scrape_waldstadt
 from datetime import datetime
 
 DB = "stutensee_events.db"
@@ -434,11 +435,16 @@ DISTRICTS = {
     "Friedrichstal": ["friedrichstal", "spöcker weg", "spoecker weg"],
     "Spöck": ["spöck", "spoeck"],
     "Staffort": ["staffort"],
-    "Weingarten": ["weingarten"],
+    "Weingarten": ["weingarten", "weingarten (baden)", "mineralix-arena", "walzbachhalle"],
+    "Hagsfeld": ["hagsfeld"],
+    "Büchenau": ["büchenau", "buechenau"],
+    "Neuthard": ["neuthard", "karlsdorf", "karlsdorf-neuthard", "zehntscheuer"],
+    "Waldstadt": ["waldstadt", "bv-waldstadt"],
  }
 
 DISTRICT_EXCLUSIONS = {
     "Spöck": ["spöcker weg", "spoecker weg"],
+    "Büchenau": ["staffort-büchenau", "staffort büchenau"],
 }
 
 KEYWORDS = {
@@ -549,6 +555,7 @@ if __name__ == "__main__":
         ("Blutspende", scrape_blutspende),
         ("Pestalozzi Schule", scrape_pestalozzi),
         ("Wochenmarkt", scrape_wochenmarkt),
+        ("Bürgerverein Waldstadt", scrape_waldstadt),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
