@@ -413,22 +413,57 @@ def scrape_tv_friedrichstal():
         if not title:
             continue
 
-        date_range_m = re.search(
-            r'(\d{1,2})\.(\d{1,2})\.(\d{4})\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})',
-            date_text
-        )
         time_raw = ""
         time_m = re.search(r'(\d{1,2}):(\d{2})\s*Uhr', title)
         if time_m:
             time_raw = f"{int(time_m.group(1)):02d}:{time_m.group(2)} Uhr"
             title = re.sub(r'\s*\d{1,2}:\d{2}\s*Uhr', '', title).strip()
 
-        if date_range_m:
-            start_d, start_m, start_y = date_range_m.group(1), date_range_m.group(2), date_range_m.group(3)
-            end_d, end_m, end_y = date_range_m.group(4), date_range_m.group(5), date_range_m.group(6)
+        date_range_full = re.search(
+            r'(\d{1,2})\.(\d{1,2})\.(\d{4})\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})',
+            date_text
+        )
+        date_range_abbrev = re.search(
+            r'(\d{1,2})\.(\d{1,2})\.\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})',
+            date_text
+        )
+        date_range_simple = re.search(
+            r'(\d{1,2})\.\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})',
+            date_text
+        )
+
+        if date_range_full:
+            start_d, start_m, start_y = date_range_full.group(1), date_range_full.group(2), date_range_full.group(3)
+            end_d, end_m, end_y = date_range_full.group(4), date_range_full.group(5), date_range_full.group(6)
             events.append({
                 "title": title,
                 "date_start": to_iso(int(start_d), int(start_m), int(start_y)),
+                "date_end": to_iso(int(end_d), int(end_m), int(end_y)),
+                "time_raw": time_raw,
+                "location": "TV Friedrichstal",
+                "organizer": "Turnverein Friedrichstal 1899 e.V.",
+                "description": "",
+                "event_url": url,
+            })
+        elif date_range_abbrev:
+            start_d, start_m = date_range_abbrev.group(1), date_range_abbrev.group(2)
+            end_d, end_m, end_y = date_range_abbrev.group(3), date_range_abbrev.group(4), date_range_abbrev.group(5)
+            events.append({
+                "title": title,
+                "date_start": to_iso(int(start_d), int(start_m), int(end_y)),
+                "date_end": to_iso(int(end_d), int(end_m), int(end_y)),
+                "time_raw": time_raw,
+                "location": "TV Friedrichstal",
+                "organizer": "Turnverein Friedrichstal 1899 e.V.",
+                "description": "",
+                "event_url": url,
+            })
+        elif date_range_simple:
+            start_d = date_range_simple.group(1)
+            end_d, end_m, end_y = date_range_simple.group(2), date_range_simple.group(3), date_range_simple.group(4)
+            events.append({
+                "title": title,
+                "date_start": to_iso(int(start_d), int(end_m), int(end_y)),
                 "date_end": to_iso(int(end_d), int(end_m), int(end_y)),
                 "time_raw": time_raw,
                 "location": "TV Friedrichstal",
