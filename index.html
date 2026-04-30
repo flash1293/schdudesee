@@ -46,7 +46,7 @@ h1, h2, h3, h4 {
 header {
   background: var(--primary);
   color: #fff;
-  padding: 20px 24px;
+  padding: 10px 24px;
   position: relative;
   overflow: hidden;
 }
@@ -152,7 +152,8 @@ header::after {
   margin-left: auto;
   white-space: nowrap;
   flex-shrink: 0;
-  min-width: 60px;
+  width: 150px;
+  flex: none;
   text-align: center;
 }
 
@@ -855,7 +856,7 @@ async function loadEvents(page) {
   totalPages = data.total_pages;
   renderEvents(data.events);
   renderPagination();
-  document.getElementById('count-display').textContent = `${data.total} Events`;
+  document.getElementById('count-display').textContent = `${data.total} ${data.total === 1 ? 'Veranstaltung' : 'Veranstaltungen'}`;
 }
 
 function renderEvents(events) {
