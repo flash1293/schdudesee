@@ -19,6 +19,7 @@ scrape_pestalozzi = sys.modules["scraper_pestalozzi"].scrape_pestalozzi
 scrape_wochenmarkt = sys.modules["scraper_wochenmarkt"].scrape_wochenmarkt
 scrape_waldstadt = sys.modules["scraper_waldstadt"].scrape_waldstadt
 from datetime import datetime
+from scraper_clubs import scrape_clubs
 
 DB = "stutensee_events.db"
 
@@ -399,6 +400,124 @@ def dedup_sql():
                 restored_rec += 1
 
     conn.commit()
+
+    # Post-dedup: merge remaining cross-source duplicates: same date + district, similar title
+    merged = 0
+    rows = []
+    for r in c.execute("""
+        SELECT id, title, date_start, location, description, sources
+        FROM curated_events ORDER BY date_start, title
+    """).fetchall():
+        rows.append(list(r) + [normalize_title(r[1]), normalize_location_dedup(r[3])])
+    # Group by date + district
+    dd_groups = {}
+    for r in rows:
+        dd_groups.setdefault((r[2] or "", r[7]), []).append(r)
+    for candidates in dd_groups.values():
+        while True:
+            match = None
+            for i, a in enumerate(candidates):
+                for b in candidates[i+1:]:
+                    at, bt = a[6], b[6]
+                    if at == bt or (len(at) > 6 and len(bt) > 6 and (at in bt or bt in at or at.replace(' ','') in bt.replace(' ','') or bt.replace(' ','') in at.replace(' ',''))):
+                        match = (a, b)
+                        break
+                if match:
+                    break
+            if not match:
+                break
+            a, b = match
+            pick = max([a, b], key=lambda x: len(x[4] or ""))
+            kill = b if pick[0] == a[0] else a
+            merged += 1
+            merged_src = set(pick[5].split(",")) if pick[5] else set()
+            for s in (kill[5] or "").split(","):
+                if s.strip():
+                    merged_src.add(s.strip())
+            c.execute("DELETE FROM raw_to_curated WHERE curated_id = ?", (kill[0],))
+            c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
+            c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
+                      (",".join(sorted(merged_src)), pick[0]))
+            candidates.remove(kill)
+    # Cross-date fuzzy pass: same date, similar title regardless of district
+    date_rows = {}
+    for r in rows:
+        date_rows.setdefault(r[2] or "", []).append(r)
+    for date_key, candidates in date_rows.items():
+        for i in range(len(candidates)):
+            for j in range(i+1, len(candidates)):
+                a, b = candidates[i], candidates[j]
+                at, bt = a[6], b[6]
+                if at == bt:
+                    continue
+                short, long = (at, bt) if len(at) < len(bt) else (bt, at)
+                short_ns = short.replace(" ","")
+                long_ns = long.replace(" ","")
+                long_w = set(long.split())
+                match = False
+                if len(short_ns) > 6 and len(long_ns) > 6:
+                    if short_ns in long_ns or long_ns in short_ns:
+                        match = True
+                    elif short_ns and all(any(w in word for word in long_w) for w in short_ns.split()):
+                        match = True
+                if match:
+                    a, b = candidates[i], candidates[j]
+                    pick = max([a, b], key=lambda x: len(x[4] or ""))
+                    kill = b if pick[0] == a[0] else a
+                    merged += 1
+                    merged_src = set(pick[5].split(",")) if pick[5] else set()
+                    for s in (kill[5] or "").split(","):
+                        if s.strip():
+                            merged_src.add(s.strip())
+                    c.execute("DELETE FROM raw_to_curated WHERE curated_id = ?", (kill[0],))
+                    c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
+                    c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
+                              (",".join(sorted(merged_src)), pick[0]))
+
+    # Manual overrides: merge variant titles into canonical
+    for canon, variants in MANUAL_DUPES.items():
+        cn = normalize_title(canon)
+        for r in rows:
+            if r[1] == canon:
+                for r2 in rows:
+                    if r2[0] == r[0]:
+                        continue
+                    if r2[1] in variants and r[2] == r2[2]:
+                        pick = max([r, r2], key=lambda x: len(x[4] or ""))
+                        kill = r2 if pick[0] == r[0] else r
+                        merged += 1
+                        merged_src = set(pick[5].split(",")) if pick[5] else set()
+                        for s in (kill[5] or "").split(","):
+                            if s.strip():
+                                merged_src.add(s.strip())
+                        c.execute("DELETE FROM raw_to_curated WHERE curated_id = ?", (kill[0],))
+                        c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
+                        c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
+                                  (",".join(sorted(merged_src)), pick[0]))
+
+    # Also merge same-title duplicates where one has no location
+    title_groups = {}
+    for r in rows:
+        title_groups.setdefault((r[6], r[2] or ""), []).append(r)
+    for candidates in title_groups.values():
+        if len(candidates) > 1:
+            best = max(candidates, key=lambda x: len(x[4] or ""))
+            for kill in candidates:
+                if kill[0] == best[0]:
+                    continue
+                merged += 1
+                merged_src = set(best[5].split(",")) if best[5] else set()
+                for s in (kill[5] or "").split(","):
+                    if s.strip():
+                        merged_src.add(s.strip())
+                c.execute("DELETE FROM raw_to_curated WHERE curated_id = ?", (kill[0],))
+                c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
+                c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
+                          (",".join(sorted(merged_src)), best[0]))
+    if merged:
+        conn.commit()
+        print(f"  Post-merge: {merged} duplicates merged (fuzzy)", flush=True)
+
     count = c.execute("SELECT COUNT(*) FROM curated_events").fetchone()[0]
     conn.close()
     print(f"  Restored: {restored_tags} tags, {restored_rec} recurring", flush=True)
@@ -425,8 +544,42 @@ def normalize_location(location):
     return loc
 
 
+def normalize_location_dedup(location):
+    """Normalize location for dedup grouping: strip street addresses, keep district."""
+    if not location:
+        return ""
+    loc = location.strip().lower()
+    for district in ["blankenloch", "büchig", "buechig", "friedrichstal", "spöck", "spoeck", "staffort", "stutensee"]:
+        if district in loc:
+            return district
+    for district, keywords in DISTRICTS.items():
+        for kw in keywords:
+            if kw in loc:
+                return district
+    idx = loc.find(',')
+    return loc[:idx].strip() if idx > 0 else loc
+
+
 BLOCKED_TITLES = [
     "Krabbelkäfer Stutensee-Büchig – gemütliches Beisammensein mit Frühstück",
+    "Bereitschaftsabend (Übungsabend)",
+    "Chorprobe Gospel Unlimited",
+    "Chorprobe Posaunenchor Blankenloch",
+    "JRK Gruppenstunde",
+    "Paddeltraining für Erwachsene (Sommer)",
+]
+
+# Manual override: merge variant titles into canonical on same date
+# Key: canonical_title → [variant_titles to merge into it]
+MANUAL_DUPES = {
+    "Hähnchen Grillfest": ["Hähnchenfest"],
+}
+
+MANUAL_EVENTS = [
+    {"title": "U16 KVV Pokalfinale", "date_start": "2026-05-13", "date_end": None, "time_raw": "", "location": "Friedrichstal", "organizer": "FC Germania Friedrichstal", "description": "KVV Pokalfinale der U16", "event_url": "https://www.fcfriedrichstal.de/"},
+    {"title": "Fahrradtour am 1. Mai 2026", "date_start": "2026-05-01", "date_end": None, "time_raw": "", "location": "Alte Schule Spöck", "organizer": "DLRG Ortsgruppe Spöck", "description": "", "event_url": "https://spoeck.dlrg.de/"},
+    {"title": "Chorwochenende", "date_start": "2027-03-19", "date_end": None, "time_raw": "", "location": "", "organizer": "Gospel Unlimited", "description": "", "event_url": "https://www.gospel-unlimited.de"},
+    {"title": "Badentreff", "date_start": "2026-06-03", "date_end": "2026-06-06", "time_raw": "", "location": "CVJM Spöck", "organizer": "CVJM Spöck", "description": "", "event_url": "https://www.cvjm-spoeck.de/"},
 ]
 
 DISTRICTS = {
@@ -556,6 +709,7 @@ if __name__ == "__main__":
         ("Pestalozzi Schule", scrape_pestalozzi),
         ("Wochenmarkt", scrape_wochenmarkt),
         ("Bürgerverein Waldstadt", scrape_waldstadt),
+        ("Club websites (39 sites)", scrape_clubs),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
@@ -584,6 +738,26 @@ if __name__ == "__main__":
             print(f"available", flush=True)
         else:
             print(f"skipped", flush=True)
+
+    print(f"  Injecting manual events...", end=" ", flush=True)
+    conn = sqlite3.connect(DB)
+    mc = conn.cursor()
+    inject_count = 0
+    for ev in MANUAL_EVENTS:
+        h = hashlib.sha256(json.dumps(ev, sort_keys=True).encode()).hexdigest()
+        try:
+            mc.execute("""INSERT OR IGNORE INTO raw_events
+                (source_url, title, date_start, date_end, time_raw, location, organizer, description, event_url, raw_html_hash)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                ("manual_override", ev["title"], ev["date_start"], ev["date_end"],
+                 ev["time_raw"], ev["location"], ev["organizer"], ev["description"], ev["event_url"], h))
+            if mc.rowcount > 0:
+                inject_count += 1
+        except Exception:
+            pass
+    conn.commit()
+    conn.close()
+    print(f"{inject_count} injected", flush=True)
 
     print(f"  Total new: {total_new}", flush=True)
     print(f"  URL cleanup...", end=" ", flush=True)
