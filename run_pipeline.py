@@ -7,7 +7,7 @@ Usage:  python3 run_pipeline.py
 
 import json, sys, os, sqlite3, urllib.request, re, html, hashlib
 import importlib.util
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -18,6 +18,9 @@ scrape_blutspende = sys.modules["scraper_blutspende"].scrape_blutspende
 scrape_pestalozzi = sys.modules["scraper_pestalozzi"].scrape_pestalozzi
 scrape_wochenmarkt = sys.modules["scraper_wochenmarkt"].scrape_wochenmarkt
 scrape_waldstadt = sys.modules["scraper_waldstadt"].scrape_waldstadt
+scrape_vsv_buechig = sys.modules["scraper_vsv_buechig"].scrape_vsv_buechig
+scrape_eggenstein = sys.modules["scraper_eggenstein"].scrape_eggenstein
+scrape_rintheim = sys.modules["scraper_rintheim"].scrape_rintheim
 from datetime import datetime
 from scraper_clubs import scrape_clubs
 
@@ -593,6 +596,9 @@ DISTRICTS = {
     "Büchenau": ["büchenau", "buechenau"],
     "Neuthard": ["neuthard", "karlsdorf", "karlsdorf-neuthard", "zehntscheuer"],
     "Waldstadt": ["waldstadt", "bv-waldstadt"],
+    "Eggenstein": ["eggenstein"],
+    "Leopoldshafen": ["leopoldshafen"],
+    "Rintheim": ["rintheim"],
  }
 
 DISTRICT_EXCLUSIONS = {
@@ -710,6 +716,9 @@ if __name__ == "__main__":
         ("Wochenmarkt", scrape_wochenmarkt),
         ("Bürgerverein Waldstadt", scrape_waldstadt),
         ("Club websites (39 sites)", scrape_clubs),
+        ("VSV Büchig", scrape_vsv_buechig),
+        ("Eggenstein-Leopoldshafen", scrape_eggenstein),
+        ("Rintheim", scrape_rintheim),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
