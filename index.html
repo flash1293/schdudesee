@@ -298,51 +298,50 @@ header::after {
   gap: 14px;
 }
 
+/* Date separator */
+.date-separator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  margin: 20px 0 10px;
+  background: var(--primary);
+  border-radius: var(--radius-sm);
+  color: #fff;
+}
+.date-separator:first-child { margin-top: 0; }
+.date-separator .date-sep-day {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+.date-separator .date-sep-month {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.date-separator .date-sep-date {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-left: auto;
+}
+
 /* Event card */
 .event {
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 0;
-  display: flex;
+  padding: 16px 18px;
   box-shadow: var(--shadow);
   transition: transform var(--transition), box-shadow var(--transition);
   animation: fadeInUp 0.35s ease both;
-  overflow: hidden;
-  gap: 0;
 }
 .event:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
-.event-date-badge {
-  flex: 0 0 80px;
-  background: var(--primary);
-  color: #fff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 8px;
-  min-height: 100%;
-  text-align: center;
-}
-.event-date-badge .day {
-  font-family: system-ui, -apple-system, sans-serif; font-weight: 600;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
-}
-.event-date-badge .month {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  opacity: 0.9;
-  margin-top: 2px;
-}
 .event-body {
-  flex: 1;
-  padding: 16px 18px;
   min-width: 0;
 }
 .event-body h2 {
@@ -564,16 +563,9 @@ header::after {
   .sort-group { width: 100%; }
   .sort-group select { flex: 1; }
   .stats-badge { margin-left: 0; }
-  .event { flex-direction: column; }
-  .event-date-badge {
-    flex: 0 0 auto;
-    flex-direction: row;
-    gap: 8px;
-    padding: 8px 14px;
-    justify-content: flex-start;
-  }
-  .event-date-badge .day { font-size: 18px; }
-  .event-date-badge .month { font-size: 10px; margin-top: 0; }
+  .date-separator { padding: 8px 12px; margin: 14px 0 8px; }
+  .date-separator .date-sep-day { font-size: 18px; }
+  .date-separator .date-sep-month { font-size: 11px; }
   .events-wrap { padding: 0 12px; }
   .pagination { flex-wrap: wrap; }
   .pagination span { order: -1; width: 100%; }
@@ -865,17 +857,18 @@ function renderEvents(events) {
     container.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div>Keine Veranstaltungen gefunden</div>';
     return;
   }
-  container.innerHTML = events.map(e => {
-    const badge = formatDateBadge(e.date_start);
-    return `<div class="event" id="event-${e.id}">
-      <div class="event-date-badge">
-        <span class="day">${badge.day}</span>
-        <span class="month">${badge.month}</span>
-      </div>
+  let html = '';
+  let lastDate = '';
+  for (const e of events) {
+    if (e.date_start !== lastDate) {
+      lastDate = e.date_start;
+      const badge = formatDateBadge(e.date_start);
+      html += `<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${fmtDate(e.date_start)}</span></div>`;
+    }
+    html += `<div class="event" id="event-${e.id}">
       <div class="event-body">
         <h2>${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
         <div class="event-meta">
-          <span class="date">${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? ' – ' + fmtDate(e.date_end) : ''}</span>
           ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
           ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
         </div>
@@ -891,7 +884,8 @@ function renderEvents(events) {
         ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="toggleRecurring(${e.id}, ${e.recurring_group_id})">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
     </div>`;
-  }).join('');
+  }
+  container.innerHTML = html;
 }
 
 async function toggleRecurring(eventId, groupId) {
