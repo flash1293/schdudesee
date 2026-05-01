@@ -1,0 +1,9 @@
+name = "was-geht-stutensee-staging"
+main = "src/worker.js"
+compatibility_date = "2025-04-01"
+workers_dev = true
+
+[[d1_databases]]
+binding = "STUTENSEE_DB"
+database_name = "was-geht-stutensee-staging"
+database_id = "5ab57835-8cc1-4aae-a56f-3f0f8da83357"

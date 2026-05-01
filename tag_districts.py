@@ -3,7 +3,7 @@ import re
 
 DB_PATH = "/Users/joereuter/Clones/schdudesee/stutensee_events.db"
 
-DISTRICTS = ["Blankenloch", "Büchig", "Friedrichstal", "Spöck", "Staffort"]
+DISTRICTS = ["Blankenloch", "Büchig", "Friedrichstal", "Spöck", "Staffort", "Eggenstein", "Leopoldshafen", "Rintheim"]
 
 def build_patterns():
     patterns = {}
