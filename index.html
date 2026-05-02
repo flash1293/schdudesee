@@ -173,6 +173,17 @@ header::after {
 }
 .filter-btn:hover { border-color: var(--primary); }
 .filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.condensed-toggle.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+.event.condensed .event-meta,
+.event.condensed .event-desc,
+.event.condensed .event-tags,
+.event.condensed .recurring-toggle { display: none; }
+.event.condensed { cursor: pointer; }
+.event.condensed.expanded .event-meta,
+.event.condensed.expanded .event-desc,
+.event.condensed.expanded .event-tags,
+.event.condensed.expanded .recurring-toggle { display: flex; }
+.event.condensed.expanded .event-desc { display: block; }
 .popover-dropdown {
   display: none;
   position: absolute;
@@ -610,6 +621,7 @@ header::after {
       <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
       <input type="date" id="date-from" onchange="loadEvents(1)" title="Von">
       <span class="stats-badge" id="count-display">Lade…</span>
+      <button class="filter-btn condensed-toggle" onclick="toggleCondensed()" id="condensed-btn" title="Kompaktansicht">📄</button>
     </div>
     <div class="controls-row">
       <div class="filter-popover" id="theme-popover">
@@ -729,6 +741,17 @@ function renderOrganizers() {
 
 function filterOrganizers() {
   renderOrganizers();
+}
+
+let condensedMode = false;
+
+function toggleCondensed() {
+  condensedMode = !condensedMode;
+  document.getElementById('condensed-btn').classList.toggle('active', condensedMode);
+  document.querySelectorAll('.event').forEach(el => {
+    el.classList.toggle('condensed', condensedMode);
+    el.onclick = condensedMode ? () => { el.classList.toggle('expanded'); } : null;
+  });
 }
 
 let selectedThemes = [];
@@ -870,7 +893,7 @@ function renderEvents(events) {
     const themeEmojis = tags.filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]);
     const emojiPrefix = themeEmojis.length > 0 ? themeEmojis.join('') + ' ' : '';
     const locTags = tags.filter(t => locationTags.includes(t));
-    html += `<div class="event" id="event-${e.id}">
+    html += `<div class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
       <div class="event-body">
         <h2>${emojiPrefix}${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
         <div class="event-meta">
