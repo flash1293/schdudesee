@@ -106,7 +106,7 @@ def scrape_linkenheim():
                 print(f"  Error parsing event: {e}", flush=True)
                 continue
 
-        next_el = soup.select_one("a.next.page-numbers")
+        next_el = soup.select_one("a.next.page-numbers") or soup.select_one("a.inactive.next_page")
         if not next_el:
             break
         page += 1
