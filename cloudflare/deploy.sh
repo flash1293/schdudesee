@@ -30,7 +30,8 @@ for table in ['raw_events', 'curated_events', 'raw_to_curated']:
     c.execute(f'SELECT * FROM {table}')
     cols = ', '.join(d[0] for d in c.description)
     for row in c.fetchall():
-        print(f\"INSERT INTO {table} ({cols}) VALUES ({\", \".join(esc(v) for v in row)});\")
+        vals = \", \".join(esc(v) for v in row)
+        print(f\"INSERT INTO {table} ({cols}) VALUES ({vals});\")
 conn.close()
 " > dump_d1.sql
 
