@@ -116,6 +116,13 @@ def scrape_graben_neudorf():
 
         page += 1
 
+        pagination = soup.select_one("div.pagination.hw_pagination")
+        if pagination:
+            current = pagination.select_one("button[disabled]")
+            last = pagination.select_one('a[title="Letzte Seite"]')
+            if not last and current:
+                break
+
     return {
         "source_url": CALENDAR_URL,
         "events": all_events,
