@@ -867,8 +867,10 @@ function renderEvents(events) {
   }
   container.innerHTML = events.map(e => {
     const badge = formatDateBadge(e.date_start);
-    const tagEmojis = e.tags ? e.tags.split(',').map(t => t.trim()).filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]) : [];
-    const emojiPrefix = tagEmojis.length > 0 ? tagEmojis.join('') + ' ' : '';
+    const tags = e.tags ? e.tags.split(',').map(t => t.trim()) : [];
+    const themeEmojis = tags.filter(t => TAG_EMOJIS[t] && !LOCATION_TAGS.includes(t)).map(t => TAG_EMOJIS[t]);
+    const emojiPrefix = themeEmojis.length > 0 ? themeEmojis.join('') + ' ' : '';
+    const locTags = tags.filter(t => LOCATION_TAGS.includes(t));
     return `<div class="event" id="event-${e.id}">
       <div class="event-date-badge">
         <span class="day">${badge.day}</span>
@@ -882,7 +884,7 @@ function renderEvents(events) {
           ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
         </div>
         ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
-        ${e.organizer ? `<div class="event-tags"><span class="tag tag-organizer">${esc(e.organizer)}</span></div>` : ''}
+        ${e.organizer || locTags.length > 0 ? `<div class="event-tags">${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}${locTags.map(t => `<span class="tag tag-location">📍 ${esc(t)}</span>`).join('')}</div>` : ''}
         ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="toggleRecurring(${e.id}, ${e.recurring_group_id})">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
     </div>`;
