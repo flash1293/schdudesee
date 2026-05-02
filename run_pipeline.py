@@ -7,7 +7,7 @@ Usage:  python3 run_pipeline.py
 
 import json, sys, os, sqlite3, urllib.request, re, html, hashlib
 import importlib.util
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -21,6 +21,7 @@ scrape_waldstadt = sys.modules["scraper_waldstadt"].scrape_waldstadt
 scrape_vsv_buechig = sys.modules["scraper_vsv_buechig"].scrape_vsv_buechig
 scrape_eggenstein = sys.modules["scraper_eggenstein"].scrape_eggenstein
 scrape_rintheim = sys.modules["scraper_rintheim"].scrape_rintheim
+scrape_linkenheim = sys.modules["scraper_linkenheim"].scrape_linkenheim
 from datetime import datetime
 from scraper_clubs import scrape_clubs
 
@@ -719,6 +720,7 @@ if __name__ == "__main__":
         ("VSV Büchig", scrape_vsv_buechig),
         ("Eggenstein-Leopoldshafen", scrape_eggenstein),
         ("Rintheim", scrape_rintheim),
+        ("Linkenheim-Hochstetten", scrape_linkenheim),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
