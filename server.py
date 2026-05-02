@@ -24,6 +24,8 @@ class Handler(SimpleHTTPRequestHandler):
             self.serve_stats()
         elif path == "/api/theme":
             self.serve_tags()
+        elif path == "/api/districts":
+            self.serve_districts()
         elif path == "/api/organizer":
             self.serve_organizers()
         elif path.startswith("/api/same/"):
@@ -174,6 +176,24 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Content-Type", "application/json")
         self.end_headers()
         self.wfile.write(json.dumps(sorted(tags), ensure_ascii=False).encode())
+
+    THEME_TAGS = {'Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges'}
+
+    def serve_districts(self):
+        conn = sqlite3.connect(DB_PATH)
+        c = conn.cursor()
+        rows = c.execute("SELECT DISTINCT tags FROM curated_events WHERE tags IS NOT NULL AND tags != '' AND tags != 'blocked'").fetchall()
+        conn.close()
+        districts = set()
+        for r in rows:
+            for t in r[0].split(","):
+                t = t.strip()
+                if t and t not in self.THEME_TAGS:
+                    districts.add(t)
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps(sorted(districts), ensure_ascii=False).encode())
 
     def serve_organizers(self):
         conn = sqlite3.connect(DB_PATH)
