@@ -83,12 +83,13 @@ async function serveOrganizers(env) {
 }
 
 async function serveTags(env) {
+  const themeKeys = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
   const { results } = await env.STUTENSEE_DB.prepare(
     "SELECT DISTINCT tags FROM curated_events WHERE tags IS NOT NULL AND tags != '' AND tags != 'blocked'"
   ).all();
   const set = new Set();
   for (const r of results) {
-    for (const t of r.tags.split(',')) { const s = t.trim(); if (s) set.add(s); }
+    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && themeKeys.has(s)) set.add(s); }
   }
   return json([...set].sort());
 }
