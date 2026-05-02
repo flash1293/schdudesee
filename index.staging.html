@@ -687,7 +687,6 @@ function debounceSearch() {
   searchTimeout = setTimeout(() => loadEvents(1), 300);
 }
 
-const LOCATION_TAGS = ['Blankenloch','Büchig','Friedrichstal','Spöck','Staffort','Weingarten','Hagsfeld','Büchenau','Neuthard','Waldstadt','Eggenstein','Leopoldshafen','Rintheim'];
 function fmtDate(iso) {
   if (!iso) return '?';
   const p = iso.split('-');
@@ -704,10 +703,12 @@ let locationTags = [];
 let organizerTags = [];
 
 async function loadTags() {
-  const r = await fetch('/api/theme');
-  const tags = await r.json();
-  themeTags = tags.filter(t => !LOCATION_TAGS.includes(t));
-  locationTags = tags.filter(t => LOCATION_TAGS.includes(t));
+  const [themeRes, districtRes] = await Promise.all([
+    fetch('/api/theme'),
+    fetch('/api/districts')
+  ]);
+  themeTags = await themeRes.json();
+  locationTags = await districtRes.json();
 
   const themeDropdown = document.getElementById('theme-dropdown');
   themeDropdown.innerHTML = themeTags.map(t =>
@@ -868,9 +869,9 @@ function renderEvents(events) {
   container.innerHTML = events.map(e => {
     const badge = formatDateBadge(e.date_start);
     const tags = e.tags ? e.tags.split(',').map(t => t.trim()) : [];
-    const themeEmojis = tags.filter(t => TAG_EMOJIS[t] && !LOCATION_TAGS.includes(t)).map(t => TAG_EMOJIS[t]);
+    const themeEmojis = tags.filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]);
     const emojiPrefix = themeEmojis.length > 0 ? themeEmojis.join('') + ' ' : '';
-    const locTags = tags.filter(t => LOCATION_TAGS.includes(t));
+    const locTags = tags.filter(t => locationTags.includes(t));
     return `<div class="event" id="event-${e.id}">
       <div class="event-date-badge">
         <span class="day">${badge.day}</span>
