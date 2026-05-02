@@ -865,9 +865,9 @@ function renderEvents(events) {
       const badge = formatDateBadge(e.date_start);
       html += `<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${fmtDate(e.date_start)}</span></div>`;
     }
-      const tagEmojis = e.tags ? e.tags.split(',').map(t => t.trim()).filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]) : [];
-      const emojiPrefix = tagEmojis.length > 0 ? tagEmojis.join('') + ' ' : '';
-      html += `<div class="event" id="event-${e.id}">
+    const tagEmojis = e.tags ? e.tags.split(',').map(t => t.trim()).filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]) : [];
+    const emojiPrefix = tagEmojis.length > 0 ? tagEmojis.join('') + ' ' : '';
+    html += `<div class="event" id="event-${e.id}">
       <div class="event-body">
         <h2>${emojiPrefix}${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
         <div class="event-meta">
