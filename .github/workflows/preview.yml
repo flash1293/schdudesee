@@ -23,12 +23,11 @@ jobs:
           cd cloudflare && python3 build.py
           
           # Create temp wrangler.toml with per-PR name + staging D1
-          cat > /tmp/wrangler.toml << 'EOF'
+          cat > /tmp/wrangler.toml << EOF
           name = "${WORKER_NAME}"
           main = "src/worker.js"
           compatibility_date = "2025-04-01"
-          workers_dev = true
-          
+
           [[d1_databases]]
           binding = "STUTENSEE_DB"
           database_name = "was-geht-stutensee-staging"
@@ -65,11 +64,10 @@ jobs:
           WORKER_NAME="was-geht-stutensee-pr-${{ github.event.number }}"
           
           # Create minimal wrangler.toml for the delete
-          cat > /tmp/wrangler.toml << 'EOF'
+          cat > /tmp/wrangler.toml << EOF
           name = "${WORKER_NAME}"
           main = "src/worker.js"
           compatibility_date = "2025-04-01"
-          workers_dev = true
           EOF
           
           npx wrangler delete --config /tmp/wrangler.toml || echo "Worker already deleted or not found"
