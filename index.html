@@ -750,7 +750,7 @@ function toggleCondensed() {
   document.getElementById('condensed-btn').classList.toggle('active', condensedMode);
   document.querySelectorAll('.event').forEach(el => {
     el.classList.toggle('condensed', condensedMode);
-    el.onclick = condensedMode ? () => { el.classList.toggle('expanded'); } : null;
+    el.onclick = condensedMode ? function() { this.classList.toggle('expanded'); } : null;
   });
 }
 
