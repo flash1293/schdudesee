@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Build cloudflare-staging/src/worker.js with inlined index.html."""
 import json, re, base64, os
-with open("../index.staging.html") as f:
+with open("../index.html") as f:
     html = f.read()
 html = re.sub(r'>\s+<', '><', html)
 html = re.sub(r'\s{2,}', ' ', html)
