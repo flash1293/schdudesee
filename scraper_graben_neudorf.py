@@ -5,10 +5,10 @@ scraper_graben_neudorf.py — Scraper for Graben-Neudorf event calendar.
 TYPO3 with hwveranstaltung extension at
 /freizeit-kultur/veranstaltungen/veranstaltungskalender.
 Data: title, category, date, time, organizer, location in listing HTML.
+All data available on listing pages — no need to visit individual events.
 """
 
 import re
-from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -59,10 +59,7 @@ def scrape_graben_neudorf():
     page = 1
 
     while True:
-        if page == 1:
-            url = CALENDAR_URL
-        else:
-            url = f"{BASE_URL}/freizeit-kultur/veranstaltungen/veranstaltungskalender/seite-{page}/suche-none"
+        url = CALENDAR_URL if page == 1 else f"{BASE_URL}/freizeit-kultur/veranstaltungen/veranstaltungskalender/seite-{page}/suche-none"
 
         html = fetch_url(url, session)
         if not html:
@@ -82,6 +79,9 @@ def scrape_graben_neudorf():
                     continue
                 title = title_el.get_text(strip=True)
 
+                cat_el = record.select_one(".hw_record__categories__wrap .hw_tag")
+                category = f"[{cat_el.get_text(strip=True)}]" if cat_el else ""
+
                 date_el = record.select_one(".hw_record__date .hw_iconlist__text")
                 date_text = date_el.get_text(strip=True) if date_el else ""
                 date_start, date_end = parse_date_range(date_text)
@@ -90,7 +90,6 @@ def scrape_graben_neudorf():
 
                 time_el = record.select_one(".hw_record__time .hw_iconlist__text")
                 time_raw = time_el.get_text(strip=True) if time_el else ""
-                time_start = parse_time(time_raw)
 
                 organizer_el = record.select_one(".hw_record__organizer .hw_iconlist__text")
                 organizer = organizer_el.get_text(strip=True) if organizer_el else ""
@@ -98,7 +97,7 @@ def scrape_graben_neudorf():
                 location_el = record.select_one(".hw_record__simpleLocation .hw_iconlist__text")
                 location = location_el.get_text(strip=True) if location_el else "Graben-Neudorf"
 
-                description = ""
+                description = category
 
                 all_events.append({
                     "title": title,
@@ -115,10 +114,6 @@ def scrape_graben_neudorf():
                 print(f"  Error parsing event: {e}", flush=True)
                 continue
 
-        pagination = soup.select_one("div.pagination.hw_pagination")
-        next_link = pagination.select_one("a.hw_button.hw_button_square") if pagination else None
-        if not next_link:
-            break
         page += 1
 
     return {
