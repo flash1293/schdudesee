@@ -867,27 +867,22 @@ function renderEvents(events) {
   }
   container.innerHTML = events.map(e => {
     const badge = formatDateBadge(e.date_start);
+      const tagEmojis = e.tags ? e.tags.split(',').map(t => t.trim()).filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]) : [];
+      const emojiPrefix = tagEmojis.length > 0 ? tagEmojis.join('') + ' ' : '';
     return `<div class="event" id="event-${e.id}">
       <div class="event-date-badge">
         <span class="day">${badge.day}</span>
         <span class="month">${badge.month}</span>
       </div>
       <div class="event-body">
-        <h2>${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
+        <h2>${emojiPrefix}${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
         <div class="event-meta">
           <span class="date">${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? ' – ' + fmtDate(e.date_end) : ''}</span>
           ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
           ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
         </div>
         ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
-        <div class="event-tags">
-          ${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}
-          ${e.tags ? e.tags.split(',').map(t => {
-            const trimmed = t.trim();
-            const emoji = LOCATION_TAGS.includes(trimmed) ? '📍 ' : (TAG_EMOJIS[trimmed] ? TAG_EMOJIS[trimmed] + ' ' : '');
-            return `<span class="tag ${LOCATION_TAGS.includes(trimmed) ? 'tag-location' : 'tag-tag'}">${emoji}${esc(trimmed)}</span>`;
-          }).join('') : ''}
-        </div>
+        ${e.organizer ? `<div class="event-tags"><span class="tag tag-organizer">${esc(e.organizer)}</span></div>` : ''}
         ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="toggleRecurring(${e.id}, ${e.recurring_group_id})">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
     </div>`;
