@@ -601,6 +601,8 @@ DISTRICTS = {
     "Eggenstein": ["eggenstein"],
     "Leopoldshafen": ["leopoldshafen"],
     "Rintheim": ["rintheim"],
+    "Linkenheim": ["linkenheim", "linkenheim-hochstetten"],
+    "Graben-Neudorf": ["graben", "graben-neudorf", "neudorf"],
  }
 
 DISTRICT_EXCLUSIONS = {
