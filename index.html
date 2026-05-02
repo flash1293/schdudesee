@@ -679,7 +679,6 @@ function debounceSearch() {
   searchTimeout = setTimeout(() => loadEvents(1), 300);
 }
 
-const LOCATION_TAGS = ['Blankenloch','Büchig','Friedrichstal','Spöck','Staffort','Weingarten','Hagsfeld','Büchenau','Neuthard','Waldstadt','Eggenstein','Leopoldshafen','Rintheim'];
 function fmtDate(iso) {
   if (!iso) return '?';
   const p = iso.split('-');
@@ -696,10 +695,12 @@ let locationTags = [];
 let organizerTags = [];
 
 async function loadTags() {
-  const r = await fetch('/api/theme');
-  const tags = await r.json();
-  themeTags = tags.filter(t => !LOCATION_TAGS.includes(t));
-  locationTags = tags.filter(t => LOCATION_TAGS.includes(t));
+  const [themeRes, districtRes] = await Promise.all([
+    fetch('/api/theme'),
+    fetch('/api/districts')
+  ]);
+  themeTags = await themeRes.json();
+  locationTags = await districtRes.json();
 
   const themeDropdown = document.getElementById('theme-dropdown');
   themeDropdown.innerHTML = themeTags.map(t =>
@@ -866,9 +867,9 @@ function renderEvents(events) {
       html += `<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${fmtDate(e.date_start)}</span></div>`;
     }
     const tags = e.tags ? e.tags.split(',').map(t => t.trim()) : [];
-    const themeEmojis = tags.filter(t => TAG_EMOJIS[t] && !LOCATION_TAGS.includes(t)).map(t => TAG_EMOJIS[t]);
+    const themeEmojis = tags.filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]);
     const emojiPrefix = themeEmojis.length > 0 ? themeEmojis.join('') + ' ' : '';
-    const locTags = tags.filter(t => LOCATION_TAGS.includes(t));
+    const locTags = tags.filter(t => locationTags.includes(t));
     html += `<div class="event" id="event-${e.id}">
       <div class="event-body">
         <h2>${emojiPrefix}${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}</h2>
