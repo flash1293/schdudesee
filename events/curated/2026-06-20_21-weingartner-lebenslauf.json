@@ -1,0 +1,19 @@
+{
+  "title": "21. Weingartner Lebenslauf",
+  "date_start": "2026-06-20",
+  "date_end": null,
+  "time_raw": "14:00 Uhr bis 20:00 Uhr",
+  "location": "Mineralix-Arena",
+  "organizer": "blut.eV",
+  "description": "",
+  "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/798/21-weingartner-lebenslauf",
+  "sources": [
+    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+  ],
+  "tags": [
+    "Sport",
+    "Essen",
+    "Weingarten"
+  ],
+  "recurring_group_id": null
+}

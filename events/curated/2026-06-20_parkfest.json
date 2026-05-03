@@ -1,0 +1,18 @@
+{
+  "title": "Parkfest",
+  "date_start": "2026-06-20",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tVogelpark Staffort",
+  "organizer": "Veranstalter:\n\t\tVerein für Natur- und Vogelfreunde Staffort",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2627",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Fest",
+    "Staffort"
+  ],
+  "recurring_group_id": null
+}

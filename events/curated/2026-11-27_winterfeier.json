@@ -1,0 +1,17 @@
+{
+  "title": "Winterfeier",
+  "date_start": "2026-11-27",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Vereinsheim",
+  "organizer": "Motorsportclub Blankenloch e.V. im ADAC",
+  "description": "",
+  "event_url": "http://www.msc-blankenloch.de/termine",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Blankenloch"
+  ],
+  "recurring_group_id": null
+}

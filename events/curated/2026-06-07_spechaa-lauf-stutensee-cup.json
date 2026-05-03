@@ -1,0 +1,18 @@
+{
+  "title": "Spechaa Lauf (Stutensee Cup)",
+  "date_start": "2026-06-07",
+  "date_end": null,
+  "time_raw": "",
+  "location": "TV Friedrichstal",
+  "organizer": "Turnverein Friedrichstal 1899 e.V.",
+  "description": "",
+  "event_url": "https://www.tv-friedrichstal.de",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Sport",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Pfingstfahrt nach Klingenberg",
+  "date_start": "2026-05-22",
+  "date_end": "2026-05-25",
+  "time_raw": "",
+  "location": "Kanu-Club Klingenberg am Main",
+  "organizer": "Kajak-Freunde-Wickinger Spöck e.V.",
+  "description": "Pfingstfahrt der Kajak-Freunde-Wickinger Spöck e.V. an den Main.",
+  "event_url": "https://kfw-spoeck.de/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Sport",
+    "Verein",
+    "Spöck"
+  ],
+  "recurring_group_id": null
+}

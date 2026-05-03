@@ -1,0 +1,18 @@
+{
+  "title": "Spieleabend",
+  "date_start": "2026-07-10",
+  "date_end": null,
+  "time_raw": "19:00 - 21:00 Uhr",
+  "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
+  "organizer": "Veranstalter:\n\t\tKulturRaum Regenbogen im BZ Regenbogen",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2707",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Kinder",
+    "Treff"
+  ],
+  "recurring_group_id": null
+}
