@@ -8,7 +8,7 @@ Usage:  python3 run_pipeline.py
 import json, sys, os, sqlite3, urllib.request, re, html, hashlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import importlib.util
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -24,6 +24,7 @@ scrape_eggenstein = sys.modules["scraper_eggenstein"].scrape_eggenstein
 scrape_rintheim = sys.modules["scraper_rintheim"].scrape_rintheim
 scrape_linkenheim = sys.modules["scraper_linkenheim"].scrape_linkenheim
 scrape_graben_neudorf = sys.modules["scraper_graben_neudorf"].scrape_graben_neudorf
+scrape_weingarten = sys.modules["scraper_weingarten"].scrape_weingarten
 from datetime import datetime
 from scraper_clubs import scrape_clubs
 
@@ -733,6 +734,7 @@ if __name__ == "__main__":
         ("Rintheim", scrape_rintheim),
         ("Linkenheim-Hochstetten", scrape_linkenheim),
         ("Graben-Neudorf", scrape_graben_neudorf),
+        ("Weingarten", scrape_weingarten),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
