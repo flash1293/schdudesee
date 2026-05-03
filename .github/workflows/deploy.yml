@@ -1,7 +1,11 @@
 name: Deploy
 on: [push]
+
+env:
+  PYTHON_VERSION: '3.11'
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello"
+      - run: echo "hello with env"
