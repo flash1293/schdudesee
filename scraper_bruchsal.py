@@ -56,6 +56,11 @@ def parse_time(text):
     return m.group(1) if m else ""
 
 
+def clean_event_url(url):
+    if not url:
+        return url
+    return re.sub(r'[?&]zm\.sid=[^&]+', '', url).rstrip('?&')
+
 def parse_detail_page(html, session):
     """Parse a Bruchsal event detail page for full data."""
     soup = BeautifulSoup(html, "html.parser")
@@ -279,6 +284,9 @@ def scrape_bruchsal():
                 enriched.append(future.result())
             except Exception:
                 enriched.append(all_events[futures[future]])
+
+    for ev in enriched:
+        ev["event_url"] = clean_event_url(ev.get("event_url"))
 
     return {
         "source_url": CALENDAR_URL,
