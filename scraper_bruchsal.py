@@ -64,14 +64,55 @@ def parse_detail_page(html, session):
     def find_label_data(label_pattern):
         label = soup.find(class_="label", string=re.compile(label_pattern, re.I))
         if label:
-            data_el = label.find_next_sibling(class_="data")
+            data_el = label.find_next_sibling()
             if data_el:
                 return data_el.get_text(" ", strip=True)
         return None
 
+    def parse_location(data_div):
+        parts = []
+        kopf = data_div.select_one(".kopf")
+        if kopf:
+            titel = kopf.select_one(".titel")
+            value = kopf.select_one(".value")
+            name = " ".join(p for p in [
+                titel.get_text(strip=True) if titel else "",
+                value.get_text(strip=True) if value else ""
+            ] if p)
+            if name:
+                parts.append(name)
+        street = data_div.select_one(".street-address")
+        if street:
+            parts.append(street.get_text(strip=True))
+        cityline = data_div.select_one(".cityline")
+        if cityline:
+            plz = cityline.select_one(".postal-code")
+            loc = cityline.select_one(".locality")
+            city = " ".join(p for p in [
+                plz.get_text(strip=True) if plz else "",
+                loc.get_text(strip=True) if loc else ""
+            ] if p)
+            if city:
+                parts.append(city)
+        return ", ".join(parts)
+
+    def parse_organizer(data_div):
+        kopf = data_div.select_one(".kopf")
+        if kopf:
+            return kopf.get_text(" ", strip=True)
+        return None
+
     detail["description"] = find_label_data(r"Beschreibung")
-    detail["location"] = find_label_data(r"Veranstaltungsort")
-    detail["organizer"] = find_label_data(r"Veranstalter")
+    loc_label = soup.find(class_="label", string=re.compile(r"Veranstaltungsort", re.I))
+    if loc_label:
+        loc_div = loc_label.find_next_sibling()
+        if loc_div:
+            detail["location"] = parse_location(loc_div)
+    org_label = soup.find(class_="label", string=re.compile(r"Veranstalter", re.I))
+    if org_label:
+        org_div = org_label.find_next_sibling()
+        if org_div:
+            detail["organizer"] = parse_organizer(org_div)
 
     cat_el = soup.select_one(".zusatzbezeichnung, .zusatzbezeichnungen")
     if cat_el:
