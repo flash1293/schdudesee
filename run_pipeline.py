@@ -6,6 +6,7 @@ Usage:  python3 run_pipeline.py
 """
 
 import json, sys, os, sqlite3, urllib.request, re, html, hashlib
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import importlib.util
 for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
@@ -703,8 +704,15 @@ def tag_untagged():
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Stutensee Events Pipeline")
+    parser.add_argument("--sources", help="Comma-separated source names to run (default: all)")
+    args = parser.parse_args()
+
     print("Stutensee Events Pipeline", flush=True)
     print(f"Time: {datetime.now().isoformat()}", flush=True)
+    if args.sources:
+        print(f"Sources: {args.sources}", flush=True)
 
     sources = [
         ("Official calendar", scrape_official),
@@ -734,16 +742,38 @@ if __name__ == "__main__":
     cleanup_malformed_dates()
     cleanup_past_events()
 
+    source_filter = [s.strip() for s in args.sources.split(",")] if args.sources else None
+    if source_filter:
+        filtered = [(n, s) for n, s in sources if n in source_filter]
+        not_found = [s for s in source_filter if s not in dict(sources)]
+        if not_found:
+            print(f"  Warning: sources not found: {', '.join(not_found)}", flush=True)
+        sources = filtered
+
     total_new = 0
-    for name, scraper in sources:
-        print(f"  Scraping {name}...", end=" ", flush=True)
+
+    def scrape_one(name_scraper):
+        name, scraper_func = name_scraper
         try:
-            data = scraper()
+            data = scraper_func()
             n = insert_raw(data)
-            total_new += n
-            print(f"{len(data['events'])} fetched, {n} new", flush=True)
+            return name, len(data["events"]), n, None
         except Exception as e:
-            print(f"ERROR: {e}", flush=True)
+            return name, 0, 0, str(e)
+
+    with ThreadPoolExecutor(max_workers=8) as executor:
+        futures = {executor.submit(scrape_one, s): s[0] for s in sources}
+        for future in as_completed(futures):
+            name = futures[future]
+            try:
+                name, fetched, new, err = future.result()
+                if err:
+                    print(f"  {name}: ERROR: {err}", flush=True)
+                else:
+                    total_new += new
+                    print(f"  {name}: {fetched} fetched, {new} new", flush=True)
+            except Exception as e:
+                print(f"  {name}: ERROR: {e}", flush=True)
 
     for name, url, src_url in optional_sources:
         print(f"  Scraping {name}...", end=" ", flush=True)
