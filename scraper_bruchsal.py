@@ -286,11 +286,11 @@ def scrape_bruchsal():
                 enriched.append(all_events[futures[future]])
 
     for ev in enriched:
-        ev[event_url] = clean_event_url(ev.get(event_url))
+        ev["event_url"] = clean_event_url(ev.get("event_url"))
 
     return {
-        source_url: CALENDAR_URL,
-        events: enriched,
+        "source_url": CALENDAR_URL,
+        "events": enriched,
     }
 
 
