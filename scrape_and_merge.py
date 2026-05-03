@@ -608,7 +608,35 @@ def dedup_events(raw_events):
                 best["sources"] = sorted(set(best.get("sources", []) + curated[idx].get("sources", [])))
                 curated[idx] = None
 
-    curated = [ev for ev in curated if ev is not None]
+    curated = compact(curated)
+
+    org_groups = defaultdict(list)
+    for i, ev in enumerate(curated):
+        org = (ev.get("organizer", "") or "").lower().strip()
+        org = re.sub(r'\be\.\s*v\.?\b', '', org).strip()
+        org = re.sub(r'\beingetragener\s+verein\b', '', org).strip()
+        org = re.sub(r'\s+', ' ', org).strip()
+        date = ev.get("date_start", "") or ""
+        org_groups.setdefault((date, org), []).append(i)
+
+    for candidates in org_groups.values():
+        if len(candidates) < 2:
+            continue
+        best_idx = max(candidates, key=lambda idx: len(curated[idx].get("description", "") or ""))
+        best = curated[best_idx]
+        best_title_words = set(normalize_title(best.get("title", "")).split())
+        for idx in candidates:
+            if idx == best_idx:
+                continue
+            ev = curated[idx]
+            ev_words = set(normalize_title(ev.get("title", "")).split())
+            common = best_title_words & ev_words
+            if len(common) >= 2:
+                merged += 1
+                best["sources"] = sorted(set(best.get("sources", []) + ev.get("sources", [])))
+                curated[idx] = None
+
+    curated = compact(curated)
 
     if merged:
         print(f"  Post-merge: {merged} duplicates merged (fuzzy)", flush=True)
@@ -674,7 +702,7 @@ def detect_recurring(curated):
         if pattern is None:
             continue
 
-        group_min_id = min(e[0] for e in events)
+        group_min_id = abs(hash(group_key)) % (2**31)
         for idx, _, _ in events:
             curated[idx]["recurring_group_id"] = group_min_id
 
@@ -715,10 +743,15 @@ def write_event_json(event, out_dir):
 
     filename = build_filename(ev)
     filepath = os.path.join(out_dir, filename)
+    new_content = json.dumps(ev, indent=2, ensure_ascii=False) + "\n"
+
+    if os.path.exists(filepath):
+        with open(filepath, "r", encoding="utf-8") as f:
+            if f.read() == new_content:
+                return filename
 
     with open(filepath, "w", encoding="utf-8") as f:
-        json.dump(ev, f, indent=2, ensure_ascii=False)
-        f.write("\n")
+        f.write(new_content)
 
     return filename
 
