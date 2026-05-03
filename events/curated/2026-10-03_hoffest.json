@@ -1,0 +1,19 @@
+{
+  "title": "Hoffest",
+  "date_start": "2026-10-03",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tAlte Schul' Spöck",
+  "organizer": "Veranstalter:\n\t\tMusikverein &quot;Harmonie&quot; 1920 Spöck e.V.",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2671",
+  "sources": [
+    "clubs_batch_all",
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Fest",
+    "Spöck"
+  ],
+  "recurring_group_id": null
+}

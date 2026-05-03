@@ -1,0 +1,17 @@
+{
+  "title": "Stammtisch",
+  "date_start": "2026-05-06",
+  "date_end": null,
+  "time_raw": "ab 19:30 Uhr",
+  "location": "Gaststätte des TC Durlach, Karlsruhe-Durlach",
+  "organizer": "Modellbau- und Eisenbahnclub Werkstatt 87",
+  "description": "",
+  "event_url": "http://www.werkstatt87.de",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Treff"
+  ],
+  "recurring_group_id": null
+}

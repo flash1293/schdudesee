@@ -1,0 +1,17 @@
+{
+  "title": "Hobbyday / Arbeitseinsatz",
+  "date_start": "2026-09-26",
+  "date_end": null,
+  "time_raw": "10:00 Uhr",
+  "location": "Vereinsgelände Little Creek, Stutensee",
+  "organizer": "Little Creek e.V. (Verein für Amerikanistik Stutensee)",
+  "description": "",
+  "event_url": "http://www.little-creek.de/veranstaltung.htm",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Verein"
+  ],
+  "recurring_group_id": null
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Konzert VOX NOVA",
+  "date_start": "2026-09-26",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Sängerhalle Friedrichstal",
+  "organizer": "Gesangverein Sängerbund Friedrichstal",
+  "description": "Konzert VOX NOVA - moderner Frauenchor des Sängerbundes Friedrichstal in der Sängerhalle Friedrichstal",
+  "event_url": "https://saengerbund-friedrichstal.de/",
+  "sources": [
+    "clubs_batch_all",
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Musik",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null
+}

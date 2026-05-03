@@ -1,0 +1,19 @@
+{
+  "title": "Bierpongturnier und Sommerfest",
+  "date_start": "2026-05-15",
+  "date_end": "2026-05-15",
+  "time_raw": "19:00",
+  "location": "Vereinsgelände SV Blankenloch",
+  "organizer": "Sportverein 1911 e.V. Blankenloch",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/bierpongturnier-und-sommerfest/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Sport",
+    "Fest",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null
+}

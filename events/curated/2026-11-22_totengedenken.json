@@ -1,0 +1,17 @@
+{
+  "title": "Totengedenken",
+  "date_start": "2026-11-22",
+  "date_end": null,
+  "time_raw": "ab 12:00 Uhr",
+  "location": "Aussegnungshalle",
+  "organizer": "Musikverein Harmonie Spöck",
+  "description": "",
+  "event_url": "https://musikverein-spoeck.de/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Spöck"
+  ],
+  "recurring_group_id": null
+}

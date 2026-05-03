@@ -1,0 +1,20 @@
+{
+  "title": "Mitgliederversammlung",
+  "date_start": "2026-11-19",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Feuerwehr Eggenstein",
+  "organizer": "Ortskartell Eggenstein-Leopoldshafen",
+  "description": "Mitgliederversammlung",
+  "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1860",
+  "sources": [
+    "https://www.egg-leo.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Musik",
+    "Verein",
+    "Eggenstein",
+    "Leopoldshafen"
+  ],
+  "recurring_group_id": null
+}

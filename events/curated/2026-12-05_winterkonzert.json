@@ -1,0 +1,18 @@
+{
+  "title": "Winterkonzert",
+  "date_start": "2026-12-05",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Rheinhalle",
+  "organizer": "Musikverein Lyra Eggenstein e.V.",
+  "description": "Winterkonzert (alkoholfreie und alkoholische Getränke, Barbetrieb, Speisen)",
+  "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1872",
+  "sources": [
+    "https://www.egg-leo.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Musik",
+    "Eggenstein"
+  ],
+  "recurring_group_id": null
+}
