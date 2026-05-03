@@ -14,4 +14,37 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
-      - run: echo "checkout and setup ok"
+
+      - name: Build database from JSON
+        run: python3 build_db.py
+
+      - name: Dump and import to production D1
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          python3 -c "
+import sqlite3
+conn = sqlite3.connect('events/events.db')
+c = conn.cursor()
+print('DROP TABLE IF EXISTS curated_events;')
+for sql, in c.execute(\"SELECT sql FROM sqlite_master WHERE sql IS NOT NULL AND name = 'curated_events'\"):
+    print(sql + ';')
+def esc(v):
+    if v is None: return 'NULL'
+    if isinstance(v, (int, float)): return str(v)
+    s = str(v).replace(\"'\", \"''\")
+    return f\"'{s}'\"
+for row in c.execute('SELECT * FROM curated_events'):
+    vals = ', '.join(esc(v) for v in row)
+    print(f'INSERT INTO curated_events VALUES ({vals});')
+conn.close()
+" > /tmp/dump_d1.sql
+          npx wrangler d1 execute was-geht-stutensee --file /tmp/dump_d1.sql --remote
+
+      - name: Deploy production worker
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          cd cloudflare && python3 build.py && npx wrangler deploy
