@@ -603,7 +603,7 @@ DISTRICTS = {
     "Leopoldshafen": ["leopoldshafen"],
     "Rintheim": ["rintheim"],
     "Linkenheim": ["linkenheim", "linkenheim-hochstetten"],
-    "Graben-Neudorf": ["graben", "graben-neudorf", "neudorf"],
+    "Graben-Neudorf": ["graben-neudorf"],
  }
 
 DISTRICT_EXCLUSIONS = {
