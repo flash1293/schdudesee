@@ -9,7 +9,8 @@ import json, os, sqlite3, re, glob
 EVENTS_DIR = "events/curated"
 OUTPUT_DB = "events/events.db"
 SCHEMA = """
-CREATE TABLE IF NOT EXISTS curated_events (
+DROP TABLE IF EXISTS curated_events;
+CREATE TABLE curated_events (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     normalized_title TEXT,
@@ -27,8 +28,8 @@ CREATE TABLE IF NOT EXISTS curated_events (
     created_at TEXT DEFAULT (datetime('now')),
     updated_at TEXT DEFAULT (datetime('now'))
 );
-CREATE INDEX IF NOT EXISTS idx_curated_dates ON curated_events(date_start);
-CREATE INDEX IF NOT EXISTS idx_curated_title ON curated_events(normalized_title);
+CREATE INDEX idx_curated_dates ON curated_events(date_start);
+CREATE INDEX idx_curated_title ON curated_events(normalized_title);
 """
 
 
