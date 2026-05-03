@@ -300,6 +300,7 @@ BLOCKED_TITLES = [
     "Chorprobe Posaunenchor Blankenloch",
     "JRK Gruppenstunde",
     "Paddeltraining f\u00fcr Erwachsene (Sommer)",
+    "Treffen f\u00fcr Vorst\u00e4nde und Verantwortliche",
 ]
 
 MANUAL_DUPES = {

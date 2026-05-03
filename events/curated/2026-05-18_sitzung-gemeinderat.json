@@ -1,0 +1,17 @@
+{
+  "title": "Sitzung Gemeinderat",
+  "date_start": "2026-05-18",
+  "date_end": "2026-05-18",
+  "time_raw": "18:00",
+  "location": "Bürgersaal Rathaus Stutensee",
+  "organizer": "Stadtverwaltung Stutensee",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/sitzung-gemeinderat/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Politik"
+  ],
+  "recurring_group_id": null
+}
