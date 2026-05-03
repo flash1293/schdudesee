@@ -1,0 +1,18 @@
+{
+  "title": "Kaffee Treff",
+  "date_start": "2026-09-08",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
+  "organizer": "Veranstalter:\n\t\tCafé Treff im BZ Regenbogen",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2552",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Essen",
+    "Treff"
+  ],
+  "recurring_group_id": null
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Vatertagsfest des MGV Eintracht Graben",
+  "date_start": "2026-05-14",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Binsenhütte",
+  "organizer": "MGV Eintracht Graben",
+  "description": "[Feste & Feiern]",
+  "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender",
+  "sources": [
+    "clubs_batch_all",
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen",
+    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
+  ],
+  "tags": [
+    "Fest"
+  ],
+  "recurring_group_id": null
+}

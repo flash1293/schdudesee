@@ -1,0 +1,19 @@
+{
+  "title": "Weihnachtsfeier Musikverein",
+  "date_start": "2026-12-13",
+  "date_end": null,
+  "time_raw": "16:00 Uhr bis 20:00 Uhr",
+  "location": "Walzbachhalle Weingarten",
+  "organizer": "Musikverein Weingarten (Baden)e.V.",
+  "description": "",
+  "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/819/weihnachtsfeier-musikverein",
+  "sources": [
+    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+  ],
+  "tags": [
+    "Musik",
+    "Verein",
+    "Weingarten"
+  ],
+  "recurring_group_id": null
+}

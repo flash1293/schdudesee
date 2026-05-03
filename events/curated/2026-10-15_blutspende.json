@@ -1,0 +1,19 @@
+{
+  "title": "Blutspende",
+  "date_start": "2026-10-15",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Rheinhalle",
+  "organizer": "Deutsches Rotes Kreuz OV Eggenstein-Leopoldshafen e.V.",
+  "description": "Blutspende",
+  "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1845",
+  "sources": [
+    "https://www.egg-leo.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Wohltätigkeit",
+    "Eggenstein",
+    "Leopoldshafen"
+  ],
+  "recurring_group_id": null
+}

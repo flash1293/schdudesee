@@ -1,0 +1,19 @@
+{
+  "title": "Musik + Wein 2026",
+  "date_start": "2026-09-05",
+  "date_end": "6. September 2026",
+  "time_raw": "17:30 - 19:00",
+  "location": "",
+  "organizer": "Musikverein Weingarten (Baden) e.V.",
+  "description": "",
+  "event_url": "https://www.musikverein-weingarten.de/erleben/kalender/",
+  "sources": [
+    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+  ],
+  "tags": [
+    "Musik",
+    "Essen",
+    "Weingarten"
+  ],
+  "recurring_group_id": null
+}

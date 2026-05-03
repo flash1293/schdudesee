@@ -1,0 +1,19 @@
+{
+  "title": "Heimat und Museumsverein Graben-Neudorf e.V. - Öffnungszeiten",
+  "date_start": "2026-07-05",
+  "date_end": null,
+  "time_raw": "14:00 Uhr bis 17:00 Uhr",
+  "location": "Graben-Neudorf",
+  "organizer": "",
+  "description": "[Kultur & Bildung]",
+  "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender",
+  "sources": [
+    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
+  ],
+  "tags": [
+    "Kultur",
+    "Bildung",
+    "Graben-Neudorf"
+  ],
+  "recurring_group_id": 314
+}

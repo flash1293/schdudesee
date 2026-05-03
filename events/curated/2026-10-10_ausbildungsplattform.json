@@ -1,0 +1,18 @@
+{
+  "title": "AUSBILDUNGSPLATTFORM",
+  "date_start": "2026-10-10",
+  "date_end": null,
+  "time_raw": "",
+  "location": "",
+  "organizer": "Gewerbeverein Stutensee",
+  "description": "",
+  "event_url": "https://gewerbeverein-stutensee.org/veranstaltungen",
+  "sources": [
+    "https://gewerbeverein-stutensee.org/veranstaltungen",
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Bildung"
+  ],
+  "recurring_group_id": null
+}

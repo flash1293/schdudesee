@@ -1,0 +1,17 @@
+{
+  "title": "Chorwochenende",
+  "date_start": "2027-03-19",
+  "date_end": null,
+  "time_raw": "",
+  "location": "",
+  "organizer": "Gospel Unlimited",
+  "description": "",
+  "event_url": "https://www.gospel-unlimited.de",
+  "sources": [
+    "manual_override"
+  ],
+  "tags": [
+    "Musik"
+  ],
+  "recurring_group_id": null
+}

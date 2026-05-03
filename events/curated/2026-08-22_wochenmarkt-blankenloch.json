@@ -1,0 +1,18 @@
+{
+  "title": "Wochenmarkt Blankenloch",
+  "date_start": "2026-08-22",
+  "date_end": null,
+  "time_raw": "07:00 – 13:00",
+  "location": "Blankenloch, Neuer Markt (Michaeliskirche)",
+  "organizer": "Stadt Stutensee",
+  "description": "Wochenmarkt in Blankenloch. Samstags 07:00–13:00 Uhr am Neuen Markt.",
+  "event_url": "https://www.stutensee.de/Buergerservice-A-Z/Dienstleistung?view=publish&item=service&id=4835",
+  "sources": [
+    "https://www.stutensee.de/Buergerservice-A-Z/Dienstleistung?view=publish&item=service&id=4835"
+  ],
+  "tags": [
+    "Markt",
+    "Blankenloch"
+  ],
+  "recurring_group_id": 104
+}

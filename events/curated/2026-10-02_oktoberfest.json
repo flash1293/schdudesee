@@ -1,0 +1,17 @@
+{
+  "title": "Oktoberfest",
+  "date_start": "2026-10-02",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tFestplatz",
+  "organizer": "Veranstalter:\n\t\tKarnevalsclub &quot;Die Piraten&quot; Stutensee e.V.",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2670",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Fest"
+  ],
+  "recurring_group_id": null
+}
