@@ -180,7 +180,8 @@ header::after {
 .event.condensed { cursor: pointer; padding: 8px 18px; }
 .event.condensed h2 { font-size: 14px; font-weight: 500; letter-spacing: -0.2px; }
 .event.condensed .event-body h2 .ext-link { display: none; }
-.event.condensed .condensed-location { font-size: 13px; font-weight: 400; color: var(--text-muted); }
+.condensed-location { display: none; }
+.event.condensed .condensed-location { display: inline; font-size: 13px; font-weight: 400; color: var(--text-muted); }
 .event.condensed.expanded .event-meta,
 .event.condensed.expanded .event-desc,
 .event.condensed.expanded .event-tags,
@@ -902,7 +903,7 @@ function renderEvents(events) {
     const locTags = tags.filter(t => locationTags.includes(t));
     html += `<div class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
       <div class="event-body">
-        <h2>${emojiPrefix}${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}${condensedMode ? `<span class="condensed-location">${e.location ? ` 📍 ${esc(e.location)}` : ''}${locTags.map(t => ` 📍 ${esc(t)}`).join('')}</span>` : ''}</h2>
+        <h2>${emojiPrefix}${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}<span class="condensed-location">${e.location ? ` 📍 ${esc(e.location)}` : ''}${locTags.map(t => ` 📍 ${esc(t)}`).join('')}</span></h2>
         <div class="event-meta">
           ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
           ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
