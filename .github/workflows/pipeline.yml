@@ -23,7 +23,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run pipeline
-        run: python3 run_pipeline.py --sources ${{ inputs.sources }}
+        run: python3 run_pipeline.py ${{ inputs.sources && format('--sources {0}', inputs.sources) || '' }}
 
       - name: Deploy worker
         if: github.ref == 'refs/heads/main'
