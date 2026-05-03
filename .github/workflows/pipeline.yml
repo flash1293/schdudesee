@@ -20,8 +20,7 @@ jobs:
           python-version: ${{ env.PYTHON_VERSION }}
 
       - name: Install dependencies
-        run: |
-          pip install requests beautifulsoup4 lxml feedparser python-dateutil icalendar
+        run: pip install -r requirements.txt
 
       - name: Run pipeline
         run: python3 run_pipeline.py --sources ${{ inputs.sources }}
