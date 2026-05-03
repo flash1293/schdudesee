@@ -72,6 +72,7 @@ def scrape_official():
             time_str = re.sub(r'<[^>]+>', '', time_m.group(1)).strip() if time_m else ""
             loc = re.sub(r'<[^>]+>', '', loc_m.group(1)).strip() if loc_m else ""
             org = re.sub(r'<[^>]+>', '', org_m.group(1)).strip() if org_m else ""
+            org = re.sub(r'^Veranstalter:\s*', '', org)
             desc = desc_m.group(1).strip() if desc_m else ""
             try:
                 parts = date_str.split(".")
@@ -702,7 +703,8 @@ def detect_recurring(curated):
         if pattern is None:
             continue
 
-        group_min_id = abs(hash(group_key)) % (2**31)
+        import hashlib
+        group_min_id = int(hashlib.md5(group_key.encode()).hexdigest(), 16) % (2**31)
         for idx, _, _ in events:
             curated[idx]["recurring_group_id"] = group_min_id
 
