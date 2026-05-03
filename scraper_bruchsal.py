@@ -64,7 +64,7 @@ def parse_detail_page(html, session):
     def find_label_data(label_pattern):
         label = soup.find(class_="label", string=re.compile(label_pattern, re.I))
         if label:
-            data_el = label.find_next(class_="data")
+            data_el = label.find_next_sibling(class_="data")
             if data_el:
                 return data_el.get_text(" ", strip=True)
         return None
