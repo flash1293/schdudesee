@@ -1,0 +1,18 @@
+{
+  "title": "Sommerfest",
+  "date_start": "2026-06-27",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
+  "organizer": "Veranstalter:\n\t\tMusikverein &quot;Harmonie&quot; Blankenloch e.V.",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2633",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Fest",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null
+}

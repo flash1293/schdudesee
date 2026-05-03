@@ -1,0 +1,19 @@
+{
+  "title": "Reparatur-Treff",
+  "date_start": "2026-05-30",
+  "date_end": null,
+  "time_raw": "10:00 Uhr bis 13:00 Uhr",
+  "location": "'JUZE' Kinder-, Jugend- & Familienzentrum Graben-Neudorf",
+  "organizer": "Initiative 'Füreinander - Miteinander in Graben-Neudorf'",
+  "description": "[Soziales & Umwelt]",
+  "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender",
+  "sources": [
+    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
+  ],
+  "tags": [
+    "Natur",
+    "Handwerk",
+    "Graben-Neudorf"
+  ],
+  "recurring_group_id": null
+}

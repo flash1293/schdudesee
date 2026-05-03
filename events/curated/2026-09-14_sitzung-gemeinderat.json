@@ -1,0 +1,18 @@
+{
+  "title": "Sitzung Gemeinderat",
+  "date_start": "2026-09-14",
+  "date_end": null,
+  "time_raw": "19:00 Uhr",
+  "location": "Rathaus / Ratssaal",
+  "organizer": "Gemeinde Graben-Neudorf",
+  "description": "[Sitzungstermine]",
+  "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender",
+  "sources": [
+    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
+  ],
+  "tags": [
+    "Politik",
+    "Graben-Neudorf"
+  ],
+  "recurring_group_id": null
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Senioren-Weihnachtsfeier der Stadt Stutensee",
+  "date_start": "2026-12-05",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Spechaahalle",
+  "organizer": "Musikverein Harmonie Spöck",
+  "description": "",
+  "event_url": "https://musikverein-spoeck.de/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Senioren",
+    "Spöck"
+  ],
+  "recurring_group_id": null
+}
