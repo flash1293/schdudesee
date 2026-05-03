@@ -1,5 +1,7 @@
 name: Deploy
-on: [push]
+on:
+  push:
+    branches: [main]
 
 env:
   PYTHON_VERSION: '3.11'
@@ -8,4 +10,4 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "hello with env"
+      - run: echo "hello with branch filter"
