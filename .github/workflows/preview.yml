@@ -38,11 +38,11 @@ jobs:
           database_id = "5ab57835-8cc1-4aae-a56f-3f0f8da83357"
           EOF
           
-          # Deploy using temp config
+          # Deploy and extract URL
           npx wrangler deploy --config /tmp/wrangler.toml 2>&1 | tee deploy.log
-          
-          # Extract URL
-          URL=$(grep -oP 'https://[^\s]+\.workers\.dev' deploy.log | head -1)
+
+          # Extract URL from output (line after "Deployed...triggers")
+          URL=$(grep -A1 'Deployed.*triggers' deploy.log | tail -1 | tr -d ' ')
           echo "url=${URL}" >> $GITHUB_OUTPUT
 
       - name: Comment PR with preview URL
