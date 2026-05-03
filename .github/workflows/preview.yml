@@ -25,9 +25,9 @@ jobs:
           
           # Build with the PR's index.html
           cd cloudflare && python3 build.py
-          
-          # Create temp wrangler.toml with per-PR name + staging D1
-          cat > /tmp/wrangler.toml << EOF
+
+          # Create config in cloudflare/ dir so main = "src/worker.js" resolves correctly
+          cat > preview.toml << EOF
           name = "${WORKER_NAME}"
           main = "src/worker.js"
           compatibility_date = "2025-04-01"
@@ -37,12 +37,13 @@ jobs:
           database_name = "was-geht-stutensee-staging"
           database_id = "5ab57835-8cc1-4aae-a56f-3f0f8da83357"
           EOF
-          
-          # Deploy and extract URL (capture both stdout and stderr)
-          npx wrangler deploy --config /tmp/wrangler.toml 2>&1 | tee deploy.log
+
+          # Deploy using the local config
+          npx wrangler deploy --config preview.toml 2>&1 | tee deploy.log
 
           # Extract URL from output (line after "Deployed...triggers")
           URL=$(grep -A1 'Deployed.*triggers' deploy.log | tail -1 | tr -d ' ')
+          rm -f preview.toml
           echo "url=${URL}" >> $GITHUB_OUTPUT
           echo "Extracted URL: ${URL}"
 
@@ -68,14 +69,17 @@ jobs:
         run: |
           WORKER_NAME="was-geht-stutensee-pr-${{ github.event.number }}"
           
-          # Create minimal wrangler.toml for the delete
-          cat > /tmp/wrangler.toml << EOF
+          # Create minimal config in cloudflare/ dir for the delete
+          cat > cloudflare/cleanup.toml << 'RAWEOF'
           name = "${WORKER_NAME}"
           main = "src/worker.js"
           compatibility_date = "2025-04-01"
-          EOF
+          RAWEOF
+          # Expand the variable (the heredoc is quoted, so no expansion — use envsubst or sed)
+          cd cloudflare && sed -i "s/\${WORKER_NAME}/${WORKER_NAME}/" cleanup.toml
           
-          npx wrangler delete --config /tmp/wrangler.toml || echo "Worker already deleted or not found"
+          npx wrangler delete --config cleanup.toml || echo "Worker already deleted or not found"
+          rm -f cleanup.toml
 
       - name: Comment cleanup
         uses: actions/github-script@v7
