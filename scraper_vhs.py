@@ -10,6 +10,7 @@ Structure:
 
 import re
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, date
 from urllib.parse import urljoin
 
@@ -245,46 +246,60 @@ def scrape_vhs(start_date: str | None = None, end_date: str | None = None) -> di
 
     seen_ids = set()
     courses = []
-    for surl in search_urls:
-        html = fetch_url(surl, session)
-        if not html:
-            continue
-        for c in parse_search_results(html):
-            cid = c.get("course_id")
-            if cid and cid in seen_ids:
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        future_to_url = {executor.submit(fetch_url, surl, session): surl for surl in search_urls}
+        for future in as_completed(future_to_url):
+            html = future.result()
+            if not html:
                 continue
-            if cid:
-                seen_ids.add(cid)
-            courses.append(c)
+            for c in parse_search_results(html):
+                cid = c.get("course_id")
+                if cid and cid in seen_ids:
+                    continue
+                if cid:
+                    seen_ids.add(cid)
+                courses.append(c)
 
     events = []
-    for c in courses:
+    def fetch_detail(course):
         description = None
-        location = c.get("location")
+        location = course.get("location")
         district = detect_district(location)
         if not district:
             district = "Stutensee"
 
-        if c.get("detail_url"):
-            detail_html = fetch_url(c["detail_url"], session)
-            if detail_html:
-                full = parse_detail_page(detail_html, c)
-                description = full.get("description")
-                location = full.get("location", location)
+        detail_html = None
+        if course.get("detail_url"):
+            detail_html = fetch_url(course["detail_url"], session)
 
-        event = {
-            "title": c.get("title", ""),
-            "date_start": c.get("date_start"),
-            "date_end": c.get("date_end"),
-            "time_raw": c.get("time_raw"),
-            "location": location,
-            "district": district,
-            "organizer": "VHS Stutensee",
-            "description": description,
-            "event_url": c.get("detail_url") or search_url,
-            "fee": c.get("fee"),
-        }
-        events.append(event)
+        return course, detail_html, district, location
+
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = [executor.submit(fetch_detail, c) for c in courses]
+        for future in as_completed(futures):
+            try:
+                course, detail_html, district, location = future.result()
+                description = None
+                if detail_html:
+                    full = parse_detail_page(detail_html, course)
+                    description = full.get("description")
+                    location = full.get("location", location)
+
+                event = {
+                    "title": course.get("title", ""),
+                    "date_start": course.get("date_start"),
+                    "date_end": course.get("date_end"),
+                    "time_raw": course.get("time_raw"),
+                    "location": location,
+                    "district": district,
+                    "organizer": "VHS Stutensee",
+                    "description": description,
+                    "event_url": course.get("detail_url") or search_url,
+                    "fee": course.get("fee"),
+                }
+                events.append(event)
+            except Exception:
+                continue
 
     return {
         "source_url": "https://www.vhs-karlsruhe-land.de/standorte/stutensee/",
