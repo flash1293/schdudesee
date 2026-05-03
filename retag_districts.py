@@ -42,14 +42,15 @@ def main():
     conn = sqlite3.connect(DB)
     conn.row_factory = sqlite3.Row
 
-    rows = conn.execute("SELECT id, title, location, organizer, description, tags FROM curated_events").fetchall()
+    rows = conn.execute("SELECT id, title, location, organizer, description, tags, event_url FROM curated_events").fetchall()
     total = len(rows)
     updated = 0
     by_district = {}
 
     for r in rows:
         eid = r["id"]
-        combined = f'{r["location"] or ""} {r["title"] or ""} {r["organizer"] or ""} {r["description"] or ""}'.lower()
+        event_url = r["event_url"] or ""
+        combined = f'{r["location"] or ""} {r["title"] or ""} {r["organizer"] or ""} {r["description"] or ""} {event_url}'.lower()
         tag_list = [t.strip() for t in (r["tags"] or "").split(",") if t.strip()]
         changed = False
 
