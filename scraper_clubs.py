@@ -1,4 +1,5 @@
 import re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import scraper_clubs_p1, scraper_clubs_p2, scraper_clubs_p3, scraper_clubs_p4
 
 _SCRAPERS = [
@@ -33,12 +34,14 @@ def is_bad_event(ev):
 
 def scrape_clubs():
     all_events = []
-    for name, fn in _SCRAPERS:
-        try:
-            result = fn()
-            for ev in result.get("events", []):
-                if not is_bad_event(ev):
-                    all_events.append(ev)
-        except Exception:
-            pass
+    with ThreadPoolExecutor(max_workers=4) as executor:
+        futures = {executor.submit(fn): name for name, fn in _SCRAPERS}
+        for future in as_completed(futures):
+            try:
+                result = future.result()
+                for ev in result.get("events", []):
+                    if not is_bad_event(ev):
+                        all_events.append(ev)
+            except Exception:
+                pass
     return {"source_url": "clubs_batch_all", "events": all_events}
