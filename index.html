@@ -706,6 +706,25 @@ function fmtDate(iso) {
   const p = iso.split('-');
   return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : iso;
 }
+
+function relativeDate(iso) {
+  if (!iso) return '';
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const parts = iso.split('-');
+  if (parts.length !== 3) return fmtDate(iso);
+  const event = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+  event.setHours(0, 0, 0, 0);
+  const diffMs = event - today;
+  const diffDays = Math.round(diffMs / 86400000);
+  if (diffDays < 0) return fmtDate(iso);
+  if (diffDays === 0) return 'Heute';
+  if (diffDays === 1) return 'Morgen';
+  if (diffDays <= 60) return `In ${diffDays} Tagen`;
+  const diffMonths = (event.getFullYear() - today.getFullYear()) * 12 + (event.getMonth() - today.getMonth());
+  if (diffMonths <= 0) return fmtDate(iso);
+  return `In ${diffMonths} Monaten`;
+}
 const TAG_EMOJIS = {
   'Sport':'⚽','Musik':'🎵','Kultur':'🎭','Kirche':'⛪','Kinder':'🧒','Fest':'🎉',
   'Markt':'🛒','Workshop':'🔧','Bildung':'📚','Natur':'🌿','Senioren':'👴','Digital':'💻',
@@ -896,7 +915,7 @@ function renderEvents(events) {
     if (e.date_start !== lastDate) {
       lastDate = e.date_start;
       const badge = formatDateBadge(e.date_start);
-      html += `<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${fmtDate(e.date_start)}</span></div>`;
+      html += `<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${relativeDate(e.date_start)}</span></div>`;
     }
     const tags = e.tags ? e.tags.split(',').map(t => t.trim()) : [];
     const themeEmojis = tags.filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]);
