@@ -967,19 +967,21 @@ function renderEvents(events) {
         </div>
         ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
         ${e.organizer || locTags.length > 0 ? `<div class="event-tags">${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}${locTags.map(t => `<span class="tag tag-location">📍 ${esc(t)}</span>`).join('')}</div>` : ''}
-        ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="toggleRecurring(${e.id}, ${e.recurring_group_id})">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
+        ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="event.stopPropagation();toggleRecurring(${e.id}, ${e.recurring_group_id}, this)">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
     </div>`;
   }
   container.innerHTML = html;
 }
 
-async function toggleRecurring(eventId, groupId) {
+async function toggleRecurring(eventId, groupId, el) {
   const list = document.getElementById('recurring-' + eventId);
   if (list.style.display === 'block') {
     list.style.display = 'none';
+    if (el) el.innerHTML = '▸ Andere Termine';
     return;
   }
+  if (el) el.innerHTML = '▾ Andere Termine';
   if (list.dataset.loaded) {
     list.style.display = 'block';
     return;
