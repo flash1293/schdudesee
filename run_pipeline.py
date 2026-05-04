@@ -91,8 +91,9 @@ def scrape_kinderkalender():
             va = ", ".join(p for p in [v.get(k, "") for k in ["address", "city", "zip"]] if p) if isinstance(v, dict) else ""
             od = e.get("organizer", []) or []
             orgs = [o.get("organizer", "") for o in (od if isinstance(od, list) else [od]) if isinstance(o, dict)]
-            desc = html.unescape(e.get("description", "").strip() or "")
+            desc = e.get("description", "").strip() or ""
             desc = re.sub(r'<[^>]+>', '', desc)
+            desc = html.unescape(desc)
             events.append({"title": title, "date_start": start[:10] if start else "",
                 "date_end": end[:10] if end else "", "time_raw": start[11:16] if len(start) > 16 else "",
                 "location": f"{venue}, {va}".strip(", "), "organizer": "; ".join(o for o in orgs if o),
