@@ -10,6 +10,8 @@
   "sources": [
     "clubs_batch_all"
   ],
-  "tags": [],
+  "tags": [
+    "Spöck"
+  ],
   "recurring_group_id": null
 }
