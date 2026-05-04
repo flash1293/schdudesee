@@ -674,7 +674,7 @@ def auto_tag(title, description="", location="", organizer=""):
                 break
     content_tags = content_tags[:2]
     # District tags from full text
-    full_text = f"{title} {description} {location} {organizer}".lower()
+    full_text = f"{title} {description} {location}".lower()
     district_tags = []
     for district, keywords in DISTRICTS.items():
         for kw in keywords:
