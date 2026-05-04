@@ -187,6 +187,17 @@ header::after {
 .event.condensed.expanded .event-desc,
 .event.condensed.expanded .event-tags,
 .event.condensed.expanded .recurring-toggle { display: flex; }
+.event.condensed.expanded .event-body {
+  background: #f1f5f9;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin: -8px -18px;
+}
+.event.condensed.expanded .event-body h2:first-child {
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
 .event.condensed.expanded .event-desc { display: block; }
 .popover-dropdown {
   display: none;
@@ -369,14 +380,19 @@ header::after {
   color: var(--text);
 }
 .cat-emojis {
+  position: relative;
   flex-shrink: 0;
   width: 28px;
   height: 22px;
   text-align: center;
   line-height: 22px;
 }
-.ce { font-size: 16px; vertical-align: middle; }
-.ce-double { font-size: 11px; margin-left: -3px; vertical-align: super; }
+.ce { font-size: 16px; }
+.cat-emojis.has-two { line-height: 1; }
+.cat-emojis.has-two .ce { position: absolute; }
+.ce-tl { top: 0; left: 0; }
+.ce-br { bottom: 0; right: 0; }
+.ce-double { font-size: 11px; }
 .cat-title { flex: 1; min-width: 0; }
 .event-body h2 a {
   color: inherit;
@@ -936,14 +952,15 @@ function renderEvents(events) {
     if (themeEmojis.length === 0) {
       emojiHtml = '<span class="ce">📌</span>';
     } else if (themeEmojis.length === 2) {
-      emojiHtml = `<span class="ce">${themeEmojis[0]}</span><span class="ce ce-double">${themeEmojis[1]}</span>`;
+      emojiHtml = `<span class="ce ce-tl">${themeEmojis[0]}</span><span class="ce ce-br ce-double">${themeEmojis[1]}</span>`;
     } else {
       emojiHtml = `<span class="ce">${themeEmojis[0]}</span>`;
     }
+    const hasTwo = themeEmojis.length === 2 ? ' has-two' : '';
     const locTags = tags.filter(t => locationTags.includes(t));
     html += `<div class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
       <div class="event-body">
-        <h2><span class="cat-emojis">${emojiHtml}</span><span class="cat-title">${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}<span class="condensed-location">${locTags.length > 0 ? locTags.map(t => ` 📍 ${esc(t)}`).join('') : (e.location ? ` 📍 ${esc(e.location)}` : '')}</span></span></h2>
+        <h2><span class="cat-emojis${hasTwo}">${emojiHtml}</span><span class="cat-title">${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}<span class="condensed-location">${locTags.length > 0 ? locTags.map(t => ` 📍 ${esc(t)}`).join('') : (e.location ? ` 📍 ${esc(e.location)}` : '')}</span></span></h2>
         <div class="event-meta">
           ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
           ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
