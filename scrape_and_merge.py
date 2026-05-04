@@ -339,10 +339,10 @@ DISTRICT_EXCLUSIONS = {
 }
 
 KEYWORDS = {
-    "Sport": ["lauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
+    "Sport": ["stadtlauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
               "fu\u00dfball", "fussball", "schwimm", "rad", "bike", "cycling", "sport", "bewegung",
               "gymnastik", "tanz", "dance", "ballett", "kickbox", "karate", "indiaca", "volleyball",
-              "handball", "basketball", "reit", "pferd", "wandern", "training", "stadtlauf", "spechaa",
+              "handball", "basketball", "reiten", "pferd", "wandern", "training", "spechaa",
               "turnier", "kajak", "kanu", "dressur", "springturnier", "reitturnier"],
     "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang",
               "musikal", "orchester", "posaunen", "gitarre", "vox", "choir", "swing", "liederabend",
@@ -378,7 +378,7 @@ KEYWORDS = {
               "dampfnudel"],
     "Treff": ["treff", "caf\u00e9", "stammtisch", "begegnung", "gespr\u00e4ch", "runde", "kreis",
               "spieleabend", "badentreff", "m\u00e4nnerrunde"],
-    "Politik": ["wahl", "gemeinderat", "b\u00fcrgermeister", "politik", "partei", "rat", "ausschuss",
+    "Politik": ["gemeinderat", "b\u00fcrgermeister", "politik", "partei", "rat", "ausschuss",
                 "b\u00fcrgermeisterkandidaten", "einwohnerversammlung"],
     "Verein": ["verein", "e.v.", "mitgliederversammlung", "vorstand", "ehrenamt",
                "clubabend", "hobbyday", "vorstandsmeeting", "arbeitseinsatz",
