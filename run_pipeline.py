@@ -649,7 +649,7 @@ KEYWORDS = {
     "Digital": ["digital", "smartphone", "computer", "handy", "online", "app", "internet"],
     "Handwerk": ["basteln", "werkstatt", "nähen", "stricken", "häkeln", "reparier", "reparatur",
                  "handarbeit", "secondhand", "bastel", "sonnenfänger"],
-    "Essen": ["kochen", "backen", "essen", "grill", "frühstück", "küche", "kuchen", "kaffee",
+    "Essen": ["kochen", "backen", "grill", "frühstück", "küche", "kuchen", "kaffee",
               "bowle", "bier", "wein", "hähnchen", "flammkuchen", "zwiebelkuchen", "mittagstisch",
               "dampfnudel"],
     "Treff": ["treff", "café", "stammtisch", "begegnung", "gespräch", "runde", "kreis",
