@@ -98,7 +98,7 @@ def scrape_graben_neudorf():
                 location_el = record.select_one(".hw_record__simpleLocation .hw_iconlist__text")
                 location = location_el.get_text(strip=True) if location_el else "Graben-Neudorf"
 
-                description = category
+                description = ""
 
                 detail_link = record.select_one('a[href*="veranstaltungskalender/"]')
                 event_url = urljoin(BASE_URL, detail_link["href"]) if detail_link and detail_link.get("href") else CALENDAR_URL

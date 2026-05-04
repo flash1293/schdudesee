@@ -5,14 +5,11 @@
   "time_raw": "",
   "location": "Neue Mitte",
   "organizer": "Harmonikafreunde Neudorf",
-  "description": "[Kultur & Bildung]",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145659/adventzauber",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
-  "tags": [
-    "Kultur",
-    "Bildung"
-  ],
+  "tags": [],
   "recurring_group_id": null
 }
