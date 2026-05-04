@@ -5,14 +5,14 @@
   "time_raw": "",
   "location": "Festhalle",
   "organizer": "Musikverein Graben",
-  "description": "[Kultur & Bildung]",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145961/konzert-des-musikvereins-graben",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
     "Musik",
-    "Kultur"
+    "Verein"
   ],
   "recurring_group_id": null
 }

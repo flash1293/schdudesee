@@ -5,14 +5,12 @@
   "time_raw": "11:00 Uhr",
   "location": "Ehrenhain",
   "organizer": "Initiative 'Füreinander - Miteinander in Graben-Neudorf'",
-  "description": "[Kultur & Bildung]",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145726/salsa-und-brunch",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Kultur",
-    "Bildung",
     "Graben-Neudorf"
   ],
   "recurring_group_id": null

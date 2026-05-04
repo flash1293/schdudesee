@@ -1,0 +1,19 @@
+{
+  "title": "Vatertagsfest Piraten KCP",
+  "date_start": "2026-05-14",
+  "date_end": null,
+  "time_raw": "11:00",
+  "location": "",
+  "organizer": "Musikverein Harmonie Blankenloch e.V.",
+  "description": "",
+  "event_url": "https://musikverein-blankenloch.de/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Fest",
+    "Politik",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null
+}
