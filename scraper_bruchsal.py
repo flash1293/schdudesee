@@ -161,7 +161,7 @@ def scrape_rss(session):
 
             uhr = desc_soup.select_one(".uhr")
             time_raw = parse_time(uhr.get_text(strip=True) if uhr else "")
-            title = re.sub(r"^\d{2}\.\d{2}\.\d{4}\s*", "", title_text).strip()
+            title = re.sub(r"^[\s-]*\d{2}\.\d{2}\.\d{4}([\s-]*\d{2}\.\d{2}\.\d{4})*\s*", "", title_text).strip()
 
             organization = desc_soup.select_one(".organization")
             location = organization.get_text(strip=True) if organization else ""
@@ -191,7 +191,7 @@ def parse_zmitem_list_page(soup):
             link = item.select_one('a.titel[href*="zmdetail"]') or item.select_one('a[href*="zmdetail"]')
             if not link:
                 continue
-            title = link.get_text(strip=True)
+            title = re.sub(r"^[\s-]*\d{2}\.\d{2}\.\d{4}([\s-]*\d{2}\.\d{2}\.\d{4})*\s*", "", link.get_text(strip=True)).strip()
             href = link.get("href", "")
             event_url = urljoin(BASE_URL, href) if href else ""
 
