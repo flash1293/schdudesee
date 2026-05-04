@@ -9,6 +9,7 @@ All data available on listing pages — no need to visit individual events.
 """
 
 import re
+from urllib.parse import urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -99,6 +100,9 @@ def scrape_graben_neudorf():
 
                 description = category
 
+                detail_link = record.select_one('a[href*="veranstaltungskalender/"]')
+                event_url = urljoin(BASE_URL, detail_link["href"]) if detail_link and detail_link.get("href") else CALENDAR_URL
+
                 all_events.append({
                     "title": title,
                     "date_start": date_start,
@@ -107,7 +111,7 @@ def scrape_graben_neudorf():
                     "location": location,
                     "organizer": organizer,
                     "description": description,
-                    "event_url": CALENDAR_URL,
+                    "event_url": event_url,
                     "district": "graben-neudorf",
                 })
             except Exception as e:
@@ -118,9 +122,8 @@ def scrape_graben_neudorf():
 
         pagination = soup.select_one("div.pagination.hw_pagination")
         if pagination:
-            current = pagination.select_one("button[disabled]")
-            last = pagination.select_one('a[title="Letzte Seite"]')
-            if not last and current:
+            next_link = pagination.select_one('a[title="Seite weiter"]')
+            if not next_link:
                 break
 
     return {
