@@ -5,14 +5,14 @@
   "time_raw": "15:30",
   "location": "Blankenloch-Stutensee, 76297",
   "organizer": "Melanie Nagel",
-  "description": "*]:pointer-events-auto scroll-mt-[calc(var(--header-height)+min(200px,max(70px,20svh)))]\" dir=\"auto\" tabindex=\"-1\" data-turn-id=\"request-68c3e531-65d0-832d-8b53-53c50aae7a7c-1\" data-testid=\"conversation-turn-464\" data-scroll-anchor=\"true\" data-turn=\"assistant\">\n\n\n\n\n\n\nKosten: 26 €; Geschwisterkinder 20€ (bei gleicher Begleitperson!)\nInfos & Anmeldung: 017695781759 oder melanie.m.nagel@gmail.com \n\n\n\n\n\n\n\n ",
+  "description": "\n\n\n\n\n\n\nKosten: 26 €; Geschwisterkinder 20€ (bei gleicher Begleitperson!)\nInfos & Anmeldung: 017695781759 oder melanie.m.nagel@gmail.com \n\n\n\n\n\n\n\n ",
   "event_url": "https://stutenseekinderkalender.de/event/farbenfrohe-sonnenfaenger/2026-06-16/",
   "sources": [
     "https://stutenseekinderkalender.de"
   ],
   "tags": [
-    "Musik",
     "Kinder",
+    "Handwerk",
     "Blankenloch"
   ],
   "recurring_group_id": null
