@@ -329,15 +329,13 @@ header::after {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 16px;
-  margin: 20px 0 10px;
+  padding: 8px 14px;
+  margin: 12px 0 6px;
   background: var(--primary);
   border-radius: var(--radius-sm);
   color: #fff;
   position: sticky;
-  top: 102px;
   z-index: 5;
-
 }
 .date-separator:first-child { margin-top: 0; }
 .date-separator .date-sep-day {
@@ -611,7 +609,7 @@ header::after {
   .sort-group { width: 100%; }
   .sort-group select { flex: 1; }
   .stats-badge { margin-left: 0; }
-  .date-separator { padding: 8px 12px; margin: 14px 0 8px; top: 148px; }
+  .date-separator { padding: 8px 12px; margin: 12px 0 6px; }
   .date-separator .date-sep-day { font-size: 18px; }
   .date-separator .date-sep-month { font-size: 11px; }
   .events-wrap { padding: 0 12px; }
@@ -932,8 +930,23 @@ async function loadEvents(page) {
   totalPages = data.total_pages;
   renderEvents(data.events);
   renderPagination();
-
+  updateStickyTop();
 }
+
+function updateStickyTop() {
+  const filter = document.querySelector('.controls-wrap');
+  if (!filter) return;
+  const h = filter.offsetHeight;
+  document.querySelectorAll('.date-separator').forEach(el => {
+    el.style.setProperty('top', (h + 6) + 'px', 'important');
+  });
+}
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(updateStickyTop, 100);
+});
 
 function renderEvents(events) {
   const container = document.getElementById('events');
