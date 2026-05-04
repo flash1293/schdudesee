@@ -371,7 +371,7 @@ KEYWORDS = {
     "Natur": ["natur", "garten", "wald", "vogel", "baum", "pflanze", "umwelt", "klima",
               "hornisse", "mulchen", "exkursion", "wanderung"],
     "Senioren": ["senior", "50+", "\u00e4lter", "alt werden", "beweglich im alter"],
-    "Digital": ["digital", "smartphone", "computer", "handy", "online", "app", "internet"],
+    "Digital": ["digital", "smartphone", "computer", "handy", "online", "internet"],
     "Handwerk": ["basteln", "werkstatt", "n\u00e4hen", "stricken", "h\u00e4keln", "reparier", "reparatur",
                  "handarbeit", "secondhand", "bastel", "sonnenf\u00e4nger"],
     "Essen": ["kochen", "backen", "grill", "fr\u00fchst\u00fcck", "k\u00fcche", "kuchen", "kaffee",
