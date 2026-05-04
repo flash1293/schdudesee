@@ -10,6 +10,8 @@
   "sources": [
     "https://meinstutensee.de/termine/"
   ],
-  "tags": [],
+  "tags": [
+    "Weingarten"
+  ],
   "recurring_group_id": null
 }
