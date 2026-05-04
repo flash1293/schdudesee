@@ -321,7 +321,7 @@ header::after {
 .events {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
 }
 
 /* Date separator */
@@ -657,7 +657,6 @@ header::after {
     <div class="controls-row">
       <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
       <input type="date" id="date-from" onchange="loadEvents(1)" title="Von">
-      <span class="stats-badge" id="count-display">Lade…</span>
     </div>
     <div class="controls-row">
       <div class="filter-popover" id="theme-popover">
@@ -933,7 +932,7 @@ async function loadEvents(page) {
   totalPages = data.total_pages;
   renderEvents(data.events);
   renderPagination();
-  document.getElementById('count-display').textContent = `${data.total} ${data.total === 1 ? 'Veranstaltung' : 'Veranstaltungen'}`;
+
 }
 
 function renderEvents(events) {
