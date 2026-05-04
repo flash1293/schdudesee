@@ -52,6 +52,6 @@ def scrape_eggenstein():
             events.append({
                 "title": title, "date_start": iso, "date_end": None,
                 "time_raw": "", "location": loc, "organizer": org,
-                "description": teaser, "event_url": html.unescape(event_url),
+                "description": html.unescape(teaser), "event_url": html.unescape(event_url),
             })
     return {"source_url": SOURCE, "events": events}

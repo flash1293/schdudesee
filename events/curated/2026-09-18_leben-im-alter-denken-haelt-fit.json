@@ -5,14 +5,11 @@
   "time_raw": "",
   "location": "Pestalozzi-Schule / Aula",
   "organizer": "Sozialverband VdK Ortsverband Neudorf",
-  "description": "[Soziales & Umwelt]",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146377/leben-im-alter-denken-haelt-fit",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
-  "tags": [
-    "Natur",
-    "Wohltätigkeit"
-  ],
+  "tags": [],
   "recurring_group_id": null
 }
