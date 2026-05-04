@@ -371,7 +371,7 @@ KEYWORDS = {
     "Natur": ["natur", "garten", "wald", "vogel", "baum", "pflanze", "umwelt", "klima",
               "hornisse", "mulchen", "exkursion", "wanderung"],
     "Senioren": ["senior", "50+", "\u00e4lter", "alt werden", "beweglich im alter"],
-    "Digital": ["digital", "smartphone", "computer", "handy", "online", "app", "internet"],
+    "Digital": ["digital", "smartphone", "computer", "handy", "online", "internet"],
     "Handwerk": ["basteln", "werkstatt", "n\u00e4hen", "stricken", "h\u00e4keln", "reparier", "reparatur",
                  "handarbeit", "secondhand", "bastel", "sonnenf\u00e4nger"],
     "Essen": ["kochen", "backen", "grill", "fr\u00fchst\u00fcck", "k\u00fcche", "kuchen", "kaffee",
@@ -424,15 +424,28 @@ def normalize_location_dedup(location):
     return loc[:idx].strip() if idx > 0 else loc
 
 
+TITLE_EXCLUSIVE_TAGS = {
+    "krabbelgruppe": "Kinder",
+}
+
+
 def auto_tag(title, description="", location="", organizer=""):
-    content_text = f"{title} {description}".lower()
+    title_lower = (title or "").lower()
+
     content_tags = []
-    for tag, keywords in KEYWORDS.items():
-        for kw in keywords:
-            if kw in content_text:
-                content_tags.append(tag)
-                break
-    content_tags = content_tags[:2]
+    for exclusive_kw, forced_tag in TITLE_EXCLUSIVE_TAGS.items():
+        if exclusive_kw in title_lower:
+            content_tags = [forced_tag]
+            break
+
+    if not content_tags:
+        content_text = f"{title} {description}".lower()
+        for tag, keywords in KEYWORDS.items():
+            for kw in keywords:
+                if kw in content_text:
+                    content_tags.append(tag)
+                    break
+        content_tags = content_tags[:2]
 
     def match_districts(text):
         results = []
