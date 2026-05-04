@@ -432,19 +432,40 @@ def auto_tag(title, description="", location="", organizer=""):
                 content_tags.append(tag)
                 break
     content_tags = content_tags[:2]
-    full_text = f"{title} {description} {location} {organizer}".lower()
-    district_tags = []
-    for district, keywords in DISTRICTS.items():
-        for kw in keywords:
-            if kw in full_text:
-                excluded = False
-                for excl in DISTRICT_EXCLUSIONS.get(district, []):
-                    if excl in full_text:
-                        excluded = True
-                        break
-                if not excluded and district not in district_tags:
-                    district_tags.append(district)
-                break
+
+    def match_districts(text):
+        results = []
+        for district, keywords in DISTRICTS.items():
+            for kw in keywords:
+                if kw in text:
+                    excluded = False
+                    for excl in DISTRICT_EXCLUSIONS.get(district, []):
+                        if excl in text:
+                            excluded = True
+                            break
+                    if not excluded and district not in results:
+                        results.append(district)
+                    break
+        return results
+
+    loc_text = (location or "").lower()
+    content_text_full = f"{title} {description}".lower()
+    org_text = (organizer or "").lower()
+
+    location_districts = match_districts(loc_text)
+    content_districts = match_districts(content_text_full)
+
+    district_tags = list(location_districts)
+    for d in content_districts:
+        if d not in district_tags:
+            district_tags.append(d)
+
+    if not location_districts:
+        org_districts = match_districts(org_text)
+        for d in org_districts:
+            if d not in district_tags:
+                district_tags.append(d)
+
     return content_tags + district_tags
 
 
