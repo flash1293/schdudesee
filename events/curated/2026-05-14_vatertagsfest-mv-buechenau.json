@@ -1,0 +1,19 @@
+{
+  "title": "Vatertagsfest MV Büchenau",
+  "date_start": "2026-05-14",
+  "date_end": null,
+  "time_raw": "12:00-14:00",
+  "location": "Veranstaltungshalle",
+  "organizer": "Musikverein Harmonie Spöck",
+  "description": "",
+  "event_url": "https://musikverein-spoeck.de/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Fest",
+    "Spöck",
+    "Büchenau"
+  ],
+  "recurring_group_id": null
+}

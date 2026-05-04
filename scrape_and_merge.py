@@ -520,8 +520,11 @@ def dedup_events(raw_events):
                     at = normalize_title(a.get("title", ""))
                     bt = normalize_title(b.get("title", ""))
                     if at == bt or (len(at) > 6 and len(bt) > 6 and (at in bt or bt in at or at.replace(' ','') in bt.replace(' ','') or bt.replace(' ','') in at.replace(' ',''))):
-                        match = (a_idx, b_idx)
-                        break
+                        a_org = re.sub(r'[\s\.,;:-]+', '', ((a.get("organizer") or "") or "").lower())
+                        b_org = re.sub(r'[\s\.,;:-]+', '', ((b.get("organizer") or "") or "").lower())
+                        if a_org == b_org:
+                            match = (a_idx, b_idx)
+                            break
                 if match:
                     break
             if not match:
@@ -565,6 +568,10 @@ def dedup_events(raw_events):
                     elif short_ns and all(any(w in word for word in long_w) for w in short_ns.split()):
                         match = True
                 if match:
+                    a_org = re.sub(r'[\s\.,;:-]+', '', ((a.get("organizer") or "") or "").lower())
+                    b_org = re.sub(r'[\s\.,;:-]+', '', ((b.get("organizer") or "") or "").lower())
+                    if a_org != b_org:
+                        continue
                     pick = max([a, b], key=lambda x: len(x.get("description", "") or ""))
                     kill = b if pick is a else a
                     kill_idx = indices[j] if pick is a else indices[i]
