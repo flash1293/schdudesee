@@ -344,16 +344,16 @@ KEYWORDS = {
     "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang", "musikal", "orchester", "posaunen", "gitarre", "vox", "choir", "swing", "liederabend", "gospel", "rockfestival"],
     "Kultur": ["theater", "lesung", "kunst", "ausstellung", "kino", "literatur", "b\u00fchne", "kultur", "museum", "foto", "malen", "zeichnen", "denkmals", "salsa", "vernissage", "modellbahn"],
     "Kirche": ["gottesdienst", "kirche", "konfirmation", "firmung", "taufe", "messe", "andacht", "segen", "\u00f6kumen", "patrozinium", "gebet", "evangelisch", "katholisch", "trauer", "abendmahl", "kommunion", "herzensgebet", "maiandacht", "bibelkreis", "bibelgespr\u00e4ch", "bibelstunde", "vesper", "kreuzweg", "volkstrauertag", "allerseelen", "allerheiligen", "glaubenskurs", "religionsunterricht"],
+    "Natur": ["natur", "wald", "vogel", "vögel", "baum", "pflanze", "umwelt", "klima",
+               "hornisse", "mulchen", "exkursion", "wanderung",
+               "gartenfest", "gartenarbeit", "gartengestaltung", "gartenbau"],
     "Kinder": ["kind", "baby", "eltern-kind", "krabbel", "spiel", "familie", "m\u00e4dchen", "junge", "kindergarten", "schule", "vorlesen", "bilderbuch", "k\u00fcken", "seepferdchen", "abenteuer", "zwerge", "jugend", "teen", "sch\u00fcler", "kinderturnen", "ferien", "caribi", "minis", "bambini", "steckenpferd", "drachen", "lager", "ballontag", "halloween", "gruselnacht", "modellflug", "scoutcamp", "ferienspa\u00df", "nikolaus", "camp", "w\u00f6lfling", "ferienspaß", "wölfling"],
     "Fest": ["fest", "oktoberfest", "maifest", "weihnachtsmarkt", "kerwe", "party", "sportfest", "maibaum", "fr\u00fchlingsfest", "sommerfest", "jubil\u00e4um", "vatertagsfest", "abschlussfeier", "thanksgiving", "neujahr", "adventzauber", "wintergl\u00fchen", "weihnachtskorso", "heimattage", "steinwiesenfest", "k\u00fcrbisfest", "h\u00e4hnchenfest", "fischerfest", "apfelbl\u00fctenfest", "kinderspielfest", "pfingstfeier"],
     "Markt": ["markt", "flohmarkt", "tr\u00f6del", "weihnachtsmarkt", "verkaufsoffener", "herbstmarkt", "hofflohmarkt", "frauenflohmarkt", "bauernmarkt"],
     "Workshop": ["workshop", "kurs", "seminar", "lernen", "unterricht", "training"],
-"Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
-"lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform"],
-    "Natur": ["natur", "wald", "vogel", "baum", "pflanze", "umwelt", "klima",
-               "hornisse", "mulchen", "exkursion", "wanderung",
-               "gartenfest", "gartenarbeit", "gartengestaltung", "gartenbau"],
     "Senioren": ["senior", "50+", "\u00e4lter", "alt werden", "beweglich im alter"],
+    "Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
+"lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform"],
     "Digital": ["digital", "smartphone", "computer", "handy", "online", "internet"],
     "Handwerk": ["basteln", "werkstatt", "n\u00e4hen", "stricken", "h\u00e4keln", "reparier", "reparatur", "handarbeit", "secondhand", "bastel", "sonnenf\u00e4nger"],
     "Essen": ["kochen", "backen", "grill", "fr\u00fchst\u00fcck", "k\u00fcche", "kuchen", "kaffee", "bowle", "bier", "wein", "h\u00e4hnchen", "flammkuchen", "zwiebelkuchen", "mittagstisch", "dampfnudel"],
@@ -421,7 +421,7 @@ def auto_tag(title, description="", location="", organizer=""):
                 if kw in content_text:
                     content_tags.append(tag)
                     break
-        content_tags = content_tags[:2]
+        content_tags = content_tags[:3]
 
     def match_districts(text):
         results = []
