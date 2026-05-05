@@ -379,7 +379,7 @@ KEYWORDS = {
               "bowle", "bier", "wein", "h\u00e4hnchen", "flammkuchen", "zwiebelkuchen", "mittagstisch",
               "dampfnudel"],
     "Treff": ["treff", "caf\u00e9", "stammtisch", "begegnung", "gespr\u00e4ch", "runde", "kreis",
-              "spieleabend", "badentreff", "m\u00e4nnerrunde"],
+               "spieleabend", "badentreff", "m\u00e4nnerrunde", "selbsthilfe"],
     "Politik": ["gemeinderat", "b\u00fcrgermeister", "politik", "partei", "ausschuss",
                 "b\u00fcrgermeisterkandidaten", "einwohnerversammlung"],
     "Verein": ["verein", "e.v.", "mitgliederversammlung", "vorstand", "ehrenamt",
