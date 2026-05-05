@@ -1,16 +1,17 @@
 {
-  "title": "Tag der offenen Tür (mit Essensangeboten)",
+  "title": "Tag der offenen Tür  beim Schützenverein",
   "date_start": "2026-05-09",
   "date_end": null,
   "time_raw": "",
   "location": "Schützenverein Eggenstein, Kopfweg 8",
   "organizer": "Schützenverein 1958 e.V. Eggenstein",
-  "description": "Tag der offenen Tür (mit Essensangeboten)",
+  "description": "Tag der offenen Tür beim Schützenverein",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1787",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [
+    "Verein",
     "Eggenstein"
   ],
   "recurring_group_id": null
