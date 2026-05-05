@@ -69,12 +69,13 @@ jobs:
           ES_ENDPOINT: ${{ secrets.ELASTIC_ENDPOINT }}
           ES_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
         run: |
-          curl -s -X POST "${ES_ENDPOINT}/_bulk" \
+          {
+            echo '{ "index": { "_index": "logs-gha" } }'
+            echo '{ "@timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'", "workflow": "${{ github.workflow }}", "run_id": "${{ github.run_id }}", "branch": "${{ github.ref_name }}", "commit": "${{ github.sha }}", "status": "${{ job.status }}", "actor": "${{ github.actor }}" }'
+          } | curl -s -X POST "${ES_ENDPOINT}/_bulk" \
             -H "Authorization: ApiKey ${ES_API_KEY}" \
             -H "Content-Type: application/x-ndjson" \
-            -d "{ \"index\": { \"_index\": \"logs-gha\" } }
-      { \"@timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\", \"workflow\": \"${{ github.workflow }}\", \"run_id\": \"${{ github.run_id }}\", \"branch\": \"${{ github.ref_name }}\", \"commit\": \"${{ github.sha }}\", \"status\": \"${{ job.status }}\", \"actor\": \"${{ github.actor }}\" }
-      " || echo "Warning: log send failed (non-fatal)"
+            --data-binary @- || echo "Warning: log send failed (non-fatal)"
 
   cleanup:
     if: github.event.action == 'closed'
