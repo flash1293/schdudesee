@@ -32,3 +32,17 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
           cd cloudflare && python3 build.py && npx wrangler deploy
+
+      - name: Send logs to Elastic
+        if: always()
+        env:
+          ES_ENDPOINT: ${{ secrets.ELASTIC_ENDPOINT }}
+          ES_API_KEY: ${{ secrets.ELASTIC_API_KEY }}
+        run: |
+          {
+            echo '{ "index": { "_index": "logs-gha" } }'
+            echo '{ "@timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'", "workflow": "${{ github.workflow }}", "run_id": "${{ github.run_id }}", "branch": "${{ github.ref_name }}", "commit": "${{ github.sha }}", "status": "${{ job.status }}", "actor": "${{ github.actor }}" }'
+          } | curl -s -X POST "${ES_ENDPOINT}/_bulk" \
+            -H "Authorization: ApiKey ${ES_API_KEY}" \
+            -H "Content-Type: application/x-ndjson" \
+            --data-binary @- || echo "Warning: log send failed (non-fatal)"
