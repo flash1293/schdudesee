@@ -344,7 +344,7 @@ KEYWORDS = {
               "fu\u00dfball", "fussball", "schwimm", "rad", "bike", "cycling", "sport", "bewegung",
               "gymnastik", "tanz", "dance", "ballett", "kickbox", "karate", "indiaca", "volleyball",
               "handball", "basketball", "reiten", "pferd", "wandern", "training", "spechaa",
-              "turnier", "kajak", "kanu", "dressur", "springturnier", "reitturnier"],
+              "turnier", "kajak", "kanu", "dressur", "springturnier", "reitturnier", "meisterschaft"],
     "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang",
               "musikal", "orchester", "posaunen", "gitarre", "vox", "choir", "swing", "liederabend",
               "gospel", "rockfestival"],
