@@ -380,7 +380,7 @@ KEYWORDS = {
               "dampfnudel"],
     "Treff": ["treff", "caf\u00e9", "stammtisch", "begegnung", "gespr\u00e4ch", "runde", "kreis",
               "spieleabend", "badentreff", "m\u00e4nnerrunde"],
-    "Politik": ["gemeinderat", "b\u00fcrgermeister", "politik", "partei", "rat", "ausschuss",
+    "Politik": ["gemeinderat", "b\u00fcrgermeister", "politik", "partei", "ausschuss",
                 "b\u00fcrgermeisterkandidaten", "einwohnerversammlung"],
     "Verein": ["verein", "e.v.", "mitgliederversammlung", "vorstand", "ehrenamt",
                "clubabend", "hobbyday", "vorstandsmeeting", "arbeitseinsatz",
