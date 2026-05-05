@@ -687,7 +687,7 @@ def auto_tag(title, description="", location="", organizer=""):
                 if kw in content_text:
                     content_tags.append(tag)
                     break
-        content_tags = content_tags[:2]
+        content_tags = content_tags[:3]
 
     def match_districts(text):
         results = []
