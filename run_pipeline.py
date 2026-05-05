@@ -616,7 +616,7 @@ DISTRICT_EXCLUSIONS = {
 }
 
 KEYWORDS = {
-    "Sport": ["stadtlauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
+"Sport": ["stadtlauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
               "fu\u00dfball", "fussball", "schwimm", "rad", "bike", "cycling", "sport", "bewegung",
               "gymnastik", "tanz", "dance", "ballett", "kickbox", "karate", "indiaca", "volleyball",
               "handball", "basketball", "reiten", "pferd", "wandern", "training", "spechaa",
