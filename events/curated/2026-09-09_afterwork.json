@@ -10,6 +10,8 @@
   "sources": [
     "https://gewerbeverein-stutensee.org/veranstaltungen"
   ],
-  "tags": [],
+  "tags": [
+    "Treff"
+  ],
   "recurring_group_id": null
 }
