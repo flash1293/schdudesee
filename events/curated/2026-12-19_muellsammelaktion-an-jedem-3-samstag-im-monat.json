@@ -10,6 +10,9 @@
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
-  "tags": [],
+  "tags": [
+    "Sport",
+    "Natur"
+  ],
   "recurring_group_id": null
 }
