@@ -405,6 +405,10 @@ TITLE_EXCLUSIVE_TAGS = {
     "v\u00f6gel": "Natur",
 }
 
+ORGANIZER_EXCLUSIVE_TAGS = {
+    "agendagruppe umwelt": "Natur",
+}
+
 
 def auto_tag(title, description="", location="", organizer=""):
     title_lower = (title or "").lower()
@@ -414,6 +418,13 @@ def auto_tag(title, description="", location="", organizer=""):
         if exclusive_kw in title_lower:
             content_tags = [forced_tag]
             break
+
+    if not content_tags:
+        org_lower = (organizer or "").lower()
+        for exclusive_kw, forced_tag in ORGANIZER_EXCLUSIVE_TAGS.items():
+            if exclusive_kw in org_lower:
+                content_tags = [forced_tag]
+                break
 
     if not content_tags:
         content_text = f"{title} {description}".lower()
