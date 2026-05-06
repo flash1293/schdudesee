@@ -17,6 +17,7 @@ export default {
     if (url.pathname === '/api/organizer') return serveOrganizers(env);
     if (url.pathname === '/api/info') return serveStats(env);
     if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
+    if (url.pathname === '/llms.txt') return serveLlmTxt();
     return new Response('Not found', { status: 404 });
   }
 };
@@ -127,4 +128,100 @@ async function serveRecurring(env, groupId) {
     sources: decode(r.sources || ''), tags: r.tags || '',
     recurring_group_id: r.recurring_group_id,
   })));
+}
+
+function serveLlmTxt() {
+  return new Response(`# Was geht, Stutensee? — Event Calendar API
+
+## About
+Was geht, Stutensee? is an event calendar for Stutensee, Germany. It aggregates events from 20+ sources including the official city calendar, club websites, cultural institutions, and neighboring municipalities. All data is served via a Cloudflare Worker backed by D1 (SQLite-compatible) database.
+
+## Base URL
+https://was-geht-stutensee.de (production)
+https://was-geht-stutensee-staging.email-0d0.workers.dev (staging)
+
+## API Endpoints
+
+### GET /api/list — List events
+Returns paginated events with optional filtering.
+
+Query parameters:
+- page (int, default: 1) — page number
+- per_page (int, default: 50, max: 100) — events per page
+- search (string) — search in title, location, organizer
+- tag (string, repeatable) — filter by theme or district tag
+- date_from (ISO date, e.g. 2026-05-06) — show events from this date onward
+- organizer (string) — filter by exact organizer name
+- hide_recurring (boolean) — if set, hide recurring event series
+
+Response:
+{
+  "events": [
+    {
+      "id": 1234,
+      "title": "Event Title",
+      "date_start": "2026-05-10",
+      "date_end": null,
+      "time_raw": "19:00",
+      "location": "Venue, Street, City",
+      "organizer": "Organizer Name",
+      "description": "Event description text.",
+      "event_url": "https://example.com/event",
+      "sources": "https://source1.de,https://source2.de",
+      "tags": "Sport,Fest,Blankenloch",
+      "recurring_group_id": null
+    }
+  ],
+  "total": 150,
+  "page": 1,
+  "per_page": 50,
+  "total_pages": 3
+}
+
+Notes:
+- title, location, organizer, description, event_url, sources are HTML-decoded
+- tags is a comma-separated string of theme tags (e.g. Sport, Musik, Kultur, Kirche, Kinder, Fest, Markt) and district tags (e.g. Blankenloch, Büchig, Friedrichstal, Spöck, Staffort, Weingarten, Bruchsal, etc.)
+- district tags are auto-derived from location text
+- events without a date_start are excluded
+- blocked/spam events have tags='blocked' and are excluded
+
+### GET /api/theme — List theme categories
+Returns sorted array of all active theme tags (e.g. ["Bildung","Digital","Essen","Fest","Handwerk","Kinder","Kirche","Kultur","Markt","Musik","Natur","Politik","Senioren","Sport","Treff","Verein","Wohltätigkeit","Workshop","Sonstiges"]).
+
+### GET /api/districts — List district tags
+Returns sorted array of all active district/location tags (e.g. ["Blankenloch","Bruchsal","Büchig","Eggenstein","Friedrichstal","Graben-Neudorf","Hagsfeld","Leopoldshafen","Linkenheim","Neuthard","Rintheim","Spöck","Staffort","Waldstadt","Weingarten"]).
+
+### GET /api/organizer — List organizers
+Returns sorted array of unique organizer names.
+
+### GET /api/info — Event counts
+Returns raw event count and curated event count: { "raw": 6000, "curated": 5400 }
+
+### GET /api/same/:id — Recurring events
+Returns all events in the same recurring group as the event with the given ID.
+
+### GET / — Web UI
+Returns the full single-page application HTML with inline CSS and JS. Features include:
+- Search by keyword
+- Date range filter
+- Filter by theme category (emoji-based)
+- Filter by district/location
+- Filter by organizer
+- Toggle between normal and compact view
+- Toggle recurring events visibility
+- Pagination
+- Recurring event group expansion
+
+## Data Freshness
+Event data is updated weekly via a scraping pipeline (scrape_and_merge.py). Sources include:
+- stutensee.de (official city calendar)
+- stutenseekinderkalender.de (children's calendar)
+- meinstutensee.de (community calendar)
+- Individual club/verein websites (40+)
+- Neighboring municipality calendars (Linkenheim, Graben-Neudorf, Weingarten, Bruchsal, Eggenstein, etc.)
+
+## Terms
+This API is free and public. No authentication required. No rate limiting currently enforced. Data is provided as-is without guarantee of completeness or accuracy.`, {
+    headers: { 'content-type': 'text/plain;charset=utf-8', 'cache-control': 'public, max-age=3600' }
+  });
 }
