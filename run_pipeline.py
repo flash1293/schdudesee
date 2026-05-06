@@ -674,6 +674,7 @@ TITLE_EXCLUSIVE_TAGS = {
 
 ORGANIZER_EXCLUSIVE_TAGS = {
     "agendagruppe umwelt": "Natur",
+    "fc ": "Sport",
 }
 
 def auto_tag(title, description="", location="", organizer=""):

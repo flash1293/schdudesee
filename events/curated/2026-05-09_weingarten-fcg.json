@@ -1,8 +1,8 @@
 {
   "title": "Weingarten - FCG",
-  "date_start": "2026-05-10",
+  "date_start": "2026-05-09",
   "date_end": null,
-  "time_raw": "15:00 Uhr",
+  "time_raw": "18:30 Uhr",
   "location": "Friedrichstal",
   "organizer": "FC Germania Friedrichstal",
   "description": "",
@@ -11,6 +11,7 @@
     "clubs_batch_all"
   ],
   "tags": [
+    "Sport",
     "Friedrichstal",
     "Weingarten"
   ],
