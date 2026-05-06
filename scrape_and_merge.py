@@ -349,16 +349,16 @@ KEYWORDS = {
     "Markt": ["markt", "flohmarkt", "tr\u00f6del", "weihnachtsmarkt", "verkaufsoffener", "herbstmarkt", "hofflohmarkt", "frauenflohmarkt", "bauernmarkt"],
     "Workshop": ["workshop", "kurs", "seminar", "lernen", "unterricht", "training"],
 "Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
-"lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform"],
-    "Natur": ["natur", "wald", "vogel", "baum", "pflanze", "umwelt", "klima",
+"lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform", "schulkonferenz"],
+    "Natur": ["natur", "wald", "vogel", "vögel", "baum", "pflanze", "umwelt", "klima",
                "hornisse", "mulchen", "exkursion", "wanderung",
                "gartenfest", "gartenarbeit", "gartengestaltung", "gartenbau"],
     "Senioren": ["senior", "50+", "\u00e4lter", "alt werden", "beweglich im alter"],
     "Digital": ["digital", "smartphone", "computer", "handy", "online", "internet"],
     "Handwerk": ["basteln", "werkstatt", "n\u00e4hen", "stricken", "h\u00e4keln", "reparier", "reparatur", "handarbeit", "secondhand", "bastel", "sonnenf\u00e4nger"],
-    "Essen": ["kochen", "backen", "grill", "fr\u00fchst\u00fcck", "k\u00fcche", "kuchen", "kaffee", "bowle", "bier", "wein", "h\u00e4hnchen", "flammkuchen", "zwiebelkuchen", "mittagstisch", "dampfnudel"],
+    "Essen": ["kochen", "backen", "grill", "fr\u00fchst\u00fcck", "k\u00fcche", "kuchen", "kaffee", "bowle", "bier", "weinprobe", "h\u00e4hnchen", "flammkuchen", "zwiebelkuchen", "mittagstisch", "dampfnudel"],
     "Treff": ["treff", "caf\u00e9", "stammtisch", "begegnung", "gespr\u00e4ch", "runde", "kreis", "spieleabend", "badentreff", "m\u00e4nnerrunde", "selbsthilfe", "afterwork", "clubhaus", "fr\u00fchschoppen", "netzwerktreffen"],
-    "Politik": ["gemeinderat", "b\u00fcrgermeister", "politik", "partei", "ausschuss", "b\u00fcrgermeisterkandidaten", "einwohnerversammlung", "bürgerkönig", "ortschaftsrat", "verwaltungsausschuss", "ob-kandidaten"],
+    "Politik": ["gemeinderat", "b\u00fcrgermeister", "politik", "partei", "ausschuss", "b\u00fcrgermeisterkandidaten", "einwohnerversammlung", "bürgerkönig", "ortschaftsrat", "verwaltungsausschuss", "ob-kandidaten", "ob-wahl", "kandidatenvorstellung"],
     "Verein": ["verein", "e.v.", "mitgliederversammlung", "vorstand", "ehrenamt", "clubabend", "hobbyday", "vorstandsmeeting", "arbeitseinsatz", "stammesklausur", "hobbylager", "baueinsatz", "jahreshauptversammlung", "jahreshauptübung", "hobbytag", "vereinsforum"],
     "Wohlt\u00e4tigkeit": ["spende", "blutspende", "kleidersammlung", "charity", "sozial", "tafel",
                        "hilfe", "sanit\u00e4tsdienst"],
@@ -402,6 +402,12 @@ def normalize_location_dedup(location):
 
 TITLE_EXCLUSIVE_TAGS = {
     "krabbelgruppe": "Kinder",
+    "v\u00f6gel": "Natur",
+}
+
+ORGANIZER_EXCLUSIVE_TAGS = {
+    "agendagruppe umwelt": "Natur",
+    "fc ": "Sport",
 }
 
 
@@ -413,6 +419,13 @@ def auto_tag(title, description="", location="", organizer=""):
         if exclusive_kw in title_lower:
             content_tags = [forced_tag]
             break
+
+    if not content_tags:
+        org_lower = (organizer or "").lower()
+        for exclusive_kw, forced_tag in ORGANIZER_EXCLUSIVE_TAGS.items():
+            if exclusive_kw in org_lower:
+                content_tags = [forced_tag]
+                break
 
     if not content_tags:
         content_text = f"{title} {description}".lower()
