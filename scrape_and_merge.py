@@ -350,7 +350,7 @@ KEYWORDS = {
     "Workshop": ["workshop", "kurs", "seminar", "lernen", "unterricht", "training"],
 "Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
 "lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform"],
-    "Natur": ["natur", "wald", "vogel", "baum", "pflanze", "umwelt", "klima",
+    "Natur": ["natur", "wald", "vogel", "vögel", "baum", "pflanze", "umwelt", "klima",
                "hornisse", "mulchen", "exkursion", "wanderung",
                "gartenfest", "gartenarbeit", "gartengestaltung", "gartenbau"],
     "Senioren": ["senior", "50+", "\u00e4lter", "alt werden", "beweglich im alter"],
@@ -402,6 +402,7 @@ def normalize_location_dedup(location):
 
 TITLE_EXCLUSIVE_TAGS = {
     "krabbelgruppe": "Kinder",
+    "v\u00f6gel": "Natur",
 }
 
 

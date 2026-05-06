@@ -669,6 +669,7 @@ KEYWORDS = {
 
 TITLE_EXCLUSIVE_TAGS = {
     "krabbelgruppe": "Kinder",
+    "vögel": "Natur",
 }
 
 def auto_tag(title, description="", location="", organizer=""):
