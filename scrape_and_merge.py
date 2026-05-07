@@ -304,6 +304,11 @@ BLOCKED_TITLES = [
     "Treffen f\u00fcr Vorst\u00e4nde und Verantwortliche",
 ]
 
+MANUAL_ORG_MERGE = {
+    "Gesamtelternbeirat": "Gesamtelternbeirat und Eltern der Stutenseer Kindergärten",
+}
+
+
 MANUAL_DUPES = {
     "H\u00e4hnchen Grillfest": ["H\u00e4hnchenfest"],
 }
@@ -673,6 +678,33 @@ def dedup_events(raw_events):
 
     if merged:
         print(f"  Post-merge: {merged} duplicates merged (fuzzy)", flush=True)
+    # Manual org merge: merge same-date events with matching organizers
+    date_org_groups = defaultdict(list)
+    for i, ev in enumerate(curated):
+        date = ev.get("date_start", "") or ""
+        org = (ev.get("organizer", "") or "").lower().strip()
+        date_org_groups.setdefault(date, []).append(i)
+
+    for candidates in date_org_groups.values():
+        for i_idx in candidates:
+            for j_idx in candidates:
+                if i_idx >= j_idx or curated[i_idx] is None or curated[j_idx] is None:
+                    continue
+                a_org = (curated[i_idx].get("organizer", "") or "").lower().strip()
+                b_org = (curated[j_idx].get("organizer", "") or "").lower().strip()
+                for canonical, variant in MANUAL_ORG_MERGE.items():
+                    can_low = canonical.lower().strip()
+                    var_low = variant.lower().strip()
+                    if (can_low in a_org and can_low in b_org) or (var_low in a_org and var_low in b_org):
+                        pick = max([curated[i_idx], curated[j_idx]], key=lambda x: len(x.get("description", "") or ""))
+                        kill = curated[j_idx] if pick is curated[i_idx] else curated[i_idx]
+                        kill_idx = j_idx if pick is curated[i_idx] else i_idx
+                        merged += 1
+                        pick["sources"] = sorted(set(pick.get("sources", []) + kill.get("sources", [])))
+                        curated[kill_idx] = None
+                        break
+
+    curated = compact(curated)
 
     return curated
 
