@@ -100,7 +100,7 @@ def scrape_musikverein_blankenloch():
             "location": "",
             "organizer": "Musikverein Harmonie Blankenloch e.V.",
             "description": "",
-            "event_url": "https://musikverein-blankenloch.de/",
+            "event_url": "http://musikverein-blankenloch.de/",
         })
 
     blog_articles = re.findall(
@@ -126,7 +126,7 @@ def scrape_musikverein_blankenloch():
                         "location": "",
                         "organizer": "Musikverein Harmonie Blankenloch e.V.",
                         "description": "",
-                        "event_url": "https://musikverein-blankenloch.de/",
+                        "event_url": "http://musikverein-blankenloch.de/",
                     })
     return events
 
