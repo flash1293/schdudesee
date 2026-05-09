@@ -837,6 +837,7 @@ let condensedMode = false;
 
 function toggleCondensed() {
   condensedMode = document.getElementById('condensed-toggle').checked;
+  localStorage.setItem('condensed', condensedMode ? '1' : '');
   document.querySelectorAll('.event').forEach(el => {
     el.classList.toggle('condensed', condensedMode);
     el.onclick = condensedMode ? function() { this.classList.toggle('expanded'); } : null;
@@ -939,6 +940,7 @@ function toggleTag(el) {
 
 function toggleRecurringFilter() {
   showRecurring = document.getElementById('show-recurring').checked;
+  localStorage.setItem('showRecurring', showRecurring ? '1' : '');
   loadEvents(1);
 }
 
@@ -1069,6 +1071,14 @@ function esc(s) {
 }
 
   document.getElementById('date-from').value = new Date().toISOString().slice(0, 10);
+  if (localStorage.getItem('condensed')) {
+    document.getElementById('condensed-toggle').checked = true;
+    condensedMode = true;
+  }
+  if (localStorage.getItem('showRecurring') === '') {
+    document.getElementById('show-recurring').checked = false;
+    showRecurring = false;
+  }
   loadTags();
 loadEvents(1);
 </script>
