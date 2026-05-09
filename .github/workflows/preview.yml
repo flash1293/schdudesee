@@ -47,7 +47,7 @@ jobs:
           database_id = "5ab57835-8cc1-4aae-a56f-3f0f8da83357"
           EOF
           npx wrangler deploy --config preview.toml 2>&1 | tee deploy.log
-          URL=$(grep -A1 'Deployed.*triggers' deploy.log | tail -1 | tr -d ' ')
+          URL=$(grep 'https\?://.*workers\.dev' deploy.log | head -1 | tr -d ' ')
           rm -f preview.toml
           echo "url=${URL}" >> $GITHUB_OUTPUT
 
