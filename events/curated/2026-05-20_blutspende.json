@@ -8,6 +8,7 @@
   "description": "",
   "event_url": "https://www.blutspende.de/blutspendetermine/termine/407740",
   "sources": [
+    "https://meinstutensee.de/termine/",
     "https://www.blutspende.de/blutspendetermine/stadt/stutensee-08215109"
   ],
   "tags": [
