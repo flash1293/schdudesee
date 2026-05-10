@@ -33,6 +33,8 @@
   --tag-org-bg: #fef3c7;
   --tag-org-text: #92400e;
   --imprint-text: #374151;
+  --skeleton-bg: #e8ecf0;
+  --skeleton-bg-light: #f0f2f5;
 }
 .dark {
   --primary-light: #1e3a5f;
@@ -48,6 +50,8 @@
   --tag-org-bg: #422006;
   --tag-org-text: #fbbf24;
   --imprint-text: #94a3b8;
+  --skeleton-bg: #1e293b;
+  --skeleton-bg-light: #334155;
 }
 body {
   overflow-x: hidden;
@@ -553,7 +557,7 @@ header::after {
 /* Loading skeleton */
 .skeleton {
   animation: shimmer 1.2s ease-in-out infinite;
-  background: linear-gradient(90deg, #e8ecf0 25%, #f0f2f5 50%, #e8ecf0 75%);
+  background: linear-gradient(90deg, var(--skeleton-bg) 25%, var(--skeleton-bg-light) 50%, var(--skeleton-bg) 75%);
   background-size: 200% 100%;
   border-radius: var(--radius-sm);
   height: 20px;
@@ -573,7 +577,7 @@ header::after {
   width: 70px;
   height: 70px;
   border-radius: var(--radius-sm);
-  background: linear-gradient(90deg, #e8ecf0 25%, #f0f2f5 50%, #e8ecf0 75%);
+  background: linear-gradient(90deg, var(--skeleton-bg) 25%, var(--skeleton-bg-light) 50%, var(--skeleton-bg) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.2s ease-in-out infinite;
   flex-shrink: 0;
@@ -750,8 +754,6 @@ header::after {
   <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a>
   <span style="margin:0 8px">·</span>
   <span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span>
-  <span style="margin:0 8px">·</span>
-  Keine Cookies, kein Tracking, keine Datenspeicherung
   <div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6">
     <strong>Angaben gemäß §5 TMG</strong><br>
     Johannes Reuter<br>
