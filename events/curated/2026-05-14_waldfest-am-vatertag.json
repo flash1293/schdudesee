@@ -1,0 +1,19 @@
+{
+  "title": "Waldfest am Vatertag",
+  "date_start": "2026-05-14",
+  "date_end": "2026-05-14",
+  "time_raw": "10:00",
+  "location": "Waldspielplatz Spöck",
+  "organizer": "Gesangverein Liederkranz Spöck 1900 e.V.",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/waldfest-am-vatertag/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Fest",
+    "Natur",
+    "Spöck"
+  ],
+  "recurring_group_id": null
+}
