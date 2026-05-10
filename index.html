@@ -1101,7 +1101,7 @@ function toggleDark() {
   document.getElementById('dark-toggle').textContent = isDark ? '☀️' : '🌙';
 }
 
-  // Dark mode init
+  /* Dark mode init */
   (function initDark() {
     const saved = localStorage.getItem('dark');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
