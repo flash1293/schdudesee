@@ -1,14 +1,13 @@
 {
   "title": "Vatertagsfest",
   "date_start": "2026-05-14",
-  "date_end": "2026-05-14",
-  "time_raw": "11:00",
-  "location": "Karnevalsclub &quot;Die Piraten&quot; e.V.",
-  "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
+  "organizer": "Karnevalsclub &quot;Die Piraten&quot; Stutensee e.V.",
   "description": "",
-  "event_url": "https://www.meinstutensee.de/veranstaltungen/vatertagsfest/",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2615",
   "sources": [
-    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
