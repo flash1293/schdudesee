@@ -15,7 +15,7 @@ encoded = base64.b64encode(html.encode("utf-8")).decode("ascii")
 inlined = f'const indexHtml = new TextDecoder().decode(Uint8Array.from(atob("{encoded}"), c=>c.charCodeAt(0)));\n'
 
 # Also inline the favicon
-favicon_path = os.path.join(os.path.dirname(__file__), "..", "favicon.png")
+favicon_path = os.path.join(os.path.dirname(__file__), "favicon.png")
 if os.path.exists(favicon_path):
     with open(favicon_path, "rb") as f:
         favicon_b64 = base64.b64encode(f.read()).decode("ascii")
