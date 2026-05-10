@@ -37,7 +37,8 @@
   --skeleton-bg-light: #f0f2f5;
 }
 .dark {
-  --primary: #081b3d;
+  --primary: #050b18;
+  --primary-accent: #1e40af;
   --primary-light: #1e3a5f;
   --bg: #0f172a;
   --card-bg: #1e293b;
@@ -362,7 +363,7 @@ header::after {
   gap: 10px;
   padding: 8px 14px;
   margin: 8px 0;
-  background: var(--primary);
+  background: var(--primary-accent, var(--primary));
   border-radius: var(--radius-sm);
   color: #fff;
   position: sticky;
