@@ -1073,10 +1073,12 @@ function esc(s) {
   document.getElementById('date-from').value = new Date().toISOString().slice(0, 10);
   if (localStorage.getItem('condensed')) {
     document.getElementById('condensed-toggle').checked = true;
+    document.getElementById('condensed-toggle-mobile').checked = true;
     condensedMode = true;
   }
   if (localStorage.getItem('showRecurring') === '') {
     document.getElementById('show-recurring').checked = false;
+    document.getElementById('show-recurring-mobile').checked = false;
     showRecurring = false;
   }
   loadTags();
