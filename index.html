@@ -28,6 +28,26 @@
   --radius: 12px;
   --radius-sm: 8px;
   --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --footer-text: #4b5563;
+  --desc-text: #4a5568;
+  --tag-org-bg: #fef3c7;
+  --tag-org-text: #92400e;
+  --imprint-text: #374151;
+}
+.dark {
+  --primary-light: #1e3a5f;
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --shadow: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.5);
+  --footer-text: #94a3b8;
+  --desc-text: #cbd5e1;
+  --tag-org-bg: #422006;
+  --tag-org-text: #fbbf24;
+  --imprint-text: #94a3b8;
 }
 body {
   overflow-x: hidden;
@@ -428,7 +448,7 @@ header::after {
 .event-meta .date { font-weight: 600; color: var(--text); }
 .event-desc {
   font-size: 13px;
-  color: #4a5568;
+  color: var(--desc-text);
   line-height: 1.6;
   margin-top: 8px;
   display: -webkit-box;
@@ -452,7 +472,7 @@ header::after {
 }
 .tag-source { background: #dbeafe; color: #1e40af; }
 .tag-location { background: #ede9fe; color: #5b21b6; }
-.tag-organizer { background: #fef3c7; color: #92400e; }
+.tag-organizer { background: var(--tag-org-bg); color: var(--tag-org-text); }
 .tag-tag { background: var(--gold-light); color: #92400e; }
 
 /* Recurring */
@@ -480,7 +500,7 @@ header::after {
 }
 .recurring-list table { width: 100%; border-collapse: collapse; }
 .recurring-list th { text-align: left; padding: 4px 12px; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-.recurring-list td { padding: 5px 12px; border-bottom: 1px solid #e2e8f0; color: #374151; }
+.recurring-list td { padding: 5px 12px; border-bottom: 1px solid var(--border); color: var(--imprint-text); }
 .recurring-list tr:last-child td { border-bottom: none; }
 .recurring-list tr:hover td { background: rgba(0,0,0,0.02); }
 
@@ -726,11 +746,13 @@ header::after {
   <div id="events" class="events"></div>
   <div class="pagination" id="pagination"></div>
 </div>
-<footer style="text-align:center;padding:16px;font-size:12px;color:#4b5563">
-  <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:#4b5563;text-decoration:underline">Impressum</a>
+<footer style="text-align:center;padding:16px;font-size:12px;color:var(--footer-text)">
+  <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a>
+  <span style="margin:0 8px">·</span>
+  <span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span>
   <span style="margin:0 8px">·</span>
   Keine Cookies, kein Tracking, keine Datenspeicherung
-  <div id="imprint" style="display:none;margin-top:12px;color:#374151;line-height:1.6">
+  <div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6">
     <strong>Angaben gemäß §5 TMG</strong><br>
     Johannes Reuter<br>
     E-Mail: email@johannes-reuter.de<br><br>
@@ -1069,6 +1091,34 @@ function esc(s) {
   d.textContent = s;
   return d.innerHTML;
 }
+
+function toggleDark() {
+  document.documentElement.classList.toggle('dark');
+  const isDark = document.documentElement.classList.contains('dark');
+  localStorage.setItem('dark', isDark ? '1' : '0');
+  document.getElementById('dark-toggle').textContent = isDark ? '☀️' : '🌙';
+}
+
+  // Dark mode init
+  (function initDark() {
+    const saved = localStorage.getItem('dark');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = saved === '1' || (saved === null && prefersDark);
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.getElementById('dark-toggle').textContent = '☀️';
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (localStorage.getItem('dark') !== null) return;
+      if (e.matches) {
+        document.documentElement.classList.add('dark');
+        document.getElementById('dark-toggle').textContent = '☀️';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('dark-toggle').textContent = '🌙';
+      }
+    });
+  })();
 
   document.getElementById('date-from').value = new Date().toISOString().slice(0, 10);
   if (localStorage.getItem('condensed')) {
