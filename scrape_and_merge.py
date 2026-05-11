@@ -422,6 +422,7 @@ def auto_tag(title, description="", location="", organizer=""):
     title_lower = (title or "").lower()
 
     content_tags = []
+    organizer_tag = None
     for exclusive_kw, forced_tag in TITLE_EXCLUSIVE_TAGS.items():
         if exclusive_kw in title_lower:
             content_tags = [forced_tag]
@@ -431,7 +432,7 @@ def auto_tag(title, description="", location="", organizer=""):
         org_lower = (organizer or "").lower()
         for exclusive_kw, forced_tag in ORGANIZER_EXCLUSIVE_TAGS.items():
             if exclusive_kw in org_lower:
-                content_tags = [forced_tag]
+                organizer_tag = forced_tag
                 break
 
     if not content_tags:
@@ -442,6 +443,9 @@ def auto_tag(title, description="", location="", organizer=""):
                     content_tags.append(tag)
                     break
         content_tags = content_tags[:2]
+
+    if organizer_tag and organizer_tag not in content_tags:
+        content_tags.append(organizer_tag)
 
     def match_districts(text):
         results = []
