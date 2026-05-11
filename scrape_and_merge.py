@@ -413,7 +413,8 @@ TITLE_EXCLUSIVE_TAGS = {
 ORGANIZER_EXCLUSIVE_TAGS = {
     "agendagruppe umwelt": "Natur",
     "fc ": "Sport",
-    "graubau jugendzentrum": "Blankenloch",
+    "jugendzentrum graubau": "Blankenloch",
+    "vogelliebhaber graben": "Graben-Neudorf",
 }
 
 
