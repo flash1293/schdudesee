@@ -1,0 +1,17 @@
+{
+  "title": "Oberbürgermeisterwahl",
+  "date_start": "2026-07-12",
+  "date_end": "2026-07-12",
+  "time_raw": "08:00",
+  "location": "",
+  "organizer": "",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/oberbuergermeisterwahl/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Politik"
+  ],
+  "recurring_group_id": null
+}

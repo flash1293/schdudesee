@@ -346,7 +346,7 @@ DISTRICT_EXCLUSIONS = {
 
 KEYWORDS = {
     "Sport": ["stadtlauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis", "fu\u00dfball", "fussball", "schwimm", "rad", "bike", "cycling", "sport", "bewegung", "gymnastik", "tanz", "dance", "ballett", "kickbox", "karate", "indiaca", "volleyball", "handball", "basketball", "reiten", "pferd", "wandern", "training", "spechaa", "turnier", "kajak", "kanu", "dressur", "springturnier", "reitturnier", "meisterschaft", "pokalfinale", "segeln", "regatta", "gleitschirm", "sportwoche", "radtour", "wanderung"],
-    "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang", "musikal", "orchester", "posaunen", "gitarre", "vox", "choir", "swing", "liederabend", "gospel", "rockfestival"],
+    "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang", "musikal", "orchester", "posaunen", "gitarre", "vox", "choir", "swing", "liederabend", "gospel", "rockfestival", "siyou"],
     "Kultur": ["theater", "lesung", "kunst", "ausstellung", "kino", "literatur", "b\u00fchne", "kultur", "museum", "foto", "malen", "zeichnen", "denkmals", "salsa", "vernissage", "modellbahn"],
     "Kirche": ["gottesdienst", "kirche", "konfirmation", "firmung", "taufe", "messe", "andacht", "segen", "\u00f6kumen", "patrozinium", "gebet", "evangelisch", "katholisch", "trauer", "abendmahl", "kommunion", "herzensgebet", "maiandacht", "bibelkreis", "bibelgespr\u00e4ch", "bibelstunde", "vesper", "kreuzweg", "volkstrauertag", "allerseelen", "allerheiligen", "glaubenskurs", "religionsunterricht"],
     "Kinder": ["kind", "baby", "eltern-kind", "krabbel", "spiel", "familie", "m\u00e4dchen", "junge", "kindergarten", "schule", "vorlesen", "bilderbuch", "k\u00fcken", "seepferdchen", "abenteuer", "zwerge", "jugend", "teen", "sch\u00fcler", "kinderturnen", "ferien", "caribi", "minis", "bambini", "steckenpferd", "drachen", "lager", "ballontag", "halloween", "gruselnacht", "modellflug", "scoutcamp", "ferienspa\u00df", "nikolaus", "camp", "w\u00f6lfling", "ferienspaß", "wölfling"],
@@ -413,6 +413,8 @@ TITLE_EXCLUSIVE_TAGS = {
 ORGANIZER_EXCLUSIVE_TAGS = {
     "agendagruppe umwelt": "Natur",
     "fc ": "Sport",
+    "jugendzentrum graubau": "Blankenloch",
+    "vogelliebhaber graben": "Graben-Neudorf",
 }
 
 
@@ -420,6 +422,7 @@ def auto_tag(title, description="", location="", organizer=""):
     title_lower = (title or "").lower()
 
     content_tags = []
+    organizer_tag = None
     for exclusive_kw, forced_tag in TITLE_EXCLUSIVE_TAGS.items():
         if exclusive_kw in title_lower:
             content_tags = [forced_tag]
@@ -429,7 +432,7 @@ def auto_tag(title, description="", location="", organizer=""):
         org_lower = (organizer or "").lower()
         for exclusive_kw, forced_tag in ORGANIZER_EXCLUSIVE_TAGS.items():
             if exclusive_kw in org_lower:
-                content_tags = [forced_tag]
+                organizer_tag = forced_tag
                 break
 
     if not content_tags:
@@ -440,6 +443,9 @@ def auto_tag(title, description="", location="", organizer=""):
                     content_tags.append(tag)
                     break
         content_tags = content_tags[:2]
+
+    if organizer_tag and organizer_tag not in content_tags:
+        content_tags.append(organizer_tag)
 
     def match_districts(text):
         results = []
