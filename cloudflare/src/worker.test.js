@@ -152,8 +152,12 @@ describe('Worker API', () => {
     it('clamps per_page between 1 and 100', async () => {
       const res1 = await callWorker('/api/list?per_page=0', { env });
       expect(res1.status).toBe(200);
+      const data1 = await res1.json();
+      expect(data1.per_page).toBe(1);
       const res2 = await callWorker('/api/list?per_page=999', { env });
       expect(res2.status).toBe(200);
+      const data2 = await res2.json();
+      expect(data2.per_page).toBe(100);
     });
 
     it('returns CORS headers', async () => {
