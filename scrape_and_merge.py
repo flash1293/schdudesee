@@ -417,6 +417,7 @@ ORGANIZER_EXCLUSIVE_TAGS = {
     "fc ": "Sport",
     "jugendzentrum graubau": "Blankenloch",
     "vogelliebhaber graben": "Graben-Neudorf",
+    "cvjm": "Kirche",
 }
 
 
