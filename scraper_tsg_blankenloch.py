@@ -3,8 +3,10 @@
 scraper_tsg_blankenloch.py — Scraper for TSG Blankenloch event calendar.
 
 TSG Blankenloch is a large sports club in Stutensee-Blankenloch.
-Events are listed on the /Veranstaltungen/ page with dates, title, and location.
-Events are in HTML tables with class="contenttable".
+Events are listed on the /Veranstaltungen/ page.
+
+Excludes events already covered by other sources (Spechaa-Lauf, Waldlauf, Triathlon).
+Deduplicates multi-day events vs. individual Arbeitseinsatz entries.
 """
 
 import re
@@ -13,7 +15,24 @@ from bs4 import BeautifulSoup
 
 BASE_URL = "https://tsg-blankenloch.de"
 CALENDAR_URL = f"{BASE_URL}/Veranstaltungen/"
-CUP_URL = f"{BASE_URL}/Veranstaltungen/StutenseeCUP/"
+
+# Events to exclude — already covered by other scrapers
+# (title substring match, case-insensitive)
+EXCLUDED_TITLES = [
+    "Spechaa-Lauf",
+    "Spechaa Lauf",
+    "Waldlauf",
+    "Friedrichstaler Waldlauf",
+    "Stutenseer Stadtlauf",
+    "Topiblüten-Lauf",
+    "Topiblueten-Lauf",
+]
+
+# Exclude specific (date, title) combinations
+EXCLUDED_EVENTS = {
+    ("2026-06-20", "32. Heinz Beierstorf Triathlon"),  # "Aufbau" already covered
+    ("2026-06-21", "32. Heinz Beierstorf Triathlon"),  # main event already covered
+}
 
 
 def fetch_url(url, session=None, timeout=30):
@@ -38,18 +57,62 @@ def parse_german_date(text):
     return None
 
 
+def is_excluded(title, date_start):
+    """Check if an event should be skipped (already covered by other sources)."""
+    title_lower = title.lower()
+    for excl in EXCLUDED_TITLES:
+        if excl.lower() in title_lower:
+            print(f"  TSG skip (dup from other source): {date_start} | {title}", flush=True)
+            return True
+    if (date_start, title) in EXCLUDED_EVENTS:
+        print(f"  TSG skip (dup from other source): {date_start} | {title}", flush=True)
+        return True
+    return False
+
+
+def assign_tags(title, category, location):
+    """Assign appropriate tags based on title, category, and location."""
+    tags = []
+    title_lower = title.lower()
+    
+    if category == "Arbeitseinsatz":
+        tags.append("Sonstiges")
+    elif "weihnachtsmarkt" in title_lower or "weihnacht" in title_lower:
+        tags.extend(["Fest", "Markt"])
+    elif "halloween" in title_lower:
+        tags.append("Fest")
+    elif "nikolaus" in title_lower:
+        tags.append("Kinder")
+    elif "triathlon" in title_lower or "lauf" in title_lower or "cup" in title_lower:
+        tags.extend(["Sport", "Laufen"])
+    else:
+        tags.append("Sport")
+    
+    # Add district tag
+    loc_lower = location.lower()
+    if "blankenloch" in loc_lower or not any(d in loc_lower for d in ["spöck", "staffort", "friedrichstal"]):
+        tags.append("Blankenloch")
+    elif "spöck" in loc_lower:
+        tags.append("Spöck")
+    elif "staffort" in loc_lower:
+        tags.append("Staffort")
+    elif "friedrichstal" in loc_lower:
+        tags.append("Friedrichstal")
+    
+    return tags
+
+
 def scrape_tsg_blankenloch():
     session = requests.Session()
     session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; StutenseeBot/1.0)"})
 
     all_events = []
-    seen = set()  # dedup by (date, title)
+    seen_dates = {}  # title -> set of date ranges covered (to catch multi-day vs single-day dups)
 
     # --- Scrape main Veranstaltungen calendar ---
     html = fetch_url(CALENDAR_URL, session)
     if html:
         soup = BeautifulSoup(html, "html.parser")
-        # Find all rows in contenttable-class tables
         for td in soup.find_all("td", class_="contenttable"):
             row = td.find_parent("tr")
             if not row:
@@ -58,7 +121,7 @@ def scrape_tsg_blankenloch():
             if len(cells) < 2:
                 continue
 
-            # Cell 0: dates (may have <br/> separator for start/end)
+            # Cell 0: dates (start<br/>end)
             date_cell = cells[0]
             date_parts = date_cell.get_text(" ", strip=True).split()
             date_start = parse_german_date(date_parts[0]) if date_parts else None
@@ -66,36 +129,52 @@ def scrape_tsg_blankenloch():
             if not date_start:
                 continue
 
-            # Cell 1: title <br/> location (separated by <br/> tag)
+            # Cell 1: title <br/> location
             info_cell = cells[1]
             br = info_cell.find("br")
             if br:
                 title = info_cell.contents[0].strip() if info_cell.contents else ""
                 location = br.next_sibling.strip() if br.next_sibling else ""
-                # Clean up whitespace
                 title = re.sub(r'\s+', ' ', title).strip()
                 location = re.sub(r'\s+', ' ', location).strip()
             else:
                 title = info_cell.get_text(strip=True)
                 location = "Blankenloch"
 
+            # Skip excluded events that are already covered by other sources
+            if is_excluded(title, date_start):
+                continue
+
             # Cell 3 (optional): category/Abteilung
             category = cells[3].get_text(strip=True) if len(cells) >= 4 else ""
 
-            key = (date_start, title)
-            if key in seen:
-                continue
-            seen.add(key)
+            # Dedup: if we already have an event with same title whose date range
+            # covers this one, skip (prevents Arbeitseinsatz entries that are for
+            # the same multi-day event)
+            if title in seen_dates:
+                existing_start, existing_end = seen_dates[title]
+                # Skip if this single-day event falls within existing multi-day range
+                if existing_start <= date_start <= existing_end and \
+                   existing_start <= (date_end or date_start) <= existing_end:
+                    print(f"  TSG skip (dup within multi-day range): {date_start} | {title}", flush=True)
+                    continue
+                # Also skip if previous entry was single-day and this is too
+                if date_start == date_end and existing_start == existing_end:
+                    print(f"  TSG skip (dup single-day): {date_start} | {title}", flush=True)
+                    continue
 
-            # Determine district based on location
+            seen_dates[title] = (date_start, date_end or date_start)
+
             district = "blankenloch"
             loc_lower = location.lower()
-            if "spöck" in loc_lower or "spechaa" in loc_lower:
+            if "spöck" in loc_lower:
                 district = "spöck"
             elif "staffort" in loc_lower:
                 district = "staffort"
             elif "friedrichstal" in loc_lower:
                 district = "friedrichstal"
+
+            tags = assign_tags(title, category, location)
 
             all_events.append({
                 "title": title,
@@ -107,56 +186,9 @@ def scrape_tsg_blankenloch():
                 "description": "",
                 "event_url": CALENDAR_URL,
                 "district": district,
-                "tags": ["Sport"],
+                "tags": tags,
             })
-            print(f"  TSG: {date_start} | {title} | {location}", flush=True)
-
-    # --- Scrape Stutensee CUP page ---
-    html = fetch_url(CUP_URL, session)
-    if html:
-        soup = BeautifulSoup(html, "html.parser")
-        content = soup.find("div", id="content") or soup.find("main") or soup
-        text = content.get_text(strip=True)
-
-        # Parse running events from CUP listing
-        # Pattern: "X. Lauf DD.MM.YYYY <optional_num.> <title> XX km <organizer>"
-        cup_matches = re.findall(
-            r'(\d+)\.\s*Lauf\s*(\d{2}\.\d{2}\.\d{4})\s*(?:\d+\.\s*)?(.+?)(?:\d+\s*km)\s*(.+?)(?=\d+\.\s*Lauf|\s*Wir\s|\s*$|$)',
-            text
-        )
-        for cup_num, date_str, event_name, organizer in cup_matches:
-            date = f"{date_str[6:10]}-{date_str[3:5]}-{date_str[0:2]}"
-            title = event_name.strip()
-            org = organizer.strip()
-            key = (date, title)
-            if key in seen:
-                continue
-            seen.add(key)
-            
-            # Determine district
-            district = "blankenloch"
-            title_lower = title.lower()
-            org_lower = org.lower()
-            if "spöck" in title_lower or "spöck" in org_lower:
-                district = "spöck"
-            elif "staffort" in title_lower or "staffort" in org_lower:
-                district = "staffort"
-            elif "friedrichstal" in title_lower or "friedrichstal" in org_lower:
-                district = "friedrichstal"
-
-            all_events.append({
-                "title": title,
-                "date_start": date,
-                "date_end": date,
-                "time_raw": "",
-                "location": f"{org}" if org else "Blankenloch",
-                "organizer": org or "TSG Blankenloch",
-                "description": "",
-                "event_url": CUP_URL,
-                "district": district,
-                "tags": ["Sport", "Laufen"],
-            })
-            print(f"  TSG CUP: {date} | {title} | {org}", flush=True)
+            print(f"  TSG: {date_start}→{date_end or date_start} | {title} | {location}", flush=True)
 
     print(f"  TSG Blankenloch total: {len(all_events)} events", flush=True)
     return {
@@ -169,4 +201,4 @@ if __name__ == "__main__":
     result = scrape_tsg_blankenloch()
     print(f"\nFound {len(result['events'])} events from TSG Blankenloch")
     for e in result["events"]:
-        print(f"  {e['date_start']} | {e['title']} | {e['location']} | district={e['district']}")
+        print(f"  {e['date_start']}→{e['date_end']} | {e['title']} | {e['location']} | district={e['district']} | tags={e['tags']}")
