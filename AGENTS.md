@@ -1,5 +1,35 @@
 # Was geht, Stutensee? — Architecture Guide
 
+## IMPORTANT: Security Notice (2026-05-17)
+
+Git history was rewritten on 2026-05-17. **If you have a local clone of this
+repo, it is now out of sync and you must re-clone:**
+
+```
+cd .. && rm -rf schdudesee && git clone git@github.com:flash1293/schdudesee.git
+```
+
+**What happened:** Two secrets were accidentally committed to this repo:
+- A Cloudflare API token (hardcoded in `generate_cf_analytics.py`)
+- An OpenCode session cookie (hardcoded in `fetch_token_usage.py`)
+
+Both have been removed from the codebase and scrubbed from all git history.
+`fetch_token_usage.py` has been deleted entirely.
+
+**What changed:** Secrets are now read from environment variables. Never
+hardcode credentials. If you need to use `generate_cf_analytics.py`, set:
+
+```
+export CF_ACCOUNT_ID=...
+export CF_API_TOKEN=...
+```
+
+**Do not** commit any file containing a literal API key, token, password, or
+session cookie. Use `os.environ["VAR_NAME"]` and document the variable in
+`.env.example`.
+
+---
+
 ## Overview
 
 A Stutensee event discovery platform. Scrapes ~20+ sources, deduplicates,
