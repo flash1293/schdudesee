@@ -162,7 +162,23 @@ Always follow this process when updating events:
 
 The pipeline now: removes past events, fixes malformed dates, extracts rich data (location, organizer, description) from JSON-LD sources, and filters past events at insert time.
 
-## Cloudflare
+## Cloudflare Worker Build Process
+
+The worker JS (`cloudflare/src/worker.js`) is a **hybrid file**:
+
+- **Lines 1-2 (generated):** `const indexHtml = ...` and `const faviconB64 = ...` — base64-encoded HTML/CSS/favicon, injected by `build.py`
+- **Lines 3+ (hand-written):** Actual worker logic — routes, API handlers, DB queries
+
+**How builds work:**
+1. `cd cloudflare && python3 build.py` reads `../index.html` and `favicon.png`
+2. Base64-encodes them and replaces lines 1-2 of `src/worker.js` with fresh data
+3. The rest of the file (all the JavaScript logic) is left untouched
+
+**When editing worker logic:** Edit `cloudflare/src/worker.js` directly (the hand-written portion). Then run `python3 build.py` to refresh the inlined HTML. The build script does NOT overwrite your logic changes.
+
+**When editing the HTML/CSS:** Edit `../index.html` (the repo root), then run `python3 build.py` to re-inline it into the worker.
+
+**Deploy:** `cd cloudflare && ./deploy.sh` builds the worker AND exports/imports the D1 database.
 
 The site runs on Cloudflare Workers + D1:
 - **Worker:** Handles /api/list, /api/theme, /api/info, /api/same/{id} and serves HTML
