@@ -39,7 +39,7 @@ async function serveEvents(env, url) {
   const p = url.searchParams;
   const page = Math.max(1, parseInt(p.get('page') || '1'));
   const perPage = Math.min(100, Math.max(1, parseInt(p.get('per_page') || '50')));
-  const search = p.get('search') || '';
+  const search = (p.get('search') || '').slice(0, 48);
   const tags = p.getAll('tag').filter(Boolean);
   const dateFrom = p.get('date_from') || '';
   const organizer = p.get('organizer') || '';
