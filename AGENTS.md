@@ -164,17 +164,17 @@ The pipeline now: removes past events, fixes malformed dates, extracts rich data
 
 ## Cloudflare Worker Build Process
 
-The worker JS (`cloudflare/src/worker.js`) is a **hybrid file**:
+The worker consists of two files:
 
-- **Lines 1-2 (generated):** `const indexHtml = ...` and `const faviconB64 = ...` — base64-encoded HTML/CSS/favicon, injected by `build.py`
-- **Lines 3+ (hand-written):** Actual worker logic — routes, API handlers, DB queries
+- **Source (`cloudflare/src/_worker.js`):** Hand-written JavaScript logic — routes, API handlers, DB queries. **This is where you edit API/backend logic.**
+- **Generated (`cloudflare/src/worker.js`):** The full worker with inlined HTML + favicon. **This is the deployed file. DO NOT EDIT DIRECTLY** — it's overwritten by `build.py`.
 
 **How builds work:**
 1. `cd cloudflare && python3 build.py` reads `../index.html` and `favicon.png`
-2. Base64-encodes them and replaces lines 1-2 of `src/worker.js` with fresh data
-3. The rest of the file (all the JavaScript logic) is left untouched
+2. Base64-encodes them, prepends to `src/_worker.js`, and writes to `src/worker.js`
+3. `worker.js` is gitignored — only `_worker.js` is tracked
 
-**When editing worker logic:** Edit `cloudflare/src/worker.js` directly (the hand-written portion). Then run `python3 build.py` to refresh the inlined HTML. The build script does NOT overwrite your logic changes.
+**When editing worker logic:** Edit `cloudflare/src/_worker.js`, then run `python3 build.py`.
 
 **When editing the HTML/CSS:** Edit `../index.html` (the repo root), then run `python3 build.py` to re-inline it into the worker.
 
