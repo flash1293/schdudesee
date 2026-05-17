@@ -1,0 +1,17 @@
+{
+  "title": "CENTER",
+  "date_start": "2026-06-12",
+  "date_end": "2026-06-12",
+  "time_raw": "19:30",
+  "location": "Henhöferhaus",
+  "organizer": "CVJM Graben-Neudorf",
+  "description": "",
+  "event_url": "https://www.cvjm-graben-neudorf.de/eventcalendar",
+  "sources": [
+    "https://www.cvjm-graben-neudorf.de/eventcalendar"
+  ],
+  "tags": [
+    "Graben-Neudorf"
+  ],
+  "recurring_group_id": null
+}
