@@ -75,6 +75,11 @@ def scrape_cvjm_graben_neudorf():
             addr_el = box.find("p", class_="address")
             location = addr_el.get_text(strip=True) if addr_el and addr_el.get_text(strip=True) else "Graben-Neudorf"
 
+            # Improve generic titles by appending location
+            generic_titles = ["gottesdienst", "center"]
+            if title.lower() in generic_titles and location and location != "Graben-Neudorf":
+                title = f"{title} ({location})"
+
             key = (date_start, title)
             if key in seen:
                 continue
