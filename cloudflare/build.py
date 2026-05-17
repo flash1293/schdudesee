@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
-"""Build cloudflare/src/worker.js with inlined index.html."""
+"""
+Build the final cloudflare/src/worker.js from source parts.
 
-import json, re, base64, os
+Source of truth: cloudflare/src/_worker.js (hand-written logic, no base64 blobs)
+Generated: cloudflare/src/worker.js (logic + inlined HTML + favicon)
+
+Usage: cd cloudflare && python3 build.py
+"""
+
+import re, base64, os
 
 with open("../index.html") as f:
     html = f.read()
@@ -23,14 +30,14 @@ if os.path.exists(favicon_path):
 else:
     favicon_line = "const faviconB64 = null;\n"
 
-with open("src/worker.js") as f:
-    worker = f.read()
+# Read the source logic (hand-written, no base64 blobs)
+with open("src/_worker.js") as f:
+    worker_src = f.read()
 
-worker = re.sub(r'^const indexHtml = .*\n|^const faviconB64 = .*\n|import indexHtml from.*\n|// indexHtml is injected.*\n|// faviconB64 is injected.*\n', '', worker, flags=re.MULTILINE)
-# Inject at the very start
-worker = inlined + favicon_line + worker
+# Build the final worker: generated headers + hand-written logic
+worker = inlined + favicon_line + worker_src
 
 with open("src/worker.js", "w") as f:
     f.write(worker)
 
-print("Built cloudflare/src/worker.js with inlined HTML + favicon")
+print("Built cloudflare/src/worker.js from src/_worker.js + index.html + favicon")

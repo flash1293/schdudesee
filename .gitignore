@@ -17,3 +17,4 @@ dedup_8_9.py
 .wrangler/
 dump_d1.sql
 favicon.png
+cloudflare/src/worker.js
