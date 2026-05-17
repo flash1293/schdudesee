@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="google-site-verification" content="aL_GLMSwzW2SC2nCw3YAnu8VnQxOW4yJqCyygPSzRQw" />
+<title>Was geht, Stutensee? – Veranstaltungen und Termine in Stutensee</title>
+<meta name="description" content="Alle Veranstaltungen in Stutensee auf einen Blick: Feste, Märkte, Sport, Kirche, Kinderangebote und mehr. Gefiltert nach Ortsteil und Kategorie.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --primary: #0d3a71;
+  --primary-dark: #0a2d59;
+  --primary-light: #eef3f9;
+  --accent: #d97706;
+  --accent-hover: #b45309;
+  --gold: #fab800;
+  --gold-light: #fef3c7;
+  --bg: #f4f6f8;
+  --card-bg: #ffffff;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --border: #e2e8f0;
+  --shadow: 0 2px 8px rgba(13,124,102,0.06);
+  --shadow-hover: 0 8px 24px rgba(13,124,102,0.12);
+  --radius: 12px;
+  --radius-sm: 8px;
+  --transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --footer-text: #4b5563;
+  --desc-text: #4a5568;
+  --tag-org-bg: #fef3c7;
+  --tag-org-text: #92400e;
+  --imprint-text: #374151;
+  --skeleton-bg: #e8ecf0;
+  --skeleton-bg-light: #f0f2f5;
+}
+.dark {
+  --primary: #050b18;
+  --primary-accent: #1e40af;
+  --primary-light: #1e3a5f;
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: #334155;
+  --shadow: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-hover: 0 8px 24px rgba(0,0,0,0.5);
+  --footer-text: #94a3b8;
+  --desc-text: #cbd5e1;
+  --tag-org-bg: #422006;
+  --tag-org-text: #fbbf24;
+  --imprint-text: #94a3b8;
+  --skeleton-bg: #1e293b;
+  --skeleton-bg-light: #334155;
+}
+.dark #location-dropdown .chip { color: #a78bfa; }
+.dark #location-dropdown .chip:hover { background: #1e1b4b; }
+.dark #location-dropdown .chip.active { background: #6d28d9; color: #fff; }
+.dark #theme-dropdown .chip:hover { background: #1e293b; }
+.dark #organizer-dropdown .chip { color: #fbbf24; }
+.dark #organizer-dropdown .chip:hover { background: #422006; }
+.dark .tag-location { background: #1e1b4b; color: #a78bfa; }
+.dark .active-tags .active-tag.location-tag { background: #1e1b4b; color: #a78bfa; }
+body {
+  overflow-x: hidden;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+h1, h2, h3, h4 {
+  font-family: system-ui, -apple-system, sans-serif; font-weight: 600;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Header */
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 24px;
+  position: relative;
+  overflow: hidden;
+}
+header::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 300px;
+  height: 300px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-family: system-ui, -apple-system, sans-serif; font-weight: 600;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.header-text h1 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+.header-text p {
+  font-size: 13px;
+  opacity: 0.8;
+  font-weight: 400;
+}
+
+/* Controls bar */
+.controls-wrap {
+  background: var(--card-bg);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 6px 0 0 var(--bg);
+}
+.controls {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.controls-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.controls input,
+.controls select {
+  font-family: system-ui, -apple-system, sans-serif;
+  padding: 5px 8px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+.controls input:focus,
+.controls select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(13,124,102,0.12);
+}
+.controls input[type="text"] { flex: 1; min-width: 120px; }
+#date-from { width: 130px; flex: none; }
+.controls select { min-width: 95px; cursor: pointer; }
+.sort-group {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+}
+.sort-group select { min-width: 75px; }
+
+.stats-badge {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: var(--bg);
+  padding: 3px 9px;
+  border-radius: 20px;
+  margin-left: auto;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 150px;
+  flex: none;
+  text-align: center;
+}
+
+/* Tag filter row */
+.filter-popover { position: relative; display: inline-block; }
+.filter-btn {
+  padding: 6px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  font-size: 13px;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text);
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+.filter-btn:hover { border-color: var(--primary); }
+.filter-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+.event.condensed .event-meta,
+.event.condensed .event-desc,
+.event.condensed .event-tags,
+.event.condensed .recurring-toggle { display: none; }
+.event.condensed { cursor: pointer; padding: 8px 18px; }
+.event.condensed h2 { font-size: 14px; font-weight: 500; letter-spacing: -0.2px; }
+.event.condensed .event-body h2 .ext-link { display: none; }
+.event.condensed .condensed-location { font-size: 13px; font-weight: 400; color: var(--text-muted); display: block; }
+.event.condensed.expanded .condensed-location { display: none; }
+.condensed-location { display: none; }
+.event.condensed.expanded .event-meta,
+.event.condensed.expanded .event-desc,
+.event.condensed.expanded .event-tags,
+.event.condensed.expanded .recurring-toggle { display: flex; }
+.event.condensed.expanded .event-body {
+  background: #f1f5f9;
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin: -8px -18px;
+}
+.event.condensed.expanded .event-body h2:first-child {
+  border-bottom: 1px solid #cbd5e1;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.event.condensed.expanded .event-desc { display: block; }
+.popover-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 100;
+  min-width: 160px;
+  max-height: 280px;
+  overflow-y: auto;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 4px;
+  margin-top: 4px;
+}
+.popover-dropdown.open { display: block; }
+#theme-dropdown { min-width: 300px; columns: 2; column-gap: 4px; }
+#theme-dropdown .chip { display: inline-block; width: 100%; box-sizing: border-box; padding: 6px 10px; border-radius: 4px; font-size: 13px; cursor: pointer; color: var(--text); transition: background var(--transition); margin: 1px 0; }
+#theme-dropdown .chip:hover { background: #f1f5f9; }
+#theme-dropdown .chip.active { background: var(--primary); color: #fff; }
+#location-dropdown .chip { display: block; padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; color: #5b21b6; transition: background var(--transition); margin: 1px 0; }
+#location-dropdown .chip:hover { background: #f1f5f9; }
+#location-dropdown .chip.active { background: #5b21b6; color: #fff; }
+#organizer-dropdown { min-width: 260px; padding: 0; left: auto; right: 0; }
+#organizer-dropdown .popover-search { width: 100%; border: none; border-bottom: 1px solid var(--border); padding: 8px 10px; font-size: 13px; outline: none; background: transparent; color: var(--text); box-sizing: border-box; }
+#organizer-dropdown .popover-search:focus { border-bottom-color: var(--primary); }
+#organizer-dropdown .popover-chips { max-height: 260px; overflow-y: auto; padding: 4px; }
+#organizer-dropdown .chip { display: block; padding: 6px 12px; border-radius: 4px; font-size: 13px; cursor: pointer; color: #92400e; transition: background var(--transition); margin: 1px 0; }
+#organizer-dropdown .chip:hover { background: #fef3c7; }
+#organizer-dropdown .chip.active { background: #d97706; color: #fff; }
+.toggles-desktop { display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.settings-btn { display: none; }
+.settings-dropdown { display: none; position: absolute; top: 100%; right: 0; z-index: 100; min-width: 220px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 8px; margin-top: 4px; }
+.settings-dropdown.open { display: flex; flex-direction: column; gap: 6px; }
+.settings-dropdown .recurring-toggle-wrap { flex-shrink: 0; }
+.active-tags { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; min-height: 28px; }
+.active-tags .active-tag {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 2px 8px; border-radius: 12px; font-size: 12px;
+  background: var(--primary-light); color: var(--primary);
+}
+.active-tags .active-tag.location-tag { background: #ede9fe; color: #5b21b6; }
+.active-tags .active-tag .remove { cursor: pointer; font-weight: bold; margin-left: 2px; font-size: 14px; line-height: 1; }
+.tag-filter .chip {
+  padding: 2px 9px;
+  border: 1.5px solid var(--border);
+  border-radius: 20px;
+  font-size: 11px;
+  cursor: pointer;
+  background: var(--card-bg);
+  color: var(--text-muted);
+  user-select: none;
+  white-space: nowrap;
+  transition: all var(--transition);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.tag-filter .chip.active {
+  background: var(--primary);
+  color: #fff;
+  border-color: var(--primary);
+}
+.tag-filter .chip:hover:not(.active) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+
+/* Recurring toggle switch */
+.recurring-toggle-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-muted);
+  user-select: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.toggle-switch {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+}
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #cbd5e1;
+  border-radius: 20px;
+  transition: background var(--transition);
+}
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 2px;
+  bottom: 2px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform var(--transition);
+}
+.toggle-switch input:checked + .toggle-slider {
+  background: var(--primary);
+}
+.toggle-switch input:checked + .toggle-slider::before {
+  transform: translateX(16px);
+}
+
+/* Event list */
+.events-wrap {
+  max-width: 1100px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+.events {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+/* Date separator */
+.date-separator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  margin: 8px 0;
+  background: var(--primary-accent, var(--primary));
+  border-radius: var(--radius-sm);
+  color: #fff;
+  position: sticky;
+  z-index: 5;
+  grid-column: 1 / -1;
+}
+.date-separator:first-child { margin-top: 0; }
+.date-separator .date-sep-day {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+}
+.date-separator .date-sep-month {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.date-separator .date-sep-date {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-left: auto;
+}
+
+/* Event card */
+.event {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+  animation: fadeInUp 0.35s ease both;
+}
+.event:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+.event-body {
+  min-width: 0;
+}
+.event-body h2 {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+.cat-emojis {
+  position: relative;
+  flex-shrink: 0;
+  width: 28px;
+  height: 22px;
+  text-align: center;
+  line-height: 22px;
+}
+.ce { font-size: 16px; }
+.cat-emojis.has-two { line-height: 1; }
+.cat-emojis.has-two .ce { position: absolute; }
+.ce-tl { top: 0; left: 0; }
+.ce-br { bottom: 0; right: 0; }
+.ce-double { font-size: 11px; }
+.cat-title { flex: 1; min-width: 0; }
+.event-body h2 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.event-body h2 a:hover { color: var(--primary); }
+.event-body h2 .ext-link {
+  font-size: 12px;
+  opacity: 0.4;
+  vertical-align: super;
+  margin-left: 3px;
+  transition: opacity var(--transition);
+}
+.event-body h2 a:hover .ext-link { opacity: 0.8; }
+.event-meta {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+.event-meta .date { font-weight: 600; color: var(--text); }
+.event-desc {
+  font-size: 13px;
+  color: var(--desc-text);
+  line-height: 1.6;
+  margin-top: 8px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.event-tags {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.2px;
+}
+.tag-source { background: #dbeafe; color: #1e40af; }
+.tag-location { background: #ede9fe; color: #5b21b6; }
+.tag-organizer { background: var(--tag-org-bg); color: var(--tag-org-text); }
+.tag-tag { background: var(--gold-light); color: #92400e; }
+
+/* Recurring */
+.recurring-toggle {
+  font-size: 13px;
+  color: #b45309;
+  cursor: pointer;
+  margin-top: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  transition: color var(--transition);
+}
+.recurring-toggle:hover { color: #92400e; }
+.recurring-list {
+  margin-top: 8px;
+  padding: 8px 0 0 0;
+  border-left: 3px solid var(--primary);
+  background: var(--primary-light);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.recurring-list table { width: 100%; border-collapse: collapse; }
+.recurring-list th { text-align: left; padding: 4px 12px; font-weight: 600; color: var(--text); border-bottom: 1px solid var(--border); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+.recurring-list td { padding: 5px 12px; border-bottom: 1px solid var(--border); color: var(--imprint-text); }
+.recurring-list tr:last-child td { border-bottom: none; }
+.recurring-list tr:hover td { background: rgba(0,0,0,0.02); }
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 20px 40px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.pagination button {
+  padding: 8px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  transition: all var(--transition);
+}
+.pagination button:disabled { opacity: 0.35; cursor: default; }
+.pagination button:hover:not(:disabled) {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+.pagination button:active:not(:disabled) {
+  transform: scale(0.96);
+}
+.pagination span { min-width: 120px; text-align: center; }
+
+/* Empty state */
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+  color: var(--text-muted);
+  font-size: 16px;
+}
+.empty-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  opacity: 0.4;
+}
+
+/* Loading skeleton */
+.skeleton {
+  animation: shimmer 1.2s ease-in-out infinite;
+  background: linear-gradient(90deg, var(--skeleton-bg) 25%, var(--skeleton-bg-light) 50%, var(--skeleton-bg) 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+  height: 20px;
+  margin-bottom: 10px;
+}
+.skeleton:last-child { width: 60%; }
+.skeleton-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 16px;
+}
+.skeleton-badge {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--skeleton-bg) 25%, var(--skeleton-bg-light) 50%, var(--skeleton-bg) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.skeleton-lines { flex: 1; }
+.skeleton-lines .skeleton { width: 100%; }
+.skeleton-lines .skeleton:nth-child(2) { width: 80%; }
+.skeleton-lines .skeleton:nth-child(3) { width: 50%; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+.spinner {
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+/* Stagger animation delays */
+.event:nth-child(1) { animation-delay: 0s; }
+.event:nth-child(2) { animation-delay: 0.03s; }
+.event:nth-child(3) { animation-delay: 0.06s; }
+.event:nth-child(4) { animation-delay: 0.09s; }
+.event:nth-child(5) { animation-delay: 0.12s; }
+.event:nth-child(6) { animation-delay: 0.15s; }
+.event:nth-child(7) { animation-delay: 0.18s; }
+.event:nth-child(8) { animation-delay: 0.21s; }
+.event:nth-child(9) { animation-delay: 0.24s; }
+.event:nth-child(10) { animation-delay: 0.27s; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .header-inner { gap: 10px; }
+  .header-text h1 { font-size: 18px; }
+  .controls { padding: 6px 12px; }
+  .controls-row { flex-wrap: wrap; }
+  .controls input { min-width: 0; flex: 1 1 100%; }
+  .controls select { min-width: 0; flex: 1; }
+  .sort-group { width: 100%; }
+  .sort-group select { flex: 1; }
+  .stats-badge { margin-left: 0; }
+  .events { grid-template-columns: 1fr; }
+  .date-separator { padding: 8px 12px; margin: 8px 0; }
+  .date-separator .date-sep-day { font-size: 18px; }
+  .date-separator .date-sep-month { font-size: 11px; }
+  .events-wrap { padding: 0 12px; }
+  .pagination { flex-wrap: wrap; }
+  .pagination span { order: -1; width: 100%; }
+  .toggles-desktop { display: none; }
+  .settings-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--card-bg); cursor: pointer; font-size: 18px; transition: all var(--transition); flex-shrink: 0; }
+  .settings-btn:hover { border-color: var(--primary); }
+  .settings-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+}
+@media (min-width: 701px) and (max-width: 1100px) {
+  .events-wrap { padding: 0 16px; }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 100" class="schdudesee-logo" style="height:68px;width:auto;">
+      <defs>
+        <style>
+          @keyframes lf-wave { 0%,100%{transform:translateX(0px)} 50%{transform:translateX(5px)} }
+          .wave-inner { animation:lf-wave 3s ease-in-out infinite; }
+        </style>
+        <clipPath id="s-clip">
+          <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80">S</text>
+        </clipPath>
+        <clipPath id="tip-clip">
+          <rect x="52" y="8" width="24" height="32"/>
+        </clipPath>
+      </defs>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#fab800">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#dd291a" clip-path="url(#tip-clip)">S</text>
+      <g clip-path="url(#s-clip)">
+        <path class="wave-inner" d="M-5 60 Q5 54 15 60 Q25 66 35 60 Q45 54 55 60 Q65 66 75 60 Q85 54 95 60" stroke="#0d3a71" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/>
+        <path class="wave-inner" d="M-5 69 Q5 63 15 69 Q25 75 35 69 Q45 63 55 69 Q65 75 75 69 Q85 63 95 69" stroke="#1a5299" stroke-width="10" fill="none" stroke-linecap="round" opacity="1" style="animation-delay:-1s"/>
+        <path class="wave-inner" d="M-5 78 Q5 72 15 78 Q25 84 35 78 Q45 72 55 78 Q65 84 75 78 Q85 72 95 78" stroke="#3a7bc8" stroke-width="10" fill="none" stroke-linecap="round" opacity="1" style="animation-delay:-2s"/>
+      </g>
+      <text x="140" y="60" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="26" fill="#ffffff">Was geht, Stutensee?</text>
+    </svg>
+  </div>
+</header>
+
+  <div class="controls-wrap">
+  <div class="controls">
+    <div class="controls-row">
+      <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
+      <input type="date" id="date-from" onchange="loadEvents(1)" title="Von">
+    </div>
+    <div class="controls-row">
+      <div class="filter-popover" id="theme-popover">
+        <button class="filter-btn" onclick="toggleFilterPopover('theme')" id="theme-btn">Kategorie ▾</button>
+        <div class="popover-dropdown" id="theme-dropdown"></div>
+      </div>
+      <div class="filter-popover" id="location-popover">
+        <button class="filter-btn" onclick="toggleFilterPopover('location')" id="location-btn">Ortsteil ▾</button>
+        <div class="popover-dropdown" id="location-dropdown"></div>
+      </div>
+      <div class="filter-popover" id="organizer-popover">
+        <button class="filter-btn" onclick="toggleFilterPopover('organizer')" id="organizer-btn">Veranstalter ▾</button>
+        <div class="popover-dropdown" id="organizer-dropdown">
+          <input type="text" class="popover-search" id="organizer-search" placeholder="Suchen…" oninput="filterOrganizers()" onclick="event.stopPropagation()">
+          <div class="popover-chips" id="organizer-chips"></div>
+        </div>
+      </div>
+      <span class="toggles-desktop">
+        <label class="recurring-toggle-wrap">
+          <span class="toggle-switch">
+            <input type="checkbox" id="condensed-toggle" onchange="toggleCondensed()">
+            <span class="toggle-slider"></span>
+          </span>
+          <span>Kompaktansicht</span>
+        </label>
+        <label class="recurring-toggle-wrap">
+          <span class="toggle-switch">
+            <input type="checkbox" id="show-recurring" checked onchange="toggleRecurringFilter()">
+            <span class="toggle-slider"></span>
+          </span>
+          <span>Zeige wiederholende Termine</span>
+        </label>
+      </span>
+      <button class="settings-btn" onclick="toggleSettingsDropdown()" title="Einstellungen">⚙️</button>
+      <div class="settings-dropdown" id="settings-dropdown">
+        <label class="recurring-toggle-wrap">
+          <span class="toggle-switch">
+            <input type="checkbox" id="condensed-toggle-mobile" onchange="document.getElementById('condensed-toggle').checked=this.checked;toggleCondensed()">
+            <span class="toggle-slider"></span>
+          </span>
+          <span>Kompaktansicht</span>
+        </label>
+        <label class="recurring-toggle-wrap">
+          <span class="toggle-switch">
+            <input type="checkbox" id="show-recurring-mobile" checked onchange="document.getElementById('show-recurring').checked=this.checked;toggleRecurringFilter()">
+            <span class="toggle-slider"></span>
+          </span>
+          <span>Zeige wiederholende Termine</span>
+        </label>
+      </div>
+      <span class="active-tags" id="active-tags"></span>
+  </div>
+</div>
+</div>
+<main>
+<div class="events-wrap">
+  <div id="events" class="events"></div>
+  <div class="pagination" id="pagination"></div>
+</div>
+<footer style="text-align:center;padding:16px;font-size:12px;color:var(--footer-text)">
+  <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a>
+  <span style="margin:0 8px">·</span>
+  <span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span>
+  <div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6">
+    <strong>Angaben gemäß §5 TMG</strong><br>
+    Johannes Reuter<br>
+    E-Mail: email@johannes-reuter.de<br><br>
+    <strong>Haftung für Inhalte</strong><br>
+    Als Diensteanbieter sind wir für eigene Inhalte auf dieser Seite verantwortlich.<br>
+    <strong>Datenschutz</strong><br>
+    Diese Seite erhebt keinerlei personenbezogene Daten. Es werden keine Cookies gesetzt,
+    kein Tracking durchgeführt und keine Analysedienste genutzt.
+  </div>
+</footer>
+</main>
+<script>
+let currentPage = 1;
+let totalPages = 1;
+let searchTimeout;
+let selectedTag = '';
+
+function showLoading() {
+  const container = document.getElementById('events');
+  container.innerHTML = `
+    <div class="skeleton-card"><div class="skeleton-badge"></div><div class="skeleton-lines"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></div>
+    <div class="skeleton-card"><div class="skeleton-badge"></div><div class="skeleton-lines"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></div>
+    <div class="skeleton-card"><div class="skeleton-badge"></div><div class="skeleton-lines"><div class="skeleton"></div><div class="skeleton"></div><div class="skeleton"></div></div></div>
+  `;
+}
+
+function debounceSearch() {
+  clearTimeout(searchTimeout);
+  searchTimeout = setTimeout(() => loadEvents(1), 300);
+}
+
+function fmtDate(iso) {
+  if (!iso) return '?';
+  const p = iso.split('-');
+  return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : iso;
+}
+
+function relativeDate(iso) {
+  if (!iso) return '';
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const parts = iso.split('-');
+  if (parts.length !== 3) return fmtDate(iso);
+  const event = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+  event.setHours(0, 0, 0, 0);
+  const diffMs = event - today;
+  const diffDays = Math.round(diffMs / 86400000);
+  if (diffDays < 0) return fmtDate(iso);
+  if (diffDays === 0) return 'Heute';
+  if (diffDays === 1) return 'Morgen';
+  if (diffDays <= 60) return `In ${diffDays} Tagen`;
+  const diffMonths = (event.getFullYear() - today.getFullYear()) * 12 + (event.getMonth() - today.getMonth());
+  if (diffMonths <= 0) return fmtDate(iso);
+  return `In ${diffMonths} Monaten`;
+}
+const TAG_EMOJIS = {
+  'Sport':'⚽','Musik':'🎵','Kultur':'🎭','Kirche':'⛪','Kinder':'🧒','Fest':'🎉',
+  'Markt':'🛒','Workshop':'🔧','Bildung':'📚','Natur':'🌿','Senioren':'👴','Digital':'💻',
+  'Handwerk':'✂️','Essen':'🍽️','Treff':'☕','Politik':'🗳️','Verein':'🤝','Wohltätigkeit':'❤️',
+  'Sonstiges':'📌'
+};
+let themeTags = [];
+let locationTags = [];
+let organizerTags = [];
+
+async function loadTags() {
+  const [themeRes, districtRes] = await Promise.all([
+    fetch('/api/theme'),
+    fetch('/api/districts')
+  ]);
+  themeTags = await themeRes.json();
+  locationTags = await districtRes.json();
+
+  const themeDropdown = document.getElementById('theme-dropdown');
+  themeDropdown.innerHTML = themeTags.map(t =>
+    `<span class="chip${selectedThemes.includes(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="selectTag('theme','${esc(t)}')">${TAG_EMOJIS[t] || ''} ${esc(t)}</span>`
+  ).join('');
+
+  const locationDropdown = document.getElementById('location-dropdown');
+  locationDropdown.innerHTML = locationTags.map(t =>
+    `<span class="chip chip-location${selectedLocations.includes(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="selectTag('location','${esc(t)}')">📍 ${esc(t)}</span>`
+  ).join('');
+
+  const r2 = await fetch('/api/organizer');
+  organizerTags = await r2.json();
+  renderOrganizers();
+}
+
+function renderOrganizers() {
+  const query = (document.getElementById('organizer-search')?.value || '').toLowerCase();
+  const container = document.getElementById('organizer-chips');
+  container.innerHTML = organizerTags
+    .filter(o => o.toLowerCase().includes(query))
+    .map(o =>
+      `<span class="chip${selectedOrganizer === o ? ' active' : ''}" data-organizer="${esc(o)}" onclick="selectTag('organizer','${esc(o)}')">${esc(o)}</span>`
+    ).join('');
+}
+
+function filterOrganizers() {
+  renderOrganizers();
+}
+
+let condensedMode = false;
+
+function toggleCondensed() {
+  condensedMode = document.getElementById('condensed-toggle').checked;
+  localStorage.setItem('condensed', condensedMode ? '1' : '');
+  document.querySelectorAll('.event').forEach(el => {
+    el.classList.toggle('condensed', condensedMode);
+    el.onclick = condensedMode ? function() { this.classList.toggle('expanded'); } : null;
+  });
+}
+
+let selectedThemes = [];
+let selectedLocations = [];
+let selectedOrganizer = '';
+let showRecurring = true;
+
+function selectTag(type, tag) {
+  if (type === 'theme') {
+    const idx = selectedThemes.indexOf(tag);
+    if (idx >= 0) selectedThemes.splice(idx, 1); else selectedThemes.push(tag);
+    document.querySelectorAll('#theme-dropdown .chip').forEach(c => {
+      c.classList.toggle('active', selectedThemes.includes(c.dataset.tag));
+    });
+    document.getElementById('theme-btn').classList.toggle('active', selectedThemes.length > 0);
+    document.getElementById('theme-btn').textContent = selectedThemes.length > 0
+      ? `Kategorie (${selectedThemes.length}) ▾` : 'Kategorie ▾';
+  } else if (type === 'location') {
+    if (selectedLocations[0] === tag) {
+      selectedLocations = [];
+    } else {
+      selectedLocations = [tag];
+    }
+    document.querySelectorAll('#location-dropdown .chip').forEach(c => {
+      c.classList.toggle('active', selectedLocations.includes(c.dataset.tag));
+    });
+    document.getElementById('location-btn').classList.toggle('active', selectedLocations.length > 0);
+    document.getElementById('location-btn').textContent = selectedLocations.length > 0
+      ? `📍 ${tag}` : 'Ortsteil';
+    closeAllPopovers();
+  } else if (type === 'organizer') {
+    selectedOrganizer = selectedOrganizer === tag ? '' : tag;
+    document.querySelectorAll('#organizer-dropdown .chip').forEach(c => {
+      c.classList.toggle('active', c.dataset.organizer === selectedOrganizer);
+    });
+    document.getElementById('organizer-btn').classList.toggle('active', !!selectedOrganizer);
+    document.getElementById('organizer-btn').textContent = selectedOrganizer
+      ? `Veranstalter ▸` : 'Veranstalter ▾';
+    closeAllPopovers();
+  }
+  updateActiveTags();
+  loadEvents(1);
+}
+
+function updateActiveTags() {
+  const container = document.getElementById('active-tags');
+  let html = '';
+  selectedThemes.forEach(t => html += `<span class="active-tag">${TAG_EMOJIS[t] || ''} ${esc(t)} <span class="remove" onclick="selectTag('theme','${esc(t)}')">×</span></span>`);
+  if (selectedOrganizer) html += `<span class="active-tag" style="background:#fef3c7;color:#92400e">📋 ${esc(selectedOrganizer)} <span class="remove" onclick="selectTag('organizer','${esc(selectedOrganizer)}')">×</span></span>`;
+  container.innerHTML = html;
+}
+
+function toggleFilterPopover(type) {
+  const dropdown = document.getElementById(type + '-dropdown');
+  if (dropdown.classList.contains('open')) {
+    dropdown.classList.remove('open');
+  } else {
+    closeAllPopovers();
+    dropdown.classList.add('open');
+    if (type === 'organizer') {
+      const input = document.getElementById('organizer-search');
+      if (input) { input.value = ''; input.focus(); }
+      renderOrganizers();
+    }
+  }
+}
+
+function toggleSettingsDropdown() {
+  document.getElementById('settings-dropdown').classList.toggle('open');
+  document.querySelector('.settings-btn').classList.toggle('active');
+}
+
+function closeAllPopovers() {
+  document.querySelectorAll('.popover-dropdown').forEach(d => d.classList.remove('open'));
+}
+
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.filter-popover')) closeAllPopovers();
+  if (!e.target.closest('.settings-btn') && !e.target.closest('.settings-dropdown')) {
+    document.getElementById('settings-dropdown').classList.remove('open');
+    document.querySelector('.settings-btn')?.classList.remove('active');
+  }
+});
+
+function toggleTag(el) {
+  if (el.classList.contains('active')) {
+    el.classList.remove('active');
+    selectedTag = '';
+  } else {
+    document.querySelectorAll('.tag-filter .chip').forEach(c => c.classList.remove('active'));
+    el.classList.add('active');
+    selectedTag = el.dataset.tag;
+  }
+  loadEvents(1);
+}
+
+function toggleRecurringFilter() {
+  showRecurring = document.getElementById('show-recurring').checked;
+  localStorage.setItem('showRecurring', showRecurring ? '1' : '');
+  loadEvents(1);
+}
+
+function formatDateBadge(dateStr) {
+  if (!dateStr) return { day: '?', month: '??' };
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    const d = parseInt(parts[2], 10);
+    const months = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+    const m = months[parseInt(parts[1], 10) - 1] || '??';
+    return { day: d, month: m };
+  }
+  return { day: dateStr, month: '' };
+}
+
+async function loadEvents(page) {
+  currentPage = page;
+  const search = document.getElementById('search').value;
+  const dateFrom = document.getElementById('date-from').value;
+  const params = new URLSearchParams({page, per_page: 50, search});
+  if (dateFrom) params.set('date_from', dateFrom);
+  selectedThemes.forEach(t => params.append('tag', t));
+  selectedLocations.forEach(t => params.append('tag', t));
+  if (selectedOrganizer) params.set('organizer', selectedOrganizer);
+  if (!showRecurring) params.set('hide_recurring', '1');
+  showLoading();
+  const r = await fetch(`/api/list?${params}`);
+  const data = await r.json();
+  totalPages = data.total_pages;
+  renderEvents(data.events);
+  renderPagination();
+  updateStickyTop();
+}
+
+function updateStickyTop() {
+  const filter = document.querySelector('.controls-wrap');
+  if (!filter) return;
+  const h = filter.offsetHeight;
+  document.querySelectorAll('.date-separator').forEach(el => {
+    el.style.setProperty('top', (h + 6) + 'px', 'important');
+  });
+}
+
+let resizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(updateStickyTop, 100);
+});
+
+function renderEvents(events) {
+  const container = document.getElementById('events');
+  if (events.length === 0) {
+    container.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div>Keine Veranstaltungen gefunden</div>';
+    return;
+  }
+  let html = '';
+  let lastDate = '';
+  for (const e of events) {
+    if (e.date_start !== lastDate) {
+      lastDate = e.date_start;
+      const badge = formatDateBadge(e.date_start);
+      html += `<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${relativeDate(e.date_start)}</span></div>`;
+    }
+    const tags = e.tags ? e.tags.split(',').map(t => t.trim()) : [];
+    const themeEmojis = tags.filter(t => TAG_EMOJIS[t]).map(t => TAG_EMOJIS[t]);
+    let emojiHtml;
+    if (themeEmojis.length === 0) {
+      emojiHtml = '<span class="ce">📌</span>';
+    } else if (themeEmojis.length === 2) {
+      emojiHtml = `<span class="ce ce-tl">${themeEmojis[0]}</span><span class="ce ce-br ce-double">${themeEmojis[1]}</span>`;
+    } else {
+      emojiHtml = `<span class="ce">${themeEmojis[0]}</span>`;
+    }
+    const hasTwo = themeEmojis.length === 2 ? ' has-two' : '';
+    const locTags = tags.filter(t => locationTags.includes(t));
+    html += `<div class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
+      <div class="event-body">
+        <h2><span class="cat-emojis${hasTwo}">${emojiHtml}</span><span class="cat-title">${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}<span class="condensed-location">${locTags.length > 0 ? locTags.map(t => ` 📍 ${esc(t)}`).join('') : (e.location ? ` 📍 ${esc(e.location)}` : '')}</span></span></h2>
+        <div class="event-meta">
+          ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
+          ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
+        </div>
+        ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
+        ${e.organizer || locTags.length > 0 ? `<div class="event-tags">${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}${locTags.map(t => `<span class="tag tag-location">📍 ${esc(t)}</span>`).join('')}</div>` : ''}
+        ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="event.stopPropagation();toggleRecurring(${e.id}, ${e.recurring_group_id}, this)">▸ Andere Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
+      </div>
+    </div>`;
+  }
+  container.innerHTML = html;
+}
+
+async function toggleRecurring(eventId, groupId, el) {
+  const list = document.getElementById('recurring-' + eventId);
+  if (list.style.display === 'block') {
+    list.style.display = 'none';
+    if (el) el.innerHTML = '▸ Andere Termine';
+    return;
+  }
+  if (el) el.innerHTML = '▾ Andere Termine';
+  if (list.dataset.loaded) {
+    list.style.display = 'block';
+    return;
+  }
+  const r = await fetch('/api/same/' + groupId);
+  const events = await r.json();
+  list.innerHTML = '<table><tr><th>Datum</th><th>Zeit</th><th>Ort</th></tr>' + events.map(e =>
+    `<tr><td>${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? '–' + fmtDate(e.date_end) : ''}</td><td>${e.time_raw || '—'}</td><td>${esc(e.location || '?')}</td></tr>`
+  ).join('') + '</table>';
+  list.dataset.loaded = '1';
+  list.style.display = 'block';
+}
+
+function renderPagination() {
+  const el = document.getElementById('pagination');
+  let html = `<button onclick="loadEvents(1)" ${currentPage <= 1 ? 'disabled' : ''}>« Erste</button>`;
+  html += `<button onclick="loadEvents(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}>‹ Zurück</button>`;
+  html += `<span>Seite ${currentPage} von ${totalPages}</span>`;
+  html += `<button onclick="loadEvents(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}>Weiter ›</button>`;
+  html += `<button onclick="loadEvents(${totalPages})" ${currentPage >= totalPages ? 'disabled' : ''}>Letzte »</button>`;
+  el.innerHTML = html;
+}
+
+function esc(s) {
+  if (!s) return '';
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function toggleDark() {
+  document.documentElement.classList.toggle('dark');
+  const isDark = document.documentElement.classList.contains('dark');
+  localStorage.setItem('dark', isDark ? '1' : '0');
+  document.getElementById('dark-toggle').textContent = isDark ? '☀️' : '🌙';
+}
+
+  /* Dark mode init */
+  (function initDark() {
+    const saved = localStorage.getItem('dark');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = saved === '1' || (saved === null && prefersDark);
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      document.getElementById('dark-toggle').textContent = '☀️';
+    }
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+      if (localStorage.getItem('dark') !== null) return;
+      if (e.matches) {
+        document.documentElement.classList.add('dark');
+        document.getElementById('dark-toggle').textContent = '☀️';
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.getElementById('dark-toggle').textContent = '🌙';
+      }
+    });
+  })();
+
+  document.getElementById('date-from').value = new Date().toISOString().slice(0, 10);
+  if (localStorage.getItem('condensed')) {
+    document.getElementById('condensed-toggle').checked = true;
+    document.getElementById('condensed-toggle-mobile').checked = true;
+    condensedMode = true;
+  }
+  if (localStorage.getItem('showRecurring') === '') {
+    document.getElementById('show-recurring').checked = false;
+    document.getElementById('show-recurring-mobile').checked = false;
+    showRecurring = false;
+  }
+  loadTags();
+loadEvents(1);
+</script>
+</body>
+</html>

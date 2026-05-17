@@ -19,8 +19,7 @@ dump_d1.sql
 favicon.png
 cloudflare/src/worker.js
 
-# Generated files
-*.html
+# Generated files (DO NOT add *.html — index.html is source)
 /data_quality.html
 /pipeline_dashboard.html
 /pipeline_history.json
