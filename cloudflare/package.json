@@ -1,0 +1,16 @@
+{
+  "name": "was-geht-stutensee-worker",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "vitest": "^3.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.10.0"
+  }
+}
