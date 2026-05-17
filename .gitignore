@@ -18,3 +18,12 @@ dedup_8_9.py
 dump_d1.sql
 favicon.png
 cloudflare/src/worker.js
+
+# Generated files
+*.html
+/data_quality.html
+/pipeline_dashboard.html
+/pipeline_history.json
+backups/
+joereuter-dev/
+index_events_to_es.py.disabled
