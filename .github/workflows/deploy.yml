@@ -17,7 +17,7 @@ jobs:
 
       - name: Run API tests
         run: |
-          cd cloudflare && npm ci && npm test
+          cd cloudflare && python3 build.py && npm ci && npm test
 
       - name: Build database from JSON
         run: python3 build_db.py
