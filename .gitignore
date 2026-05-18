@@ -29,3 +29,8 @@ backups/
 joereuter-dev/
 index_events_to_es.py.disabled
 cloudflare/node_modules/
+# Server-side scripts (not in GitHub repo)
+/scripts/generate_cf_analytics.py
+/scripts/generate_dashboard.py
+/scripts/generate_usage_dashboard.py
+/scripts/server.py
