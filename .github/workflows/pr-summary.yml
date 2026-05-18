@@ -1,0 +1,44 @@
+name: PR Event Summary
+on:
+  pull_request:
+    paths:
+      - 'events/curated/*.json'
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate event summary
+        id: summary
+        run: |
+          python3 scripts/pr_summary.py > /tmp/pr_summary.md
+          echo "summary<<EOF" >> $GITHUB_OUTPUT
+          cat /tmp/pr_summary.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Post summary as PR comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const summary = `${{ steps.summary.outputs.summary }}`;
+            if (summary.trim()) {
+              const body = `## 📋 Event PR Summary\n\nThis PR includes changes to curated events:\n\n${summary}\n\n---\n*Automated summary generated from JSON diffs.*`;
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: body
+              });
+            }
