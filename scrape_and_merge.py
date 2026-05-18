@@ -519,6 +519,9 @@ def dedup_events(raw_events):
         if len(title) > 2 and title.startswith('"') and title.endswith('"'):
             title = title[1:-1].strip()
             ev["title"] = title
+        # Guard against empty title after cleanup
+        if not ev.get("title", "").strip():
+            ev["title"] = f'Untitled ({ev.get("date_start", "unknown")})'
         events.append(ev)
 
     groups = defaultdict(list)
