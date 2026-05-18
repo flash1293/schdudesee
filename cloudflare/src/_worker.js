@@ -1,23 +1,46 @@
+import { ensureAnalyticsTable, logRequest } from './_analytics.js';
+
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
-    if (url.pathname === '/') {
-      return new Response(indexHtml, { headers: { 'content-type': 'text/html;charset=utf-8' } });
+    const startTime = Date.now();
+
+    // Ensure analytics table exists (silent if no REQUEST_DB binding)
+    try { await ensureAnalyticsTable(env); } catch {}
+
+    let response;
+    try {
+      response = await routeRequest(request, env);
+    } catch (err) {
+      console.error('Worker error:', err.message);
+      response = new Response('Internal error', { status: 500 });
     }
-    if (url.pathname === '/favicon.png' && typeof faviconB64 !== 'undefined' && faviconB64) {
-      const img = Uint8Array.from(atob(faviconB64), c => c.charCodeAt(0));
-      return new Response(img, { headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' } });
-    }
-    if (url.pathname === '/api/list') return serveEvents(env, url);
-    if (url.pathname === '/api/theme') return serveTags(env);
-    if (url.pathname === '/api/districts') return serveDistricts(env);
-    if (url.pathname === '/api/organizer') return serveOrganizers(env);
-    if (url.pathname === '/api/info') return serveStats(env);
-    if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
-    if (url.pathname === '/llms.txt') return serveLlmTxt();
-    return new Response('Not found', { status: 404 });
+
+    // Log request asynchronously (don't await — fire and forget)
+    logRequest(env, request, response, startTime).catch(() => {});
+
+    return response;
   }
 };
+
+async function routeRequest(request, env) {
+  const url = new URL(request.url);
+  if (url.pathname === '/') {
+    return new Response(indexHtml, { headers: { 'content-type': 'text/html;charset=utf-8' } });
+  }
+  if (url.pathname === '/favicon.png' && typeof faviconB64 !== 'undefined' && faviconB64) {
+    const img = Uint8Array.from(atob(faviconB64), c => c.charCodeAt(0));
+    return new Response(img, { headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' } });
+  }
+  if (url.pathname === '/api/list') return serveEvents(env, url);
+  if (url.pathname === '/api/theme') return serveTags(env);
+  if (url.pathname === '/api/districts') return serveDistricts(env);
+  if (url.pathname === '/api/organizer') return serveOrganizers(env);
+  if (url.pathname === '/api/info') return serveStats(env);
+  if (url.pathname === '/api/stats') return serveReqStats(env);
+  if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
+  if (url.pathname === '/llms.txt') return serveLlmTxt();
+  return new Response('Not found', { status: 404 });
+}
 
 function decode(s) {
   if (!s) return '';
@@ -110,6 +133,24 @@ async function serveStats(env) {
     env.STUTENSEE_DB.prepare('SELECT COUNT(*) as c FROM curated_events').first(),
   ]);
   return json({ raw: raw.c, curated: curated.c });
+}
+
+async function serveReqStats(env) {
+  if (!env.REQUEST_DB) return json({ error: 'Analytics not configured' }, 404);
+  const totals = await env.REQUEST_DB.prepare(
+    'SELECT COUNT(*) as total, COALESCE(SUM(response_size),0) as total_bytes, COALESCE(ROUND(AVG(latency_ms),1),0) as avg_latency FROM request_log'
+  ).first();
+  const byPath = await env.REQUEST_DB.prepare(
+    'SELECT path, COUNT(*) as count, COALESCE(ROUND(AVG(latency_ms),1),0) as avg_latency, COALESCE(SUM(response_size),0) as total_bytes FROM request_log GROUP BY path ORDER BY count DESC LIMIT 20'
+  ).all();
+  const recent = await env.REQUEST_DB.prepare(
+    'SELECT timestamp, path, status, response_size, latency_ms, search_query, tags_filter FROM request_log ORDER BY id DESC LIMIT 50'
+  ).all();
+  return json({
+    totals: { total: totals.total, total_bytes: totals.total_bytes, avg_latency: totals.avg_latency },
+    by_path: byPath.results,
+    recent: recent.results,
+  });
 }
 
 async function serveRecurring(env, groupId) {

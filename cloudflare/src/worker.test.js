@@ -231,6 +231,15 @@ describe('Worker API', () => {
     });
   });
 
+  // ── /api/stats (request analytics) ──────────────────────────────
+
+  describe('GET /api/stats', () => {
+    it('returns 404 when REQUEST_DB is not configured', async () => {
+      const res = await callWorker('/api/stats', { env });
+      expect(res.status).toBe(404);
+    });
+  });
+
   // ── /llms.txt ──────────────────────────────────────────────────────
 
   describe('GET /llms.txt', () => {
@@ -256,8 +265,9 @@ describe('Worker API', () => {
   // ── Error Handling ─────────────────────────────────────────────────
 
   describe('Error handling', () => {
-    it('throws when DB is missing', async () => {
-      await expect(callWorker('/api/list', { env: {} })).rejects.toThrow();
+    it('returns 500 when DB is missing (graceful error handling)', async () => {
+      const res = await callWorker('/api/list', { env: {} });
+      expect(res.status).toBe(500);
     });
   });
 });
