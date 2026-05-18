@@ -28,3 +28,4 @@ cloudflare/src/worker.js
 backups/
 joereuter-dev/
 index_events_to_es.py.disabled
+cloudflare/node_modules/
