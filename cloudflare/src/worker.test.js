@@ -11,12 +11,13 @@ const worker = await import(workerPath);
 
 // ── Helpers ──────────────────────────────────────────────────────────
 
-/** Call the worker's fetch handler with a mock env. */
+/** Call the worker's fetch handler with a mock env and ctx. */
 async function callWorker(path, options = {}) {
   const { method = 'GET', headers = {}, env = {} } = options;
   const url = `https://was-geht-stutensee.de${path}`;
   const request = new Request(url, { method, headers });
-  return worker.default.fetch(request, env);
+  const ctx = { waitUntil: (p) => p }; // mock ctx for waitUntil
+  return worker.default.fetch(request, env, ctx);
 }
 
 // ── Setup ────────────────────────────────────────────────────────────
