@@ -21,7 +21,7 @@
  *   )
  */
 
-const SCHEMA = `
+const SCHEMA_TABLE = `
   CREATE TABLE IF NOT EXISTS request_log (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     timestamp TEXT NOT NULL,
@@ -36,19 +36,22 @@ const SCHEMA = `
     location_filter TEXT,
     date_from TEXT
   );
+`;
+
+const SCHEMA_INDEX = `
   CREATE INDEX IF NOT EXISTS idx_request_log_timestamp ON request_log(timestamp);
-  CREATE INDEX IF NOT EXISTS idx_request_log_path ON request_log(path);
 `;
 
 /**
  * Ensure the analytics table exists.
  */
 export async function ensureAnalyticsTable(env) {
-  if (!env.REQUEST_DB) return; // silently skip if not configured
+  if (!env.REQUEST_DB) return;
   try {
-    await env.REQUEST_DB.prepare(SCHEMA).all();
+    // Run schema statements separately (D1 doesn't support multi-statement in one prepare)
+    await env.REQUEST_DB.prepare(SCHEMA_TABLE).run();
+    await env.REQUEST_DB.prepare(SCHEMA_INDEX).run();
   } catch (err) {
-    // Don't crash the request if analytics DB fails
     console.error('Analytics DB init failed:', err.message);
   }
 }
