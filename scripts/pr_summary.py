@@ -36,10 +36,11 @@ def make_event_row(e, action):
     if e.get('date_end'):
         date_str += f' – {e["date_end"]}'
     location = str(e.get('location') or '—').replace('|', '/')
-    tags_val = e.get('tags') or '—'
+    tags_val = e.get('tags')
     if isinstance(tags_val, list):
-        tags_val = ','.join(tags_val)
-    tags = tags_val.replace('|', '/')
+        tags = ', '.join(tags_val)
+    else:
+        tags = (tags_val or '—').replace('|', '/')
     organizer = str(e.get('organizer') or '—').replace('|', '/')
     return f'| {title} | {date_str} | {location} | {tags} | {organizer} | {action} |'
 
