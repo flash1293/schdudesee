@@ -89,8 +89,13 @@ def read_event_from_ref(filepath, ref):
 def main():
     base_ref = os.environ.get('GITHUB_BASE_REF', 'origin/main')
     if not base_ref.startswith('origin/'):
-        subprocess.run(['git', 'fetch', 'origin', base_ref], capture_output=True, check=False)
-        base_ref = f'origin/{base_ref}'
+        # Ensure we have the base ref available for three-dot diff
+        result = subprocess.run(['git', 'fetch', 'origin', base_ref], capture_output=True, text=True, check=False)
+        if result.returncode != 0:
+            print(f'⚠️ Could not fetch origin/{base_ref}, falling back to two-dot diff. Error: {result.stderr.strip()}', file=sys.stderr)
+            base_ref = f'origin/{base_ref}'
+        else:
+            base_ref = f'origin/{base_ref}'
 
     added_files, modified_files, deleted_files = get_changed_files(base_ref)
 
