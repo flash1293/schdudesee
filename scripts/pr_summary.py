@@ -20,6 +20,7 @@ EVENTS_DIR = 'events/curated'
 GENERIC_TITLES = {
     'gottesdienst', 'gottesdienst mit posaunenchor', 'oekumenischer gottesdienst',
     'center', 'lichtblick', 'maenner vesper', 'vesper',
+    'altpapiersammlung',
 }
 
 def flag_generic_title(title):
