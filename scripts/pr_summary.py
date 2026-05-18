@@ -35,9 +35,12 @@ def make_event_row(e, action):
     date_str = e.get('date_start', '')
     if e.get('date_end'):
         date_str += f' – {e["date_end"]}'
-    location = (e.get('location') or '—').replace('|', '/')
-    tags = (e.get('tags') or '—').replace('|', '/')
-    organizer = (e.get('organizer') or '—').replace('|', '/')
+    location = str(e.get('location') or '—').replace('|', '/')
+    tags_val = e.get('tags') or '—'
+    if isinstance(tags_val, list):
+        tags_val = ','.join(tags_val)
+    tags = tags_val.replace('|', '/')
+    organizer = str(e.get('organizer') or '—').replace('|', '/')
     return f'| {title} | {date_str} | {location} | {tags} | {organizer} | {action} |'
 
 def get_changed_files(base_ref):
