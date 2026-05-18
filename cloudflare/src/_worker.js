@@ -37,8 +37,8 @@ async function routeRequest(request, env) {
   if (url.pathname === '/api/organizer') return serveOrganizers(env);
   if (url.pathname === '/api/info') return serveStats(env);
   if (url.pathname === '/api/stats') return serveReqStats(env);
-  if (url.pathname === '/robots.txt') return serveRobotsTxt();
   if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
+  if (url.pathname === '/llms.txt') return serveLlmTxt();
   if (url.pathname === '/llms.txt') return serveLlmTxt();
   return new Response('Not found', { status: 404 });
 }
@@ -156,12 +156,6 @@ async function serveReqStats(env) {
     totals: { total: totals.total, total_bytes: totals.total_bytes, avg_latency: totals.avg_latency },
     by_path: byPath.results,
     recent: recent.results,
-  });
-}
-
-function serveRobotsTxt() {
-  return new Response('User-agent: *\nAllow: /\n', {
-    headers: { 'content-type': 'text/plain;charset=utf-8' }
   });
 }
 
