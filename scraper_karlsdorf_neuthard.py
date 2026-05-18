@@ -39,7 +39,13 @@ def parse_german_date(text):
 
 def parse_time(text):
     m = re.search(r"(\d{1,2}:\d{2})", text)
-    return m.group(1) if m else ""
+    if m:
+        return m.group(1)
+    # Also support HH.MM format (e.g., "14.30")
+    m = re.search(r"(\d{1,2})\.(\d{2})(?:\s|$|Uhr)", text)
+    if m:
+        return f"{m.group(1)}:{m.group(2)}"
+    return ""
 
 
 def scrape_karlsdorf_neuthard():
@@ -124,7 +130,6 @@ def scrape_karlsdorf_neuthard():
                     "organizer": organizer,
                     "description": "",
                     "event_url": event_url,
-                    "tags": [],
                 })
 
             except Exception as e:
