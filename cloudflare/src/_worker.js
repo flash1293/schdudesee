@@ -1,7 +1,7 @@
 import { ensureAnalyticsTable, logRequest } from './_analytics.js';
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const startTime = Date.now();
 
     // Ensure analytics table exists (silent if no REQUEST_DB binding)
@@ -16,7 +16,7 @@ export default {
     }
 
     // Log request asynchronously (don't await — fire and forget)
-    logRequest(env, request, response, startTime).catch(() => {});
+    ctx.waitUntil(logRequest(env, request, response, startTime));
 
     return response;
   }
