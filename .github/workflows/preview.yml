@@ -49,6 +49,11 @@ jobs:
           binding = "STUTENSEE_DB"
           database_name = "was-geht-stutensee-staging"
           database_id = "5ab57835-8cc1-4aae-a56f-3f0f8da83357"
+
+          [[d1_databases]]
+          binding = "REQUEST_DB"
+          database_name = "request-analytics"
+          database_id = "85447e11-a086-4652-b54b-3aeef1bb9a64"
           EOF
           npx wrangler deploy --config preview.toml 2>&1 | tee deploy.log
           URL=$(grep 'https\?://.*workers\.dev' deploy.log | head -1 | tr -d ' ')

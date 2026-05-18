@@ -8,4 +8,10 @@ binding = "STUTENSEE_DB"
 database_name = "was-geht-stutensee"
 database_id = "ed273231-91e6-4c9b-bb72-02d0658baf62"
 
+# Request analytics D1
+[[d1_databases]]
+binding = "REQUEST_DB"
+database_name = "request-analytics"
+database_id = "85447e11-a086-4652-b54b-3aeef1bb9a64"
+
 
