@@ -21,34 +21,30 @@
  *   )
  */
 
-const SCHEMA_TABLE = `
-  CREATE TABLE IF NOT EXISTS request_log (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    timestamp TEXT NOT NULL,
-    path TEXT NOT NULL,
-    method TEXT NOT NULL,
-    status INTEGER,
-    response_size INTEGER,
-    latency_ms REAL,
-    search_query TEXT,
-    tags_filter TEXT,
-    organizer_filter TEXT,
-    location_filter TEXT,
-    date_from TEXT
-  );
-`;
+const SCHEMA_TABLE = `CREATE TABLE IF NOT EXISTS request_log (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  timestamp TEXT NOT NULL,
+  path TEXT NOT NULL,
+  method TEXT NOT NULL,
+  status INTEGER,
+  response_size INTEGER,
+  latency_ms REAL,
+  search_query TEXT,
+  tags_filter TEXT,
+  organizer_filter TEXT,
+  location_filter TEXT,
+  date_from TEXT
+)`;
 
-const SCHEMA_INDEX = `
-  CREATE INDEX IF NOT EXISTS idx_request_log_timestamp ON request_log(timestamp);
-`;
+const SCHEMA_INDEX = `CREATE INDEX IF NOT EXISTS idx_request_log_ts ON request_log(timestamp)`;
 
 /**
  * Ensure the analytics table exists.
+ * Each statement must be executed separately (D1 doesn't support multi-statement).
  */
 export async function ensureAnalyticsTable(env) {
   if (!env.REQUEST_DB) return;
   try {
-    // Run schema statements separately (D1 doesn't support multi-statement in one prepare)
     await env.REQUEST_DB.prepare(SCHEMA_TABLE).run();
     await env.REQUEST_DB.prepare(SCHEMA_INDEX).run();
   } catch (err) {
