@@ -43,7 +43,7 @@ def make_event_row(e, action):
 def get_changed_files(base_ref):
     try:
         result = subprocess.run(
-            ['git', 'diff', '--name-status', base_ref, 'HEAD', '--', f'{EVENTS_DIR}/*.json'],
+            ['git', 'diff', '--name-status', f"{base_ref}...HEAD", '--', f'{EVENTS_DIR}/*.json'],
             capture_output=True, text=True, check=False
         )
     except FileNotFoundError:
