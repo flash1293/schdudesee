@@ -15,7 +15,7 @@ export default {
       response = new Response('Internal error', { status: 500 });
     }
 
-    // Log request asynchronously (don't await — fire and forget)
+    // Log request — use ctx.waitUntil to keep the worker alive until logging completes
     ctx.waitUntil(logRequest(env, request, response, startTime));
 
     return response;
@@ -39,6 +39,7 @@ async function routeRequest(request, env) {
   if (url.pathname === '/api/stats') return serveReqStats(env);
   if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
   if (url.pathname === '/llms.txt') return serveLlmTxt();
+  if (url.pathname === '/llms.txt') return serveLlmTxt();
   return new Response('Not found', { status: 404 });
 }
 
@@ -49,9 +50,14 @@ function decode(s) {
 }
 
 function json(data, status = 200) {
-  return new Response(JSON.stringify(data), {
+  const body = JSON.stringify(data);
+  return new Response(body, {
     status,
-    headers: { 'content-type': 'application/json;charset=utf-8', 'access-control-allow-origin': '*' }
+    headers: {
+      'content-type': 'application/json;charset=utf-8',
+      'access-control-allow-origin': '*',
+      'content-length': new TextEncoder().encode(body).length.toString(),
+    }
   });
 }
 
