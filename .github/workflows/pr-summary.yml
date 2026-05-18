@@ -30,7 +30,7 @@ jobs:
             const summary = fs.readFileSync('/tmp/pr_summary.md', 'utf8').trim();
             if (summary) {
               const body = `## 📋 Event PR Summary\n\n${summary}\n\n---\n*Automated summary generated from JSON diffs.*`;
-              github.rest.issues.createComment({
+              await github.rest.issues.createComment({
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
