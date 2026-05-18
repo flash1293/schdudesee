@@ -1,0 +1,18 @@
+{
+  "title": "VdK-Café",
+  "date_start": "2026-11-12",
+  "date_end": "2026-11-12",
+  "time_raw": "15:00",
+  "location": "Gaststätte \"Zur Goldenen Pfanne\"",
+  "organizer": "VdK Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=11",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Treff",
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}
