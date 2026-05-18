@@ -23,6 +23,8 @@ cloudflare/src/worker.js
 /data_quality.html
 /pipeline_dashboard.html
 /pipeline_history.json
+/cf_analytics.html
+/usage_dashboard.html
 backups/
 joereuter-dev/
 index_events_to_es.py.disabled

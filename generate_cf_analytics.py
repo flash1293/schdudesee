@@ -7,8 +7,9 @@ import html as html_mod
 import urllib.request
 from datetime import datetime, timezone
 
-ACCOUNT_ID = "REDACTED_CF_ACCOUNT_ID"
-API_TOKEN = "REDACTED_CF_API_TOKEN"
+# Credentials from env vars (set via /shared/config/cloudflare.env)
+ACCOUNT_ID = os.environ.get("CF_ACCOUNT_ID", "REDACTED_CF_ACCOUNT_ID")
+API_TOKEN = os.environ.get("CF_API_TOKEN", "REDACTED_CF_API_TOKEN")
 WORKER_PROD = "was-geht-stutensee"
 WORKER_STAG = "was-geht-stutensee-staging"
 OUTPUT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "cf_analytics.html")
