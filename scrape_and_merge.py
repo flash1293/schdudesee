@@ -514,6 +514,14 @@ def dedup_events(raw_events):
         date = ev.get("date_start", "") or ""
         if date and not re.match(r'\d{4}-\d{2}-\d{2}', date):
             continue
+        # Clean titles: strip leading/trailing quotes from scraped data
+        title = ev.get("title", "")
+        if len(title) > 2 and title.startswith('"') and title.endswith('"'):
+            title = title[1:-1].strip()
+            ev["title"] = title
+        # Guard against empty title after cleanup
+        if not ev.get("title", "").strip():
+            ev["title"] = f'Untitled ({ev.get("date_start", "unknown")})'
         events.append(ev)
 
     groups = defaultdict(list)
