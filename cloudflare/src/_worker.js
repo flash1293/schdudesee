@@ -144,7 +144,7 @@ async function serveReqStats(env) {
     'SELECT path, COUNT(*) as count, COALESCE(ROUND(AVG(latency_ms),1),0) as avg_latency, COALESCE(SUM(response_size),0) as total_bytes FROM request_log GROUP BY path ORDER BY count DESC LIMIT 20'
   ).all();
   const recent = await env.REQUEST_DB.prepare(
-    'SELECT timestamp, path, status, response_size, latency_ms, search_query, tags_filter FROM request_log ORDER BY id DESC LIMIT 50'
+    'SELECT timestamp, path, status, response_size, latency_ms, search_query, tags_filter, organizer_filter, location_filter, date_from FROM request_log ORDER BY id DESC LIMIT 50'
   ).all();
   return json({
     totals: { total: totals.total, total_bytes: totals.total_bytes, avg_latency: totals.avg_latency },

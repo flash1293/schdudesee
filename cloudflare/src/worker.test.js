@@ -238,6 +238,46 @@ describe('Worker API', () => {
       const res = await callWorker('/api/stats', { env });
       expect(res.status).toBe(404);
     });
+
+    it('returns analytics data when REQUEST_DB is configured', async () => {
+      const { createD1 } = await import('./d1-wrapper.js');
+      const Database = (await import('better-sqlite3')).default;
+      const analyticsDb = new Database(':memory:');
+      const analyticsD1 = createD1(analyticsDb);
+
+      // Create table and insert a sample log entry
+      await analyticsD1.prepare(`
+        CREATE TABLE request_log (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          timestamp TEXT NOT NULL,
+          path TEXT NOT NULL,
+          method TEXT NOT NULL,
+          status INTEGER,
+          response_size INTEGER,
+          latency_ms REAL,
+          search_query TEXT,
+          tags_filter TEXT,
+          organizer_filter TEXT,
+          location_filter TEXT,
+          date_from TEXT
+        )
+      `).run();
+
+      await analyticsD1.prepare(
+        'INSERT INTO request_log (timestamp, path, method, status, response_size, latency_ms) VALUES (?, ?, ?, ?, ?, ?)'
+      ).bind('2026-05-18T12:00:00Z', '/api/list', 'GET', 200, 1500, 42.5).run();
+
+      const res = await callWorker('/api/stats', { env: { ...env, REQUEST_DB: analyticsD1 } });
+      expect(res.status).toBe(200);
+      const data = await res.json();
+      expect(data).toHaveProperty('totals');
+      expect(data).toHaveProperty('by_path');
+      expect(data).toHaveProperty('recent');
+      expect(data.totals.total).toBe(1);
+      expect(data.recent.length).toBeGreaterThan(0);
+
+      analyticsDb.close();
+    });
   });
 
   // ── /llms.txt ──────────────────────────────────────────────────────

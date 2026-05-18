@@ -72,8 +72,8 @@ export async function logRequest(env, request, response, startTime) {
   let locationFilter = null;
   let dateFrom = null;
 
-  // Only extract param details for /api/* endpoints
-  if (url.pathname.startsWith('/api/')) {
+  // Only extract param details for endpoints that use them
+  if (url.pathname === '/api/list') {
     searchQuery = params.get('search') || null;
     dateFrom = params.get('date_from') || null;
     organizerFilter = params.get('organizer') || null;
