@@ -50,21 +50,26 @@ def get_changed_files(base_ref):
         print('⚠️ Error: git not available.', file=sys.stderr)
         sys.exit(0)
     if result.returncode != 0:
-        return [], [], []
+        print(f'⚠️ Error: git diff failed (exit code {result.returncode}): {result.stderr.strip()}', file=sys.stderr)
+        sys.exit(1)
     added, modified, deleted = [], [], []
     for line in result.stdout.strip().split('\n'):
         if not line.strip():
             continue
         parts = line.split('\t')
-        if len(parts) != 2:
-            continue
-        status, filepath = parts
+        status = parts[0]
+        # R* and C* statuses have 3 parts: R100 oldfile newfile
+        filepath = parts[-1]  # Last part is always the destination path
         if status == 'A':
             added.append(filepath)
         elif status == 'M':
             modified.append(filepath)
         elif status == 'D':
             deleted.append(filepath)
+        elif status.startswith('R'):
+            deleted.append(filepath)  # Treat renames as deletions + additions
+        elif status.startswith('C'):
+            added.append(filepath)    # Treat copies as additions
     return added, modified, deleted
 
 def read_event_from_ref(filepath, ref):
