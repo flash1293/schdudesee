@@ -305,6 +305,11 @@ BLOCKED_TITLES = [
     "JRK Gruppenstunde",
     "Paddeltraining f\u00fcr Erwachsene (Sommer)",
     "Treffen f\u00fcr Vorst\u00e4nde und Verantwortliche",
+    "Altpapiersammlung",
+]
+
+BLOCKED_PREFIXES = [
+    "Altpapiersammlung",
 ]
 
 MANUAL_ORG_MERGE = {
@@ -507,6 +512,9 @@ def dedup_events(raw_events):
     events = []
     for ev in raw_events:
         if ev.get("title", "") in BLOCKED_TITLES:
+            continue
+        title = ev.get("title", "")
+        if any(title.startswith(p) for p in BLOCKED_PREFIXES):
             continue
         if is_past(ev.get("date_start", "")):
             continue
