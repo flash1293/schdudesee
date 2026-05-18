@@ -871,7 +871,7 @@ if __name__ == "__main__":
     print(f"{tagged} tagged", flush=True)
 
     print(f"  Recurring detection...", end=" ", flush=True)
-    from detect_recurring import main as detect_recurring
+    from scripts.detect_recurring import main as detect_recurring
     detect_recurring()
     print(f"  done", flush=True)
 
