@@ -2,18 +2,18 @@
 """
 scraper_karlsdorf_neuthard.py — Scraper for Karlsdorf-Neuthard event calendar.
 
-Structurally similar to CVJM site (both using ec-event-calendar).
-Events in div.ec-item-box with h2.ec-title + organizer/location in paragraphs.
-Paginated: /eventcalendar?calendar=1&page=N
+Events in div.ec-item-box with h2.ec-title + p tags for org/location.
+Each box has meta[itemprop=url] with a link to the individual event.
+Paginated: /eventcalendar?calendar=1&page=N (max 20 pages).
 """
 
 import re
-from urllib.parse import urljoin
 import requests
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.karlsdorf-neuthard.de"
 CALENDAR_URL = f"{BASE_URL}/eventcalendar"
+MAX_PAGES = 20
 
 
 def fetch_url(url, session=None, timeout=30):
@@ -37,16 +37,6 @@ def parse_german_date(text):
     return None
 
 
-def parse_german_date_range(text):
-    """Parse start and end date from text like '12.09.2026 bis 14.09.2026' or '18.05.2026'"""
-    dates = re.findall(r"(\d{1,2}\.\d{1,2}\.\d{4})", text)
-    if not dates:
-        return None, None
-    start = f"{dates[0][6:10]}-{dates[0][3:5]}-{dates[0][0:2]}"
-    end = f"{dates[-1][6:10]}-{dates[-1][3:5]}-{dates[-1][0:2]}" if len(dates) > 1 else start
-    return start, end
-
-
 def parse_time(text):
     m = re.search(r"(\d{1,2}:\d{2})", text)
     return m.group(1) if m else ""
@@ -60,7 +50,7 @@ def scrape_karlsdorf_neuthard():
     seen = set()
     page = 1
 
-    while True:
+    while page <= MAX_PAGES:
         url = CALENDAR_URL if page == 1 else f"{CALENDAR_URL}?calendar=1&page={page}"
         html = fetch_url(url, session)
         if not html:
@@ -72,7 +62,7 @@ def scrape_karlsdorf_neuthard():
         if not boxes:
             break
 
-        print(f"  Karlsdorf-Neuthard page {page}: {len(boxes)} events", flush=True)
+        print(f"  KN page {page}: {len(boxes)} events", flush=True)
 
         for box in boxes:
             try:
@@ -83,23 +73,30 @@ def scrape_karlsdorf_neuthard():
                 if not content:
                     continue
 
-                # Title from h2.ec-title
+                # Title
                 title_el = content.find("h2", class_="ec-title")
                 title = title_el.get_text(strip=True) if title_el else ""
                 if not title:
                     continue
 
-                # Date from p.ec-date
+                # Date
                 date_el = content.find("p", class_="ec-date")
                 date_text = date_el.get_text(strip=True) if date_el else ""
-                date_start, date_end = parse_german_date_range(date_text)
+                dates = re.findall(r"(\d{1,2}\.\d{1,2}\.\d{4})", date_text)
+                date_start = parse_german_date(dates[0]) if dates else None
+                date_end = parse_german_date(dates[-1]) if len(dates) > 1 else date_start
                 if not date_start:
                     continue
 
-                # Time
                 time_raw = parse_time(date_text)
 
-                # Organizer and location from <p> tags
+                # Specific event URL
+                event_url = CALENDAR_URL
+                meta_url = box.find("meta", itemprop="url")
+                if meta_url and meta_url.get("content"):
+                    event_url = meta_url["content"]
+
+                # Organizer and location
                 paragraphs = content.find_all("p")
                 organizer = ""
                 location = "Karlsdorf-Neuthard"
@@ -107,12 +104,13 @@ def scrape_karlsdorf_neuthard():
                     text = p.get_text(strip=True)
                     if text.startswith("Veranstalter:"):
                         organizer = text.replace("Veranstalter:", "", 1).strip()
-                    elif text.startswith("Veranstaltungsort:") or text.startswith("Veranstaltungsort"):
-                        loc_text = text.replace("Veranstaltungsort:", "", 1).replace("Veranstaltungsort", "", 1).strip()
+                    elif "Veranstaltungsort" in text:
+                        loc_text = text.split("Veranstaltungsort")[-1].lstrip(":").strip()
                         if loc_text:
                             location = loc_text
 
-                key = (date_start, title)
+                # Dedup includes location to prevent merging distinct events same date
+                key = (date_start, title, location)
                 if key in seen:
                     continue
                 seen.add(key)
@@ -125,23 +123,17 @@ def scrape_karlsdorf_neuthard():
                     "location": location,
                     "organizer": organizer,
                     "description": "",
-                    "event_url": url,
-                    "district": "karlsdorf-neuthard",
+                    "event_url": event_url,
                     "tags": [],
                 })
-                print(f"  KN: {date_start} | {title} | {location}", flush=True)
 
             except Exception as e:
                 print(f"  Error: {e}", flush=True)
                 continue
 
-        # Check for next page (iterate while we find event boxes on the page)
-        if len(boxes) > 0:
-            page += 1
-        else:
-            break
+        page += 1
 
-    print(f"  Karlsdorf-Neuthard total: {len(all_events)} events", flush=True)
+    print(f"  KN total: {len(all_events)} events", flush=True)
     return {
         "source_url": CALENDAR_URL,
         "events": all_events,
@@ -150,6 +142,6 @@ def scrape_karlsdorf_neuthard():
 
 if __name__ == "__main__":
     result = scrape_karlsdorf_neuthard()
-    print(f"\nFound {len(result['events'])} events from Karlsdorf-Neuthard")
+    print(f"\nFound {len(result['events'])} events")
     for e in result["events"]:
-        print(f"  {e['date_start']}→{e['date_end'] or ''} | {e['title'][:50]} | {e['location'][:30]}")
+        print(f"  {e['date_start']} | {e['title'][:50]} | {e['location'][:30]}")
