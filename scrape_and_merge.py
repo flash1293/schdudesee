@@ -305,11 +305,6 @@ BLOCKED_TITLES = [
     "JRK Gruppenstunde",
     "Paddeltraining f\u00fcr Erwachsene (Sommer)",
     "Treffen f\u00fcr Vorst\u00e4nde und Verantwortliche",
-    "Altpapiersammlung",
-]
-
-BLOCKED_PREFIXES = [
-    "Altpapiersammlung",
 ]
 
 MANUAL_ORG_MERGE = {
@@ -418,6 +413,14 @@ TITLE_EXCLUSIVE_TAGS = {
     "v\u00f6gel": "Natur",
 }
 
+# Known false positive substrings: when found in title/description, remove the corresponding tag.
+# Key = tag to remove, Value = list of substrings that indicate a false positive.
+FALSE_POSITIVE_CLEANUP = {
+    "Essen": ["bieringer", "bieringer-str"],
+    "Kirche": ["lutherkirche"],
+    "Sport": ["jam session", "jam-session"],
+}
+
 ORGANIZER_EXCLUSIVE_TAGS = {
     "agendagruppe umwelt": "Natur",
     "fc ": "Sport",
@@ -489,6 +492,12 @@ def auto_tag(title, description="", location="", organizer=""):
             if d not in district_tags:
                 district_tags.append(d)
 
+    # Remove tags for known false positive substring matches
+    content_text_full_lower = content_text_full.lower()
+    for tag, fakes in FALSE_POSITIVE_CLEANUP.items():
+        if tag in content_tags and any(fp in content_text_full_lower for fp in fakes):
+            content_tags.remove(tag)
+
     return content_tags + district_tags
 
 
@@ -512,9 +521,6 @@ def dedup_events(raw_events):
     events = []
     for ev in raw_events:
         if ev.get("title", "") in BLOCKED_TITLES:
-            continue
-        title = ev.get("title", "")
-        if any(title.startswith(p) for p in BLOCKED_PREFIXES):
             continue
         if is_past(ev.get("date_start", "")):
             continue
