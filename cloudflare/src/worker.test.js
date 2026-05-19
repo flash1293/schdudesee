@@ -294,6 +294,18 @@ describe('Worker API', () => {
     });
   });
 
+  // ── /robots.txt ──────────────────────────────────────────────────
+
+  describe('GET /robots.txt', () => {
+    it('returns robots.txt allowing all crawlers', async () => {
+      const res = await callWorker('/robots.txt');
+      expect(res.status).toBe(200);
+      const text = await res.text();
+      expect(text).toContain('User-agent: *');
+      expect(text).toContain('Allow: /');
+    });
+  });
+
   // ── 404 ────────────────────────────────────────────────────────────
 
   describe('Unknown routes', () => {
