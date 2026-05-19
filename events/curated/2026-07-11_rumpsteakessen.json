@@ -1,0 +1,15 @@
+{
+  "title": "Rumpsteakessen",
+  "date_start": "2026-07-11",
+  "date_end": "2026-07-11",
+  "time_raw": "17:00",
+  "location": "Hundesportplatz",
+  "organizer": "Hundesportverein",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=5",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [],
+  "recurring_group_id": null
+}

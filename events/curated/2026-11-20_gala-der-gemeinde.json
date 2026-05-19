@@ -1,0 +1,17 @@
+{
+  "title": "Gala der Gemeinde",
+  "date_start": "2026-11-20",
+  "date_end": "2026-11-20",
+  "time_raw": "19:00",
+  "location": "Altenbürghalle",
+  "organizer": "Gemeinde Karlsdorf-Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=12",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

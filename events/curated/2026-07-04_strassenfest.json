@@ -1,0 +1,17 @@
+{
+  "title": "Straßenfest",
+  "date_start": "2026-07-04",
+  "date_end": "2026-07-06",
+  "time_raw": "",
+  "location": "Rathausstraße / Hummelstall",
+  "organizer": "KATAGE",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=4",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Fest"
+  ],
+  "recurring_group_id": null
+}

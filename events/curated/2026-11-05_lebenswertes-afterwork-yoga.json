@@ -1,0 +1,19 @@
+{
+  "title": "LebensWertes - Afterwork Yoga",
+  "date_start": "2026-11-05",
+  "date_end": "2026-11-05",
+  "time_raw": "18:30",
+  "location": "Zehntscheuer",
+  "organizer": "Bürgerstiftung Karlsdorf-Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=10",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Sport",
+    "Treff",
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

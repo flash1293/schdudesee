@@ -1,0 +1,17 @@
+{
+  "title": "Altennachmittag",
+  "date_start": "2026-10-07",
+  "date_end": "2026-10-07",
+  "time_raw": "",
+  "location": "Karlsdorf-Neuthard",
+  "organizer": "DRK Karlsdorf",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=8",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

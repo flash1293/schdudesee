@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from calendar import month_name
 import importlib.util
 
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_tsg_blankenloch", "scraper_cvjm_graben_neudorf"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_tsg_blankenloch", "scraper_cvjm_graben_neudorf", "scraper_karlsdorf_neuthard"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -39,6 +39,7 @@ scrape_weingarten = sys.modules["scraper_weingarten"].scrape_weingarten
 scrape_bruchsal = sys.modules["scraper_bruchsal"].scrape_bruchsal
 scrape_tsg_blankenloch = sys.modules["scraper_tsg_blankenloch"].scrape_tsg_blankenloch
 scrape_cvjm_graben_neudorf = sys.modules["scraper_cvjm_graben_neudorf"].scrape_cvjm_graben_neudorf
+scrape_karlsdorf_neuthard = sys.modules["scraper_karlsdorf_neuthard"].scrape_karlsdorf_neuthard
 from scraper_clubs import scrape_clubs
 
 OUT_DIR = "events/curated"
@@ -304,6 +305,11 @@ BLOCKED_TITLES = [
     "JRK Gruppenstunde",
     "Paddeltraining f\u00fcr Erwachsene (Sommer)",
     "Treffen f\u00fcr Vorst\u00e4nde und Verantwortliche",
+    "Altpapiersammlung",
+]
+
+BLOCKED_PREFIXES = [
+    "Altpapiersammlung",
 ]
 
 MANUAL_ORG_MERGE = {
@@ -506,6 +512,9 @@ def dedup_events(raw_events):
     events = []
     for ev in raw_events:
         if ev.get("title", "") in BLOCKED_TITLES:
+            continue
+        title = ev.get("title", "")
+        if any(title.startswith(p) for p in BLOCKED_PREFIXES):
             continue
         if is_past(ev.get("date_start", "")):
             continue
@@ -877,6 +886,7 @@ def main():
         ("Bruchsal", scrape_bruchsal),
         ("TSG Blankenloch", scrape_tsg_blankenloch),
         ("CVJM Graben-Neudorf", scrape_cvjm_graben_neudorf),
+        ("Karlsdorf-Neuthard", scrape_karlsdorf_neuthard),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),

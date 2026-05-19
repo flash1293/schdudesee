@@ -1,0 +1,18 @@
+{
+  "title": "Blutspende-Aktion",
+  "date_start": "2026-11-12",
+  "date_end": "2026-11-12",
+  "time_raw": "14:30",
+  "location": "Altenbürghalle",
+  "organizer": "DRK Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=11",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Wohltätigkeit",
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Freizeitfußballturnier",
+  "date_start": "2026-05-24",
+  "date_end": "2026-05-24",
+  "time_raw": "10:00",
+  "location": "Waldsportplatz",
+  "organizer": "Turnverein Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Sport",
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

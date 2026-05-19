@@ -1,0 +1,18 @@
+{
+  "title": "Kraichgau Summertime-Triathlon",
+  "date_start": "2026-08-09",
+  "date_end": "2026-08-09",
+  "time_raw": "09:00",
+  "location": "Karlsdorf-Neuthard",
+  "organizer": "Eventpower GmbH",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=6",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Sport",
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}
