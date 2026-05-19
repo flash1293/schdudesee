@@ -418,6 +418,12 @@ TITLE_EXCLUSIVE_TAGS = {
     "v\u00f6gel": "Natur",
 }
 
+FALSE_POSITIVE_CLEANUP = {
+    "Essen": ["bieringer", "bieringer-str"],
+    "Kirche": ["lutherkirche"],
+    "Sport": ["jam session", "jam-session"],
+}
+
 ORGANIZER_EXCLUSIVE_TAGS = {
     "agendagruppe umwelt": "Natur",
     "fc ": "Sport",
@@ -488,6 +494,10 @@ def auto_tag(title, description="", location="", organizer=""):
         for d in org_districts:
             if d not in district_tags:
                 district_tags.append(d)
+
+    for tag, fakes in FALSE_POSITIVE_CLEANUP.items():
+        if tag in content_tags and any(fp in (title + " " + description).lower() for fp in fakes):
+            content_tags.remove(tag)
 
     return content_tags + district_tags
 
