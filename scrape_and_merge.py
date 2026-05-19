@@ -418,12 +418,7 @@ TITLE_EXCLUSIVE_TAGS = {
     "v\u00f6gel": "Natur",
 }
 
-FALSE_POSITIVE_CLEANUP = {
-    "Essen": ["bieringer", "bieringer-str"],
-    "Kirche": ["lutherkirche"],
-    "Sport": ["jam session", "jam-session"],
-}
-
+# Known false positive substrings: when found in title/description, remove the tag.
 FALSE_POSITIVE_CLEANUP = {
     "Essen": ["bieringer", "bieringer-str"],
     "Kirche": ["lutherkirche"],
@@ -501,8 +496,10 @@ def auto_tag(title, description="", location="", organizer=""):
             if d not in district_tags:
                 district_tags.append(d)
 
+    # Remove tags for known false positive substring matches
+    content_text_full_lower = content_text_full.lower()
     for tag, fakes in FALSE_POSITIVE_CLEANUP.items():
-        if tag in content_tags and any(fp in (title + " " + description).lower() for fp in fakes):
+        if tag in content_tags and any(fp in content_text_full_lower for fp in fakes):
             content_tags.remove(tag)
 
     return content_tags + district_tags
