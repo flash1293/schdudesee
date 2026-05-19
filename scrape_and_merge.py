@@ -424,6 +424,12 @@ FALSE_POSITIVE_CLEANUP = {
     "Sport": ["jam session", "jam-session"],
 }
 
+FALSE_POSITIVE_CLEANUP = {
+    "Essen": ["bieringer", "bieringer-str"],
+    "Kirche": ["lutherkirche"],
+    "Sport": ["jam session", "jam-session"],
+}
+
 ORGANIZER_EXCLUSIVE_TAGS = {
     "agendagruppe umwelt": "Natur",
     "fc ": "Sport",
