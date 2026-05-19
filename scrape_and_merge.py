@@ -307,6 +307,10 @@ BLOCKED_TITLES = [
     "Treffen f\u00fcr Vorst\u00e4nde und Verantwortliche",
 ]
 
+BLOCKED_PREFIXES = [
+    "Altpapiersammlung",
+]
+
 MANUAL_ORG_MERGE = {
     "Gesamtelternbeirat": "Gesamtelternbeirat und Eltern der Stutenseer Kindergärten",
 }
