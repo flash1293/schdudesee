@@ -106,9 +106,15 @@ def parse_pubdate(pubdate_str):
         return "", ""
 
 
-def extract_location_from_detail(html):
-    """Extract location name from an event detail page."""
-    # hCard org name (most reliable)
+def extract_venue_location(html):
+    """Extract venue location name from an event detail page (first vcard)."""
+    # First look for the venue vcard (has id="box_ort" or is the first vcard in the details section)
+    m = re.search(r'<div[^>]*class="detail-block vcard"[^>]*id="box_ort"[^>]*>.*?<h5[^>]*class="strong fn org"[^>]*>(.*?)</h5>', html, re.DOTALL)
+    if m:
+        loc = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+        if loc:
+            return loc
+    # Fallback: first hcard org name
     m = re.search(r'<h5[^>]*class="strong fn org"[^>]*>(.*?)</h5>', html, re.DOTALL)
     if m:
         loc = re.sub(r'<[^>]+>', '', m.group(1)).strip()
@@ -120,6 +126,63 @@ def extract_location_from_detail(html):
         loc = m.group(1).strip()
         if loc:
             return loc
+    return ""
+
+
+def extract_organizer(html):
+    """Extract organizer name from an event detail page (second vcard)."""
+    # Find all fn.org elements and take the last one (organizer comes after venue)
+    matches = re.findall(r'<h5[^>]*class="strong fn org"[^>]*>(.*?)</h5>', html, re.DOTALL)
+    if len(matches) >= 2:
+        org = re.sub(r'<[^>]+>', '', matches[1]).strip()
+        if org:
+            return org
+    # Fallback: look for "Veranstalter" keyword followed by text
+    m = re.search(r'Veranstalter\s*(.*?)(?:<br|<p|<div|$)', html, re.DOTALL)
+    if m:
+        org = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+        if org and len(org) < 100:
+            return org
+    return ""
+
+
+def extract_short_description(html):
+    """Extract the short description from an event detail page."""
+    m = re.search(r'<p[^>]*id="shortDescription"[^>]*>(.*?)</p>', html, re.DOTALL)
+    if m:
+        desc = re.sub(r'<[^>]+>', '', m.group(1)).strip()
+        if desc:
+            return desc
+    return ""
+
+
+def extract_category_from_url(url):
+    """Extract event category from URL path like /stadtleben/ or /musik/."""
+    m = re.search(r'/db/termine/([a-z]+)/', url)
+    if m:
+        cat = m.group(1)
+        # Map German URL slugs to readable tags
+        cat_map = {
+            "musik": "Musik",
+            "theater": "Theater",
+            "literatur": "Literatur",
+            "kunst": "Kunst",
+            "kinder": "Kinder",
+            "stadtleben": "Stadtleben",
+            "natur": "Natur",
+            "familie": "Familie",
+            "ausstellung": "Ausstellung",
+            "vortrag": "Vortrag",
+            "workshop": "Workshop",
+            "markt": "Markt",
+            "fest": "Fest",
+            "sport": "Sport",
+            "religion": "Religion",
+            "glaube": "Glaube",
+            "kulinarik": "Kulinarik",
+            "brauchtum": "Brauchtum",
+        }
+        return cat_map.get(cat, cat.capitalize())
     return ""
 
 
@@ -245,15 +308,27 @@ def scrape_venue_page(venue_id, district):
                     time_raw = f"{hours:02d}:00"
         
         # Extract location
-        location = extract_location_from_detail(detail_html)
+        location = extract_venue_location(detail_html)
         if not location:
             location = district
         
-        # Extract description
-        desc = ""
-        m2 = re.search(r'<meta\s+name="description"\s+content="([^"]+)"', detail_html)
-        if m2:
-            desc = m2.group(1)
+        # Extract organizer
+        organizer = extract_organizer(detail_html)
+        
+        # Extract description (prefer short description, fall back to meta)
+        desc = extract_short_description(detail_html)
+        if not desc:
+            m2 = re.search(r'<meta\s+name="description"\s+content="([^"]+)"', detail_html)
+            if m2:
+                desc = m2.group(1)
+        
+        # Extract category from URL for tags
+        category = extract_category_from_url(event_url)
+        
+        # Build tags: district + category
+        tags_list = [district]
+        if category:
+            tags_list.append(category)
         
         events.append({
             "title": title,
@@ -261,11 +336,12 @@ def scrape_venue_page(venue_id, district):
             "date_end": date_start,
             "time_raw": time_raw,
             "location": location,
-            "organizer": "",
+            "organizer": organizer,
             "description": desc,
             "event_url": event_url,
             "district": district,
             "_source": "venue_page",
+            "tags": tags_list,
         })
         
         print(f"  [venue page {venue_id}] '{title}' → {district}", flush=True)
@@ -351,11 +427,11 @@ def scrape_karlsruhe():
 
         # Step 2: If not found in RSS data, try fetching the detail page
         detail_html = None
-        if not district and link and link != SOURCE_URL:
+        if link and link != SOURCE_URL:
             detail_html = fetch_url(link)
-            if detail_html:
+            if detail_html and not district:
                 # Check structured location fields first
-                location_text = extract_location_from_detail(detail_html)
+                location_text = extract_venue_location(detail_html)
                 if location_text:
                     district = get_district_from_text(location_text)
                 # Check page title
@@ -406,10 +482,23 @@ def scrape_karlsruhe():
                     break
 
         # Use detail page location if available (more precise)
+        organizer = ""
+        category = extract_category_from_url(link if link else "")
         if detail_html:
-            detail_loc = extract_location_from_detail(detail_html)
+            detail_loc = extract_venue_location(detail_html)
             if detail_loc:
                 location = detail_loc
+            # Extract organizer from detail page
+            organizer = extract_organizer(detail_html)
+            # Extract better description
+            short_desc = extract_short_description(detail_html)
+            if short_desc:
+                desc = short_desc
+        
+        # Build tags: district + category
+        tags_list = [district]
+        if category:
+            tags_list.append(category)
 
         matched_count += 1
         all_events.append({
@@ -418,10 +507,11 @@ def scrape_karlsruhe():
             "date_end": date_start,
             "time_raw": time_raw,
             "location": location,
-            "organizer": "",
+            "organizer": organizer,
             "description": desc,
             "event_url": link if link else RSS_URL,
             "district": district,
+            "tags": tags_list,
         })
 
     # Step 3: Scrape known venue pages for events not in RSS feed
