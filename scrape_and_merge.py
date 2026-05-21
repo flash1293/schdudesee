@@ -424,6 +424,7 @@ TITLE_EXCLUSIVE_TAGS = {
 FALSE_POSITIVE_CLEANUP = {
     "Essen": ["bieringer", "bieringer-str"],
     "Kirche": ["lutherkirche"],
+    "Natur": ["waldstadt"],
     "Sport": ["jam session", "jam-session"],
 }
 
