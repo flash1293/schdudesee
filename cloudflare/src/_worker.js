@@ -41,6 +41,7 @@ async function routeRequest(request, env) {
   if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
   if (url.pathname === '/llms.txt') return serveLlmTxt();
   if (url.pathname === '/llms.txt') return serveLlmTxt();
+  if (url.pathname === '/webhooks/agentmail') return handleAgentMailWebhook(request);
   return new Response('Not found', { status: 404 });
 }
 
@@ -179,6 +180,26 @@ async function serveRecurring(env, groupId) {
     sources: decode(r.sources || ''), tags: r.tags || '',
     recurring_group_id: r.recurring_group_id,
   })));
+}
+
+/**
+ * Handle AgentMail webhook POST requests.
+ * Accepts the JSON payload, logs it, and returns 200 OK.
+ * AgentMail sends a POST with event_type: "message.received" and message details.
+ */
+async function handleAgentMailWebhook(request) {
+  if (request.method !== 'POST') {
+    return new Response('Method Not Allowed', { status: 405 });
+  }
+
+  try {
+    const payload = await request.json();
+    console.log('[AgentMail Webhook]', JSON.stringify(payload));
+    return json({ ok: true });
+  } catch (err) {
+    console.error('[AgentMail Webhook] Error parsing body:', err.message);
+    return json({ error: 'Invalid JSON' }, 400);
+  }
 }
 
 function serveLlmTxt() {
