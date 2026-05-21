@@ -340,6 +340,7 @@ DISTRICTS = {
     "B\u00fcchenau": ["b\u00fcchenau", "buechenau"],
     "Neuthard": ["neuthard", "karlsdorf", "karlsdorf-neuthard", "zehntscheuer"],
     "Waldstadt": ["waldstadt", "bv-waldstadt"],
+    "Neureut": ["neureut", "badnerlandhalle", "kunstraum neureut", "neureuter platz", "stadtteilbibliothek neureut"],
     "Eggenstein": ["eggenstein"],
     "Leopoldshafen": ["leopoldshafen"],
     "Rintheim": ["rintheim"],
@@ -752,10 +753,20 @@ def dedup_events(raw_events):
 def tag_events(curated):
     count = 0
     for ev in curated:
-        tags = auto_tag(ev.get("title", ""), ev.get("description", ""), ev.get("location", ""), ev.get("organizer", ""))
-        if tags:
-            ev["tags"] = tags
+        auto_tags = auto_tag(ev.get("title", ""), ev.get("description", ""), ev.get("location", ""), ev.get("organizer", ""))
+        existing_tags = ev.get("tags", [])
+        if existing_tags and auto_tags:
+            # Merge: keep scraper-set tags, add any auto_tags not already present
+            merged = list(existing_tags)
+            for t in auto_tags:
+                if t not in merged:
+                    merged.append(t)
+            ev["tags"] = merged
             count += 1
+        elif auto_tags:
+            ev["tags"] = auto_tags
+            count += 1
+        # If neither existing_tags nor auto_tags, leave as-is (noop)
     return count
 
 
