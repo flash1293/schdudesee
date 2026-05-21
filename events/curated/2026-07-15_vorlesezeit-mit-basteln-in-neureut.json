@@ -4,13 +4,14 @@
   "date_end": "2026-07-15",
   "time_raw": "16:00",
   "location": "Stadtbibliothek Karlsruhe - Stadtteilbibliothek Neureut",
-  "organizer": "",
-  "description": "Karlsruhe Veranstaltungskalender",
+  "organizer": "Stadtbibliothek Karlsruhe - Stadtteilbibliothek Neureut",
+  "description": "Für Kinder ab 5 Jahren | mit Anmeldung",
   "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/vorlesezeit_mit_basteln_in_neureut-9",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
+    "Kinder",
     "Handwerk"
   ],
   "recurring_group_id": 1596923700

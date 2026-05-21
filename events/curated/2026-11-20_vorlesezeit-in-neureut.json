@@ -4,12 +4,14 @@
   "date_end": "2026-11-20",
   "time_raw": "16:00",
   "location": "Stadtbibliothek Karlsruhe - Stadtteilbibliothek Neureut",
-  "organizer": "",
-  "description": "Karlsruhe Veranstaltungskalender",
+  "organizer": "Stadtbibliothek Karlsruhe - Stadtteilbibliothek Neureut",
+  "description": "Für Kinder ab 3 Jahren | kostenfrei, ohne Anmeldung",
   "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/vorlesezeit_in_neureut-55",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
-  "tags": [],
+  "tags": [
+    "Kinder"
+  ],
   "recurring_group_id": 1628788359
 }

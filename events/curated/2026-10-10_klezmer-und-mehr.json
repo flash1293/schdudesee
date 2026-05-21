@@ -4,13 +4,14 @@
   "date_end": "2026-10-10",
   "time_raw": "19:00",
   "location": "Gemeindezentrum der Laurentiusgemeinde Hagsfeld",
-  "organizer": "",
-  "description": "Karlsruhe Veranstaltungskalender",
+  "organizer": "Laurentiusgemeinde Hagsfeld",
+  "description": "Klezmermusik und einen Abstecher zur Klassik präsentiert das Duo KLArissimo",
   "event_url": "https://kalender.karlsruhe.de/db/termine/musik/klezmer_und_mehr-4",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
+    "Musik",
     "Hagsfeld"
   ],
   "recurring_group_id": null
