@@ -773,26 +773,12 @@ def detect_recurring(curated):
     def classify_gaps(gaps):
         if not gaps:
             return None
-        n = len(gaps)
-        # Count gaps matching each pattern
-        weekly = sum(1 for g in gaps if g == 7)
-        biweekly = sum(1 for g in gaps if g == 14)
-        monthly = sum(1 for g in gaps if 28 <= g <= 31)
-        # Majority rule: >50% of gaps match a pattern
-        if weekly > n / 2:
+        if all(g == 7 for g in gaps):
             return "weekly"
-        if biweekly > n / 2:
+        if all(g == 14 for g in gaps):
             return "biweekly"
-        if monthly > n / 2:
+        if all(28 <= g <= 31 for g in gaps):
             return "monthly"
-        # For short sequences (2-3 events), be stricter: all must match
-        if n <= 2:
-            if all(g == 7 for g in gaps):
-                return "weekly"
-            if all(g == 14 for g in gaps):
-                return "biweekly"
-            if all(28 <= g <= 31 for g in gaps):
-                return "monthly"
         return None
 
     for ev in curated:

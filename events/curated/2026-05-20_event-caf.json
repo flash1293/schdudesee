@@ -1,6 +1,6 @@
 {
   "title": "Event-Café",
-  "date_start": "2026-05-27",
+  "date_start": "2026-05-20",
   "date_end": null,
   "time_raw": ", 14:30 Uhr",
   "location": "CVJM-Lebenshaus",
@@ -12,7 +12,6 @@
   ],
   "tags": [
     "Treff",
-    "Kirche",
     "Weingarten"
   ],
   "recurring_group_id": null
