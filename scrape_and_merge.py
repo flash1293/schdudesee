@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from calendar import month_name
 import importlib.util
 
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_tsg_blankenloch", "scraper_cvjm_graben_neudorf", "scraper_karlsdorf_neuthard"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_tsg_blankenloch", "scraper_cvjm_graben_neudorf", "scraper_karlsdorf_neuthard", "scraper_karlsruhe"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -40,6 +40,7 @@ scrape_bruchsal = sys.modules["scraper_bruchsal"].scrape_bruchsal
 scrape_tsg_blankenloch = sys.modules["scraper_tsg_blankenloch"].scrape_tsg_blankenloch
 scrape_cvjm_graben_neudorf = sys.modules["scraper_cvjm_graben_neudorf"].scrape_cvjm_graben_neudorf
 scrape_karlsdorf_neuthard = sys.modules["scraper_karlsdorf_neuthard"].scrape_karlsdorf_neuthard
+scrape_karlsruhe = sys.modules["scraper_karlsruhe"].scrape_karlsruhe
 from scraper_clubs import scrape_clubs
 
 OUT_DIR = "events/curated"
@@ -339,6 +340,7 @@ DISTRICTS = {
     "B\u00fcchenau": ["b\u00fcchenau", "buechenau"],
     "Neuthard": ["neuthard", "karlsdorf", "karlsdorf-neuthard", "zehntscheuer"],
     "Waldstadt": ["waldstadt", "bv-waldstadt"],
+    "Neureut": ["neureut", "badnerlandhalle", "kunstraum neureut", "neureuter platz", "stadtteilbibliothek neureut"],
     "Eggenstein": ["eggenstein"],
     "Leopoldshafen": ["leopoldshafen"],
     "Rintheim": ["rintheim"],
@@ -422,6 +424,7 @@ TITLE_EXCLUSIVE_TAGS = {
 FALSE_POSITIVE_CLEANUP = {
     "Essen": ["bieringer", "bieringer-str"],
     "Kirche": ["lutherkirche"],
+    "Natur": ["waldstadt"],
     "Sport": ["jam session", "jam-session"],
 }
 
@@ -751,10 +754,20 @@ def dedup_events(raw_events):
 def tag_events(curated):
     count = 0
     for ev in curated:
-        tags = auto_tag(ev.get("title", ""), ev.get("description", ""), ev.get("location", ""), ev.get("organizer", ""))
-        if tags:
-            ev["tags"] = tags
+        auto_tags = auto_tag(ev.get("title", ""), ev.get("description", ""), ev.get("location", ""), ev.get("organizer", ""))
+        existing_tags = ev.get("tags", [])
+        if existing_tags and auto_tags:
+            # Merge: keep scraper-set tags, add any auto_tags not already present
+            merged = list(existing_tags)
+            for t in auto_tags:
+                if t not in merged:
+                    merged.append(t)
+            ev["tags"] = merged
             count += 1
+        elif auto_tags:
+            ev["tags"] = auto_tags
+            count += 1
+        # If neither existing_tags nor auto_tags, leave as-is (noop)
     return count
 
 
@@ -773,12 +786,26 @@ def detect_recurring(curated):
     def classify_gaps(gaps):
         if not gaps:
             return None
-        if all(g == 7 for g in gaps):
+        n = len(gaps)
+        # Count gaps matching each pattern
+        weekly = sum(1 for g in gaps if g == 7)
+        biweekly = sum(1 for g in gaps if g == 14)
+        monthly = sum(1 for g in gaps if 28 <= g <= 31)
+        # Majority rule: >50% of gaps match a pattern
+        if weekly > n / 2:
             return "weekly"
-        if all(g == 14 for g in gaps):
+        if biweekly > n / 2:
             return "biweekly"
-        if all(28 <= g <= 31 for g in gaps):
+        if monthly > n / 2:
             return "monthly"
+        # For short sequences (2-3 events), be stricter: all must match
+        if n <= 2:
+            if all(g == 7 for g in gaps):
+                return "weekly"
+            if all(g == 14 for g in gaps):
+                return "biweekly"
+            if all(28 <= g <= 31 for g in gaps):
+                return "monthly"
         return None
 
     for ev in curated:
@@ -900,6 +927,7 @@ def main():
         ("TSG Blankenloch", scrape_tsg_blankenloch),
         ("CVJM Graben-Neudorf", scrape_cvjm_graben_neudorf),
         ("Karlsdorf-Neuthard", scrape_karlsdorf_neuthard),
+        ("Karlsruhe (Hagsfeld/Neureut/Rintheim/Waldstadt)", scrape_karlsruhe),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
