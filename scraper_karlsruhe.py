@@ -18,7 +18,7 @@ Matching strategy:
 """
 
 import re
-import xml.etree.ElementTree as ET
+from defusedxml import ElementTree as ET
 from datetime import datetime
 import urllib.request
 import urllib.error
