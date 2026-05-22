@@ -29,12 +29,28 @@ jobs:
           script: |
             const fs = require('fs');
             const summary = fs.readFileSync('/tmp/pr_summary.md', 'utf8').trim();
-            if (summary) {
-              const body = `## 📋 Event PR Summary\n\n${summary}\n\n---\n*Automated summary generated from JSON diffs.*`;
-              await github.rest.issues.createComment({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                body: body
-              });
+            if (!summary) return;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+            });
+            const marker = '## 📋 Event PR Summary';
+            for (const comment of comments) {
+              if (comment.user.type === 'Bot' && comment.body && comment.body.includes(marker)) {
+                await github.rest.issues.deleteComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: comment.id,
+                });
+              }
             }
+
+            const body = `${marker}\n\n${summary}\n\n---\n*Automated summary generated from JSON diffs.*`;
+            await github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: body
+            });
