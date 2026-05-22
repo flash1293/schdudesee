@@ -6,7 +6,7 @@
   "location": "Stadtwaldheim",
   "organizer": "Spiel- und Krabbelgruppe",
   "description": "",
-  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&page=3",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=330",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
@@ -14,5 +14,5 @@
     "Kinder",
     "Treff"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": 798469958
 }

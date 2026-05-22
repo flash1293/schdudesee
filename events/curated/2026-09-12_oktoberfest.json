@@ -8,7 +8,8 @@
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2653",
   "sources": [
-    "https://stutensee.de/Veranstaltungen"
+    "https://stutensee.de/Veranstaltungen",
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
     "Fest",
