@@ -423,7 +423,7 @@ TITLE_EXCLUSIVE_TAGS = {
 # Known false positive substrings: when found in title/description, remove the tag.
 FALSE_POSITIVE_CLEANUP = {
     "Essen": ["bieringer", "bieringer-str"],
-    "Kirche": ["lutherkirche"],
+    "Kirche": ["lutherkirche", "messen"],
     "Natur": ["waldstadt"],
     "Sport": ["jam session", "jam-session"],
 }
