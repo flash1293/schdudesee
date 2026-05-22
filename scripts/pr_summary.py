@@ -123,22 +123,27 @@ def main():
     table_header = '| Title | Date | Location | Tags | Organizer | Action |\n'
     table_header += '|-------|------|----------|------|-----------|--------|'
 
+    def wrap_section(emoji_title, count, table_rows, simple_header=False):
+        """Build a section, wrapping in <details> if count > 10."""
+        heading = f'### {emoji_title} ({count})'
+        if simple_header:
+            table = '| File | Action |\n|------|--------|\n' + table_rows
+        else:
+            table = table_header + '\n' + table_rows
+        if count > 10:
+            return f'<details>\n<summary>{heading}</summary>\n\n{table}\n</details>'
+        return heading + '\n\n' + table
+
     sections = []
     if added_events:
-        t = f'### ➕ Added Events ({len(added_events)})\n\n' + table_header + '\n'
-        for e in added_events:
-            t += make_event_row(e, '➕ Added') + '\n'
-        sections.append(t)
+        rows = ''.join(make_event_row(e, '➕ Added') + '\n' for e in added_events)
+        sections.append(wrap_section('➕ Added Events', len(added_events), rows))
     if modified_events:
-        t = f'### ✏️ Modified Events ({len(modified_events)})\n\n' + table_header + '\n'
-        for e in modified_events:
-            t += make_event_row(e, '✏️ Modified') + '\n'
-        sections.append(t)
+        rows = ''.join(make_event_row(e, '✏️ Modified') + '\n' for e in modified_events)
+        sections.append(wrap_section('✏️ Modified Events', len(modified_events), rows))
     if deleted_files:
-        t = f'### ➖ Removed Events ({len(deleted_files)})\n\n| File | Action |\n|------|--------|\n'
-        for f in deleted_files:
-            t += f'| {os.path.basename(f)} | ➖ Removed |\n'
-        sections.append(t)
+        rows = ''.join(f'| {os.path.basename(f)} | ➖ Removed |\n' for f in deleted_files)
+        sections.append(wrap_section('➖ Removed Events', len(deleted_files), rows, simple_header=True))
 
     print('\n'.join(sections))
 
