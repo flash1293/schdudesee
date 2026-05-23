@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Sommerbiergarten",
   "organizer": "Büchig(er)leben",
-  "description": "",
+  "description": "Mit Live-Musik durch Amadeus und Torwandschießen. at Sommerbiergarten. organized by Büchig(er)leben.",
   "event_url": "https://www.buechigerleben.de/",
   "sources": [
     "https://www.buechigerleben.de/"
@@ -14,5 +14,42 @@
     "Musik",
     "Büchig"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "Missing start time; only date provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is too brief and merely repeats title, location, and organizer; lacks additional informative content"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Tag 'Büchig' is location-based and not a typical event category; consider adding more descriptive tags like 'Live-Musik' or 'Torwandschießen'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "The title and location are clear, but the event lacks a start time and has a minimal description. Tags are somewhat appropriate but could be improved. Overall, the entry is serviceable but needs enhancements in time and description detail."
+  }
 }

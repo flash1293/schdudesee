@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Büchig",
   "organizer": "Büchig(er)leben",
-  "description": "",
+  "description": "Adventsfest Büchig. organized by Büchig(er)leben.",
   "event_url": "https://www.buechigerleben.de/",
   "sources": [
     "https://www.buechigerleben.de/"
@@ -14,5 +14,44 @@
     "Fest",
     "Büchig"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location is only the village name, lacks specific venue"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is too brief, only repeats title and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Tags are too generic; consider adding more specific tags like 'Adventsfest', 'Christmas market'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.56,
+    "passed": true,
+    "summary": "Event entry for Adventsfest Büchig has a clear title but lacks crucial details: no time, minimal description, and a vague location. Tags are generic. Not a duplicate."
+  }
 }
