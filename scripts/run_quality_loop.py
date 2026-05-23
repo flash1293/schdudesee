@@ -25,6 +25,8 @@ MAX_ITERATIONS = 5
 
 
 def load_events(filepaths):
+    """Load event JSON files and attach _filepath metadata.
+    Returns a list of event dicts with _filepath set."""
     events = []
     for fp in filepaths:
         with open(fp) as f:
@@ -35,6 +37,7 @@ def load_events(filepaths):
 
 
 def save_event(event):
+    """Save an event dict back to its JSON file, stripping internal _filepath field."""
     fp = event.get("_filepath")
     if not fp:
         return
@@ -88,6 +91,9 @@ def get_git_diff_events(base_ref="origin/main"):
 
 
 def main():
+    """CLI entry point for the quality improvement loop.
+    Runs iterative judging + post-scrape fixing until all events pass or max iterations reached.
+    Returns 0 if all pass, 1 if any fail."""
     import argparse
     parser = argparse.ArgumentParser(description="Quality loop orchestrator")
     parser.add_argument("files", nargs="*", help="Event JSON files to process")

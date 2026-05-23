@@ -244,6 +244,9 @@ def judge_events_parallel(events, max_workers=8):
 
 
 def main():
+    """CLI entry point for quality judgment.
+    Parses args, loads events, and runs parallel judging.
+    Returns 0 if all pass, 1 if any fail."""
     import argparse
 
     parser = argparse.ArgumentParser(description="Quality judge for events")
