@@ -86,7 +86,7 @@ Rate each axis 0.0-1.0 and list specific issues:
 - location_extraction: Is the location properly extracted (not empty)?
 - time_extraction: Is a time/start time present and properly extracted?
 - description_quality: Is the description informative and helpful?
-- tag_quality: Are the tags appropriate and accurate? Consider the available categories and districts above. The LAST tag should be a district.
+- tag_quality: Are the tags appropriate and accurate? Consider the available categories and districts above. One of the tags should be a district from the districts list.
 - duplicate_risk: Is this event a likely duplicate of another event in the context?
 
 Return ONLY valid JSON (no markdown, no explanations) with this exact structure:
@@ -121,16 +121,25 @@ def load_events(filepaths=None):
     return events
 
 
+def find_district(tags):
+    """Extract the district from an event's tags by matching against known districts.
+    Returns the first matching district, or 'unknown' if none found."""
+    if not tags:
+        return "unknown"
+    for t in tags:
+        if t in AVAILABLE_DISTRICTS:
+            return t
+    return "unknown"
+
+
 def get_context_events(event, all_events):
     """Get other events in the same district on the same date for context.
-    Uses the last tag as the district."""
-    tags = event.get("tags", [])
-    district = tags[-1] if tags else "unknown"
+    Finds district by matching tags against the known districts list."""
+    district = find_district(event.get("tags", []))
     date = event.get("date_start", "")
     same = []
     for e in all_events:
-        e_tags = e.get("tags", [])
-        e_district = e_tags[-1] if e_tags else "unknown"
+        e_district = find_district(e.get("tags", []))
         if (e_district == district and e.get("date_start") == date
                 and e.get("_filepath") != event.get("_filepath")):
             same.append({
