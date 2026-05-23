@@ -107,12 +107,19 @@ def rest_get(token, url):
 
 
 def rest_get_all(token, url):
-    """Fetch all pages of a REST endpoint."""
+    """Fetch all pages of a REST endpoint.
+    Raises RuntimeError if the first page fails (avoiding silent empty results).
+    Subsequent page failures log a warning and return partial data."""
     all_data = []
     next_url = url
+    page = 0
     while next_url:
+        page += 1
         data, next_url = rest_get(token, next_url)
         if data is None:
+            if page == 1:
+                raise RuntimeError(f"Failed to fetch first page from {url}")
+            print(f"⚠️  Warning: page {page} fetch failed, returning partial data", file=sys.stderr)
             break
         if isinstance(data, list):
             all_data.extend(data)
@@ -248,7 +255,11 @@ def fetch_comments_graphql(token, pr_number):
             })
 
     # Also fetch review-level comments (body of reviews like "outside diff" comments)
-    review_comments = fetch_review_bodies_rest(token, pr_number)
+    try:
+        review_comments = fetch_review_bodies_rest(token, pr_number)
+    except RuntimeError as e:
+        print(f"⚠️  Failed to fetch review-level comments: {e}", file=sys.stderr)
+        review_comments = []
 
     all_comments = inline_comments + review_comments
 
@@ -294,7 +305,11 @@ def fetch_review_bodies_rest(token, pr_number):
 def fetch_comments_rest(token, pr_number):
     """Fallback: fetch CodeRabbit PR review comments via REST API (no resolved state). Paginates all pages."""
     url = f"{GITHUB_API}/repos/{REPO}/pulls/{pr_number}/comments?per_page=100"
-    data = rest_get_all(token, url)
+    try:
+        data = rest_get_all(token, url)
+    except RuntimeError:
+        print("⚠️  REST API fetch failed entirely.", file=sys.stderr)
+        return None
     if data is None:
         return None
 
