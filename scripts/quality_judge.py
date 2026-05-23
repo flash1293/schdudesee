@@ -71,16 +71,35 @@ EVALUATION_PROMPT_TEMPLATE = """Evaluate this event entry for quality:
 Context - other events in same district on same date:
 {context_json}
 
+Available event categories (tags): {available_tags}
+
+Available districts: {available_districts}
+
 Rate each axis 0.0-1.0 and list specific issues:
 - title_quality: Is the title clear, descriptive and meaningful?
 - location_extraction: Is the location properly extracted (not empty)?
 - time_extraction: Is a time/start time present and properly extracted?
 - description_quality: Is the description informative and helpful?
-- tag_quality: Are the tags appropriate and accurate?
+- tag_quality: Are the tags appropriate and accurate? Consider the available categories and districts above. The LAST tag should be a district.
 - duplicate_risk: Is this event a likely duplicate of another event in the context?
 
 Return ONLY valid JSON (no markdown, no explanations) with this exact structure:
 {{"judgments":{{"title_quality":{{"score":0.9,"issues":[]}},"location_extraction":{{"score":0.5,"issues":["issue"]}},"time_extraction":{{"score":0.8,"issues":[]}},"description_quality":{{"score":0.7,"issues":[]}},"tag_quality":{{"score":0.6,"issues":["issue"]}},"duplicate_risk":{{"score":1.0,"issues":[]}}}},"overall_score":0.75,"passed":true,"summary":"Brief summary"}}"""
+
+# Canonical lists for tag_quality evaluation
+AVAILABLE_TAGS = [
+    "Bildung", "Digital", "Essen", "Fest", "Handwerk", "Kinder", "Kirche",
+    "Kultur", "Literatur", "Markt", "Musik", "Natur", "Politik", "Senioren",
+    "Sonstiges", "Sport", "Stadtleben", "Treff", "Verein", "Wohltätigkeit",
+    "Workshop", "Ausstellungen",
+]
+
+AVAILABLE_DISTRICTS = [
+    "Blankenloch", "Bruchsal", "Büchenau", "Büchig", "Eggenstein",
+    "Friedrichstal", "Graben-Neudorf", "Hagsfeld", "Leopoldshafen",
+    "Linkenheim", "Neureut", "Neuthard", "Rintheim", "Spöck",
+    "Staffort", "Waldstadt", "Weingarten",
+]
 
 
 def load_events(filepaths=None):
@@ -128,7 +147,13 @@ def call_llm(event, context_events):
     context_str = json.dumps(sanitized_context, indent=2, ensure_ascii=False) if sanitized_context else "None"
     event_json = json.dumps(sanitized_event, indent=2, ensure_ascii=False)
 
-    prompt = EVALUATION_PROMPT_TEMPLATE.format(event_json=event_json, context_json=context_str)
+    available_tags_str = ", ".join(sorted(AVAILABLE_TAGS))
+    available_districts_str = ", ".join(sorted(AVAILABLE_DISTRICTS))
+
+    prompt = EVALUATION_PROMPT_TEMPLATE.format(
+        event_json=event_json, context_json=context_str,
+        available_tags=available_tags_str, available_districts=available_districts_str,
+    )
 
     body = json.dumps({
         "model": MODEL,
