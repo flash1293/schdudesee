@@ -16,15 +16,26 @@ Output:
 """
 
 import json, os, sys, glob, time, re
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from urllib.request import Request, urlopen
 from urllib.error import URLError
 
+# API configuration — supports OpenRouter (primary) and OpenAI-compatible (fallback)
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
-if not OPENROUTER_API_KEY:
-    print("❌ OPENROUTER_API_KEY environment variable not set", file=sys.stderr)
+LLM_API_KEY = os.environ.get("LLM_API_KEY") or OPENROUTER_API_KEY
+LLM_BASE_URL = os.environ.get("LLM_BASE_URL", "https://openrouter.ai/api/v1")
+
+if OPENROUTER_API_KEY:
+    MODEL = "stepfun/step-3.5-flash"
+    API_URL = f"{LLM_BASE_URL.rstrip('/')}/chat/completions"
+elif LLM_API_KEY:
+    # Use available opencode endpoint
+    MODEL = "deepseek-v4-flash"
+    API_URL = f"{LLM_BASE_URL.rstrip('/')}/chat/completions"
+else:
+    print("❌ No API key found. Set OPENROUTER_API_KEY or LLM_API_KEY.", file=sys.stderr)
     sys.exit(1)
-MODEL = "stepfun/step-3.5-flash"  # step-fash 3.5 via OpenRouter
-API_URL = "https://openrouter.ai/api/v1/chat/completions"
+
 MAX_RETRIES = 3
 RETRY_DELAY = 2
 
@@ -119,11 +130,14 @@ def call_llm(event, context_events):
         "max_tokens": 8192,  # need room for reasoning + content
     }).encode()
 
+    api_key = OPENROUTER_API_KEY or LLM_API_KEY
     headers = {
-        "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://github.com/flash1293/schdudesee",
+        "User-Agent": "YEAP-QualityJudge/1.0",
     }
+    if OPENROUTER_API_KEY:
+        headers["HTTP-Referer"] = "https://github.com/flash1293/schdudesee"
 
     for attempt in range(MAX_RETRIES):
         try:
@@ -183,8 +197,55 @@ def save_event(event):
         f.write("\n")
 
 
+def judge_events_parallel(events, max_workers=8):
+    """Judge all events in parallel using ThreadPoolExecutor.
+    Returns (passed, failed) lists. Events are judged in-place and saved to disk."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+
+    passed = []
+    failed = []
+    completed = 0
+    total = len(events)
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_event = {
+            executor.submit(judge_event, event, events): event
+            for event in events
+        }
+
+        for future in as_completed(future_to_event):
+            event = future_to_event[future]
+            title = event.get("title", "???")
+            completed += 1
+            try:
+                judged = future.result()
+                save_event(judged)
+                if judged["_quality"]["passed"]:
+                    score = judged["_quality"]["overall_score"]
+                    print(f"  [{completed}/{total}] ✅ {title[:50]} ({score:.2f})")
+                    passed.append(judged)
+                else:
+                    score = judged["_quality"]["overall_score"]
+                    summary = judged["_quality"]["summary"][:80]
+                    print(f"  [{completed}/{total}] ❌ {title[:50]} ({score:.2f}) {summary}")
+                    failed.append(judged)
+            except Exception as e:
+                print(f"  [{completed}/{total}] ⚠️ {title[:50]} — {e}")
+                event["_quality"] = {
+                    "judgments": {},
+                    "overall_score": 0.0,
+                    "passed": False,
+                    "summary": f"Error during judgment: {str(e)}"
+                }
+                save_event(event)
+                failed.append(event)
+
+    return passed, failed
+
+
 def main():
     import argparse
+
     parser = argparse.ArgumentParser(description="Quality judge for events")
     parser.add_argument("files", nargs="*", help="Event JSON files to judge")
     parser.add_argument("--rerun-failed", action="store_true",
@@ -193,6 +254,8 @@ def main():
                         help="Check all events in curated dir")
     parser.add_argument("--max-events", type=int, default=0,
                         help="Limit number of events to process (0 = all)")
+    parser.add_argument("--parallel", type=int, default=8,
+                        help="Number of parallel LLM calls (default: 8)")
     args = parser.parse_args()
 
     if args.files:
@@ -215,36 +278,8 @@ def main():
         print("✅ No events to judge.")
         return
 
-    print(f"🧠 Judging {len(events)} events...")
-
-    passed = []
-    failed = []
-
-    for i, event in enumerate(events, 1):
-        title = event.get("title", "???")
-        print(f"  [{i}/{len(events)}] {title[:50]}...", end=" ", flush=True)
-        try:
-            judged = judge_event(event, events)
-            save_event(judged)
-            if judged["_quality"]["passed"]:
-                score = judged["_quality"]["overall_score"]
-                print(f"✅ ({score:.2f})")
-                passed.append(judged)
-            else:
-                score = judged["_quality"]["overall_score"]
-                summary = judged["_quality"]["summary"][:80]
-                print(f"❌ ({score:.2f}) {summary}")
-                failed.append(judged)
-        except Exception as e:
-            print(f"⚠️ Error: {e}")
-            event["_quality"] = {
-                "judgments": {},
-                "overall_score": 0.0,
-                "passed": False,
-                "summary": f"Error during judgment: {str(e)}"
-            }
-            save_event(event)
-            failed.append(event)
+    print(f"🧠 Judging {len(events)} events (parallel={args.parallel})...")
+    passed, failed = judge_events_parallel(events, max_workers=args.parallel)
 
     print(f"\n{'='*50}")
     print(f"📊 Results: {len(passed)} passed, {len(failed)} failed out of {len(events)}")

@@ -44,38 +44,17 @@ def save_event(event):
         f.write("\n")
 
 
-def run_quality_judge(events):
-    """Run the quality judge on events, returns (passed, failed) lists."""
+def run_quality_judge(events, parallel=8):
+    """Run the quality judge on events in parallel using ThreadPoolExecutor.
+    Returns (passed, failed) lists. Events are judged in-place and saved to disk."""
     import importlib.util
     spec = importlib.util.spec_from_file_location("qj",
         os.path.join(SCRIPTS_DIR, "quality_judge.py"))
     qj = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(qj)
 
-    passed, failed = [], []
-    for event in events:
-        title = event.get('title', '???')[:50]
-        print(f"  🧠 Judging: {title}...", end=" ", flush=True)
-        try:
-            all_events = events  # use current batch as context
-            judged = qj.judge_event(event, all_events)
-            save_event(judged)  # save after each judgment
-            if judged["_quality"]["passed"]:
-                print(f"✅ ({judged['_quality']['overall_score']:.2f})")
-                passed.append(judged)
-            else:
-                print(f"❌ ({judged['_quality']['overall_score']:.2f}) {judged['_quality']['summary'][:60]}")
-                failed.append(judged)
-        except Exception as e:
-            print(f"⚠️ Error: {e}")
-            event["_quality"] = {
-                "judgments": {},
-                "overall_score": 0.0,
-                "passed": False,
-                "summary": f"Error: {str(e)}"
-            }
-            save_event(event)
-            failed.append(event)
+    print(f"  🧠 Judging {len(events)} events (parallel={parallel})...")
+    passed, failed = qj.judge_events_parallel(events, max_workers=parallel)
     return passed, failed
 
 
@@ -117,6 +96,8 @@ def main():
     parser.add_argument("--base-ref", default="origin/main",
                         help="Base ref for git diff (default: origin/main)")
     parser.add_argument("--max-iterations", type=int, default=MAX_ITERATIONS)
+    parser.add_argument("--parallel", type=int, default=8,
+                        help="Number of parallel LLM calls (default: 8)")
     args = parser.parse_args()
 
     # Determine which files to process
@@ -147,8 +128,8 @@ def main():
         print(f"🔄 Iteration {iteration}")
         print(f"{'='*60}")
 
-        # Judge current failed events
-        passed, failed = run_quality_judge(all_failed)
+        # Judge current failed events (in parallel)
+        passed, failed = run_quality_judge(all_failed, parallel=args.parallel)
         all_passed.extend(passed)
         all_failed = failed
 
