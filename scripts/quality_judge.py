@@ -2,8 +2,11 @@
 """
 Quality Judge — LLM-based event quality evaluation.
 
-Evaluates events across multiple axes using a low-cost model via OpenRouter.
+Evaluates events across multiple axes using a cheap/fast model.
 Adds a _quality field to event JSONs with structured judgments.
+
+Default model: deepseek-v4-flash (cheap ~$0.000015/call).
+Override via MODEL env var, API via OPENROUTER_API_KEY or LLM_API_KEY.
 
 Usage:
   python3 scripts/quality_judge.py events/curated/*.json
@@ -25,14 +28,11 @@ OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY")
 LLM_API_KEY = os.environ.get("LLM_API_KEY") or OPENROUTER_API_KEY
 LLM_BASE_URL = os.environ.get("LLM_BASE_URL", "https://openrouter.ai/api/v1")
 
-if OPENROUTER_API_KEY:
-    MODEL = "stepfun/step-3.5-flash"
-    API_URL = f"{LLM_BASE_URL.rstrip('/')}/chat/completions"
-elif LLM_API_KEY:
-    # Use available opencode endpoint
-    MODEL = "deepseek-v4-flash"
-    API_URL = f"{LLM_BASE_URL.rstrip('/')}/chat/completions"
-else:
+# Use deepseek-v4-flash as default — cheap and fast. Override via MODEL env var.
+MODEL = os.environ.get("MODEL", "deepseek-v4-flash")
+API_URL = f"{LLM_BASE_URL.rstrip('/')}/chat/completions"
+
+if not OPENROUTER_API_KEY and not LLM_API_KEY:
     print("❌ No API key found. Set OPENROUTER_API_KEY or LLM_API_KEY.", file=sys.stderr)
     sys.exit(1)
 
