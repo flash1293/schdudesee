@@ -307,6 +307,7 @@ BLOCKED_TITLES = [
     "Paddeltraining f\u00fcr Erwachsene (Sommer)",
     "Treffen f\u00fcr Vorst\u00e4nde und Verantwortliche",
     "Altpapiersammlung",
+    "Mittagstisch \u2013 Wir veranstalten abends unseren Sommerbiergarten, deswegen m\u00fcssen wir den Mittagstisch leider absagen.",
 ]
 
 BLOCKED_PREFIXES = [
@@ -634,7 +635,7 @@ def dedup_events(raw_events):
                 long_w = set(long.split())
                 match = False
                 if len(short_ns) > 6 and len(long_ns) > 6:
-                    if short_ns in long_ns or long_ns in short_ns:
+                    if (short_ns in long_ns or long_ns in short_ns) and len(short_ns) >= 0.3 * len(long_ns):
                         match = True
                     elif short_ns and all(any(w in word for word in long_w) for w in short_ns.split()):
                         match = True
