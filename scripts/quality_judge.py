@@ -41,7 +41,13 @@ RETRY_DELAY = 2
 
 # Minimum quality score for an event to be considered passing.
 # Override via QUALITY_MIN_SCORE env var.
-MIN_QUALITY_SCORE = float(os.environ.get("QUALITY_MIN_SCORE", "0.6"))
+try:
+    MIN_QUALITY_SCORE = float(os.environ.get("QUALITY_MIN_SCORE", "0.6"))
+except ValueError as exc:
+    raise ValueError("QUALITY_MIN_SCORE must be a float between 0.0 and 1.0") from exc
+
+if not 0.0 <= MIN_QUALITY_SCORE <= 1.0:
+    raise ValueError("QUALITY_MIN_SCORE must be between 0.0 and 1.0")
 
 EVENTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "events/curated")
 
