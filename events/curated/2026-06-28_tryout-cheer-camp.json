@@ -31,13 +31,14 @@
       "description_quality": {
         "score": 0.0,
         "issues": [
-          "description is empty"
+          "Description field is empty, no details provided"
         ]
       },
       "tag_quality": {
-        "score": 0.6,
+        "score": 0.3,
         "issues": [
-          "only one tag 'Kinder', could include more relevant tags like 'sports', 'cheerleading', 'camp'"
+          "Missing district tag (expected 'Graben-Neudorf')",
+          "Only one tag; consider adding more relevant categories such as 'Sport' or 'Workshop'"
         ]
       },
       "duplicate_risk": {
@@ -45,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.75,
+    "overall_score": 0.7,
     "passed": true,
-    "summary": "Event has clear title and location with time properly extracted, but lacks description, limiting its informativeness. Tags are minimal but appropriate."
+    "summary": "Event has clear title, location, and time, but lacks a description and a district tag. Tags need improvement."
   }
 }

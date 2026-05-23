@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 0.85,
         "issues": []
       },
       "location_extraction": {
@@ -26,21 +26,21 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 0.1,
+        "score": 0.0,
         "issues": [
-          "Missing start time; only date provided"
+          "No start time provided"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.4,
         "issues": [
-          "Description is too brief and merely repeats title, location, and organizer; lacks additional informative content"
+          "Description merely repeats the title, location, and organizer, lacking additional details like time, program, or pricing"
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.7,
         "issues": [
-          "Tag 'Büchig' is location-based and not a typical event category; consider adding more descriptive tags like 'Live-Musik' or 'Torwandschießen'"
+          "Missing 'Sport' tag for the Torwandschießen activity"
         ]
       },
       "duplicate_risk": {
@@ -48,8 +48,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.63,
+    "overall_score": 0.66,
     "passed": true,
-    "summary": "The title and location are clear, but the event lacks a start time and has a minimal description. Tags are somewhat appropriate but could be improved. Overall, the entry is serviceable but needs enhancements in time and description detail."
+    "summary": "Event has a descriptive title and a location, but lacks a start time and has a weak description that adds no new information. Tags are partly appropriate but miss the sport category. These shortcomings make the entry quality insufficient for publication."
   }
 }

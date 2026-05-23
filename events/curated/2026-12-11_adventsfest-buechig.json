@@ -18,31 +18,31 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.95,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
-        "score": 0.7,
+        "score": 0.5,
         "issues": [
-          "Location is only the village name, lacks specific venue"
+          "Location is only the district name, not a specific venue or address."
         ]
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time information provided; time_raw is empty"
+          "No time provided; time_raw is empty."
         ]
       },
       "description_quality": {
         "score": 0.2,
         "issues": [
-          "Description is too brief, only repeats title and organizer"
+          "Description is too brief and lacks informative details about the event."
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.6,
         "issues": [
-          "Tags are too generic; consider adding more specific tags like 'Adventsfest', 'Christmas market'"
+          "Tags are limited; could include more specific categories if more information is available."
         ]
       },
       "duplicate_risk": {
@@ -50,8 +50,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.56,
-    "passed": true,
-    "summary": "Event entry for Adventsfest Büchig has a clear title but lacks crucial details: no time, minimal description, and a vague location. Tags are generic. Not a duplicate."
+    "overall_score": 0.53,
+    "passed": false,
+    "summary": "Event has clear title but missing time and detailed description. Location is non-specific. Tags are adequate but minimal. No duplicate concerns."
   }
 }

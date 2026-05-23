@@ -25,21 +25,21 @@
       "location_extraction": {
         "score": 0.0,
         "issues": [
-          "Location field is empty; meeting point is described in description but not extracted"
+          "Location field is empty; meeting point described in text but not extracted"
         ]
       },
       "time_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
+        "score": 0.9,
         "issues": []
       },
       "tag_quality": {
         "score": 0.6,
         "issues": [
-          "Tag 'Sport' is not appropriate for this garden visit event; missing more specific tags like 'Garten', 'Natur', 'Ausflug'"
+          "Tag 'Sport' is not appropriate for this event; alternatives include 'Natur' or 'Bildung'"
         ]
       },
       "duplicate_risk": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.7,
+    "overall_score": 0.73,
     "passed": true,
-    "summary": "Event entry is informative and well-described, but has major issue with empty location field and tags are not fully appropriate."
+    "summary": "The event entry is generally well-written with a clear title and detailed description, but the location field is missing crucial information and the tag 'Sport' is incongruent with the event nature."
   }
 }
