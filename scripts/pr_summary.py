@@ -31,6 +31,23 @@ def flag_generic_title(title):
         return f'{title} ⚠️'
     return title
 
+def get_quality_badge(e):
+    """Return a badge string based on _quality field."""
+    q = e.get('_quality')
+    if not q:
+        return '—'
+    passed = q.get('passed', False)
+    raw_score = q.get('overall_score', 0)
+    try:
+        score = float(raw_score)
+    except (TypeError, ValueError):
+        score = 0.0
+    if passed:
+        return f'✅ {score:.2f}'
+    else:
+        return f'❌ {score:.2f}'
+
+
 def make_event_row(e, action):
     title = flag_generic_title(e.get('title', '???'))
     date_str = e.get('date_start', '')
@@ -43,7 +60,8 @@ def make_event_row(e, action):
     else:
         tags = (tags_val or '—').replace('|', '/')
     organizer = str(e.get('organizer') or '—').replace('|', '/')
-    return f'| {title} | {date_str} | {location} | {tags} | {organizer} | {action} |'
+    quality = get_quality_badge(e)
+    return f'| {title} | {date_str} | {location} | {tags} | {organizer} | {quality} | {action} |'
 
 def get_changed_files(base_ref):
     try:
@@ -120,8 +138,8 @@ def main():
         if e:
             modified_events.append(e)
 
-    table_header = '| Title | Date | Location | Tags | Organizer | Action |\n'
-    table_header += '|-------|------|----------|------|-----------|--------|'
+    table_header = '| Title | Date | Location | Tags | Organizer | Quality | Action |\n'
+    table_header += '|-------|------|----------|------|-----------|---------|--------|'
 
     def wrap_section(emoji_title, count, table_rows, simple_header=False):
         """Build a section, wrapping in <details> if count > 10."""
@@ -134,6 +152,38 @@ def main():
             return f'<details>\n<summary>{heading}</summary>\n\n{table}\n</details>'
         return heading + '\n\n' + table
 
+    # Quality summary
+    all_events = added_events + modified_events
+    quality_events = [e for e in all_events if e.get('_quality')]
+    passed = [e for e in quality_events if e['_quality'].get('passed')]
+    failed = [e for e in quality_events if not e['_quality'].get('passed')]
+
+    quality_sections = []
+    if quality_events:
+        quality_sections.append('')
+        quality_sections.append('---')
+        quality_sections.append('')
+        quality_sections.append('### 🧠 Quality Assessment')
+        quality_sections.append(f'')
+        quality_sections.append(f'| Status | Count |')
+        quality_sections.append(f'|--------|-------|')
+        quality_sections.append(f'| ✅ Passed | {len(passed)} |')
+        quality_sections.append(f'| ❌ Failed | {len(failed)} |')
+        if failed:
+            quality_sections.append('')
+            quality_sections.append('**Failed events & issues:**')
+            quality_sections.append('')
+            for e in failed:
+                q = e.get('_quality', {})
+                title = e.get('title', '???')
+                score = q.get('overall_score', 0)
+                summary = q.get('summary', '')
+                quality_sections.append(f'- **{title}** ({score:.2f}) — {summary}')
+                for axis, j in q.get('judgments', {}).items():
+                    if j.get('issues'):
+                        for issue in j['issues']:
+                            quality_sections.append(f'  - ⚠️ *{axis}*: {issue}')
+
     sections = []
     if added_events:
         rows = ''.join(make_event_row(e, '➕ Added') + '\n' for e in added_events)
@@ -145,7 +195,7 @@ def main():
         rows = ''.join(f'| {os.path.basename(f)} | ➖ Removed |\n' for f in deleted_files)
         sections.append(wrap_section('➖ Removed Events', len(deleted_files), rows, simple_header=True))
 
-    print('\n'.join(sections))
+    print('\n'.join(quality_sections + sections))
 
 if __name__ == '__main__':
     main()

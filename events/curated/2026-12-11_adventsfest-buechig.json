@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Büchig",
   "organizer": "Büchig(er)leben",
-  "description": "",
+  "description": "Adventsfest Büchig. organized by Büchig(er)leben.",
   "event_url": "https://www.buechigerleben.de/",
   "sources": [
     "https://www.buechigerleben.de/"
@@ -14,5 +14,40 @@
     "Fest",
     "Büchig"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is too brief and lacks details about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "Title and location are clear and accurate. Time information is missing entirely, and the description offers no additional details beyond the title and organizer. Tags correctly include a category and district. No risk of duplication."
+  }
 }

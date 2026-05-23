@@ -5,13 +5,50 @@
   "time_raw": "10:00 Uhr bis 18:00 Uhr",
   "location": "Erich-Kästner-Halle",
   "organizer": "Mystic Phoenix Cheerleader",
-  "description": "",
+  "description": "Tryout / Cheer Camp. at Erich-Kästner-Halle. from 10:00 Uhr bis 18:00 Uhr. organized by Mystic Phoenix Cheerleader.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146435/tryout-cheer-camp",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Kinder"
+    "Kinder",
+    "Sport",
+    "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location only provides venue name without city or district"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description repeats metadata and lacks informative content"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "Event entry has clear title and timing, but location missing city and description too brief. Tags appropriate."
+  }
 }

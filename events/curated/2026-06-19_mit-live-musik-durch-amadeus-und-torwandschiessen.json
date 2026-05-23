@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Sommerbiergarten",
   "organizer": "Büchig(er)leben",
-  "description": "",
+  "description": "Mit Live-Musik durch Amadeus und Torwandschießen. at Sommerbiergarten. organized by Büchig(er)leben.",
   "event_url": "https://www.buechigerleben.de/",
   "sources": [
     "https://www.buechigerleben.de/"
@@ -14,5 +14,40 @@
     "Musik",
     "Büchig"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is too brief and repetitive"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event title is descriptive but missing time information, and description lacks details. Tags are appropriate."
+  }
 }
