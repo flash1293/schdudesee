@@ -18,10 +18,12 @@ import re
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import urlsplit, unquote
 
 REPO = "flash1293/schdudesee"
 GITHUB_API = "https://api.github.com"
 GRAPHQL_URL = f"{GITHUB_API}/graphql"
+HTTP_TIMEOUT_SECONDS = 15
 
 
 def get_token():
@@ -34,15 +36,17 @@ def get_token():
         result = subprocess.run(
             ["git", "remote", "get-url", "origin"],
             capture_output=True, text=True, cwd=Path(__file__).resolve().parent.parent,
+            check=False,
         )
         url = result.stdout.strip()
-        # Format: https://<token>@github.com/...
-        if "@" in url and "github.com" in url:
-            token = url.split("://")[1].split("@")[0]
+        if url.startswith("https://") and "@" in url and "github.com" in url:
+            userinfo = urlsplit(url).netloc.split("@", 1)[0]
+            # Supports both "<token>" and "<user>:<token>" userinfo forms.
+            token = unquote(userinfo.split(":", 1)[-1])
             if token:
                 return token
-    except Exception:
-        pass
+    except (subprocess.SubprocessError, ValueError) as exc:
+        print(f"WARN: failed to parse token from remote URL: {exc}", file=sys.stderr)
     print("ERROR: No GITHUB_TOKEN found. Set GITHUB_TOKEN env var.", file=sys.stderr)
     sys.exit(1)
 
@@ -63,7 +67,7 @@ def graphql_query(token, query, variables=None):
         },
     )
     try:
-        with urllib.request.urlopen(req) as resp:
+        with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_SECONDS) as resp:
             data = json.loads(resp.read().decode())
         if "errors" in data:
             print(f"GraphQL errors: {data['errors']}", file=sys.stderr)
@@ -86,7 +90,7 @@ def rest_get(token, url):
         },
     )
     try:
-        with urllib.request.urlopen(req) as resp:
+        with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_SECONDS) as resp:
             return json.loads(resp.read().decode())
     except Exception as e:
         print(f"REST request failed: {e}", file=sys.stderr)
@@ -379,8 +383,17 @@ def main():
         print(f"  {sys.argv[0]} 96 --json    # machine-readable output", file=sys.stderr)
         sys.exit(1)
 
-    pr_number = sys.argv[1]
+    pr_number_raw = sys.argv[1]
     as_json = "--json" in sys.argv
+
+    # Validate PR number early
+    try:
+        pr_number = int(pr_number_raw)
+        if pr_number <= 0:
+            raise ValueError
+    except ValueError:
+        print(f"ERROR: Invalid PR number '{pr_number_raw}'. Expected a positive integer.", file=sys.stderr)
+        sys.exit(1)
 
     token = get_token()
 
