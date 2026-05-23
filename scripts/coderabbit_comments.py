@@ -159,7 +159,7 @@ def fetch_comments_graphql(token, pr_number):
         return None
 
     threads = pr_data.get("reviewThreads", {}).get("nodes", [])
-    comments = []
+    inline_comments = []
     for thread in threads:
         if not thread:
             continue
@@ -170,11 +170,10 @@ def fetch_comments_graphql(token, pr_number):
             if not node:
                 continue
             author = node.get("author", {}).get("login", "")
-            # Only include CodeRabbit comments
             if "coderabbit" not in author.lower():
                 continue
             body = node.get("body", "")
-            comments.append({
+            inline_comments.append({
                 "path": node.get("path", ""),
                 "line": node.get("line"),
                 "author": author,
@@ -184,13 +183,51 @@ def fetch_comments_graphql(token, pr_number):
                 "resolved_by": resolved_by_login,
                 "severity": extract_severity(body),
                 "title": extract_title(body),
+                "type": "inline",
             })
+
+    # Also fetch review-level comments (body of reviews like "outside diff" comments)
+    review_comments = fetch_review_bodies_rest(token, pr_number)
+
+    all_comments = inline_comments + review_comments
 
     return {
         "pr_title": pr_data.get("title", ""),
         "pr_url": pr_data.get("url", ""),
-        "comments": comments,
+        "comments": all_comments,
     }
+
+
+def fetch_review_bodies_rest(token, pr_number):
+    """Fetch PR review bodies (which may contain 'outside diff' comments from CodeRabbit)."""
+    url = f"{GITHUB_API}/repos/{REPO}/pulls/{pr_number}/reviews?per_page=100"
+    data = rest_get(token, url)
+    if data is None:
+        return []
+
+    review_comments = []
+    for r in data:
+        author = r.get("user", {}).get("login", "")
+        if "coderabbit" not in author.lower():
+            continue
+        body = r.get("body", "")
+        if not body:
+            continue
+        # Only include if it contains "outside diff" or actual actionable content
+        if "outside" in body.lower() or "actionable comments" in body.lower():
+            review_comments.append({
+                "path": "(review comment)",
+                "line": None,
+                "author": author,
+                "body": body,
+                "created_at": r.get("submitted_at", ""),
+                "is_resolved": None,
+                "resolved_by": None,
+                "severity": "review",
+                "title": "CodeRabbit Review Comment (outside diff)",
+                "type": "review",
+            })
+    return review_comments
 
 
 def fetch_comments_rest(token, pr_number):
@@ -237,7 +274,7 @@ def format_comment(c):
     if c["is_resolved"] and c.get("resolved_by"):
         resolved_status += f" (by {c['resolved_by']})"
     elif c["is_resolved"] is None:
-        resolved_status = "❓ Unknown (REST fallback)"
+        resolved_status = "❓ N/A (review-level comment)"
 
     sev_icon = {
         "critical": "🔴",
@@ -245,11 +282,15 @@ def format_comment(c):
         "medium": "🟡",
         "minor": "⚪",
         "quick-win": "⚡",
+        "review": "📋",
         "unknown": "❔",
     }.get(c["severity"], "❔")
 
+    ctype = c.get("type", "inline")
+    type_tag = "📝 Review-level" if ctype == "review" else "💬 Inline"
+
     lines = [
-        f"### {sev_icon} {c['severity'].upper()}: {c['title']}",
+        f"### {type_tag} {sev_icon} {c['severity'].upper()}: {c['title']}",
         f"**File:** `{c['path']}` (line {c['line'] or 'N/A'})",
         f"**Status:** {resolved_status}",
         f"**Author:** {c['author']}",
@@ -268,6 +309,8 @@ def print_summary(comments):
         return
 
     total = len(comments)
+    inline = sum(1 for c in comments if c.get("type") == "inline")
+    reviews = sum(1 for c in comments if c.get("type") == "review")
     resolved = sum(1 for c in comments if c["is_resolved"])
     open_c = sum(1 for c in comments if c["is_resolved"] is False)
     unknown = sum(1 for c in comments if c["is_resolved"] is None)
@@ -279,30 +322,34 @@ def print_summary(comments):
     print("## 📋 CodeRabbit Comments Summary")
     print()
     print(f"**Total comments:** {total}")
+    print(f"  - 💬 **Inline:** {inline}")
+    print(f"  - 📋 **Review-level (outside diff):** {reviews}")
     print(f"**🔴 Open:** {open_c}")
     print(f"**✅ Resolved:** {resolved}")
     if unknown:
-        print(f"**❓ Unknown state:** {unknown} (fetched via REST fallback)")
+        print(f"**❓ N/A:** {unknown} (review-level comments)")
     print()
     print("### By Severity")
-    for sev in ["critical", "major", "medium", "minor", "quick-win", "unknown"]:
+    for sev in ["critical", "major", "medium", "minor", "quick-win", "review", "unknown"]:
         count = by_severity.get(sev, 0)
         if count:
-            icon = {"critical": "🔴", "major": "🟠", "medium": "🟡", "minor": "⚪", "quick-win": "⚡", "unknown": "❔"}[sev]
+            icon = {"critical": "🔴", "major": "🟠", "medium": "🟡", "minor": "⚪", "quick-win": "⚡", "review": "📋", "unknown": "❔"}[sev]
             print(f"- {icon} **{sev.capitalize()}**: {count}")
     print()
 
-    # Per-file breakdown
-    by_file = {}
-    for c in comments:
-        by_file.setdefault(c["path"], []).append(c)
-    print("### By File")
-    for path, cs in sorted(by_file.items()):
-        open_count = sum(1 for c in cs if c["is_resolved"] is False)
-        resolved_count = sum(1 for c in cs if c["is_resolved"] is True)
-        status = f"{open_count} open, {resolved_count} resolved" if open_count else f"✅ all resolved"
-        print(f"- `{path}` — {len(cs)} comments ({status})")
-    print()
+    # Per-file breakdown (only for inline)
+    inline_only = [c for c in comments if c.get("type") == "inline"]
+    if inline_only:
+        by_file = {}
+        for c in inline_only:
+            by_file.setdefault(c["path"], []).append(c)
+        print("### By File")
+        for path, cs in sorted(by_file.items()):
+            open_count = sum(1 for c in cs if c["is_resolved"] is False)
+            resolved_count = sum(1 for c in cs if c["is_resolved"] is True)
+            status = f"{open_count} open, {resolved_count} resolved" if open_count else f"✅ all resolved"
+            print(f"- `{path}` — {len(cs)} comments ({status})")
+        print()
 
 
 def print_detailed(comments, pr_title, pr_url):
