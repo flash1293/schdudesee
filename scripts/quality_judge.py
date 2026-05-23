@@ -39,6 +39,10 @@ if not OPENROUTER_API_KEY and not LLM_API_KEY:
 MAX_RETRIES = 3
 RETRY_DELAY = 2
 
+# Minimum quality score for an event to be considered passing.
+# Override via QUALITY_MIN_SCORE env var.
+MIN_QUALITY_SCORE = float(os.environ.get("QUALITY_MIN_SCORE", "0.6"))
+
 EVENTS_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "events/curated")
 
 # Quality criteria / axes
@@ -188,19 +192,10 @@ def judge_event(event, all_events):
         except (TypeError, ValueError):
             return default
 
-    def as_bool(v, default=False):
-        if isinstance(v, bool):
-            return v
-        if isinstance(v, str):
-            return v.lower() in ("true", "1", "yes")
-        if isinstance(v, (int, float)):
-            return v != 0
-        return default
-
     event["_quality"] = {
         "judgments": judgment.get("judgments", {}),
         "overall_score": as_float(judgment.get("overall_score")),
-        "passed": as_bool(judgment.get("passed")),
+        "passed": as_float(judgment.get("overall_score")) >= MIN_QUALITY_SCORE,
         "summary": str(judgment.get("summary", "")),
     }
     return event
