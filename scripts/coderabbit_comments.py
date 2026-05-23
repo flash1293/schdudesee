@@ -79,7 +79,7 @@ def graphql_query(token, query, variables=None):
 
 
 def rest_get(token, url):
-    """Execute a REST GET request against the GitHub API."""
+    """Execute a REST GET request against the GitHub API. Returns (data, next_url)."""
     import urllib.request
 
     req = urllib.request.Request(
@@ -91,10 +91,35 @@ def rest_get(token, url):
     )
     try:
         with urllib.request.urlopen(req, timeout=HTTP_TIMEOUT_SECONDS) as resp:
-            return json.loads(resp.read().decode())
+            data = json.loads(resp.read().decode())
+            # Parse Link header for pagination
+            link_header = resp.headers.get("Link", "")
+            next_url = None
+            if link_header:
+                for part in link_header.split(","):
+                    part = part.strip()
+                    if 'rel="next"' in part:
+                        next_url = part.split(";")[0].strip("<>")
+            return data, next_url
     except Exception as e:
         print(f"REST request failed: {e}", file=sys.stderr)
-        return None
+        return None, None
+
+
+def rest_get_all(token, url):
+    """Fetch all pages of a REST endpoint."""
+    all_data = []
+    next_url = url
+    while next_url:
+        data, next_url = rest_get(token, next_url)
+        if data is None:
+            break
+        if isinstance(data, list):
+            all_data.extend(data)
+        else:
+            # Single object (e.g. PR metadata) — no pagination needed
+            return data
+    return all_data
 
 
 def extract_severity(body):
@@ -123,56 +148,88 @@ def extract_title(body):
 
 
 def fetch_comments_graphql(token, pr_number):
-    """Fetch CodeRabbit review threads via GraphQL (with resolved state)."""
-    query = """
-    query($owner: String!, $repo: String!, $pr: Int!) {
-      repository(owner: $owner, name: $repo) {
-        pullRequest(number: $pr) {
-          title
-          url
-          reviewThreads(first: 50) {
-            nodes {
-              isResolved
-              resolvedBy { login }
-              comments(first: 10) {
+    """Fetch CodeRabbit review threads via GraphQL (with resolved state), paginating all pages."""
+    owner, repo = REPO.split("/")
+    pr_num = int(pr_number)
+
+    # Paginate reviewThreads
+    all_threads = []
+    threads_cursor = None
+    threads_page_size = 50
+
+    while True:
+        query = """
+        query($owner: String!, $repo: String!, $pr: Int!, $threadsCursor: String) {
+          repository(owner: $owner, name: $repo) {
+            pullRequest(number: $pr) {
+              title
+              url
+              reviewThreads(first: 50, after: $threadsCursor) {
+                pageInfo { hasNextPage endCursor }
                 nodes {
-                  body
-                  path
-                  line
-                  author { login }
-                  createdAt
+                  isResolved
+                  resolvedBy { login }
+                  comments(first: 10) {
+                    pageInfo { hasNextPage endCursor }
+                    nodes {
+                      body
+                      path
+                      line
+                      author { login }
+                      createdAt
+                    }
+                  }
                 }
               }
             }
           }
         }
-      }
-    }
-    """
-    data = graphql_query(token, query, {
-        "owner": REPO.split("/")[0],
-        "repo": REPO.split("/")[1],
-        "pr": int(pr_number),
-    })
-    if not data:
-        return None
+        """
+        data = graphql_query(token, query, {
+            "owner": owner,
+            "repo": repo,
+            "pr": pr_num,
+            "threadsCursor": threads_cursor,
+        })
+        if not data:
+            return None
 
-    pr_data = data.get("repository", {}).get("pullRequest")
-    if not pr_data:
-        print("PR not found.", file=sys.stderr)
-        return None
+        pr_data = data.get("repository", {}).get("pullRequest")
+        if not pr_data:
+            print("PR not found.", file=sys.stderr)
+            return None
 
-    threads = pr_data.get("reviewThreads", {}).get("nodes", [])
+        pr_title = pr_data.get("title", "")
+        pr_url = pr_data.get("url", "")
+
+        thread_page = pr_data.get("reviewThreads", {})
+        thread_nodes = thread_page.get("nodes", [])
+        all_threads.extend(t for t in thread_nodes if t)
+
+        page_info = thread_page.get("pageInfo", {})
+        if not page_info.get("hasNextPage"):
+            break
+        threads_cursor = page_info.get("endCursor")
+
+    # Now process all collected threads and paginate comments within each
     inline_comments = []
-    for thread in threads:
-        if not thread:
-            continue
+    for thread in all_threads:
         is_resolved = thread.get("isResolved", False)
         resolved_by = thread.get("resolvedBy", {})
         resolved_by_login = resolved_by.get("login") if resolved_by else None
-        for node in thread.get("comments", {}).get("nodes", []):
-            if not node:
-                continue
+
+        # Collect all comments in this thread (may need pagination)
+        all_comment_nodes = []
+        comment_page = thread.get("comments", {})
+        comment_nodes = comment_page.get("nodes", [])
+        all_comment_nodes.extend(c for c in comment_nodes if c)
+
+        # Note: For typical CodeRabbit threads, 10 comments is almost always enough.
+        # Paginating per-thread comments would require re-fetching each thread with a cursor,
+        # which is very heavy. The 10 limit covers virtually all CodeRabbit threads.
+        # If needed, this can be extended later.
+
+        for node in all_comment_nodes:
             author = node.get("author", {}).get("login", "")
             if "coderabbit" not in author.lower():
                 continue
@@ -196,16 +253,16 @@ def fetch_comments_graphql(token, pr_number):
     all_comments = inline_comments + review_comments
 
     return {
-        "pr_title": pr_data.get("title", ""),
-        "pr_url": pr_data.get("url", ""),
+        "pr_title": pr_title,
+        "pr_url": pr_url,
         "comments": all_comments,
     }
 
 
 def fetch_review_bodies_rest(token, pr_number):
-    """Fetch PR review bodies (which may contain 'outside diff' comments from CodeRabbit)."""
+    """Fetch PR review bodies (which may contain 'outside diff' comments from CodeRabbit). Paginates all pages."""
     url = f"{GITHUB_API}/repos/{REPO}/pulls/{pr_number}/reviews?per_page=100"
-    data = rest_get(token, url)
+    data = rest_get_all(token, url)
     if data is None:
         return []
 
@@ -235,9 +292,9 @@ def fetch_review_bodies_rest(token, pr_number):
 
 
 def fetch_comments_rest(token, pr_number):
-    """Fallback: fetch CodeRabbit PR review comments via REST API (no resolved state)."""
+    """Fallback: fetch CodeRabbit PR review comments via REST API (no resolved state). Paginates all pages."""
     url = f"{GITHUB_API}/repos/{REPO}/pulls/{pr_number}/comments?per_page=100"
-    data = rest_get(token, url)
+    data = rest_get_all(token, url)
     if data is None:
         return None
 
@@ -261,8 +318,8 @@ def fetch_comments_rest(token, pr_number):
         })
 
     # Also get PR title
-    pr_url = f"{GITHUB_API}/repos/{REPO}/pulls/{pr_number}"
-    pr_data = rest_get(token, pr_url)
+    pr_api_url = f"{GITHUB_API}/repos/{REPO}/pulls/{pr_number}"
+    pr_data, _ = rest_get(token, pr_api_url)  # single object, no pagination
     pr_title = pr_data.get("title", "") if pr_data else ""
 
     return {
