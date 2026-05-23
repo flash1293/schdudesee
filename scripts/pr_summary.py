@@ -37,7 +37,11 @@ def get_quality_badge(e):
     if not q:
         return '—'
     passed = q.get('passed', False)
-    score = q.get('overall_score', 0)
+    raw_score = q.get('overall_score', 0)
+    try:
+        score = float(raw_score)
+    except (TypeError, ValueError):
+        score = 0.0
     if passed:
         return f'✅ {score:.2f}'
     else:

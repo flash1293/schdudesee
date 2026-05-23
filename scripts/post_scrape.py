@@ -13,7 +13,9 @@ Rules should be:
 Add new rules below with a docstring explaining what they fix and why.
 """
 
+import os
 import re
+import sys
 
 # Registry of all post-scrape fix functions.
 # Each function: (event) -> bool (True if changed)
@@ -452,5 +454,4 @@ def main():
 
 
 if __name__ == "__main__":
-    import sys
     main()

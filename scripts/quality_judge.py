@@ -103,7 +103,7 @@ def get_context_events(event, all_events):
         e_tags = e.get("tags", [])
         e_district = e_tags[-1] if e_tags else "unknown"
         if (e_district == district and e.get("date_start") == date
-                and e.get("title") != event.get("title")):
+                and e.get("_filepath") != event.get("_filepath")):
             same.append({
                 "title": e.get("title", ""),
                 "time_raw": e.get("time_raw", ""),
@@ -116,8 +116,13 @@ def get_context_events(event, all_events):
 
 def call_llm(event, context_events):
     """Call OpenRouter step-fash 3.5 to judge an event."""
-    context_str = json.dumps(context_events, indent=2, ensure_ascii=False) if context_events else "None"
-    event_json = json.dumps(event, indent=2, ensure_ascii=False)
+    # Strip internal metadata before sending to LLM
+    sanitized_event = {k: v for k, v in event.items() if not k.startswith("_")}
+    sanitized_context = []
+    for ce in context_events:
+        sanitized_context.append({k: v for k, v in ce.items() if not k.startswith("_")})
+    context_str = json.dumps(sanitized_context, indent=2, ensure_ascii=False) if sanitized_context else "None"
+    event_json = json.dumps(sanitized_event, indent=2, ensure_ascii=False)
 
     prompt = EVALUATION_PROMPT_TEMPLATE.format(event_json=event_json, context_json=context_str)
 
@@ -176,11 +181,27 @@ def judge_event(event, all_events):
 
     judgment = call_llm(event, context)
 
+    # Normalize types — model may return strings
+    def as_float(v, default=0.0):
+        try:
+            return float(v)
+        except (TypeError, ValueError):
+            return default
+
+    def as_bool(v, default=False):
+        if isinstance(v, bool):
+            return v
+        if isinstance(v, str):
+            return v.lower() in ("true", "1", "yes")
+        if isinstance(v, (int, float)):
+            return v != 0
+        return default
+
     event["_quality"] = {
         "judgments": judgment.get("judgments", {}),
-        "overall_score": judgment.get("overall_score", 0.0),
-        "passed": judgment.get("passed", False),
-        "summary": judgment.get("summary", ""),
+        "overall_score": as_float(judgment.get("overall_score")),
+        "passed": as_bool(judgment.get("passed")),
+        "summary": str(judgment.get("summary", "")),
     }
     return event
 
