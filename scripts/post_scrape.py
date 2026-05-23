@@ -317,6 +317,62 @@ def fix_tag_cheerleading_sport(event):
 
 
 @rule
+def fix_district_from_url(event):
+    """If no district tag is present, try to infer it from the event URL.
+    Many event URLs contain the district/municipality name, especially
+    for scraped events from municipal calendars.
+    This handles the common case where location is known but the district
+    tag wasn't set by the auto-tagger."""
+    tags = event.get("tags", [])
+
+    # Check if any tag is already a known district
+    known_districts = {"Blankenloch", "Bruchsal", "Büchenau", "Büchig",
+                       "Eggenstein", "Friedrichstal", "Graben-Neudorf",
+                       "Hagsfeld", "Leopoldshafen", "Linkenheim",
+                       "Neureut", "Neuthard", "Rintheim", "Spöck",
+                       "Staffort", "Waldstadt", "Weingarten"}
+    if any(t in known_districts for t in tags):
+        return False  # already has a district tag
+
+    url = (event.get("event_url") or "").lower()
+    if not url:
+        return False
+
+    # Map URL-substrings to district names
+    url_to_district = {
+        "graben-neudorf": "Graben-Neudorf",
+        "graben_neudorf": "Graben-Neudorf",
+        "linkenheim": "Linkenheim",
+        "leopoldshafen": "Leopoldshafen",
+        "bruchsal": "Bruchsal",
+        "stutensee": None,  # generic, needs more specific
+        "blankenloch": "Blankenloch",
+        "friedrichstal": "Friedrichstal",
+        "spöck": "Spöck",
+        "staffort": "Staffort",
+        "büchig": "Büchig",
+        "buechig": "Büchig",
+        "weingarten": "Weingarten",
+        "eggenstein": "Eggenstein",
+        "neuthard": "Neuthard",
+        "karlsdorf": "Neuthard",  # Karlsdorf-Neuthard
+        "waldstadt": "Waldstadt",
+        "neureut": "Neureut",
+        "rintheim": "Rintheim",
+        "hagsfeld": "Hagsfeld",
+        "büchenau": "Büchenau",
+        "buechenau": "Büchenau",
+    }
+
+    for substr, district in url_to_district.items():
+        if substr in url and district:
+            event["tags"] = tags + [district]
+            return True
+
+    return False
+
+
+@rule
 def fix_tag_more_specific(event):
     """Add more specific tags to events that have vague/too-few tags.
     Uses title and description keywords to infer relevant tags."""

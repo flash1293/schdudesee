@@ -18,40 +18,36 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location is only the district name, not a specific venue or address."
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time provided; time_raw is empty."
+          "No time information provided"
         ]
       },
       "description_quality": {
         "score": 0.2,
         "issues": [
-          "Description is too brief and lacks informative details about the event."
+          "Description is too brief and lacks details about the event"
         ]
       },
       "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tags are limited; could include more specific categories if more information is available."
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.53,
-    "passed": false,
-    "summary": "Event has clear title but missing time and detailed description. Location is non-specific. Tags are adequate but minimal. No duplicate concerns."
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "Title and location are clear and accurate. Time information is missing entirely, and the description offers no additional details beyond the title and organizer. Tags correctly include a category and district. No risk of duplication."
   }
 }

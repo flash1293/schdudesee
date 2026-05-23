@@ -28,28 +28,26 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No start time provided"
+          "time_raw is empty"
         ]
       },
       "description_quality": {
-        "score": 0.4,
+        "score": 0.3,
         "issues": [
-          "Description merely repeats the title, location, and organizer, lacking additional details like time, program, or pricing"
+          "Description is too brief and repetitive"
         ]
       },
       "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Missing 'Sport' tag for the Torwandschießen activity"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.66,
+    "overall_score": 0.6,
     "passed": true,
-    "summary": "Event has a descriptive title and a location, but lacks a start time and has a weak description that adds no new information. Tags are partly appropriate but miss the sport category. These shortcomings make the entry quality insufficient for publication."
+    "summary": "Event title is descriptive but missing time information, and description lacks details. Tags are appropriate."
   }
 }

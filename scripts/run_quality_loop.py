@@ -10,10 +10,21 @@ Usage:
 
 Process:
   1. Run quality judge on all input events
-  2. If any fail, apply post_scrape rules
-  3. Re-run quality judge on fixed events
-  4. Loop until all pass or max iterations reached
-  5. Print summary
+  2. If any fail, apply post_scrape rules to fix fixable issues
+  3. If all pass, still apply post_scrape rules to pick "low-hanging fruits"
+     (fixable issues identified by the judge that can improve quality further)
+  4. Re-run quality judge on fixed events
+  5. Loop until all pass AND no more fixable issues remain, or max iterations
+  6. Print summary
+
+Low-Hanging Fruit Principle:
+  - Even if score >= threshold, if the judge identifies a fixable issue
+    (e.g., missing district tag when URL contains the district name,
+    or empty description when title+location+time provide enough context),
+    apply the fix and re-judge.
+  - This ensures continuous improvement beyond just "passing the gate".
+  - If there's genuinely no data (e.g., just a date, nothing else), that's
+    not fixable and will be left as-is.
 """
 
 import json, os, sys, glob, subprocess, time
@@ -128,36 +139,51 @@ def main():
     all_failed = events[:]
     loop_history = []
 
-    while iteration < args.max_iterations and all_failed:
+    while iteration < args.max_iterations:
         iteration += 1
         print(f"\n{'='*60}")
         print(f"🔄 Iteration {iteration}")
         print(f"{'='*60}")
 
-        # Judge current failed events (in parallel)
-        passed, failed = run_quality_judge(all_failed, parallel=args.parallel)
-        all_passed.extend(passed)
+        # Judge current events (both still-failing AND already-passed events
+        # get re-judged after fixes to catch the full improvement)
+        events_to_judge = all_failed + all_passed
+        if not events_to_judge:
+            break
+
+        passed, failed = run_quality_judge(events_to_judge, parallel=args.parallel)
+        all_passed = passed
         all_failed = failed
 
         loop_history.append({
             "iteration": iteration,
             "passed": len(passed),
             "failed": len(failed),
+            "total": len(events_to_judge),
         })
 
         if not all_failed:
-            print(f"\n✅ All events passed!")
-            break
-
-        # Apply post-scrape rules to failed events
-        print(f"\n🔧 Applying post-scrape rules to {len(all_failed)} failed events...")
-        changed = run_post_scrape(all_failed)
-        if not changed:
-            print("  No rules could fix the remaining issues.")
-            break
-        print(f"  {len(changed)} events modified by rules.")
-
-        # Re-judge will happen on next iteration
+            # All passed — check for low-hanging fruits (fixable issues
+            # in passed events that could improve quality further).
+            # The judge identifies specific issues per axis; even passed
+            # events may have "low-hanging fruit" like a missing district
+            # tag that's inferable from the URL, or an empty description
+            # when title+location+time+organizer provide enough context.
+            print(f"\n🍎 Checking for low-hanging fruits in passed events...")
+            changed = run_post_scrape(all_passed)
+            if not changed:
+                print("  ✅ No more fixable issues found.")
+                break
+            print(f"  {len(changed)} events improved. Re-judging to confirm...")
+            # Re-judge the improved events next iteration
+        else:
+            # Apply post-scrape rules to failed events
+            print(f"\n🔧 Applying post-scrape rules to {len(all_failed)} failed events...")
+            changed = run_post_scrape(all_failed)
+            if not changed:
+                print("  ⛔ No rules could fix the remaining issues.")
+                break
+            print(f"  {len(changed)} events modified by rules.")
 
     # Save all events (also done incrementally during judging)
     for event in all_passed + all_failed:
