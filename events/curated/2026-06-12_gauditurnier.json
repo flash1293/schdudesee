@@ -1,0 +1,59 @@
+{
+  "title": "Gauditurnier",
+  "date_start": "2026-06-12",
+  "date_end": "2026-06-12",
+  "time_raw": "",
+  "location": "Reit,-Fahr- und Zuchtverein 1949 e.V. Spöck",
+  "organizer": "Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck",
+  "description": "Gauditurnier. at Reit,-Fahr- und Zuchtverein 1949 e.V. Spöck. organized by Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/gauditurnier/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Sport",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is generic and not very descriptive"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location string contains formatting issue (comma before dash)"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is minimal, only repeats title and location/organizer without additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.3,
+        "issues": [
+          "Another event with similar details (same date, location, organizer) but different title may cause confusion"
+        ]
+      }
+    },
+    "overall_score": 0.52,
+    "passed": false,
+    "summary": "Event entry is lacking time details and has a poor description; location has minor formatting issue; tags are appropriate; potential duplicate risk is low but notable."
+  }
+}

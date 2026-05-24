@@ -1,0 +1,53 @@
+{
+  "title": "5. Spechaa-Lauf",
+  "date_start": "2026-06-07",
+  "date_end": "2026-06-07",
+  "time_raw": "09:20",
+  "location": "Turnverein 1896 Spöck e.V.",
+  "organizer": "Turnverein 1896 Spöck e.V.",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/5-spechaa-lauf/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Sport",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location could be more specific, e.g., street address."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty, no details about the event."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.77,
+    "passed": true,
+    "summary": "Title is descriptive but slightly obscure; location present but lacks address; time present; description missing; tags appropriate; no duplicate risk."
+  }
+}

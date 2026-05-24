@@ -1,0 +1,54 @@
+{
+  "title": "Swing in Swing",
+  "date_start": "2026-07-05",
+  "date_end": "2026-07-05",
+  "time_raw": "10:45",
+  "location": "Jugendeinrichtung Schloss Stutensee",
+  "organizer": "Jugendeinrichtung Schloss Stutensee",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/swing-in-swing/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Musik"
+  ],
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is ambiguous and does not clearly indicate the nature of the event."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty, no information about the event."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag; one of the tags should be a district from the available list."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "Entry has significant shortcomings: missing description and required district tag. Title is vague. Overall quality is insufficient."
+  }
+}

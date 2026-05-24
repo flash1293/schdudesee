@@ -6,7 +6,7 @@
   "location": "Bürgerpark beim Bürgerzentrum, Am Alten Schloss, 76646 Bruchsal",
   "organizer": "Badische Landesbühne",
   "description": "THEATRUM MUNDI - Die komplette Weltgeschichte Bruchsals (leicht gekürzt) Bürgertheater-Spektakel zum 1050 Geburtstag der Stadt Bruchsal Viele Leute hielten das Universum am Anfang für langweilig. Dann aber schuf Gott (oder wer immer an jenem Tag Dienst hatte) Himmel und Erde. Etwas später folgten Feuer und Wasser, Engel und Dämonen, Männer und Frauen, Arme und Reiche, und plötzlich war etwas ganz Neues in der Welt: Der Streit. KARTEN DIREKT ONLINE BEI RESERVIX Infos zu allen Teilnehmenden, Förderern, Unterstützern und Partnern finden Sie auf unserer Webseite!",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8893705/TheatrumMundiBrgertheaterzum1050GeburtstagderStadtBruchsalDiekompletteWeltgeschichteBruchsalsleichtgekrzt.html&nodeID=8893705",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8893705/index.html?nodeID=8893705",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -15,5 +15,38 @@
     "Digital",
     "Bruchsal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Digital' is not appropriate for a theater event; consider 'Fest' or 'Stadtleben' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Event entry is well-structured with clear title and description. Location and time are extracted correctly. Tags mostly appropriate but include irrelevant 'Digital' tag. No duplicate risk. Overall high quality."
+  }
 }

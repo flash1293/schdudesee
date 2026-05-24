@@ -1,0 +1,52 @@
+{
+  "title": "Mittsommerabend",
+  "date_start": "2026-06-19",
+  "date_end": "2026-06-19",
+  "time_raw": "19:30",
+  "location": "Vereinsgelände SV Blankenloch",
+  "organizer": "Gemeindeteam Blankenloch-Büchig",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/mittsommerabend/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "missing category tag; only district tag provided"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.73,
+    "passed": true,
+    "summary": "Event entry has clear title and proper location and time extraction, but lacks description and has incomplete tagging (no category). Low risk of duplication. Overall acceptable."
+  }
+}

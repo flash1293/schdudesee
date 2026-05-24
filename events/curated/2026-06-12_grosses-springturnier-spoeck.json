@@ -1,0 +1,53 @@
+{
+  "title": "Großes Springturnier Spöck",
+  "date_start": "2026-06-12",
+  "date_end": "2026-06-14",
+  "time_raw": "",
+  "location": "Reit,-Fahr- und Zuchtverein 1949 e.V. Spöck",
+  "organizer": "Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/springturnier/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Sport",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "Event has clear title and location, but missing time and description. Tags are appropriate. No duplicate risk identified."
+  }
+}
