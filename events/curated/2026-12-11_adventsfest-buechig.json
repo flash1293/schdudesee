@@ -28,13 +28,13 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No start time provided"
+          "No time information provided"
         ]
       },
       "description_quality": {
         "score": 0.3,
         "issues": [
-          "Description lacks details"
+          "Description is too brief and lacks details about the event"
         ]
       },
       "tag_quality": {
@@ -48,6 +48,6 @@
     },
     "overall_score": 0.7,
     "passed": true,
-    "summary": "Title and location are clear, but event lacks a start time and the description is minimal."
+    "summary": "The event entry has a clear title and valid location and tags, but lacks time information and has a very brief description. No duplicates detected. Overall quality is acceptable but could be improved."
   }
 }

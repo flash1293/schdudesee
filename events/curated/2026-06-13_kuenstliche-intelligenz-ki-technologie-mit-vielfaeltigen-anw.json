@@ -20,13 +20,13 @@
       "title_quality": {
         "score": 0.9,
         "issues": [
-          "Capitalization of 'intelligenz' should be 'Intelligenz' for proper German spelling"
+          "Title has capitalization error: 'intelligenz' should be 'Intelligenz'"
         ]
       },
       "location_extraction": {
         "score": 0.2,
         "issues": [
-          "Location field is empty; address is only present in description"
+          "Location field is empty; location information is present in description and should be extracted"
         ]
       },
       "time_extraction": {
@@ -34,13 +34,15 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Description contains redundant course ID and instructor name, which could be formatted better"
+        ]
       },
       "tag_quality": {
         "score": 0.3,
         "issues": [
-          "Tag 'Kinder' is not appropriate for this event; better tags would be 'Bildung', 'Digital', or 'Workshop'"
+          "Tag 'Kinder' is not appropriate for this adult-focused educational event; consider using 'Bildung', 'Digital', or 'Workshop'"
         ]
       },
       "duplicate_risk": {
@@ -48,8 +50,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.72,
+    "overall_score": 0.7,
     "passed": true,
-    "summary": "Event entry has a clear title and detailed description, but the location field is missing and tags are partially inappropriate. Overall quality is acceptable."
+    "summary": "Event title and time are clear, but location is missing from the dedicated field and tags are inaccurate. Description is informative albeit a bit messy. Not a duplicate of other listed events."
   }
 }

@@ -5,7 +5,7 @@
   "time_raw": "19:30",
   "location": "Vereinsgelände SV Blankenloch",
   "organizer": "Gemeindeteam Blankenloch-Büchig",
-  "description": "",
+  "description": "Mittsommerabend. at Vereinsgelände SV Blankenloch. from 19:30. organized by Gemeindeteam Blankenloch-Büchig.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/mittsommerabend/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -29,15 +29,15 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.0,
+        "score": 0.3,
         "issues": [
-          "description is empty"
+          "Description is minimally informative; it only repeats the title, location, time, and organizer without providing additional event details."
         ]
       },
       "tag_quality": {
         "score": 0.5,
         "issues": [
-          "missing category tag; only district tag provided"
+          "Only a district tag (Blankenloch) is present; no event category tag from the available list is assigned."
         ]
       },
       "duplicate_risk": {
@@ -45,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.73,
+    "overall_score": 0.78,
     "passed": true,
-    "summary": "Event entry has clear title and proper location and time extraction, but lacks description and has incomplete tagging (no category). Low risk of duplication. Overall acceptable."
+    "summary": "Event entry is mostly well-structured with clear title, location, and time. However, the description is poor and lacking useful information, and the tags are incomplete (missing a category tag). No risk of duplicates."
   }
 }

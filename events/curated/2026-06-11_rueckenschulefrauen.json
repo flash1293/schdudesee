@@ -19,8 +19,10 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.85,
-        "issues": []
+        "score": 0.7,
+        "issues": [
+          "Title is concatenated as 'RückenschuleFrauen', missing space, which reduces clarity"
+        ]
       },
       "location_extraction": {
         "score": 1.0,
@@ -31,13 +33,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
+        "score": 0.9,
         "issues": []
       },
       "tag_quality": {
-        "score": 0.4,
+        "score": 0.6,
         "issues": [
-          "Tag 'Kinder' is not relevant for an event targeted at women"
+          "'Kinder' tag is not appropriate for a back school for women; consider using 'Sport' or removing it"
         ]
       },
       "duplicate_risk": {
@@ -45,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.84,
+    "overall_score": 0.87,
     "passed": true,
-    "summary": "Good event entry with clear title and detailed location. Time is provided. Description is informative. Tag 'Kinder' is inappropriate as the event is for women; otherwise tags are suitable."
+    "summary": "Event entry is mostly well-formed, but the title lacks a space and the 'Kinder' tag is incongruous for this event."
   }
 }

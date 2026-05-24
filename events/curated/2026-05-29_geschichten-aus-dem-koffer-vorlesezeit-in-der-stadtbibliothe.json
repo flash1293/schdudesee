@@ -31,10 +31,8 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Contains a specific date example (6.2.) that may be outdated or confusing for this event instance"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "tag_quality": {
         "score": 1.0,
@@ -45,8 +43,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.98,
+    "overall_score": 1.0,
     "passed": true,
-    "summary": "Well-structured event with a clear title, precise location, proper time extraction, informative description, and appropriate tags including a district. The only minor issue is the potentially outdated example date in the description."
+    "summary": "Perfect event entry with clear title, complete location and time, informative description, appropriate tags including district, and no duplicate risk."
   }
 }

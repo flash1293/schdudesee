@@ -5,7 +5,7 @@
   "time_raw": "09:00",
   "location": "SV Staffort",
   "organizer": "Sportverein Staffort e.V.",
-  "description": "",
+  "description": "Oldtimer- und Traktortreff. at SV Staffort. from 09:00. organized by Sportverein Staffort e.V..",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/oldtimer-und-traktortreff/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -22,7 +22,7 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "time_extraction": {
@@ -30,13 +30,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.0,
+        "score": 0.5,
         "issues": [
-          "Event description is empty, lacks details"
+          "Description is a simple repetition of title, location, time, and organizer; lacks additional information"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -44,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.8,
+    "overall_score": 0.88,
     "passed": true,
-    "summary": "Title is clear, time extracted correctly, location present, but no description provided. Tags appropriate and include district. No duplicates."
+    "summary": "The event entry is clear with appropriate tags and no duplicates. The description is minimal, providing no details beyond the title and metadata."
   }
 }

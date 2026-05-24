@@ -31,13 +31,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
+        "score": 1.0,
         "issues": []
       },
       "tag_quality": {
-        "score": 0.6,
+        "score": 0.8,
         "issues": [
-          "Tag 'Digital' is not appropriate for a theater event; consider 'Fest' or 'Stadtleben' instead"
+          "Tag 'Digital' is not an accurate fit for the event, which is a live theatre performance; 'Kultur' and 'Bruchsal' are correct."
         ]
       },
       "duplicate_risk": {
@@ -45,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.9,
+    "overall_score": 0.97,
     "passed": true,
-    "summary": "Event entry is well-structured with clear title and description. Location and time are extracted correctly. Tags mostly appropriate but include irrelevant 'Digital' tag. No duplicate risk. Overall high quality."
+    "summary": "Excellent event entry with a highly descriptive title, a well-parsed location, a precise time, and a detailed description. Tags are mostly perfect ('Kultur', 'Bruchsal'), though 'Digital' is mildly mismatched for a live theatre piece. No duplicate risk in the provided context."
   }
 }

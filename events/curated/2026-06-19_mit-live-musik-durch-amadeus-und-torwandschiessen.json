@@ -28,28 +28,26 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No start time provided"
+          "time_raw is empty, no start time provided"
         ]
       },
       "description_quality": {
-        "score": 0.4,
+        "score": 0.2,
         "issues": [
-          "Description is minimal and largely repeats title, location, and organizer"
+          "Description is too brief and not informative; merely repeats title and adds location/organizer without additional useful information"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
-        "issues": [
-          "Consider adding 'Sport' tag to reflect the Torwandschießen activity"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.68,
+    "overall_score": 0.67,
     "passed": true,
-    "summary": "Event has clear title and location, but lacks a start time, making it incomplete. Description is uninformative. Tags are appropriate but could be expanded. Key issues hinder full usability."
+    "summary": "Event entry lacks a start time and has a very sparse description, but title and tags are appropriate."
   }
 }

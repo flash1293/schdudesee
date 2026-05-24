@@ -13,7 +13,8 @@
   "tags": [
     "Sport",
     "Kinder",
-    "Bruchsal"
+    "Bruchsal",
+    "Fest"
   ],
   "recurring_group_id": null,
   "_quality": {
@@ -31,13 +32,15 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
         "score": 0.8,
         "issues": [
-          "Tag 'Kinder' may not be fully appropriate for an event targeting women/girls aged 12+; 'Workshop' or 'Bildung' could be considered."
+          "Description contains redundant course code at start."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Fest' is not appropriate for this event; consider 'Workshop' or 'Bildung'."
         ]
       },
       "duplicate_risk": {
@@ -45,8 +48,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.93,
+    "overall_score": 0.88,
     "passed": true,
-    "summary": "Event entry is well-formed with clear title, full location, and a descriptive detail. Tags are generally appropriate though 'Kinder' is borderline for the age group. No duplication with context events."
+    "summary": "The event entry is mostly well-structured with a clear title, precise location and time, and a detailed description. The tags are mostly appropriate but 'Fest' should be replaced with 'Workshop' or 'Bildung'. No duplicate risk. Overall good quality."
   }
 }

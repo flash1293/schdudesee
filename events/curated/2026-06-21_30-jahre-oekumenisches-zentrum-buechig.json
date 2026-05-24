@@ -5,7 +5,7 @@
   "time_raw": "10:30",
   "location": "Ökumenisches Kirchenzentrum Büchig",
   "organizer": "Heilig-Geist-Gemeinde Büchig",
-  "description": "",
+  "description": "30 Jahre ökumenisches Zentrum Büchig. at Ökumenisches Kirchenzentrum Büchig. from 10:30. organized by Heilig-Geist-Gemeinde Büchig.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/30-jahre-oekumenisches-zentrum-buechig/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -30,9 +30,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.0,
+        "score": 0.3,
         "issues": [
-          "Description is empty, no information about the event"
+          "Description only repeats metadata, lacking informative content"
         ]
       },
       "tag_quality": {
@@ -44,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.82,
+    "overall_score": 0.87,
     "passed": true,
-    "summary": "Clear title, location, time, and tags, but empty description is a major flaw, leading to failure."
+    "summary": "The event entry is mostly well-structured with clear title, location, time, and tags. However, the description is redundant and offers no additional context, which significantly lowers its quality."
   }
 }

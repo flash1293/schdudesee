@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Reit,-Fahr- und Zuchtverein 1949 e.V. Spöck",
   "organizer": "Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck",
-  "description": "",
+  "description": "Großes Springturnier Spöck. at Reit,-Fahr- und Zuchtverein 1949 e.V. Spöck. organized by Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/springturnier/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -28,13 +28,13 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "time_raw is empty"
+          "time_raw is empty; no start time provided"
         ]
       },
       "description_quality": {
-        "score": 0.0,
+        "score": 0.3,
         "issues": [
-          "description is empty"
+          "Description is repetitive and lacks informative content"
         ]
       },
       "tag_quality": {
@@ -42,12 +42,12 @@
         "issues": []
       },
       "duplicate_risk": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       }
     },
-    "overall_score": 0.67,
+    "overall_score": 0.68,
     "passed": true,
-    "summary": "Event has clear title and location, but missing time and description. Tags are appropriate. No duplicate risk identified."
+    "summary": "Title is clear, location and tags are appropriate. However, missing time (empty time_raw) and uninformative description negatively impact quality. Low duplicate risk with 'Gauditurnier'."
   }
 }

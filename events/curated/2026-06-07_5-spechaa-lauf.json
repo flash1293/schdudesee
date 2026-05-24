@@ -5,7 +5,7 @@
   "time_raw": "09:20",
   "location": "Turnverein 1896 Spöck e.V.",
   "organizer": "Turnverein 1896 Spöck e.V.",
-  "description": "",
+  "description": "5. Spechaa-Lauf. at Turnverein 1896 Spöck e.V.. from 09:20. organized by Turnverein 1896 Spöck e.V..",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/5-spechaa-lauf/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -18,13 +18,13 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 0.85,
         "issues": []
       },
       "location_extraction": {
-        "score": 0.8,
+        "score": 0.85,
         "issues": [
-          "Location could be more specific, e.g., street address."
+          "Location is a club name without address"
         ]
       },
       "time_extraction": {
@@ -32,13 +32,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.0,
+        "score": 0.3,
         "issues": [
-          "Description is empty, no details about the event."
+          "Description is uninformative, only repeats other fields"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 0.95,
         "issues": []
       },
       "duplicate_risk": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.77,
+    "overall_score": 0.83,
     "passed": true,
-    "summary": "Title is descriptive but slightly obscure; location present but lacks address; time present; description missing; tags appropriate; no duplicate risk."
+    "summary": "Event entry is generally good but description is poor and location could be more specific."
   }
 }
