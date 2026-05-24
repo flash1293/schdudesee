@@ -40,7 +40,8 @@ async function routeRequest(request, env) {
   if (url.pathname === '/robots.txt') return serveRobotsTxt();
   if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
   if (url.pathname === '/llms.txt') return serveLlmTxt();
-  if (url.pathname === '/llms.txt') return serveLlmTxt();
+  if (url.pathname === '/.well-known/security.txt') return serveSecurityTxt();
+  if (url.pathname === '/sitemap.xml') return serveSitemapXml();
   return new Response('Not found', { status: 404 });
 }
 
@@ -274,5 +275,30 @@ Event data is updated weekly via a scraping pipeline (scrape_and_merge.py). Sour
 ## Terms
 This API is free and public. No authentication required. No rate limiting currently enforced. Data is provided as-is without guarantee of completeness or accuracy.`, {
     headers: { 'content-type': 'text/plain;charset=utf-8', 'cache-control': 'public, max-age=3600' }
+  });
+}
+
+function serveSecurityTxt() {
+  return new Response(`# Security Contact
+# If you find a security issue on was-geht-stutensee.de, please report it.
+Contact: mailto:email@johannes-reuter.de
+Canonical: https://was-geht-stutensee.de/.well-known/security.txt
+Preferred-Languages: de, en
+Expires: 2027-05-24T14:00:00.000Z
+`, {
+    headers: { 'content-type': 'text/plain;charset=utf-8', 'cache-control': 'public, max-age=86400' }
+  });
+}
+
+function serveSitemapXml() {
+  return new Response(`<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://was-geht-stutensee.de/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>`, {
+    headers: { 'content-type': 'application/xml;charset=utf-8', 'cache-control': 'public, max-age=86400' }
   });
 }
