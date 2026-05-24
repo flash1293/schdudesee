@@ -1,0 +1,51 @@
+{
+  "title": "Oldtimer- und Traktortreff",
+  "date_start": "2026-07-12",
+  "date_end": "2026-07-12",
+  "time_raw": "09:00",
+  "location": "SV Staffort",
+  "organizer": "Sportverein Staffort e.V.",
+  "description": "Oldtimer- und Traktortreff. at SV Staffort. from 09:00. organized by Sportverein Staffort e.V..",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/oldtimer-und-traktortreff/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Treff",
+    "Staffort"
+  ],
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is a simple repetition of title, location, time, and organizer; lacks additional information"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "The event entry is clear with appropriate tags and no duplicates. The description is minimal, providing no details beyond the title and metadata."
+  }
+}

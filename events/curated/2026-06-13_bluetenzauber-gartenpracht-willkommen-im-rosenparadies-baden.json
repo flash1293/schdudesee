@@ -19,8 +19,10 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "Title is descriptive but slightly verbose and promotional"
+        ]
       },
       "location_extraction": {
         "score": 1.0,
@@ -31,20 +33,24 @@
         "issues": []
       },
       "description_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "Description is poetic and informative, though it could include more practical details about the gardens"
+        ]
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "Tag 'Fest' may not perfectly align with the excursion nature of the event"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 1.0,
+    "overall_score": 0.95,
     "passed": true,
-    "summary": "Event entry is well-structured with a clear title, precise location and time extraction, a rich description, appropriate tags, and no duplicate risk."
+    "summary": "Event entry is well-structured with a clear title, proper location and time extraction, and a helpful description. Tags are generally appropriate with only minor concerns about 'Fest'. No duplicate risk with other events."
   }
 }

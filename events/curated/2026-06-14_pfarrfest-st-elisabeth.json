@@ -1,0 +1,51 @@
+{
+  "title": "Pfarrfest St. Elisabeth",
+  "date_start": "2026-06-14",
+  "date_end": "2026-06-14",
+  "time_raw": "12:00",
+  "location": "Katholische Kirche St. Elisabeth Friedrichstal",
+  "organizer": "Kath. Kirchengemeinde Friedrichstal",
+  "description": "Pfarrfest St. Elisabeth. at Katholische Kirche St. Elisabeth Friedrichstal. from 12:00. organized by Kath. Kirchengemeinde Friedrichstal.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/pfarrfest-st-elisabeth/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Fest",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is repetitive and does not provide additional details beyond other fields"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event entry is mostly good, with clear title, location, and time. However, the description merely repeats other fields and lacks informative content. Tags are appropriate and include a district. No duplicate risk."
+  }
+}

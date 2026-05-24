@@ -23,10 +23,8 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.6,
-        "issues": [
-          "Location only provides venue name without city or district"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "time_extraction": {
         "score": 1.0,
@@ -35,7 +33,7 @@
       "description_quality": {
         "score": 0.3,
         "issues": [
-          "Description repeats metadata and lacks informative content"
+          "Description is largely redundant with other fields and lacks additional informative content"
         ]
       },
       "tag_quality": {
@@ -47,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.8,
+    "overall_score": 0.87,
     "passed": true,
-    "summary": "Event entry has clear title and timing, but location missing city and description too brief. Tags appropriate."
+    "summary": "Event has clear title, location, and time. Description is repetitive and not helpful. Tags are appropriate with district included. No duplicate concerns."
   }
 }

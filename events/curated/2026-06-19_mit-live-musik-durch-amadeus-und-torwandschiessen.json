@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.85,
+        "score": 0.8,
         "issues": []
       },
       "location_extraction": {
@@ -28,17 +28,17 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "time_raw is empty"
+          "time_raw is empty, no start time provided"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.2,
         "issues": [
-          "Description is too brief and repetitive"
+          "Description is too brief and not informative; merely repeats title and adds location/organizer without additional useful information"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.6,
+    "overall_score": 0.67,
     "passed": true,
-    "summary": "Event title is descriptive but missing time information, and description lacks details. Tags are appropriate."
+    "summary": "Event entry lacks a start time and has a very sparse description, but title and tags are appropriate."
   }
 }

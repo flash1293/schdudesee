@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -32,7 +32,7 @@
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.3,
         "issues": [
           "Description is too brief and lacks details about the event"
         ]
@@ -48,6 +48,6 @@
     },
     "overall_score": 0.7,
     "passed": true,
-    "summary": "Title and location are clear and accurate. Time information is missing entirely, and the description offers no additional details beyond the title and organizer. Tags correctly include a category and district. No risk of duplication."
+    "summary": "The event entry has a clear title and valid location and tags, but lacks time information and has a very brief description. No duplicates detected. Overall quality is acceptable but could be improved."
   }
 }

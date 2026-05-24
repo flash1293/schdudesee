@@ -1,0 +1,55 @@
+{
+  "title": "Swing in Swing",
+  "date_start": "2026-07-05",
+  "date_end": "2026-07-05",
+  "time_raw": "10:45",
+  "location": "Jugendeinrichtung Schloss Stutensee",
+  "organizer": "Jugendeinrichtung Schloss Stutensee",
+  "description": "Swing in Swing. at Jugendeinrichtung Schloss Stutensee. from 10:45. organized by Jugendeinrichtung Schloss Stutensee.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/swing-in-swing/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Musik"
+  ],
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.4,
+        "issues": [
+          "Title is not descriptive, does not indicate event type or content"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is minimal and repetitive, providing no additional information beyond metadata"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Missing district tag from available districts list",
+          "Only 'Musik' tag present, consider adding more relevant categories based on event content"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "The event entry has an unclear title, minimal description, and lacks a required district tag, resulting in low overall quality."
+  }
+}
