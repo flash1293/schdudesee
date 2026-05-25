@@ -245,56 +245,10 @@ def fix_sport_tag_garden_false_positive(event):
     return False
 
 
-@rule
-def fix_description_from_title(event):
-    """If description is empty but the title is descriptive enough,
-    use the title as a short description fallback.
-    This helps events that have no description text from the source."""
-    if event.get("description", "").strip():
-        return False
-
-    title = (event.get("title") or "").strip()
-    if not title:
-        return False
-
-    # Use title as description if it's at least 2 words (covers "Adventsfest Büchig" etc.)
-    words = title.split()
-    if len(words) >= 2:
-        event["description"] = title
-        return True
-
-    return False
-
-
-@rule
-def fix_description_add_context(event):
-    """If description is identical to the title (or very short), build
-    a richer description from title + location + time + organizer.
-    This gives the quality judge enough context to pass."""
-    desc = (event.get("description") or "").strip()
-    title = (event.get("title") or "").strip()
-
-    # Skip if description is already substantial and not just the title
-    if len(desc) > len(title) + 10 and desc != title:
-        return False
-
-    # Build context parts
-    parts = [title]
-    loc = (event.get("location") or "").strip()
-    if loc and loc not in title:
-        parts.append(f"at {loc}")
-    time_raw = (event.get("time_raw") or "").strip()
-    if time_raw and time_raw not in title:
-        parts.append(f"from {time_raw}")
-    org = (event.get("organizer") or "").strip()
-    if org and org not in title:
-        parts.append(f"organized by {org}")
-
-    new_desc = ". ".join(parts) + "."
-    if new_desc != desc:
-        event["description"] = new_desc
-        return True
-    return False
+# NOTE: fix_description_from_title and fix_description_add_context were removed
+# because they created synthetic descriptions (like "Title. at Loc. from Time. organized by Org.")
+# that contain no real information. Empty descriptions are now penalized by the
+# quality judge rather than filled with placeholder text.
 
 
 @rule

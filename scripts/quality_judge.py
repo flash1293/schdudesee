@@ -85,7 +85,7 @@ Rate each axis 0.0-1.0 and list specific issues:
 - title_quality: Is the title clear, descriptive and meaningful?
 - location_extraction: Is the location properly extracted (not empty)?
 - time_extraction: Is a time/start time present and properly extracted?
-- description_quality: Is the description informative and helpful?
+- description_quality: Is the description informative and helpful? Empty descriptions get a LOW score (0.0-0.2). Descriptions that just restate title/location/time (e.g. "Title. at Location. from Time. organized by Org.") also get a LOW score. Description must be in German to score well.
 - tag_quality: Are the tags appropriate and accurate? Consider the available categories and districts above. One of the tags should be a district from the districts list.
 - duplicate_risk: Is this event a likely duplicate of another event in the context?
 
