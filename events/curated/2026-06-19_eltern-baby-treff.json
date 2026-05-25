@@ -15,5 +15,38 @@
     "Musik",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1833760295
+  "recurring_group_id": 1833760295,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Sport' may be inappropriate for a parent-baby group; consider 'Kinder' or 'Treff'. Tag 'Musik' is acceptable but could be more precise."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.92,
+    "passed": true,
+    "summary": "The event entry is well-structured with clear title, location, time, and a very informative description. The tags are partially suitable but could be improved for relevance; no duplicate risk exists."
+  }
 }

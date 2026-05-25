@@ -14,5 +14,44 @@
     "Kultur",
     "Markt"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description identical to title, not informative"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Missing district tag, should include one from districts list, e.g., Eggenstein or Leopoldshafen"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": [
+          "No duplicates in context"
+        ]
+      }
+    },
+    "overall_score": 0.59,
+    "passed": false,
+    "summary": "Event entry has a clear title and location, but lacks time and has an uninformative description; tags miss the required district tag."
+  }
 }

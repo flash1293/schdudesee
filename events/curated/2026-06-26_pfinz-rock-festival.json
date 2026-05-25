@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSpechaahalle Spöck",
   "organizer": "Motorradfreunde Adler",
-  "description": "",
+  "description": "Pfinz Rock Festival. at Veranstaltungsort:\n\t\tSpechaahalle Spöck. organized by Motorradfreunde Adler.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2630",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,42 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location string contains extra formatting text"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time specified"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description lacks details, just repeats title and location"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Event has clear title and appropriate tags, but lacks time and location extraction is not clean; description is minimal."
+  }
 }

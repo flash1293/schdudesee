@@ -5,14 +5,54 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
   "organizer": "Turn- und Sportgemeinschaft Blankenloch e.V.",
-  "description": "",
+  "description": "32. Heinz Beierstorf Triathlon Aufbau. at Veranstaltungsort:\n\t\tFesthalle Stutensee. organized by Turn- und Sportgemeinschaft Blankenloch e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2625",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Sport",
-    "Blankenloch"
+    "Blankenloch",
+    "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains formatting artifacts like 'Veranstaltungsort:', newlines, and tabs; should be cleaned to just 'Festhalle Stutensee'"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided; event time is missing"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is not informative; it simply repeats the title, location, and organizer without additional context"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Fest' may not be accurate for a triathlon setup event; consider 'Verein' or 'Treff' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.42,
+    "passed": false,
+    "summary": "Event entry lacks crucial time information and has a poor description; location extraction is messy but the location is present. Tags are mostly appropriate but include a questionable 'Fest'. No duplicate risk with the other event."
+  }
 }

@@ -15,5 +15,36 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910
+  "recurring_group_id": 1140166910,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 1.0,
+    "passed": true,
+    "summary": "The event entry is complete and clear, with a descriptive title, detailed location and time, informative description about the support group, appropriate tags including district, and no duplication concerns."
+  }
 }

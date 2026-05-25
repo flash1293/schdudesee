@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tEvangelisches Gemeindehaus Spöck",
   "organizer": "CVJM Spöck e.V.",
-  "description": "",
+  "description": "WM - Public Viewing. at Veranstaltungsort:\n\t\tEvangelisches Gemeindehaus Spöck. organized by CVJM Spöck e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2680",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,48 @@
     "Kirche",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is concise but could be more descriptive"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.3,
+        "issues": [
+          "Location field contains label 'Veranstaltungsort:' and formatting characters, should be clean"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty; no time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is mostly redundant with title and location, offers no additional useful information"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing relevant tag 'Sport' for a public viewing event; only includes 'Kirche' and district"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.1,
+        "issues": [
+          "This event appears to be a duplicate of 'Fußball WM 2026-Gemeinsam jubeln- Eröffnungsspiel Mexiko-Südafrika' on same date at same location with same organizer"
+        ]
+      }
+    },
+    "overall_score": 0.38,
+    "passed": false,
+    "summary": "The event entry has multiple deficiencies: no time, messy location, minimal description, missing relevant tags, and high duplication risk. Overall quality is low."
+  }
 }

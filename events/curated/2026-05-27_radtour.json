@@ -15,5 +15,42 @@
     "Bildung",
     "Linkenheim"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.4,
+        "issues": [
+          "Title is too generic, should be more descriptive like 'Radtour Baden-Pfalz'"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description is truncated and incomplete, limiting informativeness"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Bildung' may not be suitable for a bike tour; consider 'Natur' or 'Treff' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "Event entry is generally good but title and description could be improved for clarity and completeness."
+  }
 }

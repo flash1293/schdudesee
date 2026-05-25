@@ -15,5 +15,42 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Location string contains HTML entity (&#8211;) that may need decoding."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Workshop' may not be the most appropriate category; 'Verein' or 'Treff' might be more accurate for a regular scout group meeting."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.8,
+        "issues": [
+          "Another event with similar title at same time and location; potential for duplication if age groups are not confirmed as separate."
+        ]
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Event entry is well-structured, with a clear title, complete location and time, and an informative description. Tags are mostly appropriate, but 'Workshop' could be replaced by a more fitting category like 'Verein'. Location contains an undecoded HTML entity which would benefit from cleanup. There is a similar event at the same time and location, indicating possible duplication or scheduling overlap that may need verification."
+  }
 }

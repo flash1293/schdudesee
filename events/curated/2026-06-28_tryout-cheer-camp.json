@@ -19,11 +19,13 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Title could be more specific (e.g., 'Cheer Camp Tryout')"
+        ]
       },
       "location_extraction": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "time_extraction": {
@@ -31,13 +33,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.5,
         "issues": [
-          "Description is largely redundant with other fields and lacks additional informative content"
+          "Description merely restates title, location, and time without providing additional context or details"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -45,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.87,
+    "overall_score": 0.85,
     "passed": true,
-    "summary": "Event has clear title, location, and time. Description is repetitive and not helpful. Tags are appropriate with district included. No duplicate concerns."
+    "summary": "Event entry is generally clear with appropriate tags and location, but the description is minimal and could be more informative."
   }
 }

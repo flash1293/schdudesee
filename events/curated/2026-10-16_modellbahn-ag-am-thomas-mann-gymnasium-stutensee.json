@@ -15,5 +15,38 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 308472627
+  "recurring_group_id": 308472627,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Tag 'Musik' is not appropriate for a model railway club; consider using 'Bildung', 'Workshop', or 'Handwerk'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.75,
+    "passed": true,
+    "summary": "The entry is well-structured with clear title, location, and time. However, the tags include an irrelevant category ('Musik') that should be replaced with a more fitting category (e.g., 'Bildung' or 'Workshop'). The district tag 'Blankenloch' is correctly present. No duplication risk from the context."
+  }
 }

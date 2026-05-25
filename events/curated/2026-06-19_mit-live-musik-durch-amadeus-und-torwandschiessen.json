@@ -28,17 +28,17 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "time_raw is empty, no start time provided"
+          "No start time provided"
         ]
       },
       "description_quality": {
         "score": 0.2,
         "issues": [
-          "Description is too brief and not informative; merely repeats title and adds location/organizer without additional useful information"
+          "Description is not informative, merely repeats title and basic metadata"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.67,
+    "overall_score": 0.65,
     "passed": true,
-    "summary": "Event entry lacks a start time and has a very sparse description, but title and tags are appropriate."
+    "summary": "The event entry has a clear title and extracted location, but lacks a start time and has a repetitive description. Tags are appropriate and no duplicates."
   }
 }

@@ -13,5 +13,42 @@
   "tags": [
     "Musik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains label text 'Veranstaltungsort:' which should be removed for clean extraction."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description field is empty; no details provided."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing district tag. Should include one district from the list."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.5,
+    "passed": false,
+    "summary": "Event entry has clear title and time but empty description, location formatting issue, and missing required district tag."
+  }
 }

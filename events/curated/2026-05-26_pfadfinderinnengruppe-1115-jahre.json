@@ -15,5 +15,40 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Location contains HTML entities (&#8211;)"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Workshop' may not be the most appropriate for a regular scout meeting; consider 'Verein' or 'Treff'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "The event is well-formed with a clear title, location, time, and a detailed description. Tags include a valid district and relevant categories, but 'Workshop' could be better replaced by 'Treff' or 'Verein'. No duplicate risk. Overall high quality."
+  }
 }

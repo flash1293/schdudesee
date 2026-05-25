@@ -5,14 +5,54 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthallenparkplatz + Schulgelände",
   "organizer": "Flohmarkt-Team Blankenloch",
-  "description": "",
+  "description": "Blankenlocher Ortsflohmarkt. at Veranstaltungsort:\n\t\tFesthallenparkplatz + Schulgelände. organized by Flohmarkt-Team Blankenloch.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2635",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Markt",
-    "Blankenloch"
+    "Blankenloch",
+    "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location contains formatting artifacts ('Veranstaltungsort:\\n\\t\\t') and is not a clean address."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time extracted; time_raw is empty."
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is minimal and repeats title, location, and organizer without additional useful information."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": [
+          "Event is likely a duplicate of '4. Blankenlocher Ortsflohmarkt' on the same date with similar location and organizer."
+        ]
+      }
+    },
+    "overall_score": 0.65,
+    "passed": true,
+    "summary": "Event entry lacks time extraction, has poorly formatted location, minimal description, and high duplication risk. Tags and title are appropriate."
+  }
 }

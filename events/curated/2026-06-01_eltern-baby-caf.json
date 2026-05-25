@@ -15,5 +15,41 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 737440955
+  "recurring_group_id": 737440955,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Includes disclaimer about calendar automation that is not part of the event description",
+          "Minor formatting issue (missing space after 'Kosten')"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Musik' is only peripherally relevant; more accurate tags like 'Treff' or 'Workshop' are available"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.78,
+    "passed": true,
+    "summary": "Parent-baby café event with clear title and location, good timing extraction, and no duplicate risk. Description is informative but has minor formatting and extraneous content. Tags are acceptable but could be more precise."
+  }
 }

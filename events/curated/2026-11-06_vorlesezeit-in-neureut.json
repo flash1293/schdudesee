@@ -15,5 +15,40 @@
     "Literatur",
     "Kinder"
   ],
-  "recurring_group_id": 1628788359
+  "recurring_group_id": 1628788359,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title could be more descriptive (e.g., indicate it's for children)"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Description is concise but lacks details about the event agenda"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Good quality event entry with clear title, specific location, proper time extraction, and appropriate tags. Slight improvements could be made to the title and description for added clarity."
+  }
 }

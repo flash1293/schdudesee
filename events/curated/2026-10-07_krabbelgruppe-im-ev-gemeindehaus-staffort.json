@@ -14,5 +14,38 @@
     "Kinder",
     "Staffort"
   ],
-  "recurring_group_id": 1541958589
+  "recurring_group_id": 1541958589,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Could include schedule frequency"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "Event entry for a playgroup at a church community center, with clear title, complete location and time, and appropriate tags. Description is good but lacks frequency details. No duplication risk."
+  }
 }

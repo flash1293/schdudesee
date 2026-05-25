@@ -14,5 +14,36 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": 688729922
+  "recurring_group_id": 688729922,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.975,
+    "passed": true,
+    "summary": "Event entry is well-structured with a clear title, full address, explicit start time, thorough description covering activities and registration, accurate tags from allowed lists, and no duplicate concerns."
+  }
 }

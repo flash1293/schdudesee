@@ -15,5 +15,36 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1102332947
+  "recurring_group_id": 1102332947,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.97,
+    "passed": true,
+    "summary": "High-quality event entry with clear title, detailed location, accurate time extraction, informative description (including contact and age group), appropriate tags covering category and district, and no duplicate risk from other events in the district on the same date."
+  }
 }

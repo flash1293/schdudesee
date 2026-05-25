@@ -5,7 +5,7 @@
   "time_raw": "10:30 - 13:00",
   "location": "",
   "organizer": "Musikverein Weingarten (Baden) e.V.",
-  "description": "",
+  "description": "Musikvereinerlebnistag. from 10:30 - 13:00. organized by Musikverein Weingarten (Baden) e.V..",
   "event_url": "https://www.musikverein-weingarten.de/erleben/kalender/",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -15,5 +15,44 @@
     "Verein",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is a compound word that may be unclear; consider separating into 'Musikverein Erlebnistag'"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No location extracted; location should be provided from source or organizer"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description merely repeats title, time, and organizer; does not provide additional event details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.2,
+        "issues": [
+          "Very similar to 'Musikverein Erlebnisvormittag' with same organizer, overlapping time, likely duplicate"
+        ]
+      }
+    },
+    "overall_score": 0.52,
+    "passed": false,
+    "summary": "Entry missing location, description poor, and likely duplicate of 'Musikverein Erlebnisvormittag'"
+  }
 }

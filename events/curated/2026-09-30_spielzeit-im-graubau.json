@@ -15,5 +15,40 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1313318492
+  "recurring_group_id": 1313318492,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Contact information lacks proper spacing (e.g., 'Telefon: 07244969-276E-Mail:')"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.85,
+        "issues": [
+          "Tag 'Sport' is somewhat broad for an event mixing experiments, crafts, cooking, and games"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Clear title, complete location and time, informative description with minor formatting issue, tags appropriate including required district tag, and no duplication with the other event."
+  }
 }

@@ -14,5 +14,42 @@
     "Bildung",
     "Linkenheim"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location is a town but may lack specific venue"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is truncated and may not provide enough information"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Bildung' may not be appropriate; consider using 'Kultur' or 'Musik'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.78,
+    "passed": true,
+    "summary": "Event has clear title and time extraction. Location is town only with no specific venue. Description is truncated and may not be informative. Tags include an appropriate district but category tag 'Bildung' may be mismatched for the event type. No duplicate risk."
+  }
 }

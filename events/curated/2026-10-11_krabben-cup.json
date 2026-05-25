@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Boule-Club Eggenstein",
   "organizer": "Boule-Club Eggenstein '85 e.V.",
-  "description": "Krabben-Cup",
+  "description": "Krabben-Cup. at Boule-Club Eggenstein. organized by Boule-Club Eggenstein '85 e.V..",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1844",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,5 +13,42 @@
   "tags": [
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty, no start time extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "description is minimal and repeats other fields"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "missing category tag (e.g., Sport, Verein)"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "The event entry has a clear title and location, but lacks start time, has minimal description, and missing category tags."
+  }
 }

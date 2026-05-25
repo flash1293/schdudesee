@@ -13,5 +13,44 @@
   "tags": [
     "Natur"
   ],
-  "recurring_group_id": 531780878
+  "recurring_group_id": 531780878,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.1,
+        "issues": [
+          "Location is a placeholder, not a specific place"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is identical to title, lacks additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag; only category 'Natur' present, but should include a district from the list"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.47,
+    "passed": false,
+    "summary": "The event entry has a clear title but lacks specific location, time, and detailed description. No district tag is included. Overall quality is low."
+  }
 }

@@ -14,5 +14,44 @@
     "Wohltätigkeit",
     "Waldstadt"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title includes date in numeric format which may be redundant and could be formatted more clearly"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Location field contains additional notes about entry and donations mixed with the address, but the address is clearly present"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.3,
+        "issues": [
+          "time_raw shows '21:00 Uhr' but the actual event time per description is 19:00-21:00; start time is missing"
+        ]
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description is informative but cut off mid-sentence, missing the end"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.77,
+    "passed": true,
+    "summary": "Event entry for WaldstadtDialog is largely complete with clear title, location, and informative description, but time extraction is inaccurate (only end time provided) and description is truncated."
+  }
 }

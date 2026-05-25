@@ -15,5 +15,40 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Workshop' may not accurately represent a regular meeting group; consider 'Treff' or 'Natur' instead."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.2,
+        "issues": [
+          "Similar event 'Pfadfinder*innengruppe Wölflinge' at same time and location but for different age group, low duplication risk."
+        ]
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "Event entry is clear and detailed, with a descriptive title, complete location/time, and informative description. Tags are mostly appropriate but the 'Workshop' tag could be reconsidered. There is a similar event at the same location and time, but it targets a different age group, so duplication risk is low."
+  }
 }

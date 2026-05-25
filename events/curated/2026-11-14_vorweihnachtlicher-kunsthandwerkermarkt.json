@@ -15,5 +15,42 @@
     "Kinder",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information extracted, time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is too brief, only lists food/drinks, lacks event details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing specific tags like 'Markt' or 'Handwerk' or 'Essen' which better describe the event; 'Kultur' is too broad"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "Event entry has a clear title and location, but lacks start time, description is too brief, and tags could be more specific for a crafts market."
+  }
 }

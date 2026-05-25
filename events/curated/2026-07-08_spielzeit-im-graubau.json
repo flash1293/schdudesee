@@ -15,5 +15,40 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1313318492
+  "recurring_group_id": 1313318492,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Contact information formatting is messy (missing spaces)"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "'Sport' tag may not be the most representative; 'Handwerk' could be more suitable for the included crafts"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "Clear title, accurate location/time extraction, informative description with minor formatting issues, mostly appropriate tags, and no duplication risk."
+  }
 }

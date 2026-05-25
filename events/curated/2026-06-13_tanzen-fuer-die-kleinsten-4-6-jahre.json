@@ -15,5 +15,40 @@
     "Musik",
     "Spöck"
   ],
-  "recurring_group_id": 1716290936
+  "recurring_group_id": 1716290936,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Trailing whitespace in description"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Missing 'Kinder' tag for children's event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "Overall high quality. Minor issues: description trailing whitespace, tag selection missing category 'Kinder'."
+  }
 }

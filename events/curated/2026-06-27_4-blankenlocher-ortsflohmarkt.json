@@ -16,5 +16,38 @@
     "Markt",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.2,
+        "issues": [
+          "Likely duplicate of 'Blankenlocher Ortsflohmarkt' event listed in context"
+        ]
+      }
+    },
+    "overall_score": 0.82,
+    "passed": true,
+    "summary": "Event entry is well-structured with clear title, complete location and time, informative description, and appropriate tags. However, there is a high risk of duplication with another event in the context."
+  }
 }

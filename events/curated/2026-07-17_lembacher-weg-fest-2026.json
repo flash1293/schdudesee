@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tLembacher Weg, Blankenloch",
   "organizer": "Lembacher Weg e.V.",
-  "description": "",
+  "description": "Lembacher Weg Fest 2026. at Veranstaltungsort:\n\t\tLembacher Weg, Blankenloch. organized by Lembacher Weg e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2644",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,42 @@
     "Fest",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location contains label 'Veranstaltungsort:' and extra whitespace; should be cleaned."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time extracted; time_raw is empty."
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is minimal and appears auto-generated; lacks event details."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "The event entry has a clear title and appropriate tags, but is missing time, has a poor auto-generated description, and location includes formatting artifacts. These issues lower its quality."
+  }
 }

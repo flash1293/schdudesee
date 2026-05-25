@@ -15,5 +15,39 @@
     "Musik",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1833760295
+  "recurring_group_id": 1833760295,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Tag 'Sport' is not appropriate for a baby-parent meeting",
+          "Missing more relevant tags like 'Kinder' or 'Treff'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event entry for Eltern-Baby-Treff is generally well-structured with a clear title, complete location and time, and informative description. However, the tags are not fully appropriate; 'Sport' is unsuitable and 'Kinder' or 'Treff' would be better. Overall, a good entry with minor room for improvement."
+  }
 }

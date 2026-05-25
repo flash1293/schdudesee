@@ -14,5 +14,40 @@
     "Kirche",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No time provided, time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is identical to title and lacks informative content"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "Event listing for 'Feier der Erstkommunion' is mostly clear in title and location, but missing time information and description is minimal. Tags are appropriate."
+  }
 }

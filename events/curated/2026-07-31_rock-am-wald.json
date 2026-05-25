@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände FC Alemannia Eggenstein",
   "organizer": "FC Alemannia 05 Eggenstein",
-  "description": "Rock am Wald",
+  "description": "Rock am Wald. at Vereinsgelände FC Alemannia Eggenstein. organized by FC Alemannia 05 Eggenstein.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1819",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,5 +15,42 @@
     "Sport",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description only repeats title, location, and organizer without additional context"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.2,
+        "issues": [
+          "Tags 'Natur' and 'Sport' do not match the nature of a rock concert; consider using 'Musik' or 'Fest' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Title and location are good, but missing time, poor description, and incorrect tags lower the quality."
+  }
 }

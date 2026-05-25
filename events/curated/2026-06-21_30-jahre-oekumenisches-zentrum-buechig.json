@@ -30,9 +30,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.4,
         "issues": [
-          "Description only repeats metadata, lacking informative content"
+          "description is uninformative and merely repeats other fields"
         ]
       },
       "tag_quality": {
@@ -44,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.87,
+    "overall_score": 0.88,
     "passed": true,
-    "summary": "The event entry is mostly well-structured with clear title, location, time, and tags. However, the description is redundant and offers no additional context, which significantly lowers its quality."
+    "summary": "Event entry for 30th anniversary of Ökumenisches Zentrum Büchig with clear title and proper location, but the description lacks detail."
   }
 }

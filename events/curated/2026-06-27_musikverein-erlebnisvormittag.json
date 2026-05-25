@@ -15,5 +15,40 @@
     "Verein",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.3,
+        "issues": [
+          "Potential duplicate with 'Musikvereinerlebnistag' (same organizer, date, similar time)"
+        ]
+      }
+    },
+    "overall_score": 0.72,
+    "passed": true,
+    "summary": "Good title, location, time extraction and tags. However, the description is empty and there is a high risk of duplication with another event by the same organizer on the same date."
+  }
 }

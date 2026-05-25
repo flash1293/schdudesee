@@ -5,7 +5,7 @@
   "time_raw": "00:00",
   "location": "",
   "organizer": "BdP Stamm Adler",
-  "description": "Weitere Infos folgen …",
+  "description": "Stammesklausur 2026. from 00:00. organized by BdP Stamm Adler.",
   "event_url": "https://www.bdp-adler.de/event/stammesklausur/",
   "sources": [
     "clubs_batch_all"
@@ -13,5 +13,44 @@
   "tags": [
     "Verein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "location is empty"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.3,
+        "issues": [
+          "time_raw is '00:00' which may be a placeholder"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "description provides no additional information beyond title and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "missing district tag"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.53,
+    "passed": false,
+    "summary": "Event entry has a clear title but lacks location and has placeholder time. Description is insufficient. Tags are incomplete (no district). Not a duplicate."
+  }
 }

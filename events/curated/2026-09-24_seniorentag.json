@@ -5,7 +5,7 @@
   "time_raw": "10:30",
   "location": "Altenbürghalle",
   "organizer": "Gemeinde Karlsdorf-Neuthard",
-  "description": "",
+  "description": "Seniorentag. at Altenbürghalle. from 10:30. organized by Gemeinde Karlsdorf-Neuthard.",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=472",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -14,5 +14,38 @@
     "Senioren",
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is too brief and does not provide additional details beyond what is already in other fields."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Seniorentag event entry has a clear title, correctly extracted location and time, but the description is minimal and merely repeats other fields. Tags are appropriate and include the district. No duplicate risk."
+  }
 }

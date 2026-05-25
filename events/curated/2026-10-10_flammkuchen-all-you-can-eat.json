@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Gesangverein &quot;Liederkranz&quot; Spöck 1900 e.V.",
-  "description": "",
+  "description": "Flammkuchen all you can eat. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Gesangverein &quot;Liederkranz&quot; Spöck 1900 e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2672",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,42 @@
     "Essen",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field includes label 'Veranstaltungsort:' and whitespace"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is uninformative, merely repeats title and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event has a clear title, but lacks start time and the description is uninformative. Location extraction is messy due to embedded label. Tags are appropriate. No duplicate risk with other events on same date."
+  }
 }

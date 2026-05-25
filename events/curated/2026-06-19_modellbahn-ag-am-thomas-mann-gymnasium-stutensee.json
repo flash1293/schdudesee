@@ -15,5 +15,39 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 308472627
+  "recurring_group_id": 308472627,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Tag 'Musik' is inappropriate for a model railway event",
+          "Tags lack relevant categories like 'Kinder' or 'Bildung'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event entry is well-structured with clear title, complete location and time. Description is informative. Tag quality is weak due to inappropriate 'Musik' tag and missing relevant categories. No duplicate risk."
+  }
 }

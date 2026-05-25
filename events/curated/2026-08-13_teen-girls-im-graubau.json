@@ -15,5 +15,36 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1065758186
+  "recurring_group_id": 1065758186,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.96,
+    "passed": true,
+    "summary": "All fields are well-filled: title is clear, location and time extracted properly, description detailed, tags appropriate, and no duplication with other events. Minor improvements could include adding end time to time_raw and possibly using 'Treff' or 'Workshop' tag alongside 'Kinder'."
+  }
 }

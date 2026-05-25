@@ -16,5 +16,38 @@
     "Kinder",
     "Handwerk"
   ],
-  "recurring_group_id": 1596923700
+  "recurring_group_id": 1596923700,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is too brief, only includes age restriction and registration requirement."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.73,
+    "passed": true,
+    "summary": "Storytime with craft for children aged 5+ at Neureut library. Registration required."
+  }
 }

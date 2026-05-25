@@ -5,7 +5,7 @@
   "time_raw": "14:00 Uhr",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Obst- und Gartenbauverein Blankenloch e.V.",
-  "description": "",
+  "description": "Schnittkurs. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. from 14:00 Uhr. organized by Obst- und Gartenbauverein Blankenloch e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2718",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,40 @@
     "Workshop",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains label text 'Veranstaltungsort:' and extra whitespace"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is auto-generated from other fields and lacks additional context or details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "Event is generally clear, but location and description need improvement."
+  }
 }

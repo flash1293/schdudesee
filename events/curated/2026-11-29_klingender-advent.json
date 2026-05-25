@@ -14,5 +14,44 @@
     "Essen",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is somewhat vague; could include more specific event type (e.g., 'Advent mit Musik und Essen')"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description is brief and could be more informative about the program"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tags are relevant but missing 'Kirche' tag since event is church-related"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "Event entry is mostly acceptable, but lacks time information and could have more descriptive title and description. Tags are appropriate, and duplicate risk is low."
+  }
 }

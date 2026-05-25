@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "wird rechtzeitig im Amtsblatt angekündigt",
   "organizer": "Agendagruppe Umwelt (AGU)",
-  "description": "Müllsammelaktion an jedem 3. Samstag im Monat",
+  "description": "Müllsammelaktion an jedem 3. Samstag im Monat. at wird rechtzeitig im Amtsblatt angekündigt. organized by Agendagruppe Umwelt (AGU).",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1804",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,5 +13,44 @@
   "tags": [
     "Natur"
   ],
-  "recurring_group_id": 531780878
+  "recurring_group_id": 531780878,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.1,
+        "issues": [
+          "Location is not a specific place; only mentions future announcement"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No time start specified"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is repetitive and lacks informative details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Missing district tag; only one tag 'Natur'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.48,
+    "passed": false,
+    "summary": "Event has clear title but lacks location and time details; description is poor; tags missing required district."
+  }
 }

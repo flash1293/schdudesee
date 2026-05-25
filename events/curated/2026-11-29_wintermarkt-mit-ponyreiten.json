@@ -5,14 +5,52 @@
   "time_raw": "",
   "location": "Vereinsgelände Reit-, Fahr- und Pferdezuchtverein Neudorf",
   "organizer": "Reit-, Fahr- und Pferdezuchtverein Neudorf",
-  "description": "",
+  "description": "Wintermarkt mit Ponyreiten. at Vereinsgelände Reit-, Fahr- und Pferdezuchtverein Neudorf. organized by Reit-, Fahr- und Pferdezuchtverein Neudorf.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145658/wintermarkt-mit-ponyreiten",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
     "Sport",
-    "Markt"
+    "Markt",
+    "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided in the event entry"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is minimal and repetitive, lacking informative details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Sport' may not be the most appropriate; consider using 'Kinder' or 'Verein'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.65,
+    "passed": true,
+    "summary": "Title and location are clear, but missing event time and description is very brief. Tags are mostly appropriate, but 'Sport' could be replaced with a more specific category. No risk of duplicates."
+  }
 }

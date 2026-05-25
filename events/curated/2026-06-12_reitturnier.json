@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tReitanlage Spöck",
   "organizer": "Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck",
-  "description": "",
+  "description": "Reitturnier. at Veranstaltungsort:\n\t\tReitanlage Spöck. organized by Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2622",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,46 @@
     "Sport",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is generic; could be more descriptive to distinguish from similar events"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.3,
+        "issues": [
+          "Location contains extraneous text 'Veranstaltungsort:' and formatting characters; should be cleaned to 'Reitanlage Spöck'"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time specified; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is redundant and uninformative, merely restating title and other fields"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.3,
+        "issues": [
+          "Title is similar to other events at same location on same day, but distinct enough to not be considered duplicate"
+        ]
+      }
+    },
+    "overall_score": 0.43,
+    "passed": false,
+    "summary": "Event entry has significant issues: missing time, poor location extraction, and uninformative description. Tags are appropriate. Low risk of duplicate."
+  }
 }

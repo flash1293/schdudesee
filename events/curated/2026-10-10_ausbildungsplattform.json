@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "",
   "organizer": "Gewerbeverein Stutensee",
-  "description": "",
+  "description": "AUSBILDUNGSPLATTFORM. organized by Gewerbeverein Stutensee.",
   "event_url": "https://gewerbeverein-stutensee.org/veranstaltungen",
   "sources": [
     "https://gewerbeverein-stutensee.org/veranstaltungen",
@@ -14,5 +14,46 @@
   "tags": [
     "Bildung"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.5,
+        "issues": [
+          "Title is in all caps and not fully descriptive"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No location provided"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is minimal and uninformative"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.2,
+        "issues": [
+          "Missing district tag; only category tag present"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.32,
+    "passed": false,
+    "summary": "Event lacks location and time, has a poor description, and is missing a required district tag. No duplication risk identified."
+  }
 }

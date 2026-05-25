@@ -5,14 +5,50 @@
   "time_raw": "",
   "location": "Vereinsgelände Hundesportverein Neudorf",
   "organizer": "Hundesportverein Neudorf",
-  "description": "",
+  "description": "Sommerfest des Hundesportvereins Neudorf (05.-06.07.2026). at Vereinsgelände Hundesportverein Neudorf. organized by Hundesportverein Neudorf.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145228/sommerfest-des-hundesportvereins-neudorf-05-06072026",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
     "Sport",
-    "Fest"
+    "Fest",
+    "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "time_raw is empty; no specific time extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "description is redundant, merely repeats title, location, and organizer without additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.73,
+    "passed": true,
+    "summary": "Event entry has clear title and location, appropriate tags, but lacks time information and description is uninformative."
+  }
 }

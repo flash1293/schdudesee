@@ -14,5 +14,46 @@
     "Kinder",
     "Staffort"
   ],
-  "recurring_group_id": 1541958589
+  "recurring_group_id": 1541958589,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title uses abbreviation 'ev.' which may be ambiguous",
+          "Age range (0-3) is missing from title"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Only start time provided, no end time"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description lacks schedule and frequency information",
+          "No registration or contact details beyond name"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tags only include generic 'Kinder' and district 'Staffort'; could benefit from 'Kirche' or 'Treff'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.75,
+    "passed": true,
+    "summary": "Entry is generally clear but has room for improvement in title clarity, description completeness, and tag specificity."
+  }
 }

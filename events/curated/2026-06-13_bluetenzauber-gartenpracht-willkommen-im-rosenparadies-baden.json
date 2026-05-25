@@ -21,7 +21,7 @@
       "title_quality": {
         "score": 0.9,
         "issues": [
-          "Title is descriptive but slightly verbose and promotional"
+          "Title is descriptive but somewhat verbose."
         ]
       },
       "location_extraction": {
@@ -33,15 +33,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Description is poetic and informative, though it could include more practical details about the gardens"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 0.8,
         "issues": [
-          "Tag 'Fest' may not perfectly align with the excursion nature of the event"
+          "Tag 'Fest' may not perfectly match the garden tour content; 'Natur' could be more appropriate."
         ]
       },
       "duplicate_risk": {
@@ -51,6 +49,6 @@
     },
     "overall_score": 0.95,
     "passed": true,
-    "summary": "Event entry is well-structured with a clear title, proper location and time extraction, and a helpful description. Tags are generally appropriate with only minor concerns about 'Fest'. No duplicate risk with other events."
+    "summary": "A well-detailed bus excursion event to the rose gardens of Baden-Baden, starting from Bruchsal. The title and description are evocative and informative, though the tags could be slightly refined. No significant issues with location, time, or duplication."
   }
 }

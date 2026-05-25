@@ -15,5 +15,40 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Location string contains HTML entity (&#8211;)"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Workshop' may not be ideal; consider 'Verein', 'Treff', or 'Natur' instead."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.9,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Event entry is generally well-structured with clear title, time, location, and description. Minor issues include HTML entity in location and a marginally inaccurate tag. No risk of duplication with other events in context."
+  }
 }

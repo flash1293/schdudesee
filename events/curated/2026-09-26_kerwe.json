@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
   "organizer": "Handballverein Stutensee e.V.",
-  "description": "",
+  "description": "Kerwe. at Veranstaltungsort:\n\t\tFesthalle Stutensee. organized by Handballverein Stutensee e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2665",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,5 +13,46 @@
   "tags": [
     "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is a local term and may not be descriptive for all audiences"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location field contains label text and newline characters, not cleanly extracted"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Start time is missing"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is redundant and lacks substantive information"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag from available districts list"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.48,
+    "passed": false,
+    "summary": "Event entry has multiple quality issues: missing start time, poorly formatted location, uninformative description, and missing district tag. Title is acceptable but lacks clarity for non-locals."
+  }
 }

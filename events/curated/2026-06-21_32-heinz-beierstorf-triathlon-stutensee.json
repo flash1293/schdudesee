@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "TV Friedrichstal",
   "organizer": "Turnverein Friedrichstal 1899 e.V.",
-  "description": "",
+  "description": "32. Heinz Beierstorf Triathlon Stutensee. at TV Friedrichstal. organized by Turnverein Friedrichstal 1899 e.V..",
   "event_url": "https://www.tv-friedrichstal.de",
   "sources": [
     "clubs_batch_all"
@@ -14,5 +14,40 @@
     "Sport",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is too brief and uninformative, just repeats title"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "Event has clear title and accurate tags, but lacks start time and description is insufficient."
+  }
 }

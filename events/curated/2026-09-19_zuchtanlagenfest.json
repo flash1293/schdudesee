@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Hirtenberg 11 \n76344 Eggenstein",
   "organizer": "Kleintierzuchtverein C37 Eggenstein e.V.",
-  "description": "Zuchtanlagenfest",
+  "description": "Zuchtanlagenfest. at Hirtenberg 11 \n76344 Eggenstein. organized by Kleintierzuchtverein C37 Eggenstein e.V..",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1832",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,5 +14,44 @@
     "Fest",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is specific but may not be descriptive to a broad audience."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Time_raw is empty, so no start time is extracted."
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description lacks detail, only restating title and location."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Only two tags used; could add 'Verein' or 'Treff' for better categorization."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "Event has a clear title but no time specified; description is sparse; location and tags are appropriate; no duplicates in context."
+  }
 }

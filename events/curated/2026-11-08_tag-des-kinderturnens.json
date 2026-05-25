@@ -15,5 +15,46 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title could be more descriptive (e.g., include activities)"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location uses club name instead of address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Consider adding tags like 'Verein' or 'Fest' for completeness"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.47,
+    "passed": false,
+    "summary": "Event entry lacks time and description, location is not specific, but title and tags are acceptable."
+  }
 }

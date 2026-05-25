@@ -15,5 +15,40 @@
     "Kirche",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty; no time information extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty; no event description provided"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.65,
+    "passed": true,
+    "summary": "The event entry has a clear title and appropriate tags with a district tag, but lacks time information and description, which reduces completeness. Location is present and there is no duplication risk with the context event."
+  }
 }

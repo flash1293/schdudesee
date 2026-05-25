@@ -5,7 +5,7 @@
   "time_raw": "15:00",
   "location": "Baggersee Spöck",
   "organizer": "Kajakfreunde Wickinger Spöck e.V.",
-  "description": "",
+  "description": "Sommerfest am Baggersee. at Baggersee Spöck. from 15:00. organized by Kajakfreunde Wickinger Spöck e.V..",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/sommerfest-am-baggersee/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -14,5 +14,40 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is auto-generated and lacks substantive information beyond field values."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": [
+          "Event is a duplicate of 'Sommerfest' in the same district, location, and date."
+        ]
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "The event entry has a clear title and properly extracted location and time. The description is not informative and appears auto-generated. The event is a likely duplicate of another event in the context."
+  }
 }

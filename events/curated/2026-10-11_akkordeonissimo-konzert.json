@@ -15,5 +15,44 @@
     "Bildung",
     "Linkenheim"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": [
+          "Title could be more descriptive (e.g., specify 'Accordion concert')"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location missing specific venue name"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is truncated and includes placeholder 'Zu [...]Weiterlesen'"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Bildung' may not be relevant; consider 'Kultur' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.74,
+    "passed": true,
+    "summary": "Akkordeonissimo concert in Linkenheim-Hochstetten with free admission; description is incomplete and tag 'Bildung' seems misapplied."
+  }
 }

@@ -15,5 +15,42 @@
     "Kirche",
     "Büchig"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.4,
+        "issues": [
+          "Title is ambiguous; 'Gospelkirche' may not clearly describe the event"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Location only specifies district, not a specific venue"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.72,
+    "passed": true,
+    "summary": "Event has a vague title and no description, but other fields are well-extracted."
+  }
 }

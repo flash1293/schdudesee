@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "TV Friedrichstal",
   "organizer": "Turnverein Friedrichstal 1899 e.V.",
-  "description": "",
+  "description": "Bewegungspasstag. at TV Friedrichstal. organized by Turnverein Friedrichstal 1899 e.V..",
   "event_url": "https://www.tv-friedrichstal.de",
   "sources": [
     "clubs_batch_all"
@@ -14,5 +14,42 @@
     "Sport",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.3,
+        "issues": [
+          "Title 'Bewegungspasstag' is unclear and not descriptive"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is minimal and only repeats title/location/organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "Entry lacks descriptive title, time, and informative description; location and tags are adequate, no duplicates."
+  }
 }

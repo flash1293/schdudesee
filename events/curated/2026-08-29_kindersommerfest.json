@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Schulhof der GMS Eggenstein",
   "organizer": "Kulturverein Egg.-Leo. e.V. mit Leobande",
-  "description": "Kindersommerfest",
+  "description": "Kindersommerfest. at Schulhof der GMS Eggenstein. organized by Kulturverein Egg.-Leo. e.V. mit Leobande.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1823",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,5 +15,40 @@
     "Fest",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is minimal and mainly repeats title, location, and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.72,
+    "passed": true,
+    "summary": "Event has clear title and location, but lacks time and detailed description. Tags include district and relevant categories."
+  }
 }

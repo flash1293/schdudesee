@@ -5,13 +5,51 @@
   "time_raw": "",
   "location": "Rathausstraße / Hummelstall",
   "organizer": "KATAGE",
-  "description": "",
+  "description": "Straßenfest. at Rathausstraße / Hummelstall. organized by KATAGE.",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=436",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
-    "Fest"
+    "Fest",
+    "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is generic but acceptable"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is minimal and mostly repeats title and location"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.72,
+    "passed": true,
+    "summary": "Event entry is clear in title and location with appropriate tags and low duplicate risk, but lacks time extraction and has a minimal description."
+  }
 }

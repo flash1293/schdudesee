@@ -15,5 +15,40 @@
     "Fest",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Description states event runs on 24. and 25. May 2026, but date_start and date_end are both set to 2026-05-24, indicating only one day."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": [
+          "Another event entry with the same title, location, and organizer exists in the context for the same date, indicating high duplicate risk."
+        ]
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "The event entry is generally well-structured with clear title, location, time, and relevant tags. However, there is a discrepancy between the description (two-day event) and the date fields (one day only). Additionally, the event appears to be a duplicate of another entry in the same context, which impacts uniqueness and data quality."
+  }
 }

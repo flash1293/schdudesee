@@ -14,5 +14,42 @@
     "Kirche",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.3,
+        "issues": [
+          "Title 'Lila Pause' is cryptic and not descriptive of the event"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location only specifies the town, lacks a specific venue or address"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty, providing no information about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "The event entry has a non-descriptive title, no description, and only a town-level location. Time and tags are appropriate, and there is no duplicate risk."
+  }
 }

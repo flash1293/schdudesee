@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSpechaahalle Spöck",
   "organizer": "Evangelischer Kindergarten Kronenstraße Spöck",
-  "description": "",
+  "description": "Flohmarkt. at Veranstaltungsort:\n\t\tSpechaahalle Spöck. organized by Evangelischer Kindergarten Kronenstraße Spöck.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2673",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,42 @@
     "Markt",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location contains extraneous formatting and description prefix 'Veranstaltungsort:'"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time or start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is auto-generated and lacks original informative content"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "Title is clear though generic; location extraction is incomplete with extra text; missing time information is critical; description is repetitive and unhelpful; tags align well with categories and district; no duplication with other events."
+  }
 }

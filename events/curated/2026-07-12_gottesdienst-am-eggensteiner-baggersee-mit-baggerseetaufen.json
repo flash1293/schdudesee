@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "",
   "organizer": "Evangelische Kirchengemeinde Eggenstein",
-  "description": "",
+  "description": "Gottesdienst am Eggensteiner Baggersee mit Baggerseetaufen. organized by Evangelische Kirchengemeinde Eggenstein.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1893",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,5 +14,42 @@
     "Kirche",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "location field is empty, should be extracted from title or description"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty, no start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "description is largely redundant with title and lacks additional event details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.52,
+    "passed": false,
+    "summary": "Event entry missing location and time; description is minimal; title and tags are good."
+  }
 }

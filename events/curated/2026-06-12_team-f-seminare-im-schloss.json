@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "CVJM-Lebenshaus",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "",
+  "description": "Team-f-Seminare im Schloss. at CVJM-Lebenshaus. organized by CVJM Weingarten e.V..",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/kooperation-team-f",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -15,5 +15,42 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title uses abbreviation 'Team-f' which may be unclear to general audience"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time/start time specified in the entry"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description lacks additional information beyond what is present in title and location"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "The event entry has clear title and location but lacks time information; the description is uninformative. Tags are appropriate, and no duplicate risk with the context event."
+  }
 }

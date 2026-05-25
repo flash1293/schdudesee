@@ -13,5 +13,42 @@
   "tags": [
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.3,
+        "issues": [
+          "time_raw '7:00' is ambiguous and inconsistent with title which indicates 19:00"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "only district tag provided; missing a category tag from available categories"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Title and location are good, but time extraction has inconsistency (7:00 vs 19:00), description missing, tags insufficient. Event is not a duplicate."
+  }
 }

@@ -22,7 +22,7 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
@@ -30,13 +30,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.5,
+        "score": 0.3,
         "issues": [
-          "Description is a simple repetition of title, location, time, and organizer; lacks additional information"
+          "Description is repetitive and does not provide any additional information beyond what is already present in title, location, and time fields."
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -44,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.88,
+    "overall_score": 0.85,
     "passed": true,
-    "summary": "The event entry is clear with appropriate tags and no duplicates. The description is minimal, providing no details beyond the title and metadata."
+    "summary": "Event entry is mostly good, with clear title, location, and time. The description is a weak point as it merely repeats other fields. Tags include appropriate district tag. No duplicates detected."
   }
 }

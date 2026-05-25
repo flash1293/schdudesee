@@ -5,14 +5,54 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
   "organizer": "Musikverein &quot;Harmonie&quot; Blankenloch e.V.",
-  "description": "",
+  "description": "Sommerfest. at Veranstaltungsort:\n\t\tFesthalle Stutensee. organized by Musikverein &quot;Harmonie&quot; Blankenloch e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2633",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Fest",
-    "Blankenloch"
+    "Blankenloch",
+    "Musik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Generic title lacks location and specificity"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location value includes label 'Veranstaltungsort:' and extra whitespace"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is auto-generated and uninformative, merely repeats title, location, and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "The event 'Sommerfest' suffers from a generic title, missing time, and a poorly extracted location/description, but tags are appropriate and it does not duplicate other events. Overall quality is below average."
+  }
 }

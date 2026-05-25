@@ -14,5 +14,41 @@
     "Kinder",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing relevant tags such as 'Sport' and 'Wohltätigkeit'",
+          "Tag 'Kinder' may be only marginally appropriate for a charity football event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.73,
+    "passed": true,
+    "summary": "The event entry has a clear title and properly extracted location and time. However, the description is empty which significantly reduces its helpfulness. The tags are limited to only two, with 'Kinder' potentially not the best choice; missing relevant categories like Sport and Wohltätigkeit. No risk of duplication as no other events were listed."
+  }
 }

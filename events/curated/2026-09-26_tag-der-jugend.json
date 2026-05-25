@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsgelände FSV Büchenau",
   "organizer": "Jugendfußballverein Stutensee 2012 e.V.",
-  "description": "",
+  "description": "Tag der Jugend. at Veranstaltungsort:\n\t\tVereinsgelände FSV Büchenau. organized by Jugendfußballverein Stutensee 2012 e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2663",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,46 @@
     "Kinder",
     "Büchenau"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": [
+          "Title is somewhat generic"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field includes label 'Veranstaltungsort:'"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is auto-generated and lacks meaningful details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Missing potentially relevant tags like 'Sport' or 'Fest'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.56,
+    "passed": false,
+    "summary": "Event entry has a clear title and location but lacks time and has a poor description. Tags are acceptable but could include additional relevant categories."
+  }
 }

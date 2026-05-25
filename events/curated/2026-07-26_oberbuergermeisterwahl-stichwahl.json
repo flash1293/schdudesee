@@ -5,7 +5,7 @@
   "time_raw": "08:00",
   "location": "",
   "organizer": "",
-  "description": "",
+  "description": "Oberbürgermeisterwahl Stichwahl. from 08:00.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/oberbuergermeisterwahl-stichwahl/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -13,5 +13,42 @@
   "tags": [
     "Politik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "location is empty"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "description is minimal and repeats title/time"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "missing district tag"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Event lacks location and district tag; description is minimal. Time extraction is correct."
+  }
 }

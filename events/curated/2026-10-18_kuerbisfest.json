@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVogelpark Blankenloch",
   "organizer": "Verein der Vogelfreunde Blankenloch 1952 e.V.",
-  "description": "",
+  "description": "Kürbisfest. at Veranstaltungsort:\n\t\tVogelpark Blankenloch. organized by Verein der Vogelfreunde Blankenloch 1952 e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2679",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,42 @@
     "Fest",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains label text 'Veranstaltungsort:' and extra whitespace"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is uninformative, merely repeats title and location"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.617,
+    "passed": true,
+    "summary": "Clear title and appropriate tags, but location is messy, time missing, and description adds no value. Overall passable but needs improvement."
+  }
 }

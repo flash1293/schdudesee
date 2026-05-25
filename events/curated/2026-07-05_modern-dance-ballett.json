@@ -5,14 +5,54 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
   "organizer": "TSG Blankenloch",
-  "description": "",
+  "description": "Modern Dance / Ballett. at Veranstaltungsort:\n\t\tFesthalle Stutensee. organized by TSG Blankenloch.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2640",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Sport",
-    "Blankenloch"
+    "Blankenloch",
+    "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location includes extra descriptive text ('Veranstaltungsort:' and newlines) which should be cleaned."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time or start time provided."
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description lacks unique information; it merely repeats the title and location."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Fest' may not be appropriate for a dance event; consider using more precise categories like 'Kultur' or 'Musik'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "The entry has a clear title, includes a district tag, and is not a duplicate, but it lacks a start time, the location extraction is noisy, the description is not informative, and some tags may be less accurate."
+  }
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Tischtennisfreunde &quot;Schwarz-Weiß&quot; Spöck e.V.",
-  "description": "",
+  "description": "Kerwe Essen. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Tischtennisfreunde &quot;Schwarz-Weiß&quot; Spöck e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2677",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,44 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is short and may be ambiguous without local context; could include location or event type"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.3,
+        "issues": [
+          "Location field contains a label and newlines; not a clean extracted location, lacks address details"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is minimal and redundant, merely repeating title, location, and organizer without additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.53,
+    "passed": false,
+    "summary": "Event entry lacks essential time information, has a cluttered location field, and the description provides no added value. Title is somewhat opaque. Tags are appropriate. Overall quality is poor."
+  }
 }

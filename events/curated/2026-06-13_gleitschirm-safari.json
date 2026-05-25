@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "verschiedene Stationen in den Alpen – je nach Wetterlage. Start in Schönau im Südschwarzwald",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "",
+  "description": "Gleitschirm-Safari. at verschiedene Stationen in den Alpen – je nach Wetterlage. Start in Schönau im Südschwarzwald. organized by CVJM Weingarten e.V..",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/gleitschirmsafari",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -15,5 +15,45 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location is not a specific venue but a general area with weather-dependent stations."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty; no start time provided."
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is auto-generated from other fields and lacks informative details."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Weingarten' is the district but the event takes place in the Alps, not in Weingarten.",
+          "Tag 'Kirche' may be acceptable due to the organizer's affiliation, but it is not an explicitly religious event."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Event is a multi-day paragliding safari organized by CVJM Weingarten. The title is clear, and the location description, while not specific, is descriptive. However, no specific time is provided, which is a significant gap. The description is minimal and auto-generated. Tags are mostly appropriate but the district tag does not reflect the event's location, and 'Kirche' may be loosely applied. No duplicate risk with other events in the same district on the same date."
+  }
 }

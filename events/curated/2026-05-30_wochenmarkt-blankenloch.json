@@ -14,5 +14,38 @@
     "Markt",
     "Blankenloch"
   ],
-  "recurring_group_id": 11069990
+  "recurring_group_id": 11069990,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Description is brief and could be more informative about the market offerings."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Weekly market in Blankenloch with clear title, proper location and time extraction, and appropriate tags including the district. The description is functional but lacks details about the market's offerings. No duplicate risk."
+  }
 }

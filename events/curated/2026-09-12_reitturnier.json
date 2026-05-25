@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Reit-, Fahr- und Zuchtverein Friedrichstal 1979 e.V.",
-  "description": "",
+  "description": "Reitturnier. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Reit-, Fahr- und Zuchtverein Friedrichstal 1979 e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2656",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,46 @@
     "Sport",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is brief and lacks additional context (e.g., club or event type)"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location field contains raw formatting (newlines, prefix 'Veranstaltungsort:')",
+          "Location does not include district or specific address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided; 'time_raw' is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is minimal and merely repeats title, location, and organizer",
+          "Contains raw formatting characters and newlines"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.57,
+    "passed": false,
+    "summary": "Event entry is missing time information, has a sparse description with raw formatting, and location extraction is unclean. Title and tags are adequate, but the overall quality is low."
+  }
 }

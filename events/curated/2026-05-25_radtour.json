@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "CVJM Spöck, Fröbelweg 1, 76297 Stutensee-Spöck",
   "organizer": "CVJM Spöck",
-  "description": "",
+  "description": "Radtour. at CVJM Spöck, Fröbelweg 1, 76297 Stutensee-Spöck. organized by CVJM Spöck.",
   "event_url": "https://www.cvjm-spoeck.de/eventcalendar?calendar=16",
   "sources": [
     "clubs_batch_all"
@@ -15,5 +15,42 @@
     "Kirche",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is too generic and does not provide specific event details."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.2,
+        "issues": [
+          "No time information provided; time_raw is empty."
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is minimal and only repeats information from other fields; lacks informative content."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "Event entry is somewhat generic but has correct location and tags. Missing time and minimal description reduce quality."
+  }
 }

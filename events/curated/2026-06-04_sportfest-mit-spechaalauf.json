@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Turnverein 1896 Spöck e.V.",
-  "description": "",
+  "description": "Sportfest mit Spechaalauf. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Turnverein 1896 Spöck e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2620",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -15,5 +15,43 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains label prefix 'Veranstaltungsort:'",
+          "Location is generic and lacks specific address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided, time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is minimal and largely repeats title, location, and organizer without additional event details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "The event entry has a clear title and appropriate tags including district, but lacks time information, has a messy location extraction, and a minimal description."
+  }
 }

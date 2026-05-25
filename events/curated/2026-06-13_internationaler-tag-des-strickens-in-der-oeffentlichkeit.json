@@ -5,7 +5,7 @@
   "time_raw": "ab 15:30 Uhr",
   "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
   "organizer": "Strickeria im BZ Regenbogen",
-  "description": "",
+  "description": "Internationaler Tag des Strickens in der Öffentlichkeit. at Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen. from ab 15:30 Uhr. organized by Strickeria im BZ Regenbogen.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2772",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,5 +13,42 @@
   "tags": [
     "Handwerk"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.2,
+        "issues": [
+          "Location field contains label 'Veranstaltungsort:' and extra whitespace, not a clean extraction."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is auto-generated from other fields (title, location, time, organizer) and lacks original informative content."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag – one of the available districts should be included; only 'Handwerk' is present."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.65,
+    "passed": true,
+    "summary": "Event entry has a clear title and time extraction, but location extraction is cluttered (includes label), description is a redundant auto-generation, and no district tag is assigned. Overall quality is moderate but has notable deficiencies."
+  }
 }

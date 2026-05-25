@@ -20,7 +20,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
@@ -32,15 +32,16 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
+        "score": 0.9,
         "issues": [
-          "Description contains redundant course code at start."
+          "Description starts with course number and instructor name which may be redundant and not clearly separated."
         ]
       },
       "tag_quality": {
-        "score": 0.6,
+        "score": 0.2,
         "issues": [
-          "Tag 'Fest' is not appropriate for this event; consider 'Workshop' or 'Bildung'."
+          "Tag 'Fest' is incorrect; event is a self-defense course, not a festival.",
+          "Tag 'Kinder' may be marginally appropriate but event targets women and girls 12+; could be more specific."
         ]
       },
       "duplicate_risk": {
@@ -48,8 +49,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.88,
+    "overall_score": 0.8,
     "passed": true,
-    "summary": "The event entry is mostly well-structured with a clear title, precise location and time, and a detailed description. The tags are mostly appropriate but 'Fest' should be replaced with 'Workshop' or 'Bildung'. No duplicate risk. Overall good quality."
+    "summary": "Event entry is well-formed with clear title, location, time, and informative description. Tags are mostly suitable but the 'Fest' tag is inaccurate; district tag is correct. No duplicate concerns. Overall good quality with minor tag issues."
   }
 }

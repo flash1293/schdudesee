@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tAlte Schul' Spöck",
   "organizer": "Musikverein &quot;Harmonie&quot; 1920 Spöck e.V.",
-  "description": "",
+  "description": "Hoffest. at Veranstaltungsort:\n\t\tAlte Schul' Spöck. organized by Musikverein &quot;Harmonie&quot; 1920 Spöck e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2671",
   "sources": [
     "clubs_batch_all",
@@ -13,7 +13,47 @@
   ],
   "tags": [
     "Fest",
-    "Spöck"
+    "Spöck",
+    "Musik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is very generic; does not specify event details well."
+        ]
+      },
+      "location_extraction": {
+        "score": 0.3,
+        "issues": [
+          "Location contains extraneous label text 'Veranstaltungsort:' which should be removed."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided; time_raw is empty."
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description merely repeats title, location, and organizer; no additional helpful details."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.52,
+    "passed": false,
+    "summary": "Entry lacks clear title, has no time, poorly extracted location, and uninformative description; tags are good and no duplicate risk."
+  }
 }

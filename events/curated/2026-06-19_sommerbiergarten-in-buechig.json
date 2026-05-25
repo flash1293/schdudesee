@@ -5,7 +5,7 @@
   "time_raw": "17:00",
   "location": "",
   "organizer": "Büchig(er)leben",
-  "description": "",
+  "description": "Sommerbiergarten in Büchig. from 17:00. organized by Büchig(er)leben.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/sommerbiergarten-in-buechig/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -14,5 +14,42 @@
     "Essen",
     "Büchig"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Location field is empty"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description is repetitive and lacks detail"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.3,
+        "issues": [
+          "High similarity with another event from same organizer on same date"
+        ]
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "Event entry has clear title and time, but missing location and minimal description. Likely duplicate of another event in the same district and date."
+  }
 }

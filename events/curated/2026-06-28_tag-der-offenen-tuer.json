@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFeuerwehrhaus Spöck",
   "organizer": "Freiwillige Feuerwehr Stutensee Abteilung Spöck",
-  "description": "",
+  "description": "Tag der offenen Tür. at Veranstaltungsort:\n\t\tFeuerwehrhaus Spöck. organized by Freiwillige Feuerwehr Stutensee Abteilung Spöck.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2636",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,5 +13,46 @@
   "tags": [
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title 'Tag der offenen Tür' is generic and does not mention the organizer or specific location"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location includes the label 'Veranstaltungsort:' and tabs/newlines; should be cleaned to just the venue name"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is essentially a repetition of the title, location, and organizer; lacks informative details about the event schedule or activities"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Only the district tag 'Spöck' is included; a category tag (e.g., 'Fest', 'Verein') is missing"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Event entry is missing time, has a generic title and a repetitive description. Location extraction includes extra formatting. Tags lack a category. No duplicate risk."
+  }
 }

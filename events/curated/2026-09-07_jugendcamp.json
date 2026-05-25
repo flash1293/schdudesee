@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände",
   "organizer": "Fußballverein Neuthard",
-  "description": "",
+  "description": "Jugendcamp. at Vereinsgelände. organized by Fußballverein Neuthard.",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=459",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -14,5 +14,44 @@
     "Kinder",
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is generic and could be more specific (e.g., include 'Fußballverein Neuthard')."
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location 'Vereinsgelände' is ambiguous and lacks a street address or detailed venue name."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No start time or time range is provided; time_raw is empty."
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description merely repeats the title, location, and organizer without offering any new or useful details."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event entry includes required fields but is weak in description and location detail. Time information is missing entirely. Tags are appropriate."
+  }
 }

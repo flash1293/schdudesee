@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Ötigheim",
   "organizer": "Altenwerk Karlsdorf",
-  "description": "",
+  "description": "Ötigheim - My fair Lady. organized by Altenwerk Karlsdorf.",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=424",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -13,5 +13,46 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.75,
+        "issues": [
+          "Title could be more descriptive, e.g., specify 'My Fair Lady' musical performance"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.85,
+        "issues": [
+          "Location only gives town name, no specific venue"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Time field is empty; no start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.35,
+        "issues": [
+          "Description is too brief and essentially repeats title and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Missing a category tag (e.g., Kultur, Musik) from the allowed list"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.95,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Event entry is mostly clear but lacks time and detailed description; tags need improvement. Overall moderate quality."
+  }
 }

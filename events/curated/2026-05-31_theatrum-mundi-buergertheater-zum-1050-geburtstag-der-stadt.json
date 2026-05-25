@@ -15,5 +15,40 @@
     "Digital",
     "Bruchsal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description is more promotional than informative; lacks practical details like duration or age suitability."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Digital' is not relevant for this theatre event; it should be removed or replaced with a more appropriate category."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event entry is generally well-structured with a clear title and complete time/location information. The description is somewhat promotional but conveys the event concept. Tags are mostly appropriate, but 'Digital' is irrelevant. No duplicate events exist."
+  }
 }
