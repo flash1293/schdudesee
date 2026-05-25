@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Rathaus",
   "organizer": "Kulturverein Egg.- Leo. e.V. mit Leobande",
-  "description": "Vernissage Herbstausstellung Licht & Farbe",
+  "description": "Vernissage Herbstausstellung Licht &amp; Farbe. at Rathaus. organized by Kulturverein Egg.- Leo. e.V. mit Leobande.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1851",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,5 +13,47 @@
   "tags": [
     "Kultur"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": [
+          "HTML entity &amp; should be decoded to &"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location 'Rathaus' is too generic; should include district or more specific address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is too brief, providing little additional information beyond title and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Missing required district tag from available districts list",
+          "Only one tag 'Kultur' provided; could add 'Ausstellungen' for better categorization"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Good title but missing time and district tag; location vague and description sparse; no duplicate concerns."
+  }
 }

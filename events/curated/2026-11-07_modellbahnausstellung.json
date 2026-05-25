@@ -13,5 +13,47 @@
   "tags": [
     "Kultur"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.1,
+        "issues": [
+          "Location field contains placeholder 'siehe Website' instead of actual location."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided; time_raw is empty."
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.2,
+        "issues": [
+          "Missing district tag; available district required.",
+          "Consider adding 'Ausstellungen' category tag for better categorization."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.1,
+        "issues": [
+          "Title almost identical to another event in same district/date; likely duplicate."
+        ]
+      }
+    },
+    "overall_score": 0.22,
+    "passed": false,
+    "summary": "Event entry lacks location, time, description, and has missing required tags; high risk of duplication with another event."
+  }
 }

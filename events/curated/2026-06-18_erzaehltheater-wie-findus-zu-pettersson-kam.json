@@ -15,5 +15,40 @@
     "Kinder",
     "Staffort"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "location contains formatting artifacts (newline and tabs)"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "description only mentions age group, lacks substantive event details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.77,
+    "passed": true,
+    "summary": "Event has a clear title and appropriate tags including district, but location formatting is messy and description is insufficient (only age range). Time extraction is good. No duplicate risk."
+  }
 }

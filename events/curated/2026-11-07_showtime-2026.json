@@ -14,5 +14,42 @@
     "Bildung",
     "Linkenheim"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is generic; does not indicate that it is a music/performance event"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description is truncated and lacks specific details such as performers or program"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Tag 'Bildung' (education) is not appropriate for a pop/rock show; should be 'Musik' or 'Kultur'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.78,
+    "passed": true,
+    "summary": "Event entry has clear location and time, but the title is vague, the description is incomplete, and the main category tag is wrong. Acceptable with improvements."
+  }
 }

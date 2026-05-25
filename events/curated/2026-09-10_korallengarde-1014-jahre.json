@@ -15,5 +15,42 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": [
+          "Title is clear but could more explicitly indicate the type of activity (e.g., Gardetanz)."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.85,
+        "issues": [
+          "Description provides schedule and overview but could include practical details like attire or sign-up information."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Could include 'Kinder' tag to reflect the target age group and possibly 'Verein' to indicate club affiliation."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.94,
+    "passed": true,
+    "summary": "Event entry is well-structured: title is descriptive albeit slightly generic, location and time are correctly extracted, description is informative but could be enhanced, tags are appropriate with minor room for improvement, and no duplicate risk exists. Overall, the event is of high quality."
+  }
 }

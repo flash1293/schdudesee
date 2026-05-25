@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vogelpark",
   "organizer": "Vogelfreunde Leopoldshafen",
-  "description": "Parkfest",
+  "description": "Parkfest. at Vogelpark. organized by Vogelfreunde Leopoldshafen.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1827",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,5 +14,44 @@
     "Fest",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is generic, lacks specificity (e.g., location or organizer)"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time extracted; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is minimal, only repeats title, location, and organizer without additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Could include additional relevant category tags like 'Verein' or 'Natur'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event entry is mostly complete but lacks time and description detail. Title is generic but acceptable. Location and tags are appropriate. No duplicate concerns."
+  }
 }

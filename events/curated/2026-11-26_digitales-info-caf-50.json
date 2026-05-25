@@ -15,5 +15,40 @@
     "Essen",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location contains formatting and prefix 'Veranstaltungsort:'"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.95,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description is brief; could add more details about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.79,
+    "passed": true,
+    "summary": "Digitales Info-Café 50+ is a clear event for seniors to learn digital skills over coffee. The location extraction is unclean, time is well provided, tags fit the event but could include 'Senioren'. No duplicate risk with other events in the district."
+  }
 }

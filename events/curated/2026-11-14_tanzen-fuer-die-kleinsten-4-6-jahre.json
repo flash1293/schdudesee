@@ -15,5 +15,40 @@
     "Musik",
     "Spöck"
   ],
-  "recurring_group_id": 1716290936
+  "recurring_group_id": 1716290936,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location field includes organizer name instead of a pure address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Missing suitable 'Kinder' tag for a children's event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.83,
+    "passed": true,
+    "summary": "Event entry is generally well-structured. Title is clear and descriptive. Description provides helpful details and contact information. Location extraction is slightly imprecise as it contains the organizer name. Tags are accurate but could be improved by adding 'Kinder'. No duplicate concerns."
+  }
 }

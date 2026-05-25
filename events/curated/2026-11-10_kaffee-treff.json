@@ -14,5 +14,46 @@
     "Essen",
     "Treff"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.5,
+        "issues": [
+          "Title is too generic and lacks specific details like location or purpose"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location contains extra text ('Veranstaltungsort:') and formatting characters"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing a district tag from the provided list; only general categories used"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.4,
+    "passed": false,
+    "summary": "Event entry misses critical information: no description, no time, location is poorly extracted, title is vague, and no district tag is assigned."
+  }
 }

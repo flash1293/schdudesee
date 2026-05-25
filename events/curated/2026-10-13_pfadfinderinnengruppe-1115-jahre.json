@@ -15,5 +15,40 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.95,
+        "issues": [
+          "Location contains HTML entity '&#8211;'"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Workshop' is not ideal; consider 'Verein' or 'Treff'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.95,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Event entry is clear and well-structured. Tags could be refined (Workshop misapplied). No significant duplicate concerns. Overall good quality."
+  }
 }

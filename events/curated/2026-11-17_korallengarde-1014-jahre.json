@@ -15,5 +15,43 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": [
+          "Title could be more descriptive (e.g., include 'Training' or 'Tanzgruppe')"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.85,
+        "issues": [
+          "Could mention required equipment or registration details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing tag 'Kinder' which is appropriate for the target age group",
+          "'Musik' may not be as relevant as other available tags like 'Kinder' or 'Verein'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "The event entry has a descriptive title and complete location information. Description is informative but could add more practical details. Tags should include 'Kinder' for better categorization. No duplicate concerns."
+  }
 }

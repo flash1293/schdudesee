@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "auf dem Vereinsgelände des VdH Eggenstein-Leopoldshafen",
   "organizer": "Verein der Hundesportfreunde Leopoldshafen",
-  "description": "51 Jahre VdH Eggenstein-Leopoldshafen",
+  "description": "51 Jahre VdH Eggenstein-Leopoldshafen. at auf dem Vereinsgelände des VdH Eggenstein-Leopoldshafen. organized by Verein der Hundesportfreunde Leopoldshafen.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1889",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,5 +14,46 @@
     "Eggenstein",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title uses abbreviation VdH which may be unclear; could include event type like 'Jubiläum'"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location starts with 'auf dem', cleaner extraction could omit this; lacks specific address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time or start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.1,
+        "issues": [
+          "Description is auto-generated from other fields and provides no additional useful information"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Tags are only districts; missing an event category from the available list (e.g., 'Verein' or 'Fest')"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.9,
+        "issues": []
+      }
+    },
+    "overall_score": 0.43,
+    "passed": false,
+    "summary": "Event title is descriptive but uses unclear abbreviation; location is decent but not precise; no time given; description is uninformative and auto-generated; tags lack category; duplicate risk appears low."
+  }
 }

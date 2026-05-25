@@ -15,5 +15,40 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title uses jargon 'Seepferdchengarde' without explanation; may be unclear to those unfamiliar with carnival groups."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description refers to regular weekly schedule rather than the specific event instance; typo: missing space after exclamation mark."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Event entry is well-structured with clear location and time. Title is somewhat jargon-heavy. Description is informative but more general than instance-specific. Tags cover relevant categories and district. No duplicates."
+  }
 }

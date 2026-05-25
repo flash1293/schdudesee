@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -31,7 +31,7 @@
         "issues": []
       },
       "description_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "tag_quality": {
@@ -43,8 +43,8 @@
         "issues": []
       }
     },
-    "overall_score": 1.0,
+    "overall_score": 0.97,
     "passed": true,
-    "summary": "Perfect event entry with clear title, complete location and time, informative description, appropriate tags including district, and no duplicate risk."
+    "summary": "Well structured event with clear title, full address, precise time, informative description, appropriate tags including district, and no duplicate risk."
   }
 }

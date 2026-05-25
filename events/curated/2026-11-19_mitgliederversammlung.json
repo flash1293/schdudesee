@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Feuerwehr Eggenstein",
   "organizer": "Ortskartell Eggenstein-Leopoldshafen",
-  "description": "Mitgliederversammlung",
+  "description": "Mitgliederversammlung. at Feuerwehr Eggenstein. organized by Ortskartell Eggenstein-Leopoldshafen.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1860",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,5 +15,44 @@
     "Verein",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title 'Mitgliederversammlung' is generic; lacks specificity about organization or purpose."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time specified; time_raw is empty."
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is very brief and redundant, repeating title and location without additional context; mixes languages awkwardly."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Musik' seems irrelevant for a members' meeting; likely incorrect."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "Event entry lacks time information, has a generic title and minimal description; tag 'Musik' appears inappropriate."
+  }
 }

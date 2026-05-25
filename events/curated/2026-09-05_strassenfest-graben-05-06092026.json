@@ -5,13 +5,49 @@
   "time_raw": "",
   "location": "Karlsruher Straße / Juhe",
   "organizer": "Vorständevereinigung Graben",
-  "description": "",
+  "description": "Straßenfest Graben (05.-06.09.2026). at Karlsruher Straße / Juhe. organized by Vorständevereinigung Graben.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145240/strassenfest-graben-05-06092026",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Fest"
+    "Fest",
+    "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start/end time extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is uninformative and repetitive"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.72,
+    "passed": true,
+    "summary": "Event has clear title and location but lacks time information and description is minimal."
+  }
 }

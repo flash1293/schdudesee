@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Sexau im Breisgau, Hornbauernhof",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "",
+  "description": "Hofkids. at Sexau im Breisgau, Hornbauernhof. organized by CVJM Weingarten e.V..",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/hofkids",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -14,5 +14,40 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is too short and lacks details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "Event entry has an unclear title, missing time, and poor description, but location and tags are adequate. Overall, below average but passes."
+  }
 }

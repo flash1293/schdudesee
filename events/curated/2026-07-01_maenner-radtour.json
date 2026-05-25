@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Rheintal Baden / Elsass",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "",
+  "description": "Männer-Radtour. at Rheintal Baden / Elsass. organized by CVJM Weingarten e.V..",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/maenner-radtour",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -15,5 +15,42 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location is a broad region, not a specific venue or city."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.3,
+        "issues": [
+          "No start time provided, only dates."
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description merely repeats title, location, and organizer, lacking details."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "Event has a clear title and appropriate tags, but the location is vague, no specific time is given, and the description lacks detail."
+  }
 }

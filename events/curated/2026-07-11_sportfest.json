@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSportplatz Staffort",
   "organizer": "Sportverein Staffort e.V.",
-  "description": "",
+  "description": "Sportfest. at Veranstaltungsort:\n\t\tSportplatz Staffort. organized by Sportverein Staffort e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2643",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -15,5 +15,44 @@
     "Fest",
     "Staffort"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is too generic, could include more specific details such as location or organizer"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field includes label 'Veranstaltungsort:' and extra whitespace, not a clean extraction"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is auto-generated and lacks original content, but does repeat essential information"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "Event entry has a generic title, messy location, missing time, and weak description but good tags and no duplication risk"
+  }
 }

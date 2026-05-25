@@ -15,5 +15,40 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601
+  "recurring_group_id": 269588601,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Only start time extracted; end time available in description not captured"
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Sport' is not the best fit for this event; consider 'Treff' or 'Workshop'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Event 'Eltern-Kind-Kreis in Friedrichstal' on 2026-11-11 10:00 at Ev. Gemeindehaus Friedrichstal. Good title, location, and description. Time extraction missing end time. Tag 'Sport' may be inaccurate. No duplicate risk."
+  }
 }

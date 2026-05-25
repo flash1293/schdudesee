@@ -15,5 +15,41 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910
+  "recurring_group_id": 1140166910,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": [
+          "End time not extracted in time_raw field"
+        ]
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Date inconsistency: description says event occurs every first Tuesday of the month but event date (2026-06-30) is not the first Tuesday (first Tuesday of June 2026 is June 2)",
+          "Minor formatting inconsistency (missing space after colon)"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Event entry is clear and well-structured. The title is descriptive, location properly extracted, and tags appropriate. Duplicate risk is low. Minor issues: time extraction lacks end time; description contains a date inconsistency with the stated recurrence rule and a formatting glitch."
+  }
 }

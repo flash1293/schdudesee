@@ -15,5 +15,40 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1313318492
+  "recurring_group_id": 1313318492,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Missing space between 'KontaktTelefon' and phone/email"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "District tag 'Blankenloch' not explicit in location, may be inferred"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.92,
+    "passed": true,
+    "summary": "Event quality is high overall. Title clear, location and time well extracted. Description informative but minor formatting issue. Tags appropriate but district tag not directly confirmed by location. No duplicate risk."
+  }
 }

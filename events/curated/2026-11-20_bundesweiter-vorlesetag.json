@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Schröcker Mütze e.V.\nHaydnstr. 5\n76344 Eggenstein",
   "organizer": "Familienzentrum Schröcker Mütze e.V.",
-  "description": "Bundesweiter Vorlesetag",
+  "description": "Bundesweiter Vorlesetag. at Schröcker Mütze e.V.\nHaydnstr. 5\n76344 Eggenstein. organized by Familienzentrum Schröcker Mütze e.V..",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1863",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,5 +13,42 @@
   "tags": [
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No start time specified"
+        ]
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description merely repeats title and location, lacking event details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Only district tag present; missing category tags like Literatur or Kinder"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.72,
+    "passed": true,
+    "summary": "Event entry is fundamentally correct but lacks time information and has minimal description. Improved tagging with relevant categories would enhance discoverability."
+  }
 }

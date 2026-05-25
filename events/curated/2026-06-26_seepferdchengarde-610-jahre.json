@@ -15,5 +15,41 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": [
+          "Title could be more descriptive by explicitly mentioning 'Tanzgruppe' or 'Tanz' for clarity"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.85,
+        "issues": [
+          "Missing space after exclamation mark in 'Tanzen!Kinder'",
+          "Schedule lists two different weekly times which may cause confusion for this specific date instance"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.96,
+    "passed": true,
+    "summary": "The event entry is well-formed and descriptive. It has a clear title, complete location and time, and informative description. Minor formatting and clarity issues in the description are present, but overall the entry is high quality with low duplication risk and appropriate tags."
+  }
 }

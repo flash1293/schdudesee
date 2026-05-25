@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Karlsdorf-Neuthard",
   "organizer": "VdK Neuthard",
-  "description": "",
+  "description": "Herbstausflug. at Karlsdorf-Neuthard. organized by VdK Neuthard.",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=467",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -13,5 +13,42 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty, no start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is minimal and only repeats title, location, and organizer without additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Only district tag present; consider adding a category tag from the available list"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.65,
+    "passed": true,
+    "summary": "The event entry for Herbstausflug lacks a start time, has a very basic description, and uses only a district tag. While title and location are acceptable and no duplicates are expected, the missing time and poor description reduce its quality."
+  }
 }

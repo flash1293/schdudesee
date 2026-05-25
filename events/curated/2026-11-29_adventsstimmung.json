@@ -5,7 +5,7 @@
   "time_raw": "10:00 Uhr",
   "location": "Büchig",
   "organizer": "Gospel Unlimited",
-  "description": "",
+  "description": "Adventsstimmung. at Büchig. from 10:00 Uhr. organized by Gospel Unlimited.",
   "event_url": "https://www.gospel-unlimited.de/termine",
   "sources": [
     "clubs_batch_all"
@@ -13,5 +13,44 @@
   "tags": [
     "Büchig"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is a bit generic; could be more descriptive of event type."
+        ]
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location is only a district name; no specific venue or address."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description simply repeats structured fields without adding any informative details."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Only district tag present; missing a category tag from the provided list (e.g., Musik, Kirche)."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.72,
+    "passed": true,
+    "summary": "Event title and time are clear, but location is vague and description lacks detail. Tags are incomplete (only district). No duplicates detected."
+  }
 }

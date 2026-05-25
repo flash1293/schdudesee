@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Kirchplatz Hauptstraße",
   "organizer": "Chorgemeinschaft Liederkranz Eggenstein 1907 e.V.",
-  "description": "Kirwecafé",
+  "description": "Kirwecafé. at Kirchplatz Hauptstraße. organized by Chorgemeinschaft Liederkranz Eggenstein 1907 e.V..",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1849",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,5 +14,40 @@
     "Treff",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No start time specified; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is redundant and provides no additional information beyond title, location, and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "The event has a clear title and location, but lacks time information and a helpful description. Tags are appropriate and include a district. No duplicate risk."
+  }
 }

@@ -17,39 +17,40 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.4,
+        "score": 0.5,
         "issues": [
-          "Title is not descriptive, does not indicate event type or content"
+          "Title is ambiguous and not descriptive of event content"
         ]
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "description_quality": {
         "score": 0.2,
         "issues": [
-          "Description is minimal and repetitive, providing no additional information beyond metadata"
+          "Description is repetitive and lacks additional details about the event"
         ]
       },
       "tag_quality": {
         "score": 0.4,
         "issues": [
-          "Missing district tag from available districts list",
-          "Only 'Musik' tag present, consider adding more relevant categories based on event content"
+          "Missing district tag; consider adding a district from the list"
         ]
       },
       "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.6,
+        "issues": [
+          "Title and location are similar to another event on the same date; potential duplicate"
+        ]
       }
     },
-    "overall_score": 0.63,
+    "overall_score": 0.62,
     "passed": true,
-    "summary": "The event entry has an unclear title, minimal description, and lacks a required district tag, resulting in low overall quality."
+    "summary": "Entry has clear time and location but title and description quality are low; tag set missing district; similar event exists on same date."
   }
 }

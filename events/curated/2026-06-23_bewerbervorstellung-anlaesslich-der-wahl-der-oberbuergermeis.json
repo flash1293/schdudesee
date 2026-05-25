@@ -5,13 +5,54 @@
   "time_raw": "18:30 Uhr",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
   "organizer": "Stadt Stutensee",
-  "description": "Kandidatenvorstellung",
+  "description": "Bewerbervorstellung anlässlich der Wahl der Oberbürgermeisterin/des Oberbürgermeisters. at Veranstaltungsort:\n\t\tFesthalle Stutensee. from 18:30 Uhr. organized by Stadt Stutensee.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2773",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Politik"
+    "Politik",
+    "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location contains extra text 'Veranstaltungsort:'"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is auto-generated from other fields and lacks additional information"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag",
+          "Tag 'Fest' may be inaccurate for a political candidate presentation"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": [
+          "Event is highly likely a duplicate of another event with same time, location, and similar title"
+        ]
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "Title and time are clear, but location extraction has extra text, description is unhelpful, tags are missing a district and may be miscategorized, and the event is likely a duplicate."
+  }
 }

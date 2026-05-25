@@ -5,7 +5,7 @@
   "time_raw": "18:30",
   "location": "Drais-Halle",
   "organizer": "Stadtverwaltung Stutensee",
-  "description": "",
+  "description": "Kandidatenvorstellung OB-Wahl. at Drais-Halle. from 18:30. organized by Stadtverwaltung Stutensee.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/kandidatenvorstellung-ob-wahl-2/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -13,5 +13,42 @@
   "tags": [
     "Politik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location lacks full address; only venue name provided."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description is repetitive and adds little new information beyond title and metadata."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag; should include one from districts list."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.82,
+    "passed": true,
+    "summary": "Kandidatenvorstellung OB-Wahl on 2026-06-25 at Drais-Halle at 18:30, organized by Stadtverwaltung Stutensee. Tags: Politik. Quality: good but missing district tag and location could be more specific."
+  }
 }

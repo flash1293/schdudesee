@@ -15,5 +15,40 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title does not explicitly indicate the activity type (e.g., dance training), which may reduce clarity for users looking for specific offerings."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Minor typographical issue: missing space after exclamation mark (\"Tanzen!Kinder\")."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "Event entry for a children's dance training (ages 6–10) is well-structured with clear time and complete location. The title could be more descriptive of the activity, and the description has a small formatting quirk. Tags are appropriate and district is correctly included. No duplication with the context events."
+  }
 }

@@ -14,5 +14,38 @@
     "Markt",
     "Friedrichstal"
   ],
-  "recurring_group_id": 656683462
+  "recurring_group_id": 656683462,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description is brief, repeats time and location, and lacks details about the market"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.77,
+    "passed": true,
+    "summary": "Event entry is clear and well-structured with proper fields. Title and location are good; time is correctly extracted. Description is minimal but acceptable. Tags include valid category and district. No duplicate risk with other events."
+  }
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "CVJM Spöck",
   "organizer": "CVJM Spöck",
-  "description": "",
+  "description": "Badentreff. at CVJM Spöck. organized by CVJM Spöck.",
   "event_url": "https://www.cvjm-spoeck.de/",
   "sources": [
     "manual_override"
@@ -15,5 +15,42 @@
     "Kirche",
     "Spöck"
   ],
-  "recurring_group_id": 1533723276
+  "recurring_group_id": 1533723276,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.4,
+        "issues": [
+          "Title is vague; 'Badentreff' is not descriptive."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time extracted (time_raw is empty)."
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is uninformative, just repeats title and location."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Event 'Badentreff' has a vague title, no time information, and a poor description. Location and tags are appropriate. No duplicate risk."
+  }
 }

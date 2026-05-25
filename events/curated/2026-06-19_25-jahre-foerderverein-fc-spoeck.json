@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Fußballclub Spöck 1929 e.V.",
-  "description": "",
+  "description": "25 Jahre Förderverein FC Spöck. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Fußballclub Spöck 1929 e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2617",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,42 @@
     "Verein",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location text includes extraneous label 'Veranstaltungsort:' and newline characters, not a clean address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is uninformative, simply repeats title, location, and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "Event entry has a clear title and appropriate tags but suffers from missing start time, uninformative description, and messy location formatting."
+  }
 }

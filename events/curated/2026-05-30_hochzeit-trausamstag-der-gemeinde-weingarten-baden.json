@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Rathaus mit Rathausplatz oder Turmberg am Wartturm",
   "organizer": "Gemeinde Weingarten (Baden) - Standesamt",
-  "description": "",
+  "description": "Hochzeit - Trausamstag der Gemeinde Weingarten (Baden). at Rathaus mit Rathausplatz oder Turmberg am Wartturm. organized by Gemeinde Weingarten (Baden) - Standesamt.",
   "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/866/hochzeit-trausamstag-der-gemeinde-weingarten-baden",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -13,5 +13,42 @@
   "tags": [
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is too brief and lacks detail"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Only district tag present; consider adding a category tag from the available list"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "Event entry provides a clear title and location but lacks time and detailed description. Tagging could be improved by adding a category."
+  }
 }

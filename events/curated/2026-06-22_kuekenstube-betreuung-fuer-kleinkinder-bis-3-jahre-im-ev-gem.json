@@ -15,5 +15,40 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.85,
+        "issues": [
+          "Description includes outdated reference to 'Flyer Kükenstube 2025'"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.85,
+        "issues": [
+          "Missing relevant tag 'Kinder'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.94,
+    "passed": true,
+    "summary": "Event entry is well-structured with clear title, location and time. Description is informative but contains an outdated flyer reference. Tags are mostly appropriate but missing the 'Kinder' category."
+  }
 }

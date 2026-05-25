@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Graben-Neudorf",
   "organizer": "Gemeinde Graben-Neudorf - Standesamt",
-  "description": "",
+  "description": "Samstagstrautermin. at Graben-Neudorf. organized by Gemeinde Graben-Neudorf - Standesamt.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/93476/samstagstrautermin",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -13,5 +13,44 @@
   "tags": [
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location is only the district name, not the specific venue"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time or start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is redundant and lacks additional information about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing category tag; should include at least one category from available list, e.g., 'Sonstiges'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Event entry lacks time information, has a poor description, and is missing a category tag. The title and district tag are appropriate. It is not a duplicate of the other event in the same district on the same date."
+  }
 }

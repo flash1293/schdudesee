@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsheim",
   "organizer": "Motorsportclub Blankenloch e.V. im ADAC",
-  "description": "",
+  "description": "Winterfeier. at Vereinsheim. organized by Motorsportclub Blankenloch e.V. im ADAC.",
   "event_url": "http://www.msc-blankenloch.de/termine",
   "sources": [
     "clubs_batch_all"
@@ -13,5 +13,44 @@
   "tags": [
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location is vague; only provided as 'Vereinsheim' which may not be specific enough."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided."
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is redundant and does not add any useful information beyond the title, location, and organizer."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Only district tag present; missing appropriate category tags such as 'Fest' or 'Verein'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.47,
+    "passed": false,
+    "summary": "Event entry has several quality issues: no time specified, vague location, uninformative description, and missing category tags. While title is acceptable and duplicate risk is low, the lack of key information reduces overall quality."
+  }
 }

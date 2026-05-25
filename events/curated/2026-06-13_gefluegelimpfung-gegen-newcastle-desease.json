@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände Friedrichstal",
   "organizer": "Kleintierzuchtverein C283 Friedrichstal e.V.",
-  "description": "",
+  "description": "Geflügelimpfung gegen Newcastle Desease. at Vereinsgelände Friedrichstal. organized by Kleintierzuchtverein C283 Friedrichstal e.V..",
   "event_url": "https://www.kleintierzuchtverein-friedrichstal.de/termine/",
   "sources": [
     "clubs_batch_all"
@@ -13,5 +13,44 @@
   "tags": [
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": [
+          "Title contains a typo: 'Desease' should be 'Disease'."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.2,
+        "issues": [
+          "No time extracted; time_raw is empty."
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is generic and repeats information already present, lacking additional useful details."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing a relevant category tag such as 'Verein'; only district tag 'Friedrichstal' is present."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "Event entry has clear title with minor typo, location is provided but no time, description lacks depth, tags only include district and are missing a category tag, no duplicate risk."
+  }
 }

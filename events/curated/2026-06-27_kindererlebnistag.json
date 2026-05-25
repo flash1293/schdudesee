@@ -5,7 +5,7 @@
   "time_raw": ", 10:00 Uhr",
   "location": "CVJM-Marienhof",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "",
+  "description": "Kindererlebnistag. at CVJM-Marienhof. from , 10:00 Uhr. organized by CVJM Weingarten e.V..",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/kindererlebnistage_auf_dem_marienhof",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -15,5 +15,40 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.7,
+        "issues": [
+          "time_raw contains leading comma, suggests parsing artifact"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "description is auto-generated and not informative"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.78,
+    "passed": true,
+    "summary": "Event entry for Kindererlebnistag is largely clear with good title, tags, and location. Time extraction has a minor formatting issue. Description is auto-generated and lacks depth, reducing overall quality."
+  }
 }

@@ -17,5 +17,43 @@
     "Friedrichstal",
     "Bruchsal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Location is missing street address and city; consider adding full address"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Tag 'Fest' is not appropriate; should be 'Workshop'",
+          "Tags 'Friedrichstal' and 'Bruchsal' are not the primary event location (Spöck) and may be misleading"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": [
+          "This event appears to be a duplicate of 'der Stärke-Baum Workshop für Alleinerziehende' in the context at the same time and location"
+        ]
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "The event entry has high-quality title and description but suffers from inaccurate tags and a high duplicate risk with a context event."
+  }
 }

@@ -11,5 +11,43 @@
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.5,
+        "issues": [
+          "Title is not descriptive, may be unclear"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is missing"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.0,
+        "issues": [
+          "No tags assigned",
+          "Missing district and category tags"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "Event entry for 'Inthronisation' has good location and time extraction but lacks description and tags; title is vague."
+  }
 }

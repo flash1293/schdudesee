@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände SV OG Eggenstein Kopfweg 6",
   "organizer": "Schäferhundeverein SV OG Eggenstein",
-  "description": "Summer Opening auf dem Hundeplatz",
+  "description": "Summer Opening auf dem Hundeplatz. at Vereinsgelände SV OG Eggenstein Kopfweg 6. organized by Schäferhundeverein SV OG Eggenstein.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1803",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,5 +13,42 @@
   "tags": [
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.2,
+        "issues": [
+          "Time not provided in time_raw"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description merely repeats title, location, and organizer; no additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Tag only includes district, missing category tag such as Verein, Sport, or Fest"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "Event has clear title and location but lacks time and descriptive details. Missing category tag. No duplication risk."
+  }
 }

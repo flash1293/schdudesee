@@ -13,5 +13,46 @@
   "tags": [
     "Kultur"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.3,
+        "issues": [
+          "Location contains formatting label 'Veranstaltungsort:'",
+          "No city or district in location"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided (time_raw is empty)"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Missing district tag from available list",
+          "Could also include 'Literatur' for more specificity"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.43,
+    "passed": false,
+    "summary": "Title is clear and descriptive, but the entry lacks description and time, location extraction is messy, tags are missing required district tag."
+  }
 }

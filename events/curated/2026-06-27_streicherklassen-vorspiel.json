@@ -13,5 +13,41 @@
   "tags": [
     "Kinder"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty; provides no event details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.2,
+        "issues": [
+          "missing district tag (required per guidelines)",
+          "could include 'Musik' tag for better categorization"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "The event entry has a clear title, proper location and time extraction. However, the description is completely missing, making it uninformative. Tags are incomplete: they lack a required district tag and could be enriched with more relevant categories. No risk of duplication with other events on the same date."
+  }
 }

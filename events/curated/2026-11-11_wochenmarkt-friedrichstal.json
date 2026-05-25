@@ -14,5 +14,36 @@
     "Markt",
     "Friedrichstal"
   ],
-  "recurring_group_id": 656683462
+  "recurring_group_id": 656683462,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.97,
+    "passed": true,
+    "summary": "Event is a weekly market with clear title, proper location and time, informative description, and appropriate tags. No duplicate risk."
+  }
 }

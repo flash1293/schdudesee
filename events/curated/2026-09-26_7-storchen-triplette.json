@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Boulodrom",
   "organizer": "Boule Club Vin Rouge Graben-Neudorf e.V.",
-  "description": "",
+  "description": "7. Storchen Triplette. at Boulodrom. organized by Boule Club Vin Rouge Graben-Neudorf e.V..",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146176/7-storchen-triplette",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -13,5 +13,42 @@
   "tags": [
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is minimal and repeats title information"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing category tag (e.g., Sport, Verein)"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "Event entry has clear title and location, but missing time and minimal description. Tags only include district but lack appropriate category. Overall quality is acceptable but improvable."
+  }
 }

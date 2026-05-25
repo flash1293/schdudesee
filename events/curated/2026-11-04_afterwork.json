@@ -13,5 +13,43 @@
   "tags": [
     "Treff"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.5,
+        "issues": [
+          "Title is too generic; could be more descriptive like 'Afterwork Treffen'"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty, no information about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Missing district tag from available districts list",
+          "Only one tag; could add more relevant tags such as 'Essen' as event is at a restaurant"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "The event entry has a minimal title and missing description. Location and time are well extracted. Tags lack a district tag and are sparse. Overall quality is low due to missing description."
+  }
 }

@@ -13,5 +13,45 @@
   "tags": [
     "Treff"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.4,
+        "issues": [
+          "Title is too generic; no indication of event type or target audience"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Location string contains pipe separators and trailing dot, could be cleaned"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty; provides no useful information"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Missing a required district tag from the available list",
+          "Only one generic tag used; could be more specific"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event entry is incomplete: description missing, title too vague, and no district tag. Requires substantial improvement."
+  }
 }

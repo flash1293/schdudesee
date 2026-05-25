@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSporthalle Spöck",
   "organizer": "Tischtennisgemeinschaft Spöck 2010 e.V.",
-  "description": "",
+  "description": "Badische Rangliste der Senioren. at Veranstaltungsort:\n\t\tSporthalle Spöck. organized by Tischtennisgemeinschaft Spöck 2010 e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2639",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,44 @@
     "Senioren",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains extra label and newlines"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time specified"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is auto-generated and not informative"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing relevant tag 'Sport'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.57,
+    "passed": false,
+    "summary": "Event entry has clear title but lacks time, has messy location, poor description, and missing sport tag."
+  }
 }

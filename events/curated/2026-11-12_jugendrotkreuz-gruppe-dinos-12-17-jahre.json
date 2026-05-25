@@ -15,5 +15,42 @@
     "Workshop",
     "Blankenloch"
   ],
-  "recurring_group_id": 1691266295
+  "recurring_group_id": 1691266295,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Only start time provided, end time missing"
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Could be more specific to the 'Dinos' group activities"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Workshop' may not be the most accurate for a regular youth group meeting; 'Treff' or 'Verein' could be more appropriate"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Event entry is well-structured with a clear title, complete location, and informative description. Minor improvements could be made to time and tag precision, but no duplicate concerns."
+  }
 }

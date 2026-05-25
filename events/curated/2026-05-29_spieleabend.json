@@ -5,7 +5,7 @@
   "time_raw": "19:00 - 21:00 Uhr",
   "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
   "organizer": "KulturRaum Regenbogen im BZ Regenbogen",
-  "description": "",
+  "description": "Spieleabend. at Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen. from 19:00 - 21:00 Uhr. organized by KulturRaum Regenbogen im BZ Regenbogen.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2705",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,47 @@
     "Kinder",
     "Treff"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "title is generic, could be more specific"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "location field contains extra label 'Veranstaltungsort:'",
+          "location extraction not clean"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "description is auto-generated and not informative",
+          "redundant, simply repeats other fields"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "missing district tag (required)",
+          "tags limited to two, could be more descriptive"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "The event entry has basic information but several quality issues: the title is generic, location extraction is messy (includes label), description is auto-generated and uninformative, and tags lack a required district tag. Overall, the entry does not meet quality standards."
+  }
 }

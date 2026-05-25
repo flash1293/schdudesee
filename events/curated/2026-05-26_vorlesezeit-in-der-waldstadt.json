@@ -15,5 +15,40 @@
     "Literatur",
     "Kinder"
   ],
-  "recurring_group_id": 242503996
+  "recurring_group_id": 242503996,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": [
+          "Title could specify the event is for children (e.g., 'Vorlesezeit für Kinder')"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Description provides key info but could include more details about the reading session content"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.97,
+    "passed": true,
+    "summary": "Event entry is clear and well-formed. Minor improvements could be made to the title and description for added specificity, but all essential information is present and correctly formatted."
+  }
 }

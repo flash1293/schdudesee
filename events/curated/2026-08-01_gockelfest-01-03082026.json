@@ -5,13 +5,49 @@
   "time_raw": "",
   "location": "Zuchtanlage Kleintierzuchtverein Graben",
   "organizer": "Kleintierzuchtverein Graben",
-  "description": "",
+  "description": "Gockelfest (01.-03.08.2026). at Zuchtanlage Kleintierzuchtverein Graben. organized by Kleintierzuchtverein Graben.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145237/gockelfest-01-03082026",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Fest"
+    "Fest",
+    "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty, no start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is minimal and only repeats title, location, and organizer; lacks informative content"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.73,
+    "passed": true,
+    "summary": "Event entry has clear title and location, but lacks time information and has a very brief description. Tags are appropriate. No duplicate risk."
+  }
 }

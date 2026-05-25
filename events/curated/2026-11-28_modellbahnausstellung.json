@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "siehe Website",
   "organizer": "Modellbau- und Eisenbahnclub Werkstatt 87",
-  "description": "",
+  "description": "Modellbahnausstellung. at siehe Website. organized by Modellbau- und Eisenbahnclub Werkstatt 87.",
   "event_url": "http://www.werkstatt87.de",
   "sources": [
     "clubs_batch_all"
@@ -13,5 +13,45 @@
   "tags": [
     "Kultur"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.1,
+        "issues": [
+          "Location is placeholder 'siehe Website', not a proper address or district"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No time specified, time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is minimal and uninformative, repeats title and refers to website"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.2,
+        "issues": [
+          "Missing a district tag from the available districts list",
+          "Only one tag, may not capture event fully"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.4,
+    "passed": false,
+    "summary": "Event entry lacks proper location and time, description is insufficient, and tags missing required district. Overall low quality."
+  }
 }

@@ -15,5 +15,42 @@
     "Senioren",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "missing precise venue details (e.g., Alte Scheune)"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "description only mentions venue, lacks event details and purpose"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "tag 'Natur' may not be the most appropriate; consider 'Musik' or 'Treff' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.76,
+    "passed": true,
+    "summary": "Title and time extraction are good, but description is very minimal and location could be more specific. Tags are mostly appropriate, though 'Natur' is questionable. No duplicate risk detected."
+  }
 }

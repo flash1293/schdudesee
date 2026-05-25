@@ -15,5 +15,42 @@
     "Verein",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": 1405480508
+  "recurring_group_id": 1405480508,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.75,
+        "issues": [
+          "Title is vague; 'Öffnungszeiten' suggests regular opening times rather than a distinct event."
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location only includes municipality; missing specific venue (e.g., Heimatmuseum Graben-Neudorf)."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty; no details provided about the event."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.69,
+    "passed": true,
+    "summary": "Event entry has basic information (title, time, location district) but lacks description and venue specifics. The title mentions 'Öffnungszeiten' (opening hours). Tags are appropriate. No duplicates found. Overall quality is poor due to missing description."
+  }
 }

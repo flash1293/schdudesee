@@ -16,5 +16,44 @@
     "Spöck",
     "Bruchsal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title starts with lowercase 'der'"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Inappropriate tag 'Fest'; should be 'Workshop'",
+          "Tag 'Bruchsal' is not the event district; district is Spöck",
+          "Consider adding 'Workshop' category"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.2,
+        "issues": [
+          "Event is likely duplicate of 'Workshop für Alleinerziehende: Der Stärke-Baum' at same date, time, location"
+        ]
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "Event has clear title and location, but tags are inaccurate (Fest instead of Workshop, incorrect district) and it appears to be a duplicate of another event. Overall quality is moderate but duplicate risk is high."
+  }
 }

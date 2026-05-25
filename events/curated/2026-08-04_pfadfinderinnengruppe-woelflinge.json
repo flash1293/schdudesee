@@ -15,5 +15,38 @@
     "Natur",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1764623589
+  "recurring_group_id": 1764623589,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.9,
+        "issues": [
+          "Same time and location as Pfadfinder*innengruppe (11-15 Jahre) event, may cause confusion but different target age groups."
+        ]
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "The event is clearly described, with proper location and time. Tags are appropriate and include district. Low duplication risk, though another Pfadfinder event for older children occurs at the same time and place."
+  }
 }

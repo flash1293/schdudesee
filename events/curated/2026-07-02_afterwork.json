@@ -5,7 +5,7 @@
   "time_raw": "ab 18:00 Uhr",
   "location": "Schuhs Restaurant | Siemensstr. 1 | 76344 Eggenstein-Leopoldshafen",
   "organizer": "Gewerbeverein Stutensee",
-  "description": "",
+  "description": "AFTERWORK. at Schuhs Restaurant | Siemensstr. 1 | 76344 Eggenstein-Leopoldshafen. from ab 18:00 Uhr. organized by Gewerbeverein Stutensee.",
   "event_url": "https://gewerbeverein-stutensee.org/veranstaltungen",
   "sources": [
     "https://gewerbeverein-stutensee.org/veranstaltungen"
@@ -15,5 +15,42 @@
     "Eggenstein",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.5,
+        "issues": [
+          "Title is too generic; it should be more specific to the event type or location."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is redundant and lacks substantive information about the event."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tags include two district tags which is redundant; consider using only the most specific district tag."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.77,
+    "passed": true,
+    "summary": "Event 'AFTERWORK' on 2026-07-02 at Schuhs Restaurant. Location and time are clear, but title and description lack detail. Tags are mostly appropriate with minor redundancy. No duplicate event detected."
+  }
 }

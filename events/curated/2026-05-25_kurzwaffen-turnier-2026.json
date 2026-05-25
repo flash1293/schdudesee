@@ -15,5 +15,43 @@
     "Workshop",
     "Blankenloch"
   ],
-  "recurring_group_id": 863794562
+  "recurring_group_id": 863794562,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty, no time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is truncated and incomplete",
+          "Date in description (01.06.26) conflicts with date_start (2026-05-25)"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Workshop' seems inappropriate for a shooting tournament"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.65,
+    "passed": true,
+    "summary": "Event entry has a clear title and location, but lacks any time information, has an incomplete description with date inconsistency, and a possibly inaccurate tag."
+  }
 }

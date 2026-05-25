@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Tennisclub Spöck e.V.",
-  "description": "",
+  "description": "Ortsturnier für \"nicht Tennis spielende Vereine\". at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Tennisclub Spöck e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2674",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -15,5 +15,45 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location includes prefix 'Veranstaltungsort:' and line breaks",
+          "Specific address missing"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time extracted (time_raw empty)"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is not informative; it merely repeats the title and location"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Kinder' may not be directly relevant; consider adding 'Verein' or more specific categories"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.53,
+    "passed": false,
+    "summary": "Event title is clear but location extraction is poor, time is missing, description lacks detail, tags are partially appropriate but could be improved. No duplicate risk detected."
+  }
 }

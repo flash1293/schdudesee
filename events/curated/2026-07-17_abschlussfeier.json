@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
   "organizer": "Erich-Kästner-Realschule",
-  "description": "",
+  "description": "Abschlussfeier. at Veranstaltungsort:\n\t\tFesthalle Stutensee. organized by Erich-Kästner-Realschule.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2682",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,5 +13,45 @@
   "tags": [
     "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains a label prefix 'Veranstaltungsort:' that should be removed"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information is provided (time_raw is empty)"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is largely repetitive of title, location, and organizer without providing additional useful details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.2,
+        "issues": [
+          "Missing required district tag from the available districts list",
+          "Only one category tag used; could be expanded (e.g., 'Bildung' might be relevant)"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.48,
+    "passed": false,
+    "summary": "The event entry has a clear title but lacks essential details like time, has a messy location field, a minimal description, and missing district tag. Overall quality is low."
+  }
 }

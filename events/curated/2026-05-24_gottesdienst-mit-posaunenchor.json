@@ -5,7 +5,7 @@
   "time_raw": "10:00",
   "location": "Ev. Kirche Graben",
   "organizer": "CVJM Graben-Neudorf",
-  "description": "",
+  "description": "Gottesdienst mit Posaunenchor. at Ev. Kirche Graben. from 10:00. organized by CVJM Graben-Neudorf.",
   "event_url": "https://www.cvjm-graben-neudorf.de/eventcalendar",
   "sources": [
     "https://www.cvjm-graben-neudorf.de/eventcalendar"
@@ -13,7 +13,43 @@
   "tags": [
     "Kirche",
     "Musik",
-    "Graben-Neudorf"
+    "Graben-Neudorf",
+    "⚠️"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is minimal and largely repeats structured fields."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Contains non-standard tag '⚠️' which is not in allowed categories."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.83,
+    "passed": true,
+    "summary": "Event entry is largely complete with clear title, location, and time. Description is minimal and repetitive. Tags include an invalid emoji tag. No duplicate events found."
+  }
 }

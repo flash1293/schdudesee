@@ -15,5 +15,44 @@
     "Essen",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field includes extraneous label 'Veranstaltungsort:' and formatting newlines/tabs.",
+          "Only venue name without full address."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Description is very short; could provide more details about topics covered."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing 'Senioren' tag since target group is 50+.",
+          "'Essen' tag may not be central; event is primarily about digital skills."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "Good quality overall. Location extraction needs cleaning. Tags slightly off: missing Senioren, Essen questionable. No duplication risk."
+  }
 }

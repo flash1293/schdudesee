@@ -5,14 +5,50 @@
   "time_raw": "12:00 Uhr bis 17:00 Uhr",
   "location": "",
   "organizer": "ev. Kirchengemeinde und kath. Kirchengemeinde",
-  "description": "",
+  "description": "Ökumenisches Gemeindefest. from 12:00 Uhr bis 17:00 Uhr. organized by ev. Kirchengemeinde und kath. Kirchengemeinde.",
   "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/889/oekumenisches-gemeindefest",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
     "Kirche",
-    "Fest"
+    "Fest",
+    "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.1,
+        "issues": [
+          "location field is empty"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "description is too brief and lacks details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.75,
+    "passed": true,
+    "summary": "Event title and time are clear, tags are appropriate, but location is missing and description lacks detail."
+  }
 }

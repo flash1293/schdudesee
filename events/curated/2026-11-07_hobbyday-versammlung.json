@@ -13,5 +13,43 @@
   "tags": [
     "Verein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is somewhat generic; consider specifying the type of hobby day or meeting."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty; provide details about the event to inform attendees."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Missing a district tag from the available list; tags should include a district.",
+          "Only one tag; consider adding additional relevant categories (e.g., Treff, Sport)."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "Event has a basic title but lacks description and district tag; time and location are clear; no duplicate risk."
+  }
 }

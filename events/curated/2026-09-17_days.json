@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "CVJM-Marienhof",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "",
+  "description": "DAYS. at CVJM-Marienhof. organized by CVJM Weingarten e.V..",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/days",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -14,5 +14,44 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.2,
+        "issues": [
+          "Title is too vague and does not convey the event nature"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location is only the venue name, no city or address details"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is minimal and uninformative"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.5,
+    "passed": false,
+    "summary": "Event entry has missing time information, vague title and description, but location and tags are adequate."
+  }
 }

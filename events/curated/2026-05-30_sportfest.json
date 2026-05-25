@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände",
   "organizer": "FC Germania Karlsdorf",
-  "description": "",
+  "description": "Sportfest. at Vereinsgelände. organized by FC Germania Karlsdorf.",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=417",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -15,5 +15,44 @@
     "Fest",
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.5,
+        "issues": [
+          "Title is too generic, lacks specifics"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location is vague, only 'Vereinsgelände' without full address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is uninformative, simply repeats title and other fields"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.53,
+    "passed": false,
+    "summary": "Event entry lacks time and has generic title and description, but location and tags are acceptable. No duplicate risk."
+  }
 }

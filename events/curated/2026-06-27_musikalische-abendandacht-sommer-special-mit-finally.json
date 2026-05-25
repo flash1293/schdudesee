@@ -15,5 +15,42 @@
     "Kirche",
     "Linkenheim"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": [
+          "Title includes special characters (quotation marks, colon) that may cause formatting issues."
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field only contains town name; specific venue (CVJM-Platz Linkenheim, Im Gründel 1) from description is missing."
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description is truncated and incomplete, limiting informativeness."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.83,
+    "passed": true,
+    "summary": "Event entry is mostly well-defined with clear title and time, but location extraction is too vague and description is truncated. Tags are appropriate and no duplicate risk."
+  }
 }

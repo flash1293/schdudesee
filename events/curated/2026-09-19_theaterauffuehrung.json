@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tDreschhalle Staffort",
   "organizer": "StageArt e.V.",
-  "description": "",
+  "description": "Theateraufführung. at Veranstaltungsort:\n\t\tDreschhalle Staffort. organized by StageArt e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2658",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,44 @@
     "Kultur",
     "Staffort"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is generic, lacks specifics about the performance"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains label and formatting artifacts"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time or time reference provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is brief and repeats information from title and location"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "Event lacks time, generic title, poor description; tags and duplicate risk fine but missing critical info."
+  }
 }

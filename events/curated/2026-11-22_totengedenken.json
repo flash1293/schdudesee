@@ -13,5 +13,42 @@
   "tags": [
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is very short and lacks context (e.g., organizer) for clarity"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty, providing no information about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Only a district tag (Spöck) is present; missing an appropriate category tag (e.g., Kirche, Musik, Verein)"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "The entry has a minimal title, no description, and incomplete tags. Location and time extraction are good, but the lack of description severely reduces usefulness."
+  }
 }

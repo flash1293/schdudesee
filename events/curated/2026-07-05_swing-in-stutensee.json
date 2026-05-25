@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSchloss Stutensee",
   "organizer": "Agenda-Stadtmarketing Stutensee",
-  "description": "",
+  "description": "Swing in Stutensee. at Veranstaltungsort:\n\t\tSchloss Stutensee. organized by Agenda-Stadtmarketing Stutensee.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2638",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,5 +13,44 @@
   "tags": [
     "Musik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains label 'Veranstaltungsort:' and extra whitespace, not clean extraction."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty, no start time specified."
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is not informative; simply repeats title and location."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing district tag; only 'Musik' tag provided, but event location suggests district tag needed."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.9,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Event has clear title but lacks time, has poorly extracted location, uninformative description, and missing district tag."
+  }
 }

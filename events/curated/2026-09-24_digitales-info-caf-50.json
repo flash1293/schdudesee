@@ -15,5 +15,44 @@
     "Essen",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains 'Veranstaltungsort:' prefix and newline characters, should be just the venue name 'Zukunftshaus'."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": [
+          "time_raw includes non-time word 'ab' which may complicate parsing."
+        ]
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description is very brief; could provide more details about the event content or target audience."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Consider adding 'Senioren' or 'Treff' to better reflect the target group or event type."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "Event entry is generally well-structured but has a location formatting issue and the description could be expanded; tags are acceptable but could include 'Senioren'. No duplicate risk."
+  }
 }

@@ -15,5 +15,42 @@
     "Musik",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1833760295
+  "recurring_group_id": 1833760295,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location string contains HTML entities (&#8211;) that are not decoded."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "time_raw only contains start time '09:30', but event is described as 9:30-11:00; missing end time."
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tags include 'Sport' which may not accurately represent this event; more fitting tags from available categories would be 'Kinder' or 'Treff'. The district tag 'Friedrichstal' is correctly included."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.83,
+    "passed": true,
+    "summary": "The event entry is mostly high quality with a clear title, well-extracted location, and informative description. Time extraction could be extended to include the end time. Tags are partially appropriate but could be improved by replacing 'Sport' with 'Kinder' or 'Treff'. No duplicate risk detected."
+  }
 }

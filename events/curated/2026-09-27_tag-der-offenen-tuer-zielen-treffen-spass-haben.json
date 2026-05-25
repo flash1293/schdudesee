@@ -5,7 +5,7 @@
   "time_raw": "10:00 Uhr bis 16:00 Uhr",
   "location": "Schützenhaus",
   "organizer": "Schützenverein Weingarten",
-  "description": "",
+  "description": "Tag der offenen Tür - Zielen, treffen, Spaß haben. at Schützenhaus. from 10:00 Uhr bis 16:00 Uhr. organized by Schützenverein Weingarten.",
   "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/849/tag-der-offenen-tuer-zielen-treffen-spass-haben",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -14,5 +14,44 @@
     "Treff",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title could be more specific about event activities"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location is only a venue name, missing full address"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is redundant and does not provide additional details beyond title and metadata"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Treff' may not be most appropriate; 'Sport' or 'Verein' might fit better"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.77,
+    "passed": true,
+    "summary": "The event entry is mostly well-structured with clear time extraction and no duplicate risk. However, the description is uninformative and the location lacks detail. Tags are acceptable but could be more specific."
+  }
 }

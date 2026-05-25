@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Kleintierzuchtverein C 317 Spöck e.V.",
-  "description": "",
+  "description": "Sommerfest. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Kleintierzuchtverein C 317 Spöck e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2645",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,44 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is generic, could include organizer or location for clarity"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.3,
+        "issues": [
+          "Location contains raw formatting and lacks specific address or district"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Time is missing entirely"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is too brief and merely repeats other fields"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.5,
+    "passed": false,
+    "summary": "Event entry lacks time, has vague location and poor description, resulting in low overall quality."
+  }
 }

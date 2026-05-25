@@ -16,5 +16,40 @@
     "Kinder",
     "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided in event data"
+        ]
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description is very brief and could provide more details about the event and schedule"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.75,
+    "passed": true,
+    "summary": "The event entry has a clear title and proper location, but lacks a time specification, which is a significant omission. The description is minimal but conveys the basic idea. Tags are appropriate, and there is no duplicate risk. Overall acceptable quality with room for improvement."
+  }
 }

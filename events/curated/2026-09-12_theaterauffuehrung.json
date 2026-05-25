@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tDreschhalle Staffort",
   "organizer": "StageArt e.V.",
-  "description": "",
+  "description": "Theateraufführung. at Veranstaltungsort:\n\t\tDreschhalle Staffort. organized by StageArt e.V..",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2657",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,44 @@
     "Kultur",
     "Staffort"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is generic; lacks specific details about the performance (e.g., play name)."
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location includes extraneous label 'Veranstaltungsort:' and newline formatting, should be cleaned."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time or time information provided."
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is uninformative; merely restates title, location, and organizer without adding useful details."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.58,
+    "passed": false,
+    "summary": "Event entry has several quality issues: generic title, unclean location, missing time, and uninformative description. Tags are appropriate. No duplicate risk."
+  }
 }

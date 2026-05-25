@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "TV Friedrichstal",
   "organizer": "Turnverein Friedrichstal 1899 e.V.",
-  "description": "",
+  "description": "Topiblüten Lauf (Stutensee Cup). at TV Friedrichstal. organized by Turnverein Friedrichstal 1899 e.V..",
   "event_url": "https://www.tv-friedrichstal.de",
   "sources": [
     "clubs_batch_all"
@@ -13,5 +13,42 @@
   "tags": [
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is not informative, just repeats title and other fields"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Missing category tag, should include 'Sport'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Title is clear and meaningful, location is present, but missing start time, description is minimal and redundant, tags lack a category. Not a duplicate of the other event in the same district."
+  }
 }

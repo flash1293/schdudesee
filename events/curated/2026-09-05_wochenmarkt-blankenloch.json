@@ -14,5 +14,42 @@
     "Markt",
     "Blankenloch"
   ],
-  "recurring_group_id": 11069990
+  "recurring_group_id": 11069990,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": [
+          "Title could be more descriptive by including the specific location (Neuer Markt) instead of just the district."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is minimal and largely repeats information from the title and time/location fields; lacks informative content about market offerings."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Only two tags provided; could include additional relevant categories like 'Essen' or 'Stadtleben' to enhance discoverability."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Event entry is generally well-formed and accurate. Title and location are clear but could benefit from additional specificity. Description is very brief and lacks detail. Tags are appropriate but could be extended. No duplicate risk. Overall good quality."
+  }
 }

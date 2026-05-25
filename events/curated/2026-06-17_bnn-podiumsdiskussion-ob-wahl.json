@@ -5,7 +5,7 @@
   "time_raw": "18:00",
   "location": "",
   "organizer": "Badische Neueste Nachrichten (BNN)",
-  "description": "",
+  "description": "BNN-Podiumsdiskussion OB-Wahl. from 18:00. organized by Badische Neueste Nachrichten (BNN).",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/bnn-podiumsdiskussion-ob-wahl/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -14,5 +14,42 @@
     "Bildung",
     "Politik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Location is empty"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is too short and lacks informative details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing district tag"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "Event entry has clear title and proper time extraction, but lacks location, has poor description, and is missing a district tag."
+  }
 }

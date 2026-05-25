@@ -5,14 +5,50 @@
   "time_raw": "",
   "location": "Pfarrzentrum Don Bosco",
   "organizer": "Katholische Pfarrgemeinde",
-  "description": "",
+  "description": "Patrozinium und Pfarrfest. at Pfarrzentrum Don Bosco. organized by Katholische Pfarrgemeinde.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145251/patrozinium-und-pfarrfest",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
     "Kirche",
-    "Fest"
+    "Fest",
+    "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty, no start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is very brief and merely replicates title and location, lacking event details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "Event entry for Patrozinium und Pfarrfest has clear title and location, but lacks time and comprehensive description. Tags are appropriate. No duplicate issues."
+  }
 }

@@ -5,7 +5,7 @@
   "time_raw": "09:30",
   "location": "Ev. Gemeindehaus Spöck",
   "organizer": "CVJM Spöck",
-  "description": "",
+  "description": "Second Hand mit Herz. at Ev. Gemeindehaus Spöck. from 09:30. organized by CVJM Spöck.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/second-hand-mit-herz/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -14,5 +14,44 @@
     "Kirche",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location is missing street address"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is auto-generated and lacks informative content"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tags are limited; could include more relevant categories like Markt or Wohltätigkeit"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.2,
+        "issues": [
+          "Likely duplicate of CVJM Spöck – Familienbasar (same organizer, location, time)"
+        ]
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event has clear title and proper time extraction, but location lacks street address, description is minimal, tags are sparse, and there is high duplication risk with Familienbasar event."
+  }
 }

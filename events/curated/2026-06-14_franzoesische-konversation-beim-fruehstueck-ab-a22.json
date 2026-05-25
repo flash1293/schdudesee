@@ -15,5 +15,38 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.85,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Kinder' is not appropriate for a language course; consider 'Bildung' or 'Essen'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Französische Konversation beim Frühstück is a well-described language course. Title, location, time are clear. Tags include an irrelevant 'Kinder' tag; should be replaced with 'Bildung' or 'Essen'. No duplicate concerns."
+  }
 }

@@ -15,5 +15,42 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910
+  "recurring_group_id": 1140166910,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "HTML entity &#8211; not decoded in location string"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "time_raw only includes start time (19:00), description indicates end time 20:30 missing"
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Missing space after colon in 'Hinweis:Zu Beginn'"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Event entry is clear and informative. Minor issues: location HTML entity, missing end time in time_raw, formatting typo in description. Tags are appropriate and include district. No duplicates in context."
+  }
 }

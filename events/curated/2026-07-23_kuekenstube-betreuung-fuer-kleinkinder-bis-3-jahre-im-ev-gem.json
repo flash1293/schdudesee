@@ -15,5 +15,42 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.5,
+        "issues": [
+          "time_raw specifies 09:00, but the description states the event on Thursdays starts at 08:30, which is inconsistent for this date (Thursday, 2026-07-23)"
+        ]
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description is generic and references a recurring schedule, not tailored to this specific date"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing a 'Kinder' tag, which is more relevant for this event; 'Musik' tag may not be the best fit"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.75,
+    "passed": true,
+    "summary": "Event entry has clear title and location, but time extraction conflicts with description, description is generic, and tags could be improved."
+  }
 }

@@ -14,5 +14,44 @@
     "Kinder",
     "Workshop"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is catchy but does not explicitly state the event type (e.g., 'Selbstbehauptungskurs')"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location field includes label 'Veranstaltungsort:' and does not specify district within Stutensee"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Description is clear but could be enriched with more details about content or goals"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing a district tag from the available districts list"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.73,
+    "passed": true,
+    "summary": "Event entry is generally solid but has minor issues: title lacks specificity, location extraction includes extraneous text and no district, and a district tag is required. No duplicate risk."
+  }
 }

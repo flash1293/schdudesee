@@ -11,5 +11,44 @@
     "https://meinstutensee.de/termine/"
   ],
   "tags": [],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "location field does not include city or district"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.0,
+        "issues": [
+          "tags are empty",
+          "missing district tag",
+          "missing appropriate category tag (e.g., Musik)"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event entry lacks description and tags, making it incomplete, but other details (title, time, location) are present."
+  }
 }

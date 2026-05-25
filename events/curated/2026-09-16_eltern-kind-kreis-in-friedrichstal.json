@@ -15,5 +15,40 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601
+  "recurring_group_id": 269588601,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "time_raw only includes start time '10:00', missing end time '11:30' from description"
+        ]
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "tag 'Sport' is not accurately descriptive; consider 'Treff' or 'Workshop' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.92,
+    "passed": true,
+    "summary": "Eltern-Kind-Kreis in Friedrichstal is a weekly gathering for parents with toddlers, clearly described with location and contact. Minor issues: missing end time in time_raw and potentially inaccurate tag 'Sport'."
+  }
 }

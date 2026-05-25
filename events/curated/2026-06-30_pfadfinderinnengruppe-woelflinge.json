@@ -15,5 +15,41 @@
     "Natur",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1764623589
+  "recurring_group_id": 1764623589,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location string contains HTML entity &#8211;",
+          "Location includes organizer name which may not be necessary for address extraction"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.1,
+        "issues": [
+          "Another Pfadfinder event for different age group occurs at same time and location, potential confusion but distinct"
+        ]
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "Good quality event entry. Location extraction has minor issues (HTML entity, organizer name). Tags appropriate. Not a duplicate."
+  }
 }
