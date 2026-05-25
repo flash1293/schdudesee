@@ -13,5 +13,42 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title unclear: 'Präse' may be a typo or abbreviation"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing category tag (e.g., Musik, Fest, Kultur)"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "Event has clear location and time, but lacks description, has an ambiguous title, and is missing a category tag."
+  }
 }

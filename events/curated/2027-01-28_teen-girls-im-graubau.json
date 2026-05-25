@@ -15,5 +15,36 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1065758186
+  "recurring_group_id": 1065758186,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "Event entry for Teen Girls im GrauBau is well-structured with clear location and time. Description is informative in German and includes relevant activity details. Tags are appropriate and include a district tag. No duplicate risk identified."
+  }
 }

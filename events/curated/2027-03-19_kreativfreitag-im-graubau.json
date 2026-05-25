@@ -15,5 +15,40 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1102332947
+  "recurring_group_id": 1102332947,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Address uses 'Stutensee' instead of 'Stutensee-Blankenloch' which may be ambiguous within the city."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Only start time (14:00) extracted; end time (20:00) from description not captured."
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Event entry is well-structured, with a descriptive title and detailed description. Minor issues: the location address does not include the specific district (Blankenloch), and the extracted time only shows the start time rather than the full time range. Tags are appropriate and include a district tag. No duplicate risk detected."
+  }
 }

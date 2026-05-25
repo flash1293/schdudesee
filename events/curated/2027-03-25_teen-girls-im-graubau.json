@@ -15,5 +15,38 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1065758186
+  "recurring_group_id": 1065758186,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.85,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Kinder' may be too broad for teenage girls; consider 'Treff' or 'Workshop' as more appropriate category."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.91,
+    "passed": true,
+    "summary": "Well-structured event for teen girls at GrauBau Youth Center with clear location and time. Description provides details, but tag 'Kinder' could be more specific. No duplicate concerns."
+  }
 }

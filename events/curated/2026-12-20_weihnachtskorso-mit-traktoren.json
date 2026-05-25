@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Festplatz dann AWO dann Heimatmuseum Leo",
   "organizer": "IG OEL",
-  "description": "Weihnachtskorso mit Traktoren",
+  "description": "Weihnachtskorso mit Traktoren. at Festplatz dann AWO dann Heimatmuseum Leo. organized by IG OEL.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1879",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,5 +13,44 @@
   "tags": [
     "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.4,
+        "issues": [
+          "Location contains multiple stops ('dann' indicates a route) rather than a single venue; district not specified."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Time information is missing (empty time_raw)."
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is minimal and repeats title, location, and organizer without additional context."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag; only 'Fest' is present but should include a district from the available list."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.52,
+    "passed": false,
+    "summary": "Event entry has a clear title for a Christmas tractor parade, but lacks time and detailed description. Location is ambiguous, and tag missing district. Needs improvement."
+  }
 }

@@ -15,5 +15,42 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1065758186
+  "recurring_group_id": 1065758186,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title uses English and may not fully describe the event as a regular club meeting"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Contact details lack proper spacing after phone number"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Kinder' may not accurately target teenagers; 'Musik' is not the primary focus; consider 'Treff' or 'Workshop'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "The event entry is generally well-structured with clear title and location, informative description, and no duplicate risk. Tag selection could be improved for better accuracy."
+  }
 }

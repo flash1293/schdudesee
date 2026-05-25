@@ -15,5 +15,40 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601
+  "recurring_group_id": 269588601,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": [
+          "End time not captured in time_raw"
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Sport' is not fully appropriate for this parent-child meeting"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Clear event for parent-child meeting with detailed description. Minor issues: missing end time extraction, tag 'Sport' questionable."
+  }
 }

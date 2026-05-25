@@ -16,5 +16,41 @@
     "Handwerk",
     "Blankenloch"
   ],
-  "recurring_group_id": 139685270
+  "recurring_group_id": 139685270,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "End time not specified"
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Handwerk' is not appropriate for this event",
+          "Missing appropriate category such as 'Bildung' or 'Treff'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Open consultation hour for psychological counseling for parents, children and youth. Good title and location, but time extraction missing end time and tags include inappropriate 'Handwerk'."
+  }
 }

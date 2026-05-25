@@ -15,5 +15,40 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.85,
+        "issues": [
+          "Could provide more details like meeting point or contact information"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "The 'Musik' tag may not be optimal; consider adding 'Kinder' or 'Verein' for better categorization"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.91,
+    "passed": true,
+    "summary": "Event entry is generally well-structured. Title, location, and time are clear. Description is informative but could be enhanced. Tags need minor adjustments for relevance. No duplicate concerns."
+  }
 }

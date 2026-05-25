@@ -15,5 +15,36 @@
     "Natur",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1764623589
+  "recurring_group_id": 1764623589,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.97,
+    "passed": true,
+    "summary": "The event entry is well-structured with a clear title, valid location and time, informative description, appropriate tags, and no duplicate concerns."
+  }
 }

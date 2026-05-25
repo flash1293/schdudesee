@@ -15,5 +15,41 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 149940597
+  "recurring_group_id": 149940597,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Minor formatting: missing space after exclamation",
+          "Redundant organizer info in description"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.85,
+        "issues": [
+          "Consider adding tag 'Kinder' for child-focused event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "High quality entry. Title clear and includes age range. Location and time well extracted. Description informative with minor formatting issues. Tags appropriate but could be improved. No duplicate risk."
+  }
 }

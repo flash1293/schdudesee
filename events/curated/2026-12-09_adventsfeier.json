@@ -13,5 +13,41 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description field is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "missing event category tag",
+          "only district tag provided"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.7,
+    "passed": true,
+    "summary": "The event entry is partially complete. It has a clear title, proper location and time extraction, but the description is empty and tags are incomplete (missing event category). No duplicates found."
+  }
 }

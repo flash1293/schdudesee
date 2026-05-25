@@ -15,5 +15,41 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 737440955
+  "recurring_group_id": 737440955,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Formatting issues: missing spaces after 'Kosten' and 'Ansprechpartnerin'",
+          "Includes disclaimer not part of event description"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Tag 'Musik' may not be most representative; consider 'Treff' or 'Verein'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Event entry for 'Eltern-Baby-Café' is generally well-structured with clear location, time, and informative description. Minor improvements needed in description formatting and tag selection. No duplicate risk."
+  }
 }

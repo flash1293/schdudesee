@@ -15,5 +15,38 @@
     "Treff",
     "Blankenloch"
   ],
-  "recurring_group_id": 696239800
+  "recurring_group_id": 696239800,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Kinder' may not fully represent the age range 'vom Teenie bis zum Oldie'; consider including 'Senioren'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "The event entry is clear and well-structured. The title is descriptive, location and time are properly extracted, and the description is informative. Tags are mostly appropriate, but 'Kinder' may be too narrow for the stated age range. No duplicate risk."
+  }
 }

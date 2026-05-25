@@ -15,5 +15,38 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.75,
+        "issues": [
+          "Missing 'Kinder' tag which is more appropriate for a children's event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "The event entry is well-formed with a descriptive title, complete location and time details, and a helpful description in German. The tags are mostly suitable but lack a 'Kinder' category tag. No duplicate concerns."
+  }
 }

@@ -14,5 +14,40 @@
     "Kinder",
     "Staffort"
   ],
-  "recurring_group_id": 1541958589
+  "recurring_group_id": 1541958589,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": [
+          "Abbreviation 'ev.' could be spelled out for clarity."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.75,
+        "issues": [
+          "Description lacks schedule frequency and cost/registration details."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "Event entry for a children's playgroup in Staffort community center. Clear title, full location and time. Informative description but could provide more detail on frequency and cost. Tags appropriate including district."
+  }
 }

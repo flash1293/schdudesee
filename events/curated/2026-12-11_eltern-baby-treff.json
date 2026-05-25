@@ -15,5 +15,38 @@
     "Musik",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1833760295
+  "recurring_group_id": 1833760295,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "'Sport' tag may not accurately represent event type; consider using 'Kinder' or 'Treff' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Weekly parent-baby playgroup with singing, movement, and free play; clear and detailed description, but tags could better match the event type."
+  }
 }

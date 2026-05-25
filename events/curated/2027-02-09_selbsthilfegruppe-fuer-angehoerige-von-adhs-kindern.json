@@ -15,5 +15,38 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910
+  "recurring_group_id": 1140166910,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location string contains HTML entity '&#8211;' which may not be properly decoded"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.92,
+    "passed": true,
+    "summary": "The event entry for a self-help group for relatives of ADHD children is well-structured with clear title, detailed description, and suitable tags. Minor issue: undecoded HTML entity in the location field. The event is not a duplicate of the other events in the same district on the same date."
+  }
 }

@@ -15,5 +15,40 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": 114773203
+  "recurring_group_id": 114773203,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "location string contains duplicated address"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "missing 'Kinder' tag for better categorization"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.91,
+    "passed": true,
+    "summary": "Well-structured event for children ages 4-6 with clear title and detailed description. Location duplicated; tags could include 'Kinder'."
+  }
 }

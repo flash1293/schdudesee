@@ -15,5 +15,40 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.75,
+        "issues": [
+          "Flyer reference from 2025 may be outdated for 2027 event."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Missing relevant 'Kinder' tag for children's event."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Event entry for a toddler care program in Friedrichstal is well-structured with clear title and location. Description is informative but references outdated flyer. Tags could be improved by including 'Kinder'. Duplicate risk is low."
+  }
 }

@@ -14,5 +14,44 @@
     "Wohltätigkeit",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is generic, lacks specificity like date or location"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Location is present but could include city/address details for clarity"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided (time_raw is empty)"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Event entry lacks time and description; title, location, and tags are appropriate."
+  }
 }

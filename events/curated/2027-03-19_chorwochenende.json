@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "",
   "organizer": "Gospel Unlimited",
-  "description": "",
+  "description": "Chorwochenende. organized by Gospel Unlimited.",
   "event_url": "https://www.gospel-unlimited.de",
   "sources": [
     "manual_override"
@@ -13,5 +13,44 @@
   "tags": [
     "Musik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Location field is empty"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Time not provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is minimal, only repeats title and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.43,
+    "passed": false,
+    "summary": "Event entry lacks location and time; description is minimal; tag missing district."
+  }
 }

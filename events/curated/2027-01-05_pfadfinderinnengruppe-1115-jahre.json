@@ -15,5 +15,38 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Workshop' may not best describe a regular scout group meeting; consider alternatives like 'Verein' or 'Natur'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.97,
+    "passed": true,
+    "summary": "Event entry for a Pfadfinder group is clear and informative; location and time well-specified; tag selection has minor inaccuracy (Workshop vs. Verein/Natur). Overall high quality."
+  }
 }

@@ -15,5 +15,38 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Missing 'Kinder' category tag which is relevant for the age group"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Event entry for Korallengarde is well-structured with clear details. The description is informative and the location/time are correctly extracted. Tags are appropriate except missing 'Kinder' category for the age group. No duplicate risk."
+  }
 }

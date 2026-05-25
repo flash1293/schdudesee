@@ -15,5 +15,38 @@
     "Literatur",
     "Kinder"
   ],
-  "recurring_group_id": 1628788359
+  "recurring_group_id": 1628788359,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Description is brief and could include more details about the activity"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "A clear and well-structured event entry for a children's storytime in Neureut. Title, location, and time are properly extracted. Description provides key information (age group, free, no registration) though it is concise. Tags are accurate and include the required district. No duplicates were identified."
+  }
 }

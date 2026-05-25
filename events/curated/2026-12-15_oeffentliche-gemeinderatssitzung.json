@@ -14,5 +14,40 @@
     "Politik",
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location is only the municipality name, not a specific venue"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.77,
+    "passed": true,
+    "summary": "Public council meeting event with clear title and time, but missing description and vague location. Tags appropriate. No duplicate risk."
+  }
 }

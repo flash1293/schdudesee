@@ -15,5 +15,36 @@
     "Musik",
     "Spöck"
   ],
-  "recurring_group_id": 1716290936
+  "recurring_group_id": 1716290936,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 1.0,
+    "passed": true,
+    "summary": "All criteria met perfectly: clear title, properly extracted location and time, informative German description, appropriate tags including district, no duplicate risk."
+  }
 }

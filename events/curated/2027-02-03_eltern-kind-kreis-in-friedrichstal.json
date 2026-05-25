@@ -15,5 +15,38 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601
+  "recurring_group_id": 269588601,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Sport' is not appropriate for this event type; consider using 'Treff' instead"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "The event entry is well-structured with a clear title, complete location and time, and a detailed informative description in German. The tags are mostly appropriate except 'Sport' which does not fit the parent-child group activity. No duplicate events exist in the same district and date."
+  }
 }

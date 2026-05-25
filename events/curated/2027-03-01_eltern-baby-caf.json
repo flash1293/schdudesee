@@ -15,5 +15,41 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 737440955
+  "recurring_group_id": 737440955,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Minor formatting: missing space after 'Kosten'",
+          "Includes generic disclaimer not specific to event"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "'Musik' tag is only marginally relevant; 'Treff' would be more appropriate for a café event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "The event entry is well-structured with a clear title and accurate location/time. Description is informative but has minor formatting issues and includes a disclaimer. Tags are acceptable but could be more precise (e.g., using 'Treff' instead of 'Musik'). No duplication risk."
+  }
 }

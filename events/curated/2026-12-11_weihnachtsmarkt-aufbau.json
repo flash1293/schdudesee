@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Kirche/Marktplatz/Schulhof",
   "organizer": "TSG Blankenloch",
-  "description": "",
+  "description": "Weihnachtsmarkt Aufbau. at Kirche/Marktplatz/Schulhof. organized by TSG Blankenloch.",
   "event_url": "https://tsg-blankenloch.de/Veranstaltungen/",
   "sources": [
     "https://tsg-blankenloch.de/Veranstaltungen/"
@@ -16,5 +16,42 @@
     "Fest",
     "Markt"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location string is ambiguous (multiple locations listed with slashes)"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No time provided (time_raw is empty)"
+        ]
+      },
+      "description_quality": {
+        "score": 0.4,
+        "issues": [
+          "Description is repetitive and lacks additional details about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "Event for Christmas market setup has clear title but lacks time information; description is minimal; location is ambiguous; tags are appropriate."
+  }
 }

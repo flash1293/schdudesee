@@ -15,5 +15,43 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.5,
+        "issues": [
+          "time_raw (09:00) is inconsistent with description: for this date (2026-12-31, a Thursday) the start time should be 08:30, not 09:00"
+        ]
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Reference to 'Flyer Kükenstube 2025' may be outdated for a 2026 event"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing relevant category 'Kinder' (childcare is the core focus)",
+          "'Musik' tag is only tangentially relevant; 'Kinder' would be more fitting"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.82,
+    "passed": true,
+    "summary": "The event entry is generally clear and well-structured, with a descriptive title and complete location. However, time extraction is inaccurate for the specific date, and the tags would benefit from including 'Kinder'. Minor outdated material in the description. Overall quality is good with few issues."
+  }
 }

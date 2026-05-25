@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Rheinhalle",
   "organizer": "Gemeindeverwaltung",
-  "description": "Senioren-Weihnachtsfeier",
+  "description": "Senioren-Weihnachtsfeier. at Rheinhalle. organized by Gemeindeverwaltung.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1871",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,5 +13,43 @@
   "tags": [
     "Senioren"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided in time_raw field"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is uninformative, simply repeats title, location, and organizer"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Missing district tag; should include one of the districts from the list",
+          "Only one tag, consider adding more relevant categories like Fest"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Title is clear but event lacks time and description detail; missing district tag."
+  }
 }

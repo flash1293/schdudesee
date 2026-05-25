@@ -15,5 +15,44 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": 114773203
+  "recurring_group_id": 114773203,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Location field contains duplicated address components"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.85,
+        "issues": [
+          "time_raw only includes start time, end time not extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Description start date (15.04.2026) does not match event date (2027-01-20)"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.85,
+        "issues": [
+          "Missing 'Kinder' category tag that would be highly relevant for this children's event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Clear title and detailed description; location duplicated; time missing end time; description date mismatch; tags lacking 'Kinder'."
+  }
 }

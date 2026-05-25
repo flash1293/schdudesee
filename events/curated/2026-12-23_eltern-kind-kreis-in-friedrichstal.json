@@ -15,5 +15,38 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601
+  "recurring_group_id": 269588601,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Sport' is not appropriate for this parent-child circle; better tags would be 'Treff' or 'Verein'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Event entry is generally well-structured with clear title, location, time, and description. However, the 'Sport' tag is inaccurate for a parent-child meetup; consider using 'Treff' or 'Verein'. No duplicate concerns."
+  }
 }

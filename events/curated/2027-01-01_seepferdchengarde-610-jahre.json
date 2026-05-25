@@ -15,5 +15,38 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Missing space after exclamation mark: 'Tanzen!Kinder' should be 'Tanzen! Kinder'"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.933,
+    "passed": true,
+    "summary": "The event entry is clear and well-detailed with a descriptive title, complete location, and appropriate tags. The description includes a minor formatting issue but is largely informative. No duplication risk identified."
+  }
 }

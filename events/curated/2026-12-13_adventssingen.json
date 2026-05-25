@@ -14,5 +14,40 @@
     "Musik",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "time_raw is empty; no start time extracted"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "description is identical to title, not informative"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.683,
+    "passed": true,
+    "summary": "Event title is clear and location is well specified, but time is missing and description is not informative. Tags are appropriate and there is no duplicate risk. Overall quality is below acceptable due to missing time and poor description."
+  }
 }

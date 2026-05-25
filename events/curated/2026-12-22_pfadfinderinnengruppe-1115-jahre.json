@@ -15,5 +15,38 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Workshop' may not accurately represent this event; consider using 'Natur' or 'Treff'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Event for scout group (ages 11-15) clearly titled, with well-extracted location and time. Description is detailed and helpful. Tags include district 'Friedrichstal' but 'Workshop' is not an ideal fit; consider more appropriate categories. No duplicate risk. Overall high quality."
+  }
 }

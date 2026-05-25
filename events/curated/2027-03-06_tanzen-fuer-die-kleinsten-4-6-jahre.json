@@ -15,5 +15,36 @@
     "Musik",
     "Spöck"
   ],
-  "recurring_group_id": 1716290936
+  "recurring_group_id": 1716290936,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 1.0,
+    "passed": true,
+    "summary": "Event entry is complete and well-structured. Title is clear, location and time are properly extracted, description is informative in German, tags are appropriate including the district tag 'Spöck', and there is no duplicate risk."
+  }
 }

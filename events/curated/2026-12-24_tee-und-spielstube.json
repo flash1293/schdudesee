@@ -15,5 +15,39 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1730661423
+  "recurring_group_id": 1730661423,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Event scheduled on Christmas Eve despite description stating it does not take place on holidays",
+          "Email address appears to contain a possible typo (teststube vs. teestube)"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Well-structured event with clear title, location, and time. Description is detailed but contains inconsistency regarding holiday scheduling. Tags are appropriate and include the district. No duplicate risk."
+  }
 }

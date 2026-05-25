@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Altenbürghalle",
   "organizer": "Turnverein Neuthard",
-  "description": "",
+  "description": "Adventsevent. at Altenbürghalle. organized by Turnverein Neuthard.",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=522",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -13,5 +13,42 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is uninformative"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing category tags such as Fest or Verein"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event has generic title, missing time, minimal description, and lacks category tags. Location and duplicate risk are fine."
+  }
 }

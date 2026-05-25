@@ -15,5 +15,40 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910
+  "recurring_group_id": 1140166910,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location contains HTML entities (&#8211;) that should be decoded"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description states event occurs on 1st Tuesday of month, but provided start date (2026-12-29) is not a 1st Tuesday (it is the 5th Tuesday)"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.75,
+    "passed": true,
+    "summary": "Clear title and informative description, but date inconsistency with recurrence rule and location contains HTML entities."
+  }
 }

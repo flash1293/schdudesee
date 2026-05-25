@@ -5,14 +5,52 @@
   "time_raw": "",
   "location": "Evang. Kirche Leopoldshafen",
   "organizer": "Evang. Kirchengemeinde Leopoldshafen",
-  "description": "Gottesdienst",
+  "description": "Gottesdienst. at Evang. Kirche Leopoldshafen. organized by Evang. Kirchengemeinde Leopoldshafen.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1884",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [
     "Kirche",
-    "Leopoldshafen"
+    "Leopoldshafen",
+    "⚠️"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is redundant and lacks additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Tag '⚠️' is not a valid category or district"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.65,
+    "passed": true,
+    "summary": "The event entry has a clear title and location, but lacks a time, has a redundant description, and includes an invalid tag."
+  }
 }

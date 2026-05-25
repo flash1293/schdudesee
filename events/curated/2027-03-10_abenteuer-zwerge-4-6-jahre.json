@@ -15,5 +15,40 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": 114773203
+  "recurring_group_id": 114773203,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location string contains duplicate address"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Missing 'Kinder' tag for children's event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event is a weekly children's group with adventure activities. Title clear, location duplicated, tags fine but could add Kinder."
+  }
 }

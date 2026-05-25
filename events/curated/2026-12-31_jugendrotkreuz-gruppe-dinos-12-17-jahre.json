@@ -15,5 +15,38 @@
     "Workshop",
     "Blankenloch"
   ],
-  "recurring_group_id": 1691266295
+  "recurring_group_id": 1691266295,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Workshop' may not fully capture the nature of the regular youth group; consider 'Bildung' or 'Treff' as additional options."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Event entry for Jugendrotkreuz group 'Dinos' is well-structured with clear title, valid location and time, and descriptive info. Tags are suitable but could be refined for accuracy. There is no duplicate risk."
+  }
 }

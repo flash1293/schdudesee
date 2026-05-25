@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "noch offen",
   "organizer": "Liederkranz",
-  "description": "Weihnachtskonzert",
+  "description": "Weihnachtskonzert. at noch offen. organized by Liederkranz.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1878",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,5 +13,44 @@
   "tags": [
     "Musik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.1,
+        "issues": [
+          "Location is placeholder 'noch offen', not a concrete location"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time specified"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is uninformative, repeats title and location"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag; only 'Musik' tag present"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.47,
+    "passed": false,
+    "summary": "Event entry lacks location and time details; description is uninformative; missing district tag."
+  }
 }

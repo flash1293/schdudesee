@@ -15,5 +15,40 @@
     "Musik",
     "Spöck"
   ],
-  "recurring_group_id": 1716290936
+  "recurring_group_id": 1716290936,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Trailing whitespace and non-breaking space in description."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Missing relevant category tag 'Kinder' for a children's event."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.91,
+    "passed": true,
+    "summary": "Regular dance class for children aged 4-6 with clear details. Tags mostly appropriate but missing 'Kinder'. No duplicates."
+  }
 }

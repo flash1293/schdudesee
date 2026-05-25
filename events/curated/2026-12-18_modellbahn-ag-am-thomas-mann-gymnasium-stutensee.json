@@ -15,5 +15,39 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 308472627
+  "recurring_group_id": 308472627,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Tag 'Musik' is not relevant to this event",
+          "Missing more appropriate tags like 'Bildung' or 'Workshop'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event entry is generally of high quality with clear title, location, time, and description. However, tag quality is poor due to an irrelevant 'Musik' tag and missing relevant categories such as 'Bildung' or 'Workshop'. District tag is correctly included and no duplicate events are present."
+  }
 }

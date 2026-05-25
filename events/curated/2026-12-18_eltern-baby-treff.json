@@ -15,5 +15,40 @@
     "Musik",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1833760295
+  "recurring_group_id": 1833760295,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": [
+          "HTML entities not decoded, e.g., '&#8211;' instead of '–'"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tag 'Sport' may not be appropriate for a baby playgroup; consider more relevant tags like 'Kinder' or 'Treff'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.88,
+    "passed": true,
+    "summary": "Event 'Eltern-Baby-Treff' is a free, informal playgroup for parents with children aged 0-3, meeting every Friday at Familienzentrum Friedrichstal. The title is clear, location fully extracted apart from HTML encoding, time properly set, description detailed with schedule and contact info. Tags partially appropriate, but 'Sport' is less fitting; district tag correct. No duplicates in context. Overall quality is high."
+  }
 }

@@ -15,5 +15,38 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1102332947
+  "recurring_group_id": 1102332947,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "time_raw only includes start time, missing end time"
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.92,
+    "passed": true,
+    "summary": "Event entry 'Kreativfreitag im GrauBau' is well-formed with clear title, complete location, informative German description, and appropriate tags. Minor issue: time extraction only captures start time. No duplicate concerns."
+  }
 }

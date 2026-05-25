@@ -5,13 +5,49 @@
   "time_raw": "",
   "location": "Neue Mitte",
   "organizer": "Harmonikafreunde Neudorf",
-  "description": "",
+  "description": "Adventzauber. at Neue Mitte. organized by Harmonikafreunde Neudorf.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145659/adventzauber",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Fest"
+    "Fest",
+    "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "no time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "description is minimal, lacks details about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "Adventzauber event in Graben-Neudorf with location and organizer, but missing time and very brief description. Tags are appropriate."
+  }
 }

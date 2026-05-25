@@ -13,5 +13,40 @@
   "tags": [
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "missing category tag"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.72,
+    "passed": true,
+    "summary": "Title is clear and descriptive; location and time are present and well-extracted. Description is empty, which severely impacts completeness. Tags include the correct district but lack a category tag. No duplicate risk as no other events on same date in same district."
+  }
 }

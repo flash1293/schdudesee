@@ -15,5 +15,39 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 308472627
+  "recurring_group_id": 308472627,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Tag 'Musik' is not relevant to this event; consider 'Bildung' or 'Handwerk' instead",
+          "Tag 'Kultur' is not the most appropriate; consider 'Bildung' or 'Handwerk'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "The event entry is well-structured with a clear title, complete location, and detailed description. However, the tags are not entirely appropriate, as 'Musik' is irrelevant and 'Kultur' is not the best choice. The event does not appear to be a duplicate."
+  }
 }

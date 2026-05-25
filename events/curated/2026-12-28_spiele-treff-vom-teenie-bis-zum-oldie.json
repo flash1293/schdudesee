@@ -15,5 +15,40 @@
     "Treff",
     "Blankenloch"
   ],
-  "recurring_group_id": 696239800
+  "recurring_group_id": 696239800,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.6,
+        "issues": [
+          "Description states 'Nicht in den Ferien' but the event date 2026-12-28 is within typical school holiday period, creating a contradiction."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Kinder' is somewhat too narrow given the stated audience 'vom Teenie bis zum Oldie'; missing 'Senioren' tag would be more inclusive."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event entry is mostly well-formed with clear title, location, and time. Description is informative but includes a contradictory holiday note. Tags are appropriate but could cover the full age range better. No duplicate risk."
+  }
 }

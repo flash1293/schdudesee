@@ -13,5 +13,42 @@
   "tags": [
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description duplicates title, no additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing category tag, e.g., Kirche"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Event title is clear and location is good but missing time and description; tags incomplete; no duplication."
+  }
 }

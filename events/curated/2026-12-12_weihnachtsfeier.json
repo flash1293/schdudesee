@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Pfarrheim St. Bernhard",
   "organizer": "VdK Neuthard",
-  "description": "",
+  "description": "Weihnachtsfeier. at Pfarrheim St. Bernhard. organized by VdK Neuthard.",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=521",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -13,5 +13,44 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": 749485003
+  "recurring_group_id": 749485003,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "title is clear but generic; could be more specific (e.g., include organizer)"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "no start time specified; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "description merely repeats title, location, and organizer; lacks additional details"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "missing a category tag (e.g., 'Fest' or 'Verein'); only district tag provided"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Event entry has significant issues: no time specified, weak description, and insufficient tags. Not suitable for high-quality publication."
+  }
 }

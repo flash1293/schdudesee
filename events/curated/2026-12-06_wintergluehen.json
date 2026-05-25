@@ -14,5 +14,42 @@
     "Fest",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title alone is not very descriptive; could include event type"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.0,
+        "issues": [
+          "Location field is empty"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description field is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Event entry is incomplete: missing location and description. Title and tags are acceptable, time is present, and no duplicate risk."
+  }
 }

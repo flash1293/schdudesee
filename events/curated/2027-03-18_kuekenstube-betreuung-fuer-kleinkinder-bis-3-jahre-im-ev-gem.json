@@ -15,5 +15,42 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Extracted time (09:00) likely incorrect for this Thursday event; description indicates start at 08:30."
+        ]
+      },
+      "description_quality": {
+        "score": 0.8,
+        "issues": [
+          "Description references 'Flyer 2025' which may be outdated for 2027 event."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Tag 'Musik' is not the most appropriate; consider replacing with 'Kinder'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.83,
+    "passed": true,
+    "summary": "Good entry with clear title and complete location. Issues: extracted time may be wrong; description includes outdated flyer; tags could be improved (missing 'Kinder')."
+  }
 }

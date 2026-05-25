@@ -14,5 +14,40 @@
     "Kirche",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description identical to title, lacks details"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.9,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "Event entry has a clear title and appropriate tags, but lacks a time and has a poor description. Low duplicate risk."
+  }
 }

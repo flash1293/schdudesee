@@ -15,5 +15,40 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": 114773203
+  "recurring_group_id": 114773203,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location string contains duplicated address"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Missing 'Kinder' tag which is appropriate for this children's event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.85,
+    "passed": true,
+    "summary": "The event 'Abenteuer-Zwerge' is a weekly group for children aged 4-6 with play, crafts, singing, and movement. The title is clear, description is informative, and a start time is present. Location extraction has duplication; tags could better reflect the children's focus. No duplicates exist in the context."
+  }
 }

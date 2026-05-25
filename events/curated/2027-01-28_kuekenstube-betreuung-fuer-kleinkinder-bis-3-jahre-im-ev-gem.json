@@ -15,5 +15,40 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.7,
+        "issues": [
+          "Die extrahierte Startzeit '09:00' stimmt nicht mit dem Beginn des Events an diesem spezifischen Datum überein (laut Beschreibung donnerstags ab 8:30 Uhr)."
+        ]
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Das naheliegende Tag 'Kinder' aus der Kategorienliste fehlt, obwohl es sich um eine Betreuungsveranstaltung für Kleinkinder handelt."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Hervorragender Event-Eintrag mit klarem Titel, vollständiger Adresse und ausführlicher, hilfreicher Beschreibung. Leichte Abweichung der extrahierten Uhrzeit von der tatsächlichen Startzeit am konkreten Tag. Das Tag 'Kinder' fehlt, obwohl der Event sich primär an Kleinkinder richtet. Keine Duplikate im Kontext vorhanden."
+  }
 }

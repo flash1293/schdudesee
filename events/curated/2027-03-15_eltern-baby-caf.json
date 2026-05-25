@@ -15,5 +15,40 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 737440955
+  "recurring_group_id": 737440955,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Minor formatting issues (missing spaces after 'Kosten' and 'Ansprechpartnerin')"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Tag 'Musik' is acceptable but not core"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "High quality event entry with clear title, complete address, accurate time, informative description, and appropriate tags including district. No duplicate risk."
+  }
 }

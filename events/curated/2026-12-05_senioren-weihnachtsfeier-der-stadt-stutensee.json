@@ -14,5 +14,42 @@
     "Senioren",
     "Spöck"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title indicates city as organizer but organizer field lists a music club; may be inconsistent."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time or start time provided."
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty, lacks essential details."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "Title is descriptive but has organizer mismatch. Location properly extracted, but missing time and description make the event entry incomplete. Tags are accurate."
+  }
 }

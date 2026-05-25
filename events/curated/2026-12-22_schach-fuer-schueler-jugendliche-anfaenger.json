@@ -14,5 +14,38 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 230505606
+  "recurring_group_id": 230505606,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Missing sport category tag (chess is considered a sport)"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Chess event for kids and beginners in Blankenloch. All essential information provided, but tags lack sport category."
+  }
 }

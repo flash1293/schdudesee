@@ -15,5 +15,39 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.65,
+        "issues": [
+          "Missing space after exclamation in 'Tanzen!Kinder'",
+          "Organizer name in description (Karnevalsclub Die Piraten Blankenloch e. V.) differs from organizer field (Karnevalsclub &​#8222;Die Piraten&​#8220; Stutensee e.V.)"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Clear title and location. Time is present. Description informative but has a spacing typo and inconsistent organizer name. Tags appropriate and include district. No duplication risk."
+  }
 }

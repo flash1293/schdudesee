@@ -14,5 +14,42 @@
     "Senioren",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": [
+          "Abbreviation 'Ökum.' may not be understood by all; consider using 'Ökumenischer'"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.3,
+        "issues": [
+          "No event time provided; time extraction not possible."
+        ]
+      },
+      "description_quality": {
+        "score": 0.3,
+        "issues": [
+          "Description is identical to title, offering no additional information."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.75,
+    "passed": true,
+    "summary": "Event entry has reasonable title, good location and tags, but lacks a time and has an uninformative description."
+  }
 }

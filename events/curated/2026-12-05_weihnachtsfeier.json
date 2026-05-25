@@ -11,5 +11,42 @@
     "clubs_batch_all"
   ],
   "tags": [],
-  "recurring_group_id": 749485003
+  "recurring_group_id": 749485003,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.0,
+        "issues": [
+          "no tags assigned",
+          "missing district tag",
+          "missing relevant category tags"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.65,
+    "passed": true,
+    "summary": "Event entry has clear title, location, and time, but lacks description and tags, reducing quality. No duplicate risk."
+  }
 }

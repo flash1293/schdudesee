@@ -15,5 +15,40 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "End time not extracted from description"
+        ]
+      },
+      "description_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Missing tag 'Kinder' which is relevant for the age group"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "The event entry is well-crafted with a descriptive title, detailed location, and informative description. The tags are mostly appropriate but could include 'Kinder' to reflect the age group. The time extraction lacks the end time, but overall the entry is high quality."
+  }
 }

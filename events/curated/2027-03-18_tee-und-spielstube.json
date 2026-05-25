@@ -15,5 +15,43 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1730661423
+  "recurring_group_id": 1730661423,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title could be more descriptive of the event type (e.g., 'Begegnungsnachmittag')"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Email address appears to contain a typo ('teststube' instead of 'teestube')"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Missing appropriate tag 'Treff' which would better categorize this gathering event",
+          "Could include 'Verein' tag since it's run by a registered club"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.85,
+    "passed": true,
+    "summary": "Overall a well-structured event entry with clear location and time, but description has an email error and tags could be more accurate."
+  }
 }

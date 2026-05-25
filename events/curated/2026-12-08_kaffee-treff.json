@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
   "organizer": "Café Treff im BZ Regenbogen",
-  "description": "",
+  "description": "Kaffee Treff. at Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen. organized by Café Treff im BZ Regenbogen.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2555",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,5 +14,46 @@
     "Essen",
     "Treff"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Contains administrative label 'Veranstaltungsort:' in location field",
+          "No district information"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time extracted or provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is redundant and lacks details; only repeats title and location"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.2,
+        "issues": [
+          "Missing mandatory district tag from the available list",
+          "Tag 'Essen' is not appropriate for a coffee gathering"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.48,
+    "passed": false,
+    "summary": "Event entry suffers from missing time, vague description, improper tags (no district), and location formatting noise. Not acceptable for high-quality calendar."
+  }
 }

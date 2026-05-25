@@ -15,5 +15,42 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location includes organizer name, should be separated"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Workshop may not be the best category; consider Treff or Verein"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.4,
+        "issues": [
+          "Same time and location as Pfadfinder*innengruppe Wölflinge; possible duplicate"
+        ]
+      }
+    },
+    "overall_score": 0.75,
+    "passed": true,
+    "summary": "The event entry is generally good with a clear title and informative description. However, location includes organizer name, one tag may be inaccurate, and there is a potential duplicate with another event at the same time and location."
+  }
 }

@@ -14,5 +14,44 @@
     "Kirche",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is minimally descriptive"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.2,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description only repeats the title without additional information"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 0.6,
+        "issues": [
+          "Potential duplication with 'Gottesdienst' event at same location and organizer; insufficient distinguishing information"
+        ]
+      }
+    },
+    "overall_score": 0.63,
+    "passed": true,
+    "summary": "Event entry for Christvesper lacks time and description; location and tags are correct, but may duplicate another church service event."
+  }
 }

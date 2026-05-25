@@ -15,5 +15,42 @@
     "Treff",
     "Blankenloch"
   ],
-  "recurring_group_id": 696239800
+  "recurring_group_id": 696239800,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Only start time provided, no end time."
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Kinder' partially covers target age; consider including 'Senioren'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.9,
+        "issues": [
+          "Same time and location as 'Briefmarkentauschtage' from same organizer; titles differ, so likely not duplicate but may warrant check."
+        ]
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Event entry is well-structured with clear title, location, and time. Minor issues: missing end time, tag completeness, and potential co-occurrence with another event at same venue/time."
+  }
 }

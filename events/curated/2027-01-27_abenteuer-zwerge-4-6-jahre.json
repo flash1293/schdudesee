@@ -15,5 +15,40 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": 114773203
+  "recurring_group_id": 114773203,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Duplicated address in location field"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": [
+          "End time not extracted in time_raw, only present in description"
+        ]
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.83,
+    "passed": true,
+    "summary": "Weekly adventure group for children ages 4-6 in Blankenloch, featuring play, crafts, singing, and exploration."
+  }
 }

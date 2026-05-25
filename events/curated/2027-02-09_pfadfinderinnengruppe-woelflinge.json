@@ -15,5 +15,40 @@
     "Natur",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1764623589
+  "recurring_group_id": 1764623589,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Missing tag 'Verein' which would be relevant for a scout group meeting"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.9,
+        "issues": [
+          "Potential confusion with another Pfadfinder event at same time and location, but target age differs"
+        ]
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "High quality event entry with clear title, complete location and time, informative description, appropriate tags, and low duplicate risk."
+  }
 }

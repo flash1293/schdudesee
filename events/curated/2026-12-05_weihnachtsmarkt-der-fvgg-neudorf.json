@@ -5,14 +5,50 @@
   "time_raw": "",
   "location": "Vereinsgelände FVgg Neudorf",
   "organizer": "FVgg Neudorf",
-  "description": "",
+  "description": "Weihnachtsmarkt der FVgg Neudorf. at Vereinsgelände FVgg Neudorf.",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145345/weihnachtsmarkt-der-fvgg-neudorf",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
     "Fest",
-    "Markt"
+    "Markt",
+    "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided."
+        ]
+      },
+      "description_quality": {
+        "score": 0.2,
+        "issues": [
+          "Description is uninformative; it only repeats the title and location."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.68,
+    "passed": true,
+    "summary": "The event entry has a clear title, proper location, and appropriate tags, but lacks a start time and has a minimal description, reducing its overall quality."
+  }
 }

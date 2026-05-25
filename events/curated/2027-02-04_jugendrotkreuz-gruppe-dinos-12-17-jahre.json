@@ -15,5 +15,38 @@
     "Workshop",
     "Blankenloch"
   ],
-  "recurring_group_id": 1691266295
+  "recurring_group_id": 1691266295,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Workshop' may not fully capture the event's nature; 'Treff' or 'Verein' could be more appropriate."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "The event entry is clear, complete, and informative. Location and time are well-extracted. Description is helpful and in German. Tags are mostly accurate, but 'Workshop' might be slightly off. No duplicates observed."
+  }
 }

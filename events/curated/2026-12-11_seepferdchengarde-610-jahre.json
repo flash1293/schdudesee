@@ -15,5 +15,45 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is a proper name ('Seepferdchengarde') which may not convey the activity (dancing) to unfamiliar users."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": [
+          "Only start time present; end time not extracted from time_raw."
+        ]
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Missing space after exclamation in 'Tanzen!Kinder'.",
+          "Description includes general weekly schedule which may conflict with this single-date entry."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Sport' is acceptable but 'Kultur' might be more precise for dance; also missing 'Verein' tag given club organizer."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event entry is generally well-structured. Title is clear but could be more descriptive. Location and time extraction are good. Description informative but has minor formatting issues and ambiguity about the specific date. Tags are mostly appropriate but could be refined. No duplicate risk."
+  }
 }

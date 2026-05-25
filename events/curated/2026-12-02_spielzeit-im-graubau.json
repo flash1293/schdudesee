@@ -15,5 +15,40 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1313318492
+  "recurring_group_id": 1313318492,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.85,
+        "issues": [
+          "Contact details formatting is messy (missing spaces)"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.75,
+        "issues": [
+          "Tag 'Sport' may not accurately represent the event; 'Workshop' or 'Treff' could be more appropriate"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.92,
+    "passed": true,
+    "summary": "Weekly children's activity event with clear title, complete location, and valid time extraction. Description is informative despite minor formatting flaws. Tags are mostly appropriate but include a slightly mismatched category. No duplicate risk."
+  }
 }

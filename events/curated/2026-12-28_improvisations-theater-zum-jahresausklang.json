@@ -15,5 +15,40 @@
     "Kultur",
     "Neuthard"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty and not informative"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "tag 'Musik' may not be appropriate for a theater event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "The event entry has a clear title, proper location and time extraction, and no duplicate concerns. However, the description is missing and the 'Musik' tag is potentially inaccurate for a theater event."
+  }
 }

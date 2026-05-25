@@ -15,5 +15,36 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 149940597
+  "recurring_group_id": 149940597,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.95,
+    "passed": true,
+    "summary": "The event entry is clear and well-structured, with descriptive title, full address, extracted start time, informative German description, appropriate tags, and no duplication concerns."
+  }
 }

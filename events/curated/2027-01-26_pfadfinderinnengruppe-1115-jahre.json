@@ -15,5 +15,40 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067
+  "recurring_group_id": 1882532067,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tag 'Workshop' may not perfectly match; 'Verein' could be more appropriate."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.2,
+        "issues": [
+          "Same time and location as another event (Wölflinge) but distinct age groups, so low risk."
+        ]
+      }
+    },
+    "overall_score": 0.8,
+    "passed": true,
+    "summary": "Event entry is clear and complete. Tags and description are good. Potential duplicate risk low due to separate age group."
+  }
 }

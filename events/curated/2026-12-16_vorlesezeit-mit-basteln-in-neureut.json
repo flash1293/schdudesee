@@ -16,5 +16,38 @@
     "Kinder",
     "Handwerk"
   ],
-  "recurring_group_id": 1596923700
+  "recurring_group_id": 1596923700,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.5,
+        "issues": [
+          "Description is too brief; lacks details about the event content and duration."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.9,
+    "passed": true,
+    "summary": "Event entry is well-structured with clear title and appropriate tags. Description is minimal but includes essential age and registration info. Time and location properly extracted. No duplication issues."
+  }
 }

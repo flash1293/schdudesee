@@ -15,5 +15,38 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": 114773203
+  "recurring_group_id": 114773203,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.6,
+        "issues": [
+          "Location string contains duplicate address"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.8,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.85,
+    "passed": true,
+    "summary": "Informative event entry with clear title and description; location field has duplication issue; tags appropriate."
+  }
 }

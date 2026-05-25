@@ -15,5 +15,40 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601
+  "recurring_group_id": 269588601,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title could be more descriptive by including age range (0-3)"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Tag 'Sport' is inaccurate; event is a parent-child group, not sports. Consider 'Kirche' or 'Treff'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "Event entry is generally high quality with clear location and time. Description is informative. Title could mention age range. Tags are mostly appropriate, but 'Sport' is misapplied. No duplicate risk."
+  }
 }

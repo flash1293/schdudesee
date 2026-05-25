@@ -14,5 +14,38 @@
     "Kinder",
     "Staffort"
   ],
-  "recurring_group_id": 1541958589
+  "recurring_group_id": 1541958589,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "No phone or email contact provided, only name"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.983,
+    "passed": true,
+    "summary": "The event entry is clear, complete, and well-tagged. The title and location are precise, time is present, and the description is informative. Only minor improvement could be adding direct contact details. No duplication risk."
+  }
 }
