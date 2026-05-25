@@ -17,15 +17,13 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title is clear but could be more descriptive"
-        ]
+        "score": 0.85,
+        "issues": []
       },
       "location_extraction": {
-        "score": 0.7,
+        "score": 0.6,
         "issues": [
-          "Location 'Vereinsgelände' is generic, could be more specific"
+          "Location is generic, not specific address"
         ]
       },
       "time_extraction": {
@@ -35,13 +33,13 @@
       "description_quality": {
         "score": 0.0,
         "issues": [
-          "Description is empty, no information provided"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.4,
+        "score": 0.5,
         "issues": [
-          "Only district tag present, missing a category tag from the available list"
+          "Missing category tag, only district tag"
         ]
       },
       "duplicate_risk": {
@@ -49,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.67,
+    "overall_score": 0.66,
     "passed": true,
-    "summary": "Event 'Tag des Hundes' has clear title and time, but lacks description and appropriate category tags. Location is generic, yet overall acceptable."
+    "summary": "Event has clear title and time, but lacks description and location detail. Tags only include district, no category. No duplication risk."
   }
 }

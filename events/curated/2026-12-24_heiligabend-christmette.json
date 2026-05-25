@@ -13,5 +13,42 @@
   "tags": [
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing category tag such as 'Kirche'"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.8,
+        "issues": []
+      }
+    },
+    "overall_score": 0.52,
+    "passed": false,
+    "summary": "Title is clear but essential information (time, description) is missing. Location is present. Tags include district but lack a category tag. Multiple similar events exist on the same day, posing a moderate duplicate risk."
+  }
 }

@@ -13,5 +13,44 @@
   "tags": [
     "Musik"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.2,
+        "issues": [
+          "Location is placeholder 'noch offen', not a specific location"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No time provided; time_raw is empty"
+        ]
+      },
+      "description_quality": {
+        "score": 0.1,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag; event likely takes place in Eggenstein or Leopoldshafen but no district tag included"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.47,
+    "passed": false,
+    "summary": "Weihnachtskonzert entry lacks location, time, and description. Only one tag (Musik) used, missing district tag. Overall quality is low."
+  }
 }

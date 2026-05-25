@@ -18,12 +18,14 @@
     "judgments": {
       "title_quality": {
         "score": 0.8,
-        "issues": []
+        "issues": [
+          "Title is generic and could be more descriptive."
+        ]
       },
       "location_extraction": {
-        "score": 0.5,
+        "score": 0.2,
         "issues": [
-          "Location field does not contain a physical location; it appears to be a title or topic"
+          "Location field contains a description, not a physical location."
         ]
       },
       "time_extraction": {
@@ -31,15 +33,15 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.6,
+        "score": 0.1,
         "issues": [
-          "Description merely repeats other fields; lacks additional informative content"
+          "Description is empty."
         ]
       },
       "tag_quality": {
-        "score": 0.6,
+        "score": 0.5,
         "issues": [
-          "Missing district tag from the available districts list; only one tag provided"
+          "No district tag from the available list; only 'Treff' provided."
         ]
       },
       "duplicate_risk": {
@@ -47,8 +49,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.75,
+    "overall_score": 0.6,
     "passed": true,
-    "summary": "Event entry for Netzwerktreffen has clear title and time, but location is incorrectly extracted (topic instead of place) and description is sparse. Missing district tag."
+    "summary": "Event has a generic title, missing location and description, and lacks a district tag, but time is clear and duplicate risk is low."
   }
 }

@@ -31,10 +31,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.7,
+        "score": 0.85,
         "issues": [
-          "Organizer name inconsistency between description (Blankenloch) and organizer field (Stutensee)",
-          "Description includes weekly schedule but event date does not explicitly indicate it is a single occurrence of a recurring series"
+          "Missing space after exclamation mark"
         ]
       },
       "tag_quality": {
@@ -46,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.93,
+    "overall_score": 0.95,
     "passed": true,
-    "summary": "The event entry for Seepferdchengarde is well-structured with a clear title, precise location, and appropriate tags. The description is informative but has a minor inconsistency in the organizer name and does not explicitly indicate that it is a single date of a recurring event."
+    "summary": "Event entry is clear and complete, with detailed description and appropriate tags. No duplication issues detected."
   }
 }

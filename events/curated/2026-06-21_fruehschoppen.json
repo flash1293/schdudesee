@@ -19,10 +19,8 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title 'Frühschoppen' may not be fully descriptive"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "location_extraction": {
         "score": 1.0,
@@ -33,13 +31,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.4,
+        "score": 0.1,
         "issues": [
-          "Description lacks additional details and merely repeats fields"
+          "Empty description"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -47,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.85,
+    "overall_score": 0.82,
     "passed": true,
-    "summary": "Event entry has clear location and time, but the title is somewhat generic and the description adds no new information, reducing quality."
+    "summary": "Event has clear title, proper location and time extraction, appropriate tags. However, description is empty, which reduces overall quality."
   }
 }

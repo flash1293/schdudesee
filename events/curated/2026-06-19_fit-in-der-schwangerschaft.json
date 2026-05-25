@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -31,15 +31,15 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
+        "score": 0.9,
         "issues": [
-          "Description mentions 8 sessions but event entry is for a single date; could be confusing"
+          "Minor typographical errors"
         ]
       },
       "tag_quality": {
-        "score": 0.6,
+        "score": 0.5,
         "issues": [
-          "Tag 'Fest' is not appropriate for this event; 'Sport' and district 'Spöck' are correct"
+          "Tag 'Fest' is inappropriate for a fitness class; missing more relevant categories like 'Workshop' or 'Kinder'"
         ]
       },
       "duplicate_risk": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.9,
+    "overall_score": 0.88,
     "passed": true,
-    "summary": "Good event entry with minor issues in tags and description consistency."
+    "summary": "Event is well-structured with clear title and location. Description is informative but has minor typos. Tags include an inaccurate category 'Fest'. No duplicate risk."
   }
 }

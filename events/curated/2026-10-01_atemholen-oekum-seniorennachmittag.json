@@ -18,8 +18,10 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Abbreviation 'Ökum.' may be unclear"
+        ]
       },
       "location_extraction": {
         "score": 1.0,
@@ -28,26 +30,28 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time extracted, time_raw is empty"
+          "No time information provided"
         ]
       },
       "description_quality": {
         "score": 0.0,
         "issues": [
-          "Description is identical to title and provides no additional information"
+          "Empty description"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Could include 'Kirche' tag for more accuracy"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.65,
+    "overall_score": 0.6,
     "passed": true,
-    "summary": "Title is descriptive and location is clear, but the event lacks a start time and the description is uninformative."
+    "summary": "Event entry for senior afternoon in Eggenstein with missing time and description; title and location are clear, tags include district and category."
   }
 }

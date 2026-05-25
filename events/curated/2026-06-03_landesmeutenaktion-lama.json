@@ -15,33 +15,33 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
+        "score": 0.5,
         "issues": [
-          "Title may be unclear to general audience"
+          "Title uses acronym LAMA without explanation"
         ]
       },
       "location_extraction": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Location is too broad, should be specific to a district or venue"
+          "Location is only 'Baden-Württemberg', not a specific district from the available list"
         ]
       },
       "time_extraction": {
-        "score": 0.5,
+        "score": 0.2,
         "issues": [
-          "Time '00:00' may be a placeholder or inaccurate"
+          "Time_raw is 00:00, no specific start time provided for a multi-day event"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.0,
         "issues": [
-          "Description lacks informative content about the event, merely repeats metadata"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.0,
+        "score": 0.1,
         "issues": [
-          "No tags assigned; missing district tag and event category"
+          "No tags assigned; location does not match any available district"
         ]
       },
       "duplicate_risk": {
@@ -49,8 +49,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.47,
+    "overall_score": 0.333,
     "passed": false,
-    "summary": "Event entry has several issues: location is too broad, time extraction is unreliable, description is uninformative, and tags are missing. Duplicate risk is low. Overall quality is poor."
+    "summary": "Landesmeutenaktion (LAMA) has poor quality: empty description, vague location and time, no tags, and unclear title."
   }
 }

@@ -13,5 +13,42 @@
   "tags": [
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is in local dialect and may not be clear to all users; consider using 'Sommerfest' instead."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty, no details about the event."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Only district tag provided; missing category tags such as 'Fest' or 'Verein'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event entry for Sommerfeschd has a clear title but lacks description and proper tags. Location and time are well extracted. Not a duplicate."
+  }
 }

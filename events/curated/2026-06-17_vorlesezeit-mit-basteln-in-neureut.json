@@ -32,9 +32,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.6,
+        "score": 0.3,
         "issues": [
-          "Description is too brief, lacks details about the event activities"
+          "Description is minimal; lacks details about the event program"
         ]
       },
       "tag_quality": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.92,
+    "overall_score": 0.87,
     "passed": true,
-    "summary": "Clear event entry with descriptive title, proper location and time extraction, appropriate tags, and no duplication risk. Description could be more detailed."
+    "summary": "Event has clear title and proper location/time; tags are appropriate and include district. Description is too brief, missing event details. No duplicates."
   }
 }

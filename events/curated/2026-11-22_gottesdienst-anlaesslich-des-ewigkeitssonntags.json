@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
@@ -28,13 +28,13 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No start time provided in time_raw field"
+          "No time specified, time_raw is empty"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title; lacks additional information"
+          "Description is empty"
         ]
       },
       "tag_quality": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.7,
+    "overall_score": 0.68,
     "passed": true,
-    "summary": "The event entry is for a church service on Eternity Sunday. The title and location are clear, and tags are appropriate. However, the description is identical to the title, and no time is specified, reducing its informational value."
+    "summary": "Title and location are clear, tags are appropriate, but missing time and empty description make the entry incomplete."
   }
 }

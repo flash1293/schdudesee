@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.95,
         "issues": []
       },
       "location_extraction": {
@@ -31,22 +31,24 @@
         "issues": []
       },
       "description_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.7,
         "issues": [
-          "Tag 'Kinder' does not accurately reflect target audience (teens to seniors); consider removing or replacing with 'Senioren'"
+          "Tag 'Kinder' does not fully reflect the all-ages nature of the event (Teenie bis Oldie); consider adding 'Senioren'."
         ]
       },
       "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "Event shares same time (16:00) and location with 'Briefmarkentauschtage' by same organizer, but titles and descriptions differ, so not a duplicate. However, scheduling overlap should be verified."
+        ]
       }
     },
-    "overall_score": 0.92,
+    "overall_score": 0.91,
     "passed": true,
-    "summary": "Event entry is generally well-structured with clear title, location, time, and description. However, the 'Kinder' tag is misaligned with the stated target audience of teens and seniors, impacting tag accuracy."
+    "summary": "The event entry is clear and complete. The title, location, and time are well extracted. The description provides good context. The tags could better represent the intergenerational audience. A scheduling overlap exists with another event, but it is not a duplicate. Overall high quality."
   }
 }

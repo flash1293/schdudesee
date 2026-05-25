@@ -19,10 +19,8 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Title states '8 Wochen' but description says 'ab etwa sechs Wochen'; inconsistent age range"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "location_extraction": {
         "score": 1.0,
@@ -37,16 +35,18 @@
         "issues": []
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.7,
+        "issues": [
+          "The tag 'Musik' is not the most appropriate for this event; consider using 'Workshop' or 'Bildung' instead."
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.96,
+    "overall_score": 0.93,
     "passed": true,
-    "summary": "Good quality event entry with clear title, location, time, and informative description. Minor inconsistency in age range between title and description. Tags are appropriate and include district. No duplicate risk."
+    "summary": "Event entry is clear and well-structured. Location, time, and description are properly handled. Tags could be improved by replacing 'Musik' with a more relevant category. No risk of duplication."
   }
 }

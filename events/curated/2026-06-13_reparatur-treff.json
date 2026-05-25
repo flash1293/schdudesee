@@ -15,5 +15,42 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 75599991
+  "recurring_group_id": 75599991,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title is generic and could be more descriptive"
+        ]
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field contains formatting artifacts (newlines, tabs, label text)"
+        ]
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty, no event details provided"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "Clear title and time, appropriate tags; location extraction is messy and description is missing."
+  }
 }

@@ -21,23 +21,23 @@
       "location_extraction": {
         "score": 0.8,
         "issues": [
-          "Location extraction missing city/district"
+          "Location does not include city name, but is a specific place within the domain's context."
         ]
       },
       "time_extraction": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "description_quality": {
         "score": 0.0,
         "issues": [
-          "No description provided"
+          "Description is empty, no information provided."
         ]
       },
       "tag_quality": {
         "score": 0.0,
         "issues": [
-          "Tags array is empty; no district or category tags assigned"
+          "No tags assigned; missing Musik, Kultur, and district Weingarten tags."
         ]
       },
       "duplicate_risk": {
@@ -45,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.62,
+    "overall_score": 0.6,
     "passed": true,
-    "summary": "Event entry is clear in title, time, and location, but completely lacks a description and tags, which significantly reduces its utility and completeness."
+    "summary": "Missing description and tags significantly reduces quality."
   }
 }

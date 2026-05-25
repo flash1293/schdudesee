@@ -33,13 +33,13 @@
       "description_quality": {
         "score": 0.85,
         "issues": [
-          "Description has formatting issues: missing space after exclamation, trailing non-breaking space"
+          "Minor formatting issues: missing space after exclamation mark, trailing spaces, redundant organizer info"
         ]
       },
       "tag_quality": {
         "score": 0.8,
         "issues": [
-          "Missing tag 'Kinder' for children's event"
+          "Missing tag 'Kinder' which would be more appropriate for children's event"
         ]
       },
       "duplicate_risk": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.92,
+    "overall_score": 0.93,
     "passed": true,
-    "summary": "The event entry is well-structured with clear title, complete location and time, and informative description. Tags are mostly appropriate but could include 'Kinder'. Duplicate risk is low."
+    "summary": "Event entry is well-structured with clear location and time. Description is informative but has minor formatting issues. Tags could be improved by including 'Kinder'. No duplication risk."
   }
 }

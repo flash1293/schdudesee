@@ -23,9 +23,9 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.4,
+        "score": 0.5,
         "issues": [
-          "Location field contains formatting artifacts: 'Veranstaltungsort:' and newline/tabs; should be cleaned"
+          "Location field includes extra prefix and whitespace"
         ]
       },
       "time_extraction": {
@@ -45,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.87,
+    "overall_score": 0.88,
     "passed": true,
-    "summary": "Event entry is generally of high quality with clear title, informative description, appropriate tags, and no duplicate risk. However, the location field includes extraneous text from the source that should be removed."
+    "summary": "Event entry is mostly high-quality with clear title, description, and appropriate tags. However, the location extraction is poor, containing unnecessary text and formatting."
   }
 }

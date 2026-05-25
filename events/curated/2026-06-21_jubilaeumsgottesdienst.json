@@ -19,13 +19,15 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.6,
+        "issues": [
+          "Title is generic, could be more descriptive"
+        ]
       },
       "location_extraction": {
-        "score": 0.4,
+        "score": 0.3,
         "issues": [
-          "Location is only district name, no specific venue"
+          "Location field is only district, no specific venue"
         ]
       },
       "time_extraction": {
@@ -33,9 +35,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description merely repeats title and other fields, lacks informative content"
+          "Description is empty"
         ]
       },
       "tag_quality": {
@@ -45,12 +47,12 @@
       "duplicate_risk": {
         "score": 0.2,
         "issues": [
-          "Event appears to be similar or duplicate of '30 Jahre Ökumenisches Kirchenzentrum Heilig Geist' in same district on same date"
+          "Event is likely duplicate of '30 Jahre ökumenisches Zentrum Büchig' based on same date, similar title and close time"
         ]
       }
     },
-    "overall_score": 0.62,
-    "passed": true,
-    "summary": "Event title and time are clear, but location is vague and description poor; high risk of duplication with another event in same district."
+    "overall_score": 0.52,
+    "passed": false,
+    "summary": "Event has generic title, vague location, empty description, and is likely a duplicate. Time extraction is good and tags are appropriate."
   }
 }

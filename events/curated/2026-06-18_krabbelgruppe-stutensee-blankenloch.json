@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -30,20 +30,22 @@
         "issues": []
       },
       "description_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.7,
+        "issues": [
+          "Missing relevant category tag like 'Kirche' or 'Treff'"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 1.0,
+    "overall_score": 0.92,
     "passed": true,
-    "summary": "Event entry is well-structured with clear title, complete location and time, informative description, appropriate tags, and no duplicate risk."
+    "summary": "Event entry is well-structured with clear title, location, time, and informative description. Tags are appropriate but could include additional relevant categories. No duplicate risk."
   }
 }

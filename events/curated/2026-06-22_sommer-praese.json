@@ -18,13 +18,13 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.3,
+        "score": 0.4,
         "issues": [
-          "Title is unclear and possibly misspelled (\"Präse\" instead of \"Pause\"?)"
+          "Title 'Sommer-Präse' is unclear and does not describe the event type or content."
         ]
       },
       "location_extraction": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "time_extraction": {
@@ -32,9 +32,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description merely repeats title, location, time, and organizer; lacks additional context or details about the event"
+          "Description is empty, providing no information about the event."
         ]
       },
       "tag_quality": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.77,
-    "passed": true,
-    "summary": "The event entry has a clear location, time, and appropriate tags, but the title is vague and the description is uninformative."
+    "overall_score": 0.45,
+    "passed": false,
+    "summary": "The event entry has a well-extracted location and time, and appropriate tags, but it lacks a description and the title is ambiguous, reducing overall quality."
   }
 }

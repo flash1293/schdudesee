@@ -24,7 +24,7 @@
       "location_extraction": {
         "score": 0.6,
         "issues": [
-          "Location 'Vereinsgelände' is vague; a more specific address is advised."
+          "Location is vague, only 'Vereinsgelände' which is not a specific address."
         ]
       },
       "time_extraction": {
@@ -32,13 +32,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.0,
         "issues": [
-          "Description merely repeats structured fields; no additional details provided."
+          "Description is empty, no information provided for attendees."
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.78,
+    "overall_score": 0.75,
     "passed": true,
-    "summary": "Event entry for Dampfnudelessen has a clear title and appropriate tags but lacks descriptive details; location is too vague and description is non-informative."
+    "summary": "Dampfnudelessen event by Hundesportverein Karlsdorf-Neuthard. Location vague, no description. Tags appropriate. No duplicates."
   }
 }

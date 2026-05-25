@@ -17,8 +17,10 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Title uses local term 'Lebenslauf' which may be ambiguous; consider adding event type."
+        ]
       },
       "location_extraction": {
         "score": 1.0,
@@ -29,15 +31,15 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.6,
+        "score": 0.1,
         "issues": [
-          "Description lacks additional details about the event type or activities"
+          "Description is empty, provides no information."
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.6,
         "issues": [
-          "Missing event category tag (e.g., Sport)"
+          "Only district tag present; missing a category tag (e.g., 'Sport')."
         ]
       },
       "duplicate_risk": {
@@ -45,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.83,
+    "overall_score": 0.75,
     "passed": true,
-    "summary": "Event entry with clear title and essential fields, but description is minimal and tags only include district, missing a category tag."
+    "summary": "Event entry for 21. Weingartner Lebenslauf (run) at Mineralix-Arena on 2026-06-20 from 14:00 to 20:00. Description missing, tag incomplete but district present. Overall decent but requires improvement."
   }
 }

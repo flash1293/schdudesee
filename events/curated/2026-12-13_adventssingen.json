@@ -14,5 +14,42 @@
     "Musik",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time specified"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Empty description"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Consider adding 'Kirche' or 'Kultur' tag for better categorization"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Title and location are properly set but event lacks time and description. Tags are acceptable but could be more specific. Overall quality is low due to missing critical information."
+  }
 }

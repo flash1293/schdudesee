@@ -20,7 +20,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
@@ -32,15 +32,15 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.5,
+        "score": 0.1,
         "issues": [
-          "Description is minimal and largely repeats structured fields."
+          "Description is empty, provides no additional information"
         ]
       },
       "tag_quality": {
         "score": 0.6,
         "issues": [
-          "Contains non-standard tag '⚠️' which is not in allowed categories."
+          "Tag '⚠️' is not a valid category or district"
         ]
       },
       "duplicate_risk": {
@@ -48,8 +48,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.83,
+    "overall_score": 0.78,
     "passed": true,
-    "summary": "Event entry is largely complete with clear title, location, and time. Description is minimal and repetitive. Tags include an invalid emoji tag. No duplicate events found."
+    "summary": "Event has clear title and location, time extracted, but lacks a description. Tags include an invalid emoji tag."
   }
 }

@@ -31,22 +31,24 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
+        "score": 0.7,
         "issues": [
-          "Description contains trailing non-breaking space entity"
+          "description lacks details on cost or registration"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "could include 'Treff' tag for better description"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.93,
+    "overall_score": 0.9,
     "passed": true,
-    "summary": "Event entry is well-structured with clear title and location. Description is informative and includes schedule. Tags are appropriate and contain the required district tag. No duplication issues. Minor HTML entity found in description."
+    "summary": "The entry is well-formed with a clear title, full location, and extracted start time. The description covers target audience and schedule but misses practical details like cost. Tags are appropriate for audience and district but could be improved by adding a 'Treff' tag. No duplicate risk is present despite a concurrent event at the same location."
   }
 }

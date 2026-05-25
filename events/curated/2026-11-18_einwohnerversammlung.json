@@ -17,7 +17,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -27,20 +27,19 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time specified"
+          "No time provided"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title, not informative"
+          "Empty description"
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.6,
         "issues": [
-          "Missing district tag",
-          "Only one tag; consider adding more relevant categories"
+          "Missing district tag"
         ]
       },
       "duplicate_risk": {
@@ -48,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "Event title is clear but lacks time and description is uninformative; missing district tag."
+    "overall_score": 0.6,
+    "passed": true,
+    "summary": "Event entry with clear title and location but lacks time and description; missing district tag."
   }
 }

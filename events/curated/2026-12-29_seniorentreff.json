@@ -14,5 +14,42 @@
     "Senioren",
     "Treff"
   ],
-  "recurring_group_id": 2112330319
+  "recurring_group_id": 2112330319,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "Missing district tag"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.57,
+    "passed": false,
+    "summary": "Event has clear title and location but lacks time and description; tags are appropriate but missing district; low duplicate risk."
+  }
 }

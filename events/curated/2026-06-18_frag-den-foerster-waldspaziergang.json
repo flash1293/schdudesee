@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -27,15 +27,15 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 0.3,
+        "score": 0.4,
         "issues": [
-          "Time not extracted, only mentioned in description"
+          "time_raw is empty; time only mentioned in description"
         ]
       },
       "description_quality": {
         "score": 0.7,
         "issues": [
-          "Description contains incomplete tag string"
+          "description contains residual 'Tagged ...' text and appears truncated"
         ]
       },
       "tag_quality": {
@@ -49,6 +49,6 @@
     },
     "overall_score": 0.83,
     "passed": true,
-    "summary": "Clear title and location, informative description despite minor tag clutter, time not extracted, tags appropriate."
+    "summary": "Event is well-structured with clear title and location. However, time is not extracted into the dedicated field and description has formatting issues."
   }
 }

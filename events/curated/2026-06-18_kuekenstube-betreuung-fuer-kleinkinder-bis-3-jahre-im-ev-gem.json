@@ -29,19 +29,20 @@
       "time_extraction": {
         "score": 0.6,
         "issues": [
-          "Time extracted as 09:00 but description indicates Thursday start at 08:30 for this date"
+          "Start time (09:00) is inconsistent with description indicating 08:30 for Thursdays",
+          "End time not provided"
         ]
       },
       "description_quality": {
-        "score": 0.8,
+        "score": 0.7,
         "issues": [
-          "Flyer year mismatch (2025 vs 2026) but text is still informative"
+          "Description includes trailing extraneous text 'Flyer Kükenstube 2025'"
         ]
       },
       "tag_quality": {
-        "score": 0.8,
+        "score": 0.6,
         "issues": [
-          "Tag 'Kinder' might be more appropriate than 'Musik' but tags are still valid"
+          "Missing relevant tag 'Kinder'"
         ]
       },
       "duplicate_risk": {
@@ -49,8 +50,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.85,
+    "overall_score": 0.8,
     "passed": true,
-    "summary": "Event for toddler care is well-described but has minor time inconsistency relative to description; tags include district and are mostly appropriate."
+    "summary": "Event entry has a clear title and location but issues with time consistency and missing relevant tag. Description is informative but has extraneous content. No duplicate events."
   }
 }

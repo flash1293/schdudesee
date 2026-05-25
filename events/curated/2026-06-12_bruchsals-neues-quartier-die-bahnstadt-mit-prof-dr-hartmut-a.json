@@ -15,5 +15,40 @@
     "Treff",
     "Bruchsal"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 0.5,
+        "issues": [
+          "Location field only contains district, not the specific street address"
+        ]
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description only provides logistics (meeting point, contact) but lacks event content description"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.83,
+    "passed": true,
+    "summary": "Title clearly describes the event; time is correctly extracted. Location extraction is too generic (only district covers), while the actual meeting point appears only in the description. Description is helpful for attendance but does not outline the talk's content. Tags include appropriate categories and the district 'Bruchsal'. No duplication with the other event."
+  }
 }

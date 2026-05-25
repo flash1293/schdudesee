@@ -29,13 +29,13 @@
       "time_extraction": {
         "score": 0.8,
         "issues": [
-          "time_raw contains leading comma, indicating imperfect extraction"
+          "time_raw contains leading punctuation"
         ]
       },
       "description_quality": {
         "score": 0.0,
         "issues": [
-          "description is empty, providing no event information"
+          "description is empty"
         ]
       },
       "tag_quality": {
@@ -43,12 +43,12 @@
         "issues": []
       },
       "duplicate_risk": {
-        "score": 1.0,
+        "score": 0.0,
         "issues": []
       }
     },
-    "overall_score": 0.78,
+    "overall_score": 0.7,
     "passed": true,
-    "summary": "Clear title and location, appropriate tags including district tag. Minor issue with time_raw formatting. Major issue: missing description."
+    "summary": "The event title is clear, location and time are provided, but description is empty. No duplicate risk."
   }
 }

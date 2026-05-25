@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.95,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -30,16 +30,14 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description could include more specific activities or schedule."
-        ]
+        "score": 0.85,
+        "issues": []
       },
       "tag_quality": {
-        "score": 0.4,
+        "score": 0.3,
         "issues": [
-          "Missing district tag from available districts list.",
-          "Tag 'Workshop' may not be appropriate for an open house."
+          "Missing district tag from available districts list",
+          "Tag 'Workshop' may not be fully appropriate for an open house event"
         ]
       },
       "duplicate_risk": {
@@ -49,6 +47,6 @@
     },
     "overall_score": 0.84,
     "passed": true,
-    "summary": "Event entry is mostly complete. Title and location are clear. Time correctly extracted. Description is adequate but lacks detail. Tags are missing a required district tag and include a questionable category. No duplicate risk."
+    "summary": "The event entry is well-structured with clear title, precise location, and explicit time. The description is informative. However, the tags are deficient: they do not include a required district from the available districts list, and the 'Workshop' tag is not ideally suited for an open house. No duplicate issues with other events on the same date."
   }
 }

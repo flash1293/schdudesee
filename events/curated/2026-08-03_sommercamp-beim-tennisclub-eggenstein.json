@@ -29,13 +29,13 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "time_raw is empty, no start time extracted"
+          "No time specified"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title, provides no additional information"
+          "Empty description"
         ]
       },
       "tag_quality": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.68,
+    "overall_score": 0.67,
     "passed": true,
-    "summary": "Event is clearly titled and located but lacks time and detailed description."
+    "summary": "Event has clear title, proper location, and appropriate tags, but lacks time and description, resulting in low scores for those axes."
   }
 }

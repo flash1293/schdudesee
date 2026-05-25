@@ -18,40 +18,42 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.85,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Title should be capitalized"
+        ]
       },
       "location_extraction": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.3,
+        "issues": [
+          "Location lacks district/city; only 'Rathaus'"
+        ]
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time information provided"
+          "No time provided"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description identical to title, not informative"
+          "No description provided"
         ]
       },
       "tag_quality": {
-        "score": 0.4,
+        "score": 0.3,
         "issues": [
-          "Missing district tag, should include one from districts list, e.g., Eggenstein or Leopoldshafen"
+          "Missing district tag from allowed districts"
         ]
       },
       "duplicate_risk": {
         "score": 1.0,
-        "issues": [
-          "No duplicates in context"
-        ]
+        "issues": []
       }
     },
-    "overall_score": 0.59,
+    "overall_score": 0.42,
     "passed": false,
-    "summary": "Event entry has a clear title and location, but lacks time and has an uninformative description; tags miss the required district tag."
+    "summary": "Event entry missing time and description; location ambiguous; missing district tag."
   }
 }

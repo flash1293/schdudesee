@@ -35,10 +35,10 @@
         "issues": []
       },
       "tag_quality": {
-        "score": 0.4,
+        "score": 0.3,
         "issues": [
-          "Tag 'Musik' is inappropriate for a model railway event",
-          "Tags lack relevant categories like 'Kinder' or 'Bildung'"
+          "Tag 'Musik' is not appropriate for a model railway event",
+          "Tag 'Kultur' is too broad and may not accurately represent the event; better tags could be 'Handwerk', 'Workshop', or 'Kinder'"
         ]
       },
       "duplicate_risk": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.87,
+    "overall_score": 0.85,
     "passed": true,
-    "summary": "Event entry is well-structured with clear title, complete location and time. Description is informative. Tag quality is weak due to inappropriate 'Musik' tag and missing relevant categories. No duplicate risk."
+    "summary": "Event information is mostly clear and complete, but tags are inaccurate for content."
   }
 }

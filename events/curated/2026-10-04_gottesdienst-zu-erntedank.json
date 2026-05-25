@@ -28,13 +28,13 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time specified"
+          "No time extracted, time_raw is empty."
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is too brief and identical to title, provides no additional information"
+          "Description is empty, provides no information."
         ]
       },
       "tag_quality": {
@@ -42,12 +42,12 @@
         "issues": []
       },
       "duplicate_risk": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       }
     },
-    "overall_score": 0.7,
+    "overall_score": 0.65,
     "passed": true,
-    "summary": "Event is a church service for Harvest Thanksgiving with clear title and proper location and tags, but lacks a description and time information; not a duplicate of the context event."
+    "summary": "Title and location are clear, but the event lacks time and description, lowering overall quality."
   }
 }

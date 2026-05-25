@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
@@ -31,24 +31,20 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Trailing whitespace in description"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "tag_quality": {
-        "score": 0.9,
-        "issues": [
-          "Missing 'Kinder' tag for children's event"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.95,
+    "overall_score": 1.0,
     "passed": true,
-    "summary": "Overall high quality. Minor issues: description trailing whitespace, tag selection missing category 'Kinder'."
+    "summary": "The event entry is clear and complete with a descriptive title, valid location containing address and district, explicit start time, informative description with contact details, appropriate tags fitting the categories and district requirement, and no duplicate concerns."
   }
 }

@@ -14,5 +14,38 @@
     "Politik",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.5,
+    "passed": false,
+    "summary": "Event entry for a technical committee meeting in Graben-Neudorf. Title and location are clear, time is present, but description is missing, which critically reduces quality. Tags are appropriate. No duplicate risk."
+  }
 }

@@ -30,9 +30,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.5,
+        "score": 0.1,
         "issues": [
-          "Description merely repeats structured fields and provides no additional context or details"
+          "Description is empty, providing no information about the purpose, agenda, or details of the Gemeinderat meeting."
         ]
       },
       "tag_quality": {
@@ -44,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.9,
-    "passed": true,
-    "summary": "The entry has a clear title, valid location and time, and correct tags. However, the description is uninformative as it only echoes the title, location, and time."
+    "overall_score": 0.5,
+    "passed": false,
+    "summary": "Exceptional metadata extraction (title, location, time, tags) crippled by an empty description, resulting in a substantially incomplete event entry."
   }
 }

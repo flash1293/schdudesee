@@ -23,25 +23,25 @@
       "location_extraction": {
         "score": 0.1,
         "issues": [
-          "Location is a placeholder, not a specific place"
+          "location provided is a placeholder, not a specific location"
         ]
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time provided"
+          "no time specified"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.0,
         "issues": [
-          "Description is identical to title, lacks additional details"
+          "description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.3,
         "issues": [
-          "Missing district tag; only category 'Natur' present, but should include a district from the list"
+          "missing district tag from available districts"
         ]
       },
       "duplicate_risk": {
@@ -49,8 +49,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.47,
+    "overall_score": 0.38,
     "passed": false,
-    "summary": "The event entry has a clear title but lacks specific location, time, and detailed description. No district tag is included. Overall quality is low."
+    "summary": "The event entry has a clear title but lacks a specific location, time, and description. The tag set is missing a district tag. Overall quality is low due to missing key information."
   }
 }

@@ -18,8 +18,10 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Abbreviation 'Ökum.' may reduce clarity"
+        ]
       },
       "location_extraction": {
         "score": 1.0,
@@ -28,17 +30,17 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "Time is missing (time_raw is empty)"
+          "No start time available"
         ]
       },
       "description_quality": {
         "score": 0.1,
         "issues": [
-          "Description is identical to the title, providing no additional information"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -48,6 +50,6 @@
     },
     "overall_score": 0.65,
     "passed": true,
-    "summary": "Title and location are clear, but missing time and uninformative description reduce quality. Tags are appropriate. No duplicate risk."
+    "summary": "Missing time and description; title adequate; tags and location good."
   }
 }

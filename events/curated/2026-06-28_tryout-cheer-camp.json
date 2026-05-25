@@ -19,13 +19,11 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title could be more specific (e.g., 'Cheer Camp Tryout')"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
@@ -33,13 +31,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.5,
+        "score": 0.1,
         "issues": [
-          "Description merely restates title, location, and time without providing additional context or details"
+          "empty description"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -47,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.85,
+    "overall_score": 0.83,
     "passed": true,
-    "summary": "Event entry is generally clear with appropriate tags and location, but the description is minimal and could be more informative."
+    "summary": "The event entry has a clear title, extracted location and time, and appropriate tags, but lacks a description, which reduces its quality."
   }
 }

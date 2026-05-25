@@ -27,15 +27,15 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 0.1,
+        "score": 0.0,
         "issues": [
-          "No start time provided"
+          "time_raw is empty"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title, lacks additional details"
+          "Empty description"
         ]
       },
       "tag_quality": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.7,
+    "overall_score": 0.65,
     "passed": true,
-    "summary": "Event has clear title and location, but lacks time information and description is minimal. Tags are appropriate."
+    "summary": "Event has a descriptive title and valid location, but lacks time and description, which reduces overall quality. Tags are appropriate and include the correct district. No duplicates detected."
   }
 }

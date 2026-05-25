@@ -18,30 +18,30 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Abbreviation 'Ökum.' may not be clear to all users"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "location_extraction": {
         "score": 1.0,
         "issues": []
       },
       "time_extraction": {
-        "score": 0.0,
+        "score": 0.1,
         "issues": [
-          "No time provided, time_raw is empty"
+          "No time information provided; time_raw is empty"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title, no additional information"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "Could include more relevant tags like Kirche"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
@@ -50,6 +50,6 @@
     },
     "overall_score": 0.67,
     "passed": true,
-    "summary": "Event entry has a clear title with minor abbreviation issue. Location is properly extracted. Missing time and poor description reduce quality. Tags are accurate and include district. Duplicate risk is low."
+    "summary": "Event has title, location, and organizer, but lacks time and description. Tags are appropriate but minimal."
   }
 }

@@ -23,19 +23,19 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "time_raw is empty, no start time extracted"
+          "No time provided. Only date_start is set."
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title, provides no additional information"
+          "Description is empty."
         ]
       },
       "tag_quality": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.68,
+    "overall_score": 0.67,
     "passed": true,
-    "summary": "Event entry has a clear title and location, but lacks a start time and the description is uninformative. Tags are appropriate."
+    "summary": "Event has clear title and location with appropriate tags, but lacks description and time information, which are critical, so overall event quality is insufficient."
   }
 }

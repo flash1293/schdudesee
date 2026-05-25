@@ -30,9 +30,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is repetitive and does not provide any additional information beyond what is already present in title, location, and time fields."
+          "description is empty"
         ]
       },
       "tag_quality": {
@@ -44,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.85,
+    "overall_score": 0.82,
     "passed": true,
-    "summary": "Event entry is mostly good, with clear title, location, and time. The description is a weak point as it merely repeats other fields. Tags include appropriate district tag. No duplicates detected."
+    "summary": "The entry has a clear title, proper location and time extraction, and appropriate tags including the district. However, the empty description significantly reduces quality."
   }
 }

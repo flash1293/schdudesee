@@ -20,7 +20,9 @@
     "judgments": {
       "title_quality": {
         "score": 0.9,
-        "issues": []
+        "issues": [
+          "Title clearly indicates the group and age range, but could be slightly shorter."
+        ]
       },
       "location_extraction": {
         "score": 1.0,
@@ -31,22 +33,24 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "tag_quality": {
-        "score": 0.8,
+        "score": 0.6,
         "issues": [
-          "Tag 'Workshop' may not be the most accurate for a regular group meeting; 'Natur' or 'Treff' could be more fitting."
+          "Tag 'Workshop' may not be accurate for a regular group meeting; consider using 'Treff' or 'Natur'."
         ]
       },
       "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.1,
+        "issues": [
+          "Similar event exists with a different age group, but risk of duplication is low."
+        ]
       }
     },
-    "overall_score": 0.93,
+    "overall_score": 0.77,
     "passed": true,
-    "summary": "Event entry is clear, well-located, and includes detailed description. Tags are mostly appropriate but 'Workshop' could be refined. No duplication risk."
+    "summary": "Event is well-defined with clear title, location, and time. Description is highly informative. Tags are mostly appropriate but 'Workshop' could be improved. Duplicate risk is low as it targets a specific age group distinct from the similar event."
   }
 }

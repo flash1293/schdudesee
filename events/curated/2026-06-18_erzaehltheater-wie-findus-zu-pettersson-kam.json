@@ -25,7 +25,7 @@
       "location_extraction": {
         "score": 0.5,
         "issues": [
-          "location contains formatting artifacts (newline and tabs)"
+          "Location contains redundant label 'Veranstaltungsort:' and whitespace"
         ]
       },
       "time_extraction": {
@@ -33,13 +33,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.4,
         "issues": [
-          "description only mentions age group, lacks substantive event details"
+          "Description is minimal, only specifies age range"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.77,
+    "overall_score": 0.78,
     "passed": true,
-    "summary": "Event has a clear title and appropriate tags including district, but location formatting is messy and description is insufficient (only age range). Time extraction is good. No duplicate risk."
+    "summary": "Event has a clear title and time, but location formatting is poor with extra label and whitespace. Description is very brief. Tags are appropriate and no duplicates. Overall quality is acceptable."
   }
 }

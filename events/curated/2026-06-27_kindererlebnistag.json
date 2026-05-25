@@ -23,23 +23,23 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
-        "score": 0.7,
+        "score": 0.8,
         "issues": [
-          "time_raw contains leading comma, suggests parsing artifact"
+          "time_raw includes leading comma, extraction could be cleaner"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.0,
         "issues": [
-          "description is auto-generated and not informative"
+          "description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -49,6 +49,6 @@
     },
     "overall_score": 0.78,
     "passed": true,
-    "summary": "Event entry for Kindererlebnistag is largely clear with good title, tags, and location. Time extraction has a minor formatting issue. Description is auto-generated and lacks depth, reducing overall quality."
+    "summary": "Event entry for Kindererlebnistag at CVJM-Marienhof. Clear title and location, appropriate tags, but description is missing which significantly lowers quality."
   }
 }

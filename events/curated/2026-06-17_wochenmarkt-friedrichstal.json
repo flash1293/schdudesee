@@ -30,8 +30,10 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
-        "issues": []
+        "score": 0.7,
+        "issues": [
+          "Description is brief and lacks detail about market offerings"
+        ]
       },
       "tag_quality": {
         "score": 1.0,
@@ -42,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.95,
+    "overall_score": 0.93,
     "passed": true,
-    "summary": "Weekly market event in Friedrichstal with clear title and location, slightly brief description."
+    "summary": "Event entry is clear, properly structured, and accurate. The description could be enhanced with more specifics, but overall quality is high."
   }
 }

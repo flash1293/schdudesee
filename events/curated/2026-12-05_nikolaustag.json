@@ -13,5 +13,45 @@
   "tags": [
     "Kinder"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title is generic; consider including location for clarity"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.1,
+        "issues": [
+          "Missing district tag (e.g., Eggenstein)",
+          "Only one tag; consider adding event type (e.g., Fest)"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.48,
+    "passed": false,
+    "summary": "Event entry lacks time, description, and district tag; title and location are present but minimal."
+  }
 }

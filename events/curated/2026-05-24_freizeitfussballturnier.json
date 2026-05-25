@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
@@ -30,13 +30,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.5,
+        "score": 0.0,
         "issues": [
-          "Description simply repeats other fields without providing additional event details."
+          "empty description"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -44,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.88,
+    "overall_score": 0.83,
     "passed": true,
-    "summary": "Event entry is mostly well-structured with clear title and location, but description lacks detail beyond repeating other fields. Tags are appropriate. No duplicate risk."
+    "summary": "Event 'Freizeitfußballturnier' on 2026-05-24 at Waldsportplatz has clear title, location, and time, but missing description, reducing overall quality."
   }
 }

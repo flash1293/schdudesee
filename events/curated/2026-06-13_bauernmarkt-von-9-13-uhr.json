@@ -13,5 +13,46 @@
   "tags": [
     "Markt"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.85,
+        "issues": [
+          "Title includes time range which should be in time_raw field."
+        ]
+      },
+      "location_extraction": {
+        "score": 0.8,
+        "issues": [
+          "Location does not specify district; district should be included or added as tag."
+        ]
+      },
+      "time_extraction": {
+        "score": 0.2,
+        "issues": [
+          "time_raw is empty; time is present in title but not extracted."
+        ]
+      },
+      "description_quality": {
+        "score": 0.1,
+        "issues": [
+          "Description is empty; should provide details about the event."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Missing district tag; one tag should be from district list. Only one tag used; could include additional categories."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.56,
+    "passed": false,
+    "summary": "Event has clear title and location but lacks extracted time, description, and proper district tagging."
+  }
 }

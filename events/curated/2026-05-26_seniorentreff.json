@@ -18,34 +18,33 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.5,
+        "score": 0.8,
         "issues": [
-          "Title is too generic, lacks specificity"
+          "Title is clear but somewhat generic"
         ]
       },
       "location_extraction": {
-        "score": 0.8,
+        "score": 0.5,
         "issues": [
-          "Location is only a venue name, may lack full address or district context"
+          "Location missing city/district"
         ]
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time information extracted, time_raw is empty"
+          "No time provided"
         ]
       },
       "description_quality": {
-        "score": 0.1,
+        "score": 0.0,
         "issues": [
-          "Description is identical to title and provides no additional details"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.3,
+        "score": 0.4,
         "issues": [
-          "Missing district tag; one tag should be from the districts list",
-          "Tags only include categories, no geographic district"
+          "Missing district tag"
         ]
       },
       "duplicate_risk": {
@@ -55,6 +54,6 @@
     },
     "overall_score": 0.45,
     "passed": false,
-    "summary": "The event entry is very sparse: title and description are generic and identical, no time specified, and no district tag is included, making it difficult for users to understand the event. The location is present but only as a venue name. This entry needs significant improvement."
+    "summary": "Event lacks time and description; location incomplete; no district tag."
   }
 }

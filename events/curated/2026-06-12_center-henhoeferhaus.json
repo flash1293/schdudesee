@@ -14,5 +14,42 @@
     "Kirche",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.5,
+        "issues": [
+          "Title is not descriptive and lacks event type."
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.1,
+        "issues": [
+          "Description is empty, provides no information."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.8,
+        "issues": [
+          "Tags are minimal; could include a more specific category like 'Treff' or 'Workshop'."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.73,
+    "passed": true,
+    "summary": "Event entry is missing description which is a major flaw; location and time are clear. Title could be improved. Tags cover church and district but could be more specific."
+  }
 }

@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.85,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -31,10 +31,8 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "The contact email address appears to contain a placeholder ('teststube') which may be a typo or test address."
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "tag_quality": {
         "score": 1.0,
@@ -45,8 +43,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.942,
+    "overall_score": 0.97,
     "passed": true,
-    "summary": "Event entry is well-structured with clear location and time, informative description, and appropriate tags. No duplicate risk. Minor issue in description email address."
+    "summary": "The event entry is clear and complete. Title is descriptive, location and time are properly extracted, description is informative, tags are appropriate (including district tag), and no duplicate risk with other events."
   }
 }

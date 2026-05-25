@@ -32,7 +32,7 @@
       "description_quality": {
         "score": 0.0,
         "issues": [
-          "description is empty"
+          "Description is empty"
         ]
       },
       "tag_quality": {
@@ -46,6 +46,6 @@
     },
     "overall_score": 0.82,
     "passed": true,
-    "summary": "The event has a clear title, well-defined location, and appropriate tags. Time is provided. However, the description is empty, reducing informativeness. No duplicate concerns."
+    "summary": "Clear title, proper location and time extraction, but missing description. Tags are appropriate and no duplicate risk."
   }
 }

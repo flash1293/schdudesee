@@ -21,13 +21,13 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 0.8,
         "issues": [
-          "Location is missing street address and city; consider adding full address"
+          "Location lacks street address details"
         ]
       },
       "time_extraction": {
@@ -39,21 +39,21 @@
         "issues": []
       },
       "tag_quality": {
-        "score": 0.3,
+        "score": 0.6,
         "issues": [
-          "Tag 'Fest' is not appropriate; should be 'Workshop'",
-          "Tags 'Friedrichstal' and 'Bruchsal' are not the primary event location (Spöck) and may be misleading"
+          "Tag 'Fest' is inappropriate for a workshop; consider 'Workshop'",
+          "Tags include distracts not directly related to this event location (Friedrichstal, Bruchsal)"
         ]
       },
       "duplicate_risk": {
-        "score": 0.0,
+        "score": 0.2,
         "issues": [
-          "This event appears to be a duplicate of 'der Stärke-Baum Workshop für Alleinerziehende' in the context at the same time and location"
+          "Event is likely duplicate of 'der Stärke-Baum Workshop für Alleinerziehende' with same time and location"
         ]
       }
     },
     "overall_score": 0.7,
     "passed": true,
-    "summary": "The event entry has high-quality title and description but suffers from inaccurate tags and a high duplicate risk with a context event."
+    "summary": "Title and description are clear and informative; time extraction correct; location is given but lacks address; tags have mismatched category and extra district tags; high duplication risk with context event."
   }
 }

@@ -5,7 +5,7 @@
   "time_raw": "17:00 Uhr",
   "location": "Zentralkläranlage / Sitzungsraum",
   "organizer": "Verwaltungsgemeinschaft Graben-Neudorf / Dettenheim",
-  "description": "Kopie von Sitzung Gemeinsamer Ausschuss - Verwaltungsgemeinschaft Graben-Neudorf / Dettenheim. at Zentralkläranlage / Sitzungsraum. from 17:00 Uhr.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146366/kopie-von-sitzung-gemeinsamer-ausschuss-verwaltungsgemeinschaft-graben-neudorf-dettenheim",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -18,13 +18,13 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.5,
+        "score": 0.7,
         "issues": [
-          "Title starts with 'Kopie von', suggesting it's a copy; not original"
+          "Title includes 'Kopie von' which is unclear and may indicate a duplicate entry"
         ]
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
@@ -32,13 +32,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.0,
         "issues": [
-          "Description merely repeats title, location, and time, providing no additional useful information"
+          "Description is empty, no details about event provided"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.77,
+    "overall_score": 0.78,
     "passed": true,
-    "summary": "Event entry has a somewhat unclear title due to 'Kopie von' prefix and a very brief description that adds no new information. Location, time, and tags are appropriate. The event does not appear to be a duplicate within the provided context."
+    "summary": "Event entry has a generally clear title (with a minor duplication note), proper location and time extraction, and appropriate tags, but lacks any description, which significantly reduces its quality."
   }
 }

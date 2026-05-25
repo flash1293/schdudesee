@@ -18,15 +18,13 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title could be more specific about event activities"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "location_extraction": {
-        "score": 0.7,
+        "score": 0.8,
         "issues": [
-          "Location is only a venue name, missing full address"
+          "Location could be more specific (missing district)"
         ]
       },
       "time_extraction": {
@@ -34,15 +32,15 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is redundant and does not provide additional details beyond title and metadata"
+          "Description is empty"
         ]
       },
       "tag_quality": {
         "score": 0.8,
         "issues": [
-          "Tag 'Treff' may not be most appropriate; 'Sport' or 'Verein' might fit better"
+          "Consider adding a more specific category like 'Sport' or 'Verein'"
         ]
       },
       "duplicate_risk": {
@@ -52,6 +50,6 @@
     },
     "overall_score": 0.77,
     "passed": true,
-    "summary": "The event entry is mostly well-structured with clear time extraction and no duplicate risk. However, the description is uninformative and the location lacks detail. Tags are acceptable but could be more specific."
+    "summary": "Event entry has a descriptive title, proper location and time, but lacks description. Tags include district, but could be more specific. No duplicates."
   }
 }

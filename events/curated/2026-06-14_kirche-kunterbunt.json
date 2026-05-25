@@ -19,21 +19,25 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
-        "issues": []
+        "score": 0.7,
+        "issues": [
+          "Title is a specific event name that may not clearly convey event type to an unfamiliar audience."
+        ]
       },
       "location_extraction": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "Location extracted as town only, missing venue or specific address."
+        ]
       },
       "time_extraction": {
         "score": 1.0,
         "issues": []
       },
       "description_quality": {
-        "score": 0.6,
+        "score": 0.3,
         "issues": [
-          "Poor formatting and possible truncation"
+          "Description is poorly formatted with missing spaces and appears truncated, hindering readability and informativeness."
         ]
       },
       "tag_quality": {
@@ -45,8 +49,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.9,
+    "overall_score": 0.82,
     "passed": true,
-    "summary": "Event entry has clear title, proper location and time extraction, appropriate tags. Description formatting needs improvement but contains essential info."
+    "summary": "Event entry is well-organized with clear time/location extraction and relevant tags, but description quality is poor due to formatting issues and truncation. No duplication concerns."
   }
 }

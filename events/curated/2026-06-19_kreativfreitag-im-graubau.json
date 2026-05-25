@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 0.95,
         "issues": []
       },
       "location_extraction": {
@@ -31,7 +31,7 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.9,
+        "score": 0.95,
         "issues": []
       },
       "tag_quality": {
@@ -43,8 +43,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.97,
+    "overall_score": 0.98,
     "passed": true,
-    "summary": "Event entry is high quality with clear title, well-formed location, properly extracted time, informative description, appropriate tags including district, and no duplicate concerns."
+    "summary": "Event data is well-structured: clear title, complete location, correct time extraction, informative description, appropriate tags including district, and no duplicate risk."
   }
 }

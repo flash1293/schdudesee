@@ -20,30 +20,29 @@
       "title_quality": {
         "score": 0.7,
         "issues": [
-          "Title is too generic; could include more details about the event like location or type."
+          "Title is generic, could include more specific details like day or location"
         ]
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time provided; time_raw is empty."
+          "No time provided (time_raw is empty)"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.0,
         "issues": [
-          "Description is identical to title and provides no additional information."
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.4,
         "issues": [
-          "Missing district tag (should include one of the available districts).",
-          "Tags are very generic and could be more specific."
+          "Missing a district tag from the allowed districts list"
         ]
       },
       "duplicate_risk": {
@@ -51,8 +50,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.55,
+    "overall_score": 0.52,
     "passed": false,
-    "summary": "Event entry is missing time and has an uninformative description. Tags lack district and are generic. Title is generic but location is present. Duplicate risk is low."
+    "summary": "Missing time and description, title generic, no district tag."
   }
 }

@@ -5,7 +5,7 @@
   "time_raw": "17:00",
   "location": "",
   "organizer": "Büchig(er)leben",
-  "description": "Sommerbiergarten in Büchig. from 17:00. organized by Büchig(er)leben.",
+  "description": "",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/sommerbiergarten-in-buechig/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
@@ -28,28 +28,26 @@
         ]
       },
       "time_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "description_quality": {
-        "score": 0.6,
+        "score": 0.0,
         "issues": [
-          "Description is repetitive and lacks detail"
+          "Description field is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.8,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
-        "score": 0.3,
-        "issues": [
-          "High similarity with another event from same organizer on same date"
-        ]
+        "score": 1.0,
+        "issues": []
       }
     },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "Event entry has clear title and time, but missing location and minimal description. Likely duplicate of another event in the same district and date."
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "Event is missing location and description, but other fields are present and tags are appropriate."
   }
 }

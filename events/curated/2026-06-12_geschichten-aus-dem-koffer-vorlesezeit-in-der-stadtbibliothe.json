@@ -15,5 +15,38 @@
     "Bildung",
     "Bruchsal"
   ],
-  "recurring_group_id": 1630508999
+  "recurring_group_id": 1630508999,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.95,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": [
+          "Description contains a specific date example (6.2.) that may be outdated relative to the event start date"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.98,
+    "passed": true,
+    "summary": "The event entry is well-structured with a descriptive title, precise location and time, and an informative description. Tags are appropriate and include a district. No duplication risk with the other event on the same date."
+  }
 }

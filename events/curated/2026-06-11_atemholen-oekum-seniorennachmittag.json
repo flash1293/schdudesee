@@ -14,5 +14,44 @@
     "Senioren",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Title uses 'Atemholen' which may be ambiguous but overall indicates senior event."
+        ]
+      },
+      "location_extraction": {
+        "score": 0.9,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided."
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty."
+        ]
+      },
+      "tag_quality": {
+        "score": 0.6,
+        "issues": [
+          "Tags are too narrow; missing 'Kirche' category to reflect the ecumenical nature."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Event entry is incomplete: missing time and description, but location and title are acceptable. Tags lack appropriate category for church event."
+  }
 }

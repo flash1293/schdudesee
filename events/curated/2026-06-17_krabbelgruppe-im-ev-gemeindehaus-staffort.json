@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 0.95,
         "issues": []
       },
       "location_extraction": {
@@ -31,9 +31,7 @@
       },
       "description_quality": {
         "score": 0.9,
-        "issues": [
-          "Kontakt nur Name, keine Telefonnummer oder E-Mail"
-        ]
+        "issues": []
       },
       "tag_quality": {
         "score": 1.0,
@@ -44,8 +42,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.97,
+    "overall_score": 0.98,
     "passed": true,
-    "summary": "Die Veranstaltung ist gut strukturiert, Titel und Ort klar. Die Beschreibung ist informativ, jedoch fehlen genauere Kontaktdaten. Die Tags sind passend."
+    "summary": "Event entry is clear and complete with title, location, time, and appropriate tags. Description is inviting and informative. No duplicate events in context."
   }
 }

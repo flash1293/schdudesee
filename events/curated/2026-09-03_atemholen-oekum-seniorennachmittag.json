@@ -18,38 +18,38 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Abbreviation 'Ökum.' not expanded; title could be more descriptive"
-        ]
+        "score": 0.8,
+        "issues": []
       },
       "location_extraction": {
         "score": 1.0,
         "issues": []
       },
       "time_extraction": {
-        "score": 0.0,
+        "score": 0.1,
         "issues": [
-          "No time information provided"
+          "No time specified"
         ]
       },
       "description_quality": {
         "score": 0.1,
         "issues": [
-          "Description is identical to title and lacks additional details"
+          "Empty description"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.7,
+        "issues": [
+          "Missing relevant category tag: Kirche"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.63,
+    "overall_score": 0.62,
     "passed": true,
-    "summary": "Event entry lacks time information and has uninformative description, resulting in low overall quality."
+    "summary": "Event for seniors with ecumenical theme, but missing description and time information. Tags include district but miss relevant category 'Kirche'."
   }
 }

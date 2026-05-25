@@ -15,5 +15,44 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.7,
+        "issues": [
+          "Title includes cancellation status ('Abgesagt!') which may be extraneous and could reduce clarity for attendees"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.9,
+        "issues": [
+          "time_raw has leading comma and space, formatting should be cleaned"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty; no information provided about the event"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.5,
+        "issues": [
+          "District tag 'Weingarten' does not match event location (Schloss Unteröwisheim), which is not in Weingarten; tag should reflect the actual location district"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.5,
+    "passed": false,
+    "summary": "Event entry has significant quality issues: no description, potentially inaccurate district tag, minor formatting issue in time field, and cancellation notice in title. These flaws make it unsuitable for publication."
+  }
 }

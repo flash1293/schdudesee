@@ -35,16 +35,18 @@
         "issues": []
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.7,
+        "issues": [
+          "Tag 'Musik' may not be the most appropriate; consider 'Kultur' or 'Kinder'"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.97,
+    "overall_score": 0.92,
     "passed": true,
-    "summary": "Well-structured event with clear title, detailed location, precise time, informative description, appropriate tags, and no duplication risk."
+    "summary": "Event entry is well-structured and informative; tags could be optimized for relevance."
   }
 }

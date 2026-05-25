@@ -15,33 +15,30 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title is not very descriptive and uses regional terms that may be unclear to a general audience."
-        ]
+        "score": 0.8,
+        "issues": []
       },
       "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location field only contains 'Kirchplatz' without specifying city or district, making it ambiguous."
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time information extracted; time_raw field is empty."
+          "No time provided"
         ]
       },
       "description_quality": {
-        "score": 0.1,
+        "score": 0.0,
         "issues": [
-          "Description is minimal and identical to the title, providing no additional information."
+          "Description is empty"
         ]
       },
       "tag_quality": {
         "score": 0.0,
         "issues": [
-          "Tags list is empty; should include at least one district tag from the available list and a relevant category tag (e.g., Essen)."
+          "No tags provided",
+          "Missing district tag"
         ]
       },
       "duplicate_risk": {
@@ -49,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.33,
+    "overall_score": 0.47,
     "passed": false,
-    "summary": "Event listing lacks critical details such as time, description, and tags; location is incomplete."
+    "summary": "Event entry lacks time, description, and tags; title and location are adequate. No duplicate risk."
   }
 }

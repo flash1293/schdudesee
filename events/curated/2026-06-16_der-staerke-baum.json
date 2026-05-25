@@ -18,16 +18,15 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.6,
+        "score": 0.4,
         "issues": [
-          "Title is cryptic and does not clearly indicate the event type or target audience"
+          "Title is unclear without additional context"
         ]
       },
       "location_extraction": {
         "score": 0.5,
         "issues": [
-          "Location contains unnecessary label 'Veranstaltungsort:'",
-          "No district specified in location"
+          "Location contains extra label and whitespace"
         ]
       },
       "time_extraction": {
@@ -35,15 +34,16 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.6,
         "issues": [
-          "Description is too short (only 3 words) and lacks informative details about the workshop content, requirements, or benefits"
+          "Description is minimal, could be more informative"
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.3,
         "issues": [
-          "Missing a district tag; one tag should be the district from the provided list to indicate location"
+          "Missing a district tag from the available districts list",
+          "Tag 'Natur' does not seem relevant for a workshop for single parents"
         ]
       },
       "duplicate_risk": {
@@ -51,8 +51,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.65,
+    "overall_score": 0.63,
     "passed": true,
-    "summary": "Event has basic information (time, date, location) but lacks a clear title and detailed description; location extraction includes extra text and no district; missing district tag."
+    "summary": "The event entry has unclear title, location with formatting issues, minimal description, and missing district tag, but time extraction is good and no duplicate risk."
   }
 }

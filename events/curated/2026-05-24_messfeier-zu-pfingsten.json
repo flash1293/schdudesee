@@ -31,15 +31,15 @@
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.1,
         "issues": [
-          "Description is not informative; identical to title"
+          "Empty description"
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.3,
         "issues": [
-          "Missing category tag; appropriate: Kirche"
+          "Missing category tag (e.g., Kirche)"
         ]
       },
       "duplicate_risk": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.6,
-    "passed": true,
-    "summary": "Event has clear title and location, but missing time and poor description; tag could be improved with a category."
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Event has no time and empty description, and tags are incomplete. Title and location are fine."
   }
 }

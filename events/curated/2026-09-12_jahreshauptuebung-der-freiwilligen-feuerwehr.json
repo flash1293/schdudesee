@@ -22,23 +22,25 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.5,
+        "issues": [
+          "Location only specifies district; no specific address or venue provided."
+        ]
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No start time provided (time_raw is empty)"
+          "No time information available."
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.0,
         "issues": [
-          "Description identical to title, no additional information"
+          "Description is empty, provides no information about the event."
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -46,8 +48,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.7,
-    "passed": true,
-    "summary": "Event has a clear title and appropriate tags, but lacks a start time and description is minimal."
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Event lacks time and description; other aspects are acceptable."
   }
 }

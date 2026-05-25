@@ -30,24 +30,22 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.4,
+        "score": 0.1,
         "issues": [
-          "Description is auto-generated and repeats other fields; lacks unique event details."
+          "description is empty"
         ]
       },
       "tag_quality": {
         "score": 0.9,
-        "issues": [
-          "Tags are appropriate but minimal; adding a category like 'Kirche' could improve classification."
-        ]
+        "issues": []
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.87,
+    "overall_score": 0.82,
     "passed": true,
-    "summary": "Event entry is mostly clean with clear title and accurate location/time. The description is the weakest part as it merely restates existing fields. Tags are correct but could be extended. No duplicate concerns. Overall quality is good."
+    "summary": "Title clear, location and time extracted correctly, tags appropriate and include district. Description is empty, which significantly reduces completeness."
   }
 }

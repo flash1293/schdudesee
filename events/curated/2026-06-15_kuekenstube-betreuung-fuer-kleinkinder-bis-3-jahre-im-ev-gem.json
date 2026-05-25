@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -27,17 +27,23 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "Only start time provided in time_raw; end time (12:00) mentioned in description is not extracted."
+        ]
       },
       "description_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.85,
+        "issues": [
+          "Description refers to a 2025 flyer for a 2026 event, causing minor inconsistency.",
+          "End time is not explicitly highlighted in the structured description."
+        ]
       },
       "tag_quality": {
         "score": 0.8,
         "issues": [
-          "Missing tag 'Kinder' which is highly relevant"
+          "Missing 'Kinder' tag which is highly relevant for a toddler care event.",
+          "District tag 'Friedrichstal' is correctly included."
         ]
       },
       "duplicate_risk": {
@@ -45,8 +51,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.97,
+    "overall_score": 0.91,
     "passed": true,
-    "summary": "Exceptional event entry with clear title, full location and time, detailed description. Tags minorly lacking 'Kinder' category."
+    "summary": "Event entry is generally good with clear title, location, and low duplicate risk. Minor issues: end time not structured, description inconsistency, and missing 'Kinder' tag."
   }
 }

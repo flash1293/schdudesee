@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
@@ -31,25 +31,22 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.5,
         "issues": [
-          "Description truncated and uninformative; 'Weiterlesen' indicates missing content"
+          "Description is truncated and ends with placeholder; missing space in description text."
         ]
       },
       "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "'Bildung' is not clearly relevant for a concert; 'Kultur' would be more appropriate",
-          "District tag 'Linkenheim' only partially reflects the location 'Linkenheim-Hochstetten'"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.75,
+    "overall_score": 0.9,
     "passed": true,
-    "summary": "Title, location, and time are well extracted. Description is severely truncated and offers little value. Tags are mostly valid but include a misaligned category and slightly imprecise district tag. No duplication risk."
+    "summary": "Event entry is clear regarding title and time; location and tags are appropriate; description is incomplete which reduces overall quality."
   }
 }

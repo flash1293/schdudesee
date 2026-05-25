@@ -22,36 +22,30 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location is missing street address"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "time_extraction": {
         "score": 1.0,
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is auto-generated and lacks informative content"
+          "Description is empty, providing no information about the event"
         ]
       },
       "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tags are limited; could include more relevant categories like Markt or Wohltätigkeit"
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "duplicate_risk": {
-        "score": 0.2,
-        "issues": [
-          "Likely duplicate of CVJM Spöck – Familienbasar (same organizer, location, time)"
-        ]
+        "score": 1.0,
+        "issues": []
       }
     },
-    "overall_score": 0.6,
+    "overall_score": 0.82,
     "passed": true,
-    "summary": "Event has clear title and proper time extraction, but location lacks street address, description is minimal, tags are sparse, and there is high duplication risk with Familienbasar event."
+    "summary": "The event entry is generally well-structured with a clear title, location, and time, but it lacks a description, which significantly reduces its quality."
   }
 }

@@ -33,11 +33,11 @@
       "description_quality": {
         "score": 0.85,
         "issues": [
-          "Missing space after 'Kosten' before 'Die Teilnahme'"
+          "Minor formatting issues (e.g., missing spaces in 'KostenDie Teilnahme', 'AnsprechpartnerinBarbara')"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
@@ -45,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.94,
+    "overall_score": 0.96,
     "passed": true,
-    "summary": "Event entry is clear and complete. Location and time well extracted. Description informative with minor formatting error. Tags appropriate including a district. No duplicate risk."
+    "summary": "Eltern-Baby-Café entry is clear and well-structured, with a descriptive title, complete location, and start time. Description is informative despite minor formatting flaws. Tags are appropriate and include the required district tag. No duplicate risk with other events listed."
   }
 }

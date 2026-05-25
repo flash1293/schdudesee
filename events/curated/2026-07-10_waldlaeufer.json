@@ -21,7 +21,7 @@
       "title_quality": {
         "score": 0.5,
         "issues": [
-          "Title is not self-explanatory, might be unclear to users"
+          "Title is not descriptive and requires additional context to understand the event nature"
         ]
       },
       "location_extraction": {
@@ -29,28 +29,30 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 0.8,
+        "score": 0.9,
         "issues": [
-          "time_raw contains leading comma, indicating improper concatenation"
+          "time_raw contains a leading comma which may indicate incomplete extraction"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.0,
         "issues": [
-          "Description is uninformative and redundant"
+          "Description is empty, providing no useful information"
         ]
       },
       "tag_quality": {
         "score": 0.9,
-        "issues": []
+        "issues": [
+          "Tags could be more specific (e.g., include 'Kinder' if it is a children's event)"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.75,
+    "overall_score": 0.72,
     "passed": true,
-    "summary": "The event entry has a cryptic title, a messy time extraction, and an uninformative description. Location and tags are good, and no duplicate risk."
+    "summary": "Event entry has a vague title and empty description, but location, time, and tags are adequately provided. No duplicate events found."
   }
 }

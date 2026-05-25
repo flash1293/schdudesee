@@ -17,31 +17,29 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
+        "score": 0.6,
         "issues": [
-          "Title is a bit generic; could be more descriptive of event type."
+          "Title is vague and does not provide event type or details"
         ]
       },
       "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location is only a district name; no specific venue or address."
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "time_extraction": {
         "score": 1.0,
         "issues": []
       },
       "description_quality": {
-        "score": 0.4,
+        "score": 0.0,
         "issues": [
-          "Description simply repeats structured fields without adding any informative details."
+          "Description is empty, no information provided"
         ]
       },
       "tag_quality": {
-        "score": 0.4,
+        "score": 0.5,
         "issues": [
-          "Only district tag present; missing a category tag from the provided list (e.g., Musik, Kirche)."
+          "Only district tag present, no category tags"
         ]
       },
       "duplicate_risk": {
@@ -49,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.72,
+    "overall_score": 0.68,
     "passed": true,
-    "summary": "Event title and time are clear, but location is vague and description lacks detail. Tags are incomplete (only district). No duplicates detected."
+    "summary": "Event has a generic title but good extraction of location and time; description is missing and tags are incomplete."
   }
 }

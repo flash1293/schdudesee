@@ -28,17 +28,17 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time specified"
+          "No start time specified"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title, lacks details"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.68,
+    "overall_score": 0.67,
     "passed": true,
-    "summary": "The event has a clear title and location, but lacks time and detailed description. Tags are appropriate. No duplicate risk."
+    "summary": "Event entry has clear title and location, but missing time and description; tags are appropriate; low risk of duplication."
   }
 }

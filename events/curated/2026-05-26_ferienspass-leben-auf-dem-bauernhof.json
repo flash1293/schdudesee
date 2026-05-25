@@ -27,15 +27,15 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 0.8,
+        "score": 0.7,
         "issues": [
-          "time_raw contains leading comma, suggesting missing day info or formatting issue"
+          "time_raw contains leading comma"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.0,
         "issues": [
-          "Description is an auto-generated concatenation of other fields without additional informative content"
+          "description is empty"
         ]
       },
       "tag_quality": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.83,
+    "overall_score": 0.6,
     "passed": true,
-    "summary": "The event entry has a clear title and proper location, but the description is uninformative and the time_raw has a formatting issue. Tags are appropriate and include the district. No risk of duplication."
+    "summary": "Event offers farm holiday fun for children. Title is clear and descriptive. Location is present but not a full address. Time extraction has minor formatting issue (leading comma). Description is completely missing, which is a critical flaw. Tags are appropriate and include the correct district Weingarten. No duplicate events in context."
   }
 }

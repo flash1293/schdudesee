@@ -18,9 +18,9 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
+        "score": 0.7,
         "issues": [
-          "Title '@home' may be unclear; consider making the nature of the service more explicit"
+          "Title could be more descriptive"
         ]
       },
       "location_extraction": {
@@ -34,7 +34,7 @@
       "description_quality": {
         "score": 0.0,
         "issues": [
-          "Description is empty and should provide additional details about the event"
+          "Description is empty"
         ]
       },
       "tag_quality": {
@@ -42,12 +42,12 @@
         "issues": []
       },
       "duplicate_risk": {
-        "score": 0.0,
+        "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.6,
+    "overall_score": 0.78,
     "passed": true,
-    "summary": "Event entry has clear time and location, but lacks a description, which is a major flaw. Tags are appropriate and duplicate risk is low."
+    "summary": "Event has clear location and time but lacks description and title is somewhat ambiguous."
   }
 }

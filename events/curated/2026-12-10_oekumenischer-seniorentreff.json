@@ -15,5 +15,40 @@
     "Senioren",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time specified"
+        ]
+      },
+      "description_quality": {
+        "score": 0.1,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.67,
+    "passed": true,
+    "summary": "Title is clear, location present, but missing time and description. Tags appropriate, no duplicate risk."
+  }
 }

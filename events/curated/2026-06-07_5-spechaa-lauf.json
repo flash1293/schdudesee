@@ -30,9 +30,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.4,
+        "score": 0.1,
         "issues": [
-          "Description is not informative; it merely restates information already present in title, location, time, and organizer without providing additional context."
+          "Description is empty"
         ]
       },
       "tag_quality": {
@@ -44,8 +44,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.88,
+    "overall_score": 0.83,
     "passed": true,
-    "summary": "The event entry has a clear title, proper location and time extraction, and appropriate tags including district. However, the description is not informative, which lowers the overall quality."
+    "summary": "A basic event entry with accurate location and time, but lacking a description."
   }
 }

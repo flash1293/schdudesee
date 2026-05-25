@@ -27,17 +27,20 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "End time not extracted but start time present and clear"
+        ]
       },
       "description_quality": {
         "score": 1.0,
         "issues": []
       },
       "tag_quality": {
-        "score": 0.6,
+        "score": 0.7,
         "issues": [
-          "Tag 'Sport' may be inappropriate for a parent-baby group; consider 'Kinder' or 'Treff'. Tag 'Musik' is acceptable but could be more precise."
+          "Missing relevant tags like 'Kinder' or 'Treff'",
+          "Tag 'Sport' may be misleading for a parent-baby playgroup"
         ]
       },
       "duplicate_risk": {
@@ -47,6 +50,6 @@
     },
     "overall_score": 0.92,
     "passed": true,
-    "summary": "The event entry is well-structured with clear title, location, time, and a very informative description. The tags are partially suitable but could be improved for relevance; no duplicate risk exists."
+    "summary": "Well-structured event entry with clear title, complete location and time, and informative description. Tags could be improved by using more relevant categories (e.g., 'Kinder', 'Treff') instead of 'Sport'."
   }
 }

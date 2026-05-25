@@ -19,7 +19,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -35,9 +35,9 @@
         "issues": []
       },
       "tag_quality": {
-        "score": 0.85,
+        "score": 0.9,
         "issues": [
-          "Tag 'Workshop' may not be fully accurate for a recurring youth group; consider 'Verein' or 'Bildung' which are available and more precise"
+          "Tag 'Workshop' may not ideally suit a weekly recurring group, but it is still acceptable."
         ]
       },
       "duplicate_risk": {
@@ -45,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.96,
+    "overall_score": 0.95,
     "passed": true,
-    "summary": "The event entry is clear, location and time are well-extracted, description is informative, and tags are mostly appropriate. Minor improvement in tag selection could use more specific categories. No duplication risk with other events."
+    "summary": "The event entry is well-structured with clear title, complete location and time, and informative description. Tags are appropriate, though 'Workshop' could be refined. No duplicates in context."
   }
 }

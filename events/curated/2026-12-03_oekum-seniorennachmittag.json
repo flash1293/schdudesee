@@ -14,5 +14,44 @@
     "Senioren",
     "Eggenstein"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.8,
+        "issues": [
+          "Abbreviation 'Ökum.' may be unclear"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.1,
+        "issues": [
+          "No time specified (time_raw empty)"
+        ]
+      },
+      "description_quality": {
+        "score": 0.1,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.7,
+        "issues": [
+          "Missing 'Kirche' tag for church event"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.62,
+    "passed": true,
+    "summary": "Event is an ecumenical senior afternoon at Evang. Gemeindehaus in Eggenstein. No time or description provided. Tags include Senioren and district but lack Kirche."
+  }
 }

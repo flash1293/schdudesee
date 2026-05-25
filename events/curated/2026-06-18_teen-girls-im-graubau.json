@@ -19,32 +19,40 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Title could better indicate the recurring club nature (e.g., 'Teen Girls Club')"
+        ]
       },
       "location_extraction": {
         "score": 1.0,
         "issues": []
       },
       "time_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "description_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.85,
+        "issues": [
+          "Minor formatting error in contact line (missing space)",
+          "Disclaimer at end is generic and not event-specific"
+        ]
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.85,
+        "issues": [
+          "Tag 'Kinder' is broad; consider adding 'Treff' to reflect meeting format",
+          "District tag 'Blankenloch' is correct"
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.95,
+    "overall_score": 0.92,
     "passed": true,
-    "summary": "Well-structured event for teen girls with clear time and location; tags appropriately include district."
+    "summary": "Event entry is largely well-structured with comprehensive location, time, and description; minor issues include title specificity, tag completeness, and formatting."
   }
 }

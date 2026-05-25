@@ -30,27 +30,24 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.7,
+        "score": 0.1,
         "issues": [
-          "Description is repetitive and lacks additional helpful information."
+          "Description is empty"
         ]
       },
       "tag_quality": {
         "score": 0.5,
         "issues": [
-          "Tag 'Fest' is not appropriate for a political candidate presentation.",
-          "Missing a district tag (event takes place in Stutensee, but no district tag assigned)."
+          "Missing district tag from available districts list"
         ]
       },
       "duplicate_risk": {
-        "score": 0.2,
-        "issues": [
-          "Event appears to be a duplicate of another event with similar title, time, location, and organizer on the same date."
-        ]
+        "score": 1.0,
+        "issues": []
       }
     },
-    "overall_score": 0.72,
+    "overall_score": 0.75,
     "passed": true,
-    "summary": "Event entry is mostly clear but has tagging issues and high duplicate risk with another event in context."
+    "summary": "Event for candidate presentation with clear title, location, and time, but description is empty and tags lack a district identifier."
   }
 }

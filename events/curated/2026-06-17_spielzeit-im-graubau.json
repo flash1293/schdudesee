@@ -27,26 +27,28 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.85,
+        "score": 0.9,
         "issues": [
-          "Contact information lacks proper spacing"
+          "Only start time provided, no end time in time_raw field"
         ]
       },
-      "tag_quality": {
+      "description_quality": {
         "score": 1.0,
         "issues": []
       },
+      "tag_quality": {
+        "score": 0.9,
+        "issues": [
+          "Tag 'Sport' may not best represent event activities"
+        ]
+      },
       "duplicate_risk": {
-        "score": 1.0,
+        "score": 0.1,
         "issues": []
       }
     },
-    "overall_score": 0.95,
+    "overall_score": 0.8,
     "passed": true,
-    "summary": "Event entry is clear and well-structured. Title is descriptive, location and time are properly extracted, description is informative despite minor formatting issue. Tags are appropriate and no duplicate risk detected."
+    "summary": "The event entry is well-structured with clear title, detailed description, and proper tags. Minor issues: time_raw missing end time and tag 'Sport' not fully representative."
   }
 }

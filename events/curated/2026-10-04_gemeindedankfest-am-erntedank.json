@@ -26,28 +26,28 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 0.0,
+        "score": 0.1,
         "issues": [
-          "No start time provided"
+          "No time_raw value provided"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title and lacks detail"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 0.85,
         "issues": []
       },
       "duplicate_risk": {
-        "score": 1.0,
+        "score": 0.1,
         "issues": []
       }
     },
-    "overall_score": 0.6833,
-    "passed": true,
-    "summary": "The event entry has a clear title and location, but lacks a start time and has a very minimal description. Tags are appropriate. Potential for improvement in providing event time and more descriptive details. Overall quality is below threshold."
+    "overall_score": 0.51,
+    "passed": false,
+    "summary": "Event entry is missing time and description, which are critical for completeness. Title and location are clear and correctly extracted. Tags are appropriate and include the district. The other event on the same date appears distinct, so duplicate risk is low."
   }
 }

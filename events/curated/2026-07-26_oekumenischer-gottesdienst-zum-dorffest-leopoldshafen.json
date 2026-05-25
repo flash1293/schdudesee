@@ -23,19 +23,21 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.8,
+        "issues": [
+          "Location only specifies venue name, missing district/city"
+        ]
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No starting time or time range provided"
+          "No time information provided in time_raw field"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is identical to title, provides no additional information"
+          "Description field is empty, no event details"
         ]
       },
       "tag_quality": {
@@ -47,8 +49,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.7,
+    "overall_score": 0.63,
     "passed": true,
-    "summary": "The event title and tags are appropriate and location is provided, but the time is missing and the description merely repeats the title, making it less informative."
+    "summary": "Event entry has a clear title and appropriate tags including district, but lacks time and description. Location is vague. Overall quality is poor due to missing essential data."
   }
 }

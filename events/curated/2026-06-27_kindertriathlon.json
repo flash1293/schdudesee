@@ -19,10 +19,8 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is brief and could be more descriptive."
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "location_extraction": {
         "score": 1.0,
@@ -31,17 +29,17 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "Missing event start time; time_raw is empty."
+          "No time present for event"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.1,
         "issues": [
-          "Description is insufficient; it only repeats the title without any extra details."
+          "Description is empty, not informative"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -49,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.67,
+    "overall_score": 0.65,
     "passed": true,
-    "summary": "The event entry has a clear title and proper location and tags, but lacks a start time and informative description, significantly reducing its quality."
+    "summary": "Event title clear for Kinder-Triathlon, location properly extracted, but missing time and empty description. Tags appropriate for sport, children, and district. No duplicates."
   }
 }

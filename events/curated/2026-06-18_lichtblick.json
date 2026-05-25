@@ -20,12 +20,14 @@
       "title_quality": {
         "score": 0.3,
         "issues": [
-          "Title is not descriptive; 'Lichtblick' is vague"
+          "Title is vague and not descriptive of the event"
         ]
       },
       "location_extraction": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.5,
+        "issues": [
+          "Location is only the district name, missing specific venue"
+        ]
       },
       "time_extraction": {
         "score": 1.0,
@@ -46,8 +48,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.72,
+    "overall_score": 0.63,
     "passed": true,
-    "summary": "Event entry has a vague title and missing description, but location, time, tags are well extracted and no duplicate risk."
+    "summary": "Event has missing description and vague title, but time and tags are good."
   }
 }

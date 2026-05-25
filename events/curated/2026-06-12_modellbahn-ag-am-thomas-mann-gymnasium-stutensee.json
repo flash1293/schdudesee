@@ -15,5 +15,38 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 308472627
+  "recurring_group_id": 308472627,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Tag 'Musik' is irrelevant; event is not music-related. Consider tags like 'Handwerk', 'Kinder', 'Verein', 'Workshop' instead."
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.87,
+    "passed": true,
+    "summary": "The event entry is well-structured with clear title, location, time, and description. The primary issue is inaccurate tagging, particularly the irrelevant 'Musik' tag. The district tag 'Blankenloch' is correct. No duplicate concerns with other events on the same date."
+  }
 }

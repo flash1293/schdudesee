@@ -13,5 +13,42 @@
   "tags": [
     "Fest"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No start time provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Empty description"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.3,
+        "issues": [
+          "Missing district tag (likely Leopoldshafen); only generic tag 'Fest' present"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.55,
+    "passed": false,
+    "summary": "Title and location are clear; time and description missing; tag lacks district; no duplicates."
+  }
 }

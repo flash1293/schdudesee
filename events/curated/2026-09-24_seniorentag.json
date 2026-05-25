@@ -18,8 +18,10 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
-        "issues": []
+        "score": 0.7,
+        "issues": [
+          "Title is generic; could be more descriptive"
+        ]
       },
       "location_extraction": {
         "score": 1.0,
@@ -30,9 +32,9 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.1,
         "issues": [
-          "Description is too brief and does not provide additional details beyond what is already in other fields."
+          "Description is empty, no event details"
         ]
       },
       "tag_quality": {
@@ -44,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.87,
+    "overall_score": 0.8,
     "passed": true,
-    "summary": "Seniorentag event entry has a clear title, correctly extracted location and time, but the description is minimal and merely repeats other fields. Tags are appropriate and include the district. No duplicate risk."
+    "summary": "Event entry lacks a description and has a generic title, but other details are well extracted. Tags are appropriate and no risk of duplicates."
   }
 }

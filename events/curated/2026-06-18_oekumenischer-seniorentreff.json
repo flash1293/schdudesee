@@ -29,17 +29,17 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "time_raw is empty, no time information provided"
+          "No start time provided"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.0,
         "issues": [
-          "Description is identical to title, not informative"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.68,
+    "overall_score": 0.63,
     "passed": true,
-    "summary": "Event entry has a clear title and appropriate tags, but lacks time information and has a very minimal description. Location and district tag are present. No duplicate risk."
+    "summary": "Event title and tags are appropriate, but missing start time and description significantly reduce completeness."
   }
 }

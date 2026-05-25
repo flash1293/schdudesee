@@ -14,5 +14,38 @@
     "Markt",
     "Blankenloch"
   ],
-  "recurring_group_id": 11069990
+  "recurring_group_id": 11069990,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.9,
+        "issues": []
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "description_quality": {
+        "score": 0.7,
+        "issues": [
+          "Description is minimal and repeats title and time details without additional context."
+        ]
+      },
+      "tag_quality": {
+        "score": 1.0,
+        "issues": []
+      },
+      "duplicate_risk": {
+        "score": 1.0,
+        "issues": []
+      }
+    },
+    "overall_score": 0.93,
+    "passed": true,
+    "summary": "Event entry is generally well-structured with a clear title, accurate location and time, appropriate tags, and no duplicate risk. The description could be more informative but is adequate."
+  }
 }

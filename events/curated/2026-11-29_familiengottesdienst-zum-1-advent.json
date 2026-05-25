@@ -19,36 +19,36 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "time_raw is empty, no start time"
+          "time_raw is empty"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.1,
         "issues": [
-          "description identical to title, not informative"
+          "description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "duplicate_risk": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 0.63,
+    "overall_score": 0.68,
     "passed": true,
-    "summary": "Event title and location are clear, but it lacks a time and the description is minimal, reducing overall quality."
+    "summary": "Familiengottesdienst zum 1. Advent at St. Albertus Magnus Leopoldshafen. No description or time provided. Tags: Kirche, Kinder, Leopoldshafen."
   }
 }

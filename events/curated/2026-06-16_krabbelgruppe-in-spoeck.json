@@ -18,7 +18,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -34,16 +34,18 @@
         "issues": []
       },
       "tag_quality": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.9,
+        "issues": [
+          "Tags are appropriate but minimal; could include additional categories like Treff."
+        ]
       },
       "duplicate_risk": {
         "score": 1.0,
         "issues": []
       }
     },
-    "overall_score": 1.0,
+    "overall_score": 0.97,
     "passed": true,
-    "summary": "Well-structured event entry with complete and clear information, appropriate tags, and no duplication issues."
+    "summary": "The event entry is well-structured with a clear title, complete location and time, informative description, and appropriate tags. No significant issues."
   }
 }

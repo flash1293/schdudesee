@@ -22,25 +22,25 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 0.8,
         "issues": [
-          "Location name contains a typo (St. Antonis instead of St. Antonius)"
+          "Possible typo in location name: 'Antonis' instead of 'Antonius'"
         ]
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No start time provided"
+          "No time provided"
         ]
       },
       "description_quality": {
-        "score": 0.3,
+        "score": 0.0,
         "issues": [
-          "Description is identical to title, lacks additional details"
+          "Empty description"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -48,8 +48,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.68,
+    "overall_score": 0.6,
     "passed": true,
-    "summary": "The event entry provides a clear title and appropriate tags, but lacks a start time and the description does not add value. Location is present but has a minor typo. No duplicate events exist."
+    "summary": "Event entry lacks time and description, making it incomplete. Otherwise title and location are informative."
   }
 }

@@ -31,13 +31,13 @@
         "issues": []
       },
       "description_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "tag_quality": {
         "score": 0.6,
         "issues": [
-          "Tag 'Sport' does not align with event activities (singing, playing, crafting); consider using 'Treff' or 'Kirche' instead."
+          "Tag 'Sport' is not appropriate for this event; consider 'Treff' or 'Kirche'"
         ]
       },
       "duplicate_risk": {
@@ -45,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.92,
+    "overall_score": 0.9,
     "passed": true,
-    "summary": "Event entry is well-structured with clear title and informative description, but tag 'Sport' is not appropriate."
+    "summary": "Event entry is well-structured with clear title, location, and time. Description is informative. However, the tag 'Sport' is not fitting; consider replacing with 'Treff' or 'Kirche'."
   }
 }

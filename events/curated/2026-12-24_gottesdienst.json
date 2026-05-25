@@ -12,7 +12,50 @@
   ],
   "tags": [
     "Kirche",
-    "Leopoldshafen"
+    "Leopoldshafen",
+    "⚠️"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "_quality": {
+    "judgments": {
+      "title_quality": {
+        "score": 0.6,
+        "issues": [
+          "Title is generic, could be more specific"
+        ]
+      },
+      "location_extraction": {
+        "score": 1.0,
+        "issues": []
+      },
+      "time_extraction": {
+        "score": 0.0,
+        "issues": [
+          "No time information provided"
+        ]
+      },
+      "description_quality": {
+        "score": 0.0,
+        "issues": [
+          "Description is empty"
+        ]
+      },
+      "tag_quality": {
+        "score": 0.4,
+        "issues": [
+          "Contains invalid tag '⚠️'",
+          "Consider adding more specific tags"
+        ]
+      },
+      "duplicate_risk": {
+        "score": 0.4,
+        "issues": [
+          "Potential duplicate with 'Christvesper' event at same location"
+        ]
+      }
+    },
+    "overall_score": 0.4,
+    "passed": false,
+    "summary": "Generic event title with missing time and description. Contains invalid tag. Possible duplicate with Christvesper."
+  }
 }

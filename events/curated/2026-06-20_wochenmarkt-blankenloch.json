@@ -31,9 +31,7 @@
       },
       "description_quality": {
         "score": 0.8,
-        "issues": [
-          "Description is brief and could provide more details about the market offerings or additional context."
-        ]
+        "issues": []
       },
       "tag_quality": {
         "score": 1.0,
@@ -46,6 +44,6 @@
     },
     "overall_score": 0.95,
     "passed": true,
-    "summary": "Well-structured event entry with clear title, properly extracted location and time, and accurate tags including the required district. The description is short but functional; no duplicate risk."
+    "summary": "The event entry is clear and complete with a descriptive title, specific location, and proper time extraction. Tags include a valid district and an appropriate category. The description provides the schedule but could be more detailed. No risk of duplication with the other event in the context."
   }
 }

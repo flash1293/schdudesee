@@ -31,11 +31,8 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Minor formatting issue: missing space after exclamation mark",
-          "Schedule mentions both Tuesday and Friday but event date only covers Tuesday"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "tag_quality": {
         "score": 1.0,
@@ -46,8 +43,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.95,
+    "overall_score": 0.97,
     "passed": true,
-    "summary": "Event entry is well-structured with clear title, location, and time. Description is informative but has minor formatting issue. Tags appropriate. No duplication risk."
+    "summary": "Well-structured children's dance event with clear title, location, time, and appropriate tags. No duplication risk in context."
   }
 }

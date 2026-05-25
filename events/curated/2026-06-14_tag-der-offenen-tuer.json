@@ -17,7 +17,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -35,9 +35,9 @@
         ]
       },
       "tag_quality": {
-        "score": 0.7,
+        "score": 0.6,
         "issues": [
-          "Only district tag present, consider adding a category tag (e.g., Sport or Verein)"
+          "Missing category tag; only district tag present"
         ]
       },
       "duplicate_risk": {
@@ -47,6 +47,6 @@
     },
     "overall_score": 0.75,
     "passed": true,
-    "summary": "Event has clear title, well-extracted location and time, and is not a duplicate. However, it lacks a description and should include an additional category tag for better classification."
+    "summary": "Title, location, and time are well-extracted. Missing description and incomplete tags (no category). No duplicate risk."
   }
 }

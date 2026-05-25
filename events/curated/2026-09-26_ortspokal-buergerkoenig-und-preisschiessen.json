@@ -18,10 +18,8 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is a concatenation of technical terms without context, potentially unclear to outsiders"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "location_extraction": {
         "score": 1.0,
@@ -30,19 +28,19 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No start time provided"
+          "No time provided"
         ]
       },
       "description_quality": {
         "score": 0.1,
         "issues": [
-          "Description is identical to title, offering no additional information"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.2,
+        "score": 0.3,
         "issues": [
-          "Tag 'Politik' is inappropriate; event is clearly a shooting competition, better suited for 'Sport' or 'Verein'"
+          "Tag 'Politik' is not appropriate for a shooting competition; more suitable tags would be 'Sport', 'Verein', or 'Fest'"
         ]
       },
       "duplicate_risk": {
@@ -50,8 +48,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.5,
+    "overall_score": 0.55,
     "passed": false,
-    "summary": "The event entry has a good location extraction but critically lacks a time, has a non-informative description, and uses an incorrect category tag."
+    "summary": "Event title is descriptive but entry lacks time and description. Tag 'Politik' is unsuitable for the event type. Location is properly extracted."
   }
 }

@@ -25,17 +25,17 @@
       "location_extraction": {
         "score": 0.5,
         "issues": [
-          "Location contains formatting prefix 'Veranstaltungsort:' and newline characters, not a clean extracted address."
+          "Location field contains label 'Veranstaltungsort:' and newlines instead of a clean location name."
         ]
       },
       "time_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "description_quality": {
         "score": 0.4,
         "issues": [
-          "Description is too brief; only states age range, lacks informative details about the event."
+          "Description is too brief, only providing age range, lacks event details."
         ]
       },
       "tag_quality": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.77,
+    "overall_score": 0.78,
     "passed": true,
-    "summary": "Clear title, properly extracted time, accurate tags; but location has formatting artifacts and description lacks detail beyond age range."
+    "summary": "Event title is clear and specific; time extraction correct; location extraction needs improvement due to extra formatting; description is minimal and not informative; tags are appropriate; duplicate risk low."
   }
 }

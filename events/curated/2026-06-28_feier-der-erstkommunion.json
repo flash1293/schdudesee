@@ -26,19 +26,19 @@
         "issues": []
       },
       "time_extraction": {
-        "score": 0.1,
+        "score": 0.0,
         "issues": [
-          "No time provided, time_raw is empty"
+          "no time specified"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.0,
         "issues": [
-          "Description is identical to title and lacks informative content"
+          "description is empty"
         ]
       },
       "tag_quality": {
-        "score": 1.0,
+        "score": 0.9,
         "issues": []
       },
       "duplicate_risk": {
@@ -46,8 +46,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.7,
+    "overall_score": 0.63,
     "passed": true,
-    "summary": "Event listing for 'Feier der Erstkommunion' is mostly clear in title and location, but missing time information and description is minimal. Tags are appropriate."
+    "summary": "Event entry missing time and description, but title and location are clear, tags appropriate, not a duplicate."
   }
 }

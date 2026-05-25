@@ -19,23 +19,21 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.85,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
-        "issues": [
-          "Location field does not include a specific venue name."
-        ]
+        "score": 1.0,
+        "issues": []
       },
       "time_extraction": {
         "score": 1.0,
         "issues": []
       },
       "description_quality": {
-        "score": 0.5,
+        "score": 0.1,
         "issues": [
-          "Description is minimal; it only mentions cost and contact, lacking event description."
+          "Description does not describe the event; only contains cost and contact information"
         ]
       },
       "tag_quality": {
@@ -47,8 +45,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.875,
+    "overall_score": 0.83,
     "passed": true,
-    "summary": "Title, time, location, and tags are good. Description lacks informative content. No duplicate risk."
+    "summary": "Title is clear, location and time are properly extracted. However description lacks event details, including only cost and contact. Tags are appropriate with district included. No duplicate detected."
   }
 }

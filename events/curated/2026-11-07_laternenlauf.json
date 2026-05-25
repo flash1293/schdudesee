@@ -17,31 +17,33 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.7,
+        "score": 0.8,
         "issues": [
-          "Title is minimal and could benefit from additional context (e.g., type of event or audience)"
+          "Title is generic; adding location would improve clarity"
         ]
       },
       "location_extraction": {
-        "score": 1.0,
-        "issues": []
+        "score": 0.95,
+        "issues": [
+          "Address includes newlines; should be formatted as single line"
+        ]
       },
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time information present; time_raw is empty"
+          "No start time provided"
         ]
       },
       "description_quality": {
-        "score": 0.1,
+        "score": 0.0,
         "issues": [
-          "Description is identical to title and provides no additional useful information"
+          "Description is empty"
         ]
       },
       "tag_quality": {
-        "score": 0.5,
+        "score": 0.2,
         "issues": [
-          "Missing a category tag from the available list (e.g., Kinder or Fest); only district tag is present"
+          "Only district tag provided; missing relevant category tags such as 'Kinder' or 'Fest'"
         ]
       },
       "duplicate_risk": {
@@ -49,8 +51,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.55,
+    "overall_score": 0.45,
     "passed": false,
-    "summary": "Event entry has major shortcomings: no time and very poor description. Tags are incomplete. Title and location extraction are acceptable. Overall quality is low."
+    "summary": "Event 'Laternenlauf' in Eggenstein: missing time and description, tags incomplete. Not a duplicate."
   }
 }

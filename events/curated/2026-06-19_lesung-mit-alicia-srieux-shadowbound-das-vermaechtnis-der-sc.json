@@ -21,9 +21,9 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.6,
+        "score": 0.8,
         "issues": [
-          "location contains formatting prefix 'Veranstaltungsort:'"
+          "Location string contains label text 'Veranstaltungsort:' that may not be part of the actual venue name."
         ]
       },
       "time_extraction": {
@@ -33,13 +33,14 @@
       "description_quality": {
         "score": 0.0,
         "issues": [
-          "description is empty"
+          "Description is empty, provides no information about the event."
         ]
       },
       "tag_quality": {
-        "score": 0.4,
+        "score": 0.5,
         "issues": [
-          "missing district tag from available districts; only 'Kultur' tag present but should include a district"
+          "Missing district tag from available districts list.",
+          "Tag 'Kultur' is very broad; a more specific tag like 'Literatur' might be more appropriate."
         ]
       },
       "duplicate_risk": {
@@ -47,8 +48,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.67,
+    "overall_score": 0.72,
     "passed": true,
-    "summary": "Event title is clear, location has extra formatting, time present, description missing, tags missing district, no risk of duplicate."
+    "summary": "The event has a clear title and time, but lacks a description and has an imperfect location extraction. The tags miss a district identifier and could be more specific. Duplicate risk is low."
   }
 }

@@ -23,7 +23,7 @@
         "issues": []
       },
       "location_extraction": {
-        "score": 0.9,
+        "score": 1.0,
         "issues": []
       },
       "time_extraction": {
@@ -31,22 +31,22 @@
         "issues": []
       },
       "description_quality": {
-        "score": 0.85,
+        "score": 0.95,
         "issues": []
       },
       "tag_quality": {
-        "score": 0.6,
+        "score": 0.5,
         "issues": [
-          "Tag 'Kinder' is not appropriate for a language course; consider 'Bildung' or 'Essen'"
+          "Tag 'Kinder' is not relevant for this adult language course; 'Bildung' or 'Essen' would be more appropriate"
         ]
       },
       "duplicate_risk": {
-        "score": 1.0,
+        "score": 0.95,
         "issues": []
       }
     },
     "overall_score": 0.88,
     "passed": true,
-    "summary": "Französische Konversation beim Frühstück is a well-described language course. Title, location, time are clear. Tags include an irrelevant 'Kinder' tag; should be replaced with 'Bildung' or 'Essen'. No duplicate concerns."
+    "summary": "The event entry is clear and well-structured, with precise title, location, time, and a detailed description. The only notable flaw is an inappropriate 'Kinder' tag for an adult course, which lowers tag quality. No duplicate risk is present."
   }
 }

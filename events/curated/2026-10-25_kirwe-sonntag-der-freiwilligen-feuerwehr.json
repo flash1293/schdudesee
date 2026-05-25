@@ -17,7 +17,7 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.8,
+        "score": 0.9,
         "issues": []
       },
       "location_extraction": {
@@ -27,19 +27,19 @@
       "time_extraction": {
         "score": 0.0,
         "issues": [
-          "No time information provided"
+          "No time provided"
         ]
       },
       "description_quality": {
-        "score": 0.2,
+        "score": 0.0,
         "issues": [
-          "Description is identical to title, no additional details"
+          "Empty description"
         ]
       },
       "tag_quality": {
         "score": 0.5,
         "issues": [
-          "Missing event category tag (e.g., Fest, Verein)"
+          "Only district tag present, missing category tag(s)"
         ]
       },
       "duplicate_risk": {
@@ -47,8 +47,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.58,
+    "overall_score": 0.57,
     "passed": false,
-    "summary": "The event entry lacks essential details: no time is given, the description is uninformative, and tags do not include an event category. The location and title are satisfactory. Improvements needed in time, description, and tag completeness."
+    "summary": "Event 'Kirwe-Sonntag der Freiwilligen Feuerwehr' on 2026-10-25 at Feuerwehrhaus Leopoldshafen. Missing time and description, only district tag."
   }
 }

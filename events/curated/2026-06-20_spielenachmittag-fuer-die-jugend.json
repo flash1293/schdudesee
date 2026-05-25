@@ -19,15 +19,13 @@
   "_quality": {
     "judgments": {
       "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Title is generic, could include venue for clarity"
-        ]
+        "score": 0.9,
+        "issues": []
       },
       "location_extraction": {
-        "score": 0.4,
+        "score": 0.5,
         "issues": [
-          "Location field only contains city, missing venue and full address from description"
+          "Location field only includes city name, not the specific venue address which is present in the description."
         ]
       },
       "time_extraction": {
@@ -37,13 +35,13 @@
       "description_quality": {
         "score": 0.6,
         "issues": [
-          "Description is truncated and lacks event details beyond venue"
+          "Description has formatting issues (missing spaces after punctuation) and contains truncated text ('...Weiterlesen')."
         ]
       },
       "tag_quality": {
         "score": 0.7,
         "issues": [
-          "Tag 'Musik' may be misaligned as event appears to be a games afternoon, not music"
+          "Tag 'Musik' does not seem directly relevant to the event; consider more appropriate tag like 'Treff' if available."
         ]
       },
       "duplicate_risk": {
@@ -51,8 +49,8 @@
         "issues": []
       }
     },
-    "overall_score": 0.76,
+    "overall_score": 0.78,
     "passed": true,
-    "summary": "Event 'Spielenachmittag für die Jugend' on 2026-06-20 has a clear title but lacks detailed venue extraction. Description is uninformative and truncated. Tags mostly appropriate with minor relevance issue for 'Musik'."
+    "summary": "Event entry is mostly good but has issues with incomplete location extraction, description formatting, and possibly mismatched tag 'Musik'."
   }
 }
