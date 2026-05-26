@@ -1201,7 +1201,7 @@ function toggleDark() {
   if (ssrData) {
     try {
       const data = JSON.parse(ssrData.textContent);
-      if (data.events && data.events.length > 0 && totalPages > 0) {
+      if (data.events && data.events.length > 0 && data.totalPages > 0) {
         currentPage = data.page;
         totalPages = data.totalPages;
         // Also set up filters from URL params if present
