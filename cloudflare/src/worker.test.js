@@ -27,6 +27,20 @@ let env;
 
 beforeAll(() => {
   db = createTestDb();
+  // Add enough events to trigger pagination (SSR_PER_PAGE = 50)
+  const insertExtra = db.prepare(`
+    INSERT INTO curated_events (title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `);
+  for (let i = 0; i < 55; i++) {
+    insertExtra.run(
+      `Extra Event ${i + 1}`,
+      '2026-07-01', null, '10:00',
+      'Test Location', 'Test Organizer',
+      'Description for pagination test.', '', '',
+      'Fest,Test'
+    );
+  }
   env = { STUTENSEE_DB: createD1(db) };
 });
 
@@ -338,6 +352,34 @@ describe('Worker API', () => {
       // Should have intro text rendered (not the placeholder)
       expect(text).not.toContain('<!--SSR_INTRO-->');
     });
+
+    it('renders SSR pagination placeholder is replaced', async () => {
+      const res = await callWorker('/', { env });
+      expect(res.status).toBe(200);
+      const text = await res.text();
+      // The SSR pagination placeholder should be replaced (with empty string if only 1 page)
+      expect(text).not.toContain('<!--SSR_PAGINATION-->');
+    });
+
+    it('intro paragraph only appears on page 1, not on page 2+', async () => {
+      const page1 = await callWorker('/', { env });
+      const page1Text = await page1.text();
+      expect(page1Text).toContain('Veranstaltungskalender für Stutensee');
+
+      // Page 2 returns the same data but should NOT have intro
+      const page2 = await callWorker('/?page=2', { env });
+      const page2Text = await page2.text();
+      expect(page2Text).not.toContain('Veranstaltungskalender für Stutensee');
+    });
+
+    it('falls back to plain SPA HTML when DB is unavailable', async () => {
+      const res = await callWorker('/', { env: {} }); // no DB
+      expect(res.status).toBe(200);
+      const text = await res.text();
+      // Should be plain HTML without SSR content — SSR placeholders remain un-replaced
+      expect(text).toContain('<!--SSR_EVENTS-->');
+      expect(text).toContain('<!--SSR_INTRO-->');
+    });
   });
 
   // ── Event Detail Pages ────────────────────────────────────────────
@@ -363,6 +405,11 @@ describe('Worker API', () => {
 
     it('returns 404 for invalid ID format', async () => {
       const res = await callWorker('/events/abc/slug', { env });
+      expect(res.status).toBe(404);
+    });
+
+    it('returns 404 for partially numeric event ID', async () => {
+      const res = await callWorker('/events/123abc/slug', { env });
       expect(res.status).toBe(404);
     });
   });

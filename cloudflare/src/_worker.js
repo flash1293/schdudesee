@@ -314,8 +314,8 @@ async function serveSsrPage(env, url) {
     // Render pagination links
     const paginationHtml = renderPaginationLinks(result.page, result.totalPages, url.searchParams);
 
-    // Render intro text
-    const introHtml = renderIntro();
+    // Render intro text (only on page 1)
+    const introHtml = result.page === 1 ? renderIntro() : '';
 
     // Build initial data for JS hydration
     const params = {
@@ -381,8 +381,8 @@ async function serveSsrPage(env, url) {
 /** Serve an individual event page at /events/{id}/{slug}. */
 async function serveEventPage(env, url) {
   const parts = url.pathname.split('/'); // ['', 'events', '{id}', '{slug}']
+  if (!/^[0-9]+$/.test(parts[2])) return new Response('Not found', { status: 404 });
   const eventId = parseInt(parts[2]);
-  if (!eventId || isNaN(eventId)) return new Response('Not found', { status: 404 });
 
   const row = await env.STUTENSEE_DB.prepare(
     `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id
@@ -458,6 +458,8 @@ header{background:#0d3a71;color:#fff;padding:10px 24px}
 .tag-organizer{background:var(--tag-org-bg);color:var(--tag-org-text)}
 .tag-location{background:var(--tag-loc-bg);color:var(--tag-loc-text)}
 .tag-tag{background:var(--tag-bg);color:var(--tag-text)}
+a{color:var(--link,var(--primary))}
+a:hover{color:var(--link-hover,var(--primary))}
 .back-link{display:inline-block;margin-bottom:24px;color:var(--link,var(--primary));text-decoration:none;font-size:14px;font-weight:600}
 .back-link:hover{text-decoration:underline}
 footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
@@ -488,7 +490,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
     </div>
   </div>
 </div>
-<footer><a href="/">← Zurück zur Übersicht</a> · Was geht, Stutensee?</footer>
+<footer>Was geht, Stutensee?</footer>
 </body>
 </html>`;
 
