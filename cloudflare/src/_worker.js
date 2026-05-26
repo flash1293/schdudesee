@@ -455,7 +455,7 @@ async function serveChat(request, env) {
     let collectedEvents = [];
 
     for (let round = 0; round < CHAT_MAX_ROUNDS; round++) {
-      if (!result.choices || result.choices.length === 0 || !result.choices[0].message) {
+      if (!result || !result.choices || result.choices.length === 0 || !result.choices[0].message) {
         return json({ error: 'Ungültige Antwort vom KI-Assistenten' }, 502);
       }
       const msg = result.choices[0].message;
