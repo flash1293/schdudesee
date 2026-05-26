@@ -44,6 +44,7 @@ async function routeRequest(request, env) {
 
   // API routes
   if (url.pathname === '/api/list') return serveEvents(env, url);
+  if (url.pathname === '/api/chat' && request.method === 'POST') return serveChat(request, env);
   if (url.pathname === '/api/theme') return serveTags(env);
   if (url.pathname === '/api/districts') return serveDistricts(env);
   if (url.pathname === '/api/organizer') return serveOrganizers(env);
@@ -378,6 +379,222 @@ async function serveSsrPage(env, url) {
     // Fallback: serve plain SPA without SSR (e.g. when DB is unavailable)
     return new Response(indexHtml, { headers: { 'content-type': 'text/html;charset=utf-8' } });
   }
+}
+
+// ── Chat API (LLM with RAG) ──────────────────────────────────────────
+
+const CHAT_MODEL = 'deepseek-v4-flash';
+const CHAT_MAX_ROUNDS = 5;
+const CHAT_SYSTEM_PROMPT = `Du bist ein hilfreicher Assistent für die Veranstaltungsseite "Was geht, Stutensee?". 
+Du hilfst Nutzern, Veranstaltungen in Stutensee zu finden.
+
+Du hast Zugriff auf folgende Werkzeuge:
+
+1. **search_events** — Durchsuche Veranstaltungen nach Suchbegriff, Datum, Ort, Kategorie oder Veranstalter.
+   Parameter: query (Suchbegriff), date_from (YYYY-MM-DD), date_to (YYYY-MM-DD), tags (Array, z.B. ["Sport","Musik"]), location (Ortsteil), organizer (Veranstalter), page, per_page (max 20)
+   
+2. **get_event_details** — Rufe die vollständigen Details einer Veranstaltung ab.
+   Parameter: event_id (integer)
+
+Wichtige Regeln:
+- Antworte immer auf Deutsch.
+- Wenn ein Nutzer nach "heute", "morgen", "dieses Wochenende" etc. fragt, berechne die passenden Daten.
+- Präsentiere Veranstaltungen übersichtlich mit Datum, Titel, Ort und kurzer Beschreibung.
+- Wenn du mehrere Ergebnisse hast, fasse sie kurz zusammen.
+- Frage bei Bedarf nach, um die Suche einzugrenzen (z.B. "Welche Kategorie interessiert dich?").`;
+
+const CHAT_TOOLS = [
+  {
+    type: 'function',
+    function: {
+      name: 'search_events',
+      description: 'Suche nach Veranstaltungen in Stutensee mit verschiedenen Filtern',
+      parameters: {
+        type: 'object',
+        properties: {
+          query: { type: 'string', description: 'Suchbegriff für Titel oder Beschreibung' },
+          date_from: { type: 'string', description: 'Startdatum (YYYY-MM-DD)' },
+          date_to: { type: 'string', description: 'Enddatum (YYYY-MM-DD)' },
+          tags: { type: 'array', items: { type: 'string' }, description: 'Kategorien wie Sport, Musik, Kultur, Kirche, Kinder, Fest, Markt, Workshop, Bildung, Natur, Senioren, Digital, etc.' },
+          location: { type: 'string', description: 'Ortsteil in Stutensee (z.B. Blankenloch, Friedrichstal, Spöck, Staffort, Graben-Neudorf)' },
+          organizer: { type: 'string', description: 'Veranstalter-Name' },
+          page: { type: 'integer', description: 'Seitenzahl (Standard: 1)' },
+          per_page: { type: 'integer', description: 'Ergebnisse pro Seite (max 20, Standard: 10)' },
+        },
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
+      name: 'get_event_details',
+      description: 'Rufe detaillierte Informationen zu einer einzelnen Veranstaltung ab',
+      parameters: {
+        type: 'object',
+        properties: {
+          event_id: { type: 'integer', description: 'ID der Veranstaltung' },
+        },
+        required: ['event_id'],
+      },
+    },
+  },
+];
+
+/** Handle POST /api/chat — LLM-powered event search with RAG. */
+async function serveChat(request, env) {
+  try {
+    const { messages } = await request.json();
+    if (!messages || !Array.isArray(messages) || messages.length === 0) {
+      return json({ error: 'Messages array is required' }, 400);
+    }
+
+    const llmMessages = [{ role: 'system', content: CHAT_SYSTEM_PROMPT }, ...messages];
+    let result = await callLLM(llmMessages, CHAT_TOOLS, env);
+    let collectedEvents = [];
+
+    for (let round = 0; round < CHAT_MAX_ROUNDS; round++) {
+      const msg = result.choices[0].message;
+      if (!msg.tool_calls || msg.tool_calls.length === 0) {
+        // No more tool calls — we're done
+        return json({ message: msg, events: collectedEvents });
+      }
+
+      // Execute each tool call
+      llmMessages.push({ role: 'assistant', content: msg.content || null, tool_calls: msg.tool_calls });
+      for (const tc of msg.tool_calls) {
+        const fn = tc.function;
+        let toolResult;
+        try {
+          const args = JSON.parse(fn.arguments);
+          if (fn.name === 'search_events') {
+            toolResult = await searchEvents(args, env);
+            if (toolResult.events && toolResult.events.length > 0) {
+              collectedEvents = collectedEvents.concat(toolResult.events);
+            }
+          } else if (fn.name === 'get_event_details') {
+            toolResult = await getEventDetails(args, env);
+            if (toolResult.id) {
+              collectedEvents.push(toolResult);
+            }
+          } else {
+            toolResult = { error: `Unknown tool: ${fn.name}` };
+          }
+        } catch (err) {
+          toolResult = { error: err.message };
+        }
+        llmMessages.push({ role: 'tool', tool_call_id: tc.id, content: JSON.stringify(toolResult) });
+      }
+
+      result = await callLLM(llmMessages, CHAT_TOOLS, env);
+    }
+
+    // Max rounds reached — return whatever we have
+    return json({ message: result.choices[0].message, events: collectedEvents });
+  } catch (err) {
+    console.error('Chat error:', err.message);
+    return json({ error: err.message }, 500);
+  }
+}
+
+/** Call the LLM API (opencode.ai). */
+async function callLLM(messages, tools, env) {
+  const apiKey = env.LLM_API_KEY;
+  const baseUrl = env.LLM_BASE_URL || 'https://opencode.ai/zen/go/v1';
+  if (!apiKey) {
+    throw new Error('LLM_API_KEY not configured');
+  }
+
+  const response = await fetch(`${baseUrl}/chat/completions`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+      'User-Agent': 'YEAP-Worker/1.0',
+    },
+    body: JSON.stringify({
+      model: CHAT_MODEL,
+      messages,
+      tools,
+      max_tokens: 1024,
+    }),
+  });
+
+  if (!response.ok) {
+    const err = await response.text();
+    throw new Error(`LLM API error ${response.status}: ${err.slice(0, 200)}`);
+  }
+
+  return response.json();
+}
+
+/** Search events in D1 database. */
+async function searchEvents(params, env) {
+  const db = env.STUTENSEE_DB;
+  const page = Math.max(1, params.page || 1);
+  const perPage = Math.min(20, Math.max(1, params.per_page || 10));
+  const wheres = ["tags != 'blocked'"];
+  const args = [];
+
+  if (params.query) {
+    wheres.push("(title LIKE ? OR description LIKE ? OR location LIKE ? OR organizer LIKE ?)");
+    const q = `%${params.query}%`;
+    args.push(q, q, q, q);
+  }
+  if (params.date_from) { wheres.push("date_start >= ?"); args.push(params.date_from); }
+  if (params.date_to) { wheres.push("date_start <= ?"); args.push(params.date_to); }
+  if (params.tags && params.tags.length > 0) {
+    for (const t of params.tags) { wheres.push("tags LIKE ?"); args.push(`%${t}%`); }
+  }
+  if (params.location) { wheres.push("location LIKE ? OR tags LIKE ?"); args.push(`%${params.location}%`, `%${params.location}%`); }
+  if (params.organizer) { wheres.push("organizer = ?"); args.push(params.organizer); }
+
+  const where = wheres.length ? 'WHERE ' + wheres.join(' AND ') : '';
+  const offset = (page - 1) * perPage;
+
+  const total = (await db.prepare(`SELECT COUNT(*) as c FROM curated_events ${where}`).bind(...args).first()).c;
+  const { results } = await db.prepare(
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags
+     FROM curated_events ${where} ORDER BY date_start ASC, id LIMIT ? OFFSET ?`
+  ).bind(...args, perPage, offset).all();
+
+  const events = results.map(r => ({
+    id: r.id,
+    title: decode(r.title),
+    date_start: r.date_start || '',
+    date_end: r.date_end,
+    time_raw: r.time_raw,
+    location: decode(r.location),
+    organizer: decode(r.organizer),
+    description: decode(r.description || '').substring(0, 200),
+    event_url: decode(r.event_url || ''),
+    tags: r.tags || '',
+  }));
+
+  return { events, total, page, per_page: perPage, total_pages: Math.ceil(total / perPage) };
+}
+
+/** Get single event details from D1. */
+async function getEventDetails(params, env) {
+  const db = env.STUTENSEE_DB;
+  const row = await db.prepare(
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags
+     FROM curated_events WHERE id = ? AND tags != 'blocked'`
+  ).bind(params.event_id).first();
+
+  if (!row) return { error: 'Event not found' };
+
+  return {
+    id: row.id,
+    title: decode(row.title),
+    date_start: row.date_start || '',
+    date_end: row.date_end,
+    time_raw: row.time_raw || '',
+    location: decode(row.location),
+    organizer: decode(row.organizer),
+    description: decode(row.description || ''),
+    event_url: decode(row.event_url || ''),
+    tags: row.tags || '',
+  };
 }
 
 /** Serve an individual event page at /events/{id}/{slug}. */
