@@ -467,12 +467,17 @@ a:hover{color:var(--link-hover,var(--primary))}
 footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
 @media(max-width:700px){.container{padding:0 12px}.card{padding:16px 18px}.card h1{font-size:20px}}
 </style>
+<style>
+.dark-toggle{background:none;border:1px solid rgba(255,255,255,0.3);border-radius:8px;color:#fff;cursor:pointer;font-size:18px;margin-left:auto;padding:6px 10px;transition:background 0.2s;flex-shrink:0}
+.dark-toggle:hover{background:rgba(255,255,255,0.15)}
+</style>
 <script>
-(function(){var d=document.documentElement,s=localStorage.getItem('dark');if(s!==null){if(s==='1')d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){d.classList.add('dark')}})()
+function toggleDark(){document.documentElement.classList.toggle('dark');var isDark=document.documentElement.classList.contains('dark');localStorage.setItem('dark',isDark?'1':'0');document.getElementById('dark-toggle').textContent=isDark?'☀️':'🌙'}
+(function(){var d=document.documentElement,s=localStorage.getItem('dark');if(s!==null){if(s==='1')d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){d.classList.add('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙'})()
 </script>
 </head>
 <body>
-<header><div class="header-inner"><div class="header-text"><h1>Was geht, Stutensee?</h1></div></div></header>
+<header><div class="header-inner"><div class="header-text"><h1>Was geht, Stutensee?</h1></div><button class="dark-toggle" id="dark-toggle" onclick="toggleDark()" title="Dark Mode umschalten">🌙</button></div></header>
 <div class="container">
   <a href="/" class="back-link">← Zurück zur Übersicht</a>
   <article class="card" aria-label="${escapeHtml(e.title)}">
