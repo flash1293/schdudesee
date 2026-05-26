@@ -14,4 +14,8 @@ binding = "REQUEST_DB"
 database_name = "request-analytics"
 database_id = "85447e11-a086-4652-b54b-3aeef1bb9a64"
 
+# LLM Chat API (set via `wrangler secret put LLM_API_KEY`)
+[vars]
+LLM_BASE_URL = "https://opencode.ai/zen/go/v1"
+
 
