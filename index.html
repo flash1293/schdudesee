@@ -887,10 +887,10 @@ function applyFilterParams(params) {
     document.getElementById('show-recurring').checked = showRecurring;
     document.getElementById('show-recurring-mobile').checked = showRecurring;
   }
-  if (params.condensedMode) {
-    condensedMode = true;
-    document.getElementById('condensed-toggle').checked = true;
-    document.getElementById('condensed-toggle-mobile').checked = true;
+  if (params.condensedMode !== undefined) {
+    condensedMode = params.condensedMode;
+    document.getElementById('condensed-toggle').checked = params.condensedMode;
+    document.getElementById('condensed-toggle-mobile').checked = params.condensedMode;
   }
 
   // Sync theme chips and button
