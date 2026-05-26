@@ -996,6 +996,7 @@ function applyFilterParams(params) {
 function toggleCondensed() {
   condensedMode = document.getElementById('condensed-toggle').checked;
   localStorage.setItem('condensed', condensedMode ? '1' : '');
+  document.getElementById('condensed-toggle-mobile').checked = condensedMode;
   document.querySelectorAll('.event').forEach(el => {
     el.classList.toggle('condensed', condensedMode);
     el.onclick = condensedMode ? function() { this.classList.toggle('expanded'); } : null;
@@ -1104,6 +1105,7 @@ function toggleTag(el) {
 function toggleRecurringFilter() {
   showRecurring = document.getElementById('show-recurring').checked;
   localStorage.setItem('showRecurring', showRecurring ? '1' : '');
+  document.getElementById('show-recurring-mobile').checked = showRecurring;
   loadEvents(1);
 }
 

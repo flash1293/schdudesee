@@ -499,7 +499,11 @@ async function serveChat(request, env) {
     }
 
     // Max rounds reached — return whatever we have
-    return json({ message: result.choices[0].message, events: collectedEvents });
+    const finalMsg = result && result.choices && result.choices[0] ? result.choices[0].message : null;
+    if (!finalMsg) {
+      return json({ error: 'Ungültige Antwort vom KI-Assistenten' }, 502);
+    }
+    return json({ message: finalMsg, events: collectedEvents });
   } catch (err) {
     console.error('Chat error:', err.message);
     return json({ error: err.message }, 500);
