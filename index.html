@@ -56,6 +56,8 @@
   --imprint-text: #94a3b8;
   --skeleton-bg: #1e293b;
   --skeleton-bg-light: #334155;
+  --link: #60a5fa;
+  --link-hover: #93c5fd;
 }
 .dark #location-dropdown .chip { color: #a78bfa; }
 .dark #location-dropdown .chip:hover { background: #1e1b4b; }
@@ -276,7 +278,7 @@ header::after {
 .active-tags .active-tag {
   display: inline-flex; align-items: center; gap: 3px;
   padding: 2px 8px; border-radius: 12px; font-size: 12px;
-  background: var(--primary-light); color: var(--primary);
+  background: var(--primary-light); color: var(--link, var(--primary));
 }
 .active-tags .active-tag.location-tag { background: #ede9fe; color: #5b21b6; }
 .active-tags .active-tag .remove { cursor: pointer; font-weight: bold; margin-left: 2px; font-size: 14px; line-height: 1; }
@@ -300,8 +302,8 @@ header::after {
   border-color: var(--primary);
 }
 .tag-filter .chip:hover:not(.active) {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--link-hover, var(--primary));
+  color: var(--link-hover, var(--primary));
   background: var(--primary-light);
 }
 
@@ -364,6 +366,7 @@ header::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+  min-width: 0;
 }
 
 /* Date separator */
@@ -400,6 +403,9 @@ header::after {
 
 /* Event card */
 .event {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -414,6 +420,8 @@ header::after {
 }
 .event-body {
   min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 .event-body h2 {
   display: flex;
@@ -444,7 +452,7 @@ header::after {
   text-decoration: none;
   transition: color var(--transition);
 }
-.event-body h2 a:hover { color: var(--primary); }
+.event-body h2 a:hover { color: var(--link-hover, var(--primary)); }
 .event-body h2 .ext-link {
   font-size: 12px;
   opacity: 0.4;
@@ -544,8 +552,8 @@ header::after {
 }
 .pagination button:disabled { opacity: 0.35; cursor: default; }
 .pagination button:hover:not(:disabled) {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--link-hover, var(--primary));
+  color: var(--link-hover, var(--primary));
   background: var(--primary-light);
 }
 .pagination button:active:not(:disabled) {
@@ -565,8 +573,8 @@ header::after {
   text-decoration: none;
 }
 .pagination a.page-link:hover {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--link-hover, var(--primary));
+  color: var(--link-hover, var(--primary));
   background: var(--primary-light);
 }
 .pagination a.page-link:active {
@@ -682,7 +690,7 @@ header::after {
   .pagination span { order: -1; width: 100%; }
   .toggles-desktop { display: none; }
   .settings-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--card-bg); cursor: pointer; font-size: 18px; transition: all var(--transition); flex-shrink: 0; }
-  .settings-btn:hover { border-color: var(--primary); }
+  .settings-btn:hover { border-color: var(--link-hover, var(--primary)); }
   .settings-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 }
 @media (min-width: 701px) and (max-width: 1100px) {
