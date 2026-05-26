@@ -463,7 +463,12 @@ async function serveChat(request, env) {
       }
 
       // Execute each tool call
-      llmMessages.push({ role: 'assistant', content: msg.content || null, tool_calls: msg.tool_calls });
+      llmMessages.push({
+        role: 'assistant',
+        content: msg.content || null,
+        tool_calls: msg.tool_calls,
+        ...(msg.reasoning_content ? { reasoning_content: msg.reasoning_content } : {}),
+      });
       for (const tc of msg.tool_calls) {
         const fn = tc.function;
         let toolResult;
