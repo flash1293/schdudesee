@@ -189,7 +189,8 @@ function renderEventCard(event, condensedMode = false) {
     : (locationEscaped ? ` 📍 ${locationEscaped}` : '');
 
   // Build the card
-  let html = `<div class="event" id="event-${e.id}">
+  const titleAria = escapeHtml(e.title || 'Veranstaltung');
+  let html = `<article class="event" id="event-${e.id}" aria-label="${titleAria}">
       <div class="event-body">
         <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}${eventDetailLink}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
         <div class="event-meta">
@@ -201,7 +202,7 @@ function renderEventCard(event, condensedMode = false) {
         ${organizerEscaped || locTags.length > 0 ? `<div class="event-tags">${organizerEscaped ? `<span class="tag tag-organizer">${organizerEscaped}</span>` : ''}${locTags.map(t => `<span class="tag tag-location">📍 ${escapeHtml(t)}</span>`).join('')}</div>` : ''}
         ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="event.stopPropagation();toggleRecurring(${e.id}, ${e.recurring_group_id}, this)">▸ Alle Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
-    </div>`;
+    </article>`;
   return html;
 }
 
@@ -259,10 +260,11 @@ function renderPaginationLinks(page, totalPages, params) {
     return u.pathname + u.search;
   }
 
-  let html = '';
+  let html = '<nav aria-label="Seitennavigation">';
   if (page > 1) html += `<a href="${buildUrl(1)}" class="page-link">« Erste</a> <a href="${buildUrl(page - 1)}" class="page-link" rel="prev">‹ Zurück</a> `;
-  html += `<span class="page-info">Seite ${page} von ${totalPages}</span> `;
+  html += `<span class="page-info" aria-current="page">Seite ${page} von ${totalPages}</span> `;
   if (page < totalPages) html += `<a href="${buildUrl(page + 1)}" class="page-link" rel="next">Weiter ›</a> <a href="${buildUrl(totalPages)}" class="page-link">Letzte »</a>`;
+  html += '</nav>';
   return html;
 }
 
@@ -473,7 +475,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
 <header><div class="header-inner"><div class="header-text"><h1>Was geht, Stutensee?</h1></div></div></header>
 <div class="container">
   <a href="/" class="back-link">← Zurück zur Übersicht</a>
-  <div class="card">
+  <article class="card" aria-label="${escapeHtml(e.title)}">
     <h1><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span>${escapeHtml(e.title)}</h1>
     <div class="meta">
       ${e.date_start ? '<div><span class="label">Datum:</span> ' + fmtDate(e.date_start) + (e.date_end && e.date_end !== e.date_start ? ' – ' + fmtDate(e.date_end) : '') + '</div>' : ''}
@@ -488,7 +490,7 @@ footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
       ${locTags.map(t => '<span class="tag tag-location">📍 ' + escapeHtml(t) + '</span>').join('')}
       ${e.organizer ? '<span class="tag tag-organizer">' + escapeHtml(e.organizer) + '</span>' : ''}
     </div>
-  </div>
+  </article>
 </div>
 <footer>Was geht, Stutensee?</footer>
 </body>

@@ -11,6 +11,7 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+article, nav { display: block; }
 
 :root {
   --primary: #0d3a71;
@@ -402,7 +403,7 @@ header::after {
 }
 
 /* Event card */
-.event {
+.event, article.event {
   min-width: 0;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -414,7 +415,7 @@ header::after {
   transition: transform var(--transition), box-shadow var(--transition);
   animation: fadeInUp 0.35s ease both;
 }
-.event:hover {
+.event:hover, article.event:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
@@ -732,20 +733,20 @@ header::after {
   <div class="controls-wrap">
   <div class="controls">
     <div class="controls-row">
-      <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
+      <input type="text" id="search" placeholder="Suchen…" aria-label="Suche" oninput="debounceSearch()">
       <input type="date" id="date-from" onchange="loadEvents(1)" title="Von">
     </div>
     <div class="controls-row">
       <div class="filter-popover" id="theme-popover">
-        <button class="filter-btn" onclick="toggleFilterPopover('theme')" id="theme-btn">Kategorie ▾</button>
+        <button class="filter-btn" onclick="toggleFilterPopover('theme')" id="theme-btn" aria-expanded="false">Kategorie ▾</button>
         <div class="popover-dropdown" id="theme-dropdown"></div>
       </div>
       <div class="filter-popover" id="location-popover">
-        <button class="filter-btn" onclick="toggleFilterPopover('location')" id="location-btn">Ortsteil ▾</button>
+        <button class="filter-btn" onclick="toggleFilterPopover('location')" id="location-btn" aria-expanded="false">Ortsteil ▾</button>
         <div class="popover-dropdown" id="location-dropdown"></div>
       </div>
       <div class="filter-popover" id="organizer-popover">
-        <button class="filter-btn" onclick="toggleFilterPopover('organizer')" id="organizer-btn">Veranstalter ▾</button>
+        <button class="filter-btn" onclick="toggleFilterPopover('organizer')" id="organizer-btn" aria-expanded="false">Veranstalter ▾</button>
         <div class="popover-dropdown" id="organizer-dropdown">
           <input type="text" class="popover-search" id="organizer-search" placeholder="Suchen…" oninput="filterOrganizers()" onclick="event.stopPropagation()">
           <div class="popover-chips" id="organizer-chips"></div>
@@ -1013,11 +1014,15 @@ function updateActiveTags() {
 
 function toggleFilterPopover(type) {
   const dropdown = document.getElementById(type + '-dropdown');
-  if (dropdown.classList.contains('open')) {
+  const btn = document.getElementById(type + '-btn');
+  const isOpen = dropdown.classList.contains('open');
+  if (isOpen) {
     dropdown.classList.remove('open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
   } else {
     closeAllPopovers();
     dropdown.classList.add('open');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
     if (type === 'organizer') {
       const input = document.getElementById('organizer-search');
       if (input) { input.value = ''; input.focus(); }
@@ -1033,6 +1038,7 @@ function toggleSettingsDropdown() {
 
 function closeAllPopovers() {
   document.querySelectorAll('.popover-dropdown').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.filter-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
 }
 
 document.addEventListener('click', function(e) {
@@ -1133,7 +1139,7 @@ function renderEvents(events) {
     }
     const hasTwo = themeEmojis.length === 2 ? ' has-two' : '';
     const locTags = tags.filter(t => locationTags.includes(t));
-    html += `<div class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
+    html += `<article class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}" aria-label="${esc(e.title)}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
       <div class="event-body">
         <h2><span class="cat-emojis${hasTwo}">${emojiHtml}</span><span class="cat-title">${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}<span class="condensed-location">${locTags.length > 0 ? locTags.map(t => ` 📍 ${esc(t)}`).join('') : (e.location ? ` 📍 ${esc(e.location)}` : '')}</span></span></h2>
         <div class="event-meta">
@@ -1144,7 +1150,7 @@ function renderEvents(events) {
         ${e.organizer || locTags.length > 0 ? `<div class="event-tags">${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}${locTags.map(t => `<span class="tag tag-location">📍 ${esc(t)}</span>`).join('')}</div>` : ''}
         ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="event.stopPropagation();toggleRecurring(${e.id}, ${e.recurring_group_id}, this)">▸ Alle Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
-    </div>`;
+    </article>`;
   }
   container.innerHTML = html;
 }
@@ -1172,11 +1178,13 @@ async function toggleRecurring(eventId, groupId, el) {
 
 function renderPagination() {
   const el = document.getElementById('pagination');
-  let html = `<button onclick="loadEvents(1)" ${currentPage <= 1 ? 'disabled' : ''}>« Erste</button>`;
+  let html = '<nav aria-label="Seitennavigation">';
+  html += `<button onclick="loadEvents(1)" ${currentPage <= 1 ? 'disabled' : ''}>« Erste</button>`;
   html += `<button onclick="loadEvents(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}>‹ Zurück</button>`;
-  html += `<span class="page-info">Seite ${currentPage} von ${totalPages}</span>`;
+  html += `<span class="page-info" aria-current="page">Seite ${currentPage} von ${totalPages}</span>`;
   html += `<button onclick="loadEvents(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}>Weiter ›</button>`;
   html += `<button onclick="loadEvents(${totalPages})" ${currentPage >= totalPages ? 'disabled' : ''}>Letzte »</button>`;
+  html += '</nav>';
   el.innerHTML = html;
 }
 
