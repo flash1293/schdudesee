@@ -55,7 +55,7 @@ async function routeRequest(request, env) {
   if (url.pathname === '/.well-known/security.txt') return serveSecurityTxt();
   if (url.pathname === '/sitemap.xml') return serveSitemapXml(env);
 
-  // Event detail pages: /events/{id}-{slug}
+  // Event detail pages: /events/{id}/{slug}
   if (url.pathname.startsWith('/events/')) return serveEventPage(env, url);
 
   return new Response('Not found', { status: 404 });
@@ -91,10 +91,14 @@ function fmtDate(iso) {
   return p.length === 3 ? `${p[2]}.${p[1]}.${p[0]}` : iso;
 }
 
-/** Build event URL slug from an event row. */
+/** Build a URL slug from an event title (without the ID prefix). */
 function eventSlug(event) {
-  const slug = slugify(event.title);
-  return `${event.id}${slug ? '-' + slug : ''}`;
+  return slugify(event.title);
+}
+
+/** Build the full event URL path: /events/{id}/{slug}. */
+function eventPath(event) {
+  return `/events/${event.id}/${eventSlug(event)}`;
 }
 
 /** Fetch events and related metadata for SSR. Returns {events, total, page, totalPages, ...}. */
@@ -156,20 +160,20 @@ function renderEventCard(event, condensedMode = false) {
   const organizerEscaped = e.organizer ? escapeHtml(e.organizer) : '';
   const descEscaped = e.description ? escapeHtml(e.description) : '';
   const eventUrl = e.event_url || '';
-  const slug = eventSlug(e);
-  const eventPath = `/events/${slug}`;
+  const path = eventPath(e);
+  const eventDetailPath = path;
 
   // Title with link
   let titleHtml;
   if (eventUrl) {
     titleHtml = `<a href="${escapeHtml(eventUrl)}" target="_blank" rel="noopener">${titleEscaped}<span class="ext-link">↗</span></a>`;
   } else {
-    titleHtml = titleEscaped;
+    titleHtml = `<a href="${escapeHtml(eventDetailPath)}">${titleEscaped}</a>`;
   }
 
   // Add a link to the event detail page even if it has an external URL
   // The title itself links to the external URL (if present), but we also make the whole card clickable via the event detail page
-  const eventDetailLink = eventUrl ? '' : ` <a href="${eventPath}" style="font-size:12px;opacity:0.4;text-decoration:none;color:inherit" title="Details">🔗</a>`;
+  const eventDetailLink = eventUrl ? ` <a href="${escapeHtml(eventDetailPath)}" style="font-size:12px;opacity:0.4;text-decoration:none;color:inherit" title="Details">🔗</a>` : '';
 
   // Condensed location hint
   const condensedLocHtml = locTags.length > 0
@@ -205,7 +209,7 @@ function renderJsonLd(events) {
     const locTags = tags.filter(t => !THEME_KEYS.has(t));
     const locationName = locTags.length > 0 ? locTags[0] : (e.location || 'Stutensee');
     const desc = e.description ? decode(e.description) : `Veranstaltung in ${locationName}`;
-    const slug = eventSlug(e);
+    const url = e.event_url || `https://was-geht-stutensee.de${eventPath(e)}`;
     return {
       '@context': 'https://schema.org',
       '@type': 'Event',
@@ -220,7 +224,7 @@ function renderJsonLd(events) {
         address: { '@type': 'PostalAddress', addressLocality: locationName }
       },
       description: desc,
-      ...(e.event_url ? { url: e.event_url } : { url: `https://was-geht-stutensee.de/events/${slug}` }),
+      url,
       organizer: e.organizer ? {
         '@type': 'Organization',
         name: decode(e.organizer)
@@ -260,9 +264,26 @@ function renderIntro() {
   </div>`;
 }
 
+/** Render OG meta tags and Twitter Card tags. */
+function renderOgTags(title, description, url, type = 'website') {
+  const escapedTitle = escapeHtml(title);
+  const escapedDesc = escapeHtml(description);
+  const escapedUrl = escapeHtml(url);
+  return `<meta property="og:title" content="${escapedTitle}">
+<meta property="og:description" content="${escapedDesc}">
+<meta property="og:type" content="${type}">
+<meta property="og:url" content="${escapedUrl}">
+<meta property="og:locale" content="de_DE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${escapedTitle}">
+<meta name="twitter:description" content="${escapedDesc}">
+`;
+}
+
 /** Inject SSR content into the HTML template. */
-function injectIntoTemplate(template, { events, page, totalPages, jsonLd, paginationHtml, introHtml, initialData }) {
+function injectIntoTemplate(template, { events, page, totalPages, jsonLd, paginationHtml, introHtml, initialData, ogTags }) {
   return template
+    .replace('<!--SSR_OG_TAGS-->', ogTags || '')
     .replace('<!--SSR_JSON_LD-->', jsonLd || '')
     .replace('<!--SSR_INTRO-->', introHtml || '')
     .replace('<!--SSR_EVENTS-->', events || '')
@@ -321,6 +342,14 @@ async function serveSsrPage(env, url) {
       params,
     };
 
+    // Build OG tags for homepage
+    const ogTitle = `Was geht, Stutensee? – Veranstaltungen und Termine in Stutensee`;
+    const ogDesc = `Alle Veranstaltungen in Stutensee auf einen Blick: Feste, Märkte, Sport, Kirche, Kinderangebote und mehr.`;
+    const ogUrl = url.searchParams.has('page')
+      ? `https://was-geht-stutensee.de/?page=${result.page}`
+      : 'https://was-geht-stutensee.de/';
+    const ogTags = renderOgTags(ogTitle, ogDesc, ogUrl);
+
     // Inject into template
     const html = injectIntoTemplate(indexHtml, {
       events: eventCardsHtml,
@@ -330,6 +359,7 @@ async function serveSsrPage(env, url) {
       paginationHtml,
       introHtml,
       initialData,
+      ogTags,
     });
 
     return new Response(html, { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=300' } });
@@ -339,11 +369,10 @@ async function serveSsrPage(env, url) {
   }
 }
 
-/** Serve an individual event page at /events/{id}-{slug}. */
+/** Serve an individual event page at /events/{id}/{slug}. */
 async function serveEventPage(env, url) {
-  const path = url.pathname; // e.g. /events/1234-sommerfest
-  const idStr = path.split('/').pop()?.split('-')[0];
-  const eventId = parseInt(idStr);
+  const parts = url.pathname.split('/'); // ['', 'events', '{id}', '{slug}']
+  const eventId = parseInt(parts[2]);
   if (!eventId || isNaN(eventId)) return new Response('Not found', { status: 404 });
 
   const row = await env.STUTENSEE_DB.prepare(
@@ -372,6 +401,10 @@ async function serveEventPage(env, url) {
   // JSON-LD
   const jsonLd = renderJsonLd([{ ...e, title: row.title, description: row.description }]);
 
+  // OG tags for event detail page
+  const eventUrl = `https://was-geht-stutensee.de${eventPath(row)}`;
+  const ogTagsHtml = renderOgTags(pageTitle, metaDesc, eventUrl, 'article');
+
   // Build HTML
   const themeTags = tags.filter(t => THEME_KEYS.has(t));
   const themeEmojis = themeTags.map(t => TAG_EMOJIS[t] || '📌').filter(Boolean);
@@ -393,8 +426,9 @@ async function serveEventPage(env, url) {
 <title>${escapeHtml(pageTitle)}</title>
 <meta name="description" content="${escapeHtml(metaDesc)}">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://was-geht-stutensee.de/events/${eventSlug(row)}">
+<link rel="canonical" href="https://was-geht-stutensee.de${eventPath(row)}">
 <link rel="icon" type="image/png" href="/favicon.png">
+${ogTagsHtml}
 ${jsonLd}
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -458,8 +492,7 @@ async function serveSitemapXml(env) {
     ).all();
 
     for (const row of results) {
-      const slug = eventSlug(row);
-      urls += `<url><loc>https://was-geht-stutensee.de/events/${slug}</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>`;
+      urls += `<url><loc>https://was-geht-stutensee.de${eventPath(row)}</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>`;
     }
   } catch (err) {
     console.error('Sitemap generation error:', err.message);
@@ -592,7 +625,7 @@ async function serveReqStats(env) {
 }
 
 function serveRobotsTxt() {
-  return new Response('User-agent: *\nAllow: /\n', {
+  return new Response('User-agent: *\nAllow: /\nSitemap: https://was-geht-stutensee.de/sitemap.xml\n', {
     headers: { 'content-type': 'text/plain;charset=utf-8' }
   });
 }
