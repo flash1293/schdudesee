@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="aL_GLMSwzW2SC2nCw3YAnu8VnQxOW4yJqCyygPSzRQw" />
 <title>Was geht, Stutensee? – Veranstaltungen und Termine in Stutensee</title>
+<!--SSR_JSON_LD-->
 <meta name="description" content="Alle Veranstaltungen in Stutensee auf einen Blick: Feste, Märkte, Sport, Kirche, Kinderangebote und mehr. Gefiltert nach Ortsteil und Kategorie.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <style>
@@ -757,8 +758,9 @@ header::after {
 </div>
 <main>
 <div class="events-wrap">
-  <div id="events" class="events"></div>
-  <div class="pagination" id="pagination"></div>
+  <!--SSR_INTRO-->
+  <div id="events" class="events"><!--SSR_EVENTS--></div>
+  <div class="pagination" id="pagination"><!--SSR_PAGINATION--></div>
 </div>
 <footer style="text-align:center;padding:16px;font-size:12px;color:var(--footer-text)">
   <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a>
@@ -868,6 +870,26 @@ function filterOrganizers() {
 }
 
 let condensedMode = false;
+
+// Apply filter params from SSR initial data to UI controls
+function applyFilterParams(params) {
+  if (!params) return;
+  if (params.search) document.getElementById('search').value = params.search;
+  if (params.date_from) document.getElementById('date-from').value = params.date_from;
+  if (params.selectedThemes) selectedThemes = params.selectedThemes;
+  if (params.selectedLocations) selectedLocations = params.selectedLocations;
+  if (params.selectedOrganizer) selectedOrganizer = params.selectedOrganizer;
+  if (params.showRecurring !== undefined) {
+    showRecurring = params.showRecurring;
+    document.getElementById('show-recurring').checked = showRecurring;
+    document.getElementById('show-recurring-mobile').checked = showRecurring;
+  }
+  if (params.condensedMode) {
+    condensedMode = true;
+    document.getElementById('condensed-toggle').checked = true;
+    document.getElementById('condensed-toggle-mobile').checked = true;
+  }
+}
 
 function toggleCondensed() {
   condensedMode = document.getElementById('condensed-toggle').checked;
@@ -1144,7 +1166,31 @@ function toggleDark() {
     showRecurring = false;
   }
   loadTags();
-loadEvents(1);
+  // Check for server-side rendered initial data
+  const ssrData = document.getElementById('ssr-data');
+  if (ssrData) {
+    try {
+      const data = JSON.parse(ssrData.textContent);
+      if (data.events && data.events.length > 0 && totalPages > 0) {
+        currentPage = data.page;
+        totalPages = data.totalPages;
+        // Also set up filters from URL params if present
+        if (data.params) applyFilterParams(data.params);
+        renderEvents(data.events);
+        document.getElementById('pagination').innerHTML = data.paginationHtml || '';
+        // Clean up
+        ssrData.remove();
+      } else {
+        loadEvents(1);
+      }
+    } catch (e) {
+      console.error('SSR data error:', e);
+      loadEvents(1);
+    }
+  } else {
+    loadEvents(1);
+  }
 </script>
+<!--SSR_INITIAL_DATA-->
 </body>
 </html>
