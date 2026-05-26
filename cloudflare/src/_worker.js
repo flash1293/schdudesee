@@ -453,6 +453,9 @@ async function serveChat(request, env) {
     let collectedEvents = [];
 
     for (let round = 0; round < CHAT_MAX_ROUNDS; round++) {
+      if (!result.choices || result.choices.length === 0 || !result.choices[0].message) {
+        return json({ error: 'Ungültige Antwort vom KI-Assistenten' }, 502);
+      }
       const msg = result.choices[0].message;
       if (!msg.tool_calls || msg.tool_calls.length === 0) {
         // No more tool calls — we're done
@@ -517,6 +520,7 @@ async function callLLM(messages, tools, env) {
       tools,
       max_tokens: 1024,
     }),
+    signal: AbortSignal.timeout(15000),
   });
 
   if (!response.ok) {
@@ -545,7 +549,7 @@ async function searchEvents(params, env) {
   if (params.tags && params.tags.length > 0) {
     for (const t of params.tags) { wheres.push("tags LIKE ?"); args.push(`%${t}%`); }
   }
-  if (params.location) { wheres.push("location LIKE ? OR tags LIKE ?"); args.push(`%${params.location}%`, `%${params.location}%`); }
+  if (params.location) { wheres.push("(location LIKE ? OR tags LIKE ?)"); args.push(`%${params.location}%`, `%${params.location}%`); }
   if (params.organizer) { wheres.push("organizer = ?"); args.push(params.organizer); }
 
   const where = wheres.length ? 'WHERE ' + wheres.join(' AND ') : '';

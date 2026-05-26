@@ -1160,7 +1160,8 @@ function renderEvents(events) {
   // If user is searching, prepend a CTA to ask the chatbot
   if (searchQuery) {
     const escapedQuery = esc(searchQuery);
-    html += `<div class="chat-cta" onclick="openChatWithQuery('${escapedQuery.replace(/'/g, "\\'")}')" style="cursor:pointer;background:var(--primary-light);border:1px solid var(--primary);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:10px;grid-column:1/-1;">
+    const jsSafe = escapedQuery.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    html += `<div class="chat-cta" onclick="openChatWithQuery('${jsSafe}')" style="cursor:pointer;background:var(--primary-light);border:1px solid var(--primary);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:10px;grid-column:1/-1;">
       <span style="font-size:24px;flex-shrink:0;">🤖</span>
       <div>
         <div style="font-weight:600;font-size:14px;color:var(--text)">Frag den KI-Assistenten</div>
@@ -1353,8 +1354,9 @@ function addChatMessage(role, content, events) {
   div.className = 'chat-msg ' + role;
   
   if (typeof content === 'string') {
-    // Handle markdown-like formatting
-    const formatted = content
+    // Escape HTML to prevent XSS, then apply markdown-like formatting
+    const escaped = esc(content);
+    const formatted = escaped
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
       .replace(/\n/g, '<br>');
     div.innerHTML = formatted;
@@ -1396,9 +1398,11 @@ function hideChatLoading() {
 
 async function sendChat() {
   const input = document.getElementById('chat-input');
+  const sendBtn = document.getElementById('chat-send');
   const text = input.value.trim();
-  if (!text) return;
+  if (!text || sendBtn.disabled) return;
   
+  sendBtn.disabled = true;
   input.value = '';
   addChatMessage('user', text);
   showChatLoading();
@@ -1429,6 +1433,7 @@ async function sendChat() {
     });
     const data = await resp.json();
     hideChatLoading();
+    sendBtn.disabled = false;
     
     if (data.error) {
       addChatMessage('system', '❌ ' + data.error);
@@ -1441,6 +1446,7 @@ async function sendChat() {
     }
   } catch (err) {
     hideChatLoading();
+    sendBtn.disabled = false;
     addChatMessage('system', '❌ Fehler: ' + err.message);
   }
 }
@@ -1450,13 +1456,6 @@ function slugify(str) {
   return str.toLowerCase()
     .replace(/[ä]/g, 'ae').replace(/[ö]/g, 'oe').replace(/[ü]/g, 'ue').replace(/[ß]/g, 'ss')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}
-
-function esc(s) {
-  if (!s) return '';
-  var d = document.createElement('div');
-  d.textContent = s;
-  return d.innerHTML;
 }
 
 </script>
