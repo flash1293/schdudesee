@@ -241,7 +241,7 @@ function renderJsonLd(events) {
       image: undefined,
     };
   });
-  return `<script type="application/ld+json">${JSON.stringify(items.length === 1 ? items[0] : items)}</script>`;
+  return `<script type="application/ld+json">${jsonForScriptTag(items.length === 1 ? items[0] : items)}</script>`;
 }
 
 /** Render pagination as <a> links for crawlers. */
