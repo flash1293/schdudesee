@@ -440,27 +440,35 @@ async function serveEventPage(env, url) {
 ${ogTagsHtml}
 ${jsonLd}
 <style>
+:root{--bg:#f4f6f8;--text:#111827;--text-muted:#4b5563;--card-bg:#fff;--card-border:#e2e8f0;--primary:#0d3a71;--desc:#4a5568;--tag-org-bg:#fef3c7;--tag-org-text:#92400e;--tag-loc-bg:#ede9fe;--tag-loc-text:#5b21b6;--tag-bg:#fef3c7;--tag-text:#92400e;--footer-text:#4b5563;--shadow:0 2px 8px rgba(13,124,102,0.06)}
+@media(prefers-color-scheme:dark){
+:root{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--card-border:#334155;--primary:#1e40af;--desc:#cbd5e1;--tag-org-bg:#422006;--tag-org-text:#fbbf24;--tag-loc-bg:#1e1b4b;--tag-loc-text:#a78bfa;--tag-bg:#422006;--tag-text:#fbbf24;--footer-text:#94a3b8;--shadow:0 2px 8px rgba(0,0,0,0.3)}
+}
+html.dark{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--card-border:#334155;--primary:#1e40af;--desc:#cbd5e1;--tag-org-bg:#422006;--tag-org-text:#fbbf24;--tag-loc-bg:#1e1b4b;--tag-loc-text:#a78bfa;--tag-bg:#422006;--tag-text:#fbbf24;--footer-text:#94a3b8;--shadow:0 2px 8px rgba(0,0,0,0.3)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;background:#f4f6f8;color:#111827;line-height:1.6;min-height:100vh}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
 header{background:#0d3a71;color:#fff;padding:10px 24px}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px}
 .header-text h1{font-size:22px;font-weight:700}
 .container{max-width:700px;margin:40px auto;padding:0 20px}
-.card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px 28px;box-shadow:0 2px 8px rgba(13,124,102,0.06)}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:24px 28px;box-shadow:var(--shadow)}
 .card h1{font-size:24px;font-weight:700;margin-bottom:16px;display:flex;align-items:flex-start;gap:8px}
-.meta{font-size:14px;color:#4b5563;margin-bottom:12px;display:flex;flex-wrap:wrap;gap:8px 16px}
-.meta .label{font-weight:600;color:#111827}
-.desc{font-size:15px;color:#4a5568;line-height:1.7;margin-top:16px}
+.meta{font-size:14px;color:var(--text-muted);margin-bottom:12px;display:flex;flex-wrap:wrap;gap:8px 16px}
+.meta .label{font-weight:600;color:var(--text)}
+.desc{font-size:15px;color:var(--desc);line-height:1.7;margin-top:16px}
 .tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
 .tag{display:inline-block;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
-.tag-organizer{background:#fef3c7;color:#92400e}
-.tag-location{background:#ede9fe;color:#5b21b6}
-.tag-tag{background:#fef3c7;color:#92400e}
-.back-link{display:inline-block;margin-bottom:24px;color:#0d3a71;text-decoration:none;font-size:14px;font-weight:600}
+.tag-organizer{background:var(--tag-org-bg);color:var(--tag-org-text)}
+.tag-location{background:var(--tag-loc-bg);color:var(--tag-loc-text)}
+.tag-tag{background:var(--tag-bg);color:var(--tag-text)}
+.back-link{display:inline-block;margin-bottom:24px;color:var(--primary);text-decoration:none;font-size:14px;font-weight:600}
 .back-link:hover{text-decoration:underline}
-footer{text-align:center;padding:24px;font-size:12px;color:#4b5563}
+footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
 @media(max-width:700px){.container{padding:0 12px}.card{padding:16px 18px}.card h1{font-size:20px}}
 </style>
+<script>
+(function(){var d=document.documentElement,s=localStorage.getItem('dark');if(s!==null){if(s==='1')d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){d.classList.add('dark')}})()
+</script>
 </head>
 <body>
 <header><div class="header-inner"><div class="header-text"><h1>Was geht, Stutensee?</h1></div></div></header>

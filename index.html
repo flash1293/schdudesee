@@ -551,7 +551,28 @@ header::after {
 .pagination button:active:not(:disabled) {
   transform: scale(0.96);
 }
-.pagination span { min-width: 120px; text-align: center; }
+.pagination a.page-link {
+  padding: 8px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+.pagination a.page-link:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-light);
+}
+.pagination a.page-link:active {
+  transform: scale(0.96);
+}
+.pagination span.page-info { min-width: 120px; text-align: center; }
 
 /* Empty state */
 .empty {
