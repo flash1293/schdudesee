@@ -442,8 +442,8 @@ async function serveEventPage(env, url) {
 ${ogTagsHtml}
 ${jsonLd}
 <style>
-:root{--bg:#f4f6f8;--text:#111827;--text-muted:#4b5563;--card-bg:#fff;--card-border:#e2e8f0;--primary:#0d3a71;--desc:#4a5568;--tag-org-bg:#fef3c7;--tag-org-text:#92400e;--tag-loc-bg:#ede9fe;--tag-loc-text:#5b21b6;--tag-bg:#fef3c7;--tag-text:#92400e;--footer-text:#4b5563;--shadow:0 2px 8px rgba(13,124,102,0.06)}
-html.dark{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--card-border:#334155;--primary:#1e40af;--link:#60a5fa;--link-hover:#93c5fd;--desc:#cbd5e1;--tag-org-bg:#422006;--tag-org-text:#fbbf24;--tag-loc-bg:#1e1b4b;--tag-loc-text:#a78bfa;--tag-bg:#422006;--tag-text:#fbbf24;--footer-text:#94a3b8;--shadow:0 2px 8px rgba(0,0,0,0.3)}
+:root{--bg:#f4f6f8;--text:#111827;--text-muted:#4b5563;--card-bg:#fff;--card-border:#e2e8f0;--primary:#0d3a71;--desc:#4a5568;--tag-org-bg:#fef3c7;--tag-org-text:#92400e;--tag-loc-bg:#ede9fe;--tag-loc-text:#5b21b6;--tag-bg:#fef3c7;--tag-text:#92400e;--footer-text:#4b5563;--imprint-text:#374151;--shadow:0 2px 8px rgba(13,124,102,0.06)}
+html.dark{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--card-border:#334155;--primary:#1e40af;--link:#60a5fa;--link-hover:#93c5fd;--desc:#cbd5e1;--tag-org-bg:#422006;--tag-org-text:#fbbf24;--tag-loc-bg:#1e1b4b;--tag-loc-text:#a78bfa;--tag-bg:#422006;--tag-text:#fbbf24;--footer-text:#94a3b8;--imprint-text:#94a3b8;--shadow:0 2px 8px rgba(0,0,0,0.3)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
 header{background:#0d3a71;color:#fff;padding:10px 24px}
@@ -467,17 +467,13 @@ a:hover{color:var(--link-hover,var(--primary))}
 footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
 @media(max-width:700px){.container{padding:0 12px}.card{padding:16px 18px}.card h1{font-size:20px}}
 </style>
-<style>
-.dark-toggle{background:none;border:1px solid rgba(255,255,255,0.3);border-radius:8px;color:#fff;cursor:pointer;font-size:18px;margin-left:auto;padding:6px 10px;transition:background 0.2s;flex-shrink:0}
-.dark-toggle:hover{background:rgba(255,255,255,0.15)}
-</style>
 <script>
 function toggleDark(){document.documentElement.classList.toggle('dark');var isDark=document.documentElement.classList.contains('dark');localStorage.setItem('dark',isDark?'1':'0');document.getElementById('dark-toggle').textContent=isDark?'☀️':'🌙'}
-(function(){var d=document.documentElement,s=localStorage.getItem('dark');if(s!==null){if(s==='1')d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){d.classList.add('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙'})()
+(function(){var d=document.documentElement,s=localStorage.getItem('dark');if(s!==null){if(s==='1')d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){d.classList.add('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙';window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(e){if(localStorage.getItem('dark')!==null)return;if(e.matches){d.classList.add('dark')}else{d.classList.remove('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙'})})()
 </script>
 </head>
 <body>
-<header><div class="header-inner"><div class="header-text"><h1>Was geht, Stutensee?</h1></div><button class="dark-toggle" id="dark-toggle" onclick="toggleDark()" title="Dark Mode umschalten">🌙</button></div></header>
+<header><div class="header-inner"><div class="header-text"><h1>Was geht, Stutensee?</h1></div></div></header>
 <div class="container">
   <a href="/" class="back-link">← Zurück zur Übersicht</a>
   <article class="card" aria-label="${escapeHtml(e.title)}">
@@ -497,7 +493,7 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
     </div>
   </article>
 </div>
-<footer>Was geht, Stutensee?</footer>
+<footer><a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a><span style="margin:0 8px">·</span><span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span><div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6"><strong>Angaben gemäß §5 TMG</strong><br>Johannes Reuter<br>E-Mail: email@johannes-reuter.de<br><br><strong>Haftung für Inhalte</strong><br>Als Diensteanbieter sind wir für eigene Inhalte auf dieser Seite verantwortlich.<br><strong>Datenschutz</strong><br>Diese Seite erhebt keinerlei personenbezogene Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Analysedienste genutzt.</div></footer>
 </body>
 </html>`;
 
