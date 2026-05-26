@@ -84,6 +84,14 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;');
 }
 
+/** Safely serialize a value for embedding in a <script> tag (prevents XSS via </script>). */
+function jsonForScriptTag(value) {
+  return JSON.stringify(value)
+    .replace(/</g, '\\u003c')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
+}
+
 /** Format ISO date to German format. */
 function fmtDate(iso) {
   if (!iso) return '?';
@@ -185,6 +193,7 @@ function renderEventCard(event, condensedMode = false) {
       <div class="event-body">
         <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}${eventDetailLink}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
         <div class="event-meta">
+          ${e.date_start ? `<span>📅 ${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? ` – ${fmtDate(e.date_end)}` : ''}</span>` : ''}
           ${e.time_raw ? `<span>🕐 ${escapeHtml(e.time_raw)}</span>` : ''}
           ${locationEscaped ? `<span>📍 ${locationEscaped}</span>` : ''}
         </div>
@@ -244,16 +253,16 @@ function renderPaginationLinks(page, totalPages, params) {
     if (p > 1) u.searchParams.set('page', p);
     if (params) {
       for (const [k, v] of params) {
-        if (k !== 'page') u.searchParams.set(k, v);
+        if (k !== 'page') u.searchParams.append(k, v);
       }
     }
     return u.pathname + u.search;
   }
 
   let html = '';
-  if (page > 1) html += `<a href="${buildUrl(1)}" class="page-link">« Erste</a> <a href="${buildUrl(page - 1)}" class="page-link">‹ Zurück</a> `;
+  if (page > 1) html += `<a href="${buildUrl(1)}" class="page-link">« Erste</a> <a href="${buildUrl(page - 1)}" class="page-link" rel="prev">‹ Zurück</a> `;
   html += `<span class="page-info">Seite ${page} von ${totalPages}</span> `;
-  if (page < totalPages) html += `<a href="${buildUrl(page + 1)}" class="page-link">Weiter ›</a> <a href="${buildUrl(totalPages)}" class="page-link">Letzte »</a>`;
+  if (page < totalPages) html += `<a href="${buildUrl(page + 1)}" class="page-link" rel="next">Weiter ›</a> <a href="${buildUrl(totalPages)}" class="page-link">Letzte »</a>`;
   return html;
 }
 
@@ -288,7 +297,7 @@ function injectIntoTemplate(template, { events, page, totalPages, jsonLd, pagina
     .replace('<!--SSR_INTRO-->', introHtml || '')
     .replace('<!--SSR_EVENTS-->', events || '')
     .replace('<!--SSR_PAGINATION-->', paginationHtml || '')
-    .replace('<!--SSR_INITIAL_DATA-->', initialData ? `<script id="ssr-data" type="application/json">${JSON.stringify(initialData)}</script>` : '');
+    .replace('<!--SSR_INITIAL_DATA-->', initialData ? `<script id="ssr-data" type="application/json">${jsonForScriptTag(initialData)}</script>` : '');
 }
 
 /** Serve the main page with SSR content injected. Gracefully falls back to plain SPA if DB is unavailable. */

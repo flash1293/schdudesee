@@ -875,11 +875,13 @@ let condensedMode = false;
 // Apply filter params from SSR initial data to UI controls
 function applyFilterParams(params) {
   if (!params) return;
+
+  // Validate arrays and set filter state
+  selectedThemes = Array.isArray(params.selectedThemes) ? params.selectedThemes : [];
+  selectedLocations = Array.isArray(params.selectedLocations) ? params.selectedLocations : [];
+  if (params.selectedOrganizer) selectedOrganizer = params.selectedOrganizer;
   if (params.search) document.getElementById('search').value = params.search;
   if (params.date_from) document.getElementById('date-from').value = params.date_from;
-  if (params.selectedThemes) selectedThemes = params.selectedThemes;
-  if (params.selectedLocations) selectedLocations = params.selectedLocations;
-  if (params.selectedOrganizer) selectedOrganizer = params.selectedOrganizer;
   if (params.showRecurring !== undefined) {
     showRecurring = params.showRecurring;
     document.getElementById('show-recurring').checked = showRecurring;
@@ -890,6 +892,33 @@ function applyFilterParams(params) {
     document.getElementById('condensed-toggle').checked = true;
     document.getElementById('condensed-toggle-mobile').checked = true;
   }
+
+  // Sync theme chips and button
+  document.querySelectorAll('#theme-dropdown .chip').forEach(c => {
+    c.classList.toggle('active', selectedThemes.includes(c.dataset.tag));
+  });
+  document.getElementById('theme-btn').classList.toggle('active', selectedThemes.length > 0);
+  document.getElementById('theme-btn').textContent = selectedThemes.length > 0
+    ? `Kategorie (${selectedThemes.length}) ▾` : 'Kategorie ▾';
+
+  // Sync location chips and button
+  document.querySelectorAll('#location-dropdown .chip').forEach(c => {
+    c.classList.toggle('active', selectedLocations.includes(c.dataset.tag));
+  });
+  document.getElementById('location-btn').classList.toggle('active', selectedLocations.length > 0);
+  document.getElementById('location-btn').textContent = selectedLocations.length > 0
+    ? `📍 ${selectedLocations[0]}` : 'Ortsteil';
+
+  // Sync organizer chip and button
+  document.querySelectorAll('#organizer-dropdown .chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.organizer === selectedOrganizer);
+  });
+  document.getElementById('organizer-btn').classList.toggle('active', !!selectedOrganizer);
+  document.getElementById('organizer-btn').textContent = selectedOrganizer
+    ? `Veranstalter ▸` : 'Veranstalter ▾';
+
+  // Update active tags display
+  updateActiveTags();
 }
 
 function toggleCondensed() {
