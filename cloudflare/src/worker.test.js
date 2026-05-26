@@ -294,18 +294,6 @@ describe('Worker API', () => {
     });
   });
 
-  // ── /robots.txt ──────────────────────────────────────────────────
-
-  describe('GET /robots.txt', () => {
-    it('returns robots.txt allowing all crawlers', async () => {
-      const res = await callWorker('/robots.txt');
-      expect(res.status).toBe(200);
-      const text = await res.text();
-      expect(text).toContain('User-agent: *');
-      expect(text).toContain('Allow: /');
-    });
-  });
-
   // ── 404 ────────────────────────────────────────────────────────────
 
   describe('Unknown routes', () => {
@@ -321,6 +309,86 @@ describe('Worker API', () => {
     it('returns 500 when DB is missing (graceful error handling)', async () => {
       const res = await callWorker('/api/list', { env: {} });
       expect(res.status).toBe(500);
+    });
+  });
+
+  // ── SSR Homepage ───────────────────────────────────────────────────
+
+  describe('GET / (SSR)', () => {
+    it('returns SSR-enhanced HTML with event cards when DB is available', async () => {
+      const res = await callWorker('/', { env });
+      expect(res.status).toBe(200);
+      const text = await res.text();
+      expect(text).toContain('<!DOCTYPE html>');
+      expect(text).toContain('Was geht, Stutensee');
+      // Should have SSR placeholders replaced
+      expect(text).not.toContain('<!--SSR_EVENTS-->');
+      // Should have intro text
+      expect(text).toContain('Veranstaltungskalender für Stutensee');
+      // Should have OG meta tags
+      expect(text).toContain('og:title');
+      expect(text).toContain('og:description');
+      expect(text).toContain('twitter:card');
+      // Should have JSON-LD
+      expect(text).toContain('application/ld+json');
+      // Should have event data
+      expect(text).toContain('event-');
+      // Should have initial data script
+      expect(text).toContain('ssr-data');
+      // Should have intro text rendered (not the placeholder)
+      expect(text).not.toContain('<!--SSR_INTRO-->');
+    });
+  });
+
+  // ── Event Detail Pages ────────────────────────────────────────────
+
+  describe('GET /events/:id/:slug', () => {
+    it('returns HTML for a valid event', async () => {
+      const res = await callWorker('/events/1/10-jahre-red-horse-festival', { env });
+      expect(res.status).toBe(200);
+      const text = await res.text();
+      expect(text).toContain('<!DOCTYPE html>');
+      expect(text).toContain('Red Horse Festival');
+      expect(text).toContain('og:title');
+      expect(text).toContain('twitter:card');
+      expect(text).toContain('application/ld+json');
+      expect(text).toContain('canonical');
+      expect(text).toContain('Zurück zur Übersicht');
+    });
+
+    it('returns 404 for unknown event', async () => {
+      const res = await callWorker('/events/99999/nonexistent', { env });
+      expect(res.status).toBe(404);
+    });
+
+    it('returns 404 for invalid ID format', async () => {
+      const res = await callWorker('/events/abc/slug', { env });
+      expect(res.status).toBe(404);
+    });
+  });
+
+  // ── Sitemap ───────────────────────────────────────────────────────
+
+  describe('GET /sitemap.xml', () => {
+    it('includes event URLs when DB is available', async () => {
+      const res = await callWorker('/sitemap.xml', { env });
+      expect(res.status).toBe(200);
+      const text = await res.text();
+      expect(text).toContain('urlset');
+      expect(text).toContain('/events/');
+      expect(text).toContain('was-geht-stutensee.de');
+    });
+  });
+
+  // ── Updated robots.txt ──────────────────────────────────────────
+
+  describe('GET /robots.txt', () => {
+    it('includes Sitemap directive', async () => {
+      const res = await callWorker('/robots.txt');
+      expect(res.status).toBe(200);
+      const text = await res.text();
+      expect(text).toContain('Sitemap:');
+      expect(text).toContain('sitemap.xml');
     });
   });
 });
