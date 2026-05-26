@@ -5,10 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="aL_GLMSwzW2SC2nCw3YAnu8VnQxOW4yJqCyygPSzRQw" />
 <title>Was geht, Stutensee? – Veranstaltungen und Termine in Stutensee</title>
+<!--SSR_OG_TAGS-->
+<!--SSR_JSON_LD-->
 <meta name="description" content="Alle Veranstaltungen in Stutensee auf einen Blick: Feste, Märkte, Sport, Kirche, Kinderangebote und mehr. Gefiltert nach Ortsteil und Kategorie.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+article, nav { display: block; }
 
 :root {
   --primary: #0d3a71;
@@ -54,6 +57,8 @@
   --imprint-text: #94a3b8;
   --skeleton-bg: #1e293b;
   --skeleton-bg-light: #334155;
+  --link: #60a5fa;
+  --link-hover: #93c5fd;
 }
 .dark #location-dropdown .chip { color: #a78bfa; }
 .dark #location-dropdown .chip:hover { background: #1e1b4b; }
@@ -274,7 +279,7 @@ header::after {
 .active-tags .active-tag {
   display: inline-flex; align-items: center; gap: 3px;
   padding: 2px 8px; border-radius: 12px; font-size: 12px;
-  background: var(--primary-light); color: var(--primary);
+  background: var(--primary-light); color: var(--link, var(--primary));
 }
 .active-tags .active-tag.location-tag { background: #ede9fe; color: #5b21b6; }
 .active-tags .active-tag .remove { cursor: pointer; font-weight: bold; margin-left: 2px; font-size: 14px; line-height: 1; }
@@ -298,8 +303,8 @@ header::after {
   border-color: var(--primary);
 }
 .tag-filter .chip:hover:not(.active) {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--link-hover, var(--primary));
+  color: var(--link-hover, var(--primary));
   background: var(--primary-light);
 }
 
@@ -362,6 +367,7 @@ header::after {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
+  min-width: 0;
 }
 
 /* Date separator */
@@ -397,7 +403,10 @@ header::after {
 }
 
 /* Event card */
-.event {
+.event, article.event {
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
   background: var(--card-bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -406,12 +415,14 @@ header::after {
   transition: transform var(--transition), box-shadow var(--transition);
   animation: fadeInUp 0.35s ease both;
 }
-.event:hover {
+.event:hover, article.event:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-hover);
 }
 .event-body {
   min-width: 0;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 .event-body h2 {
   display: flex;
@@ -442,7 +453,7 @@ header::after {
   text-decoration: none;
   transition: color var(--transition);
 }
-.event-body h2 a:hover { color: var(--primary); }
+.event-body h2 a:hover { color: var(--link-hover, var(--primary)); }
 .event-body h2 .ext-link {
   font-size: 12px;
   opacity: 0.4;
@@ -502,6 +513,8 @@ header::after {
   transition: color var(--transition);
 }
 .recurring-toggle:hover { color: #92400e; }
+.dark .recurring-toggle { color: #fbbf24; }
+.dark .recurring-toggle:hover { color: #fde68a; }
 .recurring-list {
   margin-top: 8px;
   padding: 8px 0 0 0;
@@ -542,14 +555,35 @@ header::after {
 }
 .pagination button:disabled { opacity: 0.35; cursor: default; }
 .pagination button:hover:not(:disabled) {
-  border-color: var(--primary);
-  color: var(--primary);
+  border-color: var(--link-hover, var(--primary));
+  color: var(--link-hover, var(--primary));
   background: var(--primary-light);
 }
 .pagination button:active:not(:disabled) {
   transform: scale(0.96);
 }
-.pagination span { min-width: 120px; text-align: center; }
+.pagination a.page-link {
+  padding: 8px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--card-bg);
+  cursor: pointer;
+  font-size: 13px;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  color: var(--text);
+  transition: all var(--transition);
+  text-decoration: none;
+}
+.pagination a.page-link:hover {
+  border-color: var(--link-hover, var(--primary));
+  color: var(--link-hover, var(--primary));
+  background: var(--primary-light);
+}
+.pagination a.page-link:active {
+  transform: scale(0.96);
+}
+.pagination span.page-info { min-width: 120px; text-align: center; }
 
 /* Empty state */
 .empty {
@@ -659,7 +693,7 @@ header::after {
   .pagination span { order: -1; width: 100%; }
   .toggles-desktop { display: none; }
   .settings-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--card-bg); cursor: pointer; font-size: 18px; transition: all var(--transition); flex-shrink: 0; }
-  .settings-btn:hover { border-color: var(--primary); }
+  .settings-btn:hover { border-color: var(--link-hover, var(--primary)); }
   .settings-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
 }
 @media (min-width: 701px) and (max-width: 1100px) {
@@ -699,20 +733,20 @@ header::after {
   <div class="controls-wrap">
   <div class="controls">
     <div class="controls-row">
-      <input type="text" id="search" placeholder="Suchen…" oninput="debounceSearch()">
+      <input type="text" id="search" placeholder="Suchen…" aria-label="Suche" oninput="debounceSearch()">
       <input type="date" id="date-from" onchange="loadEvents(1)" title="Von">
     </div>
     <div class="controls-row">
       <div class="filter-popover" id="theme-popover">
-        <button class="filter-btn" onclick="toggleFilterPopover('theme')" id="theme-btn">Kategorie ▾</button>
+        <button class="filter-btn" onclick="toggleFilterPopover('theme')" id="theme-btn" aria-expanded="false">Kategorie ▾</button>
         <div class="popover-dropdown" id="theme-dropdown"></div>
       </div>
       <div class="filter-popover" id="location-popover">
-        <button class="filter-btn" onclick="toggleFilterPopover('location')" id="location-btn">Ortsteil ▾</button>
+        <button class="filter-btn" onclick="toggleFilterPopover('location')" id="location-btn" aria-expanded="false">Ortsteil ▾</button>
         <div class="popover-dropdown" id="location-dropdown"></div>
       </div>
       <div class="filter-popover" id="organizer-popover">
-        <button class="filter-btn" onclick="toggleFilterPopover('organizer')" id="organizer-btn">Veranstalter ▾</button>
+        <button class="filter-btn" onclick="toggleFilterPopover('organizer')" id="organizer-btn" aria-expanded="false">Veranstalter ▾</button>
         <div class="popover-dropdown" id="organizer-dropdown">
           <input type="text" class="popover-search" id="organizer-search" placeholder="Suchen…" oninput="filterOrganizers()" onclick="event.stopPropagation()">
           <div class="popover-chips" id="organizer-chips"></div>
@@ -757,8 +791,9 @@ header::after {
 </div>
 <main>
 <div class="events-wrap">
-  <div id="events" class="events"></div>
-  <div class="pagination" id="pagination"></div>
+  <!--SSR_INTRO-->
+  <div id="events" class="events"><!--SSR_EVENTS--></div>
+  <div class="pagination" id="pagination"><!--SSR_PAGINATION--></div>
 </div>
 <footer style="text-align:center;padding:16px;font-size:12px;color:var(--footer-text)">
   <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a>
@@ -869,6 +904,55 @@ function filterOrganizers() {
 
 let condensedMode = false;
 
+// Apply filter params from SSR initial data to UI controls
+function applyFilterParams(params) {
+  if (!params) return;
+
+  // Validate arrays and set filter state
+  selectedThemes = Array.isArray(params.selectedThemes) ? params.selectedThemes : [];
+  selectedLocations = Array.isArray(params.selectedLocations) ? params.selectedLocations : [];
+  if (params.selectedOrganizer) selectedOrganizer = params.selectedOrganizer;
+  if (params.search) document.getElementById('search').value = params.search;
+  if (params.date_from) document.getElementById('date-from').value = params.date_from;
+  if (params.showRecurring !== undefined) {
+    showRecurring = params.showRecurring;
+    document.getElementById('show-recurring').checked = showRecurring;
+    document.getElementById('show-recurring-mobile').checked = showRecurring;
+  }
+  if (params.condensedMode !== undefined) {
+    condensedMode = params.condensedMode;
+    document.getElementById('condensed-toggle').checked = params.condensedMode;
+    document.getElementById('condensed-toggle-mobile').checked = params.condensedMode;
+  }
+
+  // Sync theme chips and button
+  document.querySelectorAll('#theme-dropdown .chip').forEach(c => {
+    c.classList.toggle('active', selectedThemes.includes(c.dataset.tag));
+  });
+  document.getElementById('theme-btn').classList.toggle('active', selectedThemes.length > 0);
+  document.getElementById('theme-btn').textContent = selectedThemes.length > 0
+    ? `Kategorie (${selectedThemes.length}) ▾` : 'Kategorie ▾';
+
+  // Sync location chips and button
+  document.querySelectorAll('#location-dropdown .chip').forEach(c => {
+    c.classList.toggle('active', selectedLocations.includes(c.dataset.tag));
+  });
+  document.getElementById('location-btn').classList.toggle('active', selectedLocations.length > 0);
+  document.getElementById('location-btn').textContent = selectedLocations.length > 0
+    ? `📍 ${selectedLocations[0]}` : 'Ortsteil';
+
+  // Sync organizer chip and button
+  document.querySelectorAll('#organizer-dropdown .chip').forEach(c => {
+    c.classList.toggle('active', c.dataset.organizer === selectedOrganizer);
+  });
+  document.getElementById('organizer-btn').classList.toggle('active', !!selectedOrganizer);
+  document.getElementById('organizer-btn').textContent = selectedOrganizer
+    ? `Veranstalter ▸` : 'Veranstalter ▾';
+
+  // Update active tags display
+  updateActiveTags();
+}
+
 function toggleCondensed() {
   condensedMode = document.getElementById('condensed-toggle').checked;
   localStorage.setItem('condensed', condensedMode ? '1' : '');
@@ -930,11 +1014,15 @@ function updateActiveTags() {
 
 function toggleFilterPopover(type) {
   const dropdown = document.getElementById(type + '-dropdown');
-  if (dropdown.classList.contains('open')) {
+  const btn = document.getElementById(type + '-btn');
+  const isOpen = dropdown.classList.contains('open');
+  if (isOpen) {
     dropdown.classList.remove('open');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
   } else {
     closeAllPopovers();
     dropdown.classList.add('open');
+    if (btn) btn.setAttribute('aria-expanded', 'true');
     if (type === 'organizer') {
       const input = document.getElementById('organizer-search');
       if (input) { input.value = ''; input.focus(); }
@@ -950,6 +1038,7 @@ function toggleSettingsDropdown() {
 
 function closeAllPopovers() {
   document.querySelectorAll('.popover-dropdown').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('.filter-btn').forEach(b => b.setAttribute('aria-expanded', 'false'));
 }
 
 document.addEventListener('click', function(e) {
@@ -1050,7 +1139,7 @@ function renderEvents(events) {
     }
     const hasTwo = themeEmojis.length === 2 ? ' has-two' : '';
     const locTags = tags.filter(t => locationTags.includes(t));
-    html += `<div class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
+    html += `<article class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}" aria-label="${esc(e.title)}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
       <div class="event-body">
         <h2><span class="cat-emojis${hasTwo}">${emojiHtml}</span><span class="cat-title">${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener">${esc(e.title)}<span class="ext-link">↗</span></a>` : esc(e.title)}<span class="condensed-location">${locTags.length > 0 ? locTags.map(t => ` 📍 ${esc(t)}`).join('') : (e.location ? ` 📍 ${esc(e.location)}` : '')}</span></span></h2>
         <div class="event-meta">
@@ -1061,7 +1150,7 @@ function renderEvents(events) {
         ${e.organizer || locTags.length > 0 ? `<div class="event-tags">${e.organizer ? `<span class="tag tag-organizer">${esc(e.organizer)}</span>` : ''}${locTags.map(t => `<span class="tag tag-location">📍 ${esc(t)}</span>`).join('')}</div>` : ''}
         ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="event.stopPropagation();toggleRecurring(${e.id}, ${e.recurring_group_id}, this)">▸ Alle Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
       </div>
-    </div>`;
+    </article>`;
   }
   container.innerHTML = html;
 }
@@ -1089,11 +1178,13 @@ async function toggleRecurring(eventId, groupId, el) {
 
 function renderPagination() {
   const el = document.getElementById('pagination');
-  let html = `<button onclick="loadEvents(1)" ${currentPage <= 1 ? 'disabled' : ''}>« Erste</button>`;
+  let html = '<nav aria-label="Seitennavigation">';
+  html += `<button onclick="loadEvents(1)" ${currentPage <= 1 ? 'disabled' : ''}>« Erste</button>`;
   html += `<button onclick="loadEvents(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}>‹ Zurück</button>`;
-  html += `<span>Seite ${currentPage} von ${totalPages}</span>`;
+  html += `<span class="page-info" aria-current="page">Seite ${currentPage} von ${totalPages}</span>`;
   html += `<button onclick="loadEvents(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}>Weiter ›</button>`;
   html += `<button onclick="loadEvents(${totalPages})" ${currentPage >= totalPages ? 'disabled' : ''}>Letzte »</button>`;
+  html += '</nav>';
   el.innerHTML = html;
 }
 
@@ -1144,7 +1235,31 @@ function toggleDark() {
     showRecurring = false;
   }
   loadTags();
-loadEvents(1);
+  // Check for server-side rendered initial data
+  const ssrData = document.getElementById('ssr-data');
+  if (ssrData) {
+    try {
+      const data = JSON.parse(ssrData.textContent);
+      if (data.events && data.events.length > 0 && data.totalPages > 0) {
+        currentPage = data.page;
+        totalPages = data.totalPages;
+        // Also set up filters from URL params if present
+        if (data.params) applyFilterParams(data.params);
+        renderEvents(data.events);
+        document.getElementById('pagination').innerHTML = data.paginationHtml || '';
+        // Clean up
+        ssrData.remove();
+      } else {
+        loadEvents(1);
+      }
+    } catch (e) {
+      console.error('SSR data error:', e);
+      loadEvents(1);
+    }
+  } else {
+    loadEvents(1);
+  }
 </script>
+<!--SSR_INITIAL_DATA-->
 </body>
 </html>
