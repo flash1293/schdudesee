@@ -1164,7 +1164,7 @@ function renderPagination() {
   const el = document.getElementById('pagination');
   let html = `<button onclick="loadEvents(1)" ${currentPage <= 1 ? 'disabled' : ''}>« Erste</button>`;
   html += `<button onclick="loadEvents(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}>‹ Zurück</button>`;
-  html += `<span>Seite ${currentPage} von ${totalPages}</span>`;
+  html += `<span class="page-info">Seite ${currentPage} von ${totalPages}</span>`;
   html += `<button onclick="loadEvents(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}>Weiter ›</button>`;
   html += `<button onclick="loadEvents(${totalPages})" ${currentPage >= totalPages ? 'disabled' : ''}>Letzte »</button>`;
   el.innerHTML = html;
