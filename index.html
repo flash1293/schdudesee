@@ -271,7 +271,7 @@ header::after {
 #organizer-dropdown .chip:hover { background: #fef3c7; }
 #organizer-dropdown .chip.active { background: #d97706; color: #fff; }
 .toggles-desktop { display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.settings-btn { display: none; }
+.settings-btn, .chat-btn { display: none; }
 .settings-dropdown { display: none; position: absolute; top: 100%; right: 0; z-index: 100; min-width: 220px; background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 8px; margin-top: 4px; }
 .settings-dropdown.open { display: flex; flex-direction: column; gap: 6px; }
 .settings-dropdown .recurring-toggle-wrap { flex-shrink: 0; }
@@ -692,17 +692,16 @@ header::after {
   .pagination { flex-wrap: wrap; }
   .pagination span { order: -1; width: 100%; }
   .toggles-desktop { display: none; }
-  .settings-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--card-bg); cursor: pointer; font-size: 18px; transition: all var(--transition); flex-shrink: 0; }
-  .settings-btn:hover { border-color: var(--link-hover, var(--primary)); }
-  .settings-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .settings-btn, .chat-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--card-bg); cursor: pointer; font-size: 18px; transition: all var(--transition); flex-shrink: 0; }
+  .settings-btn:hover, .chat-btn:hover { border-color: var(--link-hover, var(--primary)); }
+  .settings-btn.active, .chat-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .chat-btn { font-size: 16px; }
 }
 @media (min-width: 701px) and (max-width: 1100px) {
   .events-wrap { padding: 0 16px; }
 }
 
 /* Chatbox */
-.chat-toggle{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:1000;transition:transform 0.2s,background 0.2s;display:flex;align-items:center;justify-content:center}
-.chat-toggle:hover{transform:scale(1.1);background:var(--primary-dark,var(--primary))}
 .chat-panel{position:fixed;bottom:90px;right:24px;width:380px;height:520px;background:var(--card-bg);border:1px solid var(--border);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.15);z-index:999;display:none;flex-direction:column;overflow:hidden;animation:slideUp 0.25s ease}
 .chat-panel.open{display:flex}
 @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
@@ -803,6 +802,7 @@ header::after {
         </label>
       </span>
       <button class="settings-btn" onclick="toggleSettingsDropdown()" title="Einstellungen">⚙️</button>
+      <button class="chat-btn" onclick="toggleChat()" title="KI-Chat">🤖</button>
       <div class="settings-dropdown" id="settings-dropdown">
         <label class="recurring-toggle-wrap">
           <span class="toggle-switch">
@@ -1149,11 +1149,24 @@ window.addEventListener('resize', () => {
 
 function renderEvents(events) {
   const container = document.getElementById('events');
+  const searchQuery = document.getElementById('search').value.trim();
+  let html = '';
+  // If user is searching, prepend a CTA to ask the chatbot
+  if (searchQuery) {
+    const escapedQuery = esc(searchQuery);
+    html += `<div class="chat-cta" onclick="openChatWithQuery('${escapedQuery.replace(/'/g, "\\'")}')" style="cursor:pointer;background:var(--primary-light);border:1px solid var(--primary);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:10px;grid-column:1/-1;">
+      <span style="font-size:24px;flex-shrink:0;">🤖</span>
+      <div>
+        <div style="font-weight:600;font-size:14px;color:var(--text)">Frag den KI-Assistenten</div>
+        <div style="font-size:12px;color:var(--text-muted);margin-top:2px">Stelle Fragen zu "<strong>${escapedQuery}</strong>" im Chat — z.B. nach Terminen, Orten oder Details</div>
+      </div>
+      <span style="font-size:18px;margin-left:auto;flex-shrink:0;">💬</span>
+    </div>`;
+  }
   if (events.length === 0) {
-    container.innerHTML = '<div class="empty"><div class="empty-icon">🔍</div>Keine Veranstaltungen gefunden</div>';
+    container.innerHTML = html || '<div class="empty"><div class="empty-icon">🔍</div>Keine Veranstaltungen gefunden</div>';
     return;
   }
-  let html = '';
   let lastDate = '';
   for (const e of events) {
     if (e.date_start !== lastDate) {
@@ -1297,7 +1310,6 @@ function toggleDark() {
 <!--SSR_INITIAL_DATA-->
 
 <!-- Chatbox -->
-<button class="chat-toggle" id="chat-toggle" onclick="toggleChat()" title="KI-Chat">💬</button>
 <div class="chat-panel" id="chat-panel">
   <div class="chat-header">
     <span>🤖 Veranstaltungs-Chat</span>
@@ -1317,6 +1329,16 @@ function toggleDark() {
 function toggleChat() {
   const panel = document.getElementById('chat-panel');
   panel.classList.toggle('open');
+}
+
+function openChatWithQuery(query) {
+  const panel = document.getElementById('chat-panel');
+  panel.classList.add('open');
+  const input = document.getElementById('chat-input');
+  if (query) {
+    input.value = query;
+    sendChat();
+  }
 }
 
 function addChatMessage(role, content, events) {
