@@ -448,7 +448,9 @@ async function serveChat(request, env) {
       return json({ error: 'Messages array is required' }, 400);
     }
 
-    const llmMessages = [{ role: 'system', content: CHAT_SYSTEM_PROMPT }, ...messages];
+    const today = new Date().toISOString().slice(0, 10);
+    const systemPrompt = CHAT_SYSTEM_PROMPT + `\n\nHeutiges Datum: ${today}.`;
+    const llmMessages = [{ role: 'system', content: systemPrompt }, ...messages];
     let result = await callLLM(llmMessages, CHAT_TOOLS, env);
     let collectedEvents = [];
 
