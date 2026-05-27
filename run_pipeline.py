@@ -687,7 +687,7 @@ FALSE_POSITIVE_CLEANUP = {
     "Sport": ["jam session", "jam-session", "konrad", "bereiten"],
     "Musik": ["k\u00fckenstube", "eltern-baby-caf\u00e9", "krabbelgruppe", "eltern-kind-kreis",
                "eltern-kind-caf\u00e9", "eltern-kind-gruppe", "babycaf\u00e9", "babytreff",
-               "choreografien", "mitgliedern"],
+               "choreografien", "mitgliedern", "mitglieder"],
     "Workshop": ["jugendrotkreuz", "pfadfind"],
 }
 
@@ -714,7 +714,11 @@ def auto_tag(title, description="", location="", organizer=""):
                 if kw in content_text:
                     content_tags.append(tag)
                     break
-        content_tags = content_tags[:3]
+        # Remove tags for known false positive substring matches BEFORE truncation
+        for tag, fakes in FALSE_POSITIVE_CLEANUP.items():
+            if tag in content_tags and any(fp in content_text for fp in fakes):
+                content_tags.remove(tag)
+        content_tags = content_tags[:2]
 
     def match_districts(text):
         results = []
@@ -748,12 +752,6 @@ def auto_tag(title, description="", location="", organizer=""):
         for d in org_districts:
             if d not in district_tags:
                 district_tags.append(d)
-
-    # Remove tags for known false positive substring matches
-    content_text_full_lower = content_text_full.lower()
-    for tag, fakes in FALSE_POSITIVE_CLEANUP.items():
-        if tag in content_tags and any(fp in content_text_full_lower for fp in fakes):
-            content_tags.remove(tag)
 
     return content_tags + district_tags
 
