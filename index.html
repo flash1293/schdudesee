@@ -155,6 +155,7 @@ header::after {
   display: flex;
   gap: 6px;
   align-items: center;
+  flex-wrap: wrap;
 }
 .controls input,
 .controls select {
@@ -533,13 +534,15 @@ header::after {
 
 /* Pagination */
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
   padding: 24px 20px 40px;
   font-size: 14px;
   color: var(--text-muted);
+}
+.pagination nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 .pagination button {
   padding: 8px 14px;
@@ -689,7 +692,7 @@ header::after {
   .date-separator .date-sep-day { font-size: 18px; }
   .date-separator .date-sep-month { font-size: 11px; }
   .events-wrap { padding: 0 12px; }
-  .pagination { flex-wrap: wrap; }
+  .pagination nav { flex-wrap: wrap; }
   .pagination span { order: -1; width: 100%; }
   .toggles-desktop { display: none; }
   .settings-btn, .chat-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--card-bg); cursor: pointer; font-size: 18px; transition: all var(--transition); flex-shrink: 0; }
@@ -711,11 +714,12 @@ header::after {
 .app-layout{display:flex;max-width:1480px;margin:0 auto;min-height:calc(100vh - 200px)}
 .main-content{flex:1;min-width:0}
 
-/* Chat sidebar — fixed position, height matched to controls-wrap via JS var */
-.chat-sidebar{width:50%;max-width:520px;min-width:340px;display:none;flex-direction:column;background:var(--card-bg);border-left:1px solid var(--border);position:fixed;top:var(--controls-height,80px);right:0;height:calc(100dvh - var(--controls-height,80px));z-index:5;overflow:hidden}
+/* Top-level split layout: body splits into left (page content) and right (chat) */
+.page-left{display:flex;flex-direction:column;min-width:0;flex:1}
+/* Chat sidebar — full viewport height on desktop when chat is open */
+.chat-sidebar{width:50%;max-width:520px;min-width:340px;display:none;flex-direction:column;background:var(--card-bg);border-left:1px solid var(--border);overflow:hidden}
 .chat-sidebar.open{display:flex}
-/* When chat is open on desktop, shrink main content so it doesn't hide behind sidebar */
-@media(min-width:901px){.chat-open .main-content{margin-right:max(340px,min(50%,520px))}}
+@media(min-width:901px){.chat-open{display:flex;flex-direction:row;height:100vh;overflow:hidden}.chat-open .page-left{overflow-y:auto;height:100vh}.chat-open .chat-sidebar{height:100vh}.chat-open header{padding:6px 16px}.chat-open .schdudesee-logo{height:44px}}
 .chat-sidebar .chat-header{background:var(--primary);color:#fff;padding:12px 16px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .chat-sidebar .chat-header span{flex:1}
 .chat-sidebar .chat-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0 4px;opacity:0.8}
@@ -744,10 +748,11 @@ header::after {
 @keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
 
 /* Mobile: sidebar becomes full-screen overlay */
-@media(max-width:900px){.app-layout{flex-direction:column}.chat-sidebar{position:fixed;top:0;left:0;right:auto;width:100%;height:100%;z-index:999;border-left:none;border-radius:0;animation:slideUp 0.25s ease}@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}}
+@media(max-width:900px){.app-layout{flex-direction:column}.chat-sidebar{position:fixed;top:0;left:0;right:auto;width:100%;max-width:none;height:100%;z-index:999;border-left:none;border-radius:0;animation:slideUp 0.25s ease}@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}}
 </style>
 </head>
 <body>
+<div class="page-left">
 <header>
   <div class="header-inner">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 100" class="schdudesee-logo" style="height:68px;width:auto;">
@@ -845,19 +850,6 @@ header::after {
 </div>
 </main>
 </div>
-<aside class="chat-sidebar" id="chat-sidebar">
-  <div class="chat-header">
-    <span>🤖 Veranstaltungs-Chat</span>
-    <button class="chat-close" onclick="toggleChat()">✕</button>
-  </div>
-  <div class="chat-messages" id="chat-messages">
-    <div class="chat-msg assistant">Hallo! Ich bin der KI-Assistent für "Was geht, Stutensee?". Du kannst mich nach Veranstaltungen fragen, z.B. "Was ist am Wochenende los?" oder "Gibt es Sportevents im Juni?".</div>
-  </div>
-  <div class="chat-input-wrap">
-    <input class="chat-input" id="chat-input" type="text" placeholder="Frage nach Veranstaltungen..." onkeydown="if(event.key==='Enter')sendChat()">
-    <button class="chat-send" id="chat-send" onclick="sendChat()">➤</button>
-  </div>
-</aside>
 <footer style="text-align:center;padding:16px;font-size:12px;color:var(--footer-text)">
   <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a>
   <span style="margin:0 8px">·</span>
@@ -873,20 +865,22 @@ header::after {
     kein Tracking durchgeführt und keine Analysedienste genutzt.
   </div>
 </footer>
+</div><!-- end page-left -->
+<aside class="chat-sidebar" id="chat-sidebar">
+  <div class="chat-header">
+    <span>🤖 Veranstaltungs-Chat</span>
+    <button type="button" class="chat-close" aria-label="Chat schließen" onclick="toggleChat()">✕</button>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+    <div class="chat-msg assistant">Hallo! Ich bin der KI-Assistent für "Was geht, Stutensee?". Du kannst mich nach Veranstaltungen fragen, z.B. "Was ist am Wochenende los?" oder "Gibt es Sportevents im Juni?".</div>
+  </div>
+  <div class="chat-input-wrap">
+    <input class="chat-input" id="chat-input" type="text" placeholder="Frage nach Veranstaltungen..." aria-label="Nachricht eingeben" onkeydown="if(event.key==='Enter')sendChat()">
+    <button type="button" class="chat-send" id="chat-send" aria-label="Nachricht senden" onclick="sendChat()">➤</button>
+  </div>
+</aside>
+
 <script>
-// Measure controls-wrap height dynamically for chat sidebar positioning
-function updateControlsHeight() {
-  const controls = document.querySelector('.controls-wrap');
-  if (controls) {
-    const h = controls.offsetHeight;
-    document.documentElement.style.setProperty('--controls-height', h + 'px');
-  }
-}
-updateControlsHeight();
-window.addEventListener('resize', function() {
-  updateControlsHeight();
-  setMainMargin(document.body.classList.contains('chat-open'));
-});
 
 let currentPage = 1;
 let totalPages = 1;
@@ -1356,30 +1350,20 @@ function toggleDark() {
 
 <script>
 // ── Chatbox ───────────────────────────────────────────────────────────
-function setMainMargin(open) {
-  const main = document.querySelector('.main-content');
-  if (!main) return;
-  if (open && window.innerWidth >= 901) {
-    main.style.marginRight = Math.max(340, Math.min(window.innerWidth * 0.5, 520)) + 'px';
-  } else {
-    main.style.marginRight = '';
-  }
-}
-
 function toggleChat() {
-  updateControlsHeight();
   const sidebar = document.getElementById('chat-sidebar');
   const isOpen = sidebar.classList.toggle('open');
   document.body.classList.toggle('chat-open', isOpen);
-  setMainMargin(isOpen);
+  // Scroll to top of left page content on desktop when opening
+  if (isOpen && window.innerWidth >= 901) {
+    document.querySelector('.page-left')?.scrollTo(0, 0);
+  }
 }
 
 function openChatWithQuery(query) {
-  updateControlsHeight();
   const sidebar = document.getElementById('chat-sidebar');
   sidebar.classList.add('open');
   document.body.classList.add('chat-open');
-  setMainMargin(true);
   const input = document.getElementById('chat-input');
   if (query) {
     input.value = query;
