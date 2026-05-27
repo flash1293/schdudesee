@@ -711,9 +711,11 @@ header::after {
 .app-layout{display:flex;max-width:1480px;margin:0 auto;min-height:calc(100vh - 200px)}
 .main-content{flex:1;min-width:0}
 
-/* Chat sidebar */
-.chat-sidebar{width:50%;max-width:520px;min-width:340px;flex-shrink:0;display:none;flex-direction:column;background:var(--card-bg);border-left:1px solid var(--border);position:sticky;top:72px;height:calc(100dvh - 72px);overflow:hidden}
+/* Chat sidebar — fixed position, height matched to controls-wrap via JS var */
+.chat-sidebar{width:50%;max-width:520px;min-width:340px;display:none;flex-direction:column;background:var(--card-bg);border-left:1px solid var(--border);position:fixed;top:var(--controls-height,80px);right:0;height:calc(100dvh - var(--controls-height,80px));z-index:5;overflow:hidden}
 .chat-sidebar.open{display:flex}
+/* When chat is open on desktop, shrink main content so it doesn't hide behind sidebar */
+@media(min-width:901px){.chat-open .main-content{margin-right:max(340px,min(50%,520px))}}
 .chat-sidebar .chat-header{background:var(--primary);color:#fff;padding:12px 16px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .chat-sidebar .chat-header span{flex:1}
 .chat-sidebar .chat-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0 4px;opacity:0.8}
@@ -742,7 +744,7 @@ header::after {
 @keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}
 
 /* Mobile: sidebar becomes full-screen overlay */
-@media(max-width:900px){.app-layout{flex-direction:column}.chat-sidebar{position:fixed;top:0;left:0;width:100%;height:100%;z-index:999;border-left:none;border-radius:0;animation:slideUp 0.25s ease}@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}}
+@media(max-width:900px){.app-layout{flex-direction:column}.chat-sidebar{position:fixed;top:0;left:0;right:auto;width:100%;height:100%;z-index:999;border-left:none;border-radius:0;animation:slideUp 0.25s ease}@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}}
 </style>
 </head>
 <body>
@@ -842,6 +844,7 @@ header::after {
   <div class="pagination" id="pagination"><!--SSR_PAGINATION--></div>
 </div>
 </main>
+</div>
 <aside class="chat-sidebar" id="chat-sidebar">
   <div class="chat-header">
     <span>🤖 Veranstaltungs-Chat</span>
@@ -855,7 +858,6 @@ header::after {
     <button class="chat-send" id="chat-send" onclick="sendChat()">➤</button>
   </div>
 </aside>
-</div>
 <footer style="text-align:center;padding:16px;font-size:12px;color:var(--footer-text)">
   <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a>
   <span style="margin:0 8px">·</span>
@@ -872,6 +874,20 @@ header::after {
   </div>
 </footer>
 <script>
+// Measure controls-wrap height dynamically for chat sidebar positioning
+function updateControlsHeight() {
+  const controls = document.querySelector('.controls-wrap');
+  if (controls) {
+    const h = controls.offsetHeight;
+    document.documentElement.style.setProperty('--controls-height', h + 'px');
+  }
+}
+updateControlsHeight();
+window.addEventListener('resize', function() {
+  updateControlsHeight();
+  setMainMargin(document.body.classList.contains('chat-open'));
+});
+
 let currentPage = 1;
 let totalPages = 1;
 let searchTimeout;
@@ -1340,12 +1356,30 @@ function toggleDark() {
 
 <script>
 // ── Chatbox ───────────────────────────────────────────────────────────
+function setMainMargin(open) {
+  const main = document.querySelector('.main-content');
+  if (!main) return;
+  if (open && window.innerWidth >= 901) {
+    main.style.marginRight = Math.max(340, Math.min(window.innerWidth * 0.5, 520)) + 'px';
+  } else {
+    main.style.marginRight = '';
+  }
+}
+
 function toggleChat() {
-  document.getElementById('chat-sidebar').classList.toggle('open');
+  updateControlsHeight();
+  const sidebar = document.getElementById('chat-sidebar');
+  const isOpen = sidebar.classList.toggle('open');
+  document.body.classList.toggle('chat-open', isOpen);
+  setMainMargin(isOpen);
 }
 
 function openChatWithQuery(query) {
-  document.getElementById('chat-sidebar').classList.add('open');
+  updateControlsHeight();
+  const sidebar = document.getElementById('chat-sidebar');
+  sidebar.classList.add('open');
+  document.body.classList.add('chat-open');
+  setMainMargin(true);
   const input = document.getElementById('chat-input');
   if (query) {
     input.value = query;
