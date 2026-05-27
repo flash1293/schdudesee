@@ -477,7 +477,7 @@ def auto_tag(title, description="", location="", organizer=""):
         for tag, fakes in FALSE_POSITIVE_CLEANUP.items():
             if tag in content_tags and any(fp in content_text for fp in fakes):
                 content_tags.remove(tag)
-        content_tags = content_tags[:3]
+        content_tags = content_tags[:2]
         # Re-apply mandatory tags for specific titles after truncation
         for title_trigger, extra_tags in TITLE_ALWAYS_TAGS.items():
             if title_trigger in title_lower:
