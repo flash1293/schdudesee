@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Graben-Neudorf",
   "organizer": "Gemeinde Graben-Neudorf - Standesamt",
-  "description": "Samstagstrautermin. at Graben-Neudorf. organized by Gemeinde Graben-Neudorf - Standesamt.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/93476/samstagstrautermin",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -13,44 +13,5 @@
   "tags": [
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location only provides district name, missing specific venue"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is too brief and repeats title/location/organizer without additional useful information"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Only district tag provided; missing a category tag from available list"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.55,
-    "passed": false,
-    "summary": "The event entry has a clear title but lacks specific venue, time, and useful description. Tags only include district and miss a category. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

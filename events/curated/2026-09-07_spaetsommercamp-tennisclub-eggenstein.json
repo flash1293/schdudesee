@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Tennisclub Eggenstein",
   "organizer": "Tennisclub Eggenstein",
-  "description": "",
+  "description": "Spätsommercamp Tennisclub Eggenstein",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1825",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,40 +15,5 @@
     "Kinder",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty, no start time extracted"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is identical to title, provides no additional information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "Event entry has a clear title and location, but lacks a start time and the description is uninformative. Tags are appropriate."
-  }
+  "recurring_group_id": null
 }

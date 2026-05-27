@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Gelände des FVL",
   "organizer": "Fußballverein Leopoldshafen",
-  "description": "90 Jahre FVL. at Gelände des FVL. organized by Fußballverein Leopoldshafen.",
+  "description": "90 Jahre FVL",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1805",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,46 +13,5 @@
   "tags": [
     "Leopoldshafen"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title uses acronym 'FVL' which may be unclear to some users"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location uses acronym instead of full venue name; no street address"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is too brief and merely restates title, location, and organizer without adding useful details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing a category tag from available list (e.g., Fest, Sport, Verein); only district tag provided"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.52,
-    "passed": false,
-    "summary": "Event entry lacks a start time, has a minimal and redundant description, and uses insufficient tags. The title and location are acceptable but rely on acronyms. No duplicate events found in the same district."
-  }
+  "recurring_group_id": null
 }

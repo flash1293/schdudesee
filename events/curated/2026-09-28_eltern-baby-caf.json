@@ -15,40 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 737440955,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing spaces after 'Kosten' and 'Ansprechpartnerin'",
-          "Inclusion of fragment 'Eltern-Baby-Cafe im MGH Flyer' without context",
-          "Disclaimer about automatic collection may reduce helpfulness"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.97,
-    "passed": true,
-    "summary": "The event entry is well-structured with a clear title, properly extracted location and time. The description is informative but has minor formatting issues. Tags are appropriate and include the required district. No duplicate risk with the provided context."
-  }
+  "recurring_group_id": 737440955
 }

@@ -13,49 +13,5 @@
   "tags": [
     "Kultur"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title contains a spelling error: 'Modelbahn' should be 'Modellbahn'."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location is only a hall name; missing city/district."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Only start time provided; no end time or daily schedule for multi-day event."
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, providing no information about the event."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.2,
-        "issues": [
-          "Missing district tag; should include a district from the provided list (likely Neuthard).",
-          "Tag 'Kultur' is generic; consider adding 'Ausstellungen' for accuracy."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.3,
-        "issues": [
-          "Title is very similar to another event in context; but organizer and venue differ, so not a certain duplicate."
-        ]
-      }
-    },
-    "overall_score": 0.43,
-    "passed": false,
-    "summary": "Event entry has several issues: misspelled title, incomplete location, missing description, and lack of district and more specific tags. While time is provided, overall quality is low."
-  }
+  "recurring_group_id": null
 }

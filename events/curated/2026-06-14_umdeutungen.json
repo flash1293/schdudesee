@@ -14,40 +14,5 @@
     "Neureut",
     "Ausstellungen"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.4,
-        "issues": [
-          "Title is cryptic and lacks context; consider adding event type or more descriptive phrasing."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.1,
-        "issues": [
-          "Description is too brief; only contains an artist name with no event details."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Event has a cryptic title and very sparse description, but location, time, and tags are well set. No duplicate concerns."
-  }
+  "recurring_group_id": null
 }

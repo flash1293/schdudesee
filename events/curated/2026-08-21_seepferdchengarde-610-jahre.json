@@ -15,38 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing space after exclamation mark before 'Kinder'"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "Event entry for Seepferdchengarde dance group is well-structured with clear title, location, and time. Description is informative but has a minor formatting issue. Tags are appropriate and include a district. No risk of duplicate with other events on the same date."
-  }
+  "recurring_group_id": null
 }

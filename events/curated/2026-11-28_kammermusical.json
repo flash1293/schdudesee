@@ -5,53 +5,13 @@
   "time_raw": "",
   "location": "Altenbürghalle",
   "organizer": "Musik- und Kunstschule Karlsdorf-Neuthard",
-  "description": "Kammermusical. at Altenbürghalle. organized by Musik- und Kunstschule Karlsdorf-Neuthard.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=511",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
-    "Neuthard",
-    "Musik"
+    "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title is ambiguous; 'Kammermusical' may be a portmanteau and not clearly descriptive."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location field only contains venue name, missing city/district context."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided; time_raw is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is uninformative, merely repeating title, location, and organizer without additional details."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "Event 'Kammermusical' on Nov 28, 2026 in Neuthard. No time specified, description lacking details, but location and tags are appropriate. Overall quality below average but meets minimal threshold."
-  }
+  "recurring_group_id": null
 }

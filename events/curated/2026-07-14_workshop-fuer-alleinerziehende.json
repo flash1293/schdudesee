@@ -14,40 +14,5 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.6,
-        "issues": [
-          "Location contains extraneous label 'Veranstaltungsort:' and lacks street address"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Workshop for single parents at Familienzentrum Friedrichstal; clear title and time, but missing description and location formatting needs improvement."
-  }
+  "recurring_group_id": null
 }

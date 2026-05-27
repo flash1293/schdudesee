@@ -15,40 +15,5 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Workshop' may not accurately describe event; consider 'Natur' or 'Treff'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.3,
-        "issues": [
-          "Same time and location as another event listed, but titles and age ranges differ, so likely not duplicate but potential confusion"
-        ]
-      }
-    },
-    "overall_score": 0.8,
-    "passed": true,
-    "summary": "Event entry is generally well-structured with clear title, location, and time. Description is informative. Tags appropriate except 'Workshop' could be more accurate. Duplicate risk low but note same time/location as another Pfadfindergruppe event."
-  }
+  "recurring_group_id": 1882532067
 }

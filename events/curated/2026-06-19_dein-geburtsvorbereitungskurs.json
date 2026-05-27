@@ -15,40 +15,5 @@
     "Workshop",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Typo: 'Teilnehnmer' should be 'Teilnehmer'",
-          "Missing space after 'kostenlos' in cost line",
-          "Excessive whitespace at end of description"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Event is well-structured with clear title, proper location and time extraction. Description is informative but contains minor typographical errors. Tags are appropriate and include district. No duplicate risk with other events."
-  }
+  "recurring_group_id": null
 }

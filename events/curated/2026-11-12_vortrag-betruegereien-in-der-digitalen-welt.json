@@ -15,38 +15,5 @@
     "Digital",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field contains label and formatting artifacts"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.87,
-    "passed": true,
-    "summary": "Event entry for fraud lecture is clear and well-timed, but location extraction could be cleaner. Tags are accurate and no duplicates detected."
-  }
+  "recurring_group_id": null
 }

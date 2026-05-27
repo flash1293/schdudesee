@@ -15,40 +15,5 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location field contains 'Veranstaltungsort:' prefix and newlines, not cleanly extracted"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is very brief, only age range provided; lacks event summary or details"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.82,
-    "passed": true,
-    "summary": "Event entry has a clear title and time, acceptable location extraction with minor formatting issues, very minimal description, appropriate tags, and no duplication risk."
-  }
+  "recurring_group_id": null
 }

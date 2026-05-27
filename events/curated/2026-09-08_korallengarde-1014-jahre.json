@@ -15,38 +15,5 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Minor inconsistency in organizer name between field (Stutensee) and description (Blankenloch)."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "The event entry is well-formed with clear title, accurate location and time extraction, informative description, and appropriate tags. Minor inconsistency in organizer naming."
-  }
+  "recurring_group_id": null
 }

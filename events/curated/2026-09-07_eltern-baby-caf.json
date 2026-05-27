@@ -15,38 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 737440955,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Formatting issue: missing space after 'Kosten' and before 'Ansprechpartnerin'"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.97,
-    "passed": true,
-    "summary": "Event entry is clear and complete with proper location, time, appropriate tags, and no duplicate concerns. Description is informative but has minor formatting issues (missing spaces)."
-  }
+  "recurring_group_id": 737440955
 }

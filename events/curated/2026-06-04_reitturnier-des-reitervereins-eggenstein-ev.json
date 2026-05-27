@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Reitanlage an der Kruppstraße",
   "organizer": "Reiterverein Eggenstein e.V.",
-  "description": "",
+  "description": "Reitturnier des Reitervereins Eggenstein e.V.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1797",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,40 +15,5 @@
     "Verein",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is identical to title and provides no additional information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "The event has a clear title and appropriate tags, including a district tag. Location is provided, but no start time is given and the description is uninformative (duplicate of title). No duplicates are known for this date."
-  }
+  "recurring_group_id": null
 }

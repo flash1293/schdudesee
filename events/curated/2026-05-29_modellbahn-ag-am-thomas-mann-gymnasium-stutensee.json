@@ -15,38 +15,5 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 308472627,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Tag 'Musik' does not align with event content; consider using 'Bildung', 'Handwerk', or 'Kinder' instead."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.92,
-    "passed": true,
-    "summary": "Event entry is clear and complete but has inaccurate tags, particularly 'Musik'."
-  }
+  "recurring_group_id": 308472627
 }

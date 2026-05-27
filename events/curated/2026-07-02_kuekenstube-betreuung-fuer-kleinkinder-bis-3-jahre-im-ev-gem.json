@@ -15,43 +15,5 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.4,
-        "issues": [
-          "time_raw (09:00) does not match description which states Thursdays start at 8:30"
-        ]
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description includes stray text 'Flyer Kükenstube 2025'",
-          "Description describes recurring schedule but does not explicitly reference this specific date"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Missing 'Kinder' tag which is more appropriate for this children's event"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Event entry is mostly well-structured with a clear title and location. However, time extraction is inaccurate for this specific date, description contains extraneous text, and tags could be improved by including 'Kinder'. Overall decent quality."
-  }
+  "recurring_group_id": null
 }

@@ -13,41 +13,5 @@
   "tags": [
     "Treff"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "description is empty, no information provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "missing district tag (should include 'Weingarten' from districts list)",
-          "could include more relevant tags like 'Handwerk' or 'Workshop'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.73,
-    "passed": true,
-    "summary": "Event title is clear, location and time extracted well, but description is missing and tags lack district information."
-  }
+  "recurring_group_id": null
 }

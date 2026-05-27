@@ -13,44 +13,5 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title is clear but could be more descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location 'Vereinsgelände' is generic, could be more specific"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, no information provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Only district tag present, missing a category tag from the available list"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Event 'Tag des Hundes' has clear title and time, but lacks description and appropriate category tags. Location is generic, yet overall acceptable."
-  }
+  "recurring_group_id": null
 }

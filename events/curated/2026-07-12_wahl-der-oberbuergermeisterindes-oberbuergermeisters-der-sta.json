@@ -5,7 +5,7 @@
   "time_raw": "08:00 - 18:00 Uhr",
   "location": "Veranstaltungsort:\n\t\tWahllokal Ihres Wohnortes",
   "organizer": "Stadt Stutensee",
-  "description": "Wahl der Oberbürgermeisterin/des Oberbürgermeisters der Stadt Stutensee. at Veranstaltungsort:\n\t\tWahllokal Ihres Wohnortes. from 08:00 - 18:00 Uhr.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2767",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,47 +13,5 @@
   "tags": [
     "Politik"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Location is generic polling place, not specific address",
-          "Contains label prefix 'Veranstaltungsort:'"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is redundant and does not add new information",
-          "Contains concatenated text from other fields"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing district tag from available districts",
-          "Only 'Politik' tag is present"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.1,
-        "issues": [
-          "Event likely duplicates context event 'Oberbürgermeisterwahl' with same date and start time"
-        ]
-      }
-    },
-    "overall_score": 0.53,
-    "passed": false,
-    "summary": "Event for Oberbürgermeister election in Stutensee with good title and time extraction, but location is vague, description lacks detail, missing district tag, and potential duplicate with another event in context."
-  }
+  "recurring_group_id": null
 }

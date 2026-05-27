@@ -14,40 +14,5 @@
     "Politik",
     "Staffort"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location contains label 'Veranstaltungsort:' and extra whitespace"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is too brief (just 'Kandidatenvorstellung'), lacks details"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.77,
-    "passed": true,
-    "summary": "Event for mayoral candidate presentation. Title clear, location extraction poor (label + whitespace), description minimal, tags good, no duplicates."
-  }
+  "recurring_group_id": null
 }

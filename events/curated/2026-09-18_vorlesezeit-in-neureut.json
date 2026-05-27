@@ -15,40 +15,5 @@
     "Literatur",
     "Kinder"
   ],
-  "recurring_group_id": 1628788359,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.8,
-        "issues": [
-          "No end time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description is very brief, could include more details about the reading session"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.9,
-    "passed": true,
-    "summary": "Vorlesezeit in Neureut at the district library, free reading for children aged 3+ without registration."
-  }
+  "recurring_group_id": 1628788359
 }

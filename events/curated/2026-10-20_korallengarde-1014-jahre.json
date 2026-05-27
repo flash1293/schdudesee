@@ -15,38 +15,5 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Missing 'Kinder' tag, which is appropriate for this age group"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "Event entry is well-structured with clear title, location, and time. Description is informative and includes training schedule. Tags include appropriate district but missing 'Kinder' category. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

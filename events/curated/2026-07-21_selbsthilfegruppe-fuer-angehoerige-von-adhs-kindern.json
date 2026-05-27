@@ -15,38 +15,5 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": [
-          "HTML entity not decoded"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.97,
-    "passed": true,
-    "summary": "Event is well-structured with a clear title and informative description. Location is complete but contains an HTML entity. No duplicate risk. Minor data cleanliness issue noted."
-  }
+  "recurring_group_id": 1140166910
 }

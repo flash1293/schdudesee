@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "",
   "organizer": "Evangelische Kirchengemeinde Eggenstein",
-  "description": "Hubertusmesse in der Reithalle mit anschließender Pferdesegnung. organized by Evangelische Kirchengemeinde Eggenstein.",
+  "description": "Hubertusmesse in der Reithalle mit anschließender Pferdesegnung",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1894",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,44 +15,5 @@
     "Kirche",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "location field is empty, no location extracted from title or description"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty, no start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "description largely duplicates title, lacks additional details such as time, location, or program"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "tag 'Sport' may be inappropriate for a church mass; consider using only 'Kirche' and possibly other relevant categories"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.48,
-    "passed": false,
-    "summary": "Event has a clear title but missing critical location and time information. Description is repetitive and not informative. Tags include a possibly inappropriate 'Sport' category. Not suitable for publication without completing missing fields."
-  }
+  "recurring_group_id": null
 }

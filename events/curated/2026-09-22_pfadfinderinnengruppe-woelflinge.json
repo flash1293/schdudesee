@@ -15,44 +15,5 @@
     "Natur",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1764623589,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Title uses gender asterisk which may not render well in all systems; does not include age range explicitly."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.95,
-        "issues": [
-          "Location string contains HTML entity '&#8211;' not decoded."
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Description contains HTML entities that should be decoded."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.95,
-        "issues": [
-          "Similar event at same time and location may cause confusion but distinct age group."
-        ]
-      }
-    },
-    "overall_score": 0.94,
-    "passed": true,
-    "summary": "The event entry is generally good with clear location, time, and description. Some minor improvements needed: decode HTML entities in location and description, and consider a more descriptive title without special characters. Tags are appropriate. The event is not a duplicate but similar events exist."
-  }
+  "recurring_group_id": 1764623589
 }

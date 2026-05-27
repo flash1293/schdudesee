@@ -13,42 +13,5 @@
   "tags": [
     "Verein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is somewhat generic; may not be clear to all audiences"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty; provides no information about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing district tag; only 'Verein' tag applied"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.7,
-    "passed": true,
-    "summary": "Event title is generic, description empty, and missing district tag; location and time correctly extracted, no duplicate risk."
-  }
+  "recurring_group_id": null
 }

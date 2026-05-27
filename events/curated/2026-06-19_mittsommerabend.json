@@ -13,40 +13,5 @@
   "tags": [
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description merely repeats title, location, time, and organizer without additional event details or context."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Only district tag 'Blankenloch' provided; missing event category tag from available categories (e.g., 'Fest', 'Kirche', 'Kultur')."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.77,
-    "passed": true,
-    "summary": "Event entry has clear title, location, and time but the description is sparse and lacks detail; tags are incomplete with only district and no category. Overall acceptable with room for improvement."
-  }
+  "recurring_group_id": null
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände",
   "organizer": "Hundesportverein Karlsdorf-Neuthard",
-  "description": "Big Smile Unity / Bollerkopf. at Vereinsgelände. organized by Hundesportverein Karlsdorf-Neuthard.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=458",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -13,46 +13,5 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title does not clearly indicate the event type"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location is too vague, missing specific address"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description lacks details about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing a category tag; should include e.g., Sport or Verein"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.48,
-    "passed": false,
-    "summary": "Event entry has missing time, vague location, minimal description, and incomplete tags. No duplicate issues."
-  }
+  "recurring_group_id": null
 }

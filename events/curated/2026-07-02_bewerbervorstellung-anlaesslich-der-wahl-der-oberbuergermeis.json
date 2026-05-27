@@ -14,42 +14,5 @@
     "Politik",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location contains extra label 'Veranstaltungsort:' and whitespace, should be cleaned."
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is too brief, lacks informative details about the candidates or process."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.2,
-        "issues": [
-          "Event appears to be a duplicate of 'Kandidatenvorstellung OB-Wahl' at same time and location."
-        ]
-      }
-    },
-    "overall_score": 0.65,
-    "passed": true,
-    "summary": "Event entry has a clear title and correct tags, but the location field is poorly extracted, description is minimal, and the event is a likely duplicate of another event in the same district on the same date."
-  }
+  "recurring_group_id": null
 }

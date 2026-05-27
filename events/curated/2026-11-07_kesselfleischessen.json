@@ -13,44 +13,5 @@
   "tags": [
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title could be more descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "No description provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing category tag (e.g., Essen, Verein)"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.55,
-    "passed": false,
-    "summary": "Event entry lacks description and time; tags include only district. Title and location adequate but overall quality low due to missing critical fields."
-  }
+  "recurring_group_id": null
 }

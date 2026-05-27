@@ -15,40 +15,5 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Time extracted does not match the day of the event; description states Thursdays start at 08:30, but time_raw is 09:00"
-        ]
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Kinder' should be added to appropriately categorize the event"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.82,
-    "passed": true,
-    "summary": "Event 'Kükenstube' is a childcare program for toddlers at a church venue in Friedrichstal. The event information is detailed, but the time extraction is incorrect for the specified date, and tags could be improved by adding 'Kinder'. No duplicate concerns."
-  }
+  "recurring_group_id": null
 }

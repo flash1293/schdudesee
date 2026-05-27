@@ -14,40 +14,5 @@
     "Politik",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "No description provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.6,
-    "passed": true,
-    "summary": "Event entry is partially complete; missing time and description, which are critical for usability."
-  }
+  "recurring_group_id": null
 }

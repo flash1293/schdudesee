@@ -14,40 +14,5 @@
     "Markt",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "location field is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "description field is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.63,
-    "passed": true,
-    "summary": "Event has valid title, time, tags, and is not a duplicate, but lacks location and description, making it incomplete for publication."
-  }
+  "recurring_group_id": null
 }

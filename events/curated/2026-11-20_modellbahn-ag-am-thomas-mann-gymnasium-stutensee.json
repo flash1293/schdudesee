@@ -15,39 +15,5 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 308472627,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Tag 'Musik' is irrelevant to a model railway activity; consider replacing it with 'Kinder', 'Bildung', or 'Workshop'.",
-          "Missing a district tag; 'Blankenloch' is the only district tag, which is correct, but additional category tags should better reflect the event."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.88,
-    "passed": true,
-    "summary": "The event entry is clear and well-structured, with proper location, time, and description. However, the tags are inaccurate (e.g., 'Musik') and do not align with the event's content, needing improvement."
-  }
+  "recurring_group_id": 308472627
 }

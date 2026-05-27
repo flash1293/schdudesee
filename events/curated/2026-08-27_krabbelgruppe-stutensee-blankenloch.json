@@ -14,44 +14,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 846212537,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Could specify age group (0-4 years) for clarity"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.9,
-        "issues": [
-          "Only start time present, missing end time"
-        ]
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Description includes disclaimer that information may be incomplete"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Tags are limited; could include additional categories like Treff or Kirche to be more descriptive"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.92,
-    "passed": true,
-    "summary": "Event entry is well-formed with clear title and location, informative description, and appropriate district tag. Minor improvements: add age range to title, include end time, and expand tags for better categorization."
-  }
+  "recurring_group_id": 846212537
 }

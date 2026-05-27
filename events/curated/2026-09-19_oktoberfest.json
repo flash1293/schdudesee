@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Fußballclub Spöck 1929 e.V.",
-  "description": "Oktoberfest. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Fußballclub Spöck 1929 e.V..",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2662",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.2,
-        "issues": [
-          "Location contains formatting artifacts and label 'Veranstaltungsort:' instead of clean location name."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided; time_raw is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is too short and merely repeats title, location, and organizer without additional details."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.53,
-    "passed": false,
-    "summary": "Oktoberfest event in Spöck organized by Fußballclub Spöck 1929 e.V., but missing time and has poorly formatted location and minimal description."
-  }
+  "recurring_group_id": null
 }

@@ -5,52 +5,11 @@
   "time_raw": "00:00",
   "location": "Baden-Württemberg",
   "organizer": "BdP Stamm Adler",
-  "description": "",
+  "description": "Anmeldung bis 1. Mai",
   "event_url": "https://www.bdp-adler.de/event/lama/",
   "sources": [
     "clubs_batch_all"
   ],
   "tags": [],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title may be unclear to general audience"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Location is too broad, should be specific to a district or venue"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Time '00:00' may be a placeholder or inaccurate"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description lacks informative content about the event, merely repeats metadata"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.0,
-        "issues": [
-          "No tags assigned; missing district tag and event category"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.47,
-    "passed": false,
-    "summary": "Event entry has several issues: location is too broad, time extraction is unreliable, description is uninformative, and tags are missing. Duplicate risk is low. Overall quality is poor."
-  }
+  "recurring_group_id": null
 }

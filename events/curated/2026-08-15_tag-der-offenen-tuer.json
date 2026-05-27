@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Feuerwehrhaus OT Neudorf",
   "organizer": "Freiwillige Feuerwehr Graben-Neudorf",
-  "description": "Tag der offenen Tür. at Feuerwehrhaus OT Neudorf. organized by Freiwillige Feuerwehr Graben-Neudorf.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146376/tag-der-offenen-tuer",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -13,44 +13,5 @@
   "tags": [
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Title is generic; could include organization name for clarity"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time/start time provided; 'time_raw' is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is redundant and lacks informative content (e.g., schedule, activities)"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing category tag from available list (e.g., 'Fest', 'Verein'); only district tag provided"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.625,
-    "passed": true,
-    "summary": "Event has a clear title and location but lacks time information and has a bare description; tags are incomplete. Overall quality is moderate but missing critical time details."
-  }
+  "recurring_group_id": null
 }

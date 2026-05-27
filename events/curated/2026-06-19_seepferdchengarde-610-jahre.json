@@ -15,39 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Organizer name inconsistency between description (Blankenloch) and organizer field (Stutensee)",
-          "Description includes weekly schedule but event date does not explicitly indicate it is a single occurrence of a recurring series"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "The event entry for Seepferdchengarde is well-structured with a clear title, precise location, and appropriate tags. The description is informative but has a minor inconsistency in the organizer name and does not explicitly indicate that it is a single date of a recurring event."
-  }
+  "recurring_group_id": null
 }

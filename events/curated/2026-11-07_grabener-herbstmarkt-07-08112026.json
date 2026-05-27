@@ -14,44 +14,5 @@
     "Markt",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title includes date range which is redundant with date fields, but still descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location is only the district name, not a specific venue or address"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.7,
-        "issues": [
-          "No specific start time provided, only 'Ganztägig' which is vague"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, provides no information about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.5,
-    "passed": false,
-    "summary": "Grabener Herbstmarkt event entry has a clear title but lacks a specific location and description. Time indicates all-day but no specific hours. Tags are appropriate and no duplicate risk with other events on the same date."
-  }
+  "recurring_group_id": null
 }

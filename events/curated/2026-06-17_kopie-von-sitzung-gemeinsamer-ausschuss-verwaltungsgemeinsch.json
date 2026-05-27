@@ -5,7 +5,7 @@
   "time_raw": "17:00 Uhr",
   "location": "Zentralkläranlage / Sitzungsraum",
   "organizer": "Verwaltungsgemeinschaft Graben-Neudorf / Dettenheim",
-  "description": "Kopie von Sitzung Gemeinsamer Ausschuss - Verwaltungsgemeinschaft Graben-Neudorf / Dettenheim. at Zentralkläranlage / Sitzungsraum. from 17:00 Uhr.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146366/kopie-von-sitzung-gemeinsamer-ausschuss-verwaltungsgemeinschaft-graben-neudorf-dettenheim",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -14,40 +14,5 @@
     "Politik",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title starts with 'Kopie von', suggesting it's a copy; not original"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description merely repeats title, location, and time, providing no additional useful information"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.77,
-    "passed": true,
-    "summary": "Event entry has a somewhat unclear title due to 'Kopie von' prefix and a very brief description that adds no new information. Location, time, and tags are appropriate. The event does not appear to be a duplicate within the provided context."
-  }
+  "recurring_group_id": null
 }

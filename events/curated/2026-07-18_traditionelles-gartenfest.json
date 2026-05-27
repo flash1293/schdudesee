@@ -15,40 +15,5 @@
     "Fest",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time specified"
-        ]
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Sport' may not be appropriate; consider using 'Verein' or 'Treff' instead"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.73,
-    "passed": true,
-    "summary": "The event entry is clear but lacks a specific time. The tags include 'Sport' which may not be appropriate for a garden festival. Otherwise, location and title are good."
-  }
+  "recurring_group_id": null
 }

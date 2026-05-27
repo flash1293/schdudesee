@@ -14,42 +14,5 @@
     "Senioren",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is generic and does not specify the event content beyond the target audience."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location field is empty; no venue extracted."
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty; lacks event details."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.63,
-    "passed": true,
-    "summary": "Event entry is incomplete: location and description are missing; title is generic but acceptable; time and tags are correctly extracted; no duplicate risk with the concert event."
-  }
+  "recurring_group_id": null
 }

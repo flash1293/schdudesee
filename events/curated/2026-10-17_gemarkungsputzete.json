@@ -5,52 +5,11 @@
   "time_raw": "",
   "location": "",
   "organizer": "Gemeindeverwaltung",
-  "description": "Gemarkungsputzete. organized by Gemeindeverwaltung.",
+  "description": "",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1896",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title is a local term without explanation, may be unclear to some users"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location is missing (empty string)"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Time is missing (empty time_raw)"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description only repeats title and organizer, lacks informative content"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.0,
-        "issues": [
-          "No tags assigned; should include district tag (Eggenstein or Leopoldshafen) and relevant category tags (e.g., Natur, Treff, Wohltätigkeit)"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.32,
-    "passed": false,
-    "summary": "Event entry is missing critical data: location, time, and tags; description is insufficient; title is region-specific but may be acceptable in local context."
-  }
+  "recurring_group_id": null
 }

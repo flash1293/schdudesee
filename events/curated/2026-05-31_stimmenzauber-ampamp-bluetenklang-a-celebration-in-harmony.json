@@ -14,42 +14,5 @@
     "Musik",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title contains HTML entities (e.g., '&amp;amp;' should be '&') which reduces clarity."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty; no informative text."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.2,
-        "issues": [
-          "High risk of duplication: another event (Frühlingsfest im Sängerheim) at the same location and by the same organizer on the same date."
-        ]
-      }
-    },
-    "overall_score": 0.62,
-    "passed": true,
-    "summary": "Event entry for 'Stimmenzauber & Blütenklang' at Vereinsheim Gesangverein Eintracht Spöck on 2026-05-31 at 10:00. The entry lacks a description, has HTML entities in the title, and appears to be a likely duplicate of another event by the same organizer."
-  }
+  "recurring_group_id": null
 }

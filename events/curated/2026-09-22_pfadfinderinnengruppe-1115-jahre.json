@@ -15,40 +15,5 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "HTML entities not decoded in location string"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Workshop' may not accurately represent event; consider using 'Natur' or 'Verein'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.2,
-        "issues": []
-      }
-    },
-    "overall_score": 0.82,
-    "passed": true,
-    "summary": "The event entry is mostly high quality with a clear title and detailed description. However, the location string contains HTML entities and the 'Workshop' tag may be misapplied. Duplicate risk with a co-occurring Pfadfinder event is low due to different age groups."
-  }
+  "recurring_group_id": 1882532067
 }

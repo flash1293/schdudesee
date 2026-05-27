@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Andreasbräu",
   "organizer": "Seniorenbeirat",
-  "description": "",
+  "description": "Seniorentreff",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1853",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,45 +14,5 @@
     "Senioren",
     "Treff"
   ],
-  "recurring_group_id": 2112330319,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is too generic; could include more details about the event like location or type."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided; time_raw is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is identical to title and provides no additional information."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing district tag (should include one of the available districts).",
-          "Tags are very generic and could be more specific."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.55,
-    "passed": false,
-    "summary": "Event entry is missing time and has an uninformative description. Tags lack district and are generic. Title is generic but location is present. Duplicate risk is low."
-  }
+  "recurring_group_id": 2112330319
 }

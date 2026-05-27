@@ -13,40 +13,5 @@
   "tags": [
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "Description lacks additional details about the event type or activities"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing event category tag (e.g., Sport)"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.83,
-    "passed": true,
-    "summary": "Event entry with clear title and essential fields, but description is minimal and tags only include district, missing a category tag."
-  }
+  "recurring_group_id": null
 }

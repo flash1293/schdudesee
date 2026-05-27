@@ -15,36 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.97,
-    "passed": true,
-    "summary": "The event entry is well-structured with a clear title indicating the activity and age range, a detailed location, correct time extraction, informative description, and appropriate tags that include a district. No duplicate risk with other events in the same district on the same date."
-  }
+  "recurring_group_id": null
 }

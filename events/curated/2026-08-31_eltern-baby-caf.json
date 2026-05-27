@@ -15,40 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 737440955,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description contains formatting issues (e.g., 'KostenDie' missing space)"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Musik' may not be the most appropriate; 'Treff' might be a better category"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.88,
-    "passed": true,
-    "summary": "The event entry is well-structured with a clear title, complete location, and proper time extraction. The description is informative but has a minor formatting issue. Tags are appropriate but could be more accurately chosen. No duplication risk."
-  }
+  "recurring_group_id": 737440955
 }

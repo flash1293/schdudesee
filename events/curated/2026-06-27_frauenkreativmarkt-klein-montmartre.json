@@ -5,49 +5,13 @@
   "time_raw": "10:00 Uhr bis 15:00 Uhr",
   "location": "",
   "organizer": "Vitamin F",
-  "description": "Frauenkreativmarkt Klein-Montmartre. from 10:00 Uhr bis 15:00 Uhr. organized by Vitamin F.",
+  "description": "",
   "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/756/frauenkreativmarkt-klein-montmartre",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
-    "Markt",
-    "Weingarten"
+    "Markt"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.1,
-        "issues": [
-          "location is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "description is minimal and repetitive, lacks location and additional details"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Event entry for Frauenkreativmarkt has a clear title and proper time extraction, but lacks location information and has a minimal description, affecting data completeness. Tags are appropriate and no duplicates found."
-  }
+  "recurring_group_id": null
 }

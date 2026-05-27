@@ -15,41 +15,5 @@
     "Bildung",
     "Linkenheim"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description truncated and uninformative; 'Weiterlesen' indicates missing content"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "'Bildung' is not clearly relevant for a concert; 'Kultur' would be more appropriate",
-          "District tag 'Linkenheim' only partially reflects the location 'Linkenheim-Hochstetten'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Title, location, and time are well extracted. Description is severely truncated and offers little value. Tags are mostly valid but include a misaligned category and slightly imprecise district tag. No duplication risk."
-  }
+  "recurring_group_id": null
 }

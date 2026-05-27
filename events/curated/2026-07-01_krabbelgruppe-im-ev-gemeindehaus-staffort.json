@@ -14,36 +14,5 @@
     "Kinder",
     "Staffort"
   ],
-  "recurring_group_id": 1541958589,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 1.0,
-    "passed": true,
-    "summary": "Event entry is complete and clear: a playgroup for ages 0-3 at a church hall in Staffort, with time, full address, inviting description, and accurate tags (Kinder, Staffort). No duplicate events in context."
-  }
+  "recurring_group_id": 1541958589
 }

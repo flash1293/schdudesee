@@ -13,44 +13,5 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title could be more specific about the opera or pieces performed"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing category tag; only district tag present. Should include relevant category like Musik or Kultur."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.55,
-    "passed": false,
-    "summary": "Event entry lacks time and description, which are critical for usability. Tags only include district, no category. Title is somewhat vague but acceptable. Location is present. No duplicate concerns."
-  }
+  "recurring_group_id": null
 }

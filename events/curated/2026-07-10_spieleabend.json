@@ -14,42 +14,5 @@
     "Kinder",
     "Treff"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location contains label prefix and formatting characters, not cleanly extracted"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, no information provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Missing district tag from available districts"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.65,
-    "passed": true,
-    "summary": "Event entry for Spieleabend has a clear title and time, but lacks description and has poorly extracted location. Tags are appropriate for children and meeting but missing district tag. No duplicate risk with context event."
-  }
+  "recurring_group_id": null
 }

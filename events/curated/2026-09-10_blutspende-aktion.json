@@ -14,38 +14,5 @@
     "Wohltätigkeit",
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.82,
-    "passed": true,
-    "summary": "The event is a blood donation action with a clear title and precise time. The location is specified, and tags are appropriate. However, the description is completely missing, which reduces its informational value."
-  }
+  "recurring_group_id": null
 }

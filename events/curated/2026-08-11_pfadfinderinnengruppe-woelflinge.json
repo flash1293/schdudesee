@@ -15,38 +15,5 @@
     "Natur",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1764623589,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.8,
-        "issues": [
-          "Same time and location as another scout group for older children (11–15 Jahre), though title and age group differ, there is moderate risk of confusion or duplication."
-        ]
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Well-structured event for Wölflinge scout group with clear title, time, location, and informative description. Tags appropriately cover child audience, nature, and district. Slight duplicate risk due to another scout event at the same time and venue."
-  }
+  "recurring_group_id": 1764623589
 }

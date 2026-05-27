@@ -14,38 +14,5 @@
     "Markt",
     "Blankenloch"
   ],
-  "recurring_group_id": 11069990,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "description is brief and mostly reiterates information from title and time"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Clear and well-structured event entry for the Blankenloch weekly market. All key fields are present and accurate; however the description could be more detailed to add unique value beyond the title and time."
-  }
+  "recurring_group_id": 11069990
 }

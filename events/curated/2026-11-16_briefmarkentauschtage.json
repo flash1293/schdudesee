@@ -15,38 +15,5 @@
     "Senioren",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Description contains trailing whitespace (HTML entity &nbsp;)"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.78,
-    "passed": true,
-    "summary": "Event entry for stamp exchange days is well-structured with clear title, proper location and time extraction, informative description, appropriate tags including district, and no duplication risk."
-  }
+  "recurring_group_id": null
 }

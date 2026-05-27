@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Evang. Gemeindehaus Eggenstein",
   "organizer": "Evang. Kirchengemeinde Eggenstein",
-  "description": "",
+  "description": "Atemholen - Ökum. Seniorennachmittag",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1824",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Senioren",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Abbreviation 'Ökum.' not expanded; title could be more descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.1,
-        "issues": [
-          "Description is identical to title and lacks additional details"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.63,
-    "passed": true,
-    "summary": "Event entry lacks time information and has uninformative description, resulting in low overall quality."
-  }
+  "recurring_group_id": null
 }

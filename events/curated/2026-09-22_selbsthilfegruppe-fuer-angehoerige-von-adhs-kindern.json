@@ -15,38 +15,5 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Missing space after colon in 'Hinweis:Zu Beginn'"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.983,
-    "passed": true,
-    "summary": "Selbsthilfegruppe event with clear title, precise location/time, helpful description, appropriate tags, and no duplication."
-  }
+  "recurring_group_id": 1140166910
 }

@@ -15,43 +15,5 @@
     "Verein",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No time specified, time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is incomplete, ends abruptly",
-          "Lists dates but lacks details like time"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing 'Sport' tag, which might be more accurate"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Event entry for Rundenwettkämpfe 2026 includes location and dates but lacks specific time and description is incomplete. Tags are appropriate but missing a sport category. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

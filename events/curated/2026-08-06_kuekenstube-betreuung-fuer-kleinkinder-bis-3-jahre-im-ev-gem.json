@@ -15,42 +15,5 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.5,
-        "issues": [
-          "time_raw value (09:00) does not match the description that states a Thursday start time of 08:30 for this day"
-        ]
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Flyer mentioned in description is dated 2025 but event date is in 2026, may be outdated"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Missing 'Kinder' tag, which is more descriptive for a children's event"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.78,
-    "passed": true,
-    "summary": "Event entry is mostly clear with a descriptive title and complete location, but has time inconsistency with the description, an outdated flyer reference, and tags could be improved by including 'Kinder'."
-  }
+  "recurring_group_id": null
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Karlsdorf-Neuthard",
   "organizer": "Altenwerk Karlsdorf",
-  "description": "Halbtagesausflug. at Karlsdorf-Neuthard. organized by Altenwerk Karlsdorf.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=466",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -13,44 +13,5 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title is generic, could be more descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is too brief and uninformative, only repeats other fields"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing category tag from available categories (e.g., Senioren)"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.57,
-    "passed": false,
-    "summary": "Event entry lacks time, has generic title and uninformative description, missing category tags, reducing overall quality."
-  }
+  "recurring_group_id": null
 }

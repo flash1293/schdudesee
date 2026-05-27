@@ -15,40 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1065758186,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.7,
-        "issues": [
-          "End time not extracted, though available in description"
-        ]
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Musik' is not fully representative of the event's primary focus (social meeting); a tag like 'Treff' would be more appropriate"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.85,
-    "passed": true,
-    "summary": "Event entry is generally high quality with clear title, location, and description. Minor issues: end time missing from time extraction, tag selection could be more accurate. No duplicate risk."
-  }
+  "recurring_group_id": 1065758186
 }

@@ -15,36 +15,5 @@
     "Natur",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1764623589,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.97,
-    "passed": true,
-    "summary": "Event entry is clear and well-structured. Title describes the Pfadfinder group for Wölflinge (age 7-11). Location and time are properly extracted. Description is informative, highlighting regular meetings, nature activities, and invitation. Tags are appropriate (Kinder, Natur, Friedrichstal). No duplicate risk with other events despite similar time/location as age groups differ."
-  }
+  "recurring_group_id": 1764623589
 }

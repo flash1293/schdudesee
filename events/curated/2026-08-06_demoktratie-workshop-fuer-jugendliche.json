@@ -15,42 +15,5 @@
     "Workshop",
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title contains a typo (Demoktratie instead of Demokratie)"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.1,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing relevant tag 'Politik'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.78,
-    "passed": true,
-    "summary": "The title is descriptive but has a typo. Location and time are well extracted. Description is missing, which is a major issue. Tags are mostly appropriate but missing a politics tag. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

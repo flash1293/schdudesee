@@ -14,36 +14,5 @@
     "Kinder",
     "Staffort"
   ],
-  "recurring_group_id": 1541958589,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.98,
-    "passed": true,
-    "summary": "The event entry is well-structured and informative. The title is clear, location and time are properly extracted, description is engaging and includes relevant details, tags are appropriate, and there is no duplicate risk."
-  }
+  "recurring_group_id": 1541958589
 }

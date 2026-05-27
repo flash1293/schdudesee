@@ -14,38 +14,5 @@
     "Musik",
     "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time specified; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.78,
-    "passed": true,
-    "summary": "The event entry has a clear title and proper location, but lacks any time information. Description is informative though could include time. Tags are appropriate including district. No duplicate risk. Overall good quality but missing time is a notable gap."
-  }
+  "recurring_group_id": null
 }

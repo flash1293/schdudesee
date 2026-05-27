@@ -5,54 +5,14 @@
   "time_raw": "",
   "location": "Haus des Liedes",
   "organizer": "MGV Liederkranz Neudorf",
-  "description": "Waldrandkerwe (11.-12.10.2026). at Haus des Liedes. organized by MGV Liederkranz Neudorf.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145249/waldrandkerwe-11-12102026",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
     "Fest",
-    "Natur",
-    "Graben-Neudorf"
+    "Natur"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title includes date which is redundant with date fields"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": [
-          "Location could include city for completeness"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time extracted"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is minimal and does not provide additional details beyond title/location/organizer"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Clear title and correct tags. Location is present. Missing start time and description lacks depth. No duplicates in context."
-  }
+  "recurring_group_id": null
 }

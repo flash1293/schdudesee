@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Neue Mitte",
   "organizer": "SPD-Ortsverein Graben-Neudorf",
-  "description": "'Zamme hocke'. at Neue Mitte. organized by SPD-Ortsverein Graben-Neudorf.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146373/zamme-hocke",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -13,44 +13,5 @@
   "tags": [
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is in local dialect and may be unclear to a general audience; could benefit from a more descriptive phrasing"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Time field is empty; no start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description merely repeats title, location, and organizer without adding informative details about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing a category tag (e.g., Politik, Treff) from the available list; only the district tag is present"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.57,
-    "passed": false,
-    "summary": "Event entry has critical gaps: no time and a very sparse description. Tags are incomplete (missing category). The title is not fully descriptive. Overall quality is low."
-  }
+  "recurring_group_id": null
 }

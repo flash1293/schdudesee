@@ -15,38 +15,5 @@
     "Treff",
     "Blankenloch"
   ],
-  "recurring_group_id": 696239800,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Tag 'Kinder' does not fully reflect the all-ages target group"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Well-documented games meetup for all ages with clear location and time. Tags could be more inclusive of age range."
-  }
+  "recurring_group_id": 696239800
 }

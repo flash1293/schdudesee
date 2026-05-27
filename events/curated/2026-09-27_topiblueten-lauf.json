@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSportplatz Staffort",
   "organizer": "Sportverein Staffort e.V.",
-  "description": "Topiblüten-Lauf. at Veranstaltungsort:\n\t\tSportplatz Staffort. organized by Sportverein Staffort e.V..",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2667",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,46 +13,5 @@
   "tags": [
     "Staffort"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Location includes label text 'Veranstaltungsort:'",
-          "Location not cleanly extracted"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is not informative, simply repeats title and metadata"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing category tag (e.g., Sport)",
-          "Only district tag present"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.48,
-    "passed": false,
-    "summary": "Event entry has incomplete time, poor location extraction, uninformative description, and missing category tag. Title is clear, duplicate risk low."
-  }
+  "recurring_group_id": null
 }

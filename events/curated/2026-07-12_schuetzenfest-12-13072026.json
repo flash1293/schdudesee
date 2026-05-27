@@ -5,51 +5,13 @@
   "time_raw": "",
   "location": "Schützenhaus",
   "organizer": "Schützenvereinigung Hubertus Neudorf",
-  "description": "Schützenfest (12.-13.07.2026). at Schützenhaus. organized by Schützenvereinigung Hubertus Neudorf.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145233/schuetzenfest-12-13072026",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Fest",
-    "Graben-Neudorf"
+    "Fest"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title includes date which may be redundant"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is repetitive and lacks additional details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Title and location are clear, but time is missing and description is uninformative. Tags are appropriate."
-  }
+  "recurring_group_id": null
 }

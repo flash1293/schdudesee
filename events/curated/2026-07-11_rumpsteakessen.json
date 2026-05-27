@@ -10,45 +10,6 @@
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
-  "tags": [
-    "Neuthard"
-  ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is not descriptive; single word."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is redundant with other fields, no added value."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "Missing category tag (e.g., Essen, Verein); only district tag present."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Event for rump steak dinner at Hundesportplatz organized by Hundesportverein. However, the title is vague, description lacks useful details, and tags are incomplete (missing category). No risk of duplication."
-  }
+  "tags": [],
+  "recurring_group_id": null
 }

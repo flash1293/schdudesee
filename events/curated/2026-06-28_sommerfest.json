@@ -13,42 +13,5 @@
   "tags": [
     "Fest"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title 'Sommerfest' is too generic and does not provide any context about the organizer or event specifics."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty. It should contain relevant information about the event."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing district tag; should include one from the list (e.g., 'Neuthard' for this location). Only category 'Fest' present."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "Event entry suffers from generic title, missing description, and missing district tag. While location, time, and duplicate risk are fine, the core weaknesses lower the overall quality below passing."
-  }
+  "recurring_group_id": null
 }

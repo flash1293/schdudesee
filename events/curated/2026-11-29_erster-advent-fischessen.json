@@ -13,42 +13,5 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.6,
-        "issues": [
-          "No specific address provided"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing category tags such as 'Essen' or 'Fest'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "The event has a clear title and time, but lacks a description and specific address. Tags are missing relevant category tags, though the district is correctly assigned. No duplicate conflicts with other events on the same date."
-  }
+  "recurring_group_id": null
 }

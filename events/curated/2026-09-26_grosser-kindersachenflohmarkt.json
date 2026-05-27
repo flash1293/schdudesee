@@ -14,40 +14,5 @@
     "Kinder",
     "Markt"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "missing district tag; likely Neuthard should be included"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Entry is mostly complete but lacks description and district tag."
-  }
+  "recurring_group_id": null
 }

@@ -14,42 +14,5 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title is too generic, lacks specifics like play name"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Time is missing"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.6,
-    "passed": true,
-    "summary": "Event entry has generic title, missing time and description. Location and tags are appropriate. Not a duplicate of the market event."
-  }
+  "recurring_group_id": null
 }

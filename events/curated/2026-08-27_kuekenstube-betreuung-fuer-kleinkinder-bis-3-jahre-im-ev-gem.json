@@ -15,44 +15,5 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.6,
-        "issues": [
-          "time_raw 09:00 does not match Thursday start time 08:30 from description",
-          "Missing end time"
-        ]
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Description provides general schedule not specific to the event date",
-          "Flyer year 2025 may be outdated for 2026 event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": [
-          "Missing relevant 'Kinder' category"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.87,
-    "passed": true,
-    "summary": "Event entry for toddler care at church in Friedrichstal. Title clear, location well-defined. Time extraction inconsistent (Monday time vs Thursday instance) and missing end time. Description informative but generic. Tags mostly appropriate but missing 'Kinder'. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

@@ -15,40 +15,5 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description states recurring schedule (Tuesdays & Thursdays), but event is listed as a single date, potentially causing confusion"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing 'Kinder' tag, which is relevant for the age group"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.92,
-    "passed": true,
-    "summary": "The event entry is well-structured with clear title, location, and time. The description is informative but contradicts the single-date listing by mentioning recurring days; this could cause confusion. Tags are close but miss the 'Kinder' category. No duplicate risk. Overall good quality."
-  }
+  "recurring_group_id": null
 }

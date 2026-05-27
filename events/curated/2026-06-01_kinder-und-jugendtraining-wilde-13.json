@@ -15,36 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 367346517,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 1.0,
-    "passed": true,
-    "summary": "Clear and complete event entry for weekly children's boule training, with good description and appropriate tags."
-  }
+  "recurring_group_id": 367346517
 }

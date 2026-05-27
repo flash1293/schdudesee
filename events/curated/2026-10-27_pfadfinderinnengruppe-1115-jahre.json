@@ -15,38 +15,5 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Tag 'Workshop' may not be the most accurate; consider using 'Natur' or 'Treff'."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Event entry has good overall quality with clear title, well-extracted location and time, detailed description. Tags are mostly appropriate but could be refined. No duplicate risk."
-  }
+  "recurring_group_id": 1882532067
 }

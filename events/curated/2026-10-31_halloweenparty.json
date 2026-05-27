@@ -14,42 +14,5 @@
     "Kinder",
     "Fest"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "title could be more specific"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "missing district tag"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.7,
-    "passed": true,
-    "summary": "Title is clear but could be more specific; location and time are well extracted; description is missing; tags lack district tag; no duplicate risk."
-  }
+  "recurring_group_id": null
 }

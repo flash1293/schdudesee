@@ -14,42 +14,5 @@
     "Politik",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is generic; could include specific municipality or purpose"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location does not explicitly indicate city, but can be inferred from context"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is blank; provide event details"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.45,
-    "passed": false,
-    "summary": "Event entry lacks description, which is essential for quality. Other fields are acceptable but could be enhanced."
-  }
+  "recurring_group_id": null
 }

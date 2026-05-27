@@ -14,44 +14,5 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.2,
-        "issues": [
-          "Title is too vague and not descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tags are limited; may benefit from additional relevant categories like 'Verein' or 'Workshop'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.47,
-    "passed": false,
-    "summary": "Event entry lacks time and description, title is not descriptive. Tag quality is moderate. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Karlsdorf-Neuthard",
   "organizer": "VdK Neuthard",
-  "description": "Adlerfahrt. at Karlsdorf-Neuthard. organized by VdK Neuthard.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=446",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -13,44 +13,5 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title is not descriptive; likely unclear to those unfamiliar with the event"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is very short and does not provide any additional information beyond title, location, and organizer"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "Only district tag present; missing appropriate category tag from available list"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.52,
-    "passed": false,
-    "summary": "Event entry lacks time, has insufficient description, and incomplete tags; title is ambiguous."
-  }
+  "recurring_group_id": null
 }

@@ -13,42 +13,5 @@
   "tags": [
     "Fest"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is generic, could be more descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, no event details provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing district tag, should include 'Weingarten'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Event has generic title, missing description, and lacks district tag. Location and time extraction are correct. Not a duplicate."
-  }
+  "recurring_group_id": null
 }

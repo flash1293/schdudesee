@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Walzbachhalle",
   "organizer": "DRK Weingarten (Baden) und DRK-Blutspendedienst",
-  "description": "Blutspendeveranstaltung mit dem DRK-Blutspendedienst. at Walzbachhalle. organized by DRK Weingarten (Baden) und DRK-Blutspendedienst.",
+  "description": "",
   "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/833/blutspendeveranstaltung-mit-dem-drk-blutspendedienst",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -14,40 +14,5 @@
     "Wohltätigkeit",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time extracted; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description too brief and does not provide additional helpful information beyond title, location, and organizer."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.73,
-    "passed": true,
-    "summary": "The event entry has a clear title and appropriate tags, but lacks time information and the description is too brief. Location extraction is fine."
-  }
+  "recurring_group_id": null
 }

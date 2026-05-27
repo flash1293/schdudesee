@@ -15,40 +15,5 @@
     "Treff",
     "Rintheim"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Time not extracted, only mentioned in description"
-        ]
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description contains incomplete tag string"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.83,
-    "passed": true,
-    "summary": "Clear title and location, informative description despite minor tag clutter, time not extracted, tags appropriate."
-  }
+  "recurring_group_id": null
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Landstr. 21/ Erdbeerhof Leicht",
   "organizer": "Freie Wähler Eggenstein-Leopoldshafen e. V.",
-  "description": "Mostfest. at Landstr. 21/ Erdbeerhof Leicht. organized by Freie Wähler Eggenstein-Leopoldshafen e. V..",
+  "description": "Mostfest",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1829",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,40 +15,5 @@
     "Eggenstein",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "No start time specified"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description lacks detail, merely repeats title and location"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Event has a title and location but no time and a poor description."
-  }
+  "recurring_group_id": null
 }

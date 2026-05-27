@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Evang. Gemeindehaus Eggenstein",
   "organizer": "Evang. Kirche Eggenstein",
-  "description": "",
+  "description": "Gemeindedankfest am Erntedank",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1840",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,40 +14,5 @@
     "Fest",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is identical to title and lacks detail"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.6833,
-    "passed": true,
-    "summary": "The event entry has a clear title and location, but lacks a start time and has a very minimal description. Tags are appropriate. Potential for improvement in providing event time and more descriptive details. Overall quality is below threshold."
-  }
+  "recurring_group_id": null
 }

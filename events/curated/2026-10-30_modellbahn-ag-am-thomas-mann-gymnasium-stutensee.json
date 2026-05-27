@@ -15,38 +15,5 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 308472627,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "Tag 'Musik' is not appropriate for a model railway workshop; 'Kultur' is borderline but not a strong fit; consider using 'Workshop' or 'Kinder' instead."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.85,
-    "passed": true,
-    "summary": "The entry is generally clear and well-structured, but the tags are inaccurate and should be revised to better reflect the event's nature."
-  }
+  "recurring_group_id": 308472627
 }

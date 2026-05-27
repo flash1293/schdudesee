@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Tennisclub Eggenstein",
   "organizer": "Tennis-Club Eggenstein e.V.",
-  "description": "",
+  "description": "Sommercamp beim Tennisclub Eggenstein",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1820",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,40 +15,5 @@
     "Kinder",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty, no start time extracted"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is identical to title, provides no additional information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "Event is clearly titled and located but lacks time and detailed description."
-  }
+  "recurring_group_id": null
 }

@@ -13,44 +13,5 @@
   "tags": [
     "Musik"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title is ambiguous and not descriptive of event content"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is repetitive and lacks additional details about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing district tag; consider adding a district from the list"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.6,
-        "issues": [
-          "Title and location are similar to another event on the same date; potential duplicate"
-        ]
-      }
-    },
-    "overall_score": 0.62,
-    "passed": true,
-    "summary": "Entry has clear time and location but title and description quality are low; tag set missing district; similar event exists on same date."
-  }
+  "recurring_group_id": null
 }

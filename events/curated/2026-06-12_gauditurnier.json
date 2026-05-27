@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Reit,-Fahr- und Zuchtverein 1949 e.V. Spöck",
   "organizer": "Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck",
-  "description": "Gauditurnier. at Reit,-Fahr- und Zuchtverein 1949 e.V. Spöck. organized by Reit-, Fahr- und Zuchtverein 1949 e.V. Spöck.",
+  "description": "",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/gauditurnier/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -14,40 +14,5 @@
     "Sport",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty, no time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "description is uninformative, merely repeats title and location"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "The event title is clear and tags are appropriate, but the description is uninformative and no time is extracted. It does not appear to be a duplicate of other events in the context."
-  }
+  "recurring_group_id": null
 }

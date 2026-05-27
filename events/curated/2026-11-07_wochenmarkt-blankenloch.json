@@ -14,38 +14,5 @@
     "Markt",
     "Blankenloch"
   ],
-  "recurring_group_id": 11069990,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Description could include more details about the market offerings or the surrounding area"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "The event entry is well-structured with a clear title, precise location, and complete time information. The tags are appropriate and include the required district tag. The description is functional but could be more descriptive. There is no risk of duplication with other events in the same district on the same date."
-  }
+  "recurring_group_id": 11069990
 }

@@ -15,40 +15,5 @@
     "Essen",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field contains raw formatting (newlines/tabs) and lacks full address."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.95,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "Description is too brief, could include more details about the event."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.85,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.81,
-    "passed": true,
-    "summary": "The event entry is clear and well-tagged, but the location field needs cleaning and the description could be slightly more detailed."
-  }
+  "recurring_group_id": null
 }

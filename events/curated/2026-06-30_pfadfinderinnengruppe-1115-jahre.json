@@ -15,40 +15,5 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Workshop' may not be the most accurate for a regular scouting group; consider 'Verein' or 'Natur'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.9,
-        "issues": [
-          "Similar event 'Pfadfinder*innengruppe Wölflinge' at same time and location but different age group; not a duplicate"
-        ]
-      }
-    },
-    "overall_score": 0.9,
-    "passed": true,
-    "summary": "Well-formed event entry for Pfadfindergruppe (11-15 Jahre) with clear title, complete location and time, and informative description. Tags are nearly appropriate, though 'Workshop' could be more accurate. No significant duplicate risk."
-  }
+  "recurring_group_id": 1882532067
 }

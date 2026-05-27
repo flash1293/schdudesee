@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "TV Friedrichstal",
   "organizer": "Turnverein Friedrichstal 1899 e.V.",
-  "description": "Sommerfest TVF. at TV Friedrichstal. organized by Turnverein Friedrichstal 1899 e.V..",
+  "description": "",
   "event_url": "https://www.tv-friedrichstal.de",
   "sources": [
     "clubs_batch_all"
@@ -14,42 +14,5 @@
     "Fest",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title uses abbreviation TVF which may be unclear to some users"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is very brief and repetitive, lacking details about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "Missing time information and poor description; title and location acceptable, tags appropriate."
-  }
+  "recurring_group_id": null
 }

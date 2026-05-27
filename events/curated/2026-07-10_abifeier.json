@@ -5,52 +5,11 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
   "organizer": "Thomas-Mann-Gymnasium",
-  "description": "Abifeier. at Veranstaltungsort:\n\t\tFesthalle Stutensee. organized by Thomas-Mann-Gymnasium.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2681",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
   ],
-  "tags": [
-    "Fest"
-  ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Location field contains prefix 'Veranstaltungsort:' and newline/tab"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is redundant and lacks useful details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "Missing district tag from the districts list"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.47,
-    "passed": false,
-    "summary": "The event entry has a clear title but multiple extraction and completeness issues: location includes unnecessary prefix, no time provided, description is uninformative, and tags lack a district tag. Duplicate risk is low."
-  }
+  "tags": [],
+  "recurring_group_id": null
 }

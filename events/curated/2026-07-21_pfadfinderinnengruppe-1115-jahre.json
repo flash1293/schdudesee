@@ -15,38 +15,5 @@
     "Workshop",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1882532067,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Workshop' is inaccurate for a regular group meeting; 'Natur' or 'Verein' would be more appropriate"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.9,
-        "issues": []
-      }
-    },
-    "overall_score": 0.9,
-    "passed": true,
-    "summary": "Well-structured event for a scout group meeting (ages 11–15) with clear title and description. Location and time are correctly extracted. Tags are mostly suitable but 'Workshop' fits poorly; 'Natur' or 'Verein' would be better. No duplication risk with the similar but distinct 'Wölflinge' event."
-  }
+  "recurring_group_id": 1882532067
 }

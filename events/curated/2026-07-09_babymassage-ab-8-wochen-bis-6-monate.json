@@ -15,40 +15,5 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": 459103995,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Age description 'ab etwa sechs Wochen' conflicts with title 'ab 8 Wochen'"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Musik' is not strongly relevant; consider tags like 'Workshop' or 'Treff'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.88,
-    "passed": true,
-    "summary": "Event entry is mostly clean; location, time, title are good. Description informative but has age inconsistency. Tags need adjustment (Music not ideal)."
-  }
+  "recurring_group_id": 459103995
 }

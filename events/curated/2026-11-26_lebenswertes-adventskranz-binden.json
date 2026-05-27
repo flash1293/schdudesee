@@ -13,41 +13,5 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "description is empty, provides no information about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "missing category tags, such as Handwerk or Workshop",
-          "only district tag provided but no event type categorization"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.7,
-    "passed": true,
-    "summary": "Event entry has clear title and proper time/location extraction, but lacks description and has insufficient tags."
-  }
+  "recurring_group_id": null
 }

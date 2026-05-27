@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSpechaahalle Spöck",
   "organizer": "Förderverein Richard-Hecht-Schule Spöck",
-  "description": "Frauenflohmarkt. at Veranstaltungsort:\n\t\tSpechaahalle Spöck. organized by Förderverein Richard-Hecht-Schule Spöck.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2678",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Markt",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.6,
-        "issues": [
-          "Location field contains label prefix 'Veranstaltungsort:'"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No start time extracted (time_raw is empty)"
-        ]
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "Description is minimal and repeats title and location"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.7,
-    "passed": true,
-    "summary": "Event title is clear, but missing time and location extraction needs improvement. Description is sparse. Tags appropriate."
-  }
+  "recurring_group_id": null
 }

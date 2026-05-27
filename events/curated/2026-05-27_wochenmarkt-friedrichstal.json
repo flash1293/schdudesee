@@ -14,38 +14,5 @@
     "Markt",
     "Friedrichstal"
   ],
-  "recurring_group_id": 656683462,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description is brief and lacks additional details about the market offerings."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Event entry is clear and well-structured, with a descriptive title, precise location, and proper time extraction. The description could be more informative, but tags are appropriate and there is no risk of duplication."
-  }
+  "recurring_group_id": 656683462
 }

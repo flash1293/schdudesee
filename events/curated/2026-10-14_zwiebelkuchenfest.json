@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tKatholisches Gemeindezentrum Spöck",
   "organizer": "Forum älterwerden (Ökum.) St. Georg",
-  "description": "Zwiebelkuchenfest. at Veranstaltungsort:\n\t\tKatholisches Gemeindezentrum Spöck. organized by Forum älterwerden (Ökum.) St. Georg.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2676",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -15,42 +15,5 @@
     "Essen",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "location field contains 'Veranstaltungsort:' label and newlines, not clean"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "time_raw is empty, no time specified"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "description is auto-generated and lacks meaningful details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.62,
-    "passed": true,
-    "summary": "Event entry for Zwiebelkuchenfest has clear title and appropriate tags, but lacks time information and description is derivative; location extraction is messy."
-  }
+  "recurring_group_id": null
 }

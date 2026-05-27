@@ -15,41 +15,5 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Includes outdated 'Flyer Kükenstube 2025' for 2026 event",
-          "Describes multiple operating days (Monday and Thursday) for a single-date event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing highly relevant category 'Kinder'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.9,
-    "passed": true,
-    "summary": "Event entry for a recurring toddler program; clear title and location; description informative but has outdated flyer reference; tags include district but miss 'Kinder' category."
-  }
+  "recurring_group_id": null
 }

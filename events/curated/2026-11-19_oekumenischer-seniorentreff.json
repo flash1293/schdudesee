@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Evang. Gemeindehaus Leopoldshafen",
   "organizer": "Evang. Kirchengemeinde Leopoldshafen",
-  "description": "",
+  "description": "Ökumenischer Seniorentreff",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1861",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,40 +15,5 @@
     "Senioren",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is identical to title and lacks additional details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Event entry has a clear title and valid location but lacks a specified time and detailed description. Tags are appropriate and include the required district tag. Overall quality is acceptable."
-  }
+  "recurring_group_id": null
 }

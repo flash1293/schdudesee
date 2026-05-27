@@ -15,42 +15,5 @@
     "Musik",
     "Spöck"
   ],
-  "recurring_group_id": 1716290936,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location contains organizer name 'Tanzgruppe Rowan Berry' which is redundant with organizer field"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Description contains trailing whitespace and non-breaking space"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Missing relevant category tag 'Kinder' for children's event"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.9,
-    "passed": true,
-    "summary": "Event effectively describes a dance class for children with clear title and useful information. Minor issues include redundant location field, trailing whitespace in description, and absence of a 'Kinder' tag."
-  }
+  "recurring_group_id": 1716290936
 }

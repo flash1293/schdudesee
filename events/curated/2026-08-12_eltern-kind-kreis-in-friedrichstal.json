@@ -15,40 +15,5 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.8,
-        "issues": [
-          "time_raw only includes start time, missing end time"
-        ]
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Tag 'Sport' is not appropriate for this event; consider 'Treff' or 'Kirche'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.87,
-    "passed": true,
-    "summary": "The entry for 'Eltern-Kind-Kreis in Friedrichstal' is clear and well-detailed. Title and location are good. Time extraction missing end time is a minor issue. Tag 'Sport' is inappropriate for a parent-child circle. No duplicate risk."
-  }
+  "recurring_group_id": 269588601
 }

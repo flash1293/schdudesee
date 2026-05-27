@@ -13,44 +13,5 @@
   "tags": [
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is somewhat generic; could be more descriptive (e.g., 'Klassikkonzert mit Brunch')"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": [
-          "Location name is specific but may lack full address"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is empty, providing no information about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Missing event category tag; only district tag provided"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Event entry is clear in title and timing, but lacks a description and appropriate category tags."
-  }
+  "recurring_group_id": null
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Graben-Neudorf",
   "organizer": "CVJM Graben-Neudorf",
-  "description": "MÄNNER Vesper. at Graben-Neudorf. organized by CVJM Graben-Neudorf.",
+  "description": "",
   "event_url": "https://www.cvjm-graben-neudorf.de/eventcalendar",
   "sources": [
     "https://www.cvjm-graben-neudorf.de/eventcalendar"
@@ -14,44 +14,5 @@
     "Kirche",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is somewhat generic; could include event type or additional details."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Only district name provided; no specific venue or address."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Time not extracted; time_raw field is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is minimal and repeats title/location; lacks informative content."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.65,
-    "passed": true,
-    "summary": "Event entry missing critical time information and has sparse description, but location and tags are appropriate. Overall quality is moderate."
-  }
+  "recurring_group_id": null
 }

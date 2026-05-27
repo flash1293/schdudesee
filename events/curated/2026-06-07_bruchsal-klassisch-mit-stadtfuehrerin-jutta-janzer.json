@@ -14,40 +14,5 @@
     "Treff",
     "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location is too generic (city-level); specific meeting point ('Parkplatz am Schönborn-Gymnasium') is not captured in location field."
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Tags could be more comprehensive; missing a category like 'Kultur' for this cultural tour."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.83,
-    "passed": true,
-    "summary": "Event entry is generally good with clear title and description, but location extraction is too broad (city-wide) instead of the specific meeting point, which lowers quality. Tags are adequate but could be more specific. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

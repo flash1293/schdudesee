@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Evang. Kirche Eggenstein",
   "organizer": "Evang. Kirchengemeinde Eggenstein",
-  "description": "",
+  "description": "Gottesdienst zu Erntedank",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1839",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,40 +14,5 @@
     "Kirche",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time specified"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is too brief and identical to title, provides no additional information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.7,
-    "passed": true,
-    "summary": "Event is a church service for Harvest Thanksgiving with clear title and proper location and tags, but lacks a description and time information; not a duplicate of the context event."
-  }
+  "recurring_group_id": null
 }

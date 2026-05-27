@@ -15,41 +15,5 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.3,
-        "issues": [
-          "The time_raw '09:00' does not match the description, which indicates Thursday starts at 08:30"
-        ]
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Kinder' is more relevant than 'Musik' for this event",
-          "Primary focus is childcare, not music"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.78,
-    "passed": true,
-    "summary": "The event entry is generally well-formed with a clear title and complete location. However, the time extraction is inconsistent with the description for this specific date, and the tag selection could be more accurate by including 'Kinder'. Despite these issues, the entry is acceptable."
-  }
+  "recurring_group_id": null
 }

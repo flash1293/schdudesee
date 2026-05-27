@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tKatholische Gemeindezentrum Spöck",
   "organizer": "Forum älterwerden (Ökum.) St. Georg",
-  "description": "Sommerparty mit vielen Überraschungen. at Veranstaltungsort:\n\t\tKatholische Gemeindezentrum Spöck. organized by Forum älterwerden (Ökum.) St. Georg.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2641",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "location field contains label 'Veranstaltungsort:' and newline characters; should be cleaned"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty, no time specified"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "description is uninformative, largely repeats title and location, lacks details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.62,
-    "passed": true,
-    "summary": "Title and tags are good, but location extraction has formatting issues, no time provided, and description is insufficient."
-  }
+  "recurring_group_id": null
 }

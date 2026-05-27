@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Schützenverein Eggenstein, Kopfweg 8",
   "organizer": "Schützenverein Eggenstein 1958 e.V.",
-  "description": "",
+  "description": "Ortspokal, Bürgerkönig- und Preisschießen",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1834",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,44 +14,5 @@
     "Politik",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is a concatenation of technical terms without context, potentially unclear to outsiders"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.1,
-        "issues": [
-          "Description is identical to title, offering no additional information"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.2,
-        "issues": [
-          "Tag 'Politik' is inappropriate; event is clearly a shooting competition, better suited for 'Sport' or 'Verein'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.5,
-    "passed": false,
-    "summary": "The event entry has a good location extraction but critically lacks a time, has a non-informative description, and uses an incorrect category tag."
-  }
+  "recurring_group_id": null
 }

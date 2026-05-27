@@ -15,38 +15,5 @@
     "Natur",
     "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.2,
-        "issues": [
-          "Location field is empty; should indicate 'Online' for webinars or the physical location if applicable."
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.82,
-    "passed": true,
-    "summary": "Event 'Klima und Finanzen' is a free online webinar on sustainable finance. Title and description are clear, time is present, but location is missing. Tags are appropriate, and no risk of duplication."
-  }
+  "recurring_group_id": null
 }

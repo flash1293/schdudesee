@@ -15,40 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1065758186,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Title could more explicitly indicate it's a club or regular meeting, e.g., 'Teen Girls Club im GrauBau'."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Tag 'Kinder' may be too broad for ages 13+; consider 'Treff' or 'Workshop'."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Event entry has strong location, time, and description. Title and tags have minor issues but overall sufficient. No duplicate concerns."
-  }
+  "recurring_group_id": 1065758186
 }

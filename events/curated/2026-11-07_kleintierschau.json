@@ -14,42 +14,5 @@
     "Essen",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "Description is brief and lacks event details; only mentions food and drinks"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Could include primary category tags such as 'Ausstellungen' or 'Verein' instead of only secondary tag 'Essen'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.7,
-    "passed": true,
-    "summary": "Event has a descriptive title and a complete location, but no start time is specified; the description is minimal and only mentions refreshments. Tags include the correct district and a secondary category, but miss more relevant primary categories. No duplication risk with the other event in the same district on the same date."
-  }
+  "recurring_group_id": null
 }

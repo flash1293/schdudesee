@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände WSFE e.V. am Baggersee Fuchs &amp; Groß",
   "organizer": "Wassersportfreunde Eggenstein e.V.",
-  "description": "",
+  "description": "Seefest 2026",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1810",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Fest",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": [
-          "HTML entity not decoded in location"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided, time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is too brief and duplicates the title"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Seefest 2026 event entry has a clear title and location, but lacks time information and the description is minimal. Tags are appropriate. No duplicate events."
-  }
+  "recurring_group_id": null
 }

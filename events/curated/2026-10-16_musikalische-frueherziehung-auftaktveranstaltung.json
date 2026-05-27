@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Kronesaal",
   "organizer": "Coro Accelerando 1993 Eggenstein e.V.",
-  "description": "Musikalische Früherziehung - Auftaktveranstaltung. at Kronesaal. organized by Coro Accelerando 1993 Eggenstein e.V..",
+  "description": "Musikalische Früherziehung - Auftaktveranstaltung",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1847",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,40 +14,5 @@
     "Musik",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is minimal and repeats title and location"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.73,
-    "passed": true,
-    "summary": "Entry has a clear title and appropriate tags, but lacks a start time and the description is minimal."
-  }
+  "recurring_group_id": null
 }

@@ -3,7 +3,7 @@
   "date_start": "2026-06-13",
   "date_end": null,
   "time_raw": "07:50",
-  "location": "Busbahnhof Bruchsal am Bahnhof",
+  "location": "",
   "organizer": "Volkshochschule Bruchsal",
   "description": "10915 Blütenzauber & Gartenpracht - Willkommen im Rosenparadies Baden-Baden Gordana Mlakar Wenn die Königin der Blumen in voller Blüte steht, verwandelt sich Baden-Baden in ein lebendiges Gemälde aus Duft, Farbe und Eleganz. Die Kurstadt feiert ein wahres Fest der Sinne: Rosen, Rosen, Rosen - so weit das Auge reicht. Umgeben von liebevoll gepflegten Parkanlagen entfaltet sich der Charme der Stadt entlang des Flüsschens Oos. Der berühmte Grüne Gürtel durchzieht das mondäne Kurviertel , wo die Lichtentaler Allee - gestaltet im Stil eines englischen Landschaftsparks - mit exotischen Bäumen und duftenden Sträuchern begeistert. Ein Höhepunkt gärtnerischer Poesie ist der Gönnergarten: ein prachtvoller Jugendstilgarten, angelegt von einem deutsch-amerikanischen Kaffeekönig, mit streng symmetrischen Hecken, Wasserspielen und Blumenrabatten - und über 360 Rosenarten, die ihn zu einem einzigartigen Ort machen. Krönung der Rosenpracht ist der Rosenneuheitengarten auf dem Beutig - ein Eldorado für Rosenliebhaber. Auf 7000 Quadratmetern blühen dort unzählige Sorten um die Wette, darunter jährlich prämierte Neuzüchtungen, die die Zukunft der Rosenzucht repräsentiern. Lassen Sie sich verzaubern und genießen Sie mit uns einen einzigartigen Tag voller Blütenträume, Gartenkunst und sinnlicher Entdeckungen im Rosenparadies. Treffpunkt: 07.50 Uhr, Busbahnhof Bruchsal am Bahnhof Rückkehr: ca. 18.00 Uhr, Ort siehe Beschreibung Gebühr: 68,- EUR inkl. Busfahrt und Führungen",
   "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8830151/BltenzauberGartenprachtWillkommenimRosenparadiesBadenBaden.html&nodeID=8830151",
@@ -11,44 +11,9 @@
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
   "tags": [
+    "Sport",
     "Kultur",
-    "Bruchsal",
-    "Fest"
+    "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title is descriptive but somewhat verbose."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Tag 'Fest' may not perfectly match the garden tour content; 'Natur' could be more appropriate."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "A well-detailed bus excursion event to the rose gardens of Baden-Baden, starting from Bruchsal. The title and description are evocative and informative, though the tags could be slightly refined. No significant issues with location, time, or duplication."
-  }
+  "recurring_group_id": null
 }

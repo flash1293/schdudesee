@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tBaggersee Spöck",
   "organizer": "Evangelische Kirchengemeinde Spöck",
-  "description": "Taufgottesdienst am Baggersee. at Veranstaltungsort:\n\t\tBaggersee Spöck. organized by Evangelische Kirchengemeinde Spöck.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2632",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Kirche",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field contains label text and formatting"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is not informative; repeats title and other fields"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.63,
-    "passed": true,
-    "summary": "Event has a clear title and correct tags, but lacks start time and description is uninformative. Location extraction has minor issues."
-  }
+  "recurring_group_id": null
 }

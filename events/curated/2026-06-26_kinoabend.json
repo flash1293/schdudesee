@@ -15,44 +15,5 @@
     "Bildung",
     "Linkenheim"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is generic, could be more descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.6,
-        "issues": [
-          "Location only specifies town, not the specific venue"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description is truncated and lacks details about the film"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Bildung' may be inappropriate for a recreational movie night"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.8,
-    "passed": true,
-    "summary": "Kinoabend (movie night) in Linkenheim with undisclosed film; location and description are incomplete."
-  }
+  "recurring_group_id": null
 }

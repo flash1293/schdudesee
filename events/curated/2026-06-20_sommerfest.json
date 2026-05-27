@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tBaggersee Spöck",
   "organizer": "Kajak-Freunde Wickinger Spöck",
-  "description": "Sommerfest. at Veranstaltungsort:\n\t\tBaggersee Spöck. organized by Kajak-Freunde Wickinger Spöck.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2626",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,46 +14,5 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title is generic, lacks specific details like location or event type"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field contains superfluous text 'Veranstaltungsort:' and extra whitespace, extraction is not clean"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided in 'time_raw' field"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is very brief and merely repeats title, location, and organizer; no additional informative details"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.2,
-        "issues": [
-          "Event is likely a duplicate of 'Sommerfest am Baggersee' event in the same context, with same location and similar organizer"
-        ]
-      }
-    },
-    "overall_score": 0.4,
-    "passed": false,
-    "summary": "Event entry has poor quality: missing time information, generic title, messy location extraction, overly brief description, and high risk of being a duplicate of another event. Overall quality below acceptable threshold."
-  }
+  "recurring_group_id": null
 }

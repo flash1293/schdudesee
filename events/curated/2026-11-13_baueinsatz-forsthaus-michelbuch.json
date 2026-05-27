@@ -15,42 +15,5 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Consider adding more descriptive tags like 'Handwerk' or 'Workshop'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "Event is missing description and start time. Title and location are clear. Tags include district but lack specificity for a construction event. No duplication risk."
-  }
+  "recurring_group_id": null
 }

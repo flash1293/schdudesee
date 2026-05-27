@@ -15,38 +15,5 @@
     "Musik",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1833760295,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Sport' is not fully accurate for a playgroup; consider more relevant tags such as 'Kinder' or 'Treff'."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.9,
-    "passed": true,
-    "summary": "Event is well-structured with clear title, detailed location, and informative description. However, tags could be more accurately aligned to the event's focus (e.g., adding 'Kinder' instead of 'Sport')."
-  }
+  "recurring_group_id": 1833760295
 }

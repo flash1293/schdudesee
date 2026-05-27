@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Graben-Neudorf",
   "organizer": "MGV Frohsinn Neudorf",
-  "description": "Konzert des MGV Frohsinn Neudorf. at Graben-Neudorf.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145256/konzert-des-mgv-frohsinn-neudorf",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -14,43 +14,5 @@
     "Musik",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location only provides the district name; specific venue is missing. Should contain a more precise location."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information extracted; time_raw is empty. Must include at least start time."
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is too short and not informative; simply repeats title and location. Could include details about the concert program, time, or entrance.",
-          "Contains mixed language (English 'at' in otherwise German text)."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "The event entry has a clear title but lacks essential time and detailed location information. The description is minimal and contains mixed language. Tags are appropriate. The event is not a duplicate of the only other event on the same date in the district."
-  }
+  "recurring_group_id": null
 }

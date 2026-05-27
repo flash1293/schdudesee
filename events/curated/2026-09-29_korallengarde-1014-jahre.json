@@ -15,42 +15,5 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title does not specify activity type (e.g., Tanzgarde) which may be unclear to uninitiated."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.9,
-        "issues": [
-          "time_raw missing end time from description (18:00–20:00)"
-        ]
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Tag 'Musik' might be inaccurate; consider adding 'Kinder' or 'Verein'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Good quality event entry with clear title and description; minor issues in time extraction and tag relevance."
-  }
+  "recurring_group_id": null
 }

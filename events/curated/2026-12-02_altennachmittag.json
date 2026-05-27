@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Karlsdorf-Neuthard",
   "organizer": "DRK Karlsdorf",
-  "description": "Altennachmittag. at Karlsdorf-Neuthard. organized by DRK Karlsdorf.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=516",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -13,44 +13,5 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title is somewhat generic, lacks specificity."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information extracted (time_raw is empty)."
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is uninformative, just restates title and organizer."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing a category tag (e.g., 'Senioren'). Only district tag present."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.57,
-    "passed": false,
-    "summary": "Event entry has major issues: no time, sparse description, incomplete tags. Title is acceptable but could be more descriptive. Location is present. No duplicate concern."
-  }
+  "recurring_group_id": null
 }

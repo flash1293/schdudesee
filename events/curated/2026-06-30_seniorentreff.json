@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Andreasbräu",
   "organizer": "Seniorenbeirat",
-  "description": "Seniorentreff. at Andreasbräu. organized by Seniorenbeirat.",
+  "description": "Seniorentreff",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1808",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Senioren",
     "Treff"
   ],
-  "recurring_group_id": 2112330319,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is redundant and uninformative"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Missing district tag"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.62,
-    "passed": true,
-    "summary": "Event has a clear title and location but lacks time and detailed description; tags missing district."
-  }
+  "recurring_group_id": 2112330319
 }

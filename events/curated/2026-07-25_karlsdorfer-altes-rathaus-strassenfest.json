@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Karlsdorf-Neuthard",
   "organizer": "",
-  "description": "Karlsdorfer Altes-Rathaus-Straßenfest. at Karlsdorf-Neuthard.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=364",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -14,44 +14,5 @@
     "Fest",
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location is too general (only municipality name)."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided in 'time_raw' field."
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is very brief and merely repeats the title and location; lacks informative content."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Only two tags provided; event may benefit from additional relevant categories."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.6,
-    "passed": true,
-    "summary": "Event entry has a descriptive title and appropriate district tag, but lacks a specific time and has an uninformative description, which diminishes overall quality."
-  }
+  "recurring_group_id": null
 }

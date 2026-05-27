@@ -15,40 +15,5 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 75599991,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "location field contains prefix 'Veranstaltungsort:' and formatting characters"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "description is empty, no event details provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.73,
-    "passed": true,
-    "summary": "Reparatur-Treff in Friedrichstal on 2026-07-11 at 10:00. Location extraction has formatting issues, description is missing, but tags are appropriate and no duplicates. Overall quality is moderate but incomplete."
-  }
+  "recurring_group_id": 75599991
 }

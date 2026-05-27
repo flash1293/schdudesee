@@ -14,42 +14,5 @@
     "Wohltätigkeit",
     "Waldstadt"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title includes date which may be redundant, and could be more descriptive of the event topic"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location field includes extra information not related to location (entry details, donation request)"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.5,
-        "issues": [
-          "time_raw contains '21:00 Uhr' which appears to be the end time, while description states start time is 19:00; start time not properly extracted"
-        ]
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.8,
-    "passed": true,
-    "summary": "Event entry is generally good, but location field includes clutter and time extraction uses end time instead of start time. Title and tags are appropriate."
-  }
+  "recurring_group_id": null
 }

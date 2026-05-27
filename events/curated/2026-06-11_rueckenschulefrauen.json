@@ -15,40 +15,5 @@
     "Bildung",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is a concatenation of 'Rückenschule' and 'Frauen' without a space, reducing readability."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.85,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Kinder' is not appropriate for a women's back school; consider using 'Sport' or similar."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.86,
-    "passed": true,
-    "summary": "The event entry for 'RückenschuleFrauen' is overall good, but the title missing a space and the inappropriate tag 'Kinder' reduce quality. Location and time are well extracted."
-  }
+  "recurring_group_id": null
 }

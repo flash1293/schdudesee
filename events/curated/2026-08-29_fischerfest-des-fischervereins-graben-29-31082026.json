@@ -5,52 +5,14 @@
   "time_raw": "",
   "location": "Festhalle",
   "organizer": "Fischerverein Graben",
-  "description": "Fischerfest des Fischervereins Graben (29.-31.08.2026). at Festhalle. organized by Fischerverein Graben.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145239/fischerfest-des-fischervereins-graben-29-31082026",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
     "Fest",
-    "Verein",
-    "Graben-Neudorf"
+    "Verein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location field is 'Festhalle' without city; consider adding full address for unambiguity."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty, no time information provided."
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is uninformative, only repeats basic fields."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "The event entry lacks time information and has a very minimal description, reducing its overall quality. Location is generic but present, tags are appropriate, and no duplicates are expected. The missing critical data makes the entry below the acceptable threshold."
-  }
+  "recurring_group_id": null
 }

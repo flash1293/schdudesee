@@ -15,38 +15,5 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Event date 2026-07-14 is not a first Tuesday of July 2026, inconsistent with described recurrence (every first Tuesday)"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.97,
-    "passed": true,
-    "summary": "Self-help group for relatives of ADHD children with informative description, but date does not match the stated monthly first Tuesday recurrence."
-  }
+  "recurring_group_id": 1140166910
 }

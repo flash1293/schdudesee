@@ -13,44 +13,5 @@
   "tags": [
     "Natur"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title is somewhat ambiguous; 'AOK' abbreviation not explained"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location is present but could benefit from geographic context (city/district)"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, no information provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing district tag (e.g., Neuthard); only one tag is insufficient"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.63,
-    "passed": true,
-    "summary": "Event entry lacks description and district tag; title is somewhat unclear. Location and time are adequately extracted. Needs improvement to be more informative."
-  }
+  "recurring_group_id": null
 }

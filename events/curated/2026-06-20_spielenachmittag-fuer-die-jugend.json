@@ -15,44 +15,5 @@
     "Kinder",
     "Linkenheim"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Title is generic, could include venue for clarity"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location field only contains city, missing venue and full address from description"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "Description is truncated and lacks event details beyond venue"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Musik' may be misaligned as event appears to be a games afternoon, not music"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.76,
-    "passed": true,
-    "summary": "Event 'Spielenachmittag für die Jugend' on 2026-06-20 has a clear title but lacks detailed venue extraction. Description is uninformative and truncated. Tags mostly appropriate with minor relevance issue for 'Musik'."
-  }
+  "recurring_group_id": null
 }

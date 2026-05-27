@@ -14,42 +14,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 230505606,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title does not include specific age range"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.85,
-        "issues": [
-          "Missing space after period in 'entdecken.Hier'"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.85,
-        "issues": [
-          "Missing 'Verein' tag for club activity"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Well-formed event entry, minor issues in description and tagging. No duplicate risk."
-  }
+  "recurring_group_id": 230505606
 }

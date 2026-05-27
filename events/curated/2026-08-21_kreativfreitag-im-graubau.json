@@ -15,40 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1102332947,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.9,
-        "issues": [
-          "End time not extracted, only start time"
-        ]
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Contains generic disclaimer about data accuracy"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "Event Kreativfreitag im GrauBau is a weekly creative workshop for children and youth. The entry is well-structured with clear title, complete location, proper tags, and low duplicate risk. Minor issues: raw time only includes start time and description contains a standard disclaimer."
-  }
+  "recurring_group_id": 1102332947
 }

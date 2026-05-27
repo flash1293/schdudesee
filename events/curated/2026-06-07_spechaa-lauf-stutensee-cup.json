@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "TV Friedrichstal",
   "organizer": "Turnverein Friedrichstal 1899 e.V.",
-  "description": "Spechaa Lauf (Stutensee Cup). at TV Friedrichstal. organized by Turnverein Friedrichstal 1899 e.V..",
+  "description": "",
   "event_url": "https://www.tv-friedrichstal.de",
   "sources": [
     "clubs_batch_all"
@@ -14,40 +14,5 @@
     "Sport",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time specified in the entry (time_raw is empty)"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is uninformative, only repeats title, location, and organizer"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.65,
-    "passed": true,
-    "summary": "Event entry has a clear title and appropriate tags, but lacks a start time and has an uninformative description, impacting quality."
-  }
+  "recurring_group_id": null
 }

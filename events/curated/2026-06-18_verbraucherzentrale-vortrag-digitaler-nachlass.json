@@ -16,42 +16,5 @@
     "Spöck",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Venue name inconsistency between description (Zukunftshaus) and location field"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Tag 'Kirche' not relevant",
-          "Tag 'Blankenloch' district not appropriate (event in Spöck)",
-          "Missing relevant tag like 'Digital'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.88,
-    "passed": true,
-    "summary": "Event entry is generally well-structured with clear title, location, and time. Description is informative but has a minor venue name inconsistency. Tags are partly irrelevant and missing key categories."
-  }
+  "recurring_group_id": null
 }

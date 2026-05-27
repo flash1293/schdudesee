@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tLindenhof Spöck",
   "organizer": "Dartfreunde Spöck",
-  "description": "Oktoberfest. at Veranstaltungsort:\n\t\tLindenhof Spöck. organized by Dartfreunde Spöck.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2653",
   "sources": [
     "https://stutensee.de/Veranstaltungen",
@@ -15,42 +15,5 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Location field contains label 'Veranstaltungsort:' and extra whitespace; not properly cleaned."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time extracted; time_raw is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is minimal, repetitive, and appears auto-generated; lacks informative detail."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.57,
-    "passed": false,
-    "summary": "The event entry is mostly clear but has several extraction issues: location is not clean, time is missing, description is poor. Tags are appropriate and no duplicate risk. Overall quality is below average due to missing time and location formatting."
-  }
+  "recurring_group_id": null
 }

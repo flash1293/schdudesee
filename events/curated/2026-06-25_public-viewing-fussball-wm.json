@@ -5,51 +5,13 @@
   "time_raw": "",
   "location": "Vereinsgelände FVgg Neudorf",
   "organizer": "FVgg Neudorf",
-  "description": "Public-Viewing Fußball-WM. at Vereinsgelände FVgg Neudorf. organized by FVgg Neudorf.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146385/public-viewing-fussball-wm",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Sport",
-    "Graben-Neudorf"
+    "Sport"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title could be more specific by including the year (e.g., 'Public Viewing: WM 2026')"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time specified; 'time_raw' is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is too concise and largely repeats the title and other fields; lacks additional event information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "Event entry has a good title and location, but crucially lacks a start time and has a poor description. Tags are appropriate and duplicate risk is low. Overall quality is below average."
-  }
+  "recurring_group_id": null
 }

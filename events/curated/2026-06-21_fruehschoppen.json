@@ -12,43 +12,7 @@
   ],
   "tags": [
     "Treff",
-    "Spöck",
-    "Musik"
+    "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title 'Frühschoppen' may not be fully descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description lacks additional details and merely repeats fields"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.85,
-    "passed": true,
-    "summary": "Event entry has clear location and time, but the title is somewhat generic and the description adds no new information, reducing quality."
-  }
+  "recurring_group_id": null
 }

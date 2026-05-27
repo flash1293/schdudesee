@@ -15,40 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 1065758186,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.85,
-        "issues": [
-          "Description contains generic aggregator disclaimer that clutters event-specific information"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.85,
-        "issues": [
-          "Tag 'Kinder' may be less appropriate for age 13+ audience; consider 'Treff' or 'Workshop' instead"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Event entry is generally well-formed with clear title, proper location and time extraction, and informative description. Minor issues: description includes a generic disclaimer, and tag 'Kinder' may not optimally target the teen audience. No duplication risk."
-  }
+  "recurring_group_id": 1065758186
 }

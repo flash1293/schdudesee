@@ -15,39 +15,5 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "HTML entities not decoded",
-          "Missing space after colon"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.98,
-    "passed": true,
-    "summary": "Self-help group event for relatives of AD(H)S children with clear title, location, time, and tags; minor formatting issues in description."
-  }
+  "recurring_group_id": 1140166910
 }

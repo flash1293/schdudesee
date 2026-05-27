@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Gemeindewald",
   "organizer": "Gemeindeverwaltung",
-  "description": "Waldbegang. at Gemeindewald. organized by Gemeindeverwaltung.",
+  "description": "Waldbegang",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1843",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,44 +13,5 @@
   "tags": [
     "Natur"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location is vague; missing district specificity"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is too brief and repetitive; lacks detail"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Tags do not include required district tag"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.53,
-    "passed": false,
-    "summary": "Event has a clear title but lacks time information, detailed description, and district tag. Location is vague. Overall quality needs improvement."
-  }
+  "recurring_group_id": null
 }

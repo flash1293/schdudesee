@@ -15,42 +15,5 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is somewhat generic but clear"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Leading comma in time_raw indicates incomplete extraction"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.77,
-    "passed": true,
-    "summary": "Event-Café has clear title and location but lacks description. Tags are appropriate and include district. Time extraction has minor issue."
-  }
+  "recurring_group_id": null
 }

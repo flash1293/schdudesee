@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tEvangelische Kirche Spöck",
   "organizer": "Evangelische Kirchengemeinde Spöck",
-  "description": "Erntedankgottesdienst. at Veranstaltungsort:\n\t\tEvangelische Kirche Spöck. organized by Evangelische Kirchengemeinde Spöck.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2669",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Kirche",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field contains extraneous 'Veranstaltungsort:' label and whitespace."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Time information is missing (time_raw is empty)."
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is repetitive and does not add information beyond title, location, and organizer."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.65,
-    "passed": true,
-    "summary": "Event entry has a clear title and appropriate tags, but lacks a start time, location extraction is messy, and the description is uninformative. These issues prevent it from being publish-ready."
-  }
+  "recurring_group_id": null
 }

@@ -15,42 +15,5 @@
     "Kultur",
     "Blankenloch"
   ],
-  "recurring_group_id": 149940597,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title uses club-specific name; could benefit from adding 'Tanzgruppe' for clarity"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Description contains HTML entities and trailing whitespace"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": [
-          "Missing 'Kinder' tag which is more specific for a children's event"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "Well-structured event entry with clear title and description; minor formatting and tagging improvements possible; no duplicate risk."
-  }
+  "recurring_group_id": 149940597
 }

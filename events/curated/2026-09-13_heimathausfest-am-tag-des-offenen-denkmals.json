@@ -14,44 +14,5 @@
     "Kultur",
     "Fest"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.85,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location field is 'Heimathaus' but address (Ankerberg 8) is only in description"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No time_raw provided; start time missing"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is too brief and only repeats title with address; lacks program details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing district tag; one tag should be a district from the available list (e.g., Eggenstein/Leopoldshafen)"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "Event has a clear title but is missing time information, has a minimal description, and lacks a district tag. These quality gaps make it unsuitable for direct publishing without improvements."
-  }
+  "recurring_group_id": null
 }

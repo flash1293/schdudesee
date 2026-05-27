@@ -5,7 +5,7 @@
   "time_raw": "22:00",
   "location": "",
   "organizer": "",
-  "description": "Fußball WM 2026-Gemeinsam jubeln. from 22:00.",
+  "description": "",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/fussball-wm-2026-gemeinsam-jubeln-3/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -13,42 +13,5 @@
   "tags": [
     "Sport"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is too brief and uninformative"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "Missing a district tag from the available districts list"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.57,
-    "passed": false,
-    "summary": "The event entry has a clear title and extracted time, but lacks location and informative description. Tags are missing a district tag. It is not a duplicate of other events in the context."
-  }
+  "recurring_group_id": null
 }

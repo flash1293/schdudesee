@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände Little Creek, Stutensee",
   "organizer": "Little Creek e.V. (Verein für Amerikanistik Stutensee)",
-  "description": "Hobbylager. at Vereinsgelände Little Creek, Stutensee. organized by Little Creek e.V. (Verein für Amerikanistik Stutensee).",
+  "description": "",
   "event_url": "http://www.little-creek.de/veranstaltung.htm",
   "sources": [
     "clubs_batch_all"
@@ -14,42 +14,5 @@
     "Kinder",
     "Verein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "description only repeats title and organizer, no additional details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "missing district tag from available districts"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.6,
-    "passed": true,
-    "summary": "Event entry for Hobbylager is missing start time and has a repetitive description. Tags missing district. Not a duplicate."
-  }
+  "recurring_group_id": null
 }

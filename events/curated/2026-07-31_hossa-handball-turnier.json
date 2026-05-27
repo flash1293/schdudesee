@@ -14,44 +14,5 @@
     "Sport",
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title includes ambiguous term 'Hossa' without context"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location lacks city/street details"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "Event has clear title but lacks time and description, making it incomplete. Location is present but vague. Tags are appropriate."
-  }
+  "recurring_group_id": null
 }

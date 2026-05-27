@@ -15,40 +15,5 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Only start time extracted; end time available in description but not captured in time_raw."
-        ]
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Sport' is not appropriate for a parent-child playgroup; consider using 'Treff' or 'Kirche' instead."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.88,
-    "passed": true,
-    "summary": "Good event entry with clear title and informative description. Minor issues: time extraction missing end time, and tag 'Sport' is not suitable."
-  }
+  "recurring_group_id": 269588601
 }

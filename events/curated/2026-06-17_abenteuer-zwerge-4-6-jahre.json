@@ -15,38 +15,5 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": 114773203,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location address is duplicated"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.85,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.9,
-    "passed": true,
-    "summary": "Event has a clear and descriptive title, detailed description, and proper time extraction. Location field contains a duplicate address. Tags are relevant but could include 'Kinder' for better categorization. No duplicate risk with other events on the same date."
-  }
+  "recurring_group_id": 114773203
 }

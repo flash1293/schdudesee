@@ -14,40 +14,5 @@
     "Musik",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided; time_raw is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "Description is brief and adds little beyond title and location."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Konzert event by Sängerbund Friedrichstal with clear location and tags, but missing time and minimal description. No duplicate risk with the concurrent Topiblüten Lauf."
-  }
+  "recurring_group_id": null
 }

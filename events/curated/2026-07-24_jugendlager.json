@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Vereinsgelände Little Creek, Stutensee",
   "organizer": "Little Creek e.V. (Verein für Amerikanistik Stutensee)",
-  "description": "Jugendlager. at Vereinsgelände Little Creek, Stutensee. organized by Little Creek e.V. (Verein für Amerikanistik Stutensee).",
+  "description": "",
   "event_url": "http://www.little-creek.de/veranstaltung.htm",
   "sources": [
     "clubs_batch_all"
@@ -13,45 +13,5 @@
   "tags": [
     "Kinder"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is somewhat generic, could be more descriptive"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided; time_raw empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description merely repeats title, location, and organizer without additional details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing district tag; location suggests a district from the list should be included",
-          "Only 'Kinder' tag; could benefit from additional relevant categories"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.6,
-    "passed": true,
-    "summary": "Title is descriptive but generic; location is properly extracted; missing start time; description is uninformative; tags missing required district tag; no duplicate detected."
-  }
+  "recurring_group_id": null
 }

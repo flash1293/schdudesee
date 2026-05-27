@@ -15,42 +15,5 @@
     "Kinder",
     "Linkenheim"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Title could be more descriptive, e.g., include year or specific sports"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "Description is truncated; may lack full details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Event 'Sportwoche FV Linkenheim 1919 e.V.' is a multi-day sports event with children's activities. Key issues: no specific start time, description truncated."
-  }
+  "recurring_group_id": null
 }

@@ -5,7 +5,7 @@
   "time_raw": "17:30 - 19:00",
   "location": "",
   "organizer": "Musikverein Weingarten (Baden) e.V.",
-  "description": "Musik + Wein 2026. from 17:30 - 19:00. organized by Musikverein Weingarten (Baden) e.V..",
+  "description": "",
   "event_url": "https://www.musikverein-weingarten.de/erleben/kalender/",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -14,42 +14,5 @@
     "Musik",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "location field is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": [
-          "date_end format differs from date_start"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "description is not informative, just repeats title, time, and organizer"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.65,
-    "passed": true,
-    "summary": "Event entry lacks location, description is poor, date formats inconsistent; title and time are clear, tags appropriate. Overall quality low due to missing critical details."
-  }
+  "recurring_group_id": null
 }

@@ -14,40 +14,5 @@
     "Workshop",
     "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "location field is empty; location details are present only in description"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty; time schedules are present only in description"
-        ]
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.63,
-    "passed": true,
-    "summary": "Event has clear title and detailed description, but location and time fields are not extracted, reducing overall quality significantly."
-  }
+  "recurring_group_id": null
 }

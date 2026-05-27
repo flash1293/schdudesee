@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tKatholische Gemeindezentrum Spöck",
   "organizer": "Forum älterwerden (Ökum.) St. Georg",
-  "description": "Kaffee im Takt - Musikalischer Nachmittag mit der Gruppe Stubenmusik aus der Hardt. at Veranstaltungsort:\n\t\tKatholische Gemeindezentrum Spöck. organized by Forum älterwerden (Ökum.) St. Georg.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2652",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -15,42 +15,5 @@
     "Essen",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location contains label 'Veranstaltungsort:' and newline/tab formatting"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description merely repeats title and location without additional context"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.8,
-    "passed": true,
-    "summary": "Event entry has a clear and descriptive title and appropriate tags. However, it lacks time information, the location field is messy, and the description adds no extra value. Overall acceptable but needs improvement."
-  }
+  "recurring_group_id": null
 }

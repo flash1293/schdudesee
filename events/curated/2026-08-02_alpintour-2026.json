@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Stubaier Alpen - Österreich",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "Alpintour 2026. at Stubaier Alpen - Österreich. organized by CVJM Weingarten e.V..",
+  "description": "",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/alpintour",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -14,44 +14,5 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is generic; could include more specific details about the tour."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "time_raw is empty; no start time extracted."
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is minimal and only repeats title, location, and organizer; lacks informative content."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tags could be more relevant (e.g., Sport, Natur) as 'Kirche' is not directly related to an alpine tour."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.65,
-    "passed": true,
-    "summary": "Event entry has a clear title and location, but lacks specific time and has a minimal description. Tags are acceptable but could be improved. No duplication risk."
-  }
+  "recurring_group_id": null
 }

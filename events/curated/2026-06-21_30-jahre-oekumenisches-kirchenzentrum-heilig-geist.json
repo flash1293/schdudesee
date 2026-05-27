@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tÖkumensiches Zentrum Büchig",
   "organizer": "Katholische Kirchengemeinde Stutensee-Weingarten",
-  "description": "30 Jahre Ökumenisches Kirchenzentrum Heilig Geist. at Veranstaltungsort:\n\t\tÖkumensiches Zentrum Büchig. organized by Katholische Kirchengemeinde Stutensee-Weingarten.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2628",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,46 +14,5 @@
     "Kirche",
     "Büchig"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Location string contains label 'Veranstaltungsort:' and formatting characters; misspelling of 'Ökumensiches' instead of 'Ökumenisches'."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "No time information extracted; time_raw is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is an auto-generated concatenation of title, location, and organizer, lacking meaningful event details."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Consider adding tag 'Fest' for the anniversary celebration."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.2,
-        "issues": [
-          "Event is very similar to another event in the context: '30 Jahre ökumenisches Zentrum Büchig', same date and location; likely duplicate."
-        ]
-      }
-    },
-    "overall_score": 0.42,
-    "passed": false,
-    "summary": "The event entry has multiple quality issues: location is poorly formatted, missing time, description is uninformative, and it appears to be a duplicate of another event. The title and tags are adequate but could be improved."
-  }
+  "recurring_group_id": null
 }

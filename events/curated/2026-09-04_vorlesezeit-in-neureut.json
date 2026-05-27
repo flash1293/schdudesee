@@ -15,40 +15,5 @@
     "Literatur",
     "Kinder"
   ],
-  "recurring_group_id": 1628788359,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title is in all capital letters, which may reduce readability."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.8,
-        "issues": [
-          "Description is minimal; could include more details about the event activities."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "The event 'VORLESEZEIT in Neureut' is a children's reading event at the Neureut library. The title is clear, location and time are properly extracted. The description is concise but covers key details. Tags accurately represent the event type and district. No duplication risk."
-  }
+  "recurring_group_id": 1628788359
 }

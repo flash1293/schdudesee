@@ -15,40 +15,5 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.9,
-        "issues": [
-          "Date field does not match dates in description; time_raw may not apply to all sessions."
-        ]
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Description lists three dates different from the date_start/date_end value."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.96,
-    "passed": true,
-    "summary": "Event entry is generally high quality; however, there is inconsistency between the date fields (2026-07-15) and the multiple dates mentioned in the description."
-  }
+  "recurring_group_id": null
 }

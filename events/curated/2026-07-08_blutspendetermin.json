@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Adolf-Kußmaul-Schule",
   "organizer": "DRK OV Graben-Neudorf",
-  "description": "Blutspendetermin. at Adolf-Kußmaul-Schule. organized by DRK OV Graben-Neudorf.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145966/blutspendetermin",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
@@ -14,40 +14,5 @@
     "Wohltätigkeit",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time specified"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is minimal and does not provide additional details beyond title and location."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Event has a clear title and proper location, but lacks time information and has a minimal description. Tags are appropriate."
-  }
+  "recurring_group_id": null
 }

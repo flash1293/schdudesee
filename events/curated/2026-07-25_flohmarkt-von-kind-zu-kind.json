@@ -14,40 +14,5 @@
     "Kinder",
     "Markt"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description field is empty, providing no information about the event."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Tags are relevant but missing a district tag (e.g., 'Weingarten'), which is required."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.73,
-    "passed": true,
-    "summary": "The event entry has a clear title and well-extracted time, but suffers from a completely empty description and the lack of a required district tag. The location is present. No duplication risk. Overall quality is insufficient due to these critical omissions."
-  }
+  "recurring_group_id": null
 }

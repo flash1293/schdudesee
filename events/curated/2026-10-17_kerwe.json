@@ -14,42 +14,5 @@
     "Fest",
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title 'Kerwe' is a regional dialect term; may not be immediately clear to all users"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided; time_raw field is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "No description provided; event details are missing"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.63,
-    "passed": true,
-    "summary": "Missing critical information: time and description. Title is acceptable but could be more descriptive. Location and tags are adequate."
-  }
+  "recurring_group_id": null
 }

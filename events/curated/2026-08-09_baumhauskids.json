@@ -15,42 +15,5 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is not fully descriptive; it could be clearer about the nature of the event"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No time information provided; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.1,
-        "issues": [
-          "Description field is empty; event lacks description"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Event entry has a clear title and good location and tags, but lacks a description and time information, which significantly reduces overall quality."
-  }
+  "recurring_group_id": null
 }

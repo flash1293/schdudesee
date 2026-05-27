@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tDreschhalle Staffort",
   "organizer": "Tennisclub Spöck e.V.",
-  "description": "Sommerfest. at Veranstaltungsort:\n\t\tDreschhalle Staffort. organized by Tennisclub Spöck e.V..",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2651",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,44 +14,5 @@
     "Fest",
     "Staffort"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title is too generic; consider including organizer or location for clarity."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location includes unnecessary label and formatting; should be just the venue name 'Dreschhalle Staffort'."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided; only date is set."
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is uninformative; merely repeats title, location, and organizer without additional details like program, activities, or admission."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.53,
-    "passed": false,
-    "summary": "Event entry is missing time, has a generic title, messy location, and poor description; tags are accurate and no duplicate risk."
-  }
+  "recurring_group_id": null
 }

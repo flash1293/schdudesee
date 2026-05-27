@@ -15,40 +15,5 @@
     "Digital",
     "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description is engaging but lacks concrete details about the event program and schedule."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Digital' is not relevant to this live theatre event."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.87,
-    "passed": true,
-    "summary": "The event entry is well-structured with a clear title and location. The description provides a creative teaser but could include more practical details. The tag 'Digital' is mismatched. No duplicate risk exists."
-  }
+  "recurring_group_id": null
 }

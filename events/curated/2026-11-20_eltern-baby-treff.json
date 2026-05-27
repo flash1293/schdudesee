@@ -15,39 +15,5 @@
     "Musik",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1833760295,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Missing relevant tag 'Kinder'",
-          "Tag 'Sport' may not be fully appropriate for a baby playgroup"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.92,
-    "passed": true,
-    "summary": "Eltern-Baby-Treff is a weekly open playgroup for parents and children aged 0-3. Title and location are clear, time is extracted, description is informative. Tags miss relevant categories like 'Kinder' and include a borderline 'Sport'. No duplicate concerns."
-  }
+  "recurring_group_id": 1833760295
 }

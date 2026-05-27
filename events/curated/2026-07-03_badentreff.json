@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Karlsdorf-Neuthard",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "Badentreff. at Karlsdorf-Neuthard. organized by CVJM Weingarten e.V..",
+  "description": "",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/badentreff",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -15,46 +15,5 @@
     "Kirche",
     "Neuthard"
   ],
-  "recurring_group_id": 1533723276,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title is too brief, could include organization acronym for clarity"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location is not a specific venue, could be more precise"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "No event time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description lacks substantive information, merely repeats other fields"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.2,
-        "issues": [
-          "High similarity to another event in same district on same date"
-        ]
-      }
-    },
-    "overall_score": 0.48,
-    "passed": false,
-    "summary": "Event entry has a brief title, lacks event time, and has a sparse description. Location is not specific. Tags are appropriate, but the event appears to duplicate another CVJM Badentreff entry. Overall quality is low."
-  }
+  "recurring_group_id": 1533723276
 }

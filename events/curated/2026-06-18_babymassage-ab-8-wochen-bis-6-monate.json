@@ -15,38 +15,5 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": 459103995,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Title states '8 Wochen' but description says 'ab etwa sechs Wochen'; inconsistent age range"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.96,
-    "passed": true,
-    "summary": "Good quality event entry with clear title, location, time, and informative description. Minor inconsistency in age range between title and description. Tags are appropriate and include district. No duplicate risk."
-  }
+  "recurring_group_id": 459103995
 }

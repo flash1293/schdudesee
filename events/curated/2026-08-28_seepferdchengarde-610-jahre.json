@@ -15,42 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Only start time provided, no end time; description indicates end time at 17:00."
-        ]
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description is generic and does not provide details specific to this event instance. It also has a formatting error (missing space after exclamation mark)."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Sport' may not be the most appropriate category; 'Kultur' or 'Verein' might be more accurate."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.86,
-    "passed": true,
-    "summary": "A dance training event for children aged 6-10 organized by Karnevalsclub Die Piraten. The title is clear, location and time are provided. The description is informative but generic and lacks specific details for the instance. Tags are generally appropriate but could be more precise. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

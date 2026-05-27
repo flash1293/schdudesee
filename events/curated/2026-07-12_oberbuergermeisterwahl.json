@@ -5,7 +5,7 @@
   "time_raw": "08:00",
   "location": "",
   "organizer": "",
-  "description": "Oberbürgermeisterwahl. from 08:00.",
+  "description": "",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/oberbuergermeisterwahl/",
   "sources": [
     "https://meinstutensee.de/termine/"
@@ -13,46 +13,5 @@
   "tags": [
     "Politik"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title does not specify the city, making it ambiguous."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location field is empty."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.8,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is too brief, only repeats the title and time; lacks helpful information."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "Missing district tag; only category tag 'Politik' is present. A district from the available list should be included."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": [
-          "Event appears to be a duplicate of another event on the same date: 'Wahl der Oberbürgermeisterin/des Oberbürgermeisters der Stadt Stutensee'."
-        ]
-      }
-    },
-    "overall_score": 0.47,
-    "passed": false,
-    "summary": "The event entry has significant quality issues: the location is missing, the description is very brief, the title lacks specificity, and it is missing a required district tag. Additionally, it is highly likely a duplicate of a more detailed event on the same date."
-  }
+  "recurring_group_id": null
 }

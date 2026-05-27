@@ -13,41 +13,5 @@
   "tags": [
     "Kinder"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.2,
-        "issues": [
-          "Missing district tag",
-          "Only one tag, could include more relevant categories"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "Event has clear title, location, and start time, but lacks description and district tag. The tag 'Kinder' is appropriate but insufficient."
-  }
+  "recurring_group_id": null
 }

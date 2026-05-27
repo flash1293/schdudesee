@@ -14,36 +14,5 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": 688729922,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.98,
-    "passed": true,
-    "summary": "The event entry is well-structured and complete, with a clear title, proper location and time extraction, a detailed and helpful description, appropriate tags including the district, and no duplicate issues."
-  }
+  "recurring_group_id": 688729922
 }

@@ -14,44 +14,5 @@
     "Kinder",
     "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.85,
-        "issues": [
-          "Capitalization error: 'intelligenz' should be 'Intelligenz'"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location field is empty; location only mentioned in description, not extracted"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.85,
-        "issues": [
-          "Description contains raw code-like string (50116 etc.) and lacks formatting, but provides detailed information"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Tag 'Kinder' is inappropriate for an AI workshop; should be more specific like 'Bildung', 'Digital', 'Workshop'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "The event entry has a descriptive title but a missing location field. The description is informative though somewhat messy. The time is correctly extracted. The tags include a valid district but the category tag is mismatched. No duplicate risk identified."
-  }
+  "recurring_group_id": null
 }

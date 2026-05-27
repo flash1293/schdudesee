@@ -15,43 +15,5 @@
     "Bildung",
     "Linkenheim"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location 'Linkenheim-Hochstetten' is not an exact match to the districts list; expected 'Linkenheim'"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is truncated and does not describe the exhibition itself",
-          "Possible typo 'mitMautaschen' instead of 'mit Maultaschen'"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Bildung' may not be accurate; consider adding 'Ausstellungen' as it is a Kunst- und Hobbyausstellung"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.78,
-    "passed": true,
-    "summary": "Event entry has clear title, location, and time. Description is poorly truncated and lacks relevant details. Tags are mostly appropriate but 'Bildung' seems out of place. Not a duplicate of the context event."
-  }
+  "recurring_group_id": null
 }

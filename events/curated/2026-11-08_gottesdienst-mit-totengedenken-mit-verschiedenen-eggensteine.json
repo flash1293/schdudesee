@@ -15,42 +15,5 @@
     "Kirche",
     "Eggenstein"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location field is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Time field (time_raw) is empty, no event time extracted"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is identical to title, provides no additional information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.52,
-    "passed": false,
-    "summary": "The event title is clear and descriptive, but the entry lacks location and time information. The description is identical to the title and not informative. Tags are appropriate and include a district. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

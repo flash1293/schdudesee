@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Soča-Tal bei Nova Gorica in Slowenien und auf Rückweg machen wir Halt in Greifenburg/Ö",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "Gleitschirm-Streckenflugwoche in Slowenien. at Soča-Tal bei Nova Gorica in Slowenien und auf Rückweg machen wir Halt in Greifenburg/Ö. organized by CVJM Weingarten e.V..",
+  "description": "",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/slowenienfreizeit-fuer-gleitschirmflieger",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -15,42 +15,5 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.2,
-        "issues": [
-          "Location field is a full sentence describing the route instead of a concise location name."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No time extracted; time_raw is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is too brief and largely duplicates title and location, lacking useful details."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.55,
-    "passed": false,
-    "summary": "Event entry has clear title but missing time, poor location extraction, and sparse description."
-  }
+  "recurring_group_id": null
 }

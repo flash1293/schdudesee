@@ -5,51 +5,13 @@
   "time_raw": "",
   "location": "Reitanlage",
   "organizer": "Reit- und Fahrverein Graben",
-  "description": "Freilandturnier (11.-13.07.2026). at Reitanlage. organized by Reit- und Fahrverein Graben.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/144702/freilandturnier-11-13072026",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Sport",
-    "Graben-Neudorf"
+    "Sport"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location is too generic, does not specify a proper venue"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "No start time provided (time_raw empty)"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is uninformative, merely repeats title/location/organizer"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.62,
-    "passed": true,
-    "summary": "Event entry has clear title but lacks specific location and start time; description is minimal and repetitive; tags correctly include Sport and Graben-Neudorf district; no duplicate risk."
-  }
+  "recurring_group_id": null
 }

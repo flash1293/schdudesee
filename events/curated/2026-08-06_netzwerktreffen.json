@@ -13,42 +13,5 @@
   "tags": [
     "Treff"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field does not contain a physical location; it appears to be a title or topic"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.6,
-        "issues": [
-          "Description merely repeats other fields; lacks additional informative content"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Missing district tag from the available districts list; only one tag provided"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.75,
-    "passed": true,
-    "summary": "Event entry for Netzwerktreffen has clear title and time, but location is incorrectly extracted (topic instead of place) and description is sparse. Missing district tag."
-  }
+  "recurring_group_id": null
 }

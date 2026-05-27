@@ -14,38 +14,5 @@
     "Kinder",
     "Staffort"
   ],
-  "recurring_group_id": 1541958589,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Only two tags; consider adding relevant categories like 'Kirche' or 'Treff'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Well-structured event for a children's playgroup at a church community hall. Clear title, detailed location, accurate time, and informative description. Tags are acceptable but could be enhanced. No duplicate concerns."
-  }
+  "recurring_group_id": 1541958589
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Hirtenberg 11 \n76344 Eggenstein",
   "organizer": "Kleintierzuchtverein C37 Eggenstein e.V.",
-  "description": "Gemeinsame Kreiskaninchenschau Bretten, Bruchsal Karlsruhe. at Hirtenberg 11 \n76344 Eggenstein. organized by Kleintierzuchtverein C37 Eggenstein e.V..",
+  "description": "Gemeinsame Kreiskaninchenschau Bretten, Bruchsal Karlsruhe",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1864",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,43 +15,5 @@
     "Eggenstein",
     "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is minimal and does not add significant value beyond title and location"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Treff' may not be the most accurate; 'Ausstellungen' would be more appropriate",
-          "Tag includes two districts (Eggenstein, Bruchsal); consider selecting only the most relevant one"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.7,
-    "passed": true,
-    "summary": "Event entry has a clear title and proper location extraction, but lacks any time information and has a minimal description. Tags could be improved by using a more specific category and a single district. No risk of duplication."
-  }
+  "recurring_group_id": null
 }

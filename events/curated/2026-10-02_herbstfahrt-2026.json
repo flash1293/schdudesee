@@ -5,50 +5,11 @@
   "time_raw": "00:00",
   "location": "",
   "organizer": "BdP Stamm Adler",
-  "description": "Herbstfahrt 2026. from 00:00. organized by BdP Stamm Adler.",
+  "description": "Weitere Infos folgen …",
   "event_url": "https://www.bdp-adler.de/event/herbstfahrt/",
   "sources": [
     "clubs_batch_all"
   ],
   "tags": [],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location field is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.4,
-        "issues": [
-          "time_raw is '00:00' which is likely a placeholder, not a real start time"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is minimal and merely repeats title and time without additional context"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.1,
-        "issues": [
-          "No tags assigned, missing required district tag and category tag"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.4,
-    "passed": false,
-    "summary": "The event entry lacks essential location and detailed description, time extraction is suspect due to default value, tags are missing, but no duplicate risk with the context event."
-  }
+  "recurring_group_id": null
 }

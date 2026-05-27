@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
   "organizer": "Heimat- und Kulturfreunde Spöck e.V.",
-  "description": "Heimattage. at Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen. organized by Heimat- und Kulturfreunde Spöck e.V..",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2647",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Fest",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location string contains redundant label 'Veranstaltungsort:' and formatting characters"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided, time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is auto-generated and not informative"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Event entry has missing time and poor description; location extraction is slightly messy; tags and title adequate."
-  }
+  "recurring_group_id": null
 }

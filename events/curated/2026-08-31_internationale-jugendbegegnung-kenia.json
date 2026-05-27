@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Kenia",
   "organizer": "CVJM Weingarten e.V.",
-  "description": "Internationale Jugendbegegnung Kenia. organized by CVJM Weingarten e.V..",
+  "description": "",
   "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/jahresprogramm/2026/internationale-jugendbegegnung-kenia",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -16,40 +16,5 @@
     "Kirche",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time (time_raw empty)"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is too brief and lacks details about the event program, target group, and schedule"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "The event title is clear and the location is properly set, but there is no start time and the description is very minimal. Tags are appropriate and there is no duplicate risk."
-  }
+  "recurring_group_id": null
 }

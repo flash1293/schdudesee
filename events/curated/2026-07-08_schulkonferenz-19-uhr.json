@@ -14,43 +14,5 @@
     "Bildung",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title includes time but time field is empty",
-          "Could be more specific about conference type"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "time_raw is empty, time only present in title"
-        ]
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, provides no information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Event has a clear title and proper location and tags, but lacks description and time extraction. Consider adding description and extracting time from title to time field."
-  }
+  "recurring_group_id": null
 }

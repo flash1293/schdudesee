@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Rheinhalle",
   "organizer": "Deutsches Rotes Kreuz OV Eggenstein-Leopoldshafen e.V.",
-  "description": "Blutspende. at Rheinhalle. organized by Deutsches Rotes Kreuz OV Eggenstein-Leopoldshafen e.V..",
+  "description": "Blutspende",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1845",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -15,40 +15,5 @@
     "Eggenstein",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is minimal and redundant"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.45,
-    "passed": false,
-    "summary": "Event entry lacks time and has poor description; otherwise location and tags are appropriate."
-  }
+  "recurring_group_id": null
 }

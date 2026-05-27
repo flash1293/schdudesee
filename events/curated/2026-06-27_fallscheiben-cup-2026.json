@@ -15,43 +15,5 @@
     "Natur",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.2,
-        "issues": [
-          "No time specified, time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description lacks time information",
-          "Organizer in description (Waldbronn) does not match organizer field (Blankenloch)"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Natur' may be inappropriate for a sport shooting event; consider using 'Verein' or 'Treff' instead"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Event has a clear title and valid location, but lacks a start time and the description contradicts the organizer field. Tags are mostly suitable with a minor inaccuracy."
-  }
+  "recurring_group_id": null
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Rheinhalle",
   "organizer": "Fußballverein Leopoldshafen",
-  "description": "55 Jahre LCC Jubiläum. at Rheinhalle. organized by Fußballverein Leopoldshafen.",
+  "description": "55 Jahre LCC Jubiläum",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1842",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,40 +14,5 @@
     "Fest",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No time information provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is minimal and repetitive"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.73,
-    "passed": true,
-    "summary": "Event has clear title and appropriate tags, but lacks time and detailed description."
-  }
+  "recurring_group_id": null
 }

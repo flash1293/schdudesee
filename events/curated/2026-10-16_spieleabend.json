@@ -14,44 +14,5 @@
     "Kinder",
     "Treff"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is generic, could be more specific"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.6,
-        "issues": [
-          "Location field includes label 'Veranstaltungsort:' and extra whitespace"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, no details provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing a district tag from the available districts list"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.65,
-    "passed": true,
-    "summary": "Title is clear but generic; location extraction includes extra formatting; time extraction is correct; description missing; tags appropriate but missing district tag; no duplicate risk."
-  }
+  "recurring_group_id": null
 }

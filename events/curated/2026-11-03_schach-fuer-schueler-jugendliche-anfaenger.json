@@ -14,42 +14,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 230505606,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "title lacks specific age range"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "description could explicitly state age range"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "missing relevant tags like 'Sport' or 'Verein'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Chess event for students, youth, and beginners organized by Schachclub Blankenloch at Altes Rathaus Blankenloch on November 3, 2026 at 16:30."
-  }
+  "recurring_group_id": 230505606
 }

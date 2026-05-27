@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "",
   "organizer": "MSC Weingarten (Baden)",
-  "description": "MSC Haxenfest. organized by MSC Weingarten (Baden).",
+  "description": "",
   "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/872/msc-haxenfest",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
@@ -14,42 +14,5 @@
     "Fest",
     "Weingarten"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location field is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty, no time information"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is very brief and lacks details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.5,
-    "passed": false,
-    "summary": "The event has a clear title and relevant tags, but missing location, time, and description details reduce its quality."
-  }
+  "recurring_group_id": null
 }

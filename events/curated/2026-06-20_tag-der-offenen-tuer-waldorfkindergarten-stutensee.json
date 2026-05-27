@@ -14,41 +14,5 @@
     "Kinder",
     "Workshop"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description could include more specific activities or schedule."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing district tag from available districts list.",
-          "Tag 'Workshop' may not be appropriate for an open house."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.84,
-    "passed": true,
-    "summary": "Event entry is mostly complete. Title and location are clear. Time correctly extracted. Description is adequate but lacks detail. Tags are missing a required district tag and include a questionable category. No duplicate risk."
-  }
+  "recurring_group_id": null
 }

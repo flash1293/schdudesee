@@ -15,38 +15,5 @@
     "Literatur",
     "Kinder"
   ],
-  "recurring_group_id": 1628788359,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description is brief and lacks details about the event content."
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "The event entry is clear with a descriptive title, exact location and time, and appropriate tags. The description is concise but functional. No duplication risk."
-  }
+  "recurring_group_id": 1628788359
 }

@@ -1,56 +1,18 @@
 {
-  "title": "32. Heinz Beierstorf Triathlon",
+  "title": "32. Heinz-Beierstorf-Triathlon",
   "date_start": "2026-06-21",
-  "date_end": null,
-  "time_raw": "",
-  "location": "Veranstaltungsort:\n\t\tBaggersee - Rad - Lauf - Festhalle",
-  "organizer": "Turn- und Sportgemeinschaft Blankenloch e.V.",
-  "description": "32. Heinz Beierstorf Triathlon. at Veranstaltungsort:\n\t\tBaggersee - Rad - Lauf - Festhalle. organized by Turn- und Sportgemeinschaft Blankenloch e.V..",
-  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2629",
+  "date_end": "2026-06-21",
+  "time_raw": "08:00",
+  "location": "Baggersee Blankenloch",
+  "organizer": "TSG Blankenloch e.V.",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/32-heinz-beierstorf-triathlon-2/",
   "sources": [
-    "https://stutensee.de/Veranstaltungen"
+    "https://meinstutensee.de/termine/"
   ],
   "tags": [
     "Sport",
-    "Blankenloch",
-    "Fest"
+    "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.2,
-        "issues": [
-          "Location contains label and formatting; not a clean extracted location"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time extracted; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description repeats title and location; lacks informative details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.57,
-    "passed": false,
-    "summary": "Event has a clear title and appropriate tags, but lacks extracted time and location is poorly extracted; description is minimal."
-  }
+  "recurring_group_id": null
 }

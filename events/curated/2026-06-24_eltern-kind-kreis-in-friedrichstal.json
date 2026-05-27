@@ -15,38 +15,5 @@
     "Kinder",
     "Friedrichstal"
   ],
-  "recurring_group_id": 269588601,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Tag 'Sport' is not entirely appropriate; consider 'Treff' or 'Bildung'."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.94,
-    "passed": true,
-    "summary": "Event entry is clear, with proper location and time extraction, detailed description, and generally appropriate tags. Minor mismatch with 'Sport' tag. No duplication risk."
-  }
+  "recurring_group_id": 269588601
 }

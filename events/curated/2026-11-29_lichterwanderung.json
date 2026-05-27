@@ -15,38 +15,5 @@
     "Natur",
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, lacks event details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.8,
-    "passed": true,
-    "summary": "Event title 'Lichterwanderung' is clear and descriptive. Time and location are properly set. Tags are appropriate (Sport, Natur, Neuthard). However, the description is empty, which significantly reduces information value. No duplication risk with other events on the same date."
-  }
+  "recurring_group_id": null
 }

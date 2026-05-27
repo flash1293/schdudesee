@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFestplatz",
   "organizer": "Karnevalsclub &quot;Die Piraten&quot; Stutensee e.V.",
-  "description": "Oktoberfest. at Veranstaltungsort:\n\t\tFestplatz. organized by Karnevalsclub &quot;Die Piraten&quot; Stutensee e.V..",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2670",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,46 +13,5 @@
   "tags": [
     "Fest"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Location field contains extraneous formatting 'Veranstaltungsort:' and newlines",
-          "No specific district from the available districts list is indicated"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw is empty; no start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description merely repeats the title, location, and organizer without adding any helpful details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing a district tag from the available districts list",
-          "Only one generic tag ('Fest'); could include additional relevant categories"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.48,
-    "passed": false,
-    "summary": "Oktoberfest entry has a clear title but suffers from poor location extraction, missing time, uninformative description, and lacking district tag. Does not meet quality standards."
-  }
+  "recurring_group_id": null
 }

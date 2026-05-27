@@ -15,38 +15,5 @@
     "Musik",
     "Spöck"
   ],
-  "recurring_group_id": 1716290936,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": [
-          "Missing relevant category tag 'Kinder' for a children's dance event"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.96,
-    "passed": true,
-    "summary": "Clear and well-structured event entry for a children's dance class. Title, description, time, and location are properly extracted. Tags are mostly appropriate but missing the 'Kinder' category. No duplicate concerns."
-  }
+  "recurring_group_id": 1716290936
 }

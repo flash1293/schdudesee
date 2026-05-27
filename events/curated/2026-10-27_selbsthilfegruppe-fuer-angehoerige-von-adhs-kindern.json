@@ -15,40 +15,5 @@
     "Treff",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1140166910,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.9,
-        "issues": [
-          "HTML entity &#8211; not decoded in location string"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Missing space after colon in 'Hinweis:Zu Beginn'"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "Self-help group for relatives of ADHD children, clear title, informative description, appropriate tags, no duplicate risk."
-  }
+  "recurring_group_id": 1140166910
 }

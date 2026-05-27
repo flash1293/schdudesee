@@ -5,52 +5,11 @@
   "time_raw": "",
   "location": "Kirchplatz",
   "organizer": "Liederkranz",
-  "description": "",
+  "description": "Saueressen Kirwe",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1862",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.5,
-        "issues": [
-          "Title is not very descriptive and uses regional terms that may be unclear to a general audience."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.4,
-        "issues": [
-          "Location field only contains 'Kirchplatz' without specifying city or district, making it ambiguous."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information extracted; time_raw field is empty."
-        ]
-      },
-      "description_quality": {
-        "score": 0.1,
-        "issues": [
-          "Description is minimal and identical to the title, providing no additional information."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.0,
-        "issues": [
-          "Tags list is empty; should include at least one district tag from the available list and a relevant category tag (e.g., Essen)."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.33,
-    "passed": false,
-    "summary": "Event listing lacks critical details such as time, description, and tags; location is incomplete."
-  }
+  "recurring_group_id": null
 }

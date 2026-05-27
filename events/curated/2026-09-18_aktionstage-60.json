@@ -5,52 +5,11 @@
   "time_raw": "",
   "location": "Rheinhalle",
   "organizer": "Seniorenbeirat",
-  "description": "Aktionstage 60+. at Rheinhalle. organized by Seniorenbeirat.",
+  "description": "Aktionstage 60+",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1831",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location may be incomplete, missing city"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is minimal and repetitive"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.0,
-        "issues": [
-          "No tags assigned",
-          "Missing district tag",
-          "Missing category tag"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.52,
-    "passed": false,
-    "summary": "Event entry lacks time and tags, location is incomplete, and description is uninformative."
-  }
+  "recurring_group_id": null
 }

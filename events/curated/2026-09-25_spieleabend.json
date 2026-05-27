@@ -14,43 +14,5 @@
     "Kinder",
     "Treff"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field includes non-location prefix 'Veranstaltungsort:'"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.1,
-        "issues": [
-          "Description is empty, no event details provided"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing district tag (should be one from district list)",
-          "Tags could be more comprehensive (e.g., 'Kultur')"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.6,
-    "passed": true,
-    "summary": "Event title is clear; location extraction is unclean due to prefix; time extraction is good; description missing; tags lack district tag; no duplicate risk."
-  }
+  "recurring_group_id": null
 }

@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSportplatz SV Staffort",
   "organizer": "Jugendfußballverein Stutensee 2012 e.V.",
-  "description": "Sportfest. at Veranstaltungsort:\n\t\tSportplatz SV Staffort. organized by Jugendfußballverein Stutensee 2012 e.V..",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2631",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -15,44 +15,5 @@
     "Fest",
     "Staffort"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is generic, could be more specific"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.3,
-        "issues": [
-          "Location includes extraneous label 'Veranstaltungsort:' and newlines/tabs"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided, time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is minimal and redundant with other fields"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.57,
-    "passed": false,
-    "summary": "Event entry has a generic title, missing time, messy location extraction, and minimal description, but tags are appropriate and no duplicates detected."
-  }
+  "recurring_group_id": null
 }

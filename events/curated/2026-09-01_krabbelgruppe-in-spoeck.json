@@ -14,38 +14,5 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": 688729922,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.95,
-        "issues": [
-          "minor formatting: missing space after period"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.97,
-    "passed": true,
-    "summary": "Event entry for Krabbelgruppe in Spöck is well-defined with a clear title, detailed description, correct location and time, appropriate tags, and no duplicate concerns."
-  }
+  "recurring_group_id": 688729922
 }

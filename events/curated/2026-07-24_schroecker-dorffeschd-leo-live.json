@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Rheinhalle",
   "organizer": "Ortskartell Eggenstein-Leopoldshafen e.V.",
-  "description": "Schröcker Dorffeschd \"Leo Live\". at Rheinhalle. organized by Ortskartell Eggenstein-Leopoldshafen e.V..",
+  "description": "Schröcker Dorffeschd \"Leo Live\"",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1815",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -14,44 +14,5 @@
     "Eggenstein",
     "Leopoldshafen"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.7,
-        "issues": [
-          "Location field only contains venue name, missing city or address"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No start time extracted; time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is repetitive and lacks details about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Missing a category tag (e.g., Fest, Musik); only district tags present"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.57,
-    "passed": false,
-    "summary": "The event title and location are clear, but missing start time and description is uninformative. Tags lack event category. Overall quality is insufficient."
-  }
+  "recurring_group_id": null
 }

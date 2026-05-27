@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tDreschhalle Staffort",
   "organizer": "StageArt e.V.",
-  "description": "Flick-Flack Theater. at Veranstaltungsort:\n\t\tDreschhalle Staffort. organized by StageArt e.V..",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2661",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,42 +14,5 @@
     "Kultur",
     "Staffort"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location contains extra text ('Veranstaltungsort:') and formatting (newline/tabs), not cleanly extracted"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time information provided (time_raw is empty)"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is repetitive and lacks informative content; it merely repeats title and location"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.6,
-    "passed": true,
-    "summary": "Event entry has a clear title and appropriate tags, but lacks time information, has poorly extracted location, and a redundant description. Overall quality is low."
-  }
+  "recurring_group_id": null
 }

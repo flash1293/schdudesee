@@ -16,40 +16,5 @@
     "Handwerk",
     "Blankenloch"
   ],
-  "recurring_group_id": 139685270,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Missing end time; description suggests time range 12–15."
-        ]
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Handwerk' is inappropriate; consider a more relevant category like 'Bildung' or 'Treff'."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.87,
-    "passed": true,
-    "summary": "The event entry is generally well-organized with a clear title, precise location, and informative description. However, the tag 'Handwerk' is not suitable for this psychological consultation event, and the time extraction only captures the start time, missing the listed end time. No duplicate risks with other events."
-  }
+  "recurring_group_id": 139685270
 }

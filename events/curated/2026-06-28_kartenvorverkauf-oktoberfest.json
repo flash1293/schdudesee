@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
   "organizer": "Karnevalsclub &quot;Die Piraten&quot; Stutensee e.V.",
-  "description": "Kartenvorverkauf Oktoberfest. at Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände. organized by Karnevalsclub &quot;Die Piraten&quot; Stutensee e.V..",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2634",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -13,45 +13,5 @@
   "tags": [
     "Fest"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field includes embedded label 'Veranstaltungsort:'"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No time specified, time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is uninformative, merely concatenates title, location, and organizer"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing district tag; only one generic tag 'Fest' but no district from provided list",
-          "Event location (Stutensee) not covered by available districts"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.55,
-    "passed": false,
-    "summary": "Event entry has several issues: no time provided, location includes formatting artifact, description lacks detail, and tagging is incomplete (missing district). Title is acceptable. Duplicate risk is low."
-  }
+  "recurring_group_id": null
 }

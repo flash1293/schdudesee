@@ -5,49 +5,13 @@
   "time_raw": "",
   "location": "Vereinsgelände FVgg Neudorf",
   "organizer": "FVgg Neudorf",
-  "description": "Public-Viewing Fußball-WM. at Vereinsgelände FVgg Neudorf. organized by FVgg Neudorf.",
+  "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/146384/public-viewing-fussball-wm",
   "sources": [
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Sport",
-    "Graben-Neudorf"
+    "Sport"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No start time provided, time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description merely repeats title, location, and organizer without additional useful information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.68,
-    "passed": true,
-    "summary": "Event has a clear title and appropriate tags, but lacks a start time and has an uninformative description, reducing overall quality and usefulness for potential attendees."
-  }
+  "recurring_group_id": null
 }

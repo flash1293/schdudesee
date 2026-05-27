@@ -13,42 +13,5 @@
   "tags": [
     "Kultur"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.6,
-        "issues": [
-          "location contains formatting prefix 'Veranstaltungsort:'"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "missing district tag from available districts; only 'Kultur' tag present but should include a district"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.67,
-    "passed": true,
-    "summary": "Event title is clear, location has extra formatting, time present, description missing, tags missing district, no risk of duplicate."
-  }
+  "recurring_group_id": null
 }

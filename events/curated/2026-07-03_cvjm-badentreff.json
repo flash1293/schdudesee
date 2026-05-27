@@ -5,54 +5,14 @@
   "time_raw": "",
   "location": "Altenbürgzentrum",
   "organizer": "CVJM-Landesverband baden e.V.",
-  "description": "CVJM \"Badentreff\". at Altenbürgzentrum. organized by CVJM-Landesverband baden e.V..",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=434",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
     "Treff",
-    "Kirche",
-    "Neuthard"
+    "Kirche"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title contains quotes and is descriptive but could be more specific."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time provided (time_raw empty)."
-        ]
-      },
-      "description_quality": {
-        "score": 0.1,
-        "issues": [
-          "Description is minimal and only repeats title, location, and organizer without providing additional context or details."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 0.1,
-        "issues": [
-          "Another event with title 'Badentreff' exists on the same date and district, indicating high duplicate risk."
-        ]
-      }
-    },
-    "overall_score": 0.47,
-    "passed": false,
-    "summary": "Event entry lacks time and detailed description, and appears to be a near duplicate. Location is well extracted and tags are appropriate."
-  }
+  "recurring_group_id": null
 }

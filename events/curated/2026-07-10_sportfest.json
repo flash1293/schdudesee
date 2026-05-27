@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Karlsdorf-Neuthard",
   "organizer": "Fußballverein Neuthard",
-  "description": "Sportfest. at Karlsdorf-Neuthard. organized by Fußballverein Neuthard.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=442",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -15,44 +15,5 @@
     "Fest",
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is too generic; could include event type or district for clarity."
-        ]
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location is given as broader municipality (Karlsdorf-Neuthard) rather than the specific district (Neuthard) from the available list."
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "time_raw field is empty; no start time or schedule information provided."
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is minimal, repetitive, and lacks informative details about the event activities, schedule, or highlights."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.63,
-    "passed": true,
-    "summary": "The event entry has several shortcomings: generic title, missing time information, and a sparse description. However, tags are appropriate and include the correct district, and there is no duplicate risk. The overall quality is moderate but acceptable."
-  }
+  "recurring_group_id": null
 }

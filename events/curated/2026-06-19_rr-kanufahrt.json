@@ -5,7 +5,7 @@
   "time_raw": "12:00",
   "location": "",
   "organizer": "BdP Stamm Adler",
-  "description": "R/R-Kanufahrt. from 12:00. organized by BdP Stamm Adler.",
+  "description": "Weitere Infos folgen …",
   "event_url": "https://www.bdp-adler.de/event/r-r-kanufahrt/",
   "sources": [
     "clubs_batch_all"
@@ -13,45 +13,5 @@
   "tags": [
     "Sport"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.6,
-        "issues": [
-          "Title uses unclear abbreviation 'R/R', may be confusing to general audience"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location field is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is too brief and lacks useful information beyond the title and time"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.3,
-        "issues": [
-          "Missing district tag",
-          "Only one tag, could include additional relevant tags like 'Natur' or 'Treff'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.52,
-    "passed": false,
-    "summary": "Event entry has significant quality issues: missing location, very poor description, unclear title, and lack of district tag. Time extraction is correct and duplicate risk with nearby events is low."
-  }
+  "recurring_group_id": null
 }

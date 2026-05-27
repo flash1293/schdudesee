@@ -5,50 +5,14 @@
   "time_raw": "",
   "location": "Am Pfinzkanal",
   "organizer": "Musikverein Neuthard",
-  "description": "Wiesenfest. at Am Pfinzkanal. organized by Musikverein Neuthard.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=435",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
     "Fest",
-    "Neuthard",
-    "Musik"
+    "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No time extracted - time_raw is empty"
-        ]
-      },
-      "description_quality": {
-        "score": 0.4,
-        "issues": [
-          "Description is minimal, only repeats title, location, and organizer without additional event details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Clear title and appropriate tags, but lacking time information and description is minimal. Location is provided. Not a duplicate."
-  }
+  "recurring_group_id": null
 }

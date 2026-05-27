@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tKatholisches Gemeindezentrum Spöck",
   "organizer": "Forum älterwerden (Ökum.) St. Georg",
-  "description": "Vortrag Pfarrer Jens Maierhof. at Veranstaltungsort:\n\t\tKatholisches Gemeindezentrum Spöck. organized by Forum älterwerden (Ökum.) St. Georg.",
+  "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2621",
   "sources": [
     "https://stutensee.de/Veranstaltungen"
@@ -14,44 +14,5 @@
     "Bildung",
     "Spöck"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.7,
-        "issues": [
-          "Title is brief but still clear"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field contains non-standard formatting and prefix"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time data extracted"
-        ]
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description is auto-generated and lacks additional event details"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "Missing time and uninformative description reduce quality; location extraction not clean; tags suitable."
-  }
+  "recurring_group_id": null
 }

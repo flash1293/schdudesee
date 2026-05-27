@@ -15,42 +15,5 @@
     "Treff",
     "Blankenloch"
   ],
-  "recurring_group_id": 696239800,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title could be more specific about the type of games (e.g., Brettspiele)."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description notes event not during holidays, but the date likely falls within school holidays, causing inconsistency."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.6,
-        "issues": [
-          "Tag 'Kinder' is too narrow for an event targeting teens to seniors; consider adding 'Senioren'."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.85,
-    "passed": true,
-    "summary": "The event entry has a descriptive title and complete location/time details. The description is informative but contains a potential inconsistency regarding holiday operation. Tags could be improved to match the intended age range. No duplication issues."
-  }
+  "recurring_group_id": 696239800
 }

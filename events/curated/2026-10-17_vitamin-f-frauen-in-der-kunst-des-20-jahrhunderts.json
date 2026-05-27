@@ -5,53 +5,13 @@
   "time_raw": "",
   "location": "",
   "organizer": "Vitamin F",
-  "description": "Vitamin F Frauen in der Kunst des 20. Jahrhunderts.",
+  "description": "",
   "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/875/vitamin-f-frauen-in-der-kunst-des-20-jahrhunderts",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
-    "Kultur",
-    "Weingarten"
+    "Kultur"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title is clear but 'Vitamin F' prefix may be confusing"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Location field is empty"
-        ]
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "Time field is empty; no start time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is identical to title, provides no additional information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.5,
-    "passed": false,
-    "summary": "Event entry lacks location and time information; description is uninformative; title and tags are acceptable; no duplicate events exist."
-  }
+  "recurring_group_id": null
 }

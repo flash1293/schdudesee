@@ -11,44 +11,5 @@
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.8,
-        "issues": [
-          "Location name may be ambiguous without city/district"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.0,
-        "issues": [
-          "No tags assigned",
-          "Missing district tag (e.g., Neuthard)",
-          "Missing category tags (e.g., Musik, Kultur)"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.62,
-    "passed": true,
-    "summary": "The event entry has a clear title and time, but lacks description and tags entirely, significantly reducing its quality."
-  }
+  "recurring_group_id": null
 }

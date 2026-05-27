@@ -15,42 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": 367346517,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title does not explicitly name the sport (Boule), relying on club name for context."
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Description mentions weekly schedule but lacks specifics on duration and cost."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing tags 'Verein' and 'Workshop' which might be relevant; 'Kinder' may not fully represent the youth audience."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.93,
-    "passed": true,
-    "summary": "Event entry is well-structured: title is descriptive, location accurate, time set, description informative. Tags could be expanded. No duplicate risk."
-  }
+  "recurring_group_id": 367346517
 }

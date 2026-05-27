@@ -15,42 +15,5 @@
     "Kirche",
     "Friedrichstal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Time extracted (09:00) is inconsistent with description which specifies 08:30 start for Thursdays"
-        ]
-      },
-      "description_quality": {
-        "score": 0.85,
-        "issues": [
-          "Description contains generic schedule and reference to 'Flyer Kükenstube 2025' which may be outdated for this 2026 event instance"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Missing relevant category tag 'Kinder'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.83,
-    "passed": true,
-    "summary": "The event entry is mostly well-structured with a clear title and location. However, there is an inconsistency in time extraction, the description contains outdated references, and it lacks the 'Kinder' tag. It is not a duplicate."
-  }
+  "recurring_group_id": null
 }

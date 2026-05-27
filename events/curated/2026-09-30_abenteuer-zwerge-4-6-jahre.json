@@ -15,42 +15,5 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": 114773203,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 0.5,
-        "issues": [
-          "Location field contains duplicated address: 'Gymnasiumstraße 16, Stutensee-Blankenloch' repeated twice"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Minor formatting: missing space after colon in contact line 'Infos & Anmeldung:Melanie Nagelmelanie.m.nagel@gmail.com'"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing 'Kinder' tag which is relevant for a children's event"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.85,
-    "passed": true,
-    "summary": "Event entry is generally well-structured with a clear title and informative description. Location extraction suffers from duplication; tags are mostly appropriate but miss the relevant 'Kinder' category. No duplicate risk with other events in same district."
-  }
+  "recurring_group_id": 114773203
 }

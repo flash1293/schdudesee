@@ -13,44 +13,7 @@
   "tags": [
     "Sport",
     "Kinder",
-    "Bruchsal",
-    "Fest"
+    "Bruchsal"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.9,
-        "issues": [
-          "Description starts with course number and instructor name which may be redundant and not clearly separated."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.2,
-        "issues": [
-          "Tag 'Fest' is incorrect; event is a self-defense course, not a festival.",
-          "Tag 'Kinder' may be marginally appropriate but event targets women and girls 12+; could be more specific."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.8,
-    "passed": true,
-    "summary": "Event entry is well-formed with clear title, location, time, and informative description. Tags are mostly suitable but the 'Fest' tag is inaccurate; district tag is correct. No duplicate concerns. Overall good quality with minor tag issues."
-  }
+  "recurring_group_id": null
 }

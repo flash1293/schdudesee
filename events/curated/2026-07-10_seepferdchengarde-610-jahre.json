@@ -15,42 +15,5 @@
     "Kinder",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": [
-          "Title is descriptive but may be cryptic for those unfamiliar with local carnival terms"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.9,
-        "issues": [
-          "Only start time extracted; end time could be inferred from description but is not present in time_raw"
-        ]
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description focuses on general activity description rather than specific day details, and includes redundant organizer information"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.92,
-    "passed": true,
-    "summary": "Event entry is well-structured with complete location and time. Description could be more event-specific, and title slightly cryptic, but overall quality is high."
-  }
+  "recurring_group_id": null
 }

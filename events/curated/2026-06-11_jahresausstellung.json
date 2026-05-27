@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Altenbürghalle",
   "organizer": "Kunstkreis Karlsdorf-Neuthard",
-  "description": "Jahresausstellung. at Altenbürghalle. organized by Kunstkreis Karlsdorf-Neuthard.",
+  "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=419",
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
@@ -14,42 +14,5 @@
     "Kultur",
     "Neuthard"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.1,
-        "issues": [
-          "No time provided"
-        ]
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is minimal and redundant, repeats title/location/organizer without adding details"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing more specific category like 'Ausstellungen' which is available"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Annual exhibition with clear title and location, but lacks time and has a minimal description."
-  }
+  "recurring_group_id": null
 }

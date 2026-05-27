@@ -15,46 +15,5 @@
     "Natur",
     "Friedrichstal"
   ],
-  "recurring_group_id": 1764623589,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": [
-          "Title uses 'Wölflinge' which may be unfamiliar, consider adding age range"
-        ]
-      },
-      "location_extraction": {
-        "score": 0.85,
-        "issues": [
-          "Location contains HTML-encoded characters, e.g., '&#8211;'"
-        ]
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.85,
-        "issues": [
-          "Description could include meeting duration"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": [
-          "Could add 'Verein' tag to indicate club nature"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.75,
-        "issues": [
-          "Same time and location as another event from same organizer for different age group, potential confusion"
-        ]
-      }
-    },
-    "overall_score": 0.86,
-    "passed": true,
-    "summary": "Event entry is generally of high quality. Title is clear but could specify age range; location has HTML entities; description informative; tags appropriate; slight duplicate risk due to similar event at same time/location."
-  }
+  "recurring_group_id": 1764623589
 }

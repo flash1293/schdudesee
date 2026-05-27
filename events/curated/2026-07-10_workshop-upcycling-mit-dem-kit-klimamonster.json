@@ -16,40 +16,5 @@
     "Sport",
     "Workshop"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.5,
-        "issues": [
-          "Description is minimal; lacks details about what the workshop entails."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.4,
-        "issues": [
-          "Inaccurate tags: 'Literatur' and 'Sport' are not relevant to the event content; suggest using 'Kinder' and 'Bildung'."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.8,
-    "passed": true,
-    "summary": "The title is clear and informative, location and time are properly extracted. However, the description is too brief, and the tags include irrelevant categories. Overall, a decent entry with room for improvement."
-  }
+  "recurring_group_id": null
 }

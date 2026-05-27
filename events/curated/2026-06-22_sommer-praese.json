@@ -10,44 +10,6 @@
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
-  "tags": [
-    "Neuthard",
-    "Musik"
-  ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.3,
-        "issues": [
-          "Title is unclear and possibly misspelled (\"Präse\" instead of \"Pause\"?)"
-        ]
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.3,
-        "issues": [
-          "Description merely repeats title, location, time, and organizer; lacks additional context or details about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.77,
-    "passed": true,
-    "summary": "The event entry has a clear location, time, and appropriate tags, but the title is vague and the description is uninformative."
-  }
+  "tags": [],
+  "recurring_group_id": null
 }

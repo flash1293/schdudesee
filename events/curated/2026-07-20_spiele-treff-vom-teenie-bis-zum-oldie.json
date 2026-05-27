@@ -15,38 +15,5 @@
     "Treff",
     "Blankenloch"
   ],
-  "recurring_group_id": 696239800,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.8,
-        "issues": [
-          "Missing tag for seniors despite title mentioning oldies"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.97,
-    "passed": true,
-    "summary": "Good quality event entry. Title and description are clear and informative. Tags are mostly fitting but missing senior tag. No duplication issues."
-  }
+  "recurring_group_id": 696239800
 }

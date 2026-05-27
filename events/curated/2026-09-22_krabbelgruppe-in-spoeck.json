@@ -14,40 +14,5 @@
     "Kinder",
     "Spöck"
   ],
-  "recurring_group_id": 688729922,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.95,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.85,
-        "issues": [
-          "Description lacks information about recurring schedule (e.g., day of week) for this recurring event context"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.9,
-        "issues": [
-          "Only two tags; could include additional relevant categories such as 'Treff' or 'Verein'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.95,
-    "passed": true,
-    "summary": "Well-formed event entry for a playgroup in Spöck with clear title, complete location and time, and informative description. Minor suggestions: mention regular schedule and consider more tags."
-  }
+  "recurring_group_id": 688729922
 }

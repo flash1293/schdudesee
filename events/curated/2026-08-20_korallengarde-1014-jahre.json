@@ -15,38 +15,5 @@
     "Musik",
     "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.85,
-        "issues": []
-      },
-      "tag_quality": {
-        "score": 0.7,
-        "issues": [
-          "Tag 'Musik' may not be entirely accurate; consider adding 'Kinder' or 'Kultur'"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.1,
-        "issues": []
-      }
-    },
-    "overall_score": 0.76,
-    "passed": true,
-    "summary": "Clear event for Korallengarde dance group for ages 10-14, location and time properly set, description informative but tags could be more accurate; not a duplicate."
-  }
+  "recurring_group_id": null
 }

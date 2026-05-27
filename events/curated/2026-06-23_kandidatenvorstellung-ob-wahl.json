@@ -11,46 +11,7 @@
     "https://meinstutensee.de/termine/"
   ],
   "tags": [
-    "Politik",
-    "Fest"
+    "Politik"
   ],
-  "recurring_group_id": null,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.7,
-        "issues": [
-          "Description is repetitive and lacks additional helpful information."
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Tag 'Fest' is not appropriate for a political candidate presentation.",
-          "Missing a district tag (event takes place in Stutensee, but no district tag assigned)."
-        ]
-      },
-      "duplicate_risk": {
-        "score": 0.2,
-        "issues": [
-          "Event appears to be a duplicate of another event with similar title, time, location, and organizer on the same date."
-        ]
-      }
-    },
-    "overall_score": 0.72,
-    "passed": true,
-    "summary": "Event entry is mostly clear but has tagging issues and high duplicate risk with another event in context."
-  }
+  "recurring_group_id": null
 }

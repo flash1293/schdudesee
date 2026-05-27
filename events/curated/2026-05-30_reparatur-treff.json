@@ -15,38 +15,5 @@
     "Treff",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": 75599991,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.9,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "description_quality": {
-        "score": 0.0,
-        "issues": [
-          "Description is empty, providing no information about the event"
-        ]
-      },
-      "tag_quality": {
-        "score": 1.0,
-        "issues": []
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.82,
-    "passed": true,
-    "summary": "The event entry has a clear title, a properly extracted location and time, and appropriate tags, but completely lacks a description, which is essential for informing attendees. The empty description is a major flaw that reduces the overall quality."
-  }
+  "recurring_group_id": 75599991
 }

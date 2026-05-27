@@ -5,7 +5,7 @@
   "time_raw": "",
   "location": "Rheinhalle",
   "organizer": "Gemeindeverwaltung",
-  "description": "",
+  "description": "Einwohnerversammlung",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1859",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
@@ -13,43 +13,5 @@
   "tags": [
     "Politik"
   ],
-  "recurring_group_id": 1538793298,
-  "_quality": {
-    "judgments": {
-      "title_quality": {
-        "score": 0.8,
-        "issues": []
-      },
-      "location_extraction": {
-        "score": 1.0,
-        "issues": []
-      },
-      "time_extraction": {
-        "score": 0.0,
-        "issues": [
-          "No time specified"
-        ]
-      },
-      "description_quality": {
-        "score": 0.2,
-        "issues": [
-          "Description is identical to title, not informative"
-        ]
-      },
-      "tag_quality": {
-        "score": 0.5,
-        "issues": [
-          "Missing district tag",
-          "Only one tag; consider adding more relevant categories"
-        ]
-      },
-      "duplicate_risk": {
-        "score": 1.0,
-        "issues": []
-      }
-    },
-    "overall_score": 0.58,
-    "passed": false,
-    "summary": "Event title is clear but lacks time and description is uninformative; missing district tag."
-  }
+  "recurring_group_id": 1538793298
 }
