@@ -8,7 +8,8 @@
   "description": "",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/sommerfest-am-baggersee/",
   "sources": [
-    "https://meinstutensee.de/termine/"
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Fest",
