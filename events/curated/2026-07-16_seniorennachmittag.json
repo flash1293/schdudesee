@@ -10,9 +10,6 @@
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
-  "tags": [
-    "Senioren",
-    "Neuthard"
-  ],
+  "tags": [],
   "recurring_group_id": null
 }
