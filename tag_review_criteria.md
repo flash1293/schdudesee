@@ -10,7 +10,7 @@ The tag is objectively incorrect for the event content.
 
 | Pattern | Example | Suggested Fix |
 |---------|---------|---------------|
-| "Sport" on non-sport events | Eltern-Kind-Kreis (playgroup), Gartenfest, Abenteuer-Zwerge | Remove "Sport" |
+| "Sport" on non-sport events | Eltern-Kind-Kreis (playgroup), Gartenfest, Abenteuer-Zwerge | Remove "Sport". Note: "Sport" + "Kinder" together is fine for actual kids' sports (Garde dance training, etc.) |
 | "Workshop" on regular groups | Jugendrotkreuz, Pfadfinder (regular youth clubs, not workshops) | Replace with "Treff" or "Natur" |
 | "Musik" on non-music events | Modellbahn-AG (model railway), Eltern-Baby-Café | Remove "Musik", add appropriate tags |
 | "Kinder" missing on children-only events | Kükenstube (childcare under-3), Garde groups | Add "Kinder" |
@@ -80,6 +80,15 @@ For each flagged event, use this format:
 **ISSUE:** `<what's wrong>`  
 **SUGGESTION:** `<correct tags or action>`  
 
+For recurring patterns (5+ events with same title and same issue), use a grouped report:
+
+**PATTERN:** `<title pattern>`  
+**SEVERITY:** `🔴/🟠/🟡/🟢/ℹ️`  
+**AFFECTED FILES:** `<file1, file2, ... or count>`  
+**CURRENT TAGS:** `tag1, tag2, ...`  
+**ISSUE:** `<what's wrong>`  
+**SUGGESTION:** `<correct tags or action>`  
+
 ## Quick Reference: Common Tag Meanings
 
 | Tag | What it means | Should have when... |
@@ -104,3 +113,5 @@ For each flagged event, use this format:
 - Location tags (Blankenloch, Friedrichstal, Spöck, Büchig, Staffort, Neuthard, Karlsdorf, Graben, Neudorf, Eggenstein, Weingarten, etc.) should match the actual venue location, not the organizer's home base.
 - Some events legitimately have multiple location tags (e.g., city-wide events).
 - Recurring events should be checked individually — don't assume all instances of the same series share the same tag issues.
+- **Multi-issue events:** An event can have issues at multiple levels. Report at the highest severity level but note all findings.
+- **Bulk flagging heuristic:** If 5+ instances of the same titled event share the exact same tag pattern, flag them as a group with a bulk recommendation rather than listing each file individually.
