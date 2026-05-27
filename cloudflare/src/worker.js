@@ -555,7 +555,7 @@ async function callLLM(messages, tools, env) {
       tools,
       max_tokens: 1024,
     }),
-    signal: AbortSignal.timeout(15000),
+    signal: AbortSignal.timeout(30000),
   });
 
   if (!response.ok) {
