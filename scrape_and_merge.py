@@ -421,8 +421,6 @@ def normalize_location_dedup(location):
 TITLE_EXCLUSIVE_TAGS = {
     "krabbelgruppe": "Kinder",
     "fit in der schwangerschaft": "Kinder",
-    "4-6 jahre": "Kinder",
-    "3\u20136 jahre": "Kinder",
     "v\u00f6gel": "Natur",
 }
 
@@ -430,6 +428,8 @@ TITLE_EXCLUSIVE_TAGS = {
 TITLE_ALWAYS_TAGS = {
     "tanzen f\u00fcr die kleinsten": ["Kinder"],
     "seesternchengarde": ["Kinder"],
+    "4-6 jahre": ["Kinder"],
+    "3\u20136 jahre": ["Kinder"],
 }
 
 # Known false positive substrings: when found in title/description, remove the tag.
@@ -483,12 +483,14 @@ def auto_tag(title, description="", location="", organizer=""):
             if tag in content_tags and any(fp in content_text for fp in fakes):
                 content_tags.remove(tag)
         content_tags = content_tags[:2]
-        # Re-apply mandatory tags for specific titles after truncation
-        for title_trigger, extra_tags in TITLE_ALWAYS_TAGS.items():
-            if title_trigger in title_lower:
-                for t in extra_tags:
-                    if t not in content_tags:
-                        content_tags.append(t)
+
+    # Re-apply mandatory tags for specific titles after truncation
+    # Runs even when TITLE_EXCLUSIVE_TAGS matched first (e.g. "4-6 jahre" → Kinder + Sport/Kultur from keyword matches)
+    for title_trigger, extra_tags in TITLE_ALWAYS_TAGS.items():
+        if title_trigger in title_lower:
+            for t in extra_tags:
+                if t not in content_tags:
+                    content_tags.append(t)
 
     if organizer_tag and organizer_tag not in content_tags:
         content_tags.append(organizer_tag)
