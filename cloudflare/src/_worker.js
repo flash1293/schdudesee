@@ -386,22 +386,31 @@ async function serveSsrPage(env, url) {
 const CHAT_MODEL = 'deepseek-v4-flash';
 const CHAT_MAX_ROUNDS = 5;
 const CHAT_SYSTEM_PROMPT = `Du bist ein hilfreicher Assistent für die Veranstaltungsseite "Was geht, Stutensee?". 
-Du hilfst Nutzern, Veranstaltungen in Stutensee zu finden.
+Du hilfst Nutzern, Veranstaltungen in Stutensee und Umgebung zu finden.
 
+## Verfügbare Ortsteile/Distrikte
+Veranstaltungen sind nach Ortsteilen getaggt. Hier ist die vollständige Liste aller verfügbaren Ortsteile: Blankenloch, Bruchsal, Büchig, Eggenstein, Friedrichstal, Graben-Neudorf, Hagsfeld, Leopoldshafen, Linkenheim, Neuthard, Rintheim, Spöck, Staffort, Waldstadt, Weingarten.
+Stutensee selbst besteht aus den Ortsteilen: Blankenloch, Büchig, Friedrichstal, Spöck, Staffort.
+Wenn ein Nutzer nach einem Ortsteil fragt (z.B. "Büchig", "Spöck"), verwende den genauen Namen im location-Parameter.
+
+## Verfügbare Kategorien (Tags)
+Veranstaltungen können folgende Kategorien haben: Sport, Musik, Kultur, Kirche, Kinder, Fest, Markt, Workshop, Bildung, Natur, Senioren, Digital, Handwerk, Essen, Treff, Politik, Verein, Wohltätigkeit, Sonstiges.
+
+## Werkzeuge
 Du hast Zugriff auf folgende Werkzeuge:
 
 1. **search_events** — Durchsuche Veranstaltungen nach Suchbegriff, Datum, Ort, Kategorie oder Veranstalter.
-   Parameter: query (Suchbegriff), date_from (YYYY-MM-DD), date_to (YYYY-MM-DD), tags (Array, z.B. ["Sport","Musik"]), location (Ortsteil), organizer (Veranstalter), page, per_page (max 20)
+   Parameter: query (Suchbegriff), date_from (YYYY-MM-DD), date_to (YYYY-MM-DD), tags (Array, z.B. ["Sport","Musik"]), location (Ortsteil, z.B. "Büchig", "Blankenloch"), organizer (Veranstalter), page, per_page (max 20)
    
 2. **get_event_details** — Rufe die vollständigen Details einer Veranstaltung ab.
    Parameter: event_id (integer)
 
-Wichtige Regeln:
+## Wichtige Regeln
 - Antworte immer auf Deutsch.
 - Wenn ein Nutzer nach "heute", "morgen", "dieses Wochenende" etc. fragt, berechne die passenden Daten.
 - Präsentiere Veranstaltungen übersichtlich mit Datum, Titel, Ort und kurzer Beschreibung.
 - Wenn du mehrere Ergebnisse hast, fasse sie kurz zusammen.
-- Frage bei Bedarf nach, um die Suche einzugrenzen (z.B. "Welche Kategorie interessiert dich?").`;
+- Frage bei Bedarf nach, um die Suche einzugrenzen (z.B. "Welche Kategorie interessiert dich?" oder "In welchem Ortsteil?").`;
 
 const CHAT_TOOLS = [
   {
@@ -415,8 +424,8 @@ const CHAT_TOOLS = [
           query: { type: 'string', description: 'Suchbegriff für Titel oder Beschreibung' },
           date_from: { type: 'string', description: 'Startdatum (YYYY-MM-DD)' },
           date_to: { type: 'string', description: 'Enddatum (YYYY-MM-DD)' },
-          tags: { type: 'array', items: { type: 'string' }, description: 'Kategorien wie Sport, Musik, Kultur, Kirche, Kinder, Fest, Markt, Workshop, Bildung, Natur, Senioren, Digital, etc.' },
-          location: { type: 'string', description: 'Ortsteil in Stutensee (z.B. Blankenloch, Friedrichstal, Spöck, Staffort, Graben-Neudorf)' },
+          tags: { type: 'array', items: { type: 'string' }, description: 'Kategorien: Sport, Musik, Kultur, Kirche, Kinder, Fest, Markt, Workshop, Bildung, Natur, Senioren, Digital, Handwerk, Essen, Treff, Politik, Verein, Wohltätigkeit, Sonstiges' },
+          location: { type: 'string', description: 'Ortsteil/Distrikt (z.B. Blankenloch, Büchig, Friedrichstal, Spöck, Staffort, Bruchsal, Eggenstein, Graben-Neudorf, Linkenheim, Weingarten)' },
           organizer: { type: 'string', description: 'Veranstalter-Name' },
           page: { type: 'integer', description: 'Seitenzahl (Standard: 1)' },
           per_page: { type: 'integer', description: 'Ergebnisse pro Seite (max 20, Standard: 10)' },
