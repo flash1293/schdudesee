@@ -5,9 +5,12 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:e2e": "python3 build.py && playwright test",
+    "test:all": "python3 build.py && vitest run && playwright test"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "vitest": "^3.0.0"
   },
   "dependencies": {
