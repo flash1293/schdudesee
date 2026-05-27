@@ -534,13 +534,15 @@ header::after {
 
 /* Pagination */
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
   padding: 24px 20px 40px;
   font-size: 14px;
   color: var(--text-muted);
+}
+.pagination nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 .pagination button {
   padding: 8px 14px;
@@ -690,7 +692,7 @@ header::after {
   .date-separator .date-sep-day { font-size: 18px; }
   .date-separator .date-sep-month { font-size: 11px; }
   .events-wrap { padding: 0 12px; }
-  .pagination { flex-wrap: wrap; }
+  .pagination nav { flex-wrap: wrap; }
   .pagination span { order: -1; width: 100%; }
   .toggles-desktop { display: none; }
   .settings-btn, .chat-btn { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1.5px solid var(--border); border-radius: var(--radius-sm); background: var(--card-bg); cursor: pointer; font-size: 18px; transition: all var(--transition); flex-shrink: 0; }
