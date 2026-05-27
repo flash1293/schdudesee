@@ -321,6 +321,7 @@ MANUAL_ORG_MERGE = {
 
 MANUAL_DUPES = {
     "H\u00e4hnchen Grillfest": ["H\u00e4hnchenfest"],
+    "Sommerfest am Baggersee": ["Sommerfest"],
 }
 
 MANUAL_EVENTS = [
@@ -419,6 +420,9 @@ def normalize_location_dedup(location):
 
 TITLE_EXCLUSIVE_TAGS = {
     "krabbelgruppe": "Kinder",
+    "fit in der schwangerschaft": "Kinder",
+    "4-6 jahre": "Kinder",
+    "3\u20136 jahre": "Kinder",
     "v\u00f6gel": "Natur",
 }
 
@@ -431,6 +435,7 @@ TITLE_ALWAYS_TAGS = {
 # Known false positive substrings: when found in title/description, remove the tag.
 FALSE_POSITIVE_CLEANUP = {
     "Essen": ["bieringer", "bieringer-str"],
+    "Fest": ["standfest"],
     "Kirche": ["lutherkirche", "messen"],
     "Natur": ["waldstadt"],
     "Sport": ["jam session", "jam-session", "konrad", "bereiten"],
