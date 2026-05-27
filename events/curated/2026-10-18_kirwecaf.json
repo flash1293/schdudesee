@@ -10,6 +10,9 @@
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
-  "tags": [],
+  "tags": [
+    "Treff",
+    "Eggenstein"
+  ],
   "recurring_group_id": null
 }

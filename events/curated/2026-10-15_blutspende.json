@@ -10,6 +10,10 @@
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
-  "tags": [],
+  "tags": [
+    "Wohltätigkeit",
+    "Eggenstein",
+    "Leopoldshafen"
+  ],
   "recurring_group_id": null
 }

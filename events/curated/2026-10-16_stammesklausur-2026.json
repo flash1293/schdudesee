@@ -10,6 +10,8 @@
   "sources": [
     "clubs_batch_all"
   ],
-  "tags": [],
+  "tags": [
+    "Verein"
+  ],
   "recurring_group_id": null
 }

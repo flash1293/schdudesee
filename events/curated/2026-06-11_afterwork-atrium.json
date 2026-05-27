@@ -10,6 +10,9 @@
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
-  "tags": [],
+  "tags": [
+    "Treff",
+    "Bruchsal"
+  ],
   "recurring_group_id": null
 }

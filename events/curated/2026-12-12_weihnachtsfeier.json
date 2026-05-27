@@ -10,6 +10,8 @@
   "sources": [
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
-  "tags": [],
+  "tags": [
+    "Neuthard"
+  ],
   "recurring_group_id": 749485003
 }

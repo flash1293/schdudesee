@@ -10,6 +10,8 @@
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
-  "tags": [],
+  "tags": [
+    "Neureut"
+  ],
   "recurring_group_id": null
 }

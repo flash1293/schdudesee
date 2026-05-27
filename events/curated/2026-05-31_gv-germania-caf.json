@@ -10,6 +10,9 @@
   "sources": [
     "https://meinstutensee.de/termine/"
   ],
-  "tags": [],
+  "tags": [
+    "Treff",
+    "Staffort"
+  ],
   "recurring_group_id": null
 }
