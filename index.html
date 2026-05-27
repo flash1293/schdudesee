@@ -456,6 +456,8 @@ header::after {
   transition: color var(--transition);
 }
 .event-body h2 a:hover { color: var(--link-hover, var(--primary)); }
+.detail-link { font-size: 15px; margin-left: 4px; text-decoration: none; opacity: 0.7; }
+.detail-link:hover { opacity: 1; }
 .event-body h2 .ext-link {
   font-size: 12px;
   opacity: 0.4;
@@ -1032,7 +1034,11 @@ function toggleCondensed() {
   document.getElementById('condensed-toggle-mobile').checked = condensedMode;
   document.querySelectorAll('.event').forEach(el => {
     el.classList.toggle('condensed', condensedMode);
-    el.onclick = condensedMode ? function() { this.classList.toggle('expanded'); } : function() { window.location.href = this.dataset.href; };
+    if (condensedMode) {
+      el.onclick = function() { this.classList.toggle('expanded'); };
+    } else {
+      el.onclick = null;
+    }
   });
 }
 
@@ -1229,9 +1235,10 @@ function renderEvents(events) {
     const hasTwo = themeEmojis.length === 2 ? ' has-two' : '';
     const locTags = tags.filter(t => locationTags.includes(t));
     const detailHref = '/events/' + e.id + '/' + slugify(e.title);
-    html += `<article class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}" aria-label="${esc(e.title)}" data-href="${detailHref}" onclick="${condensedMode ? 'this.classList.toggle(\'expanded\')' : 'window.location.href=\'' + detailHref + '\''}" style="cursor:pointer">
+    const detailLink = e.event_url ? `<a href="${detailHref}" class="detail-link" title="Details">🔗</a>` : '';
+    html += `<article class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}" aria-label="${esc(e.title)}"${condensedMode ? ' onclick="this.classList.toggle(\'expanded\')"' : ''}>
       <div class="event-body">
-        <h2><span class="cat-emojis${hasTwo}">${emojiHtml}</span><span class="cat-title">${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(e.title)}<span class="ext-link">↗</span></a>` : `<a href="${detailHref}">${esc(e.title)}</a>`}<span class="condensed-location">${locTags.length > 0 ? locTags.map(t => ` 📍 ${esc(t)}`).join('') : (e.location ? ` 📍 ${esc(e.location)}` : '')}</span></span></h2>
+        <h2><span class="cat-emojis${hasTwo}">${emojiHtml}</span><span class="cat-title">${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(e.title)}<span class="ext-link">↗</span></a>` : `<a href="${detailHref}">${esc(e.title)}</a>`}${detailLink}<span class="condensed-location">${locTags.length > 0 ? locTags.map(t => ` 📍 ${esc(t)}`).join('') : (e.location ? ` 📍 ${esc(e.location)}` : '')}</span></span></h2>
         <div class="event-meta">
           ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
           ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}

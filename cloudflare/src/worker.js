@@ -727,6 +727,8 @@ a{color:var(--link,var(--primary))}
 a:hover{color:var(--link-hover,var(--primary))}
 .back-link{display:inline-block;margin-bottom:24px;color:var(--link,var(--primary));text-decoration:none;font-size:14px;font-weight:600}
 .back-link:hover{text-decoration:underline}
+.detail-link{font-size:15px;margin-left:4px;text-decoration:none;opacity:0.7}
+.detail-link:hover{opacity:1}
 footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
 @media(max-width:700px){.container{padding:0 12px}.card{padding:16px 18px}.card h1{font-size:20px}}
 </style>

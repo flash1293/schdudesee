@@ -172,6 +172,11 @@ function renderEventCard(event, condensedMode = false) {
   const path = eventPath(e);
   const eventDetailPath = path;
 
+  // Build the detail link (visible link emoji for events that have an external URL)
+  const detailLink = eventUrl
+    ? `<a href="${escapeHtml(eventDetailPath)}" class="detail-link" title="Details">🔗</a>`
+    : '';
+
   // Title with link
   let titleHtml;
   if (eventUrl) {
@@ -185,11 +190,11 @@ function renderEventCard(event, condensedMode = false) {
     ? locTags.map(t => ` 📍 ${escapeHtml(t)}`).join('')
     : (locationEscaped ? ` 📍 ${locationEscaped}` : '');
 
-  // Build the card — whole article is clickable to navigate to the event detail page
+  // Build the card
   const titleAria = escapeHtml(e.title || 'Veranstaltung');
-  let html = `<article class="event" id="event-${e.id}" aria-label="${titleAria}" onclick="window.location.href='${escapeHtml(eventDetailPath)}'" style="cursor:pointer">
+  let html = `<article class="event" id="event-${e.id}" aria-label="${titleAria}">
       <div class="event-body">
-        <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
+        <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}${detailLink}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
         <div class="event-meta">
           ${e.date_start ? `<span>📅 ${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? ` – ${fmtDate(e.date_end)}` : ''}</span>` : ''}
           ${e.time_raw ? `<span>🕐 ${escapeHtml(e.time_raw)}</span>` : ''}
