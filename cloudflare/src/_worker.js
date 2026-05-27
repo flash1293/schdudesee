@@ -175,25 +175,21 @@ function renderEventCard(event, condensedMode = false) {
   // Title with link
   let titleHtml;
   if (eventUrl) {
-    titleHtml = `<a href="${escapeHtml(eventUrl)}" target="_blank" rel="noopener">${titleEscaped}<span class="ext-link">↗</span></a>`;
+    titleHtml = `<a href="${escapeHtml(eventUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${titleEscaped}<span class="ext-link">↗</span></a>`;
   } else {
     titleHtml = `<a href="${escapeHtml(eventDetailPath)}">${titleEscaped}</a>`;
   }
-
-  // Add a link to the event detail page even if it has an external URL
-  // The title itself links to the external URL (if present), but we also make the whole card clickable via the event detail page
-  const eventDetailLink = eventUrl ? ` <a href="${escapeHtml(eventDetailPath)}" style="font-size:12px;opacity:0.4;text-decoration:none;color:inherit" title="Details">🔗</a>` : '';
 
   // Condensed location hint
   const condensedLocHtml = locTags.length > 0
     ? locTags.map(t => ` 📍 ${escapeHtml(t)}`).join('')
     : (locationEscaped ? ` 📍 ${locationEscaped}` : '');
 
-  // Build the card
+  // Build the card — whole article is clickable to navigate to the event detail page
   const titleAria = escapeHtml(e.title || 'Veranstaltung');
-  let html = `<article class="event" id="event-${e.id}" aria-label="${titleAria}">
+  let html = `<article class="event" id="event-${e.id}" aria-label="${titleAria}" onclick="window.location.href='${escapeHtml(eventDetailPath)}'" style="cursor:pointer">
       <div class="event-body">
-        <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}${eventDetailLink}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
+        <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
         <div class="event-meta">
           ${e.date_start ? `<span>📅 ${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? ` – ${fmtDate(e.date_end)}` : ''}</span>` : ''}
           ${e.time_raw ? `<span>🕐 ${escapeHtml(e.time_raw)}</span>` : ''}
