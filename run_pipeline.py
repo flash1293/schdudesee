@@ -616,17 +616,19 @@ DISTRICT_EXCLUSIONS = {
 }
 
 KEYWORDS = {
-"Sport": ["stadtlauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
+    "Sport": ["stadtlauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis",
               "fu\u00dfball", "fussball", "schwimm", "rad", "bike", "cycling", "sport", "bewegung",
               "gymnastik", "tanz", "dance", "ballett", "kickbox", "karate", "indiaca", "volleyball",
               "handball", "basketball", "reiten", "pferd", "wandern", "training", "spechaa",
               "turnier", "kajak", "kanu", "dressur", "springturnier", "reitturnier", "meisterschaft",
-              "pokalfinale", "segeln", "regatta", "gleitschirm", "sportwoche", "radtour", "wanderung", "pokalfinale", "segeln", "regatta", "gleitschirm", "sportwoche", "radtour", "wanderung", "müllsammel", "altpapiersammlung", "vogelstimmen", "streuobstwiese", "waldbegehung", "waldbegang"],
+              "pokalfinale", "segeln", "regatta", "gleitschirm", "sportwoche", "radtour", "wanderung",
+              "m\u00fcllsammel", "altpapiersammlung", "vogelstimmen", "streuobstwiese", "waldbegehung", "waldbegang"],
     "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang",
               "musikal", "orchester", "posaunen", "gitarre", "vox", "choir", "swing", "liederabend",
               "gospel", "rockfestival"],
     "Kultur": ["theater", "lesung", "kunst", "ausstellung", "kino", "literatur", "b\u00fchne", "kultur",
-               "museum", "foto", "malen", "zeichnen", "denkmals", "salsa", "vernissage", "modellbahn", "salsa", "vernissage", "modellbahn"],
+               "museum", "foto", "malen", "zeichnen", "denkmals", "salsa", "vernissage", "modellbahn",
+               "garde", "fasching", "karneval", "kost\u00fcm", "tanzgruppe"],
     "Kirche": ["gottesdienst", "kirche", "konfirmation", "firmung", "taufe", "messe",
                "andacht", "segen", "\u00f6kumen", "patrozinium", "gebet", "evangelisch", "katholisch",
                "trauer", "abendmahl", "kommunion", "herzensgebet", "maiandacht", "bibelkreis",
@@ -642,9 +644,9 @@ KEYWORDS = {
              "heimattage", "steinwiesenfest", "k\u00fcrbisfest", "h\u00e4hnchenfest", "fischerfest",
              "apfelbl\u00fctenfest", "kinderspielfest", "pfingstfeier"],
     "Markt": ["markt", "flohmarkt", "tr\u00f6del", "weihnachtsmarkt", "verkaufsoffener", "herbstmarkt", "hofflohmarkt", "frauenflohmarkt", "bauernmarkt", "verkaufsoffener", "herbstmarkt", "hofflohmarkt", "frauenflohmarkt", "bauernmarkt"],
-    "Workshop": ["workshop", "kurs", "seminar", "lernen", "unterricht", "training"],
+    "Workshop": ["workshop", "kurs", "seminar", "unterricht", "training"],
     "Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
-"lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform", "schulkonferenz"],
+               "lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform", "schulkonferenz"],
     "Natur": ["natur", "wald", "vogel", "baum", "pflanze", "umwelt", "klima",
                "hornisse", "mulchen", "exkursion", "wanderung",
                "gartenfest", "gartenarbeit", "gartengestaltung", "gartenbau"],
@@ -677,6 +679,18 @@ ORGANIZER_EXCLUSIVE_TAGS = {
     "fc ": "Sport",
 }
 
+# Known false positive substrings: when found in title/description, remove the tag.
+FALSE_POSITIVE_CLEANUP = {
+    "Essen": ["bieringer", "bieringer-str"],
+    "Kirche": ["lutherkirche", "messen"],
+    "Natur": ["waldstadt"],
+    "Sport": ["jam session", "jam-session", "konrad", "bereiten"],
+    "Musik": ["k\u00fckenstube", "eltern-baby-caf\u00e9", "krabbelgruppe", "eltern-kind-kreis",
+               "eltern-kind-caf\u00e9", "eltern-kind-gruppe", "babycaf\u00e9", "babytreff",
+               "choreografien", "mitgliedern"],
+    "Workshop": ["jugendrotkreuz", "pfadfind"],
+}
+
 def auto_tag(title, description="", location="", organizer=""):
     title_lower = (title or "").lower()
 
@@ -700,7 +714,7 @@ def auto_tag(title, description="", location="", organizer=""):
                 if kw in content_text:
                     content_tags.append(tag)
                     break
-        content_tags = content_tags[:2]
+        content_tags = content_tags[:3]
 
     def match_districts(text):
         results = []
@@ -734,6 +748,12 @@ def auto_tag(title, description="", location="", organizer=""):
         for d in org_districts:
             if d not in district_tags:
                 district_tags.append(d)
+
+    # Remove tags for known false positive substring matches
+    content_text_full_lower = content_text_full.lower()
+    for tag, fakes in FALSE_POSITIVE_CLEANUP.items():
+        if tag in content_tags and any(fp in content_text_full_lower for fp in fakes):
+            content_tags.remove(tag)
 
     return content_tags + district_tags
 

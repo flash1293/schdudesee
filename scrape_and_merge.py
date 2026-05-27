@@ -358,14 +358,15 @@ DISTRICT_EXCLUSIONS = {
 KEYWORDS = {
     "Sport": ["stadtlauf", "triathlon", "tennis", "turnen", "fitness", "yoga", "pilates", "tischtennis", "fu\u00dfball", "fussball", "schwimm", "rad", "bike", "cycling", "sport", "bewegung", "gymnastik", "tanz", "dance", "ballett", "kickbox", "karate", "indiaca", "volleyball", "handball", "basketball", "reiten", "pferd", "wandern", "training", "spechaa", "turnier", "kajak", "kanu", "dressur", "springturnier", "reitturnier", "meisterschaft", "pokalfinale", "segeln", "regatta", "gleitschirm", "sportwoche", "radtour", "wanderung"],
     "Musik": ["konzert", "chor", "gesang", "musik", "band", "jazz", "singen", "lieder", "klang", "musikal", "orchester", "posaunen", "gitarre", "vox", "choir", "swing", "liederabend", "gospel", "rockfestival", "siyou"],
-    "Kultur": ["theater", "lesung", "kunst", "ausstellung", "kino", "literatur", "b\u00fchne", "kultur", "museum", "foto", "malen", "zeichnen", "denkmals", "salsa", "vernissage", "modellbahn"],
+    "Kultur": ["theater", "lesung", "kunst", "ausstellung", "kino", "literatur", "b\u00fchne", "kultur", "museum", "foto", "malen", "zeichnen", "denkmals", "salsa", "vernissage", "modellbahn",
+               "garde", "fasching", "karneval", "kost\u00fcm", "tanzgruppe"],
     "Kirche": ["gottesdienst", "kirche", "konfirmation", "firmung", "taufe", "messe", "andacht", "segen", "\u00f6kumen", "patrozinium", "gebet", "evangelisch", "katholisch", "trauer", "abendmahl", "kommunion", "herzensgebet", "maiandacht", "bibelkreis", "bibelgespr\u00e4ch", "bibelstunde", "vesper", "kreuzweg", "volkstrauertag", "allerseelen", "allerheiligen", "glaubenskurs", "religionsunterricht"],
     "Kinder": ["kind", "baby", "eltern-kind", "krabbel", "spiel", "familie", "m\u00e4dchen", "junge", "kindergarten", "schule", "vorlesen", "bilderbuch", "k\u00fcken", "seepferdchen", "abenteuer", "zwerge", "jugend", "teen", "sch\u00fcler", "kinderturnen", "ferien", "caribi", "minis", "bambini", "steckenpferd", "drachen", "lager", "ballontag", "halloween", "gruselnacht", "modellflug", "scoutcamp", "ferienspa\u00df", "nikolaus", "camp", "w\u00f6lfling", "ferienspaß", "wölfling"],
     "Fest": ["fest", "oktoberfest", "maifest", "weihnachtsmarkt", "kerwe", "party", "sportfest", "maibaum", "fr\u00fchlingsfest", "sommerfest", "jubil\u00e4um", "vatertagsfest", "abschlussfeier", "thanksgiving", "neujahr", "adventzauber", "wintergl\u00fchen", "weihnachtskorso", "heimattage", "steinwiesenfest", "k\u00fcrbisfest", "h\u00e4hnchenfest", "fischerfest", "apfelbl\u00fctenfest", "kinderspielfest", "pfingstfeier"],
     "Markt": ["markt", "flohmarkt", "tr\u00f6del", "weihnachtsmarkt", "verkaufsoffener", "herbstmarkt", "hofflohmarkt", "frauenflohmarkt", "bauernmarkt"],
-    "Workshop": ["workshop", "kurs", "seminar", "lernen", "unterricht", "training"],
-"Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
-"lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform", "schulkonferenz"],
+    "Workshop": ["workshop", "kurs", "seminar", "unterricht", "training"],
+    "Bildung": ["bildung", "vortrag", "schule", "vhs", "diskussion", "fortbildung", "lesen",
+               "lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform", "schulkonferenz"],
     "Natur": ["natur", "wald", "vogel", "vögel", "baum", "pflanze", "umwelt", "klima",
                "hornisse", "mulchen", "exkursion", "wanderung",
                "gartenfest", "gartenarbeit", "gartengestaltung", "gartenbau"],
@@ -426,7 +427,11 @@ FALSE_POSITIVE_CLEANUP = {
     "Essen": ["bieringer", "bieringer-str"],
     "Kirche": ["lutherkirche", "messen"],
     "Natur": ["waldstadt"],
-    "Sport": ["jam session", "jam-session"],
+    "Sport": ["jam session", "jam-session", "konrad", "bereiten"],
+    "Musik": ["k\u00fckenstube", "eltern-baby-caf\u00e9", "krabbelgruppe", "eltern-kind-kreis",
+               "eltern-kind-caf\u00e9", "eltern-kind-gruppe", "babycaf\u00e9", "babytreff",
+               "choreografien", "mitgliedern"],
+    "Workshop": ["jugendrotkreuz", "pfadfind"],
 }
 
 ORGANIZER_EXCLUSIVE_TAGS = {
@@ -462,7 +467,7 @@ def auto_tag(title, description="", location="", organizer=""):
                 if kw in content_text:
                     content_tags.append(tag)
                     break
-        content_tags = content_tags[:2]
+        content_tags = content_tags[:3]
 
     if organizer_tag and organizer_tag not in content_tags:
         content_tags.append(organizer_tag)
