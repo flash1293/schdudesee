@@ -422,6 +422,12 @@ TITLE_EXCLUSIVE_TAGS = {
     "v\u00f6gel": "Natur",
 }
 
+# Titles that always get specific tags added after truncation (no override, just addition)
+TITLE_ALWAYS_TAGS = {
+    "tanzen f\u00fcr die kleinsten": ["Kinder"],
+    "seesternchengarde": ["Kinder"],
+}
+
 # Known false positive substrings: when found in title/description, remove the tag.
 FALSE_POSITIVE_CLEANUP = {
     "Essen": ["bieringer", "bieringer-str"],
@@ -472,6 +478,12 @@ def auto_tag(title, description="", location="", organizer=""):
             if tag in content_tags and any(fp in content_text for fp in fakes):
                 content_tags.remove(tag)
         content_tags = content_tags[:2]
+        # Re-apply mandatory tags for specific titles after truncation
+        for title_trigger, extra_tags in TITLE_ALWAYS_TAGS.items():
+            if title_trigger in title_lower:
+                for t in extra_tags:
+                    if t not in content_tags:
+                        content_tags.append(t)
 
     if organizer_tag and organizer_tag not in content_tags:
         content_tags.append(organizer_tag)
