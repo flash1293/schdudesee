@@ -13,9 +13,16 @@ import re, base64, os
 with open("../index.html") as f:
     html = f.read()
 
-# Minify slightly: remove extra whitespace
+# Minify slightly: remove extra whitespace between tags
 html = re.sub(r'>\s+<', '><', html)
-html = re.sub(r'\s{2,}', ' ', html)
+
+# Collapse whitespace only *outside* <script> blocks to avoid mangling JS
+# (CF Workers gzip the response, so this is just a minor size optimization)
+parts = re.split(r'(<script[^>]*>.*?</script>)', html, flags=re.DOTALL)
+html = ''.join(
+    re.sub(r'\s{2,}', ' ', part) if not part.strip().startswith('<script') else part
+    for part in parts
+)
 
 # Encode as base64 to avoid any JS string escaping issues
 encoded = base64.b64encode(html.encode("utf-8")).decode("ascii")
