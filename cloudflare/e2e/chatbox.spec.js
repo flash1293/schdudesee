@@ -9,7 +9,7 @@ import { test, expect } from '@playwright/test';
 // ── Helpers ──────────────────────────────────────────────────────────
 
 function getChatPanel(page) {
-  return page.locator('#chat-panel');
+  return page.locator('#chat-sidebar');
 }
 
 function getChatMessages(page) {

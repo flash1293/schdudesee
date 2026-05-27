@@ -462,15 +462,23 @@ async function serveChat(request, env) {
     const llmMessages = [{ role: 'system', content: systemPrompt }, ...messages];
     let result = await callLLM(llmMessages, CHAT_TOOLS, env);
     let collectedEvents = [];
+    let totalUsage = { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 };
+
+    // Track usage across rounds
+    if (result.usage) {
+      totalUsage.prompt_tokens += result.usage.prompt_tokens || 0;
+      totalUsage.completion_tokens += result.usage.completion_tokens || 0;
+      totalUsage.total_tokens += result.usage.total_tokens || 0;
+    }
 
     for (let round = 0; round < CHAT_MAX_ROUNDS; round++) {
       if (!result || !result.choices || result.choices.length === 0 || !result.choices[0].message) {
-        return json({ error: 'Ungültige Antwort vom KI-Assistenten' }, 502);
+        return json({ error: 'Ungültige Antwort vom KI-Assistenten', usage: totalUsage }, 502);
       }
       const msg = result.choices[0].message;
       if (!msg.tool_calls || msg.tool_calls.length === 0) {
         // No more tool calls — we're done
-        return json({ message: msg, events: collectedEvents });
+        return json({ message: msg, events: collectedEvents, usage: totalUsage });
       }
 
       // Execute each tool call
@@ -505,21 +513,26 @@ async function serveChat(request, env) {
       }
 
       result = await callLLM(llmMessages, CHAT_TOOLS, env);
+      if (result.usage) {
+        totalUsage.prompt_tokens += result.usage.prompt_tokens || 0;
+        totalUsage.completion_tokens += result.usage.completion_tokens || 0;
+        totalUsage.total_tokens += result.usage.total_tokens || 0;
+      }
     }
 
     // Max rounds reached — return whatever we have
     const finalMsg = result && result.choices && result.choices[0] ? result.choices[0].message : null;
     if (!finalMsg) {
-      return json({ error: 'Ungültige Antwort vom KI-Assistenten' }, 502);
+      return json({ error: 'Ungültige Antwort vom KI-Assistenten', usage: totalUsage }, 502);
     }
-    return json({ message: finalMsg, events: collectedEvents });
+    return json({ message: finalMsg, events: collectedEvents, usage: totalUsage });
   } catch (err) {
     console.error('Chat error:', err.message);
     return json({ error: err.message }, 500);
   }
 }
 
-/** Call the LLM API (opencode.ai). */
+/** Call the LLM API (opencode.ai). Returns {choices, usage}. */
 async function callLLM(messages, tools, env) {
   const apiKey = env.LLM_API_KEY;
   const baseUrl = env.LLM_BASE_URL || 'https://opencode.ai/zen/go/v1';
@@ -548,7 +561,18 @@ async function callLLM(messages, tools, env) {
     throw new Error(`LLM API error ${response.status}: ${err.slice(0, 200)}`);
   }
 
-  return response.json();
+  const data = await response.json();
+
+  // Log token usage for cost tracking
+  if (data.usage) {
+    const { prompt_tokens, completion_tokens, total_tokens } = data.usage;
+    // Model pricing: deepseek-v4-flash ~$0.15/M input, ~$0.60/M output (estimate)
+    const inputCost = prompt_tokens * 0.15 / 1_000_000;
+    const outputCost = completion_tokens * 0.60 / 1_000_000;
+    console.log(`[COST] prompt=${prompt_tokens} output=${completion_tokens} total=${total_tokens} est_cost=${(inputCost + outputCost).toFixed(6)}`);
+  }
+
+  return data;
 }
 
 /** Search events in D1 database. */
