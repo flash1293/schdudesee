@@ -75,8 +75,6 @@ body {
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }
 h1, h2, h3, h4 {
   font-family: system-ui, -apple-system, sans-serif; font-weight: 600;
@@ -714,14 +712,12 @@ header::after {
 .app-layout{display:flex;max-width:1480px;margin:0 auto;min-height:calc(100vh - 200px)}
 .main-content{flex:1;min-width:0}
 
-/* Content area wrapper (events + chat sidebar split when chat is open) */
-.content-area{display:block;flex:1;min-height:0}
-/* Page-left (events) sits inside content-area */
-.page-left{display:flex;flex-direction:column;min-width:0}
+/* Top-level split layout: body splits into left (page content) and right (chat) */
+.page-left{display:flex;flex-direction:column;min-width:0;flex:1}
 /* Chat sidebar — full viewport height on desktop when chat is open */
 .chat-sidebar{width:50%;max-width:520px;min-width:340px;display:none;flex-direction:column;background:var(--card-bg);border-left:1px solid var(--border);overflow:hidden}
 .chat-sidebar.open{display:flex}
-@media(min-width:901px){.chat-open .content-area{display:flex;flex-direction:row;flex:1;min-height:0}.chat-open .page-left{flex:1;overflow-y:auto;min-width:0}.chat-open .chat-sidebar{height:100%}}
+@media(min-width:901px){.chat-open{display:flex;flex-direction:row;height:100vh;overflow:hidden}.chat-open .page-left{overflow-y:auto;height:100vh}.chat-open .chat-sidebar{height:100vh}.chat-open header{padding:6px 16px}.chat-open .schdudesee-logo{height:44px}}
 .chat-sidebar .chat-header{background:var(--primary);color:#fff;padding:12px 16px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;flex-shrink:0}
 .chat-sidebar .chat-header span{flex:1}
 .chat-sidebar .chat-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0 4px;opacity:0.8}
@@ -754,6 +750,7 @@ header::after {
 </style>
 </head>
 <body>
+<div class="page-left">
 <header>
   <div class="header-inner">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 100" class="schdudesee-logo" style="height:68px;width:auto;">
@@ -842,8 +839,6 @@ header::after {
   </div>
 </div>
 </div>
-<div class="content-area">
-<div class="page-left">
 <div class="app-layout">
 <main class="main-content">
 <div class="events-wrap">
@@ -882,7 +877,6 @@ header::after {
     <button type="button" class="chat-send" id="chat-send" aria-label="Nachricht senden" onclick="sendChat()">➤</button>
   </div>
 </aside>
-</div><!-- end content-area -->
 
 <script>
 
