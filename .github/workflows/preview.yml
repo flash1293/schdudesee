@@ -21,6 +21,11 @@ jobs:
         run: |
           cd cloudflare && python3 build.py && npm ci && npm test
 
+      - name: Run Playwright e2e tests
+        run: |
+          cd cloudflare && npx playwright install chromium
+          npm run test:e2e
+
       - name: Build database from JSON
         run: python3 scripts/build_db.py
 
