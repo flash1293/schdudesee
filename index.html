@@ -866,14 +866,14 @@ header::after {
 <aside class="chat-sidebar" id="chat-sidebar">
   <div class="chat-header">
     <span>🤖 Veranstaltungs-Chat</span>
-    <button class="chat-close" onclick="toggleChat()">✕</button>
+    <button type="button" class="chat-close" aria-label="Chat schließen" onclick="toggleChat()">✕</button>
   </div>
   <div class="chat-messages" id="chat-messages">
     <div class="chat-msg assistant">Hallo! Ich bin der KI-Assistent für "Was geht, Stutensee?". Du kannst mich nach Veranstaltungen fragen, z.B. "Was ist am Wochenende los?" oder "Gibt es Sportevents im Juni?".</div>
   </div>
   <div class="chat-input-wrap">
-    <input class="chat-input" id="chat-input" type="text" placeholder="Frage nach Veranstaltungen..." onkeydown="if(event.key==='Enter')sendChat()">
-    <button class="chat-send" id="chat-send" onclick="sendChat()">➤</button>
+    <input class="chat-input" id="chat-input" type="text" placeholder="Frage nach Veranstaltungen..." aria-label="Nachricht eingeben" onkeydown="if(event.key==='Enter')sendChat()">
+    <button type="button" class="chat-send" id="chat-send" aria-label="Nachricht senden" onclick="sendChat()">➤</button>
   </div>
 </aside>
 
