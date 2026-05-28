@@ -430,6 +430,20 @@ TITLE_EXCLUSIVE_TAGS = {
 TITLE_ALWAYS_TAGS = {
     "tanzen f\u00fcr die kleinsten": ["Kinder"],
     "seesternchengarde": ["Kinder"],
+    # One-off cases for untagged events (Issue #123)
+    "remember in concert": ["Musik"],
+    "landesmeutenaktion (lama)": ["Natur"],
+    "f\u00eate de la musique": ["Musik"],
+    "abifeier": ["Fest"],
+    "'leben im alter - denken h\u00e4lt fit'": ["Senioren"],
+    "aktionstage 60+": ["Senioren"],
+    "herbstfahrt 2026": ["Natur"],
+    "gemarkungsputzete": ["Natur"],
+    "thanksgivin\u2018": ["Fest"],
+    "gro\u00dfer pflegetag": ["Senioren"],
+    "kampagne er\u00f6ffnung / inthronisation": ["Kultur"],
+    "saueressen kirwe": ["Fest"],
+    "adventskranzbinden": ["Workshop"],
 }
 
 # Known false positive substrings: when found in title/description, remove the tag.
