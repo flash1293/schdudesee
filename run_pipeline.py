@@ -619,11 +619,15 @@ def normalize_location_dedup(location):
     return loc[:idx].strip() if idx > 0 else loc
 
 
-def tag_untagged():
-    """Only tag events that have no tags yet (preserves restored/manual tags)."""
+def tag_untagged(force=False):
+    """Tag events. By default only tags untagged events (preserves restored/manual tags).
+    Pass force=True to re-tag ALL events (overwrites existing tags)."""
     conn = sqlite3.connect(DB)
     c = conn.cursor()
-    rows = c.execute("SELECT id, title, COALESCE(description,''), COALESCE(location,''), COALESCE(organizer,''), COALESCE(tags,'') FROM curated_events WHERE tags IS NULL OR tags = ''").fetchall()
+    if force:
+        rows = c.execute("SELECT id, title, COALESCE(description,''), COALESCE(location,''), COALESCE(organizer,''), COALESCE(tags,'') FROM curated_events").fetchall()
+    else:
+        rows = c.execute("SELECT id, title, COALESCE(description,''), COALESCE(location,''), COALESCE(organizer,''), COALESCE(tags,'') FROM curated_events WHERE tags IS NULL OR tags = ''").fetchall()
     count = 0
     for r in rows:
         tags = auto_tag(r[1], r[2], r[3], r[4])
@@ -639,6 +643,7 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Stutensee Events Pipeline")
     parser.add_argument("--sources", help="Comma-separated source names to run (default: all)")
+    parser.add_argument("--force-retag", action="store_true", help="Re-tag ALL curated events, not just untagged ones. Useful after updating tagging logic.")
     args = parser.parse_args()
 
     print("Stutensee Events Pipeline", flush=True)
@@ -747,8 +752,11 @@ if __name__ == "__main__":
     curated = dedup_sql()
     print(f"{curated} curated", flush=True)
 
-    print(f"  Tagging untagged...", end=" ", flush=True)
-    tagged = tag_untagged()
+    if args.force_retag:
+        print(f"  Force re-tagging all events...", end=" ", flush=True)
+    else:
+        print(f"  Tagging untagged...", end=" ", flush=True)
+    tagged = tag_untagged(force=args.force_retag)
     print(f"{tagged} tagged", flush=True)
 
     print(f"  Recurring detection...", end=" ", flush=True)
