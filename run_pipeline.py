@@ -7,7 +7,20 @@ Usage:  python3 run_pipeline.py
 
 import json, sys, os, sqlite3, urllib.request, re, html, hashlib
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from scrape_and_merge import auto_tag
+from scrape_and_merge import (
+    auto_tag,
+    TITLE_ALWAYS_TAGS,
+    TITLE_EXCLUSIVE_TAGS,
+    KEYWORDS,
+    FALSE_POSITIVE_CLEANUP,
+    ORGANIZER_EXCLUSIVE_TAGS,
+    DISTRICTS,
+    DISTRICT_EXCLUSIONS,
+    BLOCKED_TITLES,
+    BLOCKED_PREFIXES,
+    MANUAL_DUPES,
+    MANUAL_EVENTS,
+)
 import importlib.util
 for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
@@ -316,7 +329,10 @@ def insert_raw(source_data):
     c = conn.cursor()
     count = 0
     for ev in source_data["events"]:
-        if ev.get("title", "") in BLOCKED_TITLES:
+        title = ev.get("title", "")
+        if title in BLOCKED_TITLES:
+            continue
+        if any(title.startswith(p) for p in BLOCKED_PREFIXES):
             continue
         if is_past(ev.get("date_start", "")):
             continue
@@ -377,11 +393,19 @@ def dedup_sql():
     c.execute("DELETE FROM curated_events")
     c.execute("DELETE FROM raw_to_curated")
     blocked_placeholders = ",".join("?" for _ in BLOCKED_TITLES)
+    prefix_conditions = " AND ".join(
+        f"title NOT LIKE '{p}%' ESCAPE ''" for p in BLOCKED_PREFIXES
+    ) if BLOCKED_PREFIXES else "1=1"
+    where_clause = (
+        f"title IS NOT NULL AND title != '' "
+        f"AND title NOT IN ({blocked_placeholders}) "
+        f"AND {prefix_conditions} "
+        f"AND (date_start IS NULL OR date_start = '' OR date_start >= date('now'))"
+    )
     c.execute(f"""
         INSERT INTO curated_events (title, date_start, date_end, time_raw, location, organizer, description, event_url, sources)
         SELECT title, date_start, date_end, time_raw, location, organizer, description, event_url, GROUP_CONCAT(DISTINCT source_url)
-        FROM raw_events WHERE title IS NOT NULL AND title != '' AND title NOT IN ({blocked_placeholders})
-            AND (date_start IS NULL OR date_start = '' OR date_start >= date('now'))
+        FROM raw_events WHERE {where_clause}
         GROUP BY LOWER(TRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
             REPLACE(REPLACE(REPLACE(REPLACE(title,
                 ' in blankenloch',''),' in büchig',''),' in friedrichstal',''),
@@ -391,6 +415,31 @@ def dedup_sql():
         )), COALESCE(date_start, ''), COALESCE(TRIM(SUBSTR(location, 1, INSTR(location || ',', ',') - 1)), TRIM(location), '')
         ORDER BY date_start ASC
     """, BLOCKED_TITLES)
+    conn.commit()
+
+    # Re-populate raw_to_curated mapping after initial dedup INSERT
+    # Use Python dict for efficient matching (avoids slow SQL cross-join)
+    curated_map = {}
+    for row in c.execute("SELECT id, title, date_start, location FROM curated_events").fetchall():
+        key = (normalize_title(row[1]), row[2] or "", normalize_location(row[3]))
+        curated_map[key] = row[0]
+
+    batch = []
+    for row in c.execute("""
+        SELECT id, title, date_start, location, source_url
+        FROM raw_events
+        WHERE title IS NOT NULL AND title != ''
+            AND (date_start IS NULL OR date_start = '' OR date_start >= date('now'))
+    """).fetchall():
+        key = (normalize_title(row[1]), row[2] or "", normalize_location(row[3]))
+        cid = curated_map.get(key)
+        if cid:
+            batch.append((row[0], cid, row[4]))
+        if len(batch) >= 500:
+            c.executemany("INSERT INTO raw_to_curated (raw_id, curated_id, source) VALUES (?, ?, ?)", batch)
+            batch = []
+    if batch:
+        c.executemany("INSERT INTO raw_to_curated (raw_id, curated_id, source) VALUES (?, ?, ?)", batch)
     conn.commit()
 
     # Restore old tags + recurring_group_id by matching on normalized key
@@ -444,7 +493,7 @@ def dedup_sql():
             for s in (kill[5] or "").split(","):
                 if s.strip():
                     merged_src.add(s.strip())
-            c.execute("DELETE FROM raw_to_curated WHERE curated_id = ?", (kill[0],))
+            c.execute("UPDATE raw_to_curated SET curated_id = ? WHERE curated_id = ?", (pick[0], kill[0]))
             c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
             c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
                       (",".join(sorted(merged_src)), pick[0]))
@@ -479,7 +528,7 @@ def dedup_sql():
                     for s in (kill[5] or "").split(","):
                         if s.strip():
                             merged_src.add(s.strip())
-                    c.execute("DELETE FROM raw_to_curated WHERE curated_id = ?", (kill[0],))
+                    c.execute("UPDATE raw_to_curated SET curated_id = ? WHERE curated_id = ?", (pick[0], kill[0]))
                     c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
                     c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
                               (",".join(sorted(merged_src)), pick[0]))
@@ -500,7 +549,7 @@ def dedup_sql():
                         for s in (kill[5] or "").split(","):
                             if s.strip():
                                 merged_src.add(s.strip())
-                        c.execute("DELETE FROM raw_to_curated WHERE curated_id = ?", (kill[0],))
+                        c.execute("UPDATE raw_to_curated SET curated_id = ? WHERE curated_id = ?", (pick[0], kill[0]))
                         c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
                         c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
                                   (",".join(sorted(merged_src)), pick[0]))
@@ -520,7 +569,7 @@ def dedup_sql():
                 for s in (kill[5] or "").split(","):
                     if s.strip():
                         merged_src.add(s.strip())
-                c.execute("DELETE FROM raw_to_curated WHERE curated_id = ?", (kill[0],))
+                c.execute("UPDATE raw_to_curated SET curated_id = ? WHERE curated_id = ?", (best[0], kill[0]))
                 c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
                 c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
                           (",".join(sorted(merged_src)), best[0]))
@@ -569,52 +618,6 @@ def normalize_location_dedup(location):
     idx = loc.find(',')
     return loc[:idx].strip() if idx > 0 else loc
 
-
-BLOCKED_TITLES = [
-    "Krabbelkäfer Stutensee-Büchig – gemütliches Beisammensein mit Frühstück",
-    "Bereitschaftsabend (Übungsabend)",
-    "Chorprobe Gospel Unlimited",
-    "Chorprobe Posaunenchor Blankenloch",
-    "JRK Gruppenstunde",
-    "Paddeltraining für Erwachsene (Sommer)",
-]
-
-# Manual override: merge variant titles into canonical on same date
-# Key: canonical_title → [variant_titles to merge into it]
-MANUAL_DUPES = {
-    "Hähnchen Grillfest": ["Hähnchenfest"],
-}
-
-MANUAL_EVENTS = [
-    {"title": "U16 KVV Pokalfinale", "date_start": "2026-05-13", "date_end": None, "time_raw": "", "location": "Friedrichstal", "organizer": "FC Germania Friedrichstal", "description": "KVV Pokalfinale der U16", "event_url": "https://www.fcfriedrichstal.de/"},
-    {"title": "Fahrradtour am 1. Mai 2026", "date_start": "2026-05-01", "date_end": None, "time_raw": "", "location": "Alte Schule Spöck", "organizer": "DLRG Ortsgruppe Spöck", "description": "", "event_url": "https://spoeck.dlrg.de/"},
-    {"title": "Chorwochenende", "date_start": "2027-03-19", "date_end": None, "time_raw": "", "location": "", "organizer": "Gospel Unlimited", "description": "", "event_url": "https://www.gospel-unlimited.de"},
-    {"title": "Badentreff", "date_start": "2026-06-03", "date_end": "2026-06-06", "time_raw": "", "location": "CVJM Spöck", "organizer": "CVJM Spöck", "description": "", "event_url": "https://www.cvjm-spoeck.de/"},
-]
-
-DISTRICTS = {
-    "Blankenloch": ["blankenloch", "bl.", "mehrgenerationenhaus", "bürgerwerkstatt", "seegrabenweg", "gymnasiumstr", "zukunftshaus"],
-    "Büchig": ["büchig", "buechig"],
-    "Friedrichstal": ["friedrichstal", "spöcker weg", "spoecker weg"],
-    "Spöck": ["spöck", "spoeck"],
-    "Staffort": ["staffort"],
-    "Weingarten": ["weingarten", "weingarten (baden)", "mineralix-arena", "walzbachhalle"],
-    "Hagsfeld": ["hagsfeld"],
-    "Büchenau": ["büchenau", "buechenau"],
-    "Neuthard": ["neuthard", "karlsdorf", "karlsdorf-neuthard", "zehntscheuer"],
-    "Waldstadt": ["waldstadt", "bv-waldstadt"],
-    "Eggenstein": ["eggenstein"],
-    "Leopoldshafen": ["leopoldshafen"],
-    "Rintheim": ["rintheim"],
-    "Linkenheim": ["linkenheim", "linkenheim-hochstetten"],
-    "Graben-Neudorf": ["graben-neudorf"],
-    "Bruchsal": ["bruchsal"],
- }
-
-DISTRICT_EXCLUSIONS = {
-    "Spöck": ["spöcker weg", "spoecker weg"],
-    "Büchenau": ["staffort-büchenau", "staffort büchenau"],
-}
 
 def tag_untagged():
     """Only tag events that have no tags yet (preserves restored/manual tags)."""
