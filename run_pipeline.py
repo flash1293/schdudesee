@@ -394,7 +394,7 @@ def dedup_sql():
     c.execute("DELETE FROM raw_to_curated")
     blocked_placeholders = ",".join("?" for _ in BLOCKED_TITLES)
     prefix_conditions = " AND ".join(
-        f"title NOT LIKE '{p}%' ESCAPE ''" for p in BLOCKED_PREFIXES
+        f"title NOT LIKE '{p}%'" for p in BLOCKED_PREFIXES
     ) if BLOCKED_PREFIXES else "1=1"
     where_clause = (
         f"title IS NOT NULL AND title != '' "
