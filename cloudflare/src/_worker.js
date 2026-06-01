@@ -4,6 +4,7 @@ import { ensureAnalyticsTable, logRequest } from './_analytics.js';
 const THEME_KEYS = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
 
 const DISTRICT_KEYS = new Set(['Blankenloch','Bruchsal','Bretten','Büchenau','Büchig','Eggenstein','Friedrichstal','Graben-Neudorf','Hagsfeld','Karlsruhe-Innenstadt','Leopoldshafen','Linkenheim','Neureut','Neuthard','Rintheim','Spöck','Staffort','Waldstadt','Weingarten']);
+const DISTRICT_LIST_STR = [...DISTRICT_KEYS].sort().join(', ');
 
 const TAG_EMOJIS = {
   'Sport':'⚽','Musik':'🎵','Kultur':'🎭','Kirche':'⛪','Kinder':'🧒','Fest':'🎉',
@@ -444,7 +445,7 @@ const CHAT_SYSTEM_PROMPT = `Du bist ein hilfreicher Assistent für die Veranstal
 Du hilfst Nutzern, Veranstaltungen in Stutensee und Umgebung zu finden.
 
 ## Verfügbare Ortsteile/Distrikte
-Veranstaltungen sind nach Ortsteilen getaggt. Hier ist die vollständige Liste aller verfügbaren Ortsteile: Blankenloch, Bruchsal, Büchig, Eggenstein, Friedrichstal, Graben-Neudorf, Hagsfeld, Leopoldshafen, Linkenheim, Neuthard, Rintheim, Spöck, Staffort, Waldstadt, Weingarten.
+Veranstaltungen sind nach Ortsteilen getaggt. Hier ist die vollständige Liste aller verfügbaren Ortsteile: ${DISTRICT_LIST_STR}.
 Stutensee selbst besteht aus den Ortsteilen: Blankenloch, Büchig, Friedrichstal, Spöck, Staffort.
 Wenn ein Nutzer nach einem Ortsteil fragt (z.B. "Büchig", "Spöck"), verwende den genauen Namen im location-Parameter.
 

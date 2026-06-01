@@ -501,13 +501,13 @@ def dedup_sql():
     # Group by date + district
     dd_groups = {}
     for r in rows:
-        dd_groups.setdefault((r[2] or "", r[7]), []).append(r)
+        dd_groups.setdefault((r[2] or "", r[8]), []).append(r)
     for candidates in dd_groups.values():
         while True:
             match = None
             for i, a in enumerate(candidates):
                 for b in candidates[i+1:]:
-                    at, bt = a[6], b[6]
+                    at, bt = a[7], b[7]
                     if at == bt or (len(at) > 6 and len(bt) > 6 and (at in bt or bt in at or at.replace(' ','') in bt.replace(' ','') or bt.replace(' ','') in at.replace(' ',''))):
                         match = (a, b)
                         break
@@ -533,6 +533,9 @@ def dedup_sql():
                       (",".join(sorted(merged_src)), pick[0]))
             c.execute("UPDATE curated_events SET tags = ? WHERE id = ?",
                       (",".join(sorted(merged_tags)), pick[0]))
+            # Update in-memory survivor so subsequent merges use fresh data
+            pick[5] = ",".join(sorted(merged_src))
+            pick[6] = ",".join(sorted(merged_tags))
             candidates.remove(kill)
     # Cross-date fuzzy pass: same date, similar title regardless of district
     date_rows = {}
@@ -542,7 +545,7 @@ def dedup_sql():
         for i in range(len(candidates)):
             for j in range(i+1, len(candidates)):
                 a, b = candidates[i], candidates[j]
-                at, bt = a[6], b[6]
+                at, bt = a[7], b[7]
                 if at == bt:
                     continue
                 short, long = (at, bt) if len(at) < len(bt) else (bt, at)
@@ -574,6 +577,9 @@ def dedup_sql():
                               (",".join(sorted(merged_src)), pick[0]))
                     c.execute("UPDATE curated_events SET tags = ? WHERE id = ?",
                               (",".join(sorted(merged_tags)), pick[0]))
+                    # Update in-memory survivor for subsequent merges
+                    pick[5] = ",".join(sorted(merged_src))
+                    pick[6] = ",".join(sorted(merged_tags))
 
     # Manual overrides: merge variant titles into canonical
     for canon, variants in MANUAL_DUPES.items():
@@ -601,11 +607,14 @@ def dedup_sql():
                                   (",".join(sorted(merged_src)), pick[0]))
                         c.execute("UPDATE curated_events SET tags = ? WHERE id = ?",
                                   (",".join(sorted(merged_tags)), pick[0]))
+                        # Update in-memory survivor for subsequent merges
+                        pick[5] = ",".join(sorted(merged_src))
+                        pick[6] = ",".join(sorted(merged_tags))
 
     # Also merge same-title duplicates where one has no location
     title_groups = {}
     for r in rows:
-        title_groups.setdefault((r[6], r[2] or ""), []).append(r)
+        title_groups.setdefault((r[7], r[2] or ""), []).append(r)
     for candidates in title_groups.values():
         if len(candidates) > 1:
             best = max(candidates, key=lambda x: len(x[4] or ""))
@@ -627,6 +636,9 @@ def dedup_sql():
                           (",".join(sorted(merged_src)), best[0]))
                 c.execute("UPDATE curated_events SET tags = ? WHERE id = ?",
                           (",".join(sorted(merged_tags)), best[0]))
+                # Update in-memory best for subsequent merges
+                best[5] = ",".join(sorted(merged_src))
+                best[6] = ",".join(sorted(merged_tags))
     if merged:
         conn.commit()
         print(f"  Post-merge: {merged} duplicates merged (fuzzy)", flush=True)

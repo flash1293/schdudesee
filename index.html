@@ -75,9 +75,9 @@
           <span>Zeige wiederholende Termine</span>
         </label>
       </span>
-      <button class="settings-btn" onclick="toggleSettingsDropdown()" title="Einstellungen">⚙️</button>
-      <button class="chat-btn" onclick="toggleChat()" title="KI-Chat">🤖</button>
-      <div class="settings-dropdown" id="settings-dropdown">
+      <span style="position:relative;display:inline-block">
+        <button class="settings-btn" onclick="toggleSettingsDropdown()" title="Einstellungen">⚙️</button>
+        <div class="settings-dropdown" id="settings-dropdown">
         <label class="recurring-toggle-wrap">
           <span class="toggle-switch">
             <input type="checkbox" id="condensed-toggle-mobile" onchange="document.getElementById('condensed-toggle').checked=this.checked;toggleCondensed()">
@@ -93,6 +93,7 @@
           <span>Zeige wiederholende Termine</span>
         </label>
       </div>
+      </span>
       <span class="active-tags" id="active-tags"></span>
   </div>
 </div>
