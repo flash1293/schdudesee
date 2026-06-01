@@ -106,16 +106,22 @@ header{background:var(--primary);color:#fff;padding:10px 24px}
 .event-body h2 .ext-link{font-size:12px;opacity:0.4;vertical-align:super;margin-left:3px}
 .event-body h2 a:hover .ext-link{opacity:0.8}
 .tag-detail:hover{background:var(--primary-dark)}
+.recurring-toggle{font-size:13px;color:#b45309;cursor:pointer;margin-top:8px;display:inline-flex;align-items:center;gap:4px;font-weight:600;transition:color var(--transition)}
 .recurring-toggle:hover{color:#92400e}
 .dark .recurring-toggle{color:#fbbf24}
 .dark .recurring-toggle:hover{color:#fde68a}
 
-/* Pagination interaction states */
+/* Pagination base styles */
+.pagination{padding:24px 20px 40px;font-size:14px;color:var(--text-muted)}
+.pagination nav{display:flex;justify-content:center;align-items:center;gap:5px}
+.pagination button{padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--card-bg);cursor:pointer;font-size:13px;font-family:system-ui,-apple-system,sans-serif;font-weight:600;color:var(--text);transition:all var(--transition)}
+.pagination button:disabled{opacity:0.35;cursor:default}
 .pagination button:hover:not(:disabled){border-color:var(--link-hover,var(--primary));color:var(--link-hover,var(--primary));background:var(--primary-light)}
 .pagination button:active:not(:disabled){transform:scale(0.96)}
+.pagination a.page-link{padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--card-bg);cursor:pointer;font-size:13px;font-family:system-ui,-apple-system,sans-serif;font-weight:600;color:var(--text);transition:all var(--transition);text-decoration:none}
 .pagination a.page-link:hover{border-color:var(--link-hover,var(--primary));color:var(--link-hover,var(--primary));background:var(--primary-light)}
 .pagination a.page-link:active{transform:scale(0.96)}
-.pagination button:disabled{opacity:0.35;cursor:default}
+.pagination span.page-info{min-width:120px;text-align:center}
 
 /* Recurring list table styling */
 .recurring-list table{width:100%;border-collapse:collapse}
