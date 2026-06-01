@@ -871,19 +871,7 @@ header::after {
   </div>
 </footer>
 </div><!-- end page-left -->
-<aside class="chat-sidebar" id="chat-sidebar">
-  <div class="chat-header">
-    <span>🤖 Veranstaltungs-Chat</span>
-    <button type="button" class="chat-close" aria-label="Chat schließen" onclick="toggleChat()">✕</button>
-  </div>
-  <div class="chat-messages" id="chat-messages">
-    <div class="chat-msg assistant">Hallo! Ich bin der KI-Assistent für "Hey, Stutensee!". Du kannst mich nach Veranstaltungen fragen, z.B. "Was ist am Wochenende los?" oder "Gibt es Sportevents im Juni?".</div>
-  </div>
-  <div class="chat-input-wrap">
-    <input class="chat-input" id="chat-input" type="text" placeholder="Frage nach Veranstaltungen..." aria-label="Nachricht eingeben" onkeydown="if(event.key==='Enter')sendChat()">
-    <button type="button" class="chat-send" id="chat-send" aria-label="Nachricht senden" onclick="sendChat()">➤</button>
-  </div>
-</aside>
+<div id="chat-mount"></div>
 
 <script>
 
@@ -1361,22 +1349,52 @@ function toggleDark() {
 
 <script>
 // ── Chatbox ───────────────────────────────────────────────────────────
+let chatInjected = false;
+function injectChat() {
+  if (chatInjected) return;
+  chatInjected = true;
+  const mount = document.getElementById('chat-mount');
+  if (!mount) return;
+  mount.innerHTML =
+    '<aside class="chat-sidebar" id="chat-sidebar">' +
+      '<div class="chat-header">' +
+        '<span>🤖 Veranstaltungs-Chat</span>' +
+        '<button type="button" class="chat-close" aria-label="Chat schließen" onclick="toggleChat()">✕</button>' +
+      '</div>' +
+      '<div class="chat-messages" id="chat-messages">' +
+        '<div class="chat-msg assistant">Hallo! Ich bin der KI-Assistent für "Hey, Stutensee!". Du kannst mich nach Veranstaltungen fragen, z.B. "Was ist am Wochenende los?" oder "Gibt es Sportevents im Juni?".</div>' +
+      '</div>' +
+      '<div class="chat-input-wrap">' +
+        '<input class="chat-input" id="chat-input" type="text" placeholder="Frage nach Veranstaltungen..." aria-label="Nachricht eingeben" onkeydown="if(event.key===\'Enter\')sendChat()">' +
+        '<button type="button" class="chat-send" id="chat-send" aria-label="Nachricht senden" onclick="sendChat()">➤</button>' +
+      '</div>' +
+    '</aside>';
+}
+
 function toggleChat() {
+  injectChat();
   const sidebar = document.getElementById('chat-sidebar');
+  if (!sidebar) return;
   const isOpen = sidebar.classList.toggle('open');
   document.body.classList.toggle('chat-open', isOpen);
-  // Scroll to top of left page content on desktop when opening
-  if (isOpen && window.innerWidth >= 901) {
-    document.querySelector('.page-left')?.scrollTo(0, 0);
+  // Focus input when opening
+  if (isOpen) {
+    const input = document.getElementById('chat-input');
+    if (input) setTimeout(() => input.focus(), 100);
+    if (window.innerWidth >= 901) {
+      document.querySelector('.page-left')?.scrollTo(0, 0);
+    }
   }
 }
 
 function openChatWithQuery(query) {
+  injectChat();
   const sidebar = document.getElementById('chat-sidebar');
+  if (!sidebar) return;
   sidebar.classList.add('open');
   document.body.classList.add('chat-open');
   const input = document.getElementById('chat-input');
-  if (query) {
+  if (query && input) {
     input.value = query;
     sendChat();
   }
@@ -1431,8 +1449,10 @@ function hideChatLoading() {
 }
 
 async function sendChat() {
+  injectChat();
   const input = document.getElementById('chat-input');
   const sendBtn = document.getElementById('chat-send');
+  if (!input || !sendBtn) return;
   const text = input.value.trim();
   if (!text || sendBtn.disabled) return;
   

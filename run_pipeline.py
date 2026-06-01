@@ -340,13 +340,17 @@ def insert_raw(source_data):
         if is_past(ev.get("date_start", "")):
             continue
         h = hashlib.sha256(json.dumps(ev, sort_keys=True).encode()).hexdigest()
+        # Gather tags from scraper (may be a list or comma-separated string)
+        tags_val = ev.get("tags", "")
+        if isinstance(tags_val, list):
+            tags_val = ",".join(tags_val)
         try:
             c.execute("""INSERT OR IGNORE INTO raw_events
-                (source_url, title, date_start, date_end, time_raw, location, organizer, description, event_url, raw_html_hash)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (source_url, title, date_start, date_end, time_raw, location, organizer, description, event_url, raw_html_hash, tags)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                 (source_data["source_url"], ev.get("title"), ev.get("date_start"), ev.get("date_end"),
                  ev.get("time_raw"), ev.get("location"), ev.get("organizer"),
-                 ev.get("description"), ev.get("event_url"), h))
+                 ev.get("description"), ev.get("event_url"), h, tags_val))
             if c.rowcount > 0: count += 1
         except Exception:
             pass
@@ -462,6 +466,29 @@ def dedup_sql():
                 restored_rec += 1
 
     conn.commit()
+
+    # Carry tags from raw_events for events still with empty tags
+    # (scraper-set tags that couldn't be restored because the event is new)
+    carried = c.execute("""
+        UPDATE curated_events SET tags = (
+            SELECT GROUP_CONCAT(DISTINCT re.tags)
+            FROM raw_to_curated rtc
+            JOIN raw_events re ON re.id = rtc.raw_id
+            WHERE rtc.curated_id = curated_events.id
+              AND re.tags IS NOT NULL AND re.tags != ''
+        )
+        WHERE (curated_events.tags IS NULL OR curated_events.tags = '')
+          AND EXISTS (
+            SELECT 1
+            FROM raw_to_curated rtc
+            JOIN raw_events re ON re.id = rtc.raw_id
+            WHERE rtc.curated_id = curated_events.id
+              AND re.tags IS NOT NULL AND re.tags != ''
+        )
+    """).rowcount
+    if carried:
+        conn.commit()
+        print(f"  Carried: {carried} tags from raw_events (scraper-set)", flush=True)
 
     # Post-dedup: merge remaining cross-source duplicates: same date + district, similar title
     merged = 0
@@ -642,6 +669,20 @@ def tag_untagged(force=False):
     return count
 
 
+def migrate_db():
+    """Add missing columns to existing DB (safe to run multiple times)."""
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+    # Add tags column to raw_events if missing (for carrying scraper-set tags through pipeline)
+    try:
+        c.execute("ALTER TABLE raw_events ADD COLUMN tags TEXT DEFAULT ''")
+        print("  Migration: added tags column to raw_events", flush=True)
+    except sqlite3.OperationalError:
+        pass  # column already exists
+    conn.commit()
+    conn.close()
+
+
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser(description="Stutensee Events Pipeline")
@@ -653,6 +694,9 @@ if __name__ == "__main__":
     print(f"Time: {datetime.now().isoformat()}", flush=True)
     if args.sources:
         print(f"Sources: {args.sources}", flush=True)
+
+    # Run DB migrations before any operations
+    migrate_db()
 
     sources = [
         ("Official calendar", scrape_official),
@@ -735,12 +779,15 @@ if __name__ == "__main__":
     inject_count = 0
     for ev in MANUAL_EVENTS:
         h = hashlib.sha256(json.dumps(ev, sort_keys=True).encode()).hexdigest()
+        tags_val = ev.get("tags", "")
+        if isinstance(tags_val, list):
+            tags_val = ",".join(tags_val)
         try:
             mc.execute("""INSERT OR IGNORE INTO raw_events
-                (source_url, title, date_start, date_end, time_raw, location, organizer, description, event_url, raw_html_hash)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+                (source_url, title, date_start, date_end, time_raw, location, organizer, description, event_url, raw_html_hash, tags)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
                 ("manual_override", ev["title"], ev["date_start"], ev["date_end"],
-                 ev["time_raw"], ev["location"], ev["organizer"], ev["description"], ev["event_url"], h))
+                 ev["time_raw"], ev["location"], ev["organizer"], ev["description"], ev["event_url"], h, tags_val))
             if mc.rowcount > 0:
                 inject_count += 1
         except Exception:

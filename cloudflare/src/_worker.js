@@ -10,7 +10,7 @@ const TAG_EMOJIS = {
   'Sonstiges':'📌'
 };
 
-const SSR_PER_PAGE = 50;
+const SSR_PER_PAGE = 10;
 
 // ── Exports ───────────────────────────────────────────────────────────
 export default {
@@ -293,42 +293,6 @@ function renderOgTags(title, description, url, type = 'website') {
 `;
 }
 
-/** Simple HTML minifier for render-time use.
- *  Strips comments, collapses whitespace, removes whitespace between tags.
- *  Also minifies inline CSS and JS. Preserves whitespace inside <script> and
- *  <style> content structure but removes unnecessary whitespace. */
-function minifyHtml(html) {
-  // Split into parts around script and style tags
-  const parts = html.split(/(<script[^>]*>[\s\S]*?<\/script>|<style[^>]*>[\s\S]*?<\/style>)/i);
-  return parts.map((part, i) => {
-    if (i % 2 === 0) {
-      // Outside script/style: minify normally
-      // Preserve SSR placeholders (<!--SSR_*-->) and IE conditional comments
-      part = part.replace(/<!--(?!\[|SSR_)[\s\S]*?-->/g, '');
-      part = part.replace(/\s+/g, ' ');
-      part = part.replace(/>\s+</g, '><');
-    } else if (part.startsWith('<style')) {
-      // Inside <style>: minify CSS
-      const css = part.replace(/<\/?style[^>]*>/g, '');
-      const minified = css
-        .replace(/\/\*.*?\*\//g, '')
-        .replace(/\s*{\s*/g, '{')
-        .replace(/\s*}\s*/g, '}')
-        .replace(/\s*:\s*/g, ':')
-        .replace(/\s*;\s*/g, ';')
-        .replace(/\s*,\s*/g, ',')
-        .replace(/\s+/g, ' ')
-        .replace(/:0(px|pt|em|rem|%)/g, ':0')
-        .replace(/#([0-9a-fA-F])\1([0-9a-fA-F])\2([0-9a-fA-F])\3/g, '#$1$2$3')
-        .replace(/;}/g, '}')
-        .trim();
-      part = `<style>${minified}</style>`;
-    }
-    // <script> content is preserved as-is to avoid breaking JS
-    return part;
-  }).join('').trim();
-}
-
 /** Inject SSR content into the HTML template. */
 function injectIntoTemplate(template, { events, page, totalPages, jsonLd, paginationHtml, introHtml, initialData, ogTags }) {
   return template
@@ -348,9 +312,8 @@ async function serveSsrPage(env, url) {
     // Render event cards
     const eventCardsHtml = renderEventCards(result.events);
 
-    // Render JSON-LD — homepage omits this to save ~45KB; 
-    // search engines find events via sitemap + per-event pages (which have full JSON-LD)
-    const jsonLdHtml = '';
+    // Render JSON-LD
+    const jsonLdHtml = renderJsonLd(result.events);
 
     // Render pagination links
     const paginationHtml = renderPaginationLinks(result.page, result.totalPages, url.searchParams);
@@ -379,8 +342,9 @@ async function serveSsrPage(env, url) {
         time_raw: e.time_raw,
         location: decode(e.location),
         organizer: decode(e.organizer),
-        description: decode(e.description || '').substring(0, 150),
+        description: decode(e.description),
         event_url: decode(e.event_url || ''),
+        sources: decode(e.sources || ''),
         tags: e.tags || '',
         recurring_group_id: e.recurring_group_id,
       })),
@@ -400,7 +364,7 @@ async function serveSsrPage(env, url) {
     const ogTags = renderOgTags(ogTitle, ogDesc, ogUrl);
 
     // Inject into template
-    const html = minifyHtml(injectIntoTemplate(indexHtml, {
+    const html = injectIntoTemplate(indexHtml, {
       events: eventCardsHtml,
       page: result.page,
       totalPages: result.totalPages,
@@ -409,7 +373,7 @@ async function serveSsrPage(env, url) {
       introHtml,
       initialData,
       ogTags,
-    }));
+    });
 
     return new Response(html, { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=300' } });
   } catch (err) {
@@ -799,7 +763,7 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
 </body>
 </html>`;
 
-  return new Response(minifyHtml(body), { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=3600' } });
+  return new Response(body, { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=3600' } });
 }
 
 /** Update sitemap to include event URLs. */
