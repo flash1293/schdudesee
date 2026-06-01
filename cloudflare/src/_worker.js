@@ -3,6 +3,8 @@ import { ensureAnalyticsTable, logRequest } from './_analytics.js';
 // ── SSR Constants ─────────────────────────────────────────────────────
 const THEME_KEYS = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
 
+const DISTRICT_KEYS = new Set(['Blankenloch','Bruchsal','Bretten','Büchenau','Büchig','Eggenstein','Friedrichstal','Graben-Neudorf','Hagsfeld','Karlsruhe-Innenstadt','Leopoldshafen','Linkenheim','Neureut','Neuthard','Rintheim','Spöck','Staffort','Waldstadt','Weingarten']);
+
 const TAG_EMOJIS = {
   'Sport':'⚽','Musik':'🎵','Kultur':'🎭','Kirche':'⛪','Kinder':'🧒','Fest':'🎉',
   'Markt':'🛒','Workshop':'🔧','Bildung':'📚','Natur':'🌿','Senioren':'👴','Digital':'💻',
@@ -159,7 +161,7 @@ function renderEventCard(event, condensedMode = false) {
   const e = event;
   const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
   const themeTags = tags.filter(t => THEME_KEYS.has(t));
-  const locTags = tags.filter(t => !THEME_KEYS.has(t));
+  const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
 
   // Build emoji HTML
   const themeEmojis = themeTags.map(t => TAG_EMOJIS[t] || '📌').filter(Boolean);
@@ -227,7 +229,7 @@ function renderJsonLd(events) {
   if (!events || events.length === 0) return '';
   const items = events.map(e => {
     const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
-    const locTags = tags.filter(t => !THEME_KEYS.has(t));
+    const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
     const locationName = locTags.length > 0 ? locTags[0] : (e.location || 'Stutensee');
     const desc = e.description ? decode(e.description) : `Veranstaltung in ${locationName}`;
     const url = e.event_url || `https://hey-stutensee.de${eventPath(e)}`;
@@ -335,7 +337,7 @@ async function serveSsrPage(env, url) {
       search: url.searchParams.get('search') || '',
       date_from: url.searchParams.get('date_from') || '',
       selectedThemes: url.searchParams.getAll('tag').filter(t => THEME_KEYS.has(t)),
-      selectedLocations: url.searchParams.getAll('tag').filter(t => !THEME_KEYS.has(t)),
+      selectedLocations: url.searchParams.getAll('tag').filter(t => DISTRICT_KEYS.has(t)),
       selectedOrganizer: url.searchParams.get('organizer') || '',
       showRecurring: url.searchParams.get('hide_recurring') !== 'true',
       condensedMode: false,
@@ -677,7 +679,7 @@ async function serveEventPage(env, url) {
   };
 
   const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
-  const locTags = tags.filter(t => !THEME_KEYS.has(t));
+  const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
   const locationName = locTags.length > 0 ? locTags[0] : (e.location || 'Stutensee');
 
   // Build page title and meta
@@ -869,25 +871,23 @@ async function serveOrganizers(env) {
 }
 
 async function serveTags(env) {
-  const themeKeys = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
   const { results } = await env.STUTENSEE_DB.prepare(
     "SELECT DISTINCT tags FROM curated_events WHERE tags IS NOT NULL AND tags != '' AND tags != 'blocked'"
   ).all();
   const set = new Set();
   for (const r of results) {
-    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && themeKeys.has(s)) set.add(s); }
+    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && THEME_KEYS.has(s)) set.add(s); }
   }
   return json([...set].sort());
 }
 
 async function serveDistricts(env) {
-  const themeKeys = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
   const { results } = await env.STUTENSEE_DB.prepare(
     "SELECT DISTINCT tags FROM curated_events WHERE tags IS NOT NULL AND tags != '' AND tags != 'blocked'"
   ).all();
   const set = new Set();
   for (const r of results) {
-    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && !themeKeys.has(s)) set.add(s); }
+    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && DISTRICT_KEYS.has(s)) set.add(s); }
   }
   return json([...set].sort());
 }

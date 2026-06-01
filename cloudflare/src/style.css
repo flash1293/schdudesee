@@ -14,9 +14,7 @@
 /* Dropdown / popover interaction states */
 #theme-dropdown{min-width:300px;columns:2;column-gap:4px}
 #organizer-dropdown{min-width:260px;padding:0;left:auto;right:0}
-#organizer-dropdown .popover-search{width:100%;border:none;border-bottom:1px solid var(--border);padding:8px 10px;font-size:13px;outline:none;background:transparent;color:var(--text);box-sizing:border-box}
 #organizer-dropdown .popover-search:focus{border-bottom-color:var(--primary)}
-#organizer-dropdown .popover-chips{max-height:260px;overflow-y:auto;padding:4px}
 .filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 .filter-btn:hover{border-color:var(--primary)}
 #theme-dropdown .chip:hover{background:#f1f5f9}
