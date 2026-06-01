@@ -314,8 +314,9 @@ async function serveSsrPage(env, url) {
     // Render event cards
     const eventCardsHtml = renderEventCards(result.events);
 
-    // Render JSON-LD
-    const jsonLdHtml = renderJsonLd(result.events);
+    // Render JSON-LD — homepage omits this to save ~45KB; 
+    // search engines find events via sitemap + per-event pages (which have full JSON-LD)
+    const jsonLdHtml = '';
 
     // Render pagination links
     const paginationHtml = renderPaginationLinks(result.page, result.totalPages, url.searchParams);
@@ -344,9 +345,8 @@ async function serveSsrPage(env, url) {
         time_raw: e.time_raw,
         location: decode(e.location),
         organizer: decode(e.organizer),
-        description: decode(e.description),
+        description: decode(e.description || '').substring(0, 150),
         event_url: decode(e.event_url || ''),
-        sources: decode(e.sources || ''),
         tags: e.tags || '',
         recurring_group_id: e.recurring_group_id,
       })),
