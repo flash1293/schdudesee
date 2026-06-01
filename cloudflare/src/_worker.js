@@ -295,20 +295,40 @@ function renderOgTags(title, description, url, type = 'website') {
 
 /** Simple HTML minifier for render-time use.
  *  Strips comments, collapses whitespace, removes whitespace between tags.
- *  Preserves whitespace inside <script> and <style> tags to avoid breaking JS/CSS. */
+ *  Also minifies inline CSS and JS. Preserves whitespace inside <script> and
+ *  <style> content structure but removes unnecessary whitespace. */
 function minifyHtml(html) {
-  // Split into parts around script and style tags to avoid breaking their content
+  // Split into parts around script and style tags
   const parts = html.split(/(<script[^>]*>[\s\S]*?<\/script>|<style[^>]*>[\s\S]*?<\/style>)/i);
   return parts.map((part, i) => {
-    // Even-indexed parts are outside script/style tags (minify them)
-    // Odd-indexed parts are the script/style blocks (preserve them)
     if (i % 2 === 0) {
-      // Remove HTML comments (but keep IE conditional comments)
-      part = part.replace(/<!--[^\[][\s\S]*?-->/g, '');
-      // Collapse whitespace sequences to single space
+      // Outside script/style: minify normally
+      // Preserve SSR placeholders (<!--SSR_*-->) and IE conditional comments
+      part = part.replace(/<!--(?!\[|SSR_)[\s\S]*?-->/g, '');
       part = part.replace(/\s+/g, ' ');
-      // Remove whitespace between tags
       part = part.replace(/>\s+</g, '><');
+    } else if (part.startsWith('<style')) {
+      // Inside <style>: minify CSS
+      const css = part.replace(/<\/?style[^>]*>/g, '');
+      const minified = css
+        .replace(/\/\*.*?\*\//g, '')
+        .replace(/\s*{\s*/g, '{')
+        .replace(/\s*}\s*/g, '}')
+        .replace(/\s*:\s*/g, ':')
+        .replace(/\s*;\s*/g, ';')
+        .replace(/\s*,\s*/g, ',')
+        .replace(/\s+/g, ' ')
+        .replace(/:0(px|pt|em|rem|%)/g, ':0')
+        .replace(/#([0-9a-fA-F])\1([0-9a-fA-F])\2([0-9a-fA-F])\3/g, '#$1$2$3')
+        .replace(/;}/g, '}')
+        .trim();
+      part = `<style>${minified}</style>`;
+    } else if (part.startsWith('<script')) {
+      // Inside <script>: collapse whitespace (JS is whitespace-agnostic)
+      const js = part.replace(/<\/?script[^>]*>/g, '');
+      const minified = js.replace(/\s+/g, ' ').trim();
+      const tagName = part.match(/<script[^>]*>/)[0];
+      part = `${tagName}${minified}</script>`;
     }
     return part;
   }).join('').trim();
