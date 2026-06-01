@@ -14,7 +14,7 @@ const worker = await import(workerPath);
 /** Call the worker's fetch handler with a mock env and ctx. */
 async function callWorker(path, options = {}) {
   const { method = 'GET', headers = {}, env = {} } = options;
-  const url = `https://was-geht-stutensee.de${path}`;
+  const url = `https://hey-stutensee.de${path}`;
   const request = new Request(url, { method, headers });
   const ctx = { waitUntil: (p) => p }; // mock ctx for waitUntil
   return worker.default.fetch(request, env, ctx);
