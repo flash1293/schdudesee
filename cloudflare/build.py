@@ -17,23 +17,22 @@ with open("../index.html") as f:
     html = f.read()
 
 # Add build version to static asset URLs for cache busting
-html = html.replace('href="/style.css"', f'href="/style.css?v={build_version}"')
 html = html.replace('href="/app.js"', f'href="/app.js?v={build_version}"')
 html = html.replace('href="/chat.js"', f'href="/chat.js?v={build_version}"')
 html = html.replace('src="/app.js"', f'src="/app.js?v={build_version}"')
 html = html.replace('src="/chat.js"', f'src="/chat.js?v={build_version}"')
 html = html.replace('href="/favicon.png"', f'href="/favicon.png?v={build_version}"')
 
-# Read critical CSS and inject it inline
-with open("src/critical.css") as f:
-    critical_css = f.read()
+# Read all CSS (merged critical + deferred) and inject it inline
+with open("src/style.css") as f:
+    all_css = f.read()
 
-# Minify critical CSS: strip comments and collapse whitespace
-critical_css = re.sub(r'/\*.*?\*/', '', critical_css, flags=re.DOTALL)
-critical_css = re.sub(r'\s{2,}', ' ', critical_css)
-critical_css = critical_css.strip()
+# Minify CSS: strip comments and collapse whitespace
+all_css = re.sub(r'/\*.*?\*/', '', all_css, flags=re.DOTALL)
+all_css = re.sub(r'\s{2,}', ' ', all_css)
+all_css = all_css.strip()
 
-html = html.replace('CRITICAL_CSS_PLACEHOLDER', critical_css)
+html = html.replace('STYLE_CSS_PLACEHOLDER', all_css)
 
 # Minify slightly: remove extra whitespace between tags
 html = re.sub(r'>\s+<', '><', html)
@@ -68,8 +67,7 @@ if os.path.exists(favicon_path):
 else:
     favicon_line = "const faviconB64 = null;\n"
 
-# Inline the static assets extracted from index.html
-css_line = inline_text_file("src/style.css", "styleCss")
+# Inline the static assets (JS files only — CSS is now inline in index.html)
 app_js_line = inline_text_file("src/app.js", "appJs")
 chat_js_line = inline_text_file("src/chat.js", "chatJs")
 
@@ -78,7 +76,7 @@ with open("src/_worker.js") as f:
     worker_src = f.read()
 
 # Build the final worker: generated constants + hand-written logic
-worker = inlined + favicon_line + css_line + app_js_line + chat_js_line + worker_src
+worker = inlined + favicon_line + app_js_line + chat_js_line + worker_src
 
 with open("src/worker.js", "w") as f:
     f.write(worker)
