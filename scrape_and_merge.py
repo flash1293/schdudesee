@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from calendar import month_name
 import importlib.util
 
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_tsg_blankenloch", "scraper_cvjm_graben_neudorf", "scraper_karlsdorf_neuthard", "scraper_karlsruhe", "scraper_kultcafe"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_tsg_blankenloch", "scraper_cvjm_graben_neudorf", "scraper_karlsdorf_neuthard", "scraper_karlsruhe", "scraper_kultcafe", "scraper_bretten"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -42,6 +42,7 @@ scrape_cvjm_graben_neudorf = sys.modules["scraper_cvjm_graben_neudorf"].scrape_c
 scrape_karlsdorf_neuthard = sys.modules["scraper_karlsdorf_neuthard"].scrape_karlsdorf_neuthard
 scrape_karlsruhe = sys.modules["scraper_karlsruhe"].scrape_karlsruhe
 scrape_kultcafe = sys.modules["scraper_kultcafe"].scrape_kultcafe
+scrape_bretten = sys.modules["scraper_bretten"].scrape_bretten
 from scraper_clubs import scrape_clubs
 
 OUT_DIR = "events/curated"
@@ -966,6 +967,7 @@ def main():
         ("Karlsdorf-Neuthard", scrape_karlsdorf_neuthard),
         ("Karlsruhe (Hagsfeld/Neureut/Rintheim/Waldstadt)", scrape_karlsruhe),
         ("Kult Café Friedrichstal", scrape_kultcafe),
+        ("Bretten", scrape_bretten),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
