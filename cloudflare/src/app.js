@@ -310,6 +310,8 @@ window.addEventListener('resize', () => {
 function renderEvents(events) {
   const container = document.getElementById('events');
   const searchQuery = document.getElementById('search').value.trim();
+  // Skip events without a date
+  events = events.filter(e => e.date_start);
   let html = '';
   // If user is searching, prepend a CTA to ask the chatbot
   if (searchQuery) {

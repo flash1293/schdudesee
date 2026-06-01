@@ -249,21 +249,18 @@ function relativeDate(iso) {
   return `In ${diffMonths} Monaten`;
 }
 
-/** Render multiple event cards with date separators. */
+/** Render multiple event cards with date separators. Skips events without a date. */
 function renderEventCards(events) {
   if (!events || events.length === 0) return '';
+  const dated = events.filter(e => e.date_start);
+  if (dated.length === 0) return '';
   let lastDate = null;
   const parts = [];
-  for (const e of events) {
-    const date = e.date_start || '';
-    if (date !== lastDate) {
-      lastDate = date;
-      if (e.date_start) {
-        const badge = formatDateBadge(e.date_start);
-        parts.push(`<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${relativeDate(e.date_start)}</span></div>`);
-      } else {
-        parts.push(`<div class="date-separator"><span class="date-sep-day">?</span><span class="date-sep-month"> Kein Datum</span></div>`);
-      }
+  for (const e of dated) {
+    if (e.date_start !== lastDate) {
+      lastDate = e.date_start;
+      const badge = formatDateBadge(e.date_start);
+      parts.push(`<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${relativeDate(e.date_start)}</span></div>`);
     }
     parts.push(renderEventCard(e));
   }
