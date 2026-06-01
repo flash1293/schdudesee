@@ -221,7 +221,7 @@ function renderJsonLd(events) {
     const locTags = tags.filter(t => !THEME_KEYS.has(t));
     const locationName = locTags.length > 0 ? locTags[0] : (e.location || 'Stutensee');
     const desc = e.description ? decode(e.description) : `Veranstaltung in ${locationName}`;
-    const url = e.event_url || `https://was-geht-stutensee.de${eventPath(e)}`;
+    const url = e.event_url || `https://hey-stutensee.de${eventPath(e)}`;
     return {
       '@context': 'https://schema.org',
       '@type': 'Event',
@@ -252,7 +252,7 @@ function renderPaginationLinks(page, totalPages, params) {
   if (totalPages <= 1) return '';
 
   function buildUrl(p) {
-    const u = new URL('https://was-geht-stutensee.de/');
+    const u = new URL('https://hey-stutensee.de/');
     if (p > 1) u.searchParams.set('page', p);
     if (params) {
       for (const [k, v] of params) {
@@ -359,8 +359,8 @@ async function serveSsrPage(env, url) {
     const ogTitle = `Was geht, Stutensee? – Veranstaltungen und Termine in Stutensee`;
     const ogDesc = `Alle Veranstaltungen in Stutensee auf einen Blick: Feste, Märkte, Sport, Kirche, Kinderangebote und mehr.`;
     const ogUrl = url.searchParams.has('page')
-      ? `https://was-geht-stutensee.de/?page=${result.page}`
-      : 'https://was-geht-stutensee.de/';
+      ? `https://hey-stutensee.de/?page=${result.page}`
+      : 'https://hey-stutensee.de/';
     const ogTags = renderOgTags(ogTitle, ogDesc, ogUrl);
 
     // Inject into template
@@ -679,7 +679,7 @@ async function serveEventPage(env, url) {
   const jsonLd = renderJsonLd([{ ...e, title: row.title, description: row.description }]);
 
   // OG tags for event detail page
-  const eventUrl = `https://was-geht-stutensee.de${eventPath(row)}`;
+  const eventUrl = `https://hey-stutensee.de${eventPath(row)}`;
   const ogTagsHtml = renderOgTags(pageTitle, metaDesc, eventUrl, 'article');
 
   // Build HTML
@@ -703,7 +703,7 @@ async function serveEventPage(env, url) {
 <title>${escapeHtml(pageTitle)}</title>
 <meta name="description" content="${escapeHtml(metaDesc)}">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://was-geht-stutensee.de${eventPath(row)}">
+<link rel="canonical" href="https://hey-stutensee.de${eventPath(row)}">
 <link rel="icon" type="image/png" href="/favicon.png">
 ${ogTagsHtml}
 ${jsonLd}
@@ -769,7 +769,7 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
 /** Update sitemap to include event URLs. */
 async function serveSitemapXml(env) {
   // Fetch up to 1000 event IDs for the sitemap
-  let urls = '<url><loc>https://was-geht-stutensee.de/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>';
+  let urls = '<url><loc>https://hey-stutensee.de/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>';
 
   try {
     const { results } = await env.STUTENSEE_DB.prepare(
@@ -777,7 +777,7 @@ async function serveSitemapXml(env) {
     ).all();
 
     for (const row of results) {
-      urls += `<url><loc>https://was-geht-stutensee.de${eventPath(row)}</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>`;
+      urls += `<url><loc>https://hey-stutensee.de${eventPath(row)}</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>`;
     }
   } catch (err) {
     console.error('Sitemap generation error:', err.message);
@@ -910,7 +910,7 @@ async function serveReqStats(env) {
 }
 
 function serveRobotsTxt() {
-  return new Response('User-agent: *\nAllow: /\nSitemap: https://was-geht-stutensee.de/sitemap.xml\n', {
+  return new Response('User-agent: *\nAllow: /\nSitemap: https://hey-stutensee.de/sitemap.xml\n', {
     headers: { 'content-type': 'text/plain;charset=utf-8' }
   });
 }
@@ -937,7 +937,7 @@ function serveLlmTxt() {
 Was geht, Stutensee? is an event calendar for Stutensee, Germany. It aggregates events from 20+ sources including the official city calendar, club websites, cultural institutions, and neighboring municipalities. All data is served via a Cloudflare Worker backed by D1 (SQLite-compatible) database.
 
 ## Base URL
-https://was-geht-stutensee.de (production)
+https://hey-stutensee.de (production)
 https://was-geht-stutensee-staging.email-0d0.workers.dev (staging)
 
 ## API Endpoints
@@ -1028,9 +1028,9 @@ This API is free and public. No authentication required. No rate limiting curren
 
 function serveSecurityTxt() {
   return new Response(`# Security Contact
-# If you find a security issue on was-geht-stutensee.de, please report it.
+# If you find a security issue on hey-stutensee.de, please report it.
 Contact: mailto:email@johannes-reuter.de
-Canonical: https://was-geht-stutensee.de/.well-known/security.txt
+Canonical: https://hey-stutensee.de/.well-known/security.txt
 Preferred-Languages: de, en
 Expires: 2027-05-24T14:00:00.000Z
 `, {
