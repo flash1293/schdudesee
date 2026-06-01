@@ -494,7 +494,7 @@ def dedup_sql():
     merged = 0
     rows = []
     for r in c.execute("""
-        SELECT id, title, date_start, location, description, sources
+        SELECT id, title, date_start, location, description, sources, COALESCE(tags,'')
         FROM curated_events ORDER BY date_start, title
     """).fetchall():
         rows.append(list(r) + [normalize_title(r[1]), normalize_location_dedup(r[3])])
@@ -523,10 +523,16 @@ def dedup_sql():
             for s in (kill[5] or "").split(","):
                 if s.strip():
                     merged_src.add(s.strip())
+            merged_tags = set(pick[6].split(",")) if pick[6] else set()
+            for t in (kill[6] or "").split(","):
+                if t.strip():
+                    merged_tags.add(t.strip())
             c.execute("UPDATE raw_to_curated SET curated_id = ? WHERE curated_id = ?", (pick[0], kill[0]))
             c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
             c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
                       (",".join(sorted(merged_src)), pick[0]))
+            c.execute("UPDATE curated_events SET tags = ? WHERE id = ?",
+                      (",".join(sorted(merged_tags)), pick[0]))
             candidates.remove(kill)
     # Cross-date fuzzy pass: same date, similar title regardless of district
     date_rows = {}
@@ -558,10 +564,16 @@ def dedup_sql():
                     for s in (kill[5] or "").split(","):
                         if s.strip():
                             merged_src.add(s.strip())
+                    merged_tags = set(pick[6].split(",")) if pick[6] else set()
+                    for t in (kill[6] or "").split(","):
+                        if t.strip():
+                            merged_tags.add(t.strip())
                     c.execute("UPDATE raw_to_curated SET curated_id = ? WHERE curated_id = ?", (pick[0], kill[0]))
                     c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
                     c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
                               (",".join(sorted(merged_src)), pick[0]))
+                    c.execute("UPDATE curated_events SET tags = ? WHERE id = ?",
+                              (",".join(sorted(merged_tags)), pick[0]))
 
     # Manual overrides: merge variant titles into canonical
     for canon, variants in MANUAL_DUPES.items():
@@ -579,10 +591,16 @@ def dedup_sql():
                         for s in (kill[5] or "").split(","):
                             if s.strip():
                                 merged_src.add(s.strip())
+                        merged_tags = set(pick[6].split(",")) if pick[6] else set()
+                        for t in (kill[6] or "").split(","):
+                            if t.strip():
+                                merged_tags.add(t.strip())
                         c.execute("UPDATE raw_to_curated SET curated_id = ? WHERE curated_id = ?", (pick[0], kill[0]))
                         c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
                         c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
                                   (",".join(sorted(merged_src)), pick[0]))
+                        c.execute("UPDATE curated_events SET tags = ? WHERE id = ?",
+                                  (",".join(sorted(merged_tags)), pick[0]))
 
     # Also merge same-title duplicates where one has no location
     title_groups = {}
@@ -599,10 +617,16 @@ def dedup_sql():
                 for s in (kill[5] or "").split(","):
                     if s.strip():
                         merged_src.add(s.strip())
+                merged_tags = set(best[6].split(",")) if best[6] else set()
+                for t in (kill[6] or "").split(","):
+                    if t.strip():
+                        merged_tags.add(t.strip())
                 c.execute("UPDATE raw_to_curated SET curated_id = ? WHERE curated_id = ?", (best[0], kill[0]))
                 c.execute("DELETE FROM curated_events WHERE id = ?", (kill[0],))
                 c.execute("UPDATE curated_events SET sources = ? WHERE id = ?",
                           (",".join(sorted(merged_src)), best[0]))
+                c.execute("UPDATE curated_events SET tags = ? WHERE id = ?",
+                          (",".join(sorted(merged_tags)), best[0]))
     if merged:
         conn.commit()
         print(f"  Post-merge: {merged} duplicates merged (fuzzy)", flush=True)
