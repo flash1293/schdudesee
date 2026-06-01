@@ -323,13 +323,8 @@ function minifyHtml(html) {
         .replace(/;}/g, '}')
         .trim();
       part = `<style>${minified}</style>`;
-    } else if (part.startsWith('<script')) {
-      // Inside <script>: collapse whitespace (JS is whitespace-agnostic)
-      const js = part.replace(/<\/?script[^>]*>/g, '');
-      const minified = js.replace(/\s+/g, ' ').trim();
-      const tagName = part.match(/<script[^>]*>/)[0];
-      part = `${tagName}${minified}</script>`;
     }
+    // <script> content is preserved as-is to avoid breaking JS
     return part;
   }).join('').trim();
 }
