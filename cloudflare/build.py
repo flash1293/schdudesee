@@ -13,6 +13,17 @@ import re, base64, os
 with open("../index.html") as f:
     html = f.read()
 
+# Read critical CSS and inject it inline
+with open("src/critical.css") as f:
+    critical_css = f.read()
+
+# Minify critical CSS: strip comments and collapse whitespace
+critical_css = re.sub(r'/\*.*?\*/', '', critical_css, flags=re.DOTALL)
+critical_css = re.sub(r'\s{2,}', ' ', critical_css)
+critical_css = critical_css.strip()
+
+html = html.replace('CRITICAL_CSS_PLACEHOLDER', critical_css)
+
 # Minify slightly: remove extra whitespace between tags
 html = re.sub(r'>\s+<', '><', html)
 
