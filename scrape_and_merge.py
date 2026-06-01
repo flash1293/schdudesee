@@ -352,6 +352,7 @@ DISTRICTS = {
     "Graben-Neudorf": ["graben-neudorf"],
     "Bruchsal": ["bruchsal"],
     "Bretten": ["bretten"],
+    "Karlsruhe-Innenstadt": ["staatstheater", "konzerthaus", "badische landesbibliothek", "zkm", "kunsthalle", "tollhaus", "jubez", "badischer kunstverein"],
 }
 
 DISTRICT_EXCLUSIONS = {

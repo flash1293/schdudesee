@@ -66,7 +66,20 @@ DISTRICT_PATTERNS = {
         r"fächerbad",
         r"stadtteilbibliothek\s+rintheim",
     ],
+    "Karlsruhe-Innenstadt": [
+        r"\bstaatstheater\b",
+        r"\bkonzerthaus\b",
+        r"\bbadische[-\s]landesbibliothek\b",
+        r"\bzkm\b",
+        r"\bkunsthalle\b",
+        r"\btollhaus\b",
+        r"\bjubez\b",
+        r"\bbadischer\s+kunstverein\b",
+    ],
 }
+
+# Kultur URL categories that trigger the Innenstadt catch-all when no district is matched
+INNENSTADT_CATEGORIES = {"theater", "musik", "literatur", "ausstellungen", "kunst", "kultur"}
 
 
 MAX_CONTENT_BYTES = 10 * 1024 * 1024  # 10 MB safety limit
@@ -457,9 +470,18 @@ def scrape_karlsruhe():
                     if district:
                         print(f"  [district found in page content] '{title}' → {district}", flush=True)
 
+        # Phase 1: Innenstadt catch-all — if no district matched but the event
+        # is a Kultur category (theater, musik, literatur, etc.), tag it as
+        # Karlsruhe-Innenstadt so downtown events are captured for users
+        # willing to travel ~12km to the city center.
         if not district:
-            skipped_no_district += 1
-            continue
+            category = extract_category_from_url(link if link else "")
+            if category and category.lower() in INNENSTADT_CATEGORIES:
+                district = "Karlsruhe-Innenstadt"
+                print(f"  [innenstadt catch-all] '{title}' → {category}", flush=True)
+            else:
+                skipped_no_district += 1
+                continue
 
         # Parse date/time from pubDate
         date_start, time_raw = parse_pubdate(pubdate)
