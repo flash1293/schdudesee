@@ -277,7 +277,7 @@ async function loadEvents(page) {
   currentPage = page;
   const search = document.getElementById('search').value;
   const dateFrom = document.getElementById('date-from').value;
-  const params = new URLSearchParams({page, per_page: 50, search});
+  const params = new URLSearchParams({page, per_page: 10, search});
   if (dateFrom) params.set('date_from', dateFrom);
   selectedThemes.forEach(t => params.append('tag', t));
   selectedLocations.forEach(t => params.append('tag', t));
@@ -353,7 +353,7 @@ function renderEvents(events) {
       <div class="event-body">
         <h2><span class="cat-emojis${hasTwo}">${emojiHtml}</span><span class="cat-title">${e.event_url ? `<a href="${esc(e.event_url)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${esc(e.title)}<span class="ext-link">↗</span></a>` : `<a href="${detailHref}">${esc(e.title)}</a>`}${detailLink}<span class="condensed-location">${locTags.length > 0 ? locTags.map(t => ` 📍 ${esc(t)}`).join('') : (e.location ? ` 📍 ${esc(e.location)}` : '')}</span></span></h2>
         <div class="event-meta">
-          ${e.time_raw ? `<span>🕐 ${e.time_raw}</span>` : ''}
+          ${e.time_raw ? `<span>🕐 ${esc(e.time_raw)}</span>` : ''}
           ${e.location ? `<span>📍 ${esc(e.location)}</span>` : ''}
         </div>
         ${e.description ? `<div class="event-desc">${esc(e.description)}</div>` : ''}
@@ -396,6 +396,13 @@ function renderPagination() {
   html += `<button onclick="loadEvents(${totalPages})" ${currentPage >= totalPages ? 'disabled' : ''}>Letzte »</button>`;
   html += '</nav>';
   el.innerHTML = html;
+}
+
+function slugify(str) {
+  if (!str) return '';
+  return str.toLowerCase()
+    .replace(/[ä]/g, 'ae').replace(/[ö]/g, 'oe').replace(/[ü]/g, 'ue').replace(/[ß]/g, 'ss')
+    .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
 
 function esc(s) {

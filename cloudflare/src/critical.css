@@ -15,6 +15,8 @@ header{background:var(--primary);color:#fff;padding:10px 24px}
 .controls input[type="text"]{flex:1;min-width:120px}
 .controls select{min-width:95px;cursor:pointer}
 .filter-popover{position:relative;display:inline-block}
+.popover-dropdown{display:none;position:absolute;top:100%;left:0;z-index:100;min-width:160px;max-height:280px;overflow-y:auto;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:0 4px 12px rgba(0,0,0,0.1);padding:4px;margin-top:4px}
+.settings-dropdown{display:none;position:absolute;top:100%;right:0;z-index:100;min-width:220px;background:var(--card-bg);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:0 4px 12px rgba(0,0,0,0.1);padding:8px;margin-top:4px}
 .filter-btn{padding:6px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--card-bg);font-size:13px;cursor:pointer;font-family:inherit;color:var(--text);white-space:nowrap}
 .toggles-desktop{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap}
 .settings-btn,.chat-btn{display:none}
