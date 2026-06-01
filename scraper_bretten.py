@@ -129,7 +129,7 @@ def scrape_month(year, month):
                 "date_start": date_start,
                 "date_end": date_end,
                 "time_raw": time_raw,
-                "location": "",
+                "location": LOCATION_DEFAULT,
                 "organizer": "",
                 "description": "",
                 "event_url": event_url,

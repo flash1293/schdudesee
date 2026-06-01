@@ -351,6 +351,7 @@ DISTRICTS = {
     "Linkenheim": ["linkenheim", "linkenheim-hochstetten"],
     "Graben-Neudorf": ["graben-neudorf"],
     "Bruchsal": ["bruchsal"],
+    "Bretten": ["bretten"],
 }
 
 DISTRICT_EXCLUSIONS = {
