@@ -56,11 +56,10 @@ def minify_html_template(html):
         return f'<style>{minify_css(m.group(1))}</style>'
     html = re.sub(r'<style>(.*?)</style>', minify_style_block, html, flags=re.DOTALL)
     
-    # Collapse whitespace outside <script> blocks (skip script content)
-    # But ALSO collapse whitespace inside <script> for JS (JS is whitespace-agnostic)
+    # Collapse whitespace outside <script> blocks to avoid mangling JS
     parts = re.split(r'(<script[^>]*>.*?</script>)', html, flags=re.DOTALL)
     html = ''.join(
-        re.sub(r'\s{2,}', ' ', part)
+        re.sub(r'\s{2,}', ' ', part) if not part.strip().startswith('<script') else part
         for part in parts
     )
     
