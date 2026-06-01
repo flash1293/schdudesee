@@ -380,7 +380,7 @@ async function toggleRecurring(eventId, groupId, el) {
   const r = await fetch('/api/same/' + groupId);
   const events = await r.json();
   list.innerHTML = '<table><tr><th>Datum</th><th>Zeit</th><th>Ort</th></tr>' + events.map(e =>
-    `<tr><td>${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? '–' + fmtDate(e.date_end) : ''}</td><td>${e.time_raw || '—'}</td><td>${esc(e.location || '?')}</td></tr>`
+    `<tr><td>${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? '–' + fmtDate(e.date_end) : ''}</td><td>${esc(e.time_raw || '—')}</td><td>${esc(e.location || '?')}</td></tr>`
   ).join('') + '</table>';
   list.dataset.loaded = '1';
   list.style.display = 'block';
