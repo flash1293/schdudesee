@@ -10,8 +10,19 @@ Usage: cd cloudflare && python3 build.py
 
 import re, base64, os
 
+import time
+build_version = str(int(time.time()))
+
 with open("../index.html") as f:
     html = f.read()
+
+# Add build version to static asset URLs for cache busting
+html = html.replace('href="/style.css"', f'href="/style.css?v={build_version}"')
+html = html.replace('href="/app.js"', f'href="/app.js?v={build_version}"')
+html = html.replace('href="/chat.js"', f'href="/chat.js?v={build_version}"')
+html = html.replace('src="/app.js"', f'src="/app.js?v={build_version}"')
+html = html.replace('src="/chat.js"', f'src="/chat.js?v={build_version}"')
+html = html.replace('href="/favicon.png"', f'href="/favicon.png?v={build_version}"')
 
 # Read critical CSS and inject it inline
 with open("src/critical.css") as f:

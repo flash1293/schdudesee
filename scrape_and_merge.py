@@ -354,7 +354,7 @@ DISTRICTS = {
     "Bretten": ["bretten"],
     "Karlsruhe-Innenstadt": ["staatstheater", "konzerthaus", "badische landesbibliothek", "zkm", "kunsthalle", "tollhaus", "jubez", "badischer kunstverein",
                              "kunstmuseum", "planetarium", "hochschule für musik", "sandkorn", "marotte",
-                             "hemingway", "kulturzentrum tempel", "kulturhaus mikado", "kabarett",
+                             "hemingway", "kulturzentrum tempel", "kulturhaus mikado",
                              "galerie kunstfachwerk", "badisch bühn", "vhs karlsruhe", "unitheater",
                              "pfinzgaumuseum", "triangel", "substage", "minestrone", "fächerresidenz",
                              "orgelfabrik", "karlsburg", "neuen ständehaus", "amerikanische bibliothek",
