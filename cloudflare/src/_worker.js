@@ -36,10 +36,19 @@ async function routeRequest(request, env) {
   // Serve SSR-enhanced HTML for the main page
   if (url.pathname === '/') return serveSsrPage(env, url);
 
-  // Static assets
+  // Static assets (served from build-embedded constants)
   if (url.pathname === '/favicon.png' && typeof faviconB64 !== 'undefined' && faviconB64) {
     const img = Uint8Array.from(atob(faviconB64), c => c.charCodeAt(0));
     return new Response(img, { headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' } });
+  }
+  if (url.pathname === '/style.css' && typeof styleCss !== 'undefined' && styleCss) {
+    return new Response(styleCss, { headers: { 'content-type': 'text/css;charset=utf-8', 'cache-control': 'public, max-age=86400' } });
+  }
+  if (url.pathname === '/app.js' && typeof appJs !== 'undefined' && appJs) {
+    return new Response(appJs, { headers: { 'content-type': 'application/javascript;charset=utf-8', 'cache-control': 'public, max-age=86400' } });
+  }
+  if (url.pathname === '/chat.js' && typeof chatJs !== 'undefined' && chatJs) {
+    return new Response(chatJs, { headers: { 'content-type': 'application/javascript;charset=utf-8', 'cache-control': 'public, max-age=86400' } });
   }
 
   // API routes
