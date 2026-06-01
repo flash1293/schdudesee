@@ -14,7 +14,7 @@ const worker = await import(workerPath);
 /** Call the worker's fetch handler with a mock env and ctx. */
 async function callWorker(path, options = {}) {
   const { method = 'GET', headers = {}, env = {} } = options;
-  const url = `https://was-geht-stutensee.de${path}`;
+  const url = `https://hey-stutensee.de${path}`;
   const request = new Request(url, { method, headers });
   const ctx = { waitUntil: (p) => p }; // mock ctx for waitUntil
   return worker.default.fetch(request, env, ctx);
@@ -61,7 +61,7 @@ describe('Worker API', () => {
       expect(res.headers.get('content-type')).toContain('text/html');
       const text = await res.text();
       expect(text).toContain('<!DOCTYPE html>');
-      expect(text).toContain('Was geht, Stutensee');
+      expect(text).toContain('Hey, Stutensee!');
     });
   });
 
@@ -303,7 +303,7 @@ describe('Worker API', () => {
       expect(res.status).toBe(200);
       expect(res.headers.get('content-type')).toContain('text/plain');
       const text = await res.text();
-      expect(text).toContain('Was geht, Stutensee');
+      expect(text).toContain('Hey, Stutensee!');
       expect(text).toContain('/api/list');
     });
   });
@@ -334,7 +334,7 @@ describe('Worker API', () => {
       expect(res.status).toBe(200);
       const text = await res.text();
       expect(text).toContain('<!DOCTYPE html>');
-      expect(text).toContain('Was geht, Stutensee');
+      expect(text).toContain('Hey, Stutensee!');
       // Should have SSR placeholders replaced
       expect(text).not.toContain('<!--SSR_EVENTS-->');
       // Should have intro text
@@ -423,7 +423,7 @@ describe('Worker API', () => {
       const text = await res.text();
       expect(text).toContain('urlset');
       expect(text).toContain('/events/');
-      expect(text).toContain('was-geht-stutensee.de');
+      expect(text).toContain('hey-stutensee.de');
     });
   });
 
