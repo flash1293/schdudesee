@@ -1,14 +1,15 @@
 {
   "title": "Hähnchenfest",
   "date_start": "2026-08-08",
-  "date_end": null,
+  "date_end": "2026-08-10",
   "time_raw": "",
-  "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
-  "organizer": "Kleintierzuchtverein Friedrichstal C 283 e.V.",
+  "location": "Vereinsheim Kleintierzuchtverein 1933 e.V. Friedrichstal",
+  "organizer": "Kleintierzuchtverein C283 Friedrichstal e.V.",
   "description": "",
-  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2650",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/haehnchenfest/",
   "sources": [
     "clubs_batch_all",
+    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [

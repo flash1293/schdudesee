@@ -8,6 +8,7 @@
   "description": "",
   "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=464",
   "sources": [
+    "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen",
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
