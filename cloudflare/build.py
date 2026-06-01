@@ -28,7 +28,16 @@ html = ''.join(
 encoded = base64.b64encode(html.encode("utf-8")).decode("ascii")
 inlined = f'const indexHtml = new TextDecoder().decode(Uint8Array.from(atob("{encoded}"), c=>c.charCodeAt(0)));\n'
 
-# Also inline the favicon
+# Helper to inline a text file as a base64 constant
+def inline_text_file(path, var_name):
+    full_path = os.path.join(os.path.dirname(__file__), path)
+    if os.path.exists(full_path):
+        with open(full_path, "rb") as f:
+            b64 = base64.b64encode(f.read()).decode("ascii")
+        return f'const {var_name} = new TextDecoder().decode(Uint8Array.from(atob("{b64}"), c=>c.charCodeAt(0)));\n'
+    return f'const {var_name} = "";\n'
+
+# Also inline the favicon (binary)
 favicon_path = os.path.join(os.path.dirname(__file__), "favicon.png")
 if os.path.exists(favicon_path):
     with open(favicon_path, "rb") as f:
@@ -37,12 +46,17 @@ if os.path.exists(favicon_path):
 else:
     favicon_line = "const faviconB64 = null;\n"
 
+# Inline the static assets extracted from index.html
+css_line = inline_text_file("src/style.css", "styleCss")
+app_js_line = inline_text_file("src/app.js", "appJs")
+chat_js_line = inline_text_file("src/chat.js", "chatJs")
+
 # Read the source logic (hand-written, no base64 blobs)
 with open("src/_worker.js") as f:
     worker_src = f.read()
 
-# Build the final worker: generated headers + hand-written logic
-worker = inlined + favicon_line + worker_src
+# Build the final worker: generated constants + hand-written logic
+worker = inlined + favicon_line + css_line + app_js_line + chat_js_line + worker_src
 
 with open("src/worker.js", "w") as f:
     f.write(worker)
