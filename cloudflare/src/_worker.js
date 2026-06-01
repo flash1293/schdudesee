@@ -273,7 +273,7 @@ function renderPaginationLinks(page, totalPages, params) {
 /** Render the intro paragraph. */
 function renderIntro() {
   return `<div class="intro-text" style="margin-bottom:12px;padding:8px 0;font-size:14px;color:var(--text-muted);line-height:1.6">
-    <p>Was geht, Stutensee? Der Veranstaltungskalender für Stutensee und Umgebung. Entdecke Feste, Märkte, Konzerte, Sportevents, kirchliche Termine, Kinderangebote und mehr in <strong>Blankenloch</strong>, <strong>Büchig</strong>, <strong>Friedrichstal</strong>, <strong>Spöck</strong>, <strong>Staffort</strong> und allen anderen Ortsteilen. Gefiltert nach Kategorie, Ort und Datum.</p>
+    <p>Hey, Stutensee! Der Veranstaltungskalender für Stutensee und Umgebung. Entdecke Feste, Märkte, Konzerte, Sportevents, kirchliche Termine, Kinderangebote und mehr in <strong>Blankenloch</strong>, <strong>Büchig</strong>, <strong>Friedrichstal</strong>, <strong>Spöck</strong>, <strong>Staffort</strong> und allen anderen Ortsteilen. Gefiltert nach Kategorie, Ort und Datum.</p>
   </div>`;
 }
 
@@ -356,7 +356,7 @@ async function serveSsrPage(env, url) {
     };
 
     // Build OG tags for homepage
-    const ogTitle = `Was geht, Stutensee? – Veranstaltungen und Termine in Stutensee`;
+    const ogTitle = `Hey, Stutensee! – Veranstaltungen und Termine`;
     const ogDesc = `Alle Veranstaltungen in Stutensee auf einen Blick: Feste, Märkte, Sport, Kirche, Kinderangebote und mehr.`;
     const ogUrl = url.searchParams.has('page')
       ? `https://hey-stutensee.de/?page=${result.page}`
@@ -386,7 +386,7 @@ async function serveSsrPage(env, url) {
 
 const CHAT_MODEL = 'deepseek-v4-flash';
 const CHAT_MAX_ROUNDS = 5;
-const CHAT_SYSTEM_PROMPT = `Du bist ein hilfreicher Assistent für die Veranstaltungsseite "Was geht, Stutensee?". 
+const CHAT_SYSTEM_PROMPT = `Du bist ein hilfreicher Assistent für die Veranstaltungsseite "Hey, Stutensee!". 
 Du hilfst Nutzern, Veranstaltungen in Stutensee und Umgebung zu finden.
 
 ## Verfügbare Ortsteile/Distrikte
@@ -672,7 +672,7 @@ async function serveEventPage(env, url) {
   const locationName = locTags.length > 0 ? locTags[0] : (e.location || 'Stutensee');
 
   // Build page title and meta
-  const pageTitle = `${e.title} – Was geht, Stutensee?`;
+  const pageTitle = `${e.title} – Hey, Stutensee!`;
   const metaDesc = `${e.title} am ${fmtDate(e.date_start)}${e.location ? ' in ' + e.location : ' in ' + locationName}. ${e.description ? e.description.substring(0, 150) : 'Alle Veranstaltungen in Stutensee auf einen Blick.'}`;
 
   // JSON-LD
@@ -739,7 +739,7 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
 </script>
 </head>
 <body>
-<header><div class="header-inner"><div class="header-text"><h1>Was geht, Stutensee?</h1></div></div></header>
+<header><div class="header-inner"><div class="header-text"><h1>Hey, Stutensee!</h1></div></div></header>
 <div class="container">
   <a href="/" class="back-link">← Zurück zur Übersicht</a>
   <article class="card" aria-label="${escapeHtml(e.title)}">
@@ -931,10 +931,10 @@ async function serveRecurring(env, groupId) {
 }
 
 function serveLlmTxt() {
-  return new Response(`# Was geht, Stutensee? — Event Calendar API
+  return new Response(`# Hey, Stutensee! — Event Calendar API
 
 ## About
-Was geht, Stutensee? is an event calendar for Stutensee, Germany. It aggregates events from 20+ sources including the official city calendar, club websites, cultural institutions, and neighboring municipalities. All data is served via a Cloudflare Worker backed by D1 (SQLite-compatible) database.
+Hey, Stutensee! is an event calendar for Stutensee, Germany. It aggregates events from 20+ sources including the official city calendar, club websites, cultural institutions, and neighboring municipalities. All data is served via a Cloudflare Worker backed by D1 (SQLite-compatible) database.
 
 ## Base URL
 https://hey-stutensee.de (production)
