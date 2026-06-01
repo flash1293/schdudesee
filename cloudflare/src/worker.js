@@ -297,17 +297,23 @@ function renderOgTags(title, description, url, type = 'website') {
 
 /** Simple HTML minifier for render-time use.
  *  Strips comments, collapses whitespace, removes whitespace between tags.
- *  Safe for inline JS/CSS (JS/CSS both collapse whitespace natively). */
+ *  Preserves whitespace inside <script> and <style> tags to avoid breaking JS/CSS. */
 function minifyHtml(html) {
-  // Remove HTML comments (but keep IE conditional comments)
-  html = html.replace(/<!--[^\[][\s\S]*?-->/g, '');
-  // Collapse whitespace sequences to single space
-  html = html.replace(/\s+/g, ' ');
-  // Remove whitespace between tags
-  html = html.replace(/>\s+</g, '><');
-  // Trim leading/trailing whitespace
-  html = html.trim();
-  return html;
+  // Split into parts around script and style tags to avoid breaking their content
+  const parts = html.split(/(<script[^>]*>[\s\S]*?<\/script>|<style[^>]*>[\s\S]*?<\/style>)/i);
+  return parts.map((part, i) => {
+    // Even-indexed parts are outside script/style tags (minify them)
+    // Odd-indexed parts are the script/style blocks (preserve them)
+    if (i % 2 === 0) {
+      // Remove HTML comments (but keep IE conditional comments)
+      part = part.replace(/<!--[^\[][\s\S]*?-->/g, '');
+      // Collapse whitespace sequences to single space
+      part = part.replace(/\s+/g, ' ');
+      // Remove whitespace between tags
+      part = part.replace(/>\s+</g, '><');
+    }
+    return part;
+  }).join('').trim();
 }
 
 /** Inject SSR content into the HTML template. */
