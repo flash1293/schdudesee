@@ -293,6 +293,21 @@ function renderOgTags(title, description, url, type = 'website') {
 `;
 }
 
+/** Simple HTML minifier for render-time use.
+ *  Strips comments, collapses whitespace, removes whitespace between tags.
+ *  Safe for inline JS/CSS (JS/CSS both collapse whitespace natively). */
+function minifyHtml(html) {
+  // Remove HTML comments (but keep IE conditional comments)
+  html = html.replace(/<!--[^\[][\s\S]*?-->/g, '');
+  // Collapse whitespace sequences to single space
+  html = html.replace(/\s+/g, ' ');
+  // Remove whitespace between tags
+  html = html.replace(/>\s+</g, '><');
+  // Trim leading/trailing whitespace
+  html = html.trim();
+  return html;
+}
+
 /** Inject SSR content into the HTML template. */
 function injectIntoTemplate(template, { events, page, totalPages, jsonLd, paginationHtml, introHtml, initialData, ogTags }) {
   return template
@@ -312,8 +327,9 @@ async function serveSsrPage(env, url) {
     // Render event cards
     const eventCardsHtml = renderEventCards(result.events);
 
-    // Render JSON-LD
-    const jsonLdHtml = renderJsonLd(result.events);
+    // Render JSON-LD — homepage omits this to save ~45KB; 
+    // search engines find events via sitemap + per-event pages (which have full JSON-LD)
+    const jsonLdHtml = '';
 
     // Render pagination links
     const paginationHtml = renderPaginationLinks(result.page, result.totalPages, url.searchParams);
@@ -342,9 +358,8 @@ async function serveSsrPage(env, url) {
         time_raw: e.time_raw,
         location: decode(e.location),
         organizer: decode(e.organizer),
-        description: decode(e.description),
+        description: decode(e.description || '').substring(0, 150),
         event_url: decode(e.event_url || ''),
-        sources: decode(e.sources || ''),
         tags: e.tags || '',
         recurring_group_id: e.recurring_group_id,
       })),
@@ -364,7 +379,7 @@ async function serveSsrPage(env, url) {
     const ogTags = renderOgTags(ogTitle, ogDesc, ogUrl);
 
     // Inject into template
-    const html = injectIntoTemplate(indexHtml, {
+    const html = minifyHtml(injectIntoTemplate(indexHtml, {
       events: eventCardsHtml,
       page: result.page,
       totalPages: result.totalPages,
@@ -373,7 +388,7 @@ async function serveSsrPage(env, url) {
       introHtml,
       initialData,
       ogTags,
-    });
+    }));
 
     return new Response(html, { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=300' } });
   } catch (err) {
@@ -763,7 +778,7 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
 </body>
 </html>`;
 
-  return new Response(body, { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=3600' } });
+  return new Response(minifyHtml(body), { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=3600' } });
 }
 
 /** Update sitemap to include event URLs. */
