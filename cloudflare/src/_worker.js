@@ -216,9 +216,53 @@ function renderEventCard(event, condensedMode = false) {
   return html;
 }
 
-/** Render multiple event cards. */
+/** Format a date string into a badge object { day, month }. */
+function formatDateBadge(dateStr) {
+  if (!dateStr) return { day: '?', month: '??' };
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    const d = parseInt(parts[2], 10);
+    const months = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+    const m = months[parseInt(parts[1], 10) - 1] || '??';
+    return { day: d, month: m };
+  }
+  return { day: dateStr, month: '' };
+}
+
+/** Compute a relative date label (same as client-side for consistency). */
+function relativeDate(iso) {
+  if (!iso) return '';
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const parts = iso.split('-');
+  if (parts.length !== 3) return fmtDate(iso);
+  const event = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+  event.setHours(0, 0, 0, 0);
+  const diffMs = event - today;
+  const diffDays = Math.round(diffMs / 86400000);
+  if (diffDays < 0) return fmtDate(iso);
+  if (diffDays === 0) return 'Heute';
+  if (diffDays === 1) return 'Morgen';
+  if (diffDays <= 60) return `In ${diffDays} Tagen`;
+  const diffMonths = (event.getFullYear() - today.getFullYear()) * 12 + (event.getMonth() - today.getMonth());
+  if (diffMonths <= 0) return fmtDate(iso);
+  return `In ${diffMonths} Monaten`;
+}
+
+/** Render multiple event cards with date separators. */
 function renderEventCards(events) {
-  return events.map(e => renderEventCard(e)).join('\n');
+  if (!events || events.length === 0) return '';
+  let lastDate = '';
+  const parts = [];
+  for (const e of events) {
+    if (e.date_start && e.date_start !== lastDate) {
+      lastDate = e.date_start;
+      const badge = formatDateBadge(e.date_start);
+      parts.push(`<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${relativeDate(e.date_start)}</span></div>`);
+    }
+    parts.push(renderEventCard(e));
+  }
+  return parts.join('\n');
 }
 
 /** Render JSON-LD for an array of events. */
