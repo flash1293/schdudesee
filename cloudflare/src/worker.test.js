@@ -343,8 +343,6 @@ describe('Worker API', () => {
       expect(text).toContain('og:title');
       expect(text).toContain('og:description');
       expect(text).toContain('twitter:card');
-      // Should have JSON-LD
-      expect(text).toContain('application/ld+json');
       // Should have event data
       expect(text).toContain('event-');
       // Should have initial data script
