@@ -223,7 +223,7 @@ test.describe('SSR Initial Load', () => {
     await page.goto('/');
 
     // Check page title
-    await expect(page).toHaveTitle(/Was geht, Stutensee/);
+    await expect(page).toHaveTitle(/Hey, Stutensee/);
 
     // Check meta description
     const metaDesc = page.locator('meta[name="description"]');

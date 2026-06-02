@@ -1,0 +1,19 @@
+{
+  "title": "Cinéfête - das französische Schulfilmfestival",
+  "date_start": "2026-06-15",
+  "date_end": "2026-06-15",
+  "time_raw": "00:00",
+  "location": "Kinemathek Karlsruhe",
+  "organizer": "Stiftung Centre Culturel Franco-Allemand Karlsruhe",
+  "description": "Meldet euch als Schulklasse an!",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/cinefete_das_franzosische_schulfilmfestival",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Theater",
+    "Fest"
+  ],
+  "recurring_group_id": null
+}

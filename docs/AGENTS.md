@@ -213,5 +213,5 @@ The worker consists of two files:
 The site runs on Cloudflare Workers + D1:
 - **Worker:** Handles /api/list, /api/theme, /api/info, /api/same/{id} and serves HTML
 - **D1:** SQLite-compatible DB, ~14MB, re-imported on each deploy
-- **Domain:** was-geht-stutensee.de (via Cloudflare nameservers)
+- **Domain:** hey-stutensee.de (via Cloudflare nameservers)
 - **Fallback:** was-geht-stutensee.*.workers.dev

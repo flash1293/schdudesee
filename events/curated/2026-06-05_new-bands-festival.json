@@ -1,0 +1,19 @@
+{
+  "title": "New Bands Festival",
+  "date_start": "2026-06-05",
+  "date_end": "2026-06-05",
+  "time_raw": "19:00",
+  "location": "Kulturzentrum Tempel / Scenario Halle",
+  "organizer": "Kulturzentrum Tempel e.V.",
+  "description": "Das Nachwuchsfestival in der Region vom Popnetz Karlsruhe",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/new_bands_festival-3",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik",
+    "Fest"
+  ],
+  "recurring_group_id": null
+}
