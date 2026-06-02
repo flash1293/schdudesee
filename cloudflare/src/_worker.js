@@ -1006,7 +1006,7 @@ Query parameters:
 - per_page (int, default: 50, max: 100) — events per page
 - search (string) — search in title, location, organizer
 - tag (string, repeatable) — filter by theme or district tag
-- date_from (ISO date, e.g. 2026-05-06) — show events from this date onward
+- date_from (ISO date, e.g. 2026-05-06) — show events from this date onward (defaults to today if omitted)
 - organizer (string) — filter by exact organizer name
 - hide_recurring (boolean) — if set, hide recurring event series
 
