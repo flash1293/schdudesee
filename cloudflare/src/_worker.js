@@ -151,7 +151,7 @@ async function fetchEventsForSsr(env, url) {
      FROM curated_events ${where} ORDER BY date_start ASC, id LIMIT ? OFFSET ?`
   ).bind(...args, perPage, offset).all();
 
-  return { events: results, total, page, totalPages, perPage };
+  return { events: results, total, page, totalPages, perPage, dateFrom };
 }
 
 /** Render a single event card HTML (server-side). */
@@ -376,10 +376,10 @@ async function serveSsrPage(env, url) {
     // Render intro text (only on page 1)
     const introHtml = result.page === 1 ? renderIntro() : '';
 
-    // Build initial data for JS hydration
+    // Build initial data for JS hydration (use actual dateFrom used in SSR query)
     const params = {
       search: url.searchParams.get('search') || '',
-      date_from: url.searchParams.get('date_from') || '',
+      date_from: result.dateFrom || '',
       selectedThemes: url.searchParams.getAll('tag').filter(t => THEME_KEYS.has(t)),
       selectedLocations: url.searchParams.getAll('tag').filter(t => DISTRICT_KEYS.has(t)),
       selectedOrganizer: url.searchParams.get('organizer') || '',
@@ -644,7 +644,8 @@ async function searchEvents(params, env) {
     const q = `%${params.query}%`;
     args.push(q, q, q, q);
   }
-  if (params.date_from) { wheres.push("date_start >= ?"); args.push(params.date_from); }
+  const dateFrom = params.date_from || new Date().toISOString().slice(0, 10);
+  if (dateFrom) { wheres.push("date_start >= ?"); args.push(dateFrom); }
   if (params.date_to) { wheres.push("date_start <= ?"); args.push(params.date_to); }
   if (params.tags && params.tags.length > 0) {
     for (const t of params.tags) { wheres.push("tags LIKE ?"); args.push(`%${t}%`); }
@@ -872,7 +873,7 @@ async function serveEvents(env, url) {
   const perPage = Math.min(100, Math.max(1, parseInt(p.get('per_page') || '50')));
   const search = (p.get('search') || '').slice(0, 48);
   const tags = p.getAll('tag').filter(Boolean);
-  const dateFrom = p.get('date_from') || '';
+  const dateFrom = p.get('date_from') || new Date().toISOString().slice(0, 10);
   const organizer = p.get('organizer') || '';
 
   const db = env.STUTENSEE_DB;
