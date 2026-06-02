@@ -100,7 +100,7 @@ describe('Worker API', () => {
     });
 
     it('filters by search term', async () => {
-      const res = await callWorker('/api/list?search=Festival', { env });
+      const res = await callWorker('/api/list?search=Festival&date_from=2026-01-01', { env });
       const data = await res.json();
       expect(data.total).toBeGreaterThan(0);
       // All returned events should mention "Festival" somewhere
@@ -129,7 +129,7 @@ describe('Worker API', () => {
     });
 
     it('filters by organizer', async () => {
-      const res = await callWorker('/api/list?organizer=Stadt+Stutensee', { env });
+      const res = await callWorker('/api/list?organizer=Stadt+Stutensee&date_from=2026-01-01', { env });
       const data = await res.json();
       expect(data.total).toBeGreaterThan(0);
     });
