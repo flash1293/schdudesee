@@ -44,11 +44,14 @@ async function routeRequest(request, env) {
     const img = Uint8Array.from(atob(faviconB64), c => c.charCodeAt(0));
     return new Response(img, { headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' } });
   }
-  if (url.pathname === '/app.js' && typeof appJs !== 'undefined' && appJs) {
-    return new Response(appJs, { headers: { 'content-type': 'application/javascript;charset=utf-8', 'cache-control': 'public, max-age=86400' } });
+  // Serve app.*.js (hashed) or app.js with long cache for hashed, short for unhashed
+  if ((url.pathname === '/app.js' || /^\/app\.[a-f0-9]+\.js$/.test(url.pathname)) && typeof appJs !== 'undefined' && appJs) {
+    const isHashed = /^\/app\.[a-f0-9]+\.js$/.test(url.pathname);
+    return new Response(appJs, { headers: { 'content-type': 'application/javascript;charset=utf-8', 'cache-control': isHashed ? 'public, max-age=31536000, immutable' : 'public, max-age=86400' } });
   }
-  if (url.pathname === '/chat.js' && typeof chatJs !== 'undefined' && chatJs) {
-    return new Response(chatJs, { headers: { 'content-type': 'application/javascript;charset=utf-8', 'cache-control': 'public, max-age=86400' } });
+  if ((url.pathname === '/chat.js' || /^\/chat\.[a-f0-9]+\.js$/.test(url.pathname)) && typeof chatJs !== 'undefined' && chatJs) {
+    const isHashed = /^\/chat\.[a-f0-9]+\.js$/.test(url.pathname);
+    return new Response(chatJs, { headers: { 'content-type': 'application/javascript;charset=utf-8', 'cache-control': isHashed ? 'public, max-age=31536000, immutable' : 'public, max-age=86400' } });
   }
 
   // API routes

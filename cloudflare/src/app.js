@@ -469,8 +469,9 @@ function toggleDark() {
           if (data.params.themeKeys) themeTags = data.params.themeKeys;
           applyFilterParams(data.params);
         }
-        renderEvents(data.events);
-        document.getElementById('pagination').innerHTML = data.paginationHtml || '';
+        // Don't re-render events — keep the SSR HTML to avoid layout flash.
+        // Just replace pagination with JS-driven buttons and set up state.
+        renderPagination();
         // Clean up
         ssrData.remove();
       } else {
