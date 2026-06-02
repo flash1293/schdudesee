@@ -126,7 +126,7 @@ async function fetchEventsForSsr(env, url) {
   const perPage = SSR_PER_PAGE;
   const search = (p.get('search') || '').slice(0, 48);
   const tags = p.getAll('tag').filter(Boolean);
-  const dateFrom = p.get('date_from') || '';
+  const dateFrom = p.get('date_from') || new Date().toISOString().slice(0, 10);
   const organizer = p.get('organizer') || '';
   const hideRecurring = p.get('hide_recurring') === 'true';
 
