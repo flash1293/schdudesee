@@ -631,7 +631,7 @@ async function callLLM(messages, tools, env) {
   return data;
 }
 
-/** Search events in D1 database. */
+/** Search events in D1 database (date_from defaults to today for SSR/API parity). */
 async function searchEvents(params, env) {
   const db = env.STUTENSEE_DB;
   const page = Math.max(1, params.page || 1);
