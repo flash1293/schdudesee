@@ -1,0 +1,18 @@
+{
+  "title": "A Midsummer Night’s Dream",
+  "date_start": "2026-06-07",
+  "date_end": "2026-06-07",
+  "time_raw": "18:30",
+  "location": "Badisches Staatstheater, Großes Haus",
+  "organizer": "Badisches Staatstheater Karlsruhe",
+  "description": "Oper in drei Akten von Benjamin Britten",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/a_midsummer_nights_dream",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null
+}

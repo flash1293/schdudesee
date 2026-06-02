@@ -1,0 +1,19 @@
+{
+  "title": "Erzählcafé",
+  "date_start": "2026-06-09",
+  "date_end": "2026-06-09",
+  "time_raw": "17:00",
+  "location": "Bürgerzentrum Mühlburg Weinbrennerstraße",
+  "organizer": "BSK Karlsruhe",
+  "description": "Das Erzählcafé, das Erzählcafé,\r\nist gut für Alt und Jung,\r\nda freuen sich Mühlburger Leut’ \r\ndem Stadtteil gibt es neuen Schwung.",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/erzahlcafe-9",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Literatur",
+    "Treff"
+  ],
+  "recurring_group_id": 835140221
+}

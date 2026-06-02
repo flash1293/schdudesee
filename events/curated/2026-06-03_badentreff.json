@@ -3,12 +3,11 @@
   "date_start": "2026-06-03",
   "date_end": "2026-06-06",
   "time_raw": "",
-  "location": "CVJM Spöck, Fröbelweg 1, 76297 Stutensee-Spöck",
+  "location": "CVJM Spöck",
   "organizer": "CVJM Spöck",
   "description": "",
-  "event_url": "https://www.cvjm-spoeck.de/eventcalendar?calendar=16",
+  "event_url": "https://www.cvjm-spoeck.de/",
   "sources": [
-    "clubs_batch_all",
     "manual_override"
   ],
   "tags": [

@@ -1,0 +1,18 @@
+{
+  "title": "MovieTalk",
+  "date_start": "2026-06-10",
+  "date_end": "2026-06-10",
+  "time_raw": "18:30",
+  "location": "Stadtbibliothek Karlsruhe - Amerikanische Bibliothek",
+  "organizer": "Stadtbibliothek Karlsruhe - Amerikanische Bibliothek",
+  "description": "Watch and discuss movies - every 2nd Wednesday of the month at 6:30 pm",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/movietalk-9",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Literatur"
+  ],
+  "recurring_group_id": null
+}

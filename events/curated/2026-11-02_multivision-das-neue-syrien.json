@@ -3,13 +3,15 @@
   "date_start": "2026-11-02",
   "date_end": null,
   "time_raw": "19:30",
-  "location": "",
+  "location": "Bretten",
   "organizer": "",
   "description": "",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34836",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
-  "tags": [],
+  "tags": [
+    "Bretten"
+  ],
   "recurring_group_id": null
 }
