@@ -3,6 +3,9 @@ import { ensureAnalyticsTable, logRequest } from './_analytics.js';
 // ── SSR Constants ─────────────────────────────────────────────────────
 const THEME_KEYS = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
 
+const DISTRICT_KEYS = new Set(['Blankenloch','Bruchsal','Bretten','Büchenau','Büchig','Eggenstein','Friedrichstal','Graben-Neudorf','Hagsfeld','Karlsruhe-Innenstadt','Leopoldshafen','Linkenheim','Neureut','Neuthard','Rintheim','Spöck','Staffort','Waldstadt','Weingarten']);
+const DISTRICT_LIST_STR = [...DISTRICT_KEYS].sort().join(', ');
+
 const TAG_EMOJIS = {
   'Sport':'⚽','Musik':'🎵','Kultur':'🎭','Kirche':'⛪','Kinder':'🧒','Fest':'🎉',
   'Markt':'🛒','Workshop':'🔧','Bildung':'📚','Natur':'🌿','Senioren':'👴','Digital':'💻',
@@ -10,7 +13,7 @@ const TAG_EMOJIS = {
   'Sonstiges':'📌'
 };
 
-const SSR_PER_PAGE = 50;
+const SSR_PER_PAGE = 12;
 
 // ── Exports ───────────────────────────────────────────────────────────
 export default {
@@ -36,10 +39,19 @@ async function routeRequest(request, env) {
   // Serve SSR-enhanced HTML for the main page
   if (url.pathname === '/') return serveSsrPage(env, url);
 
-  // Static assets
+  // Static assets (served from build-embedded constants)
   if (url.pathname === '/favicon.png' && typeof faviconB64 !== 'undefined' && faviconB64) {
     const img = Uint8Array.from(atob(faviconB64), c => c.charCodeAt(0));
     return new Response(img, { headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' } });
+  }
+  // Serve app.*.js (hashed) or app.js with long cache for hashed, short for unhashed
+  if ((url.pathname === '/app.js' || /^\/app\.[a-f0-9]+\.js$/.test(url.pathname)) && typeof appJs !== 'undefined' && appJs) {
+    const isHashed = /^\/app\.[a-f0-9]+\.js$/.test(url.pathname);
+    return new Response(appJs, { headers: { 'content-type': 'application/javascript;charset=utf-8', 'cache-control': isHashed ? 'public, max-age=31536000, immutable' : 'public, max-age=86400' } });
+  }
+  if ((url.pathname === '/chat.js' || /^\/chat\.[a-f0-9]+\.js$/.test(url.pathname)) && typeof chatJs !== 'undefined' && chatJs) {
+    const isHashed = /^\/chat\.[a-f0-9]+\.js$/.test(url.pathname);
+    return new Response(chatJs, { headers: { 'content-type': 'application/javascript;charset=utf-8', 'cache-control': isHashed ? 'public, max-age=31536000, immutable' : 'public, max-age=86400' } });
   }
 
   // API routes
@@ -117,7 +129,7 @@ async function fetchEventsForSsr(env, url) {
   const perPage = SSR_PER_PAGE;
   const search = (p.get('search') || '').slice(0, 48);
   const tags = p.getAll('tag').filter(Boolean);
-  const dateFrom = p.get('date_from') || '';
+  const dateFrom = p.get('date_from') || new Date().toISOString().slice(0, 10);
   const organizer = p.get('organizer') || '';
   const hideRecurring = p.get('hide_recurring') === 'true';
 
@@ -142,7 +154,7 @@ async function fetchEventsForSsr(env, url) {
      FROM curated_events ${where} ORDER BY date_start ASC, id LIMIT ? OFFSET ?`
   ).bind(...args, perPage, offset).all();
 
-  return { events: results, total, page, totalPages, perPage };
+  return { events: results, total, page, totalPages, perPage, dateFrom };
 }
 
 /** Render a single event card HTML (server-side). */
@@ -150,7 +162,7 @@ function renderEventCard(event, condensedMode = false) {
   const e = event;
   const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
   const themeTags = tags.filter(t => THEME_KEYS.has(t));
-  const locTags = tags.filter(t => !THEME_KEYS.has(t));
+  const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
 
   // Build emoji HTML
   const themeEmojis = themeTags.map(t => TAG_EMOJIS[t] || '📌').filter(Boolean);
@@ -208,9 +220,55 @@ function renderEventCard(event, condensedMode = false) {
   return html;
 }
 
-/** Render multiple event cards. */
+/** Format a date string into a badge object { day, month }. */
+function formatDateBadge(dateStr) {
+  if (!dateStr) return { day: '?', month: '??' };
+  const parts = dateStr.split('-');
+  if (parts.length === 3) {
+    const d = parseInt(parts[2], 10);
+    const months = ['Jan','Feb','Mär','Apr','Mai','Jun','Jul','Aug','Sep','Okt','Nov','Dez'];
+    const m = months[parseInt(parts[1], 10) - 1] || '??';
+    return { day: d, month: m };
+  }
+  return { day: dateStr, month: '' };
+}
+
+/** Compute a relative date label (same as client-side for consistency). */
+function relativeDate(iso) {
+  if (!iso) return '';
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const parts = iso.split('-');
+  if (parts.length !== 3) return fmtDate(iso);
+  const event = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+  event.setHours(0, 0, 0, 0);
+  const diffMs = event - today;
+  const diffDays = Math.round(diffMs / 86400000);
+  if (diffDays < 0) return fmtDate(iso);
+  if (diffDays === 0) return 'Heute';
+  if (diffDays === 1) return 'Morgen';
+  if (diffDays <= 60) return `In ${diffDays} Tagen`;
+  const diffMonths = (event.getFullYear() - today.getFullYear()) * 12 + (event.getMonth() - today.getMonth());
+  if (diffMonths <= 0) return fmtDate(iso);
+  return `In ${diffMonths} Monaten`;
+}
+
+/** Render multiple event cards with date separators. Skips events without a date. */
 function renderEventCards(events) {
-  return events.map(e => renderEventCard(e)).join('\n');
+  if (!events || events.length === 0) return '';
+  const dated = events.filter(e => e.date_start);
+  if (dated.length === 0) return '';
+  let lastDate = null;
+  const parts = [];
+  for (const e of dated) {
+    if (e.date_start !== lastDate) {
+      lastDate = e.date_start;
+      const badge = formatDateBadge(e.date_start);
+      parts.push(`<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${relativeDate(e.date_start)}</span></div>`);
+    }
+    parts.push(renderEventCard(e));
+  }
+  return parts.join('\n');
 }
 
 /** Render JSON-LD for an array of events. */
@@ -218,7 +276,7 @@ function renderJsonLd(events) {
   if (!events || events.length === 0) return '';
   const items = events.map(e => {
     const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
-    const locTags = tags.filter(t => !THEME_KEYS.has(t));
+    const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
     const locationName = locTags.length > 0 ? locTags[0] : (e.location || 'Stutensee');
     const desc = e.description ? decode(e.description) : `Veranstaltung in ${locationName}`;
     const url = e.event_url || `https://hey-stutensee.de${eventPath(e)}`;
@@ -321,15 +379,17 @@ async function serveSsrPage(env, url) {
     // Render intro text (only on page 1)
     const introHtml = result.page === 1 ? renderIntro() : '';
 
-    // Build initial data for JS hydration
+    // Build initial data for JS hydration (use actual dateFrom used in SSR query)
     const params = {
       search: url.searchParams.get('search') || '',
-      date_from: url.searchParams.get('date_from') || '',
+      date_from: result.dateFrom || '',
       selectedThemes: url.searchParams.getAll('tag').filter(t => THEME_KEYS.has(t)),
-      selectedLocations: url.searchParams.getAll('tag').filter(t => !THEME_KEYS.has(t)),
+      selectedLocations: url.searchParams.getAll('tag').filter(t => DISTRICT_KEYS.has(t)),
       selectedOrganizer: url.searchParams.get('organizer') || '',
       showRecurring: url.searchParams.get('hide_recurring') !== 'true',
       condensedMode: false,
+      districtKeys: [...DISTRICT_KEYS],
+      themeKeys: [...THEME_KEYS],
     };
 
     // Build initial data payload for JS
@@ -390,7 +450,7 @@ const CHAT_SYSTEM_PROMPT = `Du bist ein hilfreicher Assistent für die Veranstal
 Du hilfst Nutzern, Veranstaltungen in Stutensee und Umgebung zu finden.
 
 ## Verfügbare Ortsteile/Distrikte
-Veranstaltungen sind nach Ortsteilen getaggt. Hier ist die vollständige Liste aller verfügbaren Ortsteile: Blankenloch, Bruchsal, Büchig, Eggenstein, Friedrichstal, Graben-Neudorf, Hagsfeld, Leopoldshafen, Linkenheim, Neuthard, Rintheim, Spöck, Staffort, Waldstadt, Weingarten.
+Veranstaltungen sind nach Ortsteilen getaggt. Hier ist die vollständige Liste aller verfügbaren Ortsteile: ${DISTRICT_LIST_STR}.
 Stutensee selbst besteht aus den Ortsteilen: Blankenloch, Büchig, Friedrichstal, Spöck, Staffort.
 Wenn ein Nutzer nach einem Ortsteil fragt (z.B. "Büchig", "Spöck"), verwende den genauen Namen im location-Parameter.
 
@@ -576,11 +636,11 @@ async function callLLM(messages, tools, env) {
   return data;
 }
 
-/** Search events in D1 database. */
+/** Search events in D1 database (date_from defaults to today for SSR/API parity). */
 async function searchEvents(params, env) {
   const db = env.STUTENSEE_DB;
   const page = Math.max(1, params.page || 1);
-  const perPage = Math.min(20, Math.max(1, params.per_page || 10));
+  const perPage = Math.min(20, Math.max(1, params.per_page || 12));
   const wheres = ["tags != 'blocked'"];
   const args = [];
 
@@ -589,7 +649,8 @@ async function searchEvents(params, env) {
     const q = `%${params.query}%`;
     args.push(q, q, q, q);
   }
-  if (params.date_from) { wheres.push("date_start >= ?"); args.push(params.date_from); }
+  const dateFrom = params.date_from || new Date().toISOString().slice(0, 10);
+  if (dateFrom) { wheres.push("date_start >= ?"); args.push(dateFrom); }
   if (params.date_to) { wheres.push("date_start <= ?"); args.push(params.date_to); }
   if (params.tags && params.tags.length > 0) {
     for (const t of params.tags) { wheres.push("tags LIKE ?"); args.push(`%${t}%`); }
@@ -668,7 +729,7 @@ async function serveEventPage(env, url) {
   };
 
   const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
-  const locTags = tags.filter(t => !THEME_KEYS.has(t));
+  const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
   const locationName = locTags.length > 0 ? locTags[0] : (e.location || 'Stutensee');
 
   // Build page title and meta
@@ -817,7 +878,7 @@ async function serveEvents(env, url) {
   const perPage = Math.min(100, Math.max(1, parseInt(p.get('per_page') || '50')));
   const search = (p.get('search') || '').slice(0, 48);
   const tags = p.getAll('tag').filter(Boolean);
-  const dateFrom = p.get('date_from') || '';
+  const dateFrom = p.get('date_from') || new Date().toISOString().slice(0, 10);
   const organizer = p.get('organizer') || '';
 
   const db = env.STUTENSEE_DB;
@@ -860,25 +921,23 @@ async function serveOrganizers(env) {
 }
 
 async function serveTags(env) {
-  const themeKeys = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
   const { results } = await env.STUTENSEE_DB.prepare(
     "SELECT DISTINCT tags FROM curated_events WHERE tags IS NOT NULL AND tags != '' AND tags != 'blocked'"
   ).all();
   const set = new Set();
   for (const r of results) {
-    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && themeKeys.has(s)) set.add(s); }
+    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && THEME_KEYS.has(s)) set.add(s); }
   }
   return json([...set].sort());
 }
 
 async function serveDistricts(env) {
-  const themeKeys = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
   const { results } = await env.STUTENSEE_DB.prepare(
     "SELECT DISTINCT tags FROM curated_events WHERE tags IS NOT NULL AND tags != '' AND tags != 'blocked'"
   ).all();
   const set = new Set();
   for (const r of results) {
-    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && !themeKeys.has(s)) set.add(s); }
+    for (const t of r.tags.split(',')) { const s = t.trim(); if (s && DISTRICT_KEYS.has(s)) set.add(s); }
   }
   return json([...set].sort());
 }
@@ -950,7 +1009,7 @@ Query parameters:
 - per_page (int, default: 50, max: 100) — events per page
 - search (string) — search in title, location, organizer
 - tag (string, repeatable) — filter by theme or district tag
-- date_from (ISO date, e.g. 2026-05-06) — show events from this date onward
+- date_from (ISO date, e.g. 2026-05-06) — show events from this date onward (defaults to today if omitted)
 - organizer (string) — filter by exact organizer name
 - hide_recurring (boolean) — if set, hide recurring event series
 

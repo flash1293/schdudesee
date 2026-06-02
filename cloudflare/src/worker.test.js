@@ -14,7 +14,7 @@ const worker = await import(workerPath);
 /** Call the worker's fetch handler with a mock env and ctx. */
 async function callWorker(path, options = {}) {
   const { method = 'GET', headers = {}, env = {} } = options;
-  const url = `https://was-geht-stutensee.de${path}`;
+  const url = `https://hey-stutensee.de${path}`;
   const request = new Request(url, { method, headers });
   const ctx = { waitUntil: (p) => p }; // mock ctx for waitUntil
   return worker.default.fetch(request, env, ctx);
@@ -100,7 +100,7 @@ describe('Worker API', () => {
     });
 
     it('filters by search term', async () => {
-      const res = await callWorker('/api/list?search=Festival', { env });
+      const res = await callWorker('/api/list?search=Festival&date_from=2026-01-01', { env });
       const data = await res.json();
       expect(data.total).toBeGreaterThan(0);
       // All returned events should mention "Festival" somewhere
@@ -129,7 +129,7 @@ describe('Worker API', () => {
     });
 
     it('filters by organizer', async () => {
-      const res = await callWorker('/api/list?organizer=Stadt+Stutensee', { env });
+      const res = await callWorker('/api/list?organizer=Stadt+Stutensee&date_from=2026-01-01', { env });
       const data = await res.json();
       expect(data.total).toBeGreaterThan(0);
     });
