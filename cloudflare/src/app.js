@@ -54,12 +54,14 @@ let locationTags = [];
 let organizerTags = [];
 
 async function loadTags() {
-  const [themeRes, districtRes] = await Promise.all([
+  const [themeRes, districtRes, organizerRes] = await Promise.all([
     fetch('/api/theme'),
-    fetch('/api/districts')
+    fetch('/api/districts'),
+    fetch('/api/organizer')
   ]);
   themeTags = await themeRes.json();
   locationTags = await districtRes.json();
+  organizerTags = await organizerRes.json();
 
   const themeDropdown = document.getElementById('theme-dropdown');
   themeDropdown.innerHTML = themeTags.map(t =>
@@ -71,8 +73,6 @@ async function loadTags() {
     `<span class="chip chip-location${selectedLocations.includes(t) ? ' active' : ''}" data-tag="${esc(t)}" onclick="selectTag('location','${esc(t)}')">📍 ${esc(t)}</span>`
   ).join('');
 
-  const r2 = await fetch('/api/organizer');
-  organizerTags = await r2.json();
   renderOrganizers();
 }
 
