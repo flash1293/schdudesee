@@ -277,7 +277,7 @@ async function loadEvents(page) {
   currentPage = page;
   const search = document.getElementById('search').value;
   const dateFrom = document.getElementById('date-from').value;
-  const params = new URLSearchParams({page, per_page: 10, search});
+  const params = new URLSearchParams({page, per_page: 12, search});
   if (dateFrom) params.set('date_from', dateFrom);
   selectedThemes.forEach(t => params.append('tag', t));
   selectedLocations.forEach(t => params.append('tag', t));

@@ -13,7 +13,7 @@ const TAG_EMOJIS = {
   'Sonstiges':'📌'
 };
 
-const SSR_PER_PAGE = 10;
+const SSR_PER_PAGE = 12;
 
 // ── Exports ───────────────────────────────────────────────────────────
 export default {
@@ -635,7 +635,7 @@ async function callLLM(messages, tools, env) {
 async function searchEvents(params, env) {
   const db = env.STUTENSEE_DB;
   const page = Math.max(1, params.page || 1);
-  const perPage = Math.min(20, Math.max(1, params.per_page || 10));
+  const perPage = Math.min(20, Math.max(1, params.per_page || 12));
   const wheres = ["tags != 'blocked'"];
   const args = [];
 
