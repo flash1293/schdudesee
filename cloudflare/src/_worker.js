@@ -385,6 +385,8 @@ async function serveSsrPage(env, url) {
       selectedOrganizer: url.searchParams.get('organizer') || '',
       showRecurring: url.searchParams.get('hide_recurring') !== 'true',
       condensedMode: false,
+      districtKeys: [...DISTRICT_KEYS],
+      themeKeys: [...THEME_KEYS],
     };
 
     // Build initial data payload for JS

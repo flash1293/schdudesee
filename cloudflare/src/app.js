@@ -462,8 +462,13 @@ function toggleDark() {
       if (data.events && data.events.length > 0 && data.totalPages > 0) {
         currentPage = data.page;
         totalPages = data.totalPages;
-        // Also set up filters from URL params if present
-        if (data.params) applyFilterParams(data.params);
+        // Seed locationTags/themeTags from SSR data so renderEvents can
+        // identify district/theme tags before loadTags() completes.
+        if (data.params) {
+          if (data.params.districtKeys) locationTags = data.params.districtKeys;
+          if (data.params.themeKeys) themeTags = data.params.themeKeys;
+          applyFilterParams(data.params);
+        }
         renderEvents(data.events);
         document.getElementById('pagination').innerHTML = data.paginationHtml || '';
         // Clean up
