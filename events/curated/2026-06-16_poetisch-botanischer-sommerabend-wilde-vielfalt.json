@@ -1,19 +1,19 @@
 {
-  "title": "Poetisch-botanischer Sommerabend: \"Wilde Vielfalt\"",
-  "date_start": "2026-06-16",
-  "date_end": "2026-06-16",
-  "time_raw": "19:00",
-  "location": "KIT Botanischer Garten",
-  "organizer": "Freundeskreis Botanischer Garten am KIT e.V.",
-  "description": "Literarische Begegnungen mit der Botanik",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/poetisch_botanischer_sommerabend_wilde_vielfalt",
-  "sources": [
-    "https://kalender.karlsruhe.de"
-  ],
-  "tags": [
-    "Karlsruhe-Innenstadt",
-    "Literatur",
-    "Treff"
-  ],
-  "recurring_group_id": null
+    "title": "Poetisch-botanischer Sommerabend: \"Wilde Vielfalt\"",
+    "date_start": "2026-06-16",
+    "date_end": "2026-06-16",
+    "time_raw": "19:00",
+    "location": "KIT Botanischer Garten",
+    "organizer": "Freundeskreis Botanischer Garten am KIT e.V.",
+    "description": "Literarische Begegnungen mit der Botanik",
+    "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/poetisch_botanischer_sommerabend_wilde_vielfalt",
+    "sources": [
+        "https://kalender.karlsruhe.de"
+    ],
+    "tags": [
+        "Karlsruhe-Innenstadt",
+        "Literatur",
+        "Natur"
+    ],
+    "recurring_group_id": null
 }
