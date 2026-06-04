@@ -1,19 +1,19 @@
 {
-    "title": "Lektürekurs Latein",
-    "date_start": "2026-06-16",
-    "date_end": "2026-06-16",
-    "time_raw": "18:30",
-    "location": "Bildungszentrum Roncalli-Forum Karlsruhe, Ignatius-Saal",
-    "organizer": "Bildungszentrum Roncalli-Forum Karlsruhe (Bildungswerk der Erzdiözese Freiburg)",
-    "description": "Die Legenda aurea",
-    "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/lekturekurs_latein-6",
-    "sources": [
-        "https://kalender.karlsruhe.de"
-    ],
-    "tags": [
-        "Literatur",
-        "Workshop",
-        "Karlsruhe-Innenstadt"
-    ],
-    "recurring_group_id": null
+  "title": "Lektürekurs Latein",
+  "date_start": "2026-06-16",
+  "date_end": "2026-06-16",
+  "time_raw": "18:30",
+  "location": "Bildungszentrum Roncalli-Forum Karlsruhe, Ignatius-Saal",
+  "organizer": "Bildungszentrum Roncalli-Forum Karlsruhe (Bildungswerk der Erzdiözese Freiburg)",
+  "description": "Die Legenda aurea",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/lekturekurs_latein-6",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Literatur",
+    "Workshop"
+  ],
+  "recurring_group_id": null
 }

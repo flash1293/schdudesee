@@ -1,18 +1,20 @@
 {
-    "title": "Gastspiel der Akademie des Tanzes Mannheim (AdT)",
-    "date_start": "2026-06-16",
-    "date_end": "2026-06-16",
-    "time_raw": "19:30",
-    "location": "Badisches Staatstheater, Kleines Haus",
-    "organizer": "Badisches Staatstheater Karlsruhe",
-    "description": "Staatliche Hochschule für Musik und Darstellende Kunst Mannheim",
-    "event_url": "https://kalender.karlsruhe.de/db/termine/theater/gastspiel_der_akademie_des_tanzes_mannheim_adt",
-    "sources": [
-        "https://kalender.karlsruhe.de"
-    ],
-    "tags": [
-        "Kultur",
-        "Karlsruhe-Innenstadt"
-    ],
-    "recurring_group_id": null
+  "title": "Gastspiel der Akademie des Tanzes Mannheim (AdT)",
+  "date_start": "2026-06-16",
+  "date_end": "2026-06-16",
+  "time_raw": "19:30",
+  "location": "Badisches Staatstheater, Kleines Haus",
+  "organizer": "Badisches Staatstheater Karlsruhe",
+  "description": "Staatliche Hochschule für Musik und Darstellende Kunst Mannheim",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/gastspiel_der_akademie_des_tanzes_mannheim_adt",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Theater",
+    "Sport",
+    "Musik"
+  ],
+  "recurring_group_id": null
 }
