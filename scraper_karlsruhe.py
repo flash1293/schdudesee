@@ -66,6 +66,15 @@ DISTRICT_PATTERNS = {
         r"fächerbad",
         r"stadtteilbibliothek\s+rintheim",
     ],
+    "Durlach": [
+        r"\bdurlach\b",
+        r"\bpfinzgaumuseum\b",
+        r"\bkarlsburg\b",
+        r"gemeindezentrum\s+durlach",
+        r"st\.?\s+peter\s+und\s+paul\s+kirche\s+durlach",
+        r"stadtbibliothek\s+durlach",
+        r"trinitatiskirche\s+durlach",
+    ],
     "Karlsruhe-Innenstadt": [
         r"\bstaatstheater\b",
         r"\bkonzerthaus\b",
