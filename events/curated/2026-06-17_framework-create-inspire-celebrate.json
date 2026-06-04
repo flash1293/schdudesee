@@ -5,14 +5,14 @@
   "time_raw": "20:00",
   "location": "Staatstheater, siehe Beschreibung",
   "organizer": "Badisches Staatstheater Karlsruhe",
-  "description": "Tanzabend mit den Gauthier Dance Juniors und dem Staatsballett Karlsruhe",
+  "description": "&nbsp;",
   "event_url": "https://kalender.karlsruhe.de/db/termine/theater/framework_create_inspire_celebrate",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
-    "Kultur",
-    "Karlsruhe-Innenstadt"
+    "Karlsruhe-Innenstadt",
+    "Theater"
   ],
   "recurring_group_id": null
 }

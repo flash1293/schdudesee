@@ -5,15 +5,16 @@
   "time_raw": "15:00",
   "location": "Staatstheater, siehe Beschreibung",
   "organizer": "Badisches Staatstheater Karlsruhe",
-  "description": "Workshop im Rahmen der Reihe 'Und jetzt! Wochen der Nachhaltigkeit' zum Thema Recycling in der Natur und zuhause.",
+  "description": "&nbsp;",
   "event_url": "https://kalender.karlsruhe.de/db/termine/theater/recycling_in_der_natur_und_zuhause_und-2",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
-    "Natur",
-    "Workshop",
-    "Karlsruhe-Innenstadt"
+    "Karlsruhe-Innenstadt",
+    "Theater",
+    "Sport",
+    "Natur"
   ],
   "recurring_group_id": null
 }
