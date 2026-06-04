@@ -3,7 +3,7 @@ import { ensureAnalyticsTable, logRequest } from './_analytics.js';
 // ── SSR Constants ─────────────────────────────────────────────────────
 const THEME_KEYS = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
 
-const DISTRICT_KEYS = new Set(['Blankenloch','Bruchsal','Bretten','Büchenau','Büchig','Eggenstein','Friedrichstal','Graben-Neudorf','Hagsfeld','Karlsruhe-Innenstadt','Leopoldshafen','Linkenheim','Neureut','Neuthard','Rintheim','Spöck','Staffort','Waldstadt','Weingarten']);
+const DISTRICT_KEYS = new Set(['Blankenloch','Bruchsal','Bretten','Büchenau','Büchig','Durlach','Eggenstein','Friedrichstal','Graben-Neudorf','Hagsfeld','Karlsruhe-Innenstadt','Leopoldshafen','Linkenheim','Neureut','Neuthard','Rintheim','Spöck','Staffort','Waldstadt','Weingarten']);
 const DISTRICT_LIST_STR = [...DISTRICT_KEYS].sort().join(', ');
 
 const TAG_EMOJIS = {
