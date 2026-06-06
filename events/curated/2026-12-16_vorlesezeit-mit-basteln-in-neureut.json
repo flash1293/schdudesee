@@ -11,10 +11,9 @@
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
-    "Neureut",
-    "Literatur",
     "Kinder",
-    "Handwerk"
+    "Handwerk",
+    "Neureut"
   ],
-  "recurring_group_id": 1596923700
+  "recurring_group_id": null
 }

@@ -3,7 +3,7 @@
   "date_start": "2026-06-09",
   "date_end": "2026-06-09",
   "time_raw": "12:00",
-  "location": "Stadtbibliothek Karlsruhe - Zentralbibliothek im Neuen Ständehaus - Sprechstunde",
+  "location": "Stadtbibliothek Karlsruhe - Stadtbibliothek im Neuen Ständehaus - Sprechstunde",
   "organizer": "Stadtbibliothek Karlsruhe - Zentralbibliothek im Neuen Ständehaus",
   "description": "Jeden Dienstag, ohne Anmeldung, kostenfrei",
   "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/sprechstunde_einfach_digital-35",
@@ -11,9 +11,9 @@
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
+    "Digital",
     "Karlsruhe-Innenstadt",
-    "Literatur",
-    "Digital"
+    "Literatur"
   ],
-  "recurring_group_id": 423677312
+  "recurring_group_id": 183473
 }

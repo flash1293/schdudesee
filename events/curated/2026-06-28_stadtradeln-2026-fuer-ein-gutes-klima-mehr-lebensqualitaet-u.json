@@ -11,10 +11,10 @@
     "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [
-    "Sport",
-    "Natur",
     "Eggenstein",
-    "Leopoldshafen"
+    "Leopoldshafen",
+    "Natur",
+    "Sport"
   ],
   "recurring_group_id": null
 }
