@@ -1,12 +1,12 @@
 {
-  "title": "Klaviertrio",
-  "date_start": "2026-06-05",
-  "date_end": "2026-06-05",
+  "title": "Violarezital",
+  "date_start": "2026-06-19",
+  "date_end": "2026-06-19",
   "time_raw": "12:15",
   "location": "Kleine Kirche Karlsruhe",
   "organizer": "Hochschule für Musik",
   "description": "Mittagskonzert",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/klaviertrio",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/violarezital-1",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
