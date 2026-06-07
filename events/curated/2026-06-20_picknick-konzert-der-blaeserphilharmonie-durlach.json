@@ -1,0 +1,18 @@
+{
+  "title": "Picknick-Konzert der Bläserphilharmonie Durlach",
+  "date_start": "2026-06-20",
+  "date_end": "2026-06-20",
+  "time_raw": "18:00",
+  "location": "Durlach Weiherhof-Gelände",
+  "organizer": "Musikforum Durlach",
+  "description": "Open-Air Konzert der besonderen Art",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/picknick_konzert_der_blaserphilharmonie_durlach",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Durlach",
+    "Musik"
+  ],
+  "recurring_group_id": null
+}

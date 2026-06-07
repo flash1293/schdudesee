@@ -6,12 +6,13 @@
   "location": "Badisches Staatstheater, INSEL",
   "organizer": "Badisches Staatstheater Karlsruhe",
   "description": "von Yade Yasemin Önder | Yazar: Yade Yasemin Önder",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/bu_sozler_bizim_die_worte_gehoren_uns_premiere_promiyer-1",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/bu_sozler_bizim_die_worte_gehoren_uns_premiere_promiyer",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
-    "Karlsruhe-Innenstadt"
+    "Karlsruhe-Innenstadt",
+    "Theater"
   ],
   "recurring_group_id": null
 }

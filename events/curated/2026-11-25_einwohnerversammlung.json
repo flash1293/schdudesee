@@ -1,0 +1,18 @@
+{
+  "title": "Einwohnerversammlung",
+  "date_start": "2026-11-25",
+  "date_end": "2026-11-25",
+  "time_raw": "",
+  "location": "Bruchbühlhalle",
+  "organizer": "Gemeinde Karlsdorf-Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=506",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Politik",
+    "Neuthard"
+  ],
+  "recurring_group_id": 1538793298
+}

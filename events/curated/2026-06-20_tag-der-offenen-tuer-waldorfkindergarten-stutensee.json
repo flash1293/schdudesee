@@ -8,12 +8,11 @@
   "description": "Der Waldorfkindergarten Stutensee lädt herzlich zum Tag der offenen Tür ein. Besucherinnen und Besucher haben die Gelegenheit, den Kindergarten kennenzulernen, Einblicke in den Alltag mit den Kindern zu gewinnen und die besondere Atmosphäre vor Ort zu erleben.",
   "event_url": "https://stutenseekinderkalender.de/event/tag-der-offenen-tuer-waldorfkindergarten-stutensee-2026/",
   "sources": [
-    "https://meinstutensee.de/termine/",
     "https://stutenseekinderkalender.de"
   ],
   "tags": [
-    "Bildung",
-    "Kinder"
+    "Kinder",
+    "Bildung"
   ],
   "recurring_group_id": null
 }

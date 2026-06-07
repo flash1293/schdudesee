@@ -1,0 +1,19 @@
+{
+  "title": "Grillfest",
+  "date_start": "2026-08-29",
+  "date_end": "2026-08-29",
+  "time_raw": "",
+  "location": "Bruchbühlanlage",
+  "organizer": "VdK Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=456",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Fest",
+    "Essen",
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

@@ -3,13 +3,15 @@
   "date_start": "2026-08-13",
   "date_end": "2026-08-14",
   "time_raw": "17:00",
-  "location": "",
+  "location": "Bretten",
   "organizer": "",
   "description": "",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34945",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
-  "tags": [],
+  "tags": [
+    "Bretten"
+  ],
   "recurring_group_id": null
 }

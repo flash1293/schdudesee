@@ -1,13 +1,14 @@
 {
   "title": "Fischerfest",
   "date_start": "2026-06-14",
-  "date_end": null,
-  "time_raw": "",
-  "location": "Veranstaltungsort:\n\t\tFischerheim Baggersee Spöck",
-  "organizer": "Veranstalter:\n\t\tSportfischerverein Spöck 1970 e.V.",
+  "date_end": "2026-06-14",
+  "time_raw": "11:00",
+  "location": "Baggersee Spöck",
+  "organizer": "Sportfischerverein Spöck 1970 e.V.",
   "description": "",
-  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2624",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/fischereifest/",
   "sources": [
+    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
