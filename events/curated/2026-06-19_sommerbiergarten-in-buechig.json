@@ -8,11 +8,12 @@
   "description": "",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/sommerbiergarten-in-buechig/",
   "sources": [
-    "https://meinstutensee.de/termine/"
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Essen",
-    "Büchig"
+    "Büchig",
+    "Essen"
   ],
   "recurring_group_id": null
 }

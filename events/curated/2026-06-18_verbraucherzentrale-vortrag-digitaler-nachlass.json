@@ -8,13 +8,14 @@
   "description": "Das digitale Zeitalter beherrscht mittlerweile unser Leben. Doch was, wenn jemand verstirbt? Bilder, Videos, Kontaktdaten, Freundeslisten auf Social Media-Sites – für manche sind es Erinnerungen, für andere wichtige, persönliche Daten, die im Internet gespeichert sind. Was passiert nach dem Tod mit den gespeicherten Informationen, wer kann darauf zugreifen?   Die Verbraucherzentrale zeigt am 18. Juni im Zukunftshaus auf, welche Daten entstehen, wie richtig Vorsorge getroffen wird und was zu tun ist, damit Daten nach dem Tod in die richtigen Hände gelangen. Auch Kundenkonten sind ein Thema: Werden Smartwatch, TV oder Smartphone mit Netz-Verbindung genutzt, wird ein Kundenkonto angelegt und es werden ebenfalls persönliche Daten des Nutzers gespeichert. Der Vortrag ist kostenlos, für bessere Planung wird um Anmeldung gebeten, per Mail an zukunftshaus@stutensee.de.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/verbraucherzentrale-vortrag-digitaler-nachlass/",
   "sources": [
-    "https://meinstutensee.de/termine/"
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Kirche",
     "Bildung",
-    "Spöck",
-    "Blankenloch"
+    "Blankenloch",
+    "Kirche",
+    "Spöck"
   ],
   "recurring_group_id": null
 }

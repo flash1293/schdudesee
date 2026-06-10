@@ -11,9 +11,8 @@
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
-    "Waldstadt",
-    "Literatur",
-    "Kinder"
+    "Kinder",
+    "Waldstadt"
   ],
-  "recurring_group_id": 242503996
+  "recurring_group_id": null
 }
