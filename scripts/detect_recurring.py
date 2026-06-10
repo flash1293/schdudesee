@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Detect recurring events in curated_events and assign recurring_group_id."""
 
+import hashlib
 import sqlite3
 from datetime import datetime, timedelta
 from collections import defaultdict
@@ -74,15 +75,20 @@ def main():
         if pattern is None:
             continue
 
-        group_min_id = min(e[0] for e in events)
+        # Use a stable hash of the group key so recurring_group_id
+        # doesn't change every pipeline run (auto-increment IDs are unstable
+        # after the delete/re-insert cycle in dedup_sql).
+        # Take first 8 bytes of SHA256, mask to signed 64-bit range so the
+        # value always fits in SQLite's signed INTEGER column.
+        group_id = int.from_bytes(hashlib.sha256(group_key.encode()).digest()[:8], "big") & 0x7FFFFFFFFFFFFFFF
         event_ids = [e[0] for e in events]
         placeholders = ",".join("?" for _ in event_ids)
-        c.execute(f"UPDATE curated_events SET recurring_group_id = ? WHERE id IN ({placeholders})", (group_min_id, *event_ids))
+        c.execute(f"UPDATE curated_events SET recurring_group_id = ? WHERE id IN ({placeholders})", (group_id, *event_ids))
 
         recurring_groups_found += 1
         total_events_linked += len(events)
 
-        print(f"  {pattern}: '{group_key}' — {len(events)} events, group_id={group_min_id}")
+        print(f"  {pattern}: '{group_key}' — {len(events)} events, group_id={group_id}")
 
     conn.commit()
     conn.close()
