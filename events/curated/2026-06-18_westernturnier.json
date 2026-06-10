@@ -1,0 +1,18 @@
+{
+  "title": "Westernturnier",
+  "date_start": "2026-06-18",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Reit-, Fahr- und Zuchtverein Weingarten (Baden)",
+  "organizer": "Reit-, Fahr- und Zuchtverein Weingarten (Baden)",
+  "description": "",
+  "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/893/westernturnier",
+  "sources": [
+    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+  ],
+  "tags": [
+    "Sport",
+    "Weingarten"
+  ],
+  "recurring_group_id": null
+}

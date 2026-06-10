@@ -1,20 +1,19 @@
 {
   "title": "Badentreff",
   "date_start": "2026-07-03",
-  "date_end": "2026-07-03",
+  "date_end": "2026-07-05",
   "time_raw": "",
-  "location": "Graben-Neudorf",
-  "organizer": "CVJM Graben-Neudorf",
+  "location": "Karlsdorf-Neuthard",
+  "organizer": "CVJM Weingarten e.V.",
   "description": "",
-  "event_url": "https://www.cvjm-graben-neudorf.de/eventcalendar",
+  "event_url": "https://www.cvjmbaden.de/website/de/cb/erleben/badentreff",
   "sources": [
-    "https://www.cvjm-graben-neudorf.de/eventcalendar",
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
-    "Kirche",
     "Treff",
-    "Graben-Neudorf"
+    "Kirche",
+    "Neuthard"
   ],
   "recurring_group_id": null
 }
