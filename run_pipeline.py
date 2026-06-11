@@ -705,6 +705,83 @@ def tag_untagged(force=False):
     return count
 
 
+def cleanup_raw_duplicates():
+    """Remove duplicate raw_events, keeping only the most complete row per
+    (normalized_title, date_start, source_url) group.
+
+    After dedup_sql() populates raw_to_curated, many raw rows point to the same
+    curated event due to repeated scraping with minor serialisation differences
+    (whitespace, formatting, description tweaks) producing different hashes.
+    This keeps the row with the longest description per group and deletes the rest.
+    """
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+
+    # Get linked raw events with their curated grouping info
+    rows = c.execute("""
+        SELECT r.id, r.title, r.date_start, r.source_url,
+               COALESCE(r.description, '') as desc_text,
+               rtc.curated_id
+        FROM raw_events r
+        JOIN raw_to_curated rtc ON rtc.raw_id = r.id
+    """).fetchall()
+
+    # Group by (curated_id, normalized_title, date_start, source_url)
+    groups = {}
+    for rid, title, ds, src_url, desc, cid in rows:
+        key = (cid, normalize_title(title), ds or "", src_url or "")
+        groups.setdefault(key, []).append((rid, desc))
+
+    delete_ids = set()
+
+    for key, entries in groups.items():
+        if len(entries) <= 1:
+            continue
+        # Sort by description length descending, keep longest, delete rest
+        entries.sort(key=lambda x: len(x[1]), reverse=True)
+        for e in entries[1:]:
+            delete_ids.add(e[0])
+
+    # Also clean up orphan raw events not linked via raw_to_curated
+    orphans = c.execute("""
+        SELECT r.id, r.title, r.date_start, r.source_url, COALESCE(r.description, '')
+        FROM raw_events r
+        WHERE r.id NOT IN (SELECT raw_id FROM raw_to_curated)
+    """).fetchall()
+
+    orphan_groups = {}
+    for rid, title, ds, src_url, desc in orphans:
+        key = (normalize_title(title), ds or "", src_url or "")
+        orphan_groups.setdefault(key, []).append((rid, desc))
+
+    for key, entries in orphan_groups.items():
+        if len(entries) <= 1:
+            continue
+        entries.sort(key=lambda x: len(x[1]), reverse=True)
+        for e in entries[1:]:
+            delete_ids.add(e[0])
+
+    # Execute deletion
+    if delete_ids:
+        delete_list = list(delete_ids)
+        # Delete in batches of 500
+        for i in range(0, len(delete_list), 500):
+            batch = delete_list[i:i+500]
+            placeholders = ",".join("?" for _ in batch)
+            # Remove raw_to_curated entries for deleted raw_ids first (FK-safe)
+            c.execute(f"DELETE FROM raw_to_curated WHERE raw_id IN ({placeholders})", batch)
+            c.execute(f"DELETE FROM raw_events WHERE id IN ({placeholders})", batch)
+
+    conn.commit()
+    deleted_count = len(delete_ids)
+    conn.close()
+    if deleted_count:
+        print(f"  Raw dedup: {deleted_count} duplicate raw events removed", flush=True)
+    else:
+        print(f"  Raw dedup: no duplicates found", flush=True)
+    return deleted_count
+
+
 def migrate_db():
     """Add missing columns to existing DB (safe to run multiple times)."""
     conn = sqlite3.connect(DB)
@@ -840,6 +917,10 @@ if __name__ == "__main__":
     print(f"  Dedup...", end=" ", flush=True)
     curated = dedup_sql()
     print(f"{curated} curated", flush=True)
+
+    print(f"  Cleaning raw duplicates...", end=" ", flush=True)
+    cleanup_raw_duplicates()
+    print(f"done", flush=True)
 
     if args.force_retag:
         print(f"  Force re-tagging all events...", end=" ", flush=True)
