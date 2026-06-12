@@ -764,14 +764,15 @@ async function serveEventPage(env, url) {
   // JSON-LD
   const jsonLd = renderJsonLd([{ ...e, title: row.title, description: row.description }]);
 
+  // OG tags for event detail page
+  const eventUrl = `https://hey-stutensee.de${eventPath(row)}`;
+
   // Breadcrumb JSON-LD
   const breadcrumbJsonLd = renderBreadcrumbJsonLd([
     { name: 'Hey, Stutensee!', url: 'https://hey-stutensee.de/' },
     { name: e.title, url: eventUrl },
   ]);
 
-  // OG tags for event detail page
-  const eventUrl = `https://hey-stutensee.de${eventPath(row)}`;
   const ogTagsHtml = renderOgTags(pageTitle, metaDesc, eventUrl, 'article');
 
   // Build HTML
