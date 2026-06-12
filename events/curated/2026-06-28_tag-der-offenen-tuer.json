@@ -2,11 +2,11 @@
   "title": "Tag der offenen Tür",
   "date_start": "2026-06-28",
   "date_end": null,
-  "time_raw": "11:00-13:00",
-  "location": "Freiwillige Feuerwehr Spöck",
-  "organizer": "Musikverein Harmonie Spöck",
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tFeuerwehrhaus Spöck",
+  "organizer": "Freiwillige Feuerwehr Stutensee Abteilung Spöck",
   "description": "",
-  "event_url": "https://musikverein-spoeck.de/",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2636",
   "sources": [
     "clubs_batch_all",
     "https://stutensee.de/Veranstaltungen"

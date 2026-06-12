@@ -1,0 +1,17 @@
+{
+  "title": "Weihnachtsfeier",
+  "date_start": "2026-12-12",
+  "date_end": "2026-12-12",
+  "time_raw": "",
+  "location": "Pfarrheim St. Bernhard",
+  "organizer": "VdK Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=521",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Neuthard"
+  ],
+  "recurring_group_id": 749485003
+}

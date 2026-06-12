@@ -1,0 +1,18 @@
+{
+  "title": "Wiesenfest",
+  "date_start": "2026-07-04",
+  "date_end": "2026-07-05",
+  "time_raw": "",
+  "location": "Am Pfinzkanal",
+  "organizer": "Musikverein Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=435",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Fest",
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

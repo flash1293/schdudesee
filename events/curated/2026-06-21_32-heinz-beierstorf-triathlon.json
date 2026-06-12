@@ -1,19 +1,18 @@
 {
-  "title": "32. Heinz Beierstorf Triathlon",
+  "title": "32. Heinz-Beierstorf-Triathlon",
   "date_start": "2026-06-21",
-  "date_end": null,
-  "time_raw": "",
-  "location": "Veranstaltungsort:\n\t\tBaggersee - Rad - Lauf - Festhalle",
-  "organizer": "Veranstalter:\n\t\tTurn- und Sportgemeinschaft Blankenloch e.V.",
+  "date_end": "2026-06-21",
+  "time_raw": "08:00",
+  "location": "Baggersee Blankenloch",
+  "organizer": "TSG Blankenloch e.V.",
   "description": "",
-  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2629",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/32-heinz-beierstorf-triathlon-2/",
   "sources": [
-    "clubs_batch_all",
-    "https://stutensee.de/Veranstaltungen"
+    "https://meinstutensee.de/termine/"
   ],
   "tags": [
-    "Blankenloch",
-    "Sport"
+    "Sport",
+    "Blankenloch"
   ],
   "recurring_group_id": null
 }

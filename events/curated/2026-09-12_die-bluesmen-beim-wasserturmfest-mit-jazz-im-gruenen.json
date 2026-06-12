@@ -3,7 +3,7 @@
   "date_start": "2026-09-12",
   "date_end": null,
   "time_raw": "15:00",
-  "location": "",
+  "location": "Bretten",
   "organizer": "",
   "description": "",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34793",
@@ -11,8 +11,9 @@
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
+    "Musik",
     "Fest",
-    "Musik"
+    "Bretten"
   ],
   "recurring_group_id": null
 }

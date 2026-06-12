@@ -1,0 +1,17 @@
+{
+  "title": "Adventsbasar",
+  "date_start": "2026-11-29",
+  "date_end": "2026-11-29",
+  "time_raw": "13:00",
+  "location": "Pfarrheim St. Bernhard",
+  "organizer": "Frauengruppe Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=513",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

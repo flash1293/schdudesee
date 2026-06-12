@@ -1,0 +1,17 @@
+{
+  "title": "Sommerfest",
+  "date_start": "2026-06-28",
+  "date_end": "2026-06-28",
+  "time_raw": "15:00",
+  "location": "Waldsportplatz",
+  "organizer": "Spiel- und Krabelgruppe",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=432",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Fest"
+  ],
+  "recurring_group_id": null
+}

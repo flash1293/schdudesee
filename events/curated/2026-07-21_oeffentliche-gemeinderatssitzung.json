@@ -1,0 +1,18 @@
+{
+  "title": "Öffentliche Gemeinderatssitzung",
+  "date_start": "2026-07-21",
+  "date_end": "2026-07-21",
+  "time_raw": "19:00",
+  "location": "Bruchbühlhalle",
+  "organizer": "Gemeinde Karlsdorf-Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=445",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Politik",
+    "Neuthard"
+  ],
+  "recurring_group_id": null
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Elterngrillen 2026",
+  "date_start": "2026-07-28",
+  "date_end": "2026-07-28",
+  "time_raw": "17:30",
+  "location": "Pfadfinderheim Friedrichstal, Spöcker Weg 2, 76297 Stutensee",
+  "organizer": "BdP Stamm Adler",
+  "description": "In der letzten Gruppenstunde vor den Sommerferien.",
+  "event_url": "https://www.bdp-adler.de/event/elterngrillen/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Kinder",
+    "Essen",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null
+}

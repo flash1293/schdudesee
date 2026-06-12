@@ -1,0 +1,19 @@
+{
+  "title": "Weihnachtsmarkt",
+  "date_start": "2026-11-21",
+  "date_end": "2026-11-22",
+  "time_raw": "",
+  "location": "Vogelpark Neuthard",
+  "organizer": "Vogelschutz- und Zuchtverein Neuthard",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=504",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Fest",
+    "Markt",
+    "Neuthard"
+  ],
+  "recurring_group_id": 1967040943
+}
