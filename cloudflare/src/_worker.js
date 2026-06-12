@@ -368,10 +368,11 @@ function renderOgTags(title, description, url, type = 'website') {
 }
 
 /** Inject SSR content into the HTML template. */
-function injectIntoTemplate(template, { events, page, totalPages, jsonLd, paginationHtml, introHtml, initialData, ogTags }) {
+function injectIntoTemplate(template, { events, page, totalPages, jsonLd, breadcrumbJsonLd, paginationHtml, introHtml, initialData, ogTags }) {
   return template
     .replace('<!--SSR_OG_TAGS-->', ogTags || '')
     .replace('<!--SSR_JSON_LD-->', jsonLd || '')
+    .replace('<!--SSR_BREADCRUMB-->', breadcrumbJsonLd || '')
     .replace('<!--SSR_INTRO-->', introHtml || '')
     .replace('<!--SSR_EVENTS-->', events || '')
     .replace('<!--SSR_PAGINATION-->', paginationHtml || '')
@@ -391,6 +392,13 @@ async function serveSsrPage(env, url) {
 
     // Render pagination links
     const paginationHtml = renderPaginationLinks(result.page, result.totalPages, url.searchParams);
+
+    // Render breadcrumb for listing pages
+    const breadcrumbItems = [{ name: 'Hey, Stutensee!', url: 'https://hey-stutensee.de/' }];
+    if (result.page > 1) {
+      breadcrumbItems.push({ name: `Seite ${result.page}`, url: `https://hey-stutensee.de/?page=${result.page}` });
+    }
+    const breadcrumbJsonLdHtml = renderBreadcrumbJsonLd(breadcrumbItems);
 
     // Render intro text (only on page 1)
     const introHtml = result.page === 1 ? renderIntro() : '';
@@ -445,6 +453,7 @@ async function serveSsrPage(env, url) {
       page: result.page,
       totalPages: result.totalPages,
       jsonLd: jsonLdHtml,
+      breadcrumbJsonLd: breadcrumbJsonLdHtml,
       paginationHtml,
       introHtml,
       initialData,
