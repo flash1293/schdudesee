@@ -305,6 +305,22 @@ function renderJsonLd(events) {
   return `<script type="application/ld+json">${jsonForScriptTag(items.length === 1 ? items[0] : items)}</script>`;
 }
 
+/** Render breadcrumb JSON-LD for a page. */
+function renderBreadcrumbJsonLd(items) {
+  if (!items || items.length === 0) return '';
+  const itemListElement = items.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.name,
+    item: item.url,
+  }));
+  return `<script type="application/ld+json">${jsonForScriptTag({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement,
+  })}</script>`;
+}
+
 /** Render pagination as <a> links for crawlers. */
 function renderPaginationLinks(page, totalPages, params) {
   if (totalPages <= 1) return '';
@@ -739,6 +755,12 @@ async function serveEventPage(env, url) {
   // JSON-LD
   const jsonLd = renderJsonLd([{ ...e, title: row.title, description: row.description }]);
 
+  // Breadcrumb JSON-LD
+  const breadcrumbJsonLd = renderBreadcrumbJsonLd([
+    { name: 'Hey, Stutensee!', url: 'https://hey-stutensee.de/' },
+    { name: e.title, url: eventUrl },
+  ]);
+
   // OG tags for event detail page
   const eventUrl = `https://hey-stutensee.de${eventPath(row)}`;
   const ogTagsHtml = renderOgTags(pageTitle, metaDesc, eventUrl, 'article');
@@ -768,6 +790,7 @@ async function serveEventPage(env, url) {
 <link rel="icon" type="image/png" href="/favicon.png">
 ${ogTagsHtml}
 ${jsonLd}
+${breadcrumbJsonLd}
 <style>
 :root{--bg:#f4f6f8;--text:#111827;--text-muted:#4b5563;--card-bg:#fff;--card-border:#e2e8f0;--primary:#0d3a71;--desc:#4a5568;--tag-org-bg:#fef3c7;--tag-org-text:#92400e;--tag-loc-bg:#ede9fe;--tag-loc-text:#5b21b6;--tag-bg:#fef3c7;--tag-text:#92400e;--footer-text:#4b5563;--imprint-text:#374151;--shadow:0 2px 8px rgba(13,124,102,0.06)}
 html.dark{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--card-border:#334155;--primary:#1e40af;--link:#60a5fa;--link-hover:#93c5fd;--desc:#cbd5e1;--tag-org-bg:#422006;--tag-org-text:#fbbf24;--tag-loc-bg:#1e1b4b;--tag-loc-text:#a78bfa;--tag-bg:#422006;--tag-text:#fbbf24;--footer-text:#94a3b8;--imprint-text:#94a3b8;--shadow:0 2px 8px rgba(0,0,0,0.3)}
