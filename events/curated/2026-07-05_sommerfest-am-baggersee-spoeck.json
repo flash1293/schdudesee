@@ -1,0 +1,18 @@
+{
+  "title": "Sommerfest am Baggersee Spöck",
+  "date_start": "2026-07-05",
+  "date_end": "2026-07-05",
+  "time_raw": "12:00",
+  "location": "Baggersee Spöck",
+  "organizer": "DLRG Ortsgruppe Spöck",
+  "description": "mit dem 4. Spöcker SUP-Rennen",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/sommerfest-am-baggersee-spoeck/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Fest",
+    "Spöck"
+  ],
+  "recurring_group_id": null
+}

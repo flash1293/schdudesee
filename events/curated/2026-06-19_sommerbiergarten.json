@@ -1,0 +1,19 @@
+{
+  "title": "Sommerbiergarten",
+  "date_start": "2026-06-19",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Waldstraße 106, 17-22 Uhr",
+  "organizer": "Büchig(er)leben",
+  "description": "",
+  "event_url": "https://www.buechigerleben.de/",
+  "sources": [
+    "https://meinstutensee.de/termine/",
+    "https://www.buechigerleben.de/"
+  ],
+  "tags": [
+    "Essen",
+    "Büchig"
+  ],
+  "recurring_group_id": null
+}

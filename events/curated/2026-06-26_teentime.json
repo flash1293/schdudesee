@@ -1,0 +1,20 @@
+{
+  "title": "TeenTime",
+  "date_start": "2026-06-26",
+  "date_end": "2026-06-26",
+  "time_raw": "16:30",
+  "location": "Stadtbibliothek Karlsruhe - Amerikanische Bibliothek",
+  "organizer": "Stadtbibliothek Karlsruhe - Amerikanische Bibliothek",
+  "description": "English language event for teens grade 5 and up.",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/teentime-20",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Literatur",
+    "Sport",
+    "Kinder"
+  ],
+  "recurring_group_id": null
+}
