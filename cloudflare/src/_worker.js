@@ -829,12 +829,13 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
 
 /** Update sitemap to include event URLs. */
 async function serveSitemapXml(env) {
-  // Fetch up to 1000 event IDs for the sitemap
+  // Fetch all event IDs for the sitemap. Google supports up to 50,000 URLs per sitemap,
+  // so cap at 50,000 as a safety net.
   let urls = '<url><loc>https://hey-stutensee.de/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>';
 
   try {
     const { results } = await env.STUTENSEE_DB.prepare(
-      `SELECT id, title FROM curated_events WHERE tags != 'blocked' ORDER BY date_start DESC LIMIT 1000`
+      `SELECT id, title FROM curated_events WHERE tags != 'blocked' ORDER BY date_start DESC LIMIT 50000`
     ).all();
 
     for (const row of results) {

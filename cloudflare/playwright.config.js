@@ -18,7 +18,6 @@ export default defineConfig({
       browserName: 'chromium',
       headless: true,
       launchOptions: {
-        executablePath: '/usr/bin/chromium-browser',
         args: ['--no-sandbox', '--disable-gpu', '--disable-setuid-sandbox'],
       },
     },

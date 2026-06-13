@@ -55,7 +55,7 @@ const SAMPLE_EVENTS = [
   },
   {
     title: 'Fußball WM 2026 – Gemeinsam Jubeln',
-    date_start: '2026-06-11',
+    date_start: '2026-06-20',
     date_end: null,
     time_raw: '20:45',
     location: 'Vereinsheim',
