@@ -955,8 +955,8 @@ def load_existing_events_by_source(out_dir):
                 ev = json.load(f)
             for src in ev.get("sources", []):
                 source_events[src].append(ev)
-        except Exception:
-            pass
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"  ⚠️ Could not load {fname} for preservation: {e}", flush=True)
     return source_events
 
 
