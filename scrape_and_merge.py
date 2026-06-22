@@ -1025,8 +1025,6 @@ def main():
 
     all_raw = []
     total_new = 0
-    # Track which source names had errors, so we can preserve their existing events
-    failed_source_names = set()
 
     def scrape_one(name_scraper):
         name, scraper_func = name_scraper
@@ -1046,14 +1044,12 @@ def main():
                 name, src_url, fetched, evts, err = future.result()
                 if err:
                     print(f"  {name}: ERROR: {err}", flush=True)
-                    failed_source_names.add(name)
                 else:
                     total_new += len(evts)
                     all_raw.extend(evts)
                     print(f"  {name}: {fetched} fetched, {len(evts)} new", flush=True)
             except Exception as e:
                 print(f"  {name}: ERROR: {e}", flush=True)
-                failed_source_names.add(name)
 
     for name, url, src_url in optional_sources:
         print(f"  Scraping {name}...", end=" ", flush=True)
@@ -1105,6 +1101,11 @@ def main():
     print(f"  Dedup...", end=" ", flush=True)
     curated = dedup_events(all_raw)
     print(f"{len(curated)} curated", flush=True)
+
+    if re_injected:
+        preserved_survived = sum(1 for ev in curated if ev.get("_preserved"))
+        print(f"  {preserved_survived} of {re_injected} preserved events survived dedup "
+              f"(past events filtered)", flush=True)
 
     print(f"  Tagging...", end=" ", flush=True)
     tagged = tag_events(curated)
