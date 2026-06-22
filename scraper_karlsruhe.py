@@ -405,8 +405,7 @@ def scrape_karlsruhe():
     print("  Fetching Karlsruhe RSS feed...", flush=True)
     rss_content = fetch_url(RSS_URL)
     if not rss_content:
-        print("  Failed to fetch RSS feed!", flush=True)
-        return {"source_url": SOURCE_URL, "events": []}
+        raise Exception(f"Failed to fetch RSS feed at {RSS_URL} (HTTP error or connection failure)")
 
     # Parse RSS XML
     root = ET.fromstring(rss_content)
