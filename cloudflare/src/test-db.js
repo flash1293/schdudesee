@@ -19,7 +19,7 @@ const SAMPLE_EVENTS = [
   },
   {
     title: 'Hope is a dangerous thing mit der Saxofonistin Asy',
-    date_start: '2026-06-15',
+    date_start: '2026-07-15',
     date_end: null,
     time_raw: '20:00',
     location: 'Kulturhaus',
@@ -55,7 +55,7 @@ const SAMPLE_EVENTS = [
   },
   {
     title: 'Fußball WM 2026 – Gemeinsam Jubeln',
-    date_start: '2026-06-20',
+    date_start: '2026-07-20',
     date_end: null,
     time_raw: '20:45',
     location: 'Vereinsheim',

@@ -937,6 +937,29 @@ def write_event_json(event, out_dir):
     return filename
 
 
+def load_existing_events_by_source(out_dir):
+    """Load existing JSON event files and index them by source URL.
+    
+    Returns a dict: source_url -> list of event dicts.
+    Used to preserve events from sources that temporarily fail.
+    """
+    source_events = defaultdict(list)
+    if not os.path.isdir(out_dir):
+        return source_events
+    for fname in os.listdir(out_dir):
+        if not fname.endswith(".json"):
+            continue
+        fpath = os.path.join(out_dir, fname)
+        try:
+            with open(fpath, "r", encoding="utf-8") as f:
+                ev = json.load(f)
+            for src in ev.get("sources", []):
+                source_events[src].append(ev)
+        except (json.JSONDecodeError, OSError) as e:
+            print(f"  ⚠️ Could not load {fname} for preservation: {e}", flush=True)
+    return source_events
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(description="Scrape and merge events into JSON")
@@ -951,6 +974,13 @@ def main():
     print(f"Time: {datetime.now().isoformat()}", flush=True)
     if args.sources:
         print(f"Sources: {args.sources}", flush=True)
+
+    # Load existing events before scraping, so we can preserve data from sources
+    # that fail temporarily (e.g. HTTP 500) instead of purging their events as stale.
+    existing_by_source = load_existing_events_by_source(out_dir)
+    sources_with_prior_events = set(existing_by_source.keys())
+    print(f"  Loaded {sum(len(v) for v in existing_by_source.values())} existing events from "
+          f"{len(sources_with_prior_events)} known sources", flush=True)
 
     sources = [
         ("Official calendar", scrape_official),
@@ -1002,16 +1032,16 @@ def main():
             data = scraper_func()
             for ev in data.get("events", []):
                 ev["_source_url"] = data.get("source_url", "")
-            return name, len(data["events"]), data["events"], None
+            return name, data.get("source_url", ""), len(data["events"]), data["events"], None
         except Exception as e:
-            return name, 0, [], str(e)
+            return name, "", 0, [], str(e)
 
     with ThreadPoolExecutor(max_workers=8) as executor:
         futures = {executor.submit(scrape_one, s): s[0] for s in sources}
         for future in as_completed(futures):
             name = futures[future]
             try:
-                name, fetched, evts, err = future.result()
+                name, src_url, fetched, evts, err = future.result()
                 if err:
                     print(f"  {name}: ERROR: {err}", flush=True)
                 else:
@@ -1035,11 +1065,47 @@ def main():
         all_raw.append(ev)
     print(f"{len(MANUAL_EVENTS)} injected", flush=True)
 
+    # Preserve events from sources that returned no data this run (e.g. temporary outage).
+    # Collect source URLs from newly scraped events
+    new_source_urls = set()
+    for ev in all_raw:
+        url = ev.get("_source_url", "")
+        if url:
+            new_source_urls.add(url)
+
+    # Re-inject existing events from sources that had prior events but didn't
+    # return any data this run. Past events will be filtered out by dedup_events.
+    re_injected = 0
+    for src_url, events in existing_by_source.items():
+        if src_url not in new_source_urls:
+            for ev in events:
+                # Set _source_url for compatibility with merge logic (which splits on comma)
+                if not ev.get("_source_url") and ev.get("sources"):
+                    ev["_source_url"] = ",".join(ev["sources"])
+                ev["_preserved"] = True
+                all_raw.append(ev)
+                re_injected += 1
+
+    if re_injected:
+        preserved_sources = set()
+        for ev in all_raw:
+            if ev.get("_preserved") and ev.get("_source_url"):
+                for s in ev["_source_url"].split(","):
+                    if s.strip():
+                        preserved_sources.add(s.strip())
+        print(f"  Preserved {re_injected} events from {len(preserved_sources)} source(s) "
+              f"that returned no new data", flush=True)
+
     print(f"  Total raw: {len(all_raw)}", flush=True)
 
     print(f"  Dedup...", end=" ", flush=True)
     curated = dedup_events(all_raw)
     print(f"{len(curated)} curated", flush=True)
+
+    if re_injected:
+        preserved_survived = sum(1 for ev in curated if ev.get("_preserved"))
+        print(f"  {preserved_survived} of {re_injected} preserved events survived dedup "
+              f"(past events filtered)", flush=True)
 
     print(f"  Tagging...", end=" ", flush=True)
     tagged = tag_events(curated)
