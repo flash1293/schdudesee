@@ -1,0 +1,19 @@
+{
+  "title": "Orgelkino",
+  "date_start": "2026-07-04",
+  "date_end": "2026-07-04",
+  "time_raw": "20:30",
+  "location": "Kirche St. Bernhard",
+  "organizer": "Kantorat St. Bernhard",
+  "description": "Stummfilmimprovisation über Buster Keaton \"The General\" mit Prof. Johannes Mayr",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/orgelkino",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik",
+    "Kultur"
+  ],
+  "recurring_group_id": null
+}

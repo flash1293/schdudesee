@@ -1,0 +1,18 @@
+{
+  "title": "Langer Kammermusikabend",
+  "date_start": "2026-07-06",
+  "date_end": "2026-07-06",
+  "time_raw": "18:00",
+  "location": "Lukaskirche",
+  "organizer": "Hochschule für Musik",
+  "description": "Musik des 17. und 18. Jahrhunderts",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/langer_kammermusikabend",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null
+}

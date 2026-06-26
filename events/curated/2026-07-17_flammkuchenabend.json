@@ -1,0 +1,19 @@
+{
+  "title": "Flammkuchenabend",
+  "date_start": "2026-07-17",
+  "date_end": null,
+  "time_raw": ", 18:00 Uhr",
+  "location": "CVJM-Marienhof",
+  "organizer": "CVJM Weingarten e.V.",
+  "description": "",
+  "event_url": "https://www.cvjm-marienhof.de/website/de/marienhof/angebote/feste/flammkuchenabend",
+  "sources": [
+    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+  ],
+  "tags": [
+    "Essen",
+    "Kirche",
+    "Weingarten"
+  ],
+  "recurring_group_id": null
+}

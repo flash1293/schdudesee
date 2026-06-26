@@ -1,0 +1,19 @@
+{
+  "title": "Spiel.Freude.Pur",
+  "date_start": "2026-07-05",
+  "date_end": "2026-07-05",
+  "time_raw": "11:00",
+  "location": "Hochschule für Musik, Velte-Saal",
+  "organizer": "Hochschule für Musik",
+  "description": "Kammermusik-Matinee",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/spielfreudepur",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik",
+    "Kinder"
+  ],
+  "recurring_group_id": null
+}

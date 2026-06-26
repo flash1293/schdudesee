@@ -1,0 +1,18 @@
+{
+  "title": "Kirche Kunterbunt",
+  "date_start": "2026-09-13",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Gemeindehaus Eggenstein",
+  "organizer": "Evangelische Kirchengemeinde Eggenstein-Leopoldshafen",
+  "description": "Kirche Kunterbunt",
+  "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1901",
+  "sources": [
+    "https://www.egg-leo.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Kirche",
+    "Eggenstein"
+  ],
+  "recurring_group_id": null
+}

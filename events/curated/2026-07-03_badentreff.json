@@ -8,6 +8,7 @@
   "description": "",
   "event_url": "https://www.cvjm-graben-neudorf.de/eventcalendar",
   "sources": [
+    "clubs_batch_all",
     "https://www.cvjm-graben-neudorf.de/eventcalendar",
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],

@@ -1,0 +1,18 @@
+{
+  "title": "Rigoletto",
+  "date_start": "2026-07-01",
+  "date_end": "2026-07-01",
+  "time_raw": "19:30",
+  "location": "Badisches Staatstheater, Großes Haus",
+  "organizer": "Badisches Staatstheater Karlsruhe",
+  "description": "Melodramma in drei Akten von Giuseppe Verdi",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/rigoletto",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null
+}
