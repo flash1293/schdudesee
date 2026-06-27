@@ -1,0 +1,18 @@
+{
+  "title": "IMWI Institutsabend",
+  "date_start": "2026-07-10",
+  "date_end": "2026-07-10",
+  "time_raw": "19:30",
+  "location": "Hochschule für Musik Karlsruhe, CampusOne, Wolfgang-Rihm-Forum",
+  "organizer": "Hochschule für Musik",
+  "description": "Konzert",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/imwi_institutsabend",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null
+}
