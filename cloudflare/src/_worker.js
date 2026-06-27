@@ -1,4 +1,4 @@
-import { ensureAnalyticsTable, logRequest } from './_analytics.js';
+import { ensureAnalyticsTable, logRequest, classifyUserAgent } from './_analytics.js';
 
 // ── SSR Constants ─────────────────────────────────────────────────────
 const THEME_KEYS = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','Markt','Workshop','Bildung','Natur','Senioren','Digital','Handwerk','Essen','Treff','Politik','Verein','Wohltätigkeit','Sonstiges']);
@@ -993,12 +993,62 @@ async function serveReqStats(env) {
     'SELECT path, COUNT(*) as count, COALESCE(ROUND(AVG(latency_ms),1),0) as avg_latency, COALESCE(SUM(response_size),0) as total_bytes FROM request_log GROUP BY path ORDER BY count DESC LIMIT 20'
   ).all();
   const recent = await env.REQUEST_DB.prepare(
-    'SELECT timestamp, path, status, response_size, latency_ms, search_query, tags_filter, organizer_filter, location_filter, date_from FROM request_log ORDER BY id DESC LIMIT 50'
+    'SELECT timestamp, path, status, response_size, latency_ms, search_query, tags_filter, organizer_filter, location_filter, date_from, user_agent FROM request_log ORDER BY id DESC LIMIT 50'
   ).all();
+
+  // Classify recent entries by User-Agent
+  let browser = 0, bot = 0, unknown = 0, empty = 0;
+  for (const r of recent.results) {
+    const cat = classifyUserAgent(r.user_agent);
+    if (cat === 'browser') browser++;
+    else if (cat === 'bot') bot++;
+    else if (cat === 'unknown') unknown++;
+    else empty++;
+  }
+
+  // Lifetime breakdown using simple SQL patterns (no regex needed)
+  let uaBreakdown = { browser, bot, unknown, empty, total: recent.results.length };
+  try {
+    const totalsUa = await env.REQUEST_DB.prepare(
+      `SELECT COUNT(*) as total FROM request_log`
+    ).first();
+    // Use SQL LIKE patterns for the most common cases — faster than JS for large tables
+    const browserCount = await env.REQUEST_DB.prepare(
+      `SELECT COUNT(*) as c FROM request_log WHERE user_agent LIKE '%Mozilla%'`
+    ).first();
+    const botCount = await env.REQUEST_DB.prepare(
+      `SELECT COUNT(*) as c FROM request_log WHERE user_agent IS NOT NULL AND user_agent != '' AND (
+         user_agent LIKE '%curl%' OR user_agent LIKE '%wget%' OR user_agent LIKE '%python%'
+         OR user_agent LIKE '%Go-http-client%' OR user_agent LIKE '%bot%'
+         OR user_agent LIKE '%Bot%' OR user_agent LIKE '%crawler%'
+         OR user_agent LIKE '%spider%' OR user_agent LIKE '%scanner%'
+         OR user_agent LIKE '%Cloudflare%'
+       )`
+    ).first();
+    const emptyCount = await env.REQUEST_DB.prepare(
+      `SELECT COUNT(*) as c FROM request_log WHERE user_agent IS NULL OR user_agent = ''`
+    ).first();
+    const browserVal = browserCount.c || 0;
+    const botVal = botCount.c || 0;
+    const emptyVal = emptyCount.c || 0;
+    const totalVal = totalsUa.total || 0;
+    uaBreakdown = {
+      browser: browserVal,
+      bot: botVal,
+      unknown: Math.max(0, totalVal - browserVal - botVal - emptyVal),
+      empty: emptyVal,
+      total: totalVal,
+    };
+  } catch (err) {
+    // user_agent column may not exist yet (migration pending) — fall back to recent-only breakdown
+    console.error('Lifetime UA breakdown failed:', err.message);
+  }
+
   return json({
     totals: { total: totals.total, total_bytes: totals.total_bytes, avg_latency: totals.avg_latency },
     by_path: byPath.results,
     recent: recent.results,
+    user_agent_breakdown: uaBreakdown,
   });
 }
 

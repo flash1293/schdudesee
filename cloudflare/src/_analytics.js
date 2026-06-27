@@ -2,7 +2,7 @@
  * Request analytics module for was-geht-stutensee.de
  *
  * Logs basic request metrics to a separate D1 database.
- * No personal data (no IP, no user-agent, no browser info).
+ * Only stores User-Agent for bot/real-user classification — no IPs, no cookies.
  *
  * Schema:
  *   request_log (
@@ -13,6 +13,7 @@
  *     status INTEGER,                    -- HTTP status code
  *     response_size INTEGER,             -- bytes
  *     latency_ms REAL,                   -- milliseconds
+ *     user_agent TEXT,                   -- User-Agent header (for bot/real classification)
  *     search_query TEXT,                 -- ?search=... (for /api/list)
  *     tags_filter TEXT,                  -- ?tag=... (comma-separated)
  *     organizer_filter TEXT,             -- ?organizer=...
@@ -30,6 +31,7 @@ const SCHEMA_TABLE = `
     status INTEGER,
     response_size INTEGER,
     latency_ms REAL,
+    user_agent TEXT,
     search_query TEXT,
     tags_filter TEXT,
     organizer_filter TEXT,
@@ -43,6 +45,18 @@ const SCHEMA_INDEX = `
 `;
 
 /**
+ * Migrate existing tables: add user_agent column if missing.
+ */
+export async function migrateAnalyticsTable(env) {
+  if (!env.REQUEST_DB) return;
+  try {
+    await env.REQUEST_DB.prepare('ALTER TABLE request_log ADD COLUMN user_agent TEXT').run();
+  } catch (err) {
+    // Column already exists or other benign error — ignore
+  }
+}
+
+/**
  * Ensure the analytics table exists.
  */
 export async function ensureAnalyticsTable(env) {
@@ -51,9 +65,43 @@ export async function ensureAnalyticsTable(env) {
     // Run schema statements separately (D1 doesn't support multi-statement in one prepare)
     await env.REQUEST_DB.prepare(SCHEMA_TABLE).run();
     await env.REQUEST_DB.prepare(SCHEMA_INDEX).run();
+    await migrateAnalyticsTable(env);
   } catch (err) {
     console.error('Analytics DB init failed:', err.message);
   }
+}
+
+/**
+ * Classify a User-Agent string into a category.
+ * Only uses the UA string — no active tracking, no cookies, no IPs.
+ */
+export function classifyUserAgent(ua) {
+  if (!ua || ua.trim() === '') return 'empty';
+
+  const u = ua.toLowerCase();
+
+  // Known bot/crawler patterns
+  const botPatterns = [
+    'curl', 'wget', 'python-requests', 'python/',
+    'go-http-client', 'okhttp', 'java/',
+    'bot', 'crawler', 'spider', 'scanner', 'crawling',
+    'googlebot', 'bingbot', 'yahoo! slurp', 'duckduckbot',
+    'baiduspider', 'yandexbot', 'facebookexternalhit',
+    'slackbot', 'discordbot', 'twitterbot',
+    'ahrefsbot', 'semrushbot', 'mj12bot', 'dotbot',
+    'cloudflare-alwaysonline', 'cloudflare-healthchecks',
+  ];
+  for (const pattern of botPatterns) {
+    if (u.includes(pattern)) return 'bot';
+  }
+
+  // Known real browser indicators
+  const browserPatterns = ['mozilla', 'chrome', 'safari', 'firefox', 'edge', 'opr/'];
+  for (const pattern of browserPatterns) {
+    if (u.includes(pattern)) return 'browser';
+  }
+
+  return 'unknown';
 }
 
 /**
@@ -67,6 +115,9 @@ export async function logRequest(env, request, response, startTime) {
   const latencyMs = (Date.now() - startTime);
   const contentLength = response.headers.get('content-length');
   const responseSize = contentLength ? parseInt(contentLength, 10) : 0;
+
+  // Only store User-Agent for classification — no IP, no cookies
+  const userAgent = request.headers.get('User-Agent') || null;
 
   const params = url.searchParams;
   let searchQuery = null;
@@ -88,8 +139,8 @@ export async function logRequest(env, request, response, startTime) {
 
   try {
     await env.REQUEST_DB.prepare(
-      `INSERT INTO request_log (timestamp, path, method, status, response_size, latency_ms, search_query, tags_filter, organizer_filter, location_filter, date_from)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
+      `INSERT INTO request_log (timestamp, path, method, status, response_size, latency_ms, user_agent, search_query, tags_filter, organizer_filter, location_filter, date_from)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
     ).bind(
       new Date().toISOString(),
       url.pathname,
@@ -97,6 +148,7 @@ export async function logRequest(env, request, response, startTime) {
       response.status,
       responseSize,
       latencyMs,
+      userAgent,
       searchQuery,
       tagsFilter,
       organizerFilter,
