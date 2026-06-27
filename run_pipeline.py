@@ -796,11 +796,62 @@ def migrate_db():
     conn.close()
 
 
+def export_to_json():
+    """Export curated DB to JSON files and commit+push to trigger deploy."""
+    print(f"  Exporting to JSON...", end=" ", flush=True)
+    try:
+        import subprocess, sys
+        result = subprocess.run([sys.executable, "export_db_to_json.py"], capture_output=True, text=True, cwd=os.path.dirname(os.path.abspath(__file__)) or ".")
+        if result.returncode != 0:
+            print(f"ERROR: {result.stderr.strip()}", flush=True)
+            return False
+        print(f"done", flush=True)
+        return True
+    except Exception as e:
+        print(f"ERROR: {e}", flush=True)
+        return False
+
+
+def commit_and_push(summary_line):
+    """Commit pipeline results and push to origin/main to trigger deployment."""
+    import subprocess, os
+    repo_dir = os.path.dirname(os.path.abspath(__file__)) or "."
+
+    # Check if there are changes
+    result = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, cwd=repo_dir)
+    if not result.stdout.strip():
+        print(f"  No changes to commit.", flush=True)
+        return True
+
+    # Stage all changes
+    r = subprocess.run(["git", "add", "-A"], capture_output=True, text=True, cwd=repo_dir)
+    if r.returncode != 0:
+        print(f"  git add failed: {r.stderr.strip()}", flush=True)
+        return False
+
+    # Commit
+    r = subprocess.run(["git", "commit", "-m", summary_line], capture_output=True, text=True, cwd=repo_dir)
+    if r.returncode != 0:
+        print(f"  git commit failed: {r.stderr.strip()}", flush=True)
+        return False
+    print(f"  Committed: {summary_line}", flush=True)
+
+    # Push
+    r = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, cwd=repo_dir)
+    if r.returncode != 0:
+        print(f"  git push failed: {r.stderr.strip()}", flush=True)
+        print(f"  ⚠️ Please push manually: git push origin main", flush=True)
+        return False
+    print(f"  Pushed to origin/main ✅", flush=True)
+    return True
+
+
 if __name__ == "__main__":
-    import argparse
+    import argparse, subprocess, os
     parser = argparse.ArgumentParser(description="Stutensee Events Pipeline")
     parser.add_argument("--sources", help="Comma-separated source names to run (default: all)")
     parser.add_argument("--force-retag", action="store_true", help="Re-tag ALL curated events, not just untagged ones. Useful after updating tagging logic.")
+    parser.add_argument("--no-push", action="store_true", help="Skip auto-commit and push (useful for testing)")
     args = parser.parse_args()
 
     print("Stutensee Events Pipeline", flush=True)
@@ -940,4 +991,16 @@ if __name__ == "__main__":
     recurring = conn.execute("SELECT COUNT(*) FROM curated_events WHERE recurring_group_id IS NOT NULL").fetchone()[0]
     conn.close()
     print(f"\nSummary: {raw} raw → {curated} curated, {tagged} tagged, {recurring} recurring", flush=True)
-    print(f"Done. Start server: python3 server.py", flush=True)
+    print(f"Done. Exporting and pushing to GitHub...", flush=True)
+
+    # Auto-export to JSON and push to GitHub to trigger deploy
+    if not args.no_push:
+        export_to_json()
+        today = datetime.now().strftime("%Y-%m-%d")
+        summary = f"Pipeline run {today} — curated {curated}, {tagged} tagged, {recurring} recurring"
+        commit_and_push(summary)
+        print(f"Deploy workflow should trigger automatically. 🐴", flush=True)
+    else:
+        print(f"Skipped push (--no-push flag). Run export_db_to_json.py + git push manually.", flush=True)
+
+    print(f"\nDone. Start server: python3 server.py", flush=True)
