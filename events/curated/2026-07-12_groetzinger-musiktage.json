@@ -1,18 +1,19 @@
 {
   "title": "Grötzinger Musiktage",
-  "date_start": "2026-07-05",
-  "date_end": "2026-07-05",
+  "date_start": "2026-07-12",
+  "date_end": "2026-07-12",
   "time_raw": "19:00",
-  "location": "Begegnungsstätte Karlsruhe-Grötzingen",
+  "location": "Grötzingen, Martin-Luther-Haus",
   "organizer": "Grötzinger Musiktage / Klanglandschaft Baden-Württemberg e.V.",
-  "description": "Klaviertrio",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/grotzinger_musiktage-1",
+  "description": "Fichtenbaum & Palme",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/grotzinger_musiktage-2",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
     "Karlsruhe-Innenstadt",
-    "Musik"
+    "Musik",
+    "Natur"
   ],
   "recurring_group_id": 1950187166
 }

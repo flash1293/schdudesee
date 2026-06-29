@@ -1,9 +1,9 @@
 {
-  "title": "Gottesdienst zum Plätzlefest",
-  "date_start": "2026-06-28",
-  "date_end": "2026-06-28",
-  "time_raw": "10:30",
-  "location": "Aufgrund der Hitze in der ev. Kirche",
+  "title": "Gottesdienst (Ev. Kirche Graben)",
+  "date_start": "2026-07-26",
+  "date_end": "2026-07-26",
+  "time_raw": "10:00",
+  "location": "Ev. Kirche Graben",
   "organizer": "CVJM Graben-Neudorf",
   "description": "",
   "event_url": "https://www.cvjm-graben-neudorf.de/eventcalendar",
@@ -12,8 +12,7 @@
   ],
   "tags": [
     "Kirche",
-    "Fest",
     "Graben-Neudorf"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": 1964141340
 }
