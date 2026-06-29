@@ -836,14 +836,20 @@ def commit_and_push(summary_line):
         return False
     print(f"  Committed: {summary_line}", flush=True)
 
-    # Push
-    r = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, cwd=repo_dir)
-    if r.returncode != 0:
-        print(f"  git push failed: {r.stderr.strip()}", flush=True)
-        print(f"  ⚠️ Please push manually: git push origin main", flush=True)
-        return False
-    print(f"  Pushed to origin/main ✅", flush=True)
-    return True
+    # Push with retry (up to 3 attempts)
+    import time
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        r = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, cwd=repo_dir)
+        if r.returncode == 0:
+            print(f"  Pushed to origin/main ✅", flush=True)
+            return True
+        if attempt < max_retries:
+            print(f"  git push attempt {attempt} failed, retrying in 5s...", flush=True)
+            time.sleep(5)
+    print(f"  git push failed after {max_retries} attempts: {r.stderr.strip()}", flush=True)
+    print(f"  ⚠️ Please push manually: git push origin main", flush=True)
+    return False
 
 
 if __name__ == "__main__":
