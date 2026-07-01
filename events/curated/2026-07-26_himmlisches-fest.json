@@ -3,15 +3,16 @@
   "date_start": "2026-07-26",
   "date_end": null,
   "time_raw": "15:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Stadtpark Bretten",
+  "organizer": "Stadt Bretten, Ordnungsamt",
+  "description": ":\nSonntag, 26. Juli 2026 - 15:00\n:\nStadtpark Bretten\n:\nStadt Bretten, Ordnungsamt\nDas Café International feiert in Kooperation mit dem Runden Tisch für Integration der Stadt Bretten am Sonntag, 26. Juli, wieder ein „Himmlisches Fest für Groß und Klein“. Es findet ab 15 Uhr im Stadtpark Bretten statt.\nMit dem „Himmlischen Fest“ setzt das Café International und der Runde Tisch Integration unter dem Motto „Bretten bleibt bunt“ einen Impuls zum guten Miteinander aller Nationen in der Stadt Bretten. Gemeinsam unter freiem Himmel können Kinder und ihre Eltern spielen, Spaß haben, Musik hören, Zusammensitzen und neue Freundschaften schließen.\nFür Verpflegung ist gesorgt. Es werden frische Waffeln und Getränke zum Selbstkostenpreis angeboten. Auch gibt es wieder ein „Bring was-nimm-was-Buffet“ mit verschiedenen, oft auch internationalen Snacks bzw. Fingerfood. Beiträge zum Buffet sind herzlich willkommen und können ab 15 Uhr an der Stadtparkhalle abgegeben werden.\nAb 17:30 Uhr sorgt die Band „Dixielirium“ für gute Stimmung bei Besuchern jeden Alters.\nBei schlechtem Wetter findet das Fest in der Stadtparkhalle statt.",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34807",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Fest",
+    "Musik",
+    "Kinder",
     "Bretten"
   ],
   "recurring_group_id": null

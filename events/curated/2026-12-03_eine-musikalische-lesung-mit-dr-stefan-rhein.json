@@ -1,0 +1,19 @@
+{
+  "title": "Eine musikalische Lesung mit Dr. Stefan Rhein",
+  "date_start": "2026-12-03",
+  "date_end": null,
+  "time_raw": "19:00",
+  "location": "Bretten",
+  "organizer": "",
+  "description": "",
+  "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34286",
+  "sources": [
+    "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
+  ],
+  "tags": [
+    "Musik",
+    "Kultur",
+    "Bretten"
+  ],
+  "recurring_group_id": null
+}

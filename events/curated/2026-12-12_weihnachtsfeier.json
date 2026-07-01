@@ -1,17 +1,18 @@
 {
   "title": "Weihnachtsfeier",
   "date_start": "2026-12-12",
-  "date_end": "2026-12-12",
+  "date_end": null,
   "time_raw": "",
-  "location": "Pfarrheim St. Bernhard",
-  "organizer": "VdK Neuthard",
+  "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
+  "organizer": "Gesangverein &quot;Concordia&quot; 1884 Blankenloch e.V.",
   "description": "",
-  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=521",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2837",
   "sources": [
+    "https://stutensee.de/Veranstaltungen",
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
-    "Neuthard"
+    "Blankenloch"
   ],
   "recurring_group_id": null
 }

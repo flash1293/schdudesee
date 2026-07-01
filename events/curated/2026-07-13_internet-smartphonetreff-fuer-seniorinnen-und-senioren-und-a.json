@@ -3,16 +3,16 @@
   "date_start": "2026-07-13",
   "date_end": null,
   "time_raw": "17:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Familienzentrum Drachenburg, Anne-Frank-Str. 38, 75015 Bretten",
+  "organizer": "Seniorenrat Bretten",
+  "description": ":\nMontag, 13. Juli 2026 - 17:00\n:\nFamilienzentrum Drachenburg, Anne-Frank-Str. 38, 75015 Bretten\n:\nSeniorenrat Bretten",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34626",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
+    "Kinder",
     "Senioren",
-    "Digital",
     "Bretten"
   ],
   "recurring_group_id": 1646517961

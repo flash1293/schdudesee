@@ -1,0 +1,19 @@
+{
+  "title": "Adventsfest",
+  "date_start": "2026-12-11",
+  "date_end": null,
+  "time_raw": "",
+  "location": "",
+  "organizer": "Büchig(Er)leben",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2836",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen",
+    "https://www.buechigerleben.de/"
+  ],
+  "tags": [
+    "Fest",
+    "Büchig"
+  ],
+  "recurring_group_id": null
+}

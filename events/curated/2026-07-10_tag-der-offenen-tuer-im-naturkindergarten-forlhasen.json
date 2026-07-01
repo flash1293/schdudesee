@@ -1,19 +1,19 @@
 {
   "title": "Tag der offenen Tür im Naturkindergarten Forlhasen",
   "date_start": "2026-07-10",
-  "date_end": "2026-07-10",
-  "time_raw": "16:00",
-  "location": "Naturkindergarten Friedrichstal",
-  "organizer": "Naturkindergarten Forlhasen",
-  "description": "",
-  "event_url": "https://www.meinstutensee.de/veranstaltungen/tag-der-offenen-tuer-im-naturkindergarten-forlhasen/",
+  "date_end": null,
+  "time_raw": "16:00 - 17:30 Uhr",
+  "location": "Veranstaltungsort:\n\t\tAm Waldfriedhof 1a, zwischen Waldfriedhof und Gillerdornhütte",
+  "organizer": "Städt. Naturkindergarten Forlhasen",
+  "description": "1 Jahr Forlhasen",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2844",
   "sources": [
-    "https://meinstutensee.de/termine/"
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Kinder",
-    "Natur",
-    "Friedrichstal"
+    "Natur"
   ],
   "recurring_group_id": null
 }

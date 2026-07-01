@@ -3,14 +3,16 @@
   "date_start": "2026-07-04",
   "date_end": null,
   "time_raw": "13:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Gerberhaus",
+  "organizer": "Stadt Bretten, Stadtmuseum",
+  "description": ":\nSamstag, 4. Juli 2026 - 13:00\n:\nGerberhaus\n:\nStadt Bretten, Stadtmuseum\nHerzliche Einladung zum Empfang bei Wein und Käse im Gerberhaus mit dem Hauptmann Marsilius von Reiffenberg und seiner Schweizer Garde. Musikalisch wird die Veranstaltung durch die Gruppe Hypokrass umrahmt. Der Eintritt ist frei.",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34279",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
+    "Musik",
+    "Kultur",
     "Bretten"
   ],
   "recurring_group_id": null
