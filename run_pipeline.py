@@ -801,7 +801,7 @@ def export_to_json():
     print(f"  Exporting to JSON...", end=" ", flush=True)
     try:
         import subprocess, sys
-        result = subprocess.run([sys.executable, "export_db_to_json.py"], capture_output=True, text=True, cwd=os.path.dirname(os.path.abspath(__file__)) or ".")
+        result = subprocess.run([sys.executable, "scripts/export_db_to_json.py"], capture_output=True, text=True, cwd=os.path.dirname(os.path.abspath(__file__)) or ".")
         if result.returncode != 0:
             print(f"ERROR: {result.stderr.strip()}", flush=True)
             return False
