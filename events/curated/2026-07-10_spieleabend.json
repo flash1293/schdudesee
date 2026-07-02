@@ -1,13 +1,14 @@
 {
   "title": "Spieleabend",
   "date_start": "2026-07-10",
-  "date_end": null,
-  "time_raw": "19:00 - 21:00 Uhr",
-  "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
-  "organizer": "KulturRaum Regenbogen im BZ Regenbogen",
-  "description": "",
-  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2707",
+  "date_end": "2026-07-10",
+  "time_raw": "19:00",
+  "location": "Begegnungszentrum Regenbogen Spöck",
+  "organizer": "KulturRaum Regenbogen",
+  "description": "Verschiedene Brett-, Karten- und Würfelspiele warten auf die Besucher. Gerne dürfen auch eigene Spiele mitgebracht werden.   Keine Anmeldung notwendig.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/spieleabend/",
   "sources": [
+    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [

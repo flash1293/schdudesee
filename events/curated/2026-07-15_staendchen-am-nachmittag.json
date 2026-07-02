@@ -1,0 +1,18 @@
+{
+  "title": "Ständchen am Nachmittag",
+  "date_start": "2026-07-15",
+  "date_end": "2026-07-15",
+  "time_raw": "17:00",
+  "location": "Badische Landesbibliothek",
+  "organizer": "Hochschule für Musik",
+  "description": "Mittwochs um 5",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/standchen_am_nachmittag",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null
+}

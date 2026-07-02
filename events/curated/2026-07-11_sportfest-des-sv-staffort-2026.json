@@ -8,11 +8,15 @@
   "description": "Der SV Staffort lädt zu einem abwechslungsreichen Sportfest-Wochenende mit Sport, Musik und Unterhaltung für die ganze Familie ein.\nSamstag\nAb 17:00 Uhr starten das AH-Kleinfeldturnier sowie das Elfmeterschießen für Freizeitmannschaften. Am Abend sorgt ab 19:30 Uhr Livemusik mit den Bands Black Screws und Trash für beste Stimmung.\nSonntag\nDer Tag beginnt ab 9:00 Uhr mit einem Frühstück. Außerdem erwarten die Besucher Pilates und Faszientraining auf dem Sportplatz sowie ein Oldtimer- und Youngtimertreffen. Um 11:00 Uhr zeigt die Capoeira-Gruppe ihr Können. Ab 14:00 Uhr präsentiert sich die Turnabteilung des SV Staffort. Um 15:00 Uhr steht der Stutenseepokal auf dem Programm.",
   "event_url": "https://stutenseekinderkalender.de/event/sportfest-des-sv-staffort-2026/",
   "sources": [
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen",
     "https://stutenseekinderkalender.de"
   ],
   "tags": [
-    "Sport",
+    "Büchig",
+    "Fest",
     "Musik",
+    "Sport",
     "Staffort"
   ],
   "recurring_group_id": null

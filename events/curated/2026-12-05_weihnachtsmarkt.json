@@ -8,12 +8,14 @@
   "description": "",
   "event_url": "https://www.tv-friedrichstal.de",
   "sources": [
-    "clubs_batch_all"
+    "clubs_batch_all",
+    "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen",
+    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
     "Fest",
-    "Markt",
-    "Friedrichstal"
+    "Friedrichstal",
+    "Markt"
   ],
-  "recurring_group_id": 1967040943
+  "recurring_group_id": 6155830691125681892
 }
