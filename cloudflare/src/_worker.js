@@ -44,6 +44,11 @@ async function routeRequest(request, env) {
     const img = Uint8Array.from(atob(faviconB64), c => c.charCodeAt(0));
     return new Response(img, { headers: { 'content-type': 'image/png', 'cache-control': 'public, max-age=86400' } });
   }
+  // Redirect /favicon.ico to /favicon.png (browser convention)
+  if (url.pathname === '/favicon.ico') {
+    return new Response(null, { status: 301, headers: { 'location': '/favicon.png', 'cache-control': 'public, max-age=31536000' } });
+  }
+
   // Serve app.*.js (hashed) or app.js with long cache for hashed, short for unhashed
   if ((url.pathname === '/app.js' || /^\/app\.[a-f0-9]+\.js$/.test(url.pathname)) && typeof appJs !== 'undefined' && appJs) {
     const isHashed = /^\/app\.[a-f0-9]+\.js$/.test(url.pathname);
