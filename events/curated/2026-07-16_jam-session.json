@@ -1,0 +1,18 @@
+{
+  "title": "Jam-Session",
+  "date_start": "2026-07-16",
+  "date_end": "2026-07-16",
+  "time_raw": "20:00",
+  "location": "Kulturküche Karlsruhe",
+  "organizer": "Kulturküche Karlsruhe",
+  "description": "Instrumente mitbringen & Spaß haben!",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/jam_session-13",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null
+}

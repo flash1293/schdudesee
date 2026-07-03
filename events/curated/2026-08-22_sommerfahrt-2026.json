@@ -1,0 +1,15 @@
+{
+  "title": "Sommerfahrt 2026",
+  "date_start": "2026-08-22",
+  "date_end": "2026-08-23",
+  "time_raw": "09:00",
+  "location": "Baden-Württemberg",
+  "organizer": "BdP Stamm Adler",
+  "description": "Weitere Infos folgen …",
+  "event_url": "https://www.bdp-adler.de/event/sommerfahrt/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [],
+  "recurring_group_id": null
+}

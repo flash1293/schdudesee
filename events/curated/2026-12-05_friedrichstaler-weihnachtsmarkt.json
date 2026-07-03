@@ -1,0 +1,20 @@
+{
+  "title": "Friedrichstaler Weihnachtsmarkt",
+  "date_start": "2026-12-05",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tMarktplatz",
+  "organizer": "Veranstalter:\n\t\tOrtsverwaltung Friedrichstal",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1812",
+  "sources": [
+    "clubs_batch_all",
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Fest",
+    "Friedrichstal",
+    "Markt"
+  ],
+  "recurring_group_id": null
+}
