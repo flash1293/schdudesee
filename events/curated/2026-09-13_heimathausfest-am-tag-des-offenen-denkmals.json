@@ -8,14 +8,11 @@
   "description": "Heimathausfest am Tag des offenen Denkmals, Ankerberg 8,",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1892",
   "sources": [
-    "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen",
-    "https://www.egg-leo.de/Veranstaltungen",
-    "https://www.karlsdorf-neuthard.de/eventcalendar"
+    "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [
-    "Fest",
     "Kultur",
-    "Neuthard"
+    "Fest"
   ],
   "recurring_group_id": null
 }

@@ -1,16 +1,18 @@
 {
-  "title": "Käpten Knitterbart",
-  "date_start": "2026-10-18",
+  "title": "Weihnachtsmarkt in Diedelsheim",
+  "date_start": "2026-12-05",
   "date_end": null,
-  "time_raw": "15:00",
+  "time_raw": "14:00",
   "location": "Bretten",
   "organizer": "",
   "description": "",
-  "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34746",
+  "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/33759",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
+    "Fest",
+    "Markt",
     "Bretten"
   ],
   "recurring_group_id": null

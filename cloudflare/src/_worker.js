@@ -750,6 +750,12 @@ async function serveEventPage(env, url) {
 
   if (!row) return new Response('Not found', { status: 404 });
 
+  // Validate slug: redirect to canonical URL if slug doesn't match
+  const correctPath = eventPath(row);
+  if (url.pathname !== correctPath) {
+    return new Response(null, { status: 301, headers: { 'location': correctPath + url.search, 'cache-control': 'public, max-age=86400' } });
+  }
+
   const e = {
     id: row.id, title: decode(row.title), date_start: row.date_start || '', date_end: row.date_end,
     time_raw: row.time_raw, location: decode(row.location), organizer: decode(row.organizer),
