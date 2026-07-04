@@ -749,27 +749,11 @@ async function serveEventPage(env, url) {
   ).bind(eventId).first();
 
   if (!row) {
-    // Old URL recovery: try slug first (more reliable than positional ID mapping),
-    // then fall back to id_redirects table.
+    // Old URL recovery: try id_redirects first (ID-based mapping from backup DBs),
+    // then fall back to slug-based lookup.
 
-    const urlSlug = parts[3] || '';
-    if (urlSlug && eventId < 100000) {
-      try {
-        const { results } = await env.STUTENSEE_DB.prepare(
-          `SELECT id, title FROM curated_events WHERE tags != 'blocked'`
-        ).all();
-        for (const r of results) {
-          if (eventSlug(r) === urlSlug) {
-            const newPath = eventPath(r);
-            return new Response(null, { status: 301, headers: { 'location': newPath + url.search, 'cache-control': 'public, max-age=31536000' } });
-          }
-        }
-      } catch (e) {
-        // Fallback failed; try id_redirects below
-      }
-    }
-
-    // Check id_redirects table (positional mapping from old autoincrement IDs)
+    // Check id_redirects table (mapping from old autoincrement IDs to new hash IDs)
+    let redirected = false;
     try {
       const redirect = await env.STUTENSEE_DB.prepare(
         `SELECT new_id FROM id_redirects WHERE old_id = ?`
@@ -784,7 +768,25 @@ async function serveEventPage(env, url) {
         }
       }
     } catch (e) {
-      // id_redirects table may not exist yet
+      // id_redirects table may not exist yet; fall through to slug lookup
+    }
+
+    // Slug-based fallback (only for old-style URLs with low IDs)
+    const urlSlug = parts[3] || '';
+    if (urlSlug && eventId < 100000) {
+      try {
+        const { results } = await env.STUTENSEE_DB.prepare(
+          `SELECT id, title FROM curated_events WHERE tags != 'blocked'`
+        ).all();
+        for (const r of results) {
+          if (eventSlug(r) === urlSlug) {
+            const newPath = eventPath(r);
+            return new Response(null, { status: 301, headers: { 'location': newPath + url.search, 'cache-control': 'public, max-age=31536000' } });
+          }
+        }
+      } catch (e) {
+        // Slug fallback failed
+      }
     }
 
     return new Response('Not found', { status: 404 });
