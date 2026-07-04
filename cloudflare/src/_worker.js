@@ -812,8 +812,8 @@ async function serveEventPage(env, url) {
   const pageTitle = `${e.title} – Hey, Stutensee!`;
   const metaDesc = `${e.title} am ${fmtDate(e.date_start)}${e.location ? ' in ' + e.location : ' in ' + locationName}. ${e.description ? e.description.substring(0, 150) : 'Alle Veranstaltungen in Stutensee auf einen Blick.'}`;
 
-  // JSON-LD
-  const jsonLd = renderJsonLd([{ ...e, title: row.title, description: row.description }]);
+  // JSON-LD — use the hey-stutensee.de canonical URL, not external source
+  const jsonLd = renderJsonLd([{ ...e, title: row.title, description: row.description, event_url: null }]);
 
   // OG tags for event detail page
   const eventUrl = `https://hey-stutensee.de${eventPath(row)}`;
