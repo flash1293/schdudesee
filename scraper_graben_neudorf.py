@@ -64,7 +64,7 @@ def enrich_event_detail(event, session):
             "Cookie": "ccm_consent=1",
         })
         resp.raise_for_status()
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"  Error fetching detail {url}: {e}", flush=True)
         return event
 
@@ -170,13 +170,15 @@ def scrape_graben_neudorf():
                 break
 
     # Enrich events with descriptions from detail pages
-    print(f"  Enriching {len(all_events)} events with detail pages...", flush=True)
+    empty_count = sum(1 for e in all_events if not e.get("description"))
+    print(f"  Enriching {empty_count} events with detail pages...", flush=True)
     enriched = 0
     for i, event in enumerate(all_events):
         if not event.get("description"):
             all_events[i] = enrich_event_detail(event, session)
-            enriched += 1
-    print(f"    Enriched {enriched} events", flush=True)
+            if all_events[i].get("description"):
+                enriched += 1
+    print(f"    Enriched {enriched}/{empty_count} events with descriptions", flush=True)
 
     return {
         "source_url": CALENDAR_URL,
