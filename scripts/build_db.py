@@ -2,6 +2,11 @@
 """
 Build events.db from events/curated/*.json
 Output: events/events.db (SQLite, same schema as D1 curated_events table)
+
+Generates:
+  - curated_events: hash-based stable IDs (SHA-256 of event_url)
+  - id_redirects:    mapping from old autoincrement IDs → new hash IDs
+                     (for redirecting old indexed URLs)
 """
 
 import json, os, sqlite3, re, glob, hashlib
@@ -30,6 +35,13 @@ CREATE TABLE curated_events (
 );
 CREATE INDEX idx_curated_dates ON curated_events(date_start);
 CREATE INDEX idx_curated_title ON curated_events(normalized_title);
+
+DROP TABLE IF EXISTS id_redirects;
+CREATE TABLE id_redirects (
+    old_id INTEGER PRIMARY KEY,
+    new_id INTEGER NOT NULL
+);
+CREATE INDEX idx_id_redirects_old ON id_redirects(old_id);
 """
 
 
@@ -84,20 +96,23 @@ def main():
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
     seen_ids = set()
-    for ev in events:
-        eid = event_hash(ev)
-        # Collision safeguard (vanishingly unlikely with 64-bit IDs)
-        if eid in seen_ids:
+    old_to_new = []  # (old_id, new_id) pairs
+    for i, ev in enumerate(events):
+        old_id = i + 1  # 1-based autoincrement (the previous ID scheme)
+        new_id = event_hash(ev)
+        # Collision safeguard (vanishingly unlikely with 52-bit IDs)
+        if new_id in seen_ids:
             new_key = f"{ev.get('event_url', '')}|{ev.get('title', '')}|{len(seen_ids)}"
-            eid = int(hashlib.sha256(new_key.encode('utf-8')).hexdigest()[:13], 16)
-        seen_ids.add(eid)
+            new_id = int(hashlib.sha256(new_key.encode('utf-8')).hexdigest()[:13], 16)
+        seen_ids.add(new_id)
+        old_to_new.append((old_id, new_id))
 
         sources_str = ",".join(ev.get("sources", [])) if isinstance(ev.get("sources"), list) else (ev.get("sources") or "")
         tags_str = ",".join(ev.get("tags", [])) if isinstance(ev.get("tags"), list) else (ev.get("tags") or "")
         norm = normalize_title(ev.get("title", ""))
 
         conn.execute(insert_sql, (
-            eid,
+            new_id,
             ev.get("title", ""),
             norm,
             ev.get("date_start"),
@@ -112,10 +127,15 @@ def main():
             ev.get("recurring_group_id"),
         ))
 
+    # Insert redirect mappings
+    c = conn.cursor()
+    c.executemany("INSERT INTO id_redirects (old_id, new_id) VALUES (?, ?)", old_to_new)
     conn.commit()
+
     count = conn.execute("SELECT COUNT(*) FROM curated_events").fetchone()[0]
+    redirect_count = conn.execute("SELECT COUNT(*) FROM id_redirects").fetchone()[0]
     conn.close()
-    print(f"Built {OUTPUT_DB}: {count} events from {len(files)} JSON files")
+    print(f"Built {OUTPUT_DB}: {count} events from {len(files)} JSON files, {redirect_count} redirects")
 
 
 if __name__ == "__main__":
