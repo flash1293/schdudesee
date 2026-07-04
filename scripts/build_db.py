@@ -4,14 +4,14 @@ Build events.db from events/curated/*.json
 Output: events/events.db (SQLite, same schema as D1 curated_events table)
 """
 
-import json, os, sqlite3, re, glob
+import json, os, sqlite3, re, glob, hashlib
 
 EVENTS_DIR = "events/curated"
 OUTPUT_DB = "events/events.db"
 SCHEMA = """
 DROP TABLE IF EXISTS curated_events;
 CREATE TABLE curated_events (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
     title TEXT NOT NULL,
     normalized_title TEXT,
     date_start TEXT,
@@ -31,6 +31,16 @@ CREATE TABLE curated_events (
 CREATE INDEX idx_curated_dates ON curated_events(date_start);
 CREATE INDEX idx_curated_title ON curated_events(normalized_title);
 """
+
+
+def event_hash(event):
+    """Generate a stable 64-bit integer ID from the event's identity.
+    Uses event_url as primary key; falls back to title+date_start.
+    The ID is deterministic and survives reordering/additions/deletions."""
+    key = event.get("event_url") or f"{event.get('title', '')}|{event.get('date_start', '')}"
+    # Use 13 hex chars = 52 bits, safe within JavaScript's Number.MAX_SAFE_INTEGER (2^53)
+    h = hashlib.sha256(key.encode("utf-8")).hexdigest()[:13]
+    return int(h, 16)
 
 
 def normalize_title(title):
@@ -69,16 +79,25 @@ def main():
     conn.executescript(SCHEMA)
 
     insert_sql = """INSERT INTO curated_events
-        (title, normalized_title, date_start, date_end, time_raw, location, organizer,
+        (id, title, normalized_title, date_start, date_end, time_raw, location, organizer,
          description, event_url, sources, tags, recurring_group_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
+    seen_ids = set()
     for ev in events:
+        eid = event_hash(ev)
+        # Collision safeguard (vanishingly unlikely with 64-bit IDs)
+        if eid in seen_ids:
+            new_key = f"{ev.get('event_url', '')}|{ev.get('title', '')}|{len(seen_ids)}"
+            eid = int(hashlib.sha256(new_key.encode('utf-8')).hexdigest()[:13], 16)
+        seen_ids.add(eid)
+
         sources_str = ",".join(ev.get("sources", [])) if isinstance(ev.get("sources"), list) else (ev.get("sources") or "")
         tags_str = ",".join(ev.get("tags", [])) if isinstance(ev.get("tags"), list) else (ev.get("tags") or "")
         norm = normalize_title(ev.get("title", ""))
 
         conn.execute(insert_sql, (
+            eid,
             ev.get("title", ""),
             norm,
             ev.get("date_start"),
