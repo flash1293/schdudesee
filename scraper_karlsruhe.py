@@ -178,6 +178,67 @@ def extract_short_description(html):
     return ""
 
 
+def extract_full_description(html):
+    """Extract the full description from an event detail page.
+
+    Looks for the main content text beyond the shortDescription teaser.
+    Targets content blocks after the metadata/vcard section.
+    """
+    # Strategy 1: Look for dedicated description containers
+    for pattern in [
+        r'<div[^>]*class="[^"]*detail-text[^"]*"[^>]*>(.*?)</div>',
+        r'<div[^>]*id="description"[^>]*>(.*?)</div>',
+        r'<div[^>]*class="[^"]*description[^"]*"[^>]*>(.*?)</div>',
+        r'<div[^>]*class="[^"]*event-description[^"]*"[^>]*>(.*?)</div>',
+    ]:
+        m = re.search(pattern, html, re.DOTALL)
+        if m:
+            desc = re.sub(r'<[^>]+>', ' ', m.group(1)).strip()
+            desc = re.sub(r'\s+', ' ', desc)
+            if desc and len(desc) >= 100:
+                return desc
+
+    # Strategy 2: Extract text from <main> excluding vcard/metadata blocks
+    m = re.search(r'<main[^>]*>(.*?)</main>', html, re.DOTALL)
+    if m:
+        main_html = m.group(1)
+        # Remove vcard blocks (venue + organizer metadata)
+        main_html = re.sub(r'<div[^>]*class="[^"]*vcard[^"]*"[^>]*>.*?</div>\s*</div>', '', main_html, flags=re.DOTALL)
+        main_html = re.sub(r'<div[^>]*class="[^"]*detail-block[^"]*"[^>]*>.*?</div>\s*</div>', '', main_html, flags=re.DOTALL)
+        # Remove shortDescription (teaser)
+        main_html = re.sub(r'<p[^>]*id="shortDescription"[^>]*>.*?</p>', '', main_html, flags=re.DOTALL)
+        # Remove image blocks
+        main_html = re.sub(r'<img[^>]*>', '', main_html)
+        main_html = re.sub(r'<figure[^>]*>.*?</figure>', '', main_html, flags=re.DOTALL)
+        # Get remaining text
+        text = re.sub(r'<[^>]+>', ' ', main_html)
+        text = re.sub(r'\s+', ' ', text).strip()
+        if text and len(text) >= 100:
+            return text
+
+    # Strategy 3: Look for substantial paragraph blocks after the metadata
+    paragraphs = re.findall(r'<p[^>]*>(.*?)</p>', html, re.DOTALL)
+    content_paragraphs = []
+    for p in paragraphs:
+        text = re.sub(r'<[^>]+>', '', p).strip()
+        if not text:
+            continue
+        if re.match(r'^[\d\s:.\-bisUhr,]+\Z', text):
+            continue
+        if len(text) < 40:
+            continue
+        if text == extract_short_description(html):
+            continue
+        content_paragraphs.append(text)
+
+    if content_paragraphs:
+        desc = ' '.join(content_paragraphs)
+        if len(desc) >= 100:
+            return desc
+
+    return ""
+
+
 def extract_category_from_url(url):
     """Extract event category from URL path like /stadtleben/ or /musik/."""
     m = re.search(r'/db/termine/([a-z]+)/', url)
@@ -337,8 +398,8 @@ def scrape_venue_page(venue_id, district):
         # Extract organizer
         organizer = extract_organizer(detail_html)
         
-        # Extract description (prefer short description, fall back to meta)
-        desc = extract_short_description(detail_html)
+        # Extract description (prefer full description, fall back to short, then meta)
+        desc = extract_full_description(detail_html) or extract_short_description(detail_html)
         if not desc:
             m2 = re.search(r'<meta\s+name="description"\s+content="([^"]+)"', detail_html)
             if m2:
@@ -520,10 +581,10 @@ def scrape_karlsruhe():
                 location = detail_loc
             # Extract organizer from detail page
             organizer = extract_organizer(detail_html)
-            # Extract better description
-            short_desc = extract_short_description(detail_html)
-            if short_desc:
-                desc = short_desc
+            # Extract better description (prefer full, fall back to short)
+            better_desc = extract_full_description(detail_html) or extract_short_description(detail_html)
+            if better_desc:
+                desc = better_desc
         
         # Build tags: district + category
         tags_list = [district]
