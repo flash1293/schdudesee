@@ -409,19 +409,59 @@ def dedup_sql():
         f"AND {prefix_conditions} "
         f"AND (date_start IS NULL OR date_start = '' OR date_start >= date('now'))"
     )
+    # Fetch all matching raw events and dedup in Python to avoid SQLite's
+    # arbitrary-row selection for non-aggregated columns under GROUP BY.
+    # We pick the row with the longest description per group and manually
+    # aggregate source_urls so no description is silently dropped.
     c.execute(f"""
-        INSERT INTO curated_events (title, date_start, date_end, time_raw, location, organizer, description, event_url, sources)
-        SELECT title, date_start, date_end, time_raw, location, organizer, description, event_url, GROUP_CONCAT(DISTINCT source_url)
+        SELECT title, date_start, date_end, time_raw, location, organizer,
+               description, event_url, source_url
         FROM raw_events WHERE {where_clause}
-        GROUP BY LOWER(TRIM(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
-            REPLACE(REPLACE(REPLACE(REPLACE(title,
-                ' in blankenloch',''),' in büchig',''),' in friedrichstal',''),
-                ' in spöck',''),' in staffort',''),
-                ' blankenloch',''),' büchig',''),' friedrichstal',''),
-                ' spöck',''),' staffort','')
-        )), COALESCE(date_start, ''), COALESCE(TRIM(SUBSTR(location, 1, INSTR(location || ',', ',') - 1)), TRIM(location), '')
         ORDER BY date_start ASC
     """, BLOCKED_TITLES)
+    raw_rows = c.fetchall()
+
+    groups = {}     # key -> winning row (longest description)
+    sources = {}    # key -> set of source_urls
+    for row in raw_rows:
+        title, ds, de, tr, loc, org, desc, url, src = row
+        # Compute group key matching the prior GROUP BY expression
+        t = (title or "")
+        for s in [' in blankenloch',' in büchig',' in friedrichstal',' in spöck',' in staffort',
+                  ' blankenloch',' büchig',' friedrichstal',' spöck',' staffort']:
+            t = t.replace(s, '')
+        t = t.strip().lower()
+        d = ds or ""
+        lk = (loc or "").strip()
+        idx = lk.find(',')
+        if idx > 0:
+            lk = lk[:idx].strip()
+        key = (t, d, lk)
+
+        # Aggregate source URLs
+        if key not in sources:
+            sources[key] = set()
+        if src:
+            sources[key].add(src)
+
+        # Keep row with longest description (stable: first-wins on tie)
+        if key not in groups or len(desc or "") > len(groups[key][5] or ""):
+            groups[key] = row
+
+    # Batch insert winners with aggregated sources
+    insert_rows = []
+    for key, row in groups.items():
+        title, ds, de, tr, loc, org, desc, url, _ = row
+        src_agg = ", ".join(sorted(sources[key]))
+        insert_rows.append((title, ds, de, tr, loc, org, desc, url, src_agg))
+
+    if insert_rows:
+        c.executemany(
+            "INSERT INTO curated_events (title, date_start, date_end, time_raw, "
+            "location, organizer, description, event_url, sources) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            insert_rows
+        )
     conn.commit()
 
     # Re-populate raw_to_curated mapping after initial dedup INSERT
