@@ -3,9 +3,9 @@
   "date_start": "2026-12-04",
   "date_end": null,
   "time_raw": "19:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Treffpunkt: Marktbrunnen auf dem Marktplatz",
+  "organizer": "Stadt Bretten, Bildung und Kultur",
+  "description": ":\nFreitag, 4. Dezember 2026 - 19:00\n:\nTreffpunkt: Marktbrunnen auf dem Marktplatz\n:\nStadt Bretten, Bildung und Kultur\nStimmungsvolle Führung durch die Altstadt und zum Abschluss ein Glühwein oder Punsch sowie weihnachtliches Gebäck – perfekt, um sich auf den Advent einzustimmen.\nPreis: 15 €, Dauer: ca. 180 Minuten inkl. Glühwein, Punsch, weihnachtliches Gebäck\nAnmeldung bei der Touristinfo Bretten (07252/583-710 oder\ntouristinfo@bretten.de\n)\nStadt Bretten\nVHS-Anmeldung",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/33628",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
@@ -13,5 +13,5 @@
   "tags": [
     "Bretten"
   ],
-  "recurring_group_id": 871243737
+  "recurring_group_id": 3461709793889928864
 }

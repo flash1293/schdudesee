@@ -3,17 +3,17 @@
   "date_start": "2026-12-03",
   "date_end": null,
   "time_raw": "19:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Melanchthonhaus Bretten",
+  "organizer": "Stadt Bretten, Europäische Melanchthonakademie",
+  "description": ":\nDonnerstag, 3. Dezember 2026 - 19:00\n:\nMelanchthonhaus Bretten\n:\nStadt Bretten, Europäische Melanchthonakademie\n„Aber da ist ein Engel, der uns schützt“. Philipp Melanchthons Lob der der Engel.",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34286",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Musik",
+    "Bretten",
     "Kultur",
-    "Bretten"
+    "Musik"
   ],
   "recurring_group_id": null
 }

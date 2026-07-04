@@ -8,9 +8,11 @@
   "description": "",
   "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145467/adventskranzbinden",
   "sources": [
-    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
+    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender",
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
+    "Neuthard",
     "Workshop"
   ],
   "recurring_group_id": null

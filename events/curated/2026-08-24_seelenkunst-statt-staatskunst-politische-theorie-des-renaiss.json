@@ -3,17 +3,17 @@
   "date_start": "2026-08-24",
   "date_end": null,
   "time_raw": "19:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Melanchthonhaus Bretten",
+  "organizer": "Stadt Bretten, Europäische Melanchthonakademie",
+  "description": ":\nMontag, 24. August 2026 - 19:00\n:\nMelanchthonhaus Bretten\n:\nStadt Bretten, Europäische Melanchthonakademie\nReferent: Prof. Dr. Ben Haupt (St. Louis, USA)\nDie Menschen der Renaissance-Zeit wollen das Geheimnis ergründen, wie alles miteinander zusammenhängt. Um Licht ins Dunkel zu bringen, erfinden sie etwa das Fernrohr und das Mikroskop. Aber auch ohne Sehhilfen greifen sie nach allen verfügbaren Wissensbeständen. Dazu gehören für sie auch Astrologie, Chiromantik und Alchemie.\nWährend Martin Luther letztere Praktiken für Unfug hält, erstellt Melanchthon Horoskope und studiert die Handlesekunst. Darin unterscheidet er sich wenig von Georg Faust. Faust schließlich soll durch eine Explosion bei seinen alchemistischen Experimenten ums Leben gekommen sein.\nWelche Antworten bieten die beiden auf die Frage aller Fragen: „… was die Welt im Innersten zusammenhält?“",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34827",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Kultur",
+    "Bretten",
     "Kirche",
-    "Bretten"
+    "Kultur"
   ],
   "recurring_group_id": null
 }

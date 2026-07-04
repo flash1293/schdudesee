@@ -3,16 +3,16 @@
   "date_start": "2026-09-24",
   "date_end": "2026-09-28",
   "time_raw": "17:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Marktplatz Bretten",
+  "organizer": "Stadt Bretten - Wirtschaftsförderung und Liegenschaften",
+  "description": ":\nDonnerstag, 24. September 2026 - 17:00\nbis\nMontag, 28. September 2026 - 18:00\n:\nMarktplatz Bretten\n:\nStadt Bretten - Wirtschaftsförderung und Liegenschaften\nZahlreiche Weingüter und Winzergenossenschaften aus dem Kraichgau, Stromberg, Heuchelberg und Zabergäu laden auf dem Brettener Marktplatz zu einem genussvollen Wochenende ein und präsentieren ihre erlesenen Weine zur Verkostung. An den Weinprobierständen, in der Laube oder auf dem gemütlichen Freisitz genießen Besucher nicht nur eine große Auswahl an edlen Tropfen, sondern auch passende kulinarische Köstlichkeiten. Ein Programmhighlight in diesem Jahr ist mit Sicherheit der Buttenmarsch am Sonntag, der mit Musik und guter Laune durch die Brettener Fußgängerzone zieht. Im Anschluss daran lädt die Traubenpressaktion auf der Bühne Groß und Klein ein, hautnah mitzuerleben, wie frischer Traubensaft entsteht.\nWie schon in den vergangenen Jahren setzt der Weinmarkt auf Nachhaltigkeit: Für die Verkostung werden ausschließlich Kaufgläser zum Preis von 3,- Euro angeboten; eine Rücknahme durch Pfand erfolgt nicht. Gerne dürfen Besucher auch ihr eigenes Glas mitbringen, sofern es einen Eichstrich von 0,1 und/oder 0,25 Liter aufweist.\nweitere Informationen",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34681",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Markt",
-    "Bretten"
+    "Bretten",
+    "Markt"
   ],
   "recurring_group_id": null
 }

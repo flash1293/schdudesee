@@ -3,17 +3,17 @@
   "date_start": "2026-10-04",
   "date_end": null,
   "time_raw": "10:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Kraichgaustr. 2/1, Dürrenbüchig",
+  "organizer": "Freiwillige Feuerwehr Dürrenbüchig",
+  "description": ":\nSonntag, 4. Oktober 2026 - 10:00\n:\nKraichgaustr. 2/1, Dürrenbüchig\n:\nFreiwillige Feuerwehr Dürrenbüchig\nDie Feuerwehr Abteilung Dürrenbüchig lädt zum Weißwurstfrühstück und bietet den ganzen tag eiin umfangreiches Spresien- und Getränkesortiment.",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/33963",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Fest",
     "Bretten",
-    "Büchig"
+    "Büchig",
+    "Fest"
   ],
   "recurring_group_id": null
 }

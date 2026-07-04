@@ -3,17 +3,17 @@
   "date_start": "2026-08-08",
   "date_end": "2026-08-09",
   "time_raw": "18:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "am Teich in Dürrenbüchig",
+  "organizer": "TSV Dürrenbüchig 1912 e.V.",
+  "description": ":\nSamstag, 8. August 2026 - 18:00\nbis\nSonntag, 9. August 2026 - 18:00\n:\nam Teich in Dürrenbüchig\n:\nTSV Dürrenbüchig 1912 e.V.\nDas traditionelle und in der Region beliebte Teichfest in Dürrenbüchig bietet Fischspezialitäten und am Samstag Barbetrieb.",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/33962",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Fest",
     "Bretten",
-    "Büchig"
+    "Büchig",
+    "Fest"
   ],
   "recurring_group_id": null
 }

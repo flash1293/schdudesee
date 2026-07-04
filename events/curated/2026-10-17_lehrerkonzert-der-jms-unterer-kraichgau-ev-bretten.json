@@ -3,17 +3,17 @@
   "date_start": "2026-10-17",
   "date_end": null,
   "time_raw": "19:30",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Bürgersaal im Alten Rathaus",
+  "organizer": "Jugendmusikschule Unterer Kraichgau e.V.",
+  "description": ":\nSamstag, 17. Oktober 2026 - 19:30\n:\nBürgersaal im Alten Rathaus\n:\nJugendmusikschule Unterer Kraichgau e.V.\nDas Kollegium der Jugendmusikschule spielt seine Lieblingsstücke",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34802",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
+    "Bretten",
     "Musik",
-    "Verein",
-    "Bretten"
+    "Verein"
   ],
   "recurring_group_id": null
 }

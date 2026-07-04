@@ -3,16 +3,16 @@
   "date_start": "2026-09-18",
   "date_end": null,
   "time_raw": "18:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Treffpunkt:Marktbrunnen auf dem Marktplatz",
+  "organizer": "Stadt Bretten, Bildung und Kultur",
+  "description": ":\nFreitag, 18. September 2026 - 18:00\n:\nTreffpunkt:Marktbrunnen auf dem Marktplatz\n:\nStadt Bretten, Bildung und Kultur\nAn diesem Abend erleben Sie zunächst eine klassische Stadtführung, bei der Sie spannende Einblicke in Geschichte und Besonderheiten Brettens erhalten. Im Anschluss genießen Sie in ruhiger Atmosphäre eine sorgfältig zusammengestellte Weinprobe.\nDauer: ca. 180 Minuten\nPreis: 32 € inkl. Wein, Käse & Brot und Weinglas\nAnmeldung bei der Touristinfo Bretten (07252/583-710 oder\ntouristinfo@bretten.de\nStadt Bretten\nVHS-Anmeldung",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/33625",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Essen",
-    "Bretten"
+    "Bretten",
+    "Essen"
   ],
   "recurring_group_id": null
 }

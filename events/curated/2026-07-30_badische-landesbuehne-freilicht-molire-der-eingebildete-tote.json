@@ -3,16 +3,16 @@
   "date_start": "2026-07-30",
   "date_end": null,
   "time_raw": "20:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Schulhof der Johann-Peter-Hebel-Schule",
+  "organizer": "Badische Landesbühne und Stadt Bretten, Bildung und Kultur",
+  "description": ":\nDonnerstag, 30. Juli 2026 - 20:00\n:\nSchulhof der Johann-Peter-Hebel-Schule\n:\nBadische Landesbühne und Stadt Bretten, Bildung und Kultur\nDeutsch von Friederike von Criegern\nIm Theater wird nicht wirklich gestorben. Aber was, wenn doch? Tot steht Molière auf der Bühne und glaubt, noch zu leben. Eine Molière-Komödie über Molière.\nInszenierung:\nJule Kracht\nBühne & Kostüm:\nChristian Robert Müller\nKarten gibt es ab Vorverkaufsstart in der Touristinfo Bretten (07252/583-710)\nBadische Landesbühne",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/33622",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Kultur",
-    "Bretten"
+    "Bretten",
+    "Kultur"
   ],
   "recurring_group_id": null
 }

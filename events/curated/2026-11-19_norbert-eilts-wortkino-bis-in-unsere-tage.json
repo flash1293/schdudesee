@@ -3,16 +3,16 @@
   "date_start": "2026-11-19",
   "date_end": null,
   "time_raw": "19:30",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Melanchthonhaus Bretten",
+  "organizer": "Stadt Bretten, Europäische Melanchthonakademie",
+  "description": ":\nDonnerstag, 19. November 2026 - 19:30\n:\nMelanchthonhaus Bretten\n:\nStadt Bretten, Europäische Melanchthonakademie\nMatthias Claudius, dem Dichter des Liedes „Der Mond ist aufgegangen\".\nMatthias Claudius war und ist der Dichter des Himmels und der Erde, der Gestirne, des Lebens, des Todes, der Freude und der Trauer: die große Schau – für Kleinkram hatte er wenig übrig.\nEintritt: 15 €, erm. 14 €",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34285",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Kultur",
-    "Bretten"
+    "Bretten",
+    "Kultur"
   ],
   "recurring_group_id": null
 }

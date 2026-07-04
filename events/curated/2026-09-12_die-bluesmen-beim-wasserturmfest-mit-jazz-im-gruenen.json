@@ -3,17 +3,17 @@
   "date_start": "2026-09-12",
   "date_end": null,
   "time_raw": "15:00",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Grillplatz Rinklingen",
+  "organizer": "Jazz Club Bretten e.V.",
+  "description": ":\nSamstag, 12. September 2026 - 15:00\n:\nGrillplatz Rinklingen\n:\nJazz Club Bretten e.V.\nInfos unter:\nhttps://jazz-club-bretten.de/",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34793",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Musik",
+    "Bretten",
     "Fest",
-    "Bretten"
+    "Musik"
   ],
   "recurring_group_id": null
 }

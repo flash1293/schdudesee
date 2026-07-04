@@ -3,17 +3,17 @@
   "date_start": "2026-10-31",
   "date_end": null,
   "time_raw": "19:30",
-  "location": "Bretten",
-  "organizer": "",
-  "description": "",
+  "location": "Stadtparkhalle, Postweg 52, 75015 Bretten",
+  "organizer": "Chorgemeinschaft Rinklingen 1867 e.V.",
+  "description": ":\nSamstag, 31. Oktober 2026 - 19:30\n:\nStadtparkhalle, Postweg 52, 75015 Bretten\n:\nChorgemeinschaft Rinklingen 1867 e.V.\nJahreskonzert des Chores Happy-Voices mit Projektchor, Solisten und professionellem Theaterorchester\nweitere Informationen",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34835",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Musik",
+    "Bretten",
     "Kirche",
-    "Bretten"
+    "Musik"
   ],
   "recurring_group_id": null
 }
