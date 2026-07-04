@@ -873,7 +873,7 @@ header{background:#0d3a71;color:#fff;padding:10px 24px}
 .tag-organizer{background:var(--tag-org-bg);color:var(--tag-org-text)}
 .tag-location{background:var(--tag-loc-bg);color:var(--tag-loc-text)}
 .tag-tag{background:var(--tag-bg);color:var(--tag-text)}
-a{color:var(--link,var(--primary))}
+a{color:var(--link,var(--primary));overflow-wrap:anywhere}
 a:hover{color:var(--link-hover,var(--primary))}
 .back-link{display:inline-block;margin-bottom:24px;color:var(--link,var(--primary));text-decoration:none;font-size:14px;font-weight:600}
 .back-link:hover{text-decoration:underline}
