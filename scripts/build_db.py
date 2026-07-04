@@ -95,17 +95,32 @@ def main():
          description, event_url, sources, tags, recurring_group_id)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
+    # Load historical old_id → new_id mapping from pre-hash-change snapshot.
+    # This file is generated once from the git history and should not be regenerated.
+    redirect_map_path = os.path.join(os.path.dirname(__file__), "id_redirects_map.json")
+    if os.path.exists(redirect_map_path):
+        with open(redirect_map_path) as f:
+            redirect_map = json.load(f)
+        # Reverse: new_id → old_id for quick lookup
+        new_to_old = {int(v): int(k) for k, v in redirect_map.items()}
+        print(f"Loaded {len(redirect_map)} historical redirect mappings")
+    else:
+        new_to_old = {}
+
     seen_ids = set()
     old_to_new = []  # (old_id, new_id) pairs
     for i, ev in enumerate(events):
-        old_id = i + 1  # 1-based autoincrement (the previous ID scheme)
         new_id = event_hash(ev)
         # Collision safeguard (vanishingly unlikely with 52-bit IDs)
         if new_id in seen_ids:
             new_key = f"{ev.get('event_url', '')}|{ev.get('title', '')}|{len(seen_ids)}"
             new_id = int(hashlib.sha256(new_key.encode('utf-8')).hexdigest()[:13], 16)
         seen_ids.add(new_id)
-        old_to_new.append((old_id, new_id))
+
+        # Look up historical old ID if available
+        old_id = new_to_old.get(new_id)
+        if old_id is not None:
+            old_to_new.append((old_id, new_id))
 
         sources_str = ",".join(ev.get("sources", [])) if isinstance(ev.get("sources"), list) else (ev.get("sources") or "")
         tags_str = ",".join(ev.get("tags", [])) if isinstance(ev.get("tags"), list) else (ev.get("tags") or "")
