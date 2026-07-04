@@ -753,7 +753,27 @@ async function serveEventPage(env, url) {
   ).bind(eventId).first();
 
   if (!row) {
-    // Check if this is an old autoincrement ID that should redirect to a new hash-based ID
+    // Old URL recovery: try slug first (more reliable than positional ID mapping),
+    // then fall back to id_redirects table.
+
+    const urlSlug = parts[3] || '';
+    if (urlSlug && eventId < 100000) {
+      try {
+        const { results } = await env.STUTENSEE_DB.prepare(
+          `SELECT id, title FROM curated_events WHERE tags != 'blocked'`
+        ).all();
+        for (const r of results) {
+          if (eventSlug(r) === urlSlug) {
+            const newPath = eventPath(r);
+            return new Response(null, { status: 301, headers: { 'location': newPath + url.search, 'cache-control': 'public, max-age=31536000' } });
+          }
+        }
+      } catch (e) {
+        // Fallback failed; try id_redirects below
+      }
+    }
+
+    // Check id_redirects table (positional mapping from old autoincrement IDs)
     try {
       const redirect = await env.STUTENSEE_DB.prepare(
         `SELECT new_id FROM id_redirects WHERE old_id = ?`
@@ -768,26 +788,7 @@ async function serveEventPage(env, url) {
         }
       }
     } catch (e) {
-      // id_redirects table may not exist yet; fall through to slug lookup
-    }
-
-    // Fallback for old indexed URLs: try to find the event by slug (derived from title)
-    // Only for small IDs (old autoincrement scheme) to avoid scanning on every 404
-    const urlSlug = parts[3] || '';
-    if (urlSlug && eventId < 100000) {
-      try {
-        const { results } = await env.STUTENSEE_DB.prepare(
-          `SELECT id, title FROM curated_events WHERE tags != 'blocked'`
-        ).all();
-        for (const r of results) {
-          if (eventSlug(r) === urlSlug) {
-            const newPath = eventPath(r);
-            return new Response(null, { status: 301, headers: { 'location': newPath + url.search, 'cache-control': 'public, max-age=86400' } });
-          }
-        }
-      } catch (e) {
-        // Fallback failed; return 404 below
-      }
+      // id_redirects table may not exist yet
     }
 
     return new Response('Not found', { status: 404 });
