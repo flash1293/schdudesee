@@ -9,8 +9,7 @@
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/33759",
   "sources": [
     "clubs_batch_all",
-    "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen",
-    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
+    "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
     "Fest",
