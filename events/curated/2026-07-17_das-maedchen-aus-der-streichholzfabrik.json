@@ -1,12 +1,12 @@
 {
-  "title": "Showtime. Die besten Lieder der Welt",
-  "date_start": "2026-07-03",
-  "date_end": "2026-07-03",
+  "title": "Das Mädchen aus der Streichholzfabrik",
+  "date_start": "2026-07-17",
+  "date_end": "2026-07-17",
   "time_raw": "19:00",
   "location": "Badisches Staatstheater, Kleines Haus",
   "organizer": "Badisches Staatstheater Karlsruhe",
-  "description": "von und mit Anne Müller und Matthias Flake",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/showtime_die_besten_lieder_der_welt",
+  "description": "nach dem Film von Aki Kaurismäki",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/das_madchen_aus_der_streichholzfabrik-10",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],

@@ -1,6 +1,6 @@
 {
   "title": "Schlacht- und Wiesenfest",
-  "date_start": "2026-07-03",
+  "date_start": "2026-07-04",
   "date_end": null,
   "time_raw": "17:00 Uhr bis 01:00 Uhr",
   "location": "vor der Mineralix-Arena",
@@ -8,11 +8,12 @@
   "description": "",
   "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/812/schlacht-und-wiesenfest",
   "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar",
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
     "Fest",
-    "Weingarten"
+    "Neuthard"
   ],
   "recurring_group_id": null
 }
