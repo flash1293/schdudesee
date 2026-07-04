@@ -8,8 +8,7 @@
   "description": "",
   "event_url": "https://musikverein-spoeck.de/",
   "sources": [
-    "clubs_batch_all",
-    "https://stutensee.de/Veranstaltungen"
+    "clubs_batch_all"
   ],
   "tags": [
     "Spöck"
