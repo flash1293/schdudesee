@@ -204,9 +204,7 @@ def scrape_bretten():
     print(f"  Enriching {len(all_events)} events with detail pages...", flush=True)
     enriched = 0
     for i, event in enumerate(all_events):
-        # Enrich first 20 events as a sample (fetches detail pages)
-        # For larger sets, we'd batch this
-        if i < 20 and event.get("_event_id"):
+        if event.get("_event_id"):
             enriched_event = enrich_event_detail(event)
             all_events[i] = enriched_event
             enriched += 1
