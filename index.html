@@ -115,7 +115,7 @@
   <div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6">
     <strong>Angaben gemäß §5 TMG</strong><br>
     Johannes Reuter<br>
-    E-Mail: email@johannes-reuter.de<br><br>
+    E-Mail: <span id="imprint-email"></span><br><br>
     <strong>Haftung für Inhalte</strong><br>
     Als Diensteanbieter sind wir für eigene Inhalte auf dieser Seite verantwortlich.<br>
     <strong>Datenschutz</strong><br>
@@ -129,5 +129,6 @@
 <!--SSR_INITIAL_DATA-->
 
 <script src="/chat.js" defer></script>
+<script>document.getElementById('imprint-email').textContent='email@johannes-reuter.de';</script>
 </body>
 </html>

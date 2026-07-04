@@ -904,7 +904,8 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
     </div>
   </article>
 </div>
-<footer><a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a><span style="margin:0 8px">·</span><span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span><div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6"><strong>Angaben gemäß §5 TMG</strong><br>Johannes Reuter<br>E-Mail: email@johannes-reuter.de<br><br><strong>Haftung für Inhalte</strong><br>Als Diensteanbieter sind wir für eigene Inhalte auf dieser Seite verantwortlich.<br><strong>Datenschutz</strong><br>Diese Seite erhebt keinerlei personenbezogene Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Analysedienste genutzt.</div></footer>
+<footer><a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a><span style="margin:0 8px">·</span><span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span><div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6"><strong>Angaben gemäß §5 TMG</strong><br>Johannes Reuter<br>E-Mail: <span id="imprint-email"></span><br><br><strong>Haftung für Inhalte</strong><br>Als Diensteanbieter sind wir für eigene Inhalte auf dieser Seite verantwortlich.<br><strong>Datenschutz</strong><br>Diese Seite erhebt keinerlei personenbezogene Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Analysedienste genutzt.</div></footer>
+<script>document.getElementById('imprint-email').textContent='email@johannes-reuter.de';</script>
 </body>
 </html>`;
 
