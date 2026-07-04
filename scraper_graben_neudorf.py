@@ -52,6 +52,49 @@ def parse_time(text):
     return m.group(1) if m else ""
 
 
+def enrich_event_detail(event, session):
+    """Fetch event detail page for full description."""
+    url = event.get("event_url", "")
+    if not url or url == CALENDAR_URL:
+        return event
+
+    try:
+        resp = session.get(url, timeout=30, headers={
+            "User-Agent": "Mozilla/5.0 (compatible; StutenseeBot/1.0)",
+            "Cookie": "ccm_consent=1",
+        })
+        resp.raise_for_status()
+    except Exception as e:
+        print(f"  Error fetching detail {url}: {e}", flush=True)
+        return event
+
+    soup = BeautifulSoup(resp.text, "html.parser")
+
+    # Try common TYPO3 content containers for description text
+    desc_parts = []
+    for selector in [".hwcontent", ".hw_text", ".ce-bodytext", ".hwveranstaltung__text",
+                      ".article-content", ".content-block", "article", ".tx-hwveranstaltung-pi1"]:
+        for block in soup.select(selector):
+            text = block.get_text(separator="\n", strip=True)
+            if text and len(text) > 20:
+                desc_parts.append(text)
+
+    if desc_parts:
+        event["description"] = "\n\n".join(desc_parts)
+    else:
+        # Fallback: grab all text from main/content area, excluding nav/header/footer
+        main = soup.find("main") or soup.find(id="content") or soup.find(class_="content")
+        if main:
+            # Remove known non-content elements
+            for tag in main.select("nav, header, footer, .breadcrumb, .hw_record__title"):
+                tag.decompose()
+            text = main.get_text(separator="\n", strip=True)
+            if text and len(text) > 20:
+                event["description"] = text
+
+    return event
+
+
 def scrape_graben_neudorf():
     session = requests.Session()
     session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; StutenseeBot/1.0)"})
@@ -125,6 +168,15 @@ def scrape_graben_neudorf():
             next_link = pagination.select_one('a[title="Seite weiter"]')
             if not next_link:
                 break
+
+    # Enrich events with descriptions from detail pages
+    print(f"  Enriching {len(all_events)} events with detail pages...", flush=True)
+    enriched = 0
+    for i, event in enumerate(all_events):
+        if not event.get("description"):
+            all_events[i] = enrich_event_detail(event, session)
+            enriched += 1
+    print(f"    Enriched {enriched} events", flush=True)
 
     return {
         "source_url": CALENDAR_URL,
