@@ -384,7 +384,7 @@ KEYWORDS = {
                "lernen", "infoveranstaltung", "podiumsdiskussion", "ausbildungsplattform", "schulkonferenz"],
     "Natur": ["natur", "wald", "vogel", "vögel", "baum", "pflanze", "umwelt", "klima",
                "hornisse", "mulchen", "exkursion", "wanderung",
-               "gartenfest", "gartenarbeit", "gartengestaltung", "gartenbau"],
+               "gartenfest", "gartenarbeit", "gartengestaltung", "gartenbau", "schadstoff"],
     "Senioren": ["senior", "50+", "\u00e4lter", "alt werden", "beweglich im alter"],
     "Digital": ["digital", "smartphone", "computer", "handy", "online", "internet"],
     "Handwerk": ["basteln", "werkstatt", "n\u00e4hen", "stricken", "h\u00e4keln", "reparier", "reparatur", "handarbeit", "secondhand", "bastel", "sonnenf\u00e4nger"],
