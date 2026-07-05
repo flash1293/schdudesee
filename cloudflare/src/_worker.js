@@ -1243,23 +1243,47 @@ function serve404() {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Seite nicht gefunden — Hey, Stutensee!</title>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, -apple-system, sans-serif; background: #f4f6f8; color: #111827; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
-  .card { background: #fff; border-radius: 12px; padding: 48px 40px; max-width: 480px; text-align: center; box-shadow: 0 2px 8px rgba(13,58,113,0.06); margin: 20px; }
-  .code { font-size: 72px; font-weight: 800; color: #0d3a71; line-height: 1; margin-bottom: 8px; }
-  h1 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-  p { color: #4b5563; font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
-  a { display: inline-block; background: #0d3a71; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; transition: background 0.2s; }
-  a:hover { background: #0a2d59; }
+:root{--bg:#f4f6f8;--text:#111827;--text-muted:#4b5563;--card-bg:#fff;--card-border:#e2e8f0;--primary:#0d3a71;--footer-text:#4b5563;--imprint-text:#374151;--shadow:0 2px 8px rgba(13,124,102,0.06)}
+html.dark{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--card-border:#334155;--primary:#1e40af;--footer-text:#94a3b8;--imprint-text:#94a3b8;--shadow:0 2px 8px rgba(0,0,0,0.3)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1;display:flex;align-items:center;justify-content:center}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:48px 40px;max-width:480px;text-align:center;box-shadow:var(--shadow);margin:20px}
+.code{font-size:72px;font-weight:800;color:var(--primary);line-height:1;margin-bottom:8px}
+h1{font-size:20px;font-weight:600;margin-bottom:12px}
+p{color:var(--text-muted);font-size:15px;line-height:1.6;margin-bottom:24px}
+.btn{display:inline-block;background:var(--primary);color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600}
+.btn:hover{opacity:0.9}
+footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
+footer a{color:var(--footer-text);text-decoration:underline}
 </style>
+<script>
+function toggleDark(){document.documentElement.classList.toggle('dark');var isDark=document.documentElement.classList.contains('dark');localStorage.setItem('dark',isDark?'1':'0');document.getElementById('dark-toggle').textContent=isDark?'☀️':'🌙'}
+(function(){var d=document.documentElement,s=localStorage.getItem('dark');if(s!==null){if(s==='1')d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){d.classList.add('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙';window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(e){if(localStorage.getItem('dark')!==null)return;if(e.matches){d.classList.add('dark')}else{d.classList.remove('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙'})})()
+</script>
 </head>
 <body>
+<main>
 <div class="card">
   <div class="code">404</div>
   <h1>Seite nicht gefunden</h1>
   <p>Die aufgerufene Seite existiert nicht. Vielleicht wurde der Veranstaltungskalender aktualisiert und der Link ist veraltet.</p>
-  <a href="/">Zurück zum Kalender</a>
+  <a href="/" class="btn">Zurück zum Kalender</a>
 </div>
+</main>
+<footer>
+  <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="text-decoration:underline">Impressum</a>
+  <span style="margin:0 8px">·</span>
+  Keine Cookies, kein Tracking, keine Datenspeicherung
+  <span style="margin:0 8px">·</span>
+  <span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span>
+  <div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6">
+    <strong>Angaben gemäß §5 TMG</strong><br>Johannes Reuter<br>E-Mail: <span id="imprint-email"></span><br><br>
+    <strong>Haftung für Inhalte</strong><br>Als Diensteanbieter sind wir für eigene Inhalte auf dieser Seite verantwortlich.<br>
+    <strong>Datenschutz</strong><br>Diese Seite erhebt keinerlei personenbezogene Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Analysedienste genutzt.
+  </div>
+</footer>
+<script>document.getElementById('imprint-email').textContent='email@johannes-reuter.de';</script>
 </body>
 </html>`;
   return new Response(page, {
