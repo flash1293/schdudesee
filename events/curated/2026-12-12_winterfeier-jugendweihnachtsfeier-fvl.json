@@ -8,14 +8,11 @@
   "description": "Winterfeier + Jugendweihnachtsfeier FVL",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1875",
   "sources": [
-    "https://stutensee.de/Veranstaltungen",
-    "https://www.egg-leo.de/Veranstaltungen",
-    "https://www.karlsdorf-neuthard.de/eventcalendar"
+    "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [
     "Kinder",
-    "Leopoldshafen",
-    "Neuthard"
+    "Leopoldshafen"
   ],
   "recurring_group_id": null
 }
