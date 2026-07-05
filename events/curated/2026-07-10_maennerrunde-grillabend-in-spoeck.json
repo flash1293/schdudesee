@@ -1,0 +1,20 @@
+{
+  "title": "Männerrunde - Grillabend in Spöck",
+  "date_start": "2026-07-10",
+  "date_end": "2026-07-10",
+  "time_raw": "18:00",
+  "location": "Kath. Kirche St. Georg Spöck",
+  "organizer": "Kath. Kirchengemeinde Spöck",
+  "description": "Männerrunde Stutensee-Weingarten 2.0",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/maennerrunde-grillabend-in-spoeck/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Essen",
+    "Treff",
+    "Spöck",
+    "Weingarten"
+  ],
+  "recurring_group_id": null
+}
