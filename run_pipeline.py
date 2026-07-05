@@ -853,6 +853,56 @@ def export_to_json():
         return False
 
 
+def ensure_fresh_repo():
+    """Pull latest from origin/main before running the pipeline.
+
+    Guards against stale-start overwrites: if we're behind origin/main
+    (or have local changes that would cause a merge conflict), abort.
+    Returns True if repo is now up-to-date, False if abort needed.
+    """
+    import subprocess, os, sys
+    repo_dir = os.path.dirname(os.path.abspath(__file__)) or "."
+
+    # 1. Fetch to see where we stand
+    r = subprocess.run(["git", "fetch", "origin"], capture_output=True, text=True, cwd=repo_dir)
+    if r.returncode != 0:
+        print(f"  ⚠️  git fetch failed: {r.stderr.strip()}", flush=True)
+        print(f"  Proceeding with local state (fetch may be blocked by network).", flush=True)
+        return True  # soft-fail: network issues shouldn't block the pipeline
+
+    # 2. Check for uncommitted local changes
+    r = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, cwd=repo_dir)
+    if r.stdout.strip():
+        print(f"  ⚠️  Uncommitted local changes detected:", flush=True)
+        for line in r.stdout.strip().split("\n")[:10]:
+            print(f"      {line}", flush=True)
+        print(f"  Aborting: commit or stash local changes before running the pipeline.", flush=True)
+        print(f"  Otherwise the pipeline may overwrite others' work.", flush=True)
+        return False
+
+    # 3. Check if we're behind origin/main
+    r = subprocess.run(
+        ["git", "rev-list", "--count", "HEAD..origin/main"],
+        capture_output=True, text=True, cwd=repo_dir
+    )
+    behind = int(r.stdout.strip()) if r.stdout.strip().isdigit() else 0
+
+    if behind == 0:
+        return True  # already up-to-date
+
+    # 4. We're behind — pull
+    print(f"  Repo is {behind} commit(s) behind origin/main. Pulling...", flush=True)
+    r = subprocess.run(["git", "pull", "--ff-only", "origin", "main"],
+                       capture_output=True, text=True, cwd=repo_dir)
+    if r.returncode != 0:
+        print(f"  ❌ git pull failed: {r.stderr.strip()}", flush=True)
+        print(f"  Aborting: resolve the conflict manually before running the pipeline.", flush=True)
+        return False
+
+    print(f"  Pulled successfully. Repo is up-to-date.", flush=True)
+    return True
+
+
 def commit_and_push(summary_line):
     """Commit pipeline results and push to origin/main to trigger deployment."""
     import subprocess, os
@@ -905,6 +955,11 @@ if __name__ == "__main__":
     print(f"Time: {datetime.now().isoformat()}", flush=True)
     if args.sources:
         print(f"Sources: {args.sources}", flush=True)
+
+    # Guard: ensure repo is up-to-date before touching shared data
+    if not args.no_push and not ensure_fresh_repo():
+        print(f"❌ Pipeline aborted: repo is not in a clean, up-to-date state.", flush=True)
+        sys.exit(1)
 
     # Run DB migrations before any operations
     migrate_db()
