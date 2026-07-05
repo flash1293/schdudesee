@@ -4,11 +4,12 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tAussegnungshalle Spöck",
-  "organizer": "Evangelischer Posaunenchor Spöck",
+  "organizer": "Veranstalter:\n\t\tEvangelischer Posaunenchor Spöck",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2317",
   "sources": [
-    "https://stutensee.de/Veranstaltungen"
+    "https://stutensee.de/Veranstaltungen",
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
     "Kirche",

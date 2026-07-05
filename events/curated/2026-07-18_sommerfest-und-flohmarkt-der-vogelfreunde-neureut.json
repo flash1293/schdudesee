@@ -8,13 +8,14 @@
   "description": "Sommerfest und Flohmarkt mit öffentlichen Papageientraining Vogelfreunde Neureut 1953 e.V. Am 18.07.2026 findet wieder der diesjährige Flohmarkt und das Sommerfest der Vogelfreunde Neureut von 12 bis 19 Uhr im Vogelpark Neureut statt. (Der Flohmarkt schließt um 18:00 Uhr, Getränke gibt es bis 19:00 Uhr). Alle Geräte, Bücher, Lampen u.s.w. wurden dem Vogelpark gespendet: Dieses Jahr steht ganz im Zeichen des Werkzeug-Verkaufs 🛠️🪚🗜️. Daher: Wenn Ihrer/eurer Werkstatt noch etwas fehlt, vielleicht werden Sie/ ihr auf unserem Flohmarkt fündig?! Natürlich gibt es auch viele weitere Dinge, die einen neuen Besitzer suchen ... ansonsten gibt es wie immer Bratwurst , Kuchen und kühle Getränke . Die Einnahmen aus Flohmarkt und Essensverkauf kommen allesamt den Tieren zu Gute. Der Vogelpark beherbergt das Tierschutzprojekt PAPAVEO, das mit mehreren Tierschutzpreisen dotiert ist. Wer sich informieren möchte ist herzlich eingeladen an unserem Infostand Fragen zu stellen oder sich das 🦜 öffentliche Papageientraining 🦜 anzuschauen. Um 14:30 Uhr geht es los. Vorbeikommen lohnt sich also allemal! Wir freuen uns auf euch!",
   "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/sommerfest_und_flohmarkt_der_vogelfreunde_neureut-3",
   "sources": [
-    "https://kalender.karlsruhe.de"
+    "clubs_batch_all",
+    "https://kalender.karlsruhe.de",
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Neureut",
-    "Stadtleben",
-    "Sport",
-    "Fest"
+    "Stadtleben"
   ],
   "recurring_group_id": null
 }
