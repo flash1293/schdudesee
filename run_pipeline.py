@@ -292,8 +292,8 @@ def parse_german_date(text):
 
 def is_past(iso_date):
     """Check if an ISO date string is in the past."""
-    if not iso_date:
-        return False
+    if not iso_date or str(iso_date).strip() == "":
+        return True  # treat missing/empty as past
     try:
         return datetime.strptime(iso_date, "%Y-%m-%d").date() < datetime.now().date()
     except:
