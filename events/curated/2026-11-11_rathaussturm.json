@@ -10,6 +10,8 @@
   "sources": [
     "https://stutensee.de/Veranstaltungen"
   ],
-  "tags": [],
+  "tags": [
+    "Kultur"
+  ],
   "recurring_group_id": null
 }
