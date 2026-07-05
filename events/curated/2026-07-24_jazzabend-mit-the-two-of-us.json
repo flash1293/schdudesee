@@ -1,17 +1,19 @@
 {
-  "title": "Jazzabend mit \"The Two of Us\"",
+  "title": "Jazzabend mit „The Two of Us“",
   "date_start": "2026-07-24",
-  "date_end": null,
-  "time_raw": "19:00 Uhr",
-  "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
-  "organizer": "Veranstalter:\n\t\tKulturRaum Regenbogen im BZ Regenbogen",
-  "description": "",
-  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2728",
+  "date_end": "2026-07-24",
+  "time_raw": "19:00",
+  "location": "Begegnungszentrum Regenbogen Spöck",
+  "organizer": "KulturRaum Regenbogen",
+  "description": "Das Jazz-Duo The Two of Us steht ganz in der Tradition solch namhafter Formationen wie Ella Fitzgerald & Joe Pass oder Cyrille Aimée & Diego Figueiredo.   Die kammermusikalische Umsetzung von Jazzstandards, Bossa Nova Kompositionen oder Coverstücken zwischen Pop und französischem Chanson beruht auf der einfühlsamen Verbindung von Gitarre und Gesang.   Mit dieser abwechslungsreichen Mischung treten die beiden Musiker Anja Schwab (vocals) und Götz Schwab (guitar) seit mehreren Jahren regelmäßig in unserer Region auf.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/jazzabend-mit-the-two-of-us-2/",
   "sources": [
-    "https://stutensee.de/Veranstaltungen"
+    "https://meinstutensee.de/termine/"
   ],
   "tags": [
-    "Musik"
+    "Sport",
+    "Musik",
+    "Spöck"
   ],
   "recurring_group_id": null
 }
