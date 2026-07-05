@@ -76,7 +76,7 @@ async function routeRequest(request, env) {
   // Event detail pages: /events/{id}/{slug}
   if (url.pathname.startsWith('/events/')) return serveEventPage(env, url);
 
-  return new Response('Not found', { status: 404 });
+  return serve404();
 }
 
 // ── SSR Helpers ───────────────────────────────────────────────────────
@@ -740,7 +740,7 @@ async function getEventDetails(params, env) {
 /** Serve an individual event page at /events/{id}/{slug}. */
 async function serveEventPage(env, url) {
   const parts = url.pathname.split('/'); // ['', 'events', '{id}', '{slug}']
-  if (!/^[0-9]+$/.test(parts[2])) return new Response('Not found', { status: 404 });
+  if (!/^[0-9]+$/.test(parts[2])) return serve404();
   const eventId = parseInt(parts[2]);
 
   const row = await env.STUTENSEE_DB.prepare(
@@ -789,7 +789,7 @@ async function serveEventPage(env, url) {
       }
     }
 
-    return new Response('Not found', { status: 404 });
+    return serve404();
   }
 
   // Validate slug: redirect to canonical URL if slug doesn't match
@@ -1232,6 +1232,39 @@ Preferred-Languages: de, en
 Expires: 2027-05-24T14:00:00.000Z
 `, {
     headers: { 'content-type': 'text/plain;charset=utf-8', 'cache-control': 'public, max-age=86400' }
+  });
+}
+
+function serve404() {
+  const page = `<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seite nicht gefunden — Hey, Stutensee!</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f4f6f8; color: #111827; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .card { background: #fff; border-radius: 12px; padding: 48px 40px; max-width: 480px; text-align: center; box-shadow: 0 2px 8px rgba(13,58,113,0.06); margin: 20px; }
+  .code { font-size: 72px; font-weight: 800; color: #0d3a71; line-height: 1; margin-bottom: 8px; }
+  h1 { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
+  p { color: #4b5563; font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+  a { display: inline-block; background: #0d3a71; color: #fff; padding: 10px 24px; border-radius: 8px; text-decoration: none; font-size: 14px; font-weight: 600; transition: background 0.2s; }
+  a:hover { background: #0a2d59; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="code">404</div>
+  <h1>Seite nicht gefunden</h1>
+  <p>Die aufgerufene Seite existiert nicht. Vielleicht wurde der Veranstaltungskalender aktualisiert und der Link ist veraltet.</p>
+  <a href="/">Zurück zum Kalender</a>
+</div>
+</body>
+</html>`;
+  return new Response(page, {
+    status: 404,
+    headers: { 'content-type': 'text/html;charset=utf-8' }
   });
 }
 
