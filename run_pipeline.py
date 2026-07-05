@@ -452,14 +452,15 @@ def dedup_sql():
     insert_rows = []
     for key, row in groups.items():
         title, ds, de, tr, loc, org, desc, url, _ = row
+        nt = normalize_title(title)
         src_agg = ", ".join(sorted(sources[key]))
-        insert_rows.append((title, ds, de, tr, loc, org, desc, url, src_agg))
+        insert_rows.append((title, nt, ds, de, tr, loc, org, desc, url, src_agg))
 
     if insert_rows:
         c.executemany(
-            "INSERT INTO curated_events (title, date_start, date_end, time_raw, "
+            "INSERT INTO curated_events (title, normalized_title, date_start, date_end, time_raw, "
             "location, organizer, description, event_url, sources) "
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
             insert_rows
         )
     conn.commit()
