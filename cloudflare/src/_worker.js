@@ -156,7 +156,7 @@ async function fetchEventsForSsr(env, url) {
 
   const { results } = await db.prepare(
     `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
-     FROM curated_events ${where} ORDER BY featured DESC, date_start ASC, id LIMIT ? OFFSET ?`
+     FROM curated_events ${where} ORDER BY date_start ASC, featured DESC, id LIMIT ? OFFSET ?`
   ).bind(...args, perPage, offset).all();
 
   return { events: results, total, page, totalPages, perPage, dateFrom };
@@ -699,7 +699,7 @@ async function searchEvents(params, env) {
   const total = (await db.prepare(`SELECT COUNT(*) as c FROM curated_events ${where}`).bind(...args).first()).c;
   const { results } = await db.prepare(
     `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags, featured
-     FROM curated_events ${where} ORDER BY featured DESC, date_start ASC, id LIMIT ? OFFSET ?`
+     FROM curated_events ${where} ORDER BY date_start ASC, featured DESC, id LIMIT ? OFFSET ?`
   ).bind(...args, perPage, offset).all();
 
   const events = results.map(r => ({
@@ -997,7 +997,7 @@ async function serveEvents(env, url) {
   const total = (await db.prepare(`SELECT COUNT(*) as c FROM curated_events ${where}`).bind(...args).first()).c;
   const { results } = await db.prepare(
     `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
-     FROM curated_events ${where} ORDER BY featured DESC, date_start ASC, id LIMIT ? OFFSET ?`
+     FROM curated_events ${where} ORDER BY date_start ASC, featured DESC, id LIMIT ? OFFSET ?`
   ).bind(...args, perPage, offset).all();
 
   return json({
