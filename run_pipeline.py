@@ -651,9 +651,9 @@ def dedup_sql():
                 long_w = set(long.split())
                 match = False
                 if len(short_ns) > 6 and len(long_ns) > 6:
-                    if short_ns in long_ns or long_ns in short_ns:
+                    if (short_ns in long_ns or long_ns in short_ns) and len(short_ns) >= len(long_ns) * 0.5:
                         match = True
-                    elif short_ns and all(any(w in word for word in long_w) for w in short_ns.split()):
+                    elif short_ns and all(any(w in word for word in long_w) for w in short.split()):
                         match = True
                 if match:
                     a, b = candidates[i], candidates[j]
