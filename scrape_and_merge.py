@@ -954,6 +954,7 @@ def write_event_json(event, out_dir):
         "sources": sources,
         "tags": tags,
         "recurring_group_id": event.get("recurring_group_id"),
+        "is_passed": event.get("is_passed", False),
         "featured": compute_featured(event.get("id", 0), event.get("title", ""),
                                       ",".join(tags) if isinstance(tags, list) else tags),
     }

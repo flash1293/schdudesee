@@ -31,7 +31,9 @@ CREATE TABLE curated_events (
     recurring_group_id INTEGER DEFAULT NULL,
     dedup_round INTEGER,
     created_at TEXT DEFAULT (datetime('now')),
-    updated_at TEXT DEFAULT (datetime('now'))
+    updated_at TEXT DEFAULT (datetime('now')),
+    is_passed INTEGER DEFAULT 0,
+    featured INTEGER DEFAULT 0
 );
 CREATE INDEX idx_curated_dates ON curated_events(date_start);
 CREATE INDEX idx_curated_title ON curated_events(normalized_title);
@@ -92,8 +94,8 @@ def main():
 
     insert_sql = """INSERT INTO curated_events
         (id, title, normalized_title, date_start, date_end, time_raw, location, organizer,
-         description, event_url, sources, tags, recurring_group_id)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
+         description, event_url, sources, tags, recurring_group_id, is_passed, featured)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"""
 
     # Load historical old_id → new_id mapping from pre-hash-change snapshot.
     # This file is generated once from the git history and should not be regenerated.
@@ -140,6 +142,8 @@ def main():
             sources_str,
             tags_str,
             ev.get("recurring_group_id"),
+            ev.get("is_passed", 0),
+            ev.get("featured", 0),
         ))
 
     # Insert redirect mappings
