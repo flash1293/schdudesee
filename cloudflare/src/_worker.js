@@ -139,7 +139,7 @@ async function fetchEventsForSsr(env, url) {
   const hideRecurring = p.get('hide_recurring') === 'true';
 
   const db = env.STUTENSEE_DB;
-  const wheres = ["tags != 'blocked'"];
+  const wheres = ["tags != 'blocked'", "is_passed = 0"];
   const args = [];
 
   if (dateFrom) { wheres.push("date_start >= ?"); args.push(dateFrom); }
@@ -671,7 +671,7 @@ async function searchEvents(params, env) {
   const db = env.STUTENSEE_DB;
   const page = Math.max(1, params.page || 1);
   const perPage = Math.min(20, Math.max(1, params.per_page || 12));
-  const wheres = ["tags != 'blocked'"];
+  const wheres = ["tags != 'blocked'", "is_passed = 0"];
   const args = [];
 
   if (params.query) {
@@ -717,7 +717,7 @@ async function searchEvents(params, env) {
 async function getEventDetails(params, env) {
   const db = env.STUTENSEE_DB;
   const row = await db.prepare(
-    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags, is_passed
      FROM curated_events WHERE id = ? AND tags != 'blocked'`
   ).bind(params.event_id).first();
 
@@ -734,6 +734,7 @@ async function getEventDetails(params, env) {
     description: decode(row.description || ''),
     event_url: decode(row.event_url || ''),
     tags: row.tags || '',
+    is_passed: row.is_passed || 0,
   };
 }
 
@@ -744,7 +745,7 @@ async function serveEventPage(env, url) {
   const eventId = parseInt(parts[2]);
 
   const row = await env.STUTENSEE_DB.prepare(
-    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, is_passed
      FROM curated_events WHERE id = ? AND tags != 'blocked'`
   ).bind(eventId).first();
 
@@ -804,6 +805,7 @@ async function serveEventPage(env, url) {
     description: decode(row.description), event_url: decode(row.event_url || ''),
     sources: decode(row.sources || ''), tags: row.tags || '',
     recurring_group_id: row.recurring_group_id,
+    is_passed: row.is_passed || 0,
   };
 
   const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
@@ -891,6 +893,7 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
   <a href="/" class="back-link">← Zurück zur Übersicht</a>
   <article class="card" aria-label="${escapeHtml(e.title)}">
     <h1><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span>${escapeHtml(e.title)}</h1>
+    ${e.is_passed ? '<div style="background:#fef3c7;color:#92400e;padding:8px 16px;border-radius:8px;margin-bottom:16px;font-weight:600;font-size:14px">✅ Diese Veranstaltung hat bereits stattgefunden.</div>' : ''}
     <div class="meta">
       ${e.date_start ? '<div><span class="label">Datum:</span> ' + fmtDate(e.date_start) + (e.date_end && e.date_end !== e.date_start ? ' – ' + fmtDate(e.date_end) : '') + '</div>' : ''}
       ${e.time_raw ? '<div><span class="label">Zeit:</span> ' + escapeHtml(e.time_raw) + '</div>' : ''}
@@ -970,7 +973,7 @@ async function serveEvents(env, url) {
   const organizer = p.get('organizer') || '';
 
   const db = env.STUTENSEE_DB;
-  const wheres = ["tags != 'blocked'"];
+  const wheres = ["tags != 'blocked'", "is_passed = 0"];
   const args = [];
 
   if (dateFrom) { wheres.push("date_start >= ?"); args.push(dateFrom); }

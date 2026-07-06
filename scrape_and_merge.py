@@ -583,8 +583,6 @@ def dedup_events(raw_events):
         title = ev.get("title", "")
         if any(title.startswith(p) for p in BLOCKED_PREFIXES):
             continue
-        if is_past(ev.get("date_start", "")):
-            continue
         if not ev.get("title", "").strip():
             continue
         date = ev.get("date_start", "") or ""
@@ -798,6 +796,13 @@ def dedup_events(raw_events):
                         break
 
     curated = compact(curated)
+
+    # Compute is_passed flag for each event
+    from datetime import datetime as dt
+    today = dt.now().date().isoformat()
+    for ev in curated:
+        ds = ev.get("date_start", "") or ""
+        ev["is_passed"] = bool(ds and ds < today)
 
     return curated
 
