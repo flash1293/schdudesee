@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSporthalle der Richard-Hecht-Grundschule",
-  "organizer": "Veranstalter:\n\t\tTischtennisgemeinschaft Spöck 2010 e.V.",
+  "organizer": "Tischtennisgemeinschaft Spöck 2010 e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2815",
   "sources": [
@@ -16,6 +16,5 @@
     "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
   "featured": 0
 }

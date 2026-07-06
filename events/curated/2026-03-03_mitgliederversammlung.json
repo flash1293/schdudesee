@@ -1,0 +1,19 @@
+{
+  "title": "MITGLIEDERVERSAMMLUNG",
+  "date_start": "2026-03-03",
+  "date_end": null,
+  "time_raw": "19:00 Uhr",
+  "location": "Mehrgenerationenhaus Blankenloch",
+  "organizer": "Gewerbeverein Stutensee",
+  "description": "",
+  "event_url": "https://gewerbeverein-stutensee.org/veranstaltungen",
+  "sources": [
+    "https://gewerbeverein-stutensee.org/veranstaltungen"
+  ],
+  "tags": [
+    "Verein",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "featured": 0
+}

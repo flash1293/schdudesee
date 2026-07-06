@@ -9,15 +9,13 @@
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/34280",
   "sources": [
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen",
-    "https://www.egg-leo.de/Veranstaltungen",
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
-    "Fest",
     "Kultur",
-    "Neuthard"
+    "Kirche",
+    "Bretten"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
   "featured": 0
 }

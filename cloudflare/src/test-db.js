@@ -95,7 +95,9 @@ export function createTestDb() {
       event_url TEXT,
       sources TEXT,
       tags TEXT,
-      recurring_group_id INTEGER
+      recurring_group_id INTEGER,
+      is_passed INTEGER DEFAULT 0,
+      featured INTEGER DEFAULT 0
     );
     
     CREATE TABLE raw_events (

@@ -1,0 +1,20 @@
+{
+  "title": "Reparatur-Treff",
+  "date_start": "2026-05-09",
+  "date_end": null,
+  "time_raw": "10:00 – 12:00",
+  "location": "Altes Rathaus Friedrichstal, Rheinstraße Ost 14, 76297 Stutensee-Friedrichstal",
+  "organizer": "Familienzentrum Friedrichstal - Kult Café",
+  "description": "Reparatur-Treff im Kult Café Friedrichstal. Ehrenamtliche Fachkräfte helfen bei Reparaturen von Elektrik, elektronischen Geräten, Mechanik, Holz, Textilien und IT. Samstags 10–12 Uhr. Letzte Annahme bis 11:30 Uhr.",
+  "event_url": "https://www.familienzentrum-friedrichstal-kult-cafe-stutensee.de/programm/treffs/reparatur-treff",
+  "sources": [
+    "https://www.familienzentrum-friedrichstal-kult-cafe-stutensee.de"
+  ],
+  "tags": [
+    "Handwerk",
+    "Treff",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "featured": 0
+}

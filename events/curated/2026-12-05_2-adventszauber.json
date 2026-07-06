@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tAlte Schul' Spöck",
-  "organizer": "Veranstalter:\n\t\tDeutsches Rotes Kreuz Ortsverein Spöck e.V.",
+  "organizer": "Deutsches Rotes Kreuz Ortsverein Spöck e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2833",
   "sources": [
@@ -14,6 +14,5 @@
     "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
   "featured": 0
 }

@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tDreschhalle Staffort",
-  "organizer": "Veranstalter:\n\t\tStageArt e.V.",
+  "organizer": "StageArt e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2661",
   "sources": [
@@ -15,6 +15,5 @@
     "Staffort"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
   "featured": 0
 }

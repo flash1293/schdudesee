@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "18:00 Uhr",
   "location": "Veranstaltungsort:\n\t\tZukunftshaus",
-  "organizer": "Veranstalter:\n\t\tStadtbibliothek",
+  "organizer": "Stadtbibliothek",
   "description": "Ausleihen ohne in die Bücherei gehen zu müssen. Wir zeigen wie es funktioniert. Keine Vorkenntnisse notwendig",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2783",
   "sources": [
@@ -15,6 +15,5 @@
     "Blankenloch"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
   "featured": 0
 }

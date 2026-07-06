@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tAm Kriegerdenkmal",
-  "organizer": "Veranstalter:\n\t\tOrtsverwaltung Staffort",
+  "organizer": "Ortsverwaltung Staffort",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2828",
   "sources": [
@@ -14,6 +14,5 @@
     "Staffort"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
   "featured": 0
 }

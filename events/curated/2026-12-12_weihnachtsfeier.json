@@ -1,0 +1,19 @@
+{
+  "title": "Weihnachtsfeier",
+  "date_start": "2026-12-12",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
+  "organizer": "Gesangverein &quot;Concordia&quot; 1884 Blankenloch e.V.",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2837",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen",
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Blankenloch"
+  ],
+  "recurring_group_id": 749485003,
+  "featured": 0
+}

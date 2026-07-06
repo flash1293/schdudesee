@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "",
-  "organizer": "Veranstalter:\n\t\tBüchig(Er)leben",
+  "organizer": "Büchig(Er)leben",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2822",
   "sources": [
@@ -14,6 +14,5 @@
     "Büchig"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
   "featured": 0
 }

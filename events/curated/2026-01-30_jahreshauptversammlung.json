@@ -1,0 +1,19 @@
+{
+  "title": "Jahreshauptversammlung",
+  "date_start": "2026-01-30",
+  "date_end": null,
+  "time_raw": "ab 19:30 Uhr",
+  "location": "Proberaum der alten Schule",
+  "organizer": "Musikverein Harmonie Spöck",
+  "description": "",
+  "event_url": "https://musikverein-spoeck.de/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Verein",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "featured": 0
+}
