@@ -555,22 +555,16 @@ def auto_tag(title, description="", location="", organizer=""):
         return results
 
     loc_text = (location or "").lower()
-    content_text_full = f"{title} {description}".lower()
     org_text = (organizer or "").lower()
 
     location_districts = match_districts(loc_text)
-    content_districts = match_districts(content_text_full)
-
     district_tags = list(location_districts)
-    for d in content_districts:
+
+    # Fallback: organizer as secondary source (always, not just when location is empty)
+    org_districts = match_districts(org_text)
+    for d in org_districts:
         if d not in district_tags:
             district_tags.append(d)
-
-    if not location_districts:
-        org_districts = match_districts(org_text)
-        for d in org_districts:
-            if d not in district_tags:
-                district_tags.append(d)
 
     return content_tags + district_tags
 
