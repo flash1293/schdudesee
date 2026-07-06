@@ -300,7 +300,7 @@ function renderFeaturedCard(event) {
   const emojiHtml = themeEmojis.length > 0 ? escapeHtml(themeEmojis[0]) : '📌';
 
   const titleEscaped = escapeHtml(e.title);
-  const locationEscaped = e.location ? escapeHtml(e.location) : (locTags.length > 0 ? locTags[0] : '');
+  const locationEscaped = locTags.length > 0 ? locTags[0] : (e.location ? escapeHtml(e.location) : '');
   const path = eventPath(e);
   const eventUrl = e.event_url || '';
   const badge = formatDateBadge(e.date_start);
