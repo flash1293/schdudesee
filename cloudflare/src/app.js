@@ -293,7 +293,7 @@ function renderFeaturedCard(e) {
 
 function renderFeaturedSection(events) {
   if (!events || events.length === 0) return '';
-  let html = '<section class="featured-section"><h2 class="featured-heading"><span class="featured-star">⭐</span> Empfohlen</h2><div class="featured-scroll">';
+  let html = '<section class="featured-section"><h2 class="featured-heading"><span class="featured-star">⭐</span> Empfohlen</h2><div class="featured-grid">';
   for (const e of events) html += renderFeaturedCard(e);
   html += '</div></section>';
   return html;

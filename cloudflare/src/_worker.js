@@ -169,7 +169,8 @@ async function fetchFeaturedEvents(env) {
   const { results } = await db.prepare(
     `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
      FROM curated_events WHERE featured = 1 AND is_passed = 0 AND tags != 'blocked'
-     ORDER BY date_start ASC LIMIT 6`
+     AND (tags LIKE '%Blankenloch%' OR tags LIKE '%Friedrichstal%' OR tags LIKE '%Spöck%' OR tags LIKE '%Staffort%' OR tags LIKE '%Büchig%')
+     ORDER BY date_start ASC LIMIT 4`
   ).all();
   return results;
 }
@@ -317,7 +318,7 @@ function renderFeaturedCard(event) {
 /** Render the featured events horizontal scroll section. */
 function renderFeaturedSection(events) {
   if (!events || events.length === 0) return '';
-  let html = '<section class="featured-section"><h2 class="featured-heading"><span class="featured-star">⭐</span> Empfohlen</h2><div class="featured-scroll">';
+  let html = '<section class="featured-section"><h2 class="featured-heading"><span class="featured-star">⭐</span> Empfohlen</h2><div class="featured-grid">';
   for (const e of events) {
     html += renderFeaturedCard(e);
   }
@@ -1051,7 +1052,8 @@ async function serveFeatured(env) {
   const { results } = await db.prepare(
     `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
      FROM curated_events WHERE featured = 1 AND is_passed = 0 AND tags != 'blocked'
-     ORDER BY date_start ASC LIMIT 6`
+     AND (tags LIKE '%Blankenloch%' OR tags LIKE '%Friedrichstal%' OR tags LIKE '%Spöck%' OR tags LIKE '%Staffort%' OR tags LIKE '%Büchig%')
+     ORDER BY date_start ASC LIMIT 4`
   ).all();
   return json(results.map(r => ({
     id: r.id, title: decode(r.title), date_start: r.date_start || '', date_end: r.date_end,
