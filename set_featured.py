@@ -50,12 +50,17 @@ def main():
     validated = []
     for eid in ids:
         cur.execute(
-            "SELECT id, title, tags, date_start, location FROM curated_events WHERE id = ?",
+            "SELECT id, title, tags, date_start, location FROM curated_events WHERE id = ? AND is_passed = 0 AND tags != 'blocked'",
             (eid,),
         )
         row = cur.fetchone()
         if row is None:
-            errors.append(f"ID {eid}: not found in database")
+            # Distinguish: not found vs filtered out by is_passed/blocked
+            cur.execute("SELECT id FROM curated_events WHERE id = ?", (eid,))
+            if cur.fetchone():
+                errors.append(f"ID {eid}: exists but is either already passed or blocked — cannot feature")
+            else:
+                errors.append(f"ID {eid}: not found in database")
             continue
 
         tags = row[2] or ""
