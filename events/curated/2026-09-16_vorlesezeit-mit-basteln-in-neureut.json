@@ -12,11 +12,9 @@
   ],
   "tags": [
     "Neureut",
-    "Literatur",
-    "Kultur",
-    "Handwerk"
+    "Literatur"
   ],
-  "recurring_group_id": 1596923700,
-  "is_passed": false,
+  "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

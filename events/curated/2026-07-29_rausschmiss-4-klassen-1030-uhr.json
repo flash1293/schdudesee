@@ -6,7 +6,7 @@
   "location": "Pestalozzi-Schule Blankenloch, Hauptstraße 100, 76297 Stutensee",
   "organizer": "Pestalozzi-Schule Blankenloch",
   "description": "",
-  "event_url": "https://www.pestalozzi-schule-stutensee.de/termine.html",
+  "event_url": "https://www.pestalozzi-schule-stutensee.de/termine.html?page_e101=2",
   "sources": [
     "https://www.pestalozzi-schule-stutensee.de/termine.html"
   ],
@@ -14,6 +14,6 @@
     "Blankenloch"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

@@ -8,14 +8,16 @@
   "description": "Ökumenischer Gottesdienst zum Dorffest Leopoldshafen",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1817",
   "sources": [
-    "https://www.egg-leo.de/Veranstaltungen"
+    "https://www.egg-leo.de/Veranstaltungen",
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
-    "Kirche",
     "Fest",
-    "Leopoldshafen"
+    "Kirche",
+    "Leopoldshafen",
+    "Neuthard"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

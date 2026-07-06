@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "08:00 - 18:00 Uhr",
   "location": "Veranstaltungsort:\n\t\tWahllokal Ihres Wohnortes",
-  "organizer": "Stadt Stutensee",
+  "organizer": "Veranstalter:\n\t\tStadt Stutensee",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2767",
   "sources": [
@@ -14,6 +14,6 @@
     "Politik"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }
