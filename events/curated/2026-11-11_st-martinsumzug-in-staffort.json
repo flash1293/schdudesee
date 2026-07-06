@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tDreschhalle Staffort",
-  "organizer": "Ortsverwaltung Staffort",
+  "organizer": "Veranstalter:\n\t\tOrtsverwaltung Staffort",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2313",
   "sources": [
@@ -14,6 +14,6 @@
     "Staffort"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

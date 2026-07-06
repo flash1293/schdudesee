@@ -8,14 +8,17 @@
   "description": "Am 18. und 19. Juli 2026 lädt der Turnverein Friedrichstal zum großen Sommerfest auf das Vereinsgelände in der Hermann-Löns-Straße ein. Unter dem Motto „Spaß, Sport, Gemeinschaft“ erwartet die Besucherinnen und Besucher ein abwechslungsreiches Programm für die ganze Familie.\nAn beiden Tagen gibt es ein buntes Kinderprogramm sowie zahlreiche Mitmachangebote. Am Samstagnachmittag können Kinder und Erwachsene ihr Geschick bei der Basketball Challenge und der Fitness Challenge unter Beweis stellen. Außerdem werden Glitzer-Tattoos angeboten.\nFür Unterhaltung sorgen Live-Shows, Musik und Tanz sowie ein vielfältiges Aktivangebot. Am Samstag startet ab 17 Uhr die Cocktailbar, begleitet von Musik und DJ.\nAm Sonntag um 10 Uhr findet ein Abenteuerland-Gottesdienst statt. Zusätzlich präsentiert der Reitverein Friedrichstal verschiedene Aktionen. Ab 15 Uhr sorgt der Eiswagen Topolino für eine leckere Erfrischung.\nAuch kulinarisch ist einiges geboten: Neben dem beliebten TVF-Burger werden eine TVF Bowl sowie am Sonntag Rouladen angeboten.\n",
   "event_url": "https://stutenseekinderkalender.de/event/sommerfest-2026-beim-tv-friedrichstal/",
   "sources": [
+    "https://stutensee.de/Veranstaltungen",
     "https://stutenseekinderkalender.de"
   ],
   "tags": [
-    "Sport",
+    "Fest",
+    "Friedrichstal",
     "Musik",
-    "Friedrichstal"
+    "Sport",
+    "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

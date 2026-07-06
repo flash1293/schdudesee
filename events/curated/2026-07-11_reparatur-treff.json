@@ -12,11 +12,11 @@
     "https://www.familienzentrum-friedrichstal-kult-cafe-stutensee.de"
   ],
   "tags": [
+    "Friedrichstal",
     "Handwerk",
-    "Treff",
-    "Friedrichstal"
+    "Treff"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

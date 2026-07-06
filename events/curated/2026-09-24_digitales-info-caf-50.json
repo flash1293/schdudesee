@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "ab 09:00 - 12:00 Uhr",
   "location": "Veranstaltungsort:\n\t\tZukunftshaus",
-  "organizer": "Zukunftshaus Stutensee",
+  "organizer": "Veranstalter:\n\t\tZukunftshaus Stutensee",
   "description": "Bei einer Tasse Kaffee gemeinsam digitale Stolpersteine meistern.",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2531",
   "sources": [
@@ -16,6 +16,6 @@
     "Blankenloch"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tDreschhalle Staffort",
-  "organizer": "Tennisclub Spöck e.V.",
+  "organizer": "Veranstalter:\n\t\tTennisclub Spöck e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2651",
   "sources": [
@@ -14,7 +14,7 @@
     "Fest",
     "Staffort"
   ],
-  "recurring_group_id": null,
-  "is_passed": false,
+  "recurring_group_id": 7589166122976129956,
+  "is_passed": 0,
   "featured": 0
 }

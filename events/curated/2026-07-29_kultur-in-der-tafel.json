@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "18:00 Uhr",
   "location": "Veranstaltungsort:\n\t\tEvang. Michaeliskirche Blankenloch",
-  "organizer": "Essen für Alle - Stutensee e.V.",
+  "organizer": "Veranstalter:\n\t\tEssen für Alle - Stutensee e.V.",
   "description": "Trio Sonido  - Jubiläumskonzert 15 Jahre Tafel Stutensee",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2808",
   "sources": [
@@ -16,6 +16,6 @@
     "Blankenloch"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }
