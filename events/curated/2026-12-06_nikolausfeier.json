@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
-  "organizer": "Gesangverein &quot;Eintracht 1887&quot; Spöck e.V.",
+  "organizer": "Veranstalter:\n\t\tGesangverein &quot;Eintracht 1887&quot; Spöck e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2834",
   "sources": [
@@ -15,5 +15,6 @@
     "Spöck"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

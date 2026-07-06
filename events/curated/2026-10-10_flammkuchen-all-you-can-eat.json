@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
-  "organizer": "Gesangverein &quot;Liederkranz&quot; Spöck 1900 e.V.",
+  "organizer": "Veranstalter:\n\t\tGesangverein &quot;Liederkranz&quot; Spöck 1900 e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2672",
   "sources": [
@@ -15,5 +15,6 @@
     "Spöck"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

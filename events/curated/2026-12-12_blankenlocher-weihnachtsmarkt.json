@@ -4,17 +4,19 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tAm Neuen Markt/Vor dem Kerns-Max-Haus",
-  "organizer": "Stadt Stutensee",
+  "organizer": "Veranstalter:\n\t\tStadt Stutensee",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2334",
   "sources": [
-    "https://stutensee.de/Veranstaltungen"
+    "https://stutensee.de/Veranstaltungen",
+    "https://tsg-blankenloch.de/Veranstaltungen/"
   ],
   "tags": [
+    "Blankenloch",
     "Fest",
-    "Markt",
-    "Blankenloch"
+    "Markt"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 1
 }

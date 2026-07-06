@@ -2,20 +2,19 @@
   "title": "Peter und der Wolf (ab 4)",
   "date_start": "2026-07-12",
   "date_end": "2026-07-12",
-  "time_raw": "14:00",
+  "time_raw": "11:00",
   "location": "marotte Theater",
   "organizer": "marotte Theater",
   "description": "Peter, der die Sprache der Tiere versteht, wohnt bei seinem Großvater auf dem Land. Hier kann er mit Vogel, Katze und Ente spielen. Eines Tages schleicht sich der Wolf an und stiehlt die Ente vom Hof. Doch mit Hilfe des Vogels kann Peter den Wolf einfangen. Die Kinder lernen verschiedene Orchesterinstrumente und die Zuordnung zu bestimmten Figuren in der Geschichte kennen. Das Theatererlebnis der besonderen Art, unterhaltsam, spannend und lehrreich! Spiel. Thomas Hänsel Regie: Herbert Schnaibel",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/peter_und_der_wolf_ab4n-26",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/peter_und_der_wolf_ab4n-25",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
   "tags": [
     "Karlsruhe-Innenstadt",
-    "Theater",
-    "Musik",
-    "Kultur"
+    "Theater"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

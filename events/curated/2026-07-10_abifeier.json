@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
-  "organizer": "Thomas-Mann-Gymnasium",
+  "organizer": "Veranstalter:\n\t\tThomas-Mann-Gymnasium",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2681",
   "sources": [
@@ -14,5 +14,6 @@
     "Fest"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

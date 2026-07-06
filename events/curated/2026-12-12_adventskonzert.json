@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tKatholische Kirche St. Georg Spöck",
-  "organizer": "Musikverein &quot;Harmonie&quot; 1920 Spöck e.V.",
+  "organizer": "Veranstalter:\n\t\tMusikverein &quot;Harmonie&quot; 1920 Spöck e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2839",
   "sources": [
@@ -15,5 +15,6 @@
     "Spöck"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

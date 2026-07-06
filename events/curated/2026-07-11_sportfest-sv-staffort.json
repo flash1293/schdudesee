@@ -12,14 +12,15 @@
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Sport",
-    "Musik",
-    "Staffort",
     "Blankenloch",
     "Büchig",
     "Friedrichstal",
-    "Spöck"
+    "Musik",
+    "Sport",
+    "Spöck",
+    "Staffort"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

@@ -14,6 +14,7 @@
     "Senioren",
     "Treff"
   ],
-  "recurring_group_id": 2112330319,
+  "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

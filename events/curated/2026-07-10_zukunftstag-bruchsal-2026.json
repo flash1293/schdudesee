@@ -6,7 +6,7 @@
   "location": "HubWerk01 Digital Hub Region Bruchsal e.V., Werner-von-Siemens-Straße 2-6, Gebäude 5137c, 76646 Bruchsal",
   "organizer": "Regionale Wirtschaftsförderung Bruchsal in Kooperation mit der Innovationsallianz TechnologieRegion Karlsruhe",
   "description": "Vorbeikommen, erleben, mitmachen: Am Freitag, 10. Juli 2026 , wird der TRIWO Technopark Bruchsal von 14:00 bis 18:00 Uhr zur Innovationsarena. Beim Zukunftstag im und vor dem HubWerk01 erwarten euch spannende Einblicke in Zukunftstechnologien, Mitmach-Angebote für die ganze Familie und ein abwechslungsreiches Programm für Groß und Klein.",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8977703/index.html?nodeID=8977703",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8977703/ZukunftstagBruchsal2026.html&nodeID=8977703",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -15,5 +15,6 @@
     "Bruchsal"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

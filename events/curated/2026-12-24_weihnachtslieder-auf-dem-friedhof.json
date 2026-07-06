@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFriedhof Blankenloch",
-  "organizer": "Musikverein &quot;Harmonie&quot; Blankenloch e.V.",
+  "organizer": "Veranstalter:\n\t\tMusikverein &quot;Harmonie&quot; Blankenloch e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2842",
   "sources": [
@@ -15,5 +15,6 @@
     "Blankenloch"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

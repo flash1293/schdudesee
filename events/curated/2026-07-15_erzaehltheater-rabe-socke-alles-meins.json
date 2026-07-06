@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "15:30 - 16:00 Uhr",
   "location": "Veranstaltungsort:\n\t\tStadtbibliothek Spöck",
-  "organizer": "Stadtbibliothek",
+  "organizer": "Veranstalter:\n\t\tStadtbibliothek",
   "description": "für Kinder im Alter von 3 bis 8 Jahren",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2804",
   "sources": [
@@ -16,5 +16,6 @@
     "Spöck"
   ],
   "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }
