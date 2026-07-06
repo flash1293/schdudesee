@@ -171,11 +171,9 @@ async function fetchEventsForSsr(env, url) {
 async function fetchFeaturedEvents(env) {
   const db = env.STUTENSEE_DB;
   const { results } = await db.prepare(
-    // Word-boundary match for Büchig: prevents substring false-positive on
-    // "Dürrenbüchig" (a Bretten district, not Stutensee-Büchig).
     `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
      FROM curated_events WHERE featured = 1 AND is_passed = 0 AND tags != 'blocked'
-     AND (tags LIKE '%Blankenloch%' OR tags LIKE '%Friedrichstal%' OR tags LIKE '%Spöck%' OR tags LIKE '%Staffort%' OR (tags LIKE '%,Büchig,%' OR tags LIKE 'Büchig,%' OR tags LIKE '%,Büchig' OR tags = 'Büchig'))
+     AND (tags LIKE '%Blankenloch%' OR tags LIKE '%Friedrichstal%' OR tags LIKE '%Spöck%' OR tags LIKE '%Staffort%' OR tags LIKE '%Büchig%')
      ORDER BY date_start ASC LIMIT 4`
   ).all();
   return results;
@@ -1056,11 +1054,9 @@ function json(data, status = 200) {
 async function serveFeatured(env) {
   const db = env.STUTENSEE_DB;
   const { results } = await db.prepare(
-    // Word-boundary match for Büchig: prevents substring false-positive on
-    // "Dürrenbüchig" (a Bretten district, not Stutensee-Büchig).
     `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
      FROM curated_events WHERE featured = 1 AND is_passed = 0 AND tags != 'blocked'
-     AND (tags LIKE '%Blankenloch%' OR tags LIKE '%Friedrichstal%' OR tags LIKE '%Spöck%' OR tags LIKE '%Staffort%' OR (tags LIKE '%,Büchig,%' OR tags LIKE 'Büchig,%' OR tags LIKE '%,Büchig' OR tags = 'Büchig'))
+     AND (tags LIKE '%Blankenloch%' OR tags LIKE '%Friedrichstal%' OR tags LIKE '%Spöck%' OR tags LIKE '%Staffort%' OR tags LIKE '%Büchig%')
      ORDER BY date_start ASC LIMIT 4`
   ).all();
   return json(results.map(r => ({

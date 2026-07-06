@@ -36,9 +36,9 @@ conn.close()
 " > dump_d1.sql
 
 echo "==> Importing data into D1..."
-wrangler d1 execute was-geht-stutensee --file dump_d1.sql --remote
+npx wrangler d1 execute was-geht-stutensee --file dump_d1.sql --remote
 
 echo "==> Deploying worker..."
-wrangler deploy
+npx wrangler deploy
 
 echo "==> Done!"
