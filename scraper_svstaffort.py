@@ -107,6 +107,11 @@ def scrape_svstaffort():
         if not date_start:
             continue
 
+        # Warn if end date is before start date (upstream data error, e.g. Sportfest)
+        if date_end and date_end < date_start:
+            print(f"SV Staffort scraper WARNING: {title} — end date {date_end} is before start date {date_start}. Using start date only.")
+            date_end = None
+
         # Skip past events
         if date_start <= today:
             continue
