@@ -623,43 +623,45 @@ def scrape_piraten_stutensee():
     #   Vatertagsfest: Christi Himmelfahrt = Easter + 39 days
     #   Oktoberfest:   ~October 1 (approximate)
     #   Glühweinfest:  ~December 1 (approximate)
+    # Hardcoded annual recurring events with computed 2027 dates.
+    # Date rules:
+    #   Prunksitzung:  last Saturday in January
+    #   Rosenmontag:   48 days before Easter (Easter 2027 = March 28)
+    #   Vatertagsfest: Christi Himmelfahrt = Easter + 39 days
+    #   Oktoberfest:   ~October 1 (approximate)
+    #   Glühweinfest:  ~December 1 (approximate)
     HARDCODED_ANNUAL = [
         {
-            # approximate — last Saturday in January
             "title": "Prunksitzung",
-            "date_start": "2027-01-30",
+            "date_start": "2027-01-30",  # last Saturday in January
             "time_raw": "",
             "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
             "description": "Jährliche Prunksitzung des Karnevalsclub Die Piraten.",
         },
         {
-            # approximate — shifts with Easter (48 days before)
             "title": "Piratenmontag (Rosenmontag)",
-            "date_start": "2027-02-08",
+            "date_start": "2027-02-08",  # shifts with Easter (48 days before)
             "time_raw": "",
             "location": "Festhalle Blankenloch, Stutensee",
             "description": "Piratenmontag / Rosenmontagsveranstaltung.",
         },
         {
-            # approximate — shifts with Easter (Easter + 39 days)
             "title": "Vatertagsfest",
-            "date_start": "2027-05-06",
+            "date_start": "2027-05-06",  # shifts with Easter (Easter + 39 days)
             "time_raw": "",
             "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
             "description": "Vatertagsfest an Christi Himmelfahrt.",
         },
         {
-            # approximate — early October
             "title": "Oktoberfest",
-            "date_start": "2027-10-01",
+            "date_start": "2027-10-01",  # ~October 1 (approximate)
             "time_raw": "",
             "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
             "description": "Oktoberfest des Karnevalsclub Die Piraten.",
         },
         {
-            # approximate — early December
             "title": "Glühweinfest",
-            "date_start": "2027-12-01",
+            "date_start": "2027-12-01",  # ~December 1 (approximate)
             "time_raw": "",
             "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
             "description": "Glühweinfest des Karnevalsclub Die Piraten.",
