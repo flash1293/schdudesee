@@ -65,7 +65,16 @@ def main():
 
         tags = row[2] or ""
         location = row[4] or ""
-        district_match = [d for d in DISTRICTS if d in tags or d in location]
+
+        # Word-boundary match against comma-separated tags.
+        # Substring matching is dangerous: "Büchig" ⊆ "Dürrenbüchig" (a Bretten district,
+        # not Stutensee-Büchig). Split on commas to avoid false positives.
+        # Location uses substring matching — locations are free text, not structured.
+        tag_tokens = [t.strip() for t in tags.split(",") if t.strip()]
+        district_match = [
+            d for d in DISTRICTS
+            if d in tag_tokens or d in location
+        ]
 
         if not force and not district_match:
             errors.append(
