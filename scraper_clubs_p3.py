@@ -610,6 +610,79 @@ def scrape_piraten_stutensee():
                 "event_url": ev_url,
             })
 
+    # ── Hardcoded forward projections for annual events ────────────
+    # The WP API only returns currently-posted events. Annual recurring events
+    # whose current-year instances have already passed won't appear in the API.
+    # These hardcoded entries act as a fallback — API results take precedence
+    # (dedup by similar title), filling gaps for events not yet posted.
+    # UPDATE ANNUALLY: recompute dates for the next calendar year.
+    #
+    # Date rules:
+    #   Prunksitzung:  last Saturday in January
+    #   Rosenmontag:   48 days before Easter (Easter 2027 = March 28)
+    #   Vatertagsfest: Christi Himmelfahrt = Easter + 39 days
+    #   Oktoberfest:   ~October 1 (approximate)
+    #   Glühweinfest:  ~December 1 (approximate)
+    HARDCODED_ANNUAL = [
+        {
+            "title": "Prunksitzung",
+            "date_start": "2027-01-30",
+            "time_raw": "",
+            "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
+            "description": "Jährliche Prunksitzung des Karnevalsclub Die Piraten. # approximate — last Saturday in January.",
+        },
+        {
+            "title": "Piratenmontag (Rosenmontag)",
+            "date_start": "2027-02-08",
+            "time_raw": "",
+            "location": "Festhalle Blankenloch, Stutensee",
+            "description": "Piratenmontag / Rosenmontagsveranstaltung. # approximate — shifts with Easter (48 days before).",
+        },
+        {
+            "title": "Vatertagsfest",
+            "date_start": "2027-05-06",
+            "time_raw": "",
+            "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
+            "description": "Vatertagsfest an Christi Himmelfahrt. # approximate — shifts with Easter (Easter + 39 days).",
+        },
+        {
+            "title": "Oktoberfest",
+            "date_start": "2027-10-01",
+            "time_raw": "",
+            "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
+            "description": "Oktoberfest des Karnevalsclub Die Piraten. # approximate — early October.",
+        },
+        {
+            "title": "Glühweinfest",
+            "date_start": "2027-12-01",
+            "time_raw": "",
+            "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
+            "description": "Glühweinfest des Karnevalsclub Die Piraten. # approximate — early December.",
+        },
+    ]
+
+    # Add hardcoded entries not already covered by API results
+    from datetime import datetime as dt
+    today_str = dt.now().strftime("%Y-%m-%d")
+    for hc in HARDCODED_ANNUAL:
+        # Check if the API already returned a future event with a similar title
+        already_covered = False
+        for ev in events:
+            if title_similar(ev["title"], hc["title"]) and ev["date_start"] >= today_str:
+                already_covered = True
+                break
+        if not already_covered:
+            events.append({
+                "title": hc["title"],
+                "date_start": hc["date_start"],
+                "date_end": None,
+                "time_raw": hc["time_raw"],
+                "location": hc["location"],
+                "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
+                "description": hc["description"],
+                "event_url": "https://www.piraten-stutensee.de/category/veranstaltungen/",
+            })
+
     # Deduplicate by similar title and same date
     deduped = []
     for ev in events:
