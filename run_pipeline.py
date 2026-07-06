@@ -591,21 +591,25 @@ def dedup_sql():
     merged = 0
     rows = []
     for r in c.execute("""
-        SELECT id, title, date_start, location, description, sources, COALESCE(tags,'')
+        SELECT id, title, date_start, location, description, sources, COALESCE(tags,''), COALESCE(organizer,'')
         FROM curated_events ORDER BY date_start, title
     """).fetchall():
-        rows.append(list(r) + [normalize_title(r[1]), normalize_location_dedup(r[3])])
+        rows.append(list(r) + [normalize_title(r[1]), normalize_location_dedup(r[3]), normalize_organizer(r[7])])
     # Group by date + district
     dd_groups = {}
     for r in rows:
-        dd_groups.setdefault((r[2] or "", r[8]), []).append(r)
+        dd_groups.setdefault((r[2] or "", r[9]), []).append(r)
     for candidates in dd_groups.values():
         while True:
             match = None
             for i, a in enumerate(candidates):
                 for b in candidates[i+1:]:
-                    at, bt = a[7], b[7]
+                    at, bt = a[8], b[8]
                     if at == bt or (len(at) > 6 and len(bt) > 6 and (at in bt or bt in at or at.replace(' ','') in bt.replace(' ','') or bt.replace(' ','') in at.replace(' ',''))):
+                        # Don't merge different organizers
+                        a_org, b_org = a[10], b[10]
+                        if a_org and b_org and a_org != b_org and a_org not in b_org and b_org not in a_org:
+                            continue
                         match = (a, b)
                         break
                 if match:
@@ -642,7 +646,7 @@ def dedup_sql():
         for i in range(len(candidates)):
             for j in range(i+1, len(candidates)):
                 a, b = candidates[i], candidates[j]
-                at, bt = a[7], b[7]
+                at, bt = a[8], b[8]
                 if at == bt:
                     continue
                 short, long = (at, bt) if len(at) < len(bt) else (bt, at)
@@ -653,9 +657,13 @@ def dedup_sql():
                 if len(short_ns) > 6 and len(long_ns) > 6:
                     if (short_ns in long_ns or long_ns in short_ns) and len(short_ns) >= len(long_ns) * 0.5:
                         match = True
-                    elif short_ns and all(any(w in word for word in long_w) for w in short.split()):
+                    elif short_ns and all(any(w in word for word in long_w) for w in short.split()):  # short, not short_ns — split on spaces
                         match = True
                 if match:
+                    # Don't merge different organizers
+                    a_org, b_org = a[10], b[10]
+                    if a_org and b_org and a_org != b_org and a_org not in b_org and b_org not in a_org:
+                        continue
                     a, b = candidates[i], candidates[j]
                     pick = max([a, b], key=lambda x: len(x[4] or ""))
                     kill = b if pick[0] == a[0] else a
@@ -711,12 +719,16 @@ def dedup_sql():
     # Also merge same-title duplicates where one has no location
     title_groups = {}
     for r in rows:
-        title_groups.setdefault((r[7], r[2] or ""), []).append(r)
+        title_groups.setdefault((r[8], r[2] or ""), []).append(r)
     for candidates in title_groups.values():
         if len(candidates) > 1:
             best = max(candidates, key=lambda x: len(x[4] or ""))
             for kill in candidates:
                 if kill[0] == best[0]:
+                    continue
+                # Don't merge different organizers
+                best_org, kill_org = best[10], kill[10]
+                if best_org and kill_org and best_org != kill_org and best_org not in kill_org and kill_org not in best_org:
                     continue
                 merged += 1
                 merged_src = set(best[5].split(",")) if best[5] else set()
@@ -780,6 +792,13 @@ def normalize_location_dedup(location):
                 return district
     idx = loc.find(',')
     return loc[:idx].strip() if idx > 0 else loc
+
+
+def normalize_organizer(org):
+    """Normalize organizer string for dedup comparison: lowercase, strip whitespace/punctuation."""
+    if not org:
+        return ""
+    return re.sub(r'[\s\.,;:-]+', '', org.lower())
 
 
 def tag_untagged(force=False):
