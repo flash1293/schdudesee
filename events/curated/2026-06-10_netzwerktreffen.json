@@ -1,0 +1,21 @@
+{
+  "title": "NETZWERKTREFFEN",
+  "date_start": "2026-06-10",
+  "date_end": null,
+  "time_raw": "18:00 Uhr",
+  "location": "Hummel-Marketing | Thyssenstr. 14 | 76344 Eggenstein-Leopoldshafen",
+  "organizer": "Gewerbeverein Stutensee",
+  "description": "",
+  "event_url": "https://gewerbeverein-stutensee.org/veranstaltungen",
+  "sources": [
+    "https://gewerbeverein-stutensee.org/veranstaltungen"
+  ],
+  "tags": [
+    "Treff",
+    "Eggenstein",
+    "Leopoldshafen"
+  ],
+  "recurring_group_id": null,
+  "is_passed": true,
+  "featured": 0
+}

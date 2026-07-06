@@ -11,9 +11,10 @@
     "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
+    "Verein",
     "Graben-Neudorf"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 0
 }

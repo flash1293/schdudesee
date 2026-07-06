@@ -1,0 +1,20 @@
+{
+  "title": "Sommerfest TV Friedrichstal",
+  "date_start": "2026-07-18",
+  "date_end": "2026-07-19",
+  "time_raw": "15:00",
+  "location": "TV Friedrichstal",
+  "organizer": "TV Friedrichstal",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/sommerfest-tv-friedrichstal/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Fest",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": false,
+  "featured": 0
+}

@@ -12,9 +12,11 @@
   ],
   "tags": [
     "Karlsruhe-Innenstadt",
-    "Literatur"
+    "Literatur",
+    "Kinder",
+    "Treff"
   ],
-  "recurring_group_id": 7350572752503805182,
-  "is_passed": 0,
+  "recurring_group_id": 123242245,
+  "is_passed": false,
   "featured": 0
 }
