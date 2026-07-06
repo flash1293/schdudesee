@@ -360,15 +360,17 @@ def insert_raw(source_data):
 
 
 def cleanup_past_events():
-    """Remove past events from raw_events so they don't appear in curated."""
+    """Remove past events from raw_events so they don't appear in curated.
+    Also removes events with empty/missing dates (is_past() treats them as past)."""
     conn = sqlite3.connect(DB)
     c = conn.cursor()
     today = datetime.now().date().isoformat()
     deleted = c.execute("DELETE FROM raw_events WHERE date_start IS NOT NULL AND date_start != '' AND date_start < ?", (today,)).rowcount
+    deleted_empty = c.execute("DELETE FROM raw_events WHERE date_start IS NULL OR date_start = ''").rowcount
     conn.commit()
     conn.close()
-    print(f"  Removed {deleted} past events from raw_events", flush=True)
-    return deleted
+    print(f"  Removed {deleted} past + {deleted_empty} empty-date events from raw_events", flush=True)
+    return deleted + deleted_empty
 
 
 def cleanup_malformed_dates():
@@ -407,7 +409,7 @@ def dedup_sql():
         f"title IS NOT NULL AND title != '' "
         f"AND title NOT IN ({blocked_placeholders}) "
         f"AND {prefix_conditions} "
-        f"AND (date_start IS NULL OR date_start = '' OR date_start >= date('now'))"
+        f"AND date_start IS NOT NULL AND date_start != '' AND date_start >= date('now')"
     )
     # Fetch all matching raw events and dedup in Python to avoid SQLite's
     # arbitrary-row selection for non-aggregated columns under GROUP BY.
@@ -477,7 +479,7 @@ def dedup_sql():
         SELECT id, title, date_start, location, source_url
         FROM raw_events
         WHERE title IS NOT NULL AND title != ''
-            AND (date_start IS NULL OR date_start = '' OR date_start >= date('now'))
+            AND date_start IS NOT NULL AND date_start != '' AND date_start >= date('now')
     """).fetchall():
         key = (normalize_title(row[1]), row[2] or "", normalize_location(row[3]))
         cid = curated_map.get(key)

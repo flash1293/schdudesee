@@ -281,12 +281,13 @@ def parse_german_date(text):
 
 
 def is_past(iso_date):
-    if not iso_date:
-        return False
+    """Check if an ISO date string is in the past. Empty/missing dates = past."""
+    if not iso_date or str(iso_date).strip() == "":
+        return True  # treat missing/empty as past
     try:
         return datetime.strptime(iso_date, "%Y-%m-%d").date() < datetime.now().date()
     except:
-        return True
+        return True  # if we can't parse, treat as past to be safe
 
 
 def scrape_flohmarkt():
