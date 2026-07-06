@@ -4,18 +4,17 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSpechaahalle Spöck",
-  "organizer": "Veranstalter:\n\t\tEvangelischer Kindergarten Kronenstraße Spöck",
+  "organizer": "Evangelischer Kindergarten &quot;Kronenstraße&quot;",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2673",
   "sources": [
-    "https://stutensee.de/Veranstaltungen",
-    "https://www.karlsdorf-neuthard.de/eventcalendar"
+    "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Markt",
     "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 0
 }

@@ -1,0 +1,21 @@
+{
+  "title": "Weihnachtsmarkt",
+  "date_start": "2026-12-05",
+  "date_end": "2026-12-06",
+  "time_raw": "",
+  "location": "TV Friedrichstal",
+  "organizer": "Turnverein Friedrichstal 1899 e.V.",
+  "description": "",
+  "event_url": "https://www.tv-friedrichstal.de",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Fest",
+    "Markt",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": 1967040943,
+  "is_passed": false,
+  "featured": 1
+}

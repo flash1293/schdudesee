@@ -11,10 +11,11 @@
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
-    "Bretten",
-    "Kinder"
+    "Kultur",
+    "Kinder",
+    "Bretten"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": true,
   "featured": 0
 }

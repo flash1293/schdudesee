@@ -11,10 +11,10 @@
     "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
-    "Neuthard",
-    "Politik"
+    "Politik",
+    "Neuthard"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 0
 }

@@ -1,0 +1,20 @@
+{
+  "title": "Dampfnudeltag",
+  "date_start": "2026-04-03",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Vereinsheim",
+  "organizer": "Motorsportclub Blankenloch e.V. im ADAC",
+  "description": "",
+  "event_url": "http://www.msc-blankenloch.de/termine",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Essen",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "is_passed": true,
+  "featured": 0
+}

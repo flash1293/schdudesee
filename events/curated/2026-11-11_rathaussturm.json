@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tRathaus Stutensee",
-  "organizer": "Veranstalter:\n\t\tKarnevalsclub &quot;Die Piraten&quot; Stutensee e.V.",
+  "organizer": "Karnevalsclub &quot;Die Piraten&quot; Stutensee e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2820",
   "sources": [
@@ -14,6 +14,6 @@
     "Kultur"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 0
 }
