@@ -764,6 +764,11 @@ def dedup_events(raw_events):
             for idx in candidates:
                 if idx == best_idx:
                     continue
+                # Don't merge different organizers (allow substring containment for prefix variants)
+                best_org = re.sub(r'[\s\.,;:-]+', '', ((best.get("organizer") or "") or "").lower())
+                kill_org = re.sub(r'[\s\.,;:-]+', '', ((curated[idx].get("organizer") or "") or "").lower())
+                if best_org != kill_org and best_org not in kill_org and kill_org not in best_org:
+                    continue
                 merged += 1
                 best["sources"] = sorted(set(best.get("sources", []) + curated[idx].get("sources", [])))
                 curated[idx] = None

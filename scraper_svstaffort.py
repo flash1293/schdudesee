@@ -112,8 +112,8 @@ def scrape_svstaffort():
             print(f"SV Staffort scraper WARNING: {title} — end date {date_end} is before start date {date_start}. Using start date only.")
             date_end = None
 
-        # Skip past events
-        if date_start <= today:
+        # Skip past events (keep events happening today)
+        if date_start < today:
             continue
 
         # Try to fetch description from individual event page

@@ -625,39 +625,44 @@ def scrape_piraten_stutensee():
     #   Glühweinfest:  ~December 1 (approximate)
     HARDCODED_ANNUAL = [
         {
+            # approximate — last Saturday in January
             "title": "Prunksitzung",
             "date_start": "2027-01-30",
             "time_raw": "",
             "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
-            "description": "Jährliche Prunksitzung des Karnevalsclub Die Piraten. # approximate — last Saturday in January.",
+            "description": "Jährliche Prunksitzung des Karnevalsclub Die Piraten.",
         },
         {
+            # approximate — shifts with Easter (48 days before)
             "title": "Piratenmontag (Rosenmontag)",
             "date_start": "2027-02-08",
             "time_raw": "",
             "location": "Festhalle Blankenloch, Stutensee",
-            "description": "Piratenmontag / Rosenmontagsveranstaltung. # approximate — shifts with Easter (48 days before).",
+            "description": "Piratenmontag / Rosenmontagsveranstaltung.",
         },
         {
+            # approximate — shifts with Easter (Easter + 39 days)
             "title": "Vatertagsfest",
             "date_start": "2027-05-06",
             "time_raw": "",
             "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
-            "description": "Vatertagsfest an Christi Himmelfahrt. # approximate — shifts with Easter (Easter + 39 days).",
+            "description": "Vatertagsfest an Christi Himmelfahrt.",
         },
         {
+            # approximate — early October
             "title": "Oktoberfest",
             "date_start": "2027-10-01",
             "time_raw": "",
             "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
-            "description": "Oktoberfest des Karnevalsclub Die Piraten. # approximate — early October.",
+            "description": "Oktoberfest des Karnevalsclub Die Piraten.",
         },
         {
+            # approximate — early December
             "title": "Glühweinfest",
             "date_start": "2027-12-01",
             "time_raw": "",
             "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
-            "description": "Glühweinfest des Karnevalsclub Die Piraten. # approximate — early December.",
+            "description": "Glühweinfest des Karnevalsclub Die Piraten.",
         },
     ]
 
