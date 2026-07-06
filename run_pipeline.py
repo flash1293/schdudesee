@@ -608,7 +608,7 @@ def dedup_sql():
                     if at == bt or (len(at) > 6 and len(bt) > 6 and (at in bt or bt in at or at.replace(' ','') in bt.replace(' ','') or bt.replace(' ','') in at.replace(' ',''))):
                         # Don't merge different organizers
                         a_org, b_org = a[10], b[10]
-                        if a_org and b_org and a_org != b_org and a_org not in b_org and b_org not in a_org:
+                        if a_org != b_org:
                             continue
                         match = (a, b)
                         break
@@ -662,7 +662,7 @@ def dedup_sql():
                 if match:
                     # Don't merge different organizers
                     a_org, b_org = a[10], b[10]
-                    if a_org and b_org and a_org != b_org and a_org not in b_org and b_org not in a_org:
+                    if a_org != b_org:
                         continue
                     a, b = candidates[i], candidates[j]
                     pick = max([a, b], key=lambda x: len(x[4] or ""))
@@ -728,7 +728,7 @@ def dedup_sql():
                     continue
                 # Don't merge different organizers
                 best_org, kill_org = best[10], kill[10]
-                if best_org and kill_org and best_org != kill_org and best_org not in kill_org and kill_org not in best_org:
+                if best_org != kill_org:
                     continue
                 merged += 1
                 merged_src = set(best[5].split(",")) if best[5] else set()
