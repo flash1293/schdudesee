@@ -25,7 +25,7 @@ from scrape_and_merge import (
     compute_featured,
 )
 import importlib.util
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_kultcafe", "scraper_bretten", "scraper_karlsruhe"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_kultcafe", "scraper_bretten", "scraper_karlsruhe", "scraper_landfunker"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -46,6 +46,7 @@ scrape_bruchsal = sys.modules["scraper_bruchsal"].scrape_bruchsal
 scrape_kultcafe = sys.modules["scraper_kultcafe"].scrape_kultcafe
 scrape_bretten = sys.modules["scraper_bretten"].scrape_bretten
 scrape_karlsruhe = sys.modules["scraper_karlsruhe"].scrape_karlsruhe
+scrape_landfunker = sys.modules["scraper_landfunker"].scrape_landfunker
 from datetime import datetime
 from scraper_clubs import scrape_clubs
 
@@ -1047,6 +1048,7 @@ if __name__ == "__main__":
         ("Kult Café Friedrichstal", scrape_kultcafe),
         ("Bretten", scrape_bretten),
         ("Karlsruhe (Hagsfeld/Neureut/Waldstadt/Rintheim/Innenstadt)", scrape_karlsruhe),
+        ("Landfunker Terminator (Bruchsal/Bretten/Region)", scrape_landfunker),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
