@@ -20,6 +20,9 @@ from scrape_and_merge import (
     BLOCKED_PREFIXES,
     MANUAL_DUPES,
     MANUAL_EVENTS,
+    FEATURED_IDS,
+    FEATURED_TITLE_KEYWORDS,
+    compute_featured,
 )
 import importlib.util
 for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_kultcafe", "scraper_bretten", "scraper_karlsruhe"]:
@@ -384,6 +387,41 @@ def mark_passed_events():
     conn.close()
     print(f"  Marked {updated} events as passed", flush=True)
     return updated
+
+
+def compute_featured_sql():
+    """Set featured flag on curated_events based on heuristics + manual list.
+    Resets all featured flags first, then recomputes."""
+    conn = sqlite3.connect(DB)
+    c = conn.cursor()
+
+    # Reset all featured flags
+    c.execute("UPDATE curated_events SET featured = 0")
+
+    # 1. Manual IDs
+    if FEATURED_IDS:
+        placeholders = ",".join("?" for _ in FEATURED_IDS)
+        c.execute(f"UPDATE curated_events SET featured = 1 WHERE id IN ({placeholders})",
+                  tuple(FEATURED_IDS))
+        manual_count = c.rowcount
+    else:
+        manual_count = 0
+
+    # 2. Auto-detection: tagged 'Fest' AND title contains a featured keyword
+    auto_count = 0
+    for kw in FEATURED_TITLE_KEYWORDS:
+        c.execute(
+            "UPDATE curated_events SET featured = 1 "
+            "WHERE featured = 0 AND tags LIKE '%Fest%' AND LOWER(title) LIKE ?",
+            (f"%{kw}%",)
+        )
+        auto_count += c.rowcount
+
+    conn.commit()
+    conn.close()
+    total = manual_count + auto_count
+    print(f"  Featured: {manual_count} manual + {auto_count} auto = {total} total", flush=True)
+    return total
 
 
 def cleanup_malformed_dates():
@@ -848,6 +886,12 @@ def migrate_db():
         print("  Migration: added tags column to raw_events", flush=True)
     except Exception:
         pass  # column already exists
+    # Add featured column to curated_events (Phase 2 #144)
+    try:
+        c.execute("ALTER TABLE curated_events ADD COLUMN featured INTEGER DEFAULT 0")
+        print("  Migration: added featured column to curated_events", flush=True)
+    except Exception:
+        pass  # column already exists
     conn.commit()
     conn.close()
 
@@ -1106,19 +1150,22 @@ if __name__ == "__main__":
     detect_recurring()
     print(f"  done", flush=True)
 
+    print(f"  Computing featured...", end=" ", flush=True)
+    featured = compute_featured_sql()
+
     conn = sqlite3.connect(DB)
     raw = conn.execute("SELECT COUNT(*) FROM raw_events").fetchone()[0]
     tagged = conn.execute("SELECT COUNT(*) FROM curated_events WHERE tags != ''").fetchone()[0]
     recurring = conn.execute("SELECT COUNT(*) FROM curated_events WHERE recurring_group_id IS NOT NULL").fetchone()[0]
     conn.close()
-    print(f"\nSummary: {raw} raw → {curated} curated, {tagged} tagged, {recurring} recurring", flush=True)
+    print(f"\nSummary: {raw} raw → {curated} curated, {tagged} tagged, {recurring} recurring, {featured} featured", flush=True)
     print(f"Done. Exporting and pushing to GitHub...", flush=True)
 
     # Auto-export to JSON and push to GitHub to trigger deploy
     if not args.no_push:
         export_to_json()
         today = datetime.now().strftime("%Y-%m-%d")
-        summary = f"Pipeline run {today} — curated {curated}, {tagged} tagged, {recurring} recurring"
+        summary = f"Pipeline run {today} — curated {curated}, {tagged} tagged, {recurring} recurring, {featured} featured"
         commit_and_push(summary)
         print(f"Deploy workflow should trigger automatically. 🐴", flush=True)
     else:

@@ -55,6 +55,8 @@ def write_event_json(event, out_dir, existing_filenames=None):
         "sources": sources,
         "tags": tags,
         "recurring_group_id": event.get("recurring_group_id"),
+        "is_passed": event.get("is_passed", 0),
+        "featured": event.get("featured", 0),
     }
 
     filename = build_filename(ev)

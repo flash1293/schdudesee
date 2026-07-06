@@ -334,6 +334,18 @@ MANUAL_EVENTS = [
     {"title": "Badentreff", "date_start": "2026-06-03", "date_end": "2026-06-06", "time_raw": "", "location": "CVJM Sp\u00f6ck", "organizer": "CVJM Sp\u00f6ck", "description": "", "event_url": "https://www.cvjm-spoeck.de/"},
 ]
 
+# ── Featured Events (Phase 2 #144) ───────────────────────────────────
+
+# Manual list: event IDs that are always featured (set after curation, IDs from curated_events).
+# Populate after pipeline runs: SELECT id FROM curated_events WHERE title LIKE '%Stadtfest%' etc.
+FEATURED_IDS = set()
+
+# Conservative auto-detection: events tagged 'Fest' AND title contains a major festival keyword.
+FEATURED_TITLE_KEYWORDS = [
+    "stadtfest", "oktoberfest", "weihnachtsmarkt", "kerwe", "stra\u00dfenfest",
+    "b\u00fcrgerfest", "heimattage", "steinwiesenfest", "weihnachtskorso",
+]
+
 DISTRICTS = {
     "Blankenloch": ["blankenloch", "bl.", "mehrgenerationenhaus", "b\u00fcrgerwerkstatt", "seegrabenweg", "gymnasiumstr", "zukunftshaus"],
     "B\u00fcchig": ["b\u00fcchig", "buechig"],
@@ -557,6 +569,21 @@ def auto_tag(title, description="", location="", organizer=""):
                 district_tags.append(d)
 
     return content_tags + district_tags
+
+
+def compute_featured(event_id, title, tags):
+    """Determine if an event should be featured based on heuristics + manual list.
+    Conservative: requires tag-based signal + title keyword match, or manual override."""
+    if event_id in FEATURED_IDS:
+        return 1
+    title_lower = (title or "").lower()
+    tags_lower = (tags or "").lower()
+    # Auto-detect: tagged 'Fest' AND title contains a major festival keyword
+    if "fest" in tags_lower:
+        for kw in FEATURED_TITLE_KEYWORDS:
+            if kw in title_lower:
+                return 1
+    return 0
 
 
 def slugify(title, max_len=60):
@@ -927,6 +954,8 @@ def write_event_json(event, out_dir):
         "sources": sources,
         "tags": tags,
         "recurring_group_id": event.get("recurring_group_id"),
+        "featured": compute_featured(event.get("id", 0), event.get("title", ""),
+                                      ",".join(tags) if isinstance(tags, list) else tags),
     }
 
     filename = build_filename(ev)
