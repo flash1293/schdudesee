@@ -392,37 +392,242 @@ def scrape_musikverein_spoeck():
 
 # ─── 10. Piraten Stutensee ──────────────────────────────────────
 def scrape_piraten_stutensee():
-    # EventON calendar loads via AJAX - not scrapable from static HTML
-    # Known events from website navigation structure
-    try:
-        html = fetch_url("https://www.piraten-stutensee.de/")
-    except Exception:
-        return []
+    """Scrape events from piraten-stutensee.de via WP REST API (EventON ajde_events)."""
+    import json as json_mod
+    import urllib.request as urllib_request
+
+    BASE = "https://www.piraten-stutensee.de"
     events = []
-    url = "https://www.piraten-stutensee.de/"
-    if "Oktoberfest" in html:
-        events.append({
-            "title": "Oktoberfest",
-            "date_start": "2026-10-01",
-            "date_end": None,
-            "time_raw": "",
-            "location": "Vereinsheim, Piraten Stutensee",
-            "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
-            "description": "",
-            "event_url": url,
-        })
-    if "Glühweinfest" in html:
-        events.append({
-            "title": "Glühweinfest",
-            "date_start": "2026-12-01",
-            "date_end": None,
-            "time_raw": "",
-            "location": "Vereinsheim, Piraten Stutensee",
-            "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
-            "description": "",
-            "event_url": url,
-        })
-    return events
+
+    # Non-event filter keywords in title (lowercase)
+    NON_EVENT_KEYWORDS = [
+        "kartenvorverkauf", "kartenverkauf", "stammtisch", "generalversammlung",
+        "helferfest", "vereinsausflug", "fototermin", "radtour",
+        "sponsoren gesucht", "werde teil", "einladung zur",
+        "update zum", "turniernachrichten", "ahoi",
+        "ruckblick", "rückblick", "veranstaltungen in der kampagne",
+        "unsere veranstaltungen", "gemeinsamer ausflug",
+        "unsere seesternchen", "grandioser turnierauftakt",
+        "gardenausflug",
+    ]
+
+    # Month names for parsing
+    MONTHS = {
+        "januar": 1, "februar": 2, "marz": 3, "märz": 3, "april": 4,
+        "mai": 5, "juni": 6, "juli": 7, "august": 8,
+        "september": 9, "oktober": 10, "november": 11, "dezember": 12,
+    }
+
+    def is_non_event(title):
+        t = title.lower()
+        for kw in NON_EVENT_KEYWORDS:
+            if kw in t:
+                return True
+        return False
+
+    def extract_dates_from_text(text, post_year=None):
+        """Extract the primary date from German text. Returns list with single (date_str, time_str) tuple."""
+        results = []
+        # Pattern 1: "Am 16.02.2026" or "am 16.02.2026"
+        for m in re.finditer(r'(?i)(?:Am|am)\s+(\d{1,2})\.(\d{1,2})\.(\d{4})', text):
+            d, mo, y = m.groups()
+            time_str = ""
+            after = text[m.end():m.end()+80]
+            time_m = re.search(r'(?:ab|um)\s+(\d{1,2})[.:](\d{2})\s*(?:Uhr)?', after)
+            if time_m:
+                time_str = f"{time_m.group(1)}:{time_m.group(2)} Uhr"
+            results.append((m.start(), parse_german_date(d, mo, y), time_str))
+
+        # Pattern 2: "am 06. Februar 2026" or "am 16. Februar 2026"
+        for m in re.finditer(r'(?i)(?:Am|am)\s+(\d{1,2})\.\s*(Januar|Februar|Marz|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)\s+(\d{4})', text):
+            d, mon_str, y = m.groups()
+            mo = MONTHS.get(mon_str.lower())
+            if mo:
+                results.append((m.start(), parse_german_date(d, mo, y), ""))
+
+        # Pattern 3: "am 11.11." (no year) - infer from post year or current year
+        for m in re.finditer(r'(?i)(?:Am|am)\s+(\d{1,2})\.(\d{1,2})\.(?!\d)', text):
+            d, mo = m.groups()
+            y = post_year if post_year else 2026
+            time_str = ""
+            after = text[m.end():m.end()+80]
+            time_m = re.search(r'(?:ab|um)\s+(\d{1,2})[.:](\d{2})\s*(?:Uhr)?', after)
+            if time_m:
+                time_str = f"{time_m.group(1)}:{time_m.group(2)} Uhr"
+            results.append((m.start(), parse_german_date(d, mo, y), time_str))
+
+        # Pattern 4: "am 7. November" (no year)
+        for m in re.finditer(r'(?i)(?:Am|am)\s+(\d{1,2})\.\s*(Januar|Februar|Marz|März|April|Mai|Juni|Juli|August|September|Oktober|November|Dezember)(?!\d)', text):
+            d, mon_str = m.groups()
+            mo = MONTHS.get(mon_str.lower())
+            if mo:
+                y = post_year if post_year else 2026
+                results.append((m.start(), parse_german_date(d, mo, y), ""))
+
+        # Pattern 5: "Freitag, 27.09.2024" format
+        for m in re.finditer(r'(?:Montag|Dienstag|Mittwoch|Donnerstag|Freitag|Samstag|Sonntag),?\s+(\d{1,2})\.(\d{1,2})\.(\d{4})', text):
+            d, mo, y = m.groups()
+            results.append((m.start(), parse_german_date(d, mo, y), ""))
+
+        if not results:
+            return []
+
+        # Sort by position in text, take the first one (closest to beginning = event's own date)
+        results.sort(key=lambda x: x[0])
+        first = results[0]
+        return [(first[1], first[2])]
+
+    def extract_location(text):
+        """Extract location from event description."""
+        if "Festhalle Blankenloch" in text:
+            return "Festhalle Blankenloch, Stutensee"
+        if "Vereinsheim" in text or "Vereinsgelande" in text or "Vereinsgelände" in text:
+            return "Vereinsheim, Seegrabenweg 9, Blankenloch"
+        if "Rathaus" in text:
+            return "Rathaus Stutensee-Blankenloch"
+        return "Vereinsheim, Seegrabenweg 9, Blankenloch"
+
+    def clean_title(title):
+        """Clean up event title."""
+        # Remove year suffixes like "2025", "2026"
+        title = re.sub(r'\s+20\d{2}$', '', title)
+        return title.strip()
+
+    def title_similar(t1, t2):
+        """Check if two titles refer to the same event."""
+        t1 = t1.lower().strip()
+        t2 = t2.lower().strip()
+        # Remove numbers and special chars for comparison
+        import re as re_mod
+        t1_clean = re_mod.sub(r'[\d\.\s]+', ' ', t1).strip()
+        t2_clean = re_mod.sub(r'[\d\.\s]+', ' ', t2).strip()
+        return t1_clean == t2_clean or t1 in t2 or t2 in t1
+
+    # Fetch ajde_events (EventON custom post type)
+    all_ajde = []
+    for page in [1, 2, 3]:
+        try:
+            url = f"{BASE}/wp-json/wp/v2/ajde_events?per_page=50&page={page}&orderby=date&order=desc"
+            req = urllib_request.Request(url, headers={"User-Agent": "StutenseeEvents/1.0"})
+            resp = urllib_request.urlopen(req, timeout=15)
+            data = json_mod.loads(resp.read().decode("utf-8"))
+            all_ajde.extend(data)
+        except Exception:
+            break
+
+    # Also fetch regular posts for supplementary events
+    regular_posts = []
+    for page in [1, 2]:
+        try:
+            url = f"{BASE}/wp-json/wp/v2/posts?per_page=20&page={page}&orderby=date&order=desc"
+            req = urllib_request.Request(url, headers={"User-Agent": "StutenseeEvents/1.0"})
+            resp = urllib_request.urlopen(req, timeout=15)
+            data = json_mod.loads(resp.read().decode("utf-8"))
+            regular_posts.extend(data)
+        except Exception:
+            break
+
+    # Process ajde_events
+    for ev in all_ajde:
+        title = clean_title(ev["title"]["rendered"])
+        if is_non_event(title):
+            continue
+        content = ev.get("content", {}).get("rendered", "")
+        content_clean = re.sub(r'<[^>]+>', ' ', content).strip()
+        content_clean = re.sub(r'\s+', ' ', content_clean)
+
+        if not content_clean:
+            continue
+
+        post_date = ev.get("date", "")
+        post_year = int(post_date[:4]) if post_date and post_date[:4].isdigit() else None
+
+        dates = extract_dates_from_text(content_clean, post_year)
+        if not dates:
+            continue
+
+        location = extract_location(content_clean)
+        ev_url = ev.get("link", BASE)
+        excerpt = ev.get("excerpt", {}).get("rendered", "")
+        desc = re.sub(r'<[^>]+>', ' ', excerpt).strip() if excerpt else ""
+        desc = re.sub(r'\s+', ' ', desc)
+
+        for date_start, time_str in dates:
+            # Only include future events (2026+)
+            if date_start < "2026-01-01":
+                continue
+            events.append({
+                "title": title,
+                "date_start": date_start,
+                "date_end": None,
+                "time_raw": time_str,
+                "location": location,
+                "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
+                "description": desc[:300] if desc else content_clean[:300],
+                "event_url": ev_url,
+            })
+
+    # Process regular posts for supplementary events (e.g., Vatertagsfest)
+    for post in regular_posts:
+        title = clean_title(post["title"]["rendered"])
+        if is_non_event(title):
+            continue
+
+        excerpt = post.get("excerpt", {}).get("rendered", "")
+        excerpt_clean = re.sub(r'<[^>]+>', ' ', excerpt).strip()
+        excerpt_clean = re.sub(r'\s+', ' ', excerpt_clean)
+
+        content = post.get("content", {}).get("rendered", "")
+        content_clean = re.sub(r'<[^>]+>', ' ', content).strip()
+        content_clean = re.sub(r'\s+', ' ', content_clean)
+
+        text = excerpt_clean + " " + content_clean
+        if not text.strip():
+            continue
+
+        post_date = post.get("date", "")
+        post_year = int(post_date[:4]) if post_date and post_date[:4].isdigit() else None
+
+        dates = extract_dates_from_text(text, post_year)
+        if not dates:
+            continue
+
+        location = extract_location(text)
+        ev_url = post.get("link", BASE)
+
+        for date_start, time_str in dates:
+            # Only include future events (2026+)
+            if date_start < "2026-01-01":
+                continue
+            events.append({
+                "title": title,
+                "date_start": date_start,
+                "date_end": None,
+                "time_raw": time_str,
+                "location": location,
+                "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
+                "description": excerpt_clean[:300] if excerpt_clean else content_clean[:300],
+                "event_url": ev_url,
+            })
+
+    # Deduplicate by similar title and same date
+    deduped = []
+    for ev in events:
+        is_dup = False
+        for existing in deduped:
+            if existing["date_start"] == ev["date_start"] and title_similar(existing["title"], ev["title"]):
+                # Keep the one with more description
+                if len(ev.get("description", "")) > len(existing.get("description", "")):
+                    existing["description"] = ev["description"]
+                    existing["event_url"] = ev["event_url"]
+                is_dup = True
+                break
+        if not is_dup:
+            deduped.append(ev)
+
+    # Sort by date
+    deduped.sort(key=lambda x: x["date_start"])
+    return deduped
 
 
 # ─── Main ────────────────────────────────────────────────────────
