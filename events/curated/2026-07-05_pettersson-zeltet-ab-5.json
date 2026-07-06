@@ -2,11 +2,11 @@
   "title": "Pettersson zeltet (ab 5)",
   "date_start": "2026-07-05",
   "date_end": "2026-07-05",
-  "time_raw": "11:00",
+  "time_raw": "14:00",
   "location": "marotte Theater",
   "organizer": "marotte Theater",
   "description": "Der alte Pettersson will mit seinem Kater Findus angeln gehen. Auf seinem Dachboden hat Pettersson eine Flitzebogenwurfangel erfunden und will sie nun mit Findus am See ausprobieren. Das Zelt nehmen sie auch gleich mit, um einen Ausflug in die Berge zu machen. Aber aus der Zeltidylle wird nichts! Und das nur wegen der blöden Hühner, die partout auch ausprobieren wollen, wie das ist, in einem Zelt zu schlafen. Spiel: Thomas Hänsel Regie: Jörg Brettschneider",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/pettersson_zeltet_ab5n-17",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/pettersson_zeltet_ab5n-18",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -14,5 +14,7 @@
     "Karlsruhe-Innenstadt",
     "Theater"
   ],
-  "recurring_group_id": null
+  "recurring_group_id": null,
+  "is_passed": 1,
+  "featured": 0
 }

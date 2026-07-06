@@ -1,0 +1,20 @@
+{
+  "title": "U16 KVV Pokalfinale",
+  "date_start": "2026-05-13",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Friedrichstal",
+  "organizer": "FC Germania Friedrichstal",
+  "description": "KVV Pokalfinale der U16",
+  "event_url": "https://www.fcfriedrichstal.de/",
+  "sources": [
+    "manual_override"
+  ],
+  "tags": [
+    "Sport",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 1,
+  "featured": 0
+}
