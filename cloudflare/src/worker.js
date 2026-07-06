@@ -159,8 +159,8 @@ async function fetchEventsForSsr(env, url) {
   const totalPages = Math.ceil(total / perPage);
 
   const { results } = await db.prepare(
-    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id
-     FROM curated_events ${where} ORDER BY date_start ASC, id LIMIT ? OFFSET ?`
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
+     FROM curated_events ${where} ORDER BY featured DESC, date_start ASC, id LIMIT ? OFFSET ?`
   ).bind(...args, perPage, offset).all();
 
   return { events: results, total, page, totalPages, perPage, dateFrom };
@@ -213,9 +213,10 @@ function renderEventCard(event, condensedMode = false) {
 
   // Build the card
   const titleAria = escapeHtml(e.title || 'Veranstaltung');
-  let html = `<article class="event" id="event-${e.id}" aria-label="${titleAria}">
+  const featuredBadge = e.featured ? ' <span class="featured-badge" title="Empfohlen">⭐</span>' : '';
+  let html = `<article class="event${e.featured ? ' featured' : ''}" id="event-${e.id}" aria-label="${titleAria}">
       <div class="event-body">
-        <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}${detailLink}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
+        <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}${detailLink}${featuredBadge}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
         <div class="event-meta">
           ${e.date_start ? `<span>📅 ${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? ` – ${fmtDate(e.date_end)}` : ''}</span>` : ''}
           ${e.time_raw ? `<span>🕐 ${escapeHtml(e.time_raw)}</span>` : ''}
@@ -440,6 +441,7 @@ async function serveSsrPage(env, url) {
         sources: decode(e.sources || ''),
         tags: e.tags || '',
         recurring_group_id: e.recurring_group_id,
+        featured: e.featured || 0,
       })),
       page: result.page,
       totalPages: result.totalPages,
@@ -456,6 +458,9 @@ async function serveSsrPage(env, url) {
       : 'https://hey-stutensee.de/';
     const ogTags = renderOgTags(ogTitle, ogDesc, ogUrl);
 
+    // Featured event CSS (injected via ogTags slot)
+    const featuredCss = `<style>.featured-badge{color:#fab800;font-size:14px;margin-left:4px;vertical-align:middle}.event.featured{border-left:3px solid #fab800}</style>`;
+
     // Inject into template
     const html = injectIntoTemplate(indexHtml, {
       events: eventCardsHtml,
@@ -466,7 +471,7 @@ async function serveSsrPage(env, url) {
       paginationHtml,
       introHtml,
       initialData,
-      ogTags,
+      ogTags: ogTags + featuredCss,
     });
 
     return new Response(html, { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=300' } });
@@ -697,8 +702,8 @@ async function searchEvents(params, env) {
 
   const total = (await db.prepare(`SELECT COUNT(*) as c FROM curated_events ${where}`).bind(...args).first()).c;
   const { results } = await db.prepare(
-    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags
-     FROM curated_events ${where} ORDER BY date_start ASC, id LIMIT ? OFFSET ?`
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags, featured
+     FROM curated_events ${where} ORDER BY featured DESC, date_start ASC, id LIMIT ? OFFSET ?`
   ).bind(...args, perPage, offset).all();
 
   const events = results.map(r => ({
@@ -712,6 +717,7 @@ async function searchEvents(params, env) {
     description: decode(r.description || '').substring(0, 200),
     event_url: decode(r.event_url || ''),
     tags: r.tags || '',
+    featured: r.featured || 0,
   }));
 
   return { events, total, page, per_page: perPage, total_pages: Math.ceil(total / perPage) };
@@ -721,7 +727,7 @@ async function searchEvents(params, env) {
 async function getEventDetails(params, env) {
   const db = env.STUTENSEE_DB;
   const row = await db.prepare(
-    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags, is_passed
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, tags, is_passed, featured
      FROM curated_events WHERE id = ? AND tags != 'blocked'`
   ).bind(params.event_id).first();
 
@@ -739,6 +745,7 @@ async function getEventDetails(params, env) {
     event_url: decode(row.event_url || ''),
     tags: row.tags || '',
     is_passed: row.is_passed || 0,
+    featured: row.featured || 0,
   };
 }
 
@@ -749,7 +756,7 @@ async function serveEventPage(env, url) {
   const eventId = parseInt(parts[2]);
 
   const row = await env.STUTENSEE_DB.prepare(
-    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, is_passed
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, is_passed, featured
      FROM curated_events WHERE id = ? AND tags != 'blocked'`
   ).bind(eventId).first();
 
@@ -810,6 +817,7 @@ async function serveEventPage(env, url) {
     sources: decode(row.sources || ''), tags: row.tags || '',
     recurring_group_id: row.recurring_group_id,
     is_passed: row.is_passed || 0,
+    featured: row.featured || 0,
   };
 
   const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
@@ -879,6 +887,7 @@ header{background:#0d3a71;color:#fff;padding:10px 24px}
 .tag-organizer{background:var(--tag-org-bg);color:var(--tag-org-text)}
 .tag-location{background:var(--tag-loc-bg);color:var(--tag-loc-text)}
 .tag-tag{background:var(--tag-bg);color:var(--tag-text)}
+.featured-badge{color:#fab800;font-size:18px;margin-left:6px;vertical-align:middle}
 a{color:var(--link,var(--primary));overflow-wrap:anywhere}
 a:hover{color:var(--link-hover,var(--primary))}
 .back-link{display:inline-block;margin-bottom:24px;color:var(--link,var(--primary));text-decoration:none;font-size:14px;font-weight:600}
@@ -896,7 +905,7 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
 <div class="container">
   <a href="/" class="back-link">← Zurück zur Übersicht</a>
   <article class="card" aria-label="${escapeHtml(e.title)}">
-    <h1><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span>${escapeHtml(e.title)}</h1>
+    <h1><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span>${escapeHtml(e.title)}${e.featured ? '<span class="featured-badge" title="Empfohlen">⭐</span>' : ''}</h1>
     ${e.is_passed ? '<div style="background:#fef3c7;color:#92400e;padding:8px 16px;border-radius:8px;margin-bottom:16px;font-weight:600;font-size:14px">✅ Diese Veranstaltung hat bereits stattgefunden.</div>' : ''}
     <div class="meta">
       ${e.date_start ? '<div><span class="label">Datum:</span> ' + fmtDate(e.date_start) + (e.date_end && e.date_end !== e.date_start ? ' – ' + fmtDate(e.date_end) : '') + '</div>' : ''}
@@ -991,8 +1000,8 @@ async function serveEvents(env, url) {
 
   const total = (await db.prepare(`SELECT COUNT(*) as c FROM curated_events ${where}`).bind(...args).first()).c;
   const { results } = await db.prepare(
-    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id
-     FROM curated_events ${where} ORDER BY date_start ASC, id LIMIT ? OFFSET ?`
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
+     FROM curated_events ${where} ORDER BY featured DESC, date_start ASC, id LIMIT ? OFFSET ?`
   ).bind(...args, perPage, offset).all();
 
   return json({
@@ -1000,7 +1009,7 @@ async function serveEvents(env, url) {
       id: r.id, title: decode(r.title), date_start: r.date_start || '', date_end: r.date_end,
       time_raw: r.time_raw, location: decode(r.location), organizer: decode(r.organizer),
       description: decode(r.description), event_url: decode(r.event_url || ''),
-      sources: decode(r.sources || ''), tags: r.tags || '',
+      sources: decode(r.sources || ''), tags: r.tags || '', featured: r.featured || 0,
       recurring_group_id: r.recurring_group_id,
     })),
     total, page, per_page: perPage,
