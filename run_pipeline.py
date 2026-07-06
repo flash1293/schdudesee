@@ -1163,10 +1163,16 @@ if __name__ == "__main__":
 
     # Auto-export to JSON and push to GitHub to trigger deploy
     if not args.no_push:
-        export_to_json()
+        ok = export_to_json()
+        if not ok:
+            print(f"❌ JSON export failed — aborting commit/push. Fix the export issue and re-run.", flush=True)
+            sys.exit(1)
         today = datetime.now().strftime("%Y-%m-%d")
         summary = f"Pipeline run {today} — curated {curated}, {tagged} tagged, {recurring} recurring, {featured} featured"
-        commit_and_push(summary)
+        ok = commit_and_push(summary)
+        if not ok:
+            print(f"❌ Commit/push failed — see errors above. JSON files may be committed locally but not pushed.", flush=True)
+            sys.exit(1)
         print(f"Deploy workflow should trigger automatically. 🐴", flush=True)
     else:
         print(f"Skipped push (--no-push flag). Run export_db_to_json.py + git push manually.", flush=True)
