@@ -721,7 +721,7 @@ def dedup_events(raw_events):
                 if match:
                     a_org = re.sub(r'[\s\.,;:-]+', '', ((a.get("organizer") or "") or "").lower())
                     b_org = re.sub(r'[\s\.,;:-]+', '', ((b.get("organizer") or "") or "").lower())
-                    if a_org != b_org:
+                    if a_org != b_org and a_org not in b_org and b_org not in a_org:
                         continue
                     pick = max([a, b], key=lambda x: len(x.get("description", "") or ""))
                     kill = b if pick is a else a
