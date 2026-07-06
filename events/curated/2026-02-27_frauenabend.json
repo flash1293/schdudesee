@@ -1,0 +1,19 @@
+{
+  "title": "Frauenabend",
+  "date_start": "2026-02-27",
+  "date_end": null,
+  "time_raw": "19:00",
+  "location": "Seestraße 3, Staffort",
+  "organizer": "Liebenzeller Gemeinschaft Staffort",
+  "description": "",
+  "event_url": "https://staffort.lgv.org/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Staffort"
+  ],
+  "recurring_group_id": null,
+  "is_passed": true,
+  "featured": 0
+}

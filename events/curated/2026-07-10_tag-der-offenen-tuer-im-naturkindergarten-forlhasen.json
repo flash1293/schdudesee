@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "16:00 - 17:30 Uhr",
   "location": "Veranstaltungsort:\n\t\tAm Waldfriedhof 1a, zwischen Waldfriedhof und Gillerdornhütte",
-  "organizer": "Veranstalter:\n\t\t Städt. Naturkindergarten Forlhasen",
+  "organizer": "Städt. Naturkindergarten Forlhasen",
   "description": "1 Jahr Forlhasen",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2844",
   "sources": [
@@ -12,11 +12,10 @@
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Friedrichstal",
     "Kinder",
     "Natur"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 0
 }

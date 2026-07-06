@@ -8,16 +8,15 @@
   "description": "Ein offener Treffpunkt für alle – zum Ankommen, Austauschen und Kennenlernen. Hier kommen Menschen zusammen, und auch für Kinder gibt es ein kleines Programm.\nTermine 2026 (immer montags):13.04.202604.05.202608.06.202606.07.202614.09.202605.10.202602.11.202607.12.2026\nUhrzeit: jeweils 16:00 – 18:00 Uhr\nBesonderheit:Offen für alle – ein Ort der Begegnung, Vielfalt und Gemeinschaft",
   "event_url": "https://stutenseekinderkalender.de/event/kulturentreff-in-spoeck/2026-07-06/",
   "sources": [
-    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen",
     "https://stutenseekinderkalender.de"
   ],
   "tags": [
-    "Kinder",
     "Kultur",
+    "Kinder",
     "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 0
 }

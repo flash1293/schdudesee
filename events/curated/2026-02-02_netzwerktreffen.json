@@ -1,0 +1,19 @@
+{
+  "title": "NETZWERKTREFFEN",
+  "date_start": "2026-02-02",
+  "date_end": null,
+  "time_raw": "18:00 Uhr",
+  "location": "Stadt Stutensee Bürgersaal Rathaus | Rathausstr. 3 | 76297 Stutensee",
+  "organizer": "Gewerbeverein Stutensee",
+  "description": "",
+  "event_url": "https://gewerbeverein-stutensee.org/veranstaltungen",
+  "sources": [
+    "https://gewerbeverein-stutensee.org/veranstaltungen"
+  ],
+  "tags": [
+    "Treff"
+  ],
+  "recurring_group_id": null,
+  "is_passed": true,
+  "featured": 0
+}

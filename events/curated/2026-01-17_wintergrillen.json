@@ -1,0 +1,19 @@
+{
+  "title": "WINTERGRILLEN",
+  "date_start": "2026-01-17",
+  "date_end": null,
+  "time_raw": "14:00 Uhr",
+  "location": "Schloss Stutensee",
+  "organizer": "Gewerbeverein Stutensee",
+  "description": "",
+  "event_url": "https://gewerbeverein-stutensee.org/veranstaltungen",
+  "sources": [
+    "https://gewerbeverein-stutensee.org/veranstaltungen"
+  ],
+  "tags": [
+    "Essen"
+  ],
+  "recurring_group_id": null,
+  "is_passed": true,
+  "featured": 0
+}

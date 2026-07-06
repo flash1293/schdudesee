@@ -12,9 +12,10 @@
   ],
   "tags": [
     "Karlsruhe-Innenstadt",
-    "Musik"
+    "Musik",
+    "Sport"
   ],
-  "recurring_group_id": 1970098189663598511,
-  "is_passed": 0,
+  "recurring_group_id": 1950187166,
+  "is_passed": false,
   "featured": 0
 }

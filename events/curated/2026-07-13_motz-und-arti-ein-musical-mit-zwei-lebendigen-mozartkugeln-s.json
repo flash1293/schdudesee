@@ -12,9 +12,10 @@
   ],
   "tags": [
     "Karlsruhe-Innenstadt",
-    "Musik"
+    "Musik",
+    "Kultur"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 0
 }

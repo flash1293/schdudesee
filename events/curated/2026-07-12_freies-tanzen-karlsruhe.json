@@ -12,9 +12,11 @@
   ],
   "tags": [
     "Karlsruhe-Innenstadt",
-    "Theater"
+    "Theater",
+    "Sport",
+    "Wohltätigkeit"
   ],
-  "recurring_group_id": 6402618987796043061,
-  "is_passed": 0,
+  "recurring_group_id": 823147777,
+  "is_passed": false,
   "featured": 0
 }

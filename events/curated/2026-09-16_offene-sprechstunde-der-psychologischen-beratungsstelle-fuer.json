@@ -12,11 +12,11 @@
     "https://stutenseekinderkalender.de"
   ],
   "tags": [
-    "Blankenloch",
+    "Kinder",
     "Handwerk",
-    "Kinder"
+    "Blankenloch"
   ],
-  "recurring_group_id": null,
-  "is_passed": 0,
+  "recurring_group_id": 139685270,
+  "is_passed": false,
   "featured": 0
 }

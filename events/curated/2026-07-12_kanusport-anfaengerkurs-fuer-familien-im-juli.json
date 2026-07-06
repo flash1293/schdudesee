@@ -12,11 +12,11 @@
     "https://stutenseekinderkalender.de"
   ],
   "tags": [
-    "Kinder",
     "Sport",
+    "Kinder",
     "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 0
 }

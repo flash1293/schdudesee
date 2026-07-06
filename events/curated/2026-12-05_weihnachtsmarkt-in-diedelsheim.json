@@ -8,7 +8,6 @@
   "description": ":\nSamstag, 5. Dezember 2026 - 14:00\n:\nDiedelsheim\n:\nOrtsverwaltung Diedelsheim\ndie offizielle Eröffnung des Weihnachtsmarktes beginnt um  14:00 Uhr",
   "event_url": "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen/33759",
   "sources": [
-    "clubs_batch_all",
     "https://www.bretten.de/tourismus-kultur-freizeit/veranstaltungen"
   ],
   "tags": [
@@ -16,6 +15,6 @@
     "Markt"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": false,
   "featured": 1
 }

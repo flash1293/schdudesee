@@ -1,0 +1,20 @@
+{
+  "title": "Frühlingskonzert",
+  "date_start": "2026-04-19",
+  "date_end": null,
+  "time_raw": "ab 18:30 Uhr",
+  "location": "Spechaahalle",
+  "organizer": "Musikverein Harmonie Spöck",
+  "description": "",
+  "event_url": "https://musikverein-spoeck.de/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Musik",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "is_passed": true,
+  "featured": 0
+}
