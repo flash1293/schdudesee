@@ -273,6 +273,50 @@ function formatDateBadge(dateStr) {
   return { day: dateStr, month: '' };
 }
 
+function renderFeaturedCard(e) {
+  const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
+  const locTags = tags.filter(t => locationTags.includes(t));
+  const themeTags = tags.filter(t => themeTags.includes(t));
+  const themeEmojis = themeTags.map(t => TAG_EMOJIS[t] || '📌').filter(Boolean);
+  const emojiHtml = themeEmojis.length > 0 ? themeEmojis[0] : '📌';
+  const badge = formatDateBadge(e.date_start);
+  const path = '/events/' + e.id + '/' + slugify(e.title);
+  return `<article class="featured-card" aria-label="${esc(e.title)}">
+    <div class="fc-badge"><span class="fc-badge-day">${badge.day}.</span><span class="fc-badge-month">${badge.month}</span></div>
+    <div class="fc-body">
+      <span class="fc-emoji">${emojiHtml}</span>
+      <h3 class="fc-title"><a href="${e.event_url ? esc(e.event_url) : path}"${e.event_url ? ' target="_blank" rel="noopener"' : ''}>${esc(e.title)}${e.event_url ? '<span class="ext-link">↗</span>' : ''}</a></h3>
+      ${e.location ? `<div class="fc-location">📍 ${esc(locTags.length > 0 ? locTags[0] : e.location)}</div>` : ''}
+    </div>
+  </article>`;
+}
+
+function renderFeaturedSection(events) {
+  if (!events || events.length === 0) return '';
+  let html = '<section class="featured-section"><h2 class="featured-heading"><span class="featured-star">⭐</span> Empfohlen</h2><div class="featured-scroll">';
+  for (const e of events) html += renderFeaturedCard(e);
+  html += '</div></section>';
+  return html;
+}
+
+function renderFeaturedSectionToDOM(events) {
+  const container = document.getElementById('featured-container');
+  if (!container) return;
+  const html = renderFeaturedSection(events);
+  container.innerHTML = html;
+}
+
+async function loadFeaturedEvents() {
+  try {
+    const r = await fetch('/api/featured');
+    if (!r.ok) return;
+    const events = await r.json();
+    renderFeaturedSectionToDOM(events);
+  } catch (e) {
+    console.error('Featured events fetch error:', e);
+  }
+}
+
 async function loadEvents(page) {
   currentPage = page;
   const search = document.getElementById('search').value;
@@ -469,6 +513,14 @@ function toggleDark() {
           if (data.params.themeKeys) themeTags = data.params.themeKeys;
           applyFilterParams(data.params);
         }
+        // Render featured section if data present (SSR may have already placed HTML,
+        // but this ensures client-side consistency if SSR featured fetch failed)
+        if (data.featuredEvents && data.featuredEvents.length > 0) {
+          const featContainer = document.getElementById('featured-container');
+          if (featContainer && !featContainer.querySelector('.featured-section')) {
+            renderFeaturedSectionToDOM(data.featuredEvents);
+          }
+        }
         // Don't re-render events — keep the SSR HTML to avoid layout flash.
         // Just replace pagination with JS-driven buttons and set up state.
         renderPagination();
@@ -476,11 +528,14 @@ function toggleDark() {
         ssrData.remove();
       } else {
         loadEvents(1);
+        loadFeaturedEvents();
       }
     } catch (e) {
       console.error('SSR data error:', e);
       loadEvents(1);
+      loadFeaturedEvents();
     }
   } else {
     loadEvents(1);
+    loadFeaturedEvents();
   }

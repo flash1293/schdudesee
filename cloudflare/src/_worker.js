@@ -61,6 +61,7 @@ async function routeRequest(request, env) {
 
   // API routes
   if (url.pathname === '/api/list') return serveEvents(env, url);
+  if (url.pathname === '/api/featured') return serveFeatured(env);
   if (url.pathname === '/api/chat' && request.method === 'POST') return serveChat(request, env);
   if (url.pathname === '/api/theme') return serveTags(env);
   if (url.pathname === '/api/districts') return serveDistricts(env);
@@ -139,7 +140,7 @@ async function fetchEventsForSsr(env, url) {
   const hideRecurring = p.get('hide_recurring') === 'true';
 
   const db = env.STUTENSEE_DB;
-  const wheres = ["tags != 'blocked'", "is_passed = 0"];
+  const wheres = ["tags != 'blocked'", "is_passed = 0", "(featured = 0 OR featured IS NULL)"];
   const args = [];
 
   if (dateFrom) { wheres.push("date_start >= ?"); args.push(dateFrom); }
@@ -160,6 +161,17 @@ async function fetchEventsForSsr(env, url) {
   ).bind(...args, perPage, offset).all();
 
   return { events: results, total, page, totalPages, perPage, dateFrom };
+}
+
+/** Fetch up to 6 upcoming featured events for the hero section. */
+async function fetchFeaturedEvents(env) {
+  const db = env.STUTENSEE_DB;
+  const { results } = await db.prepare(
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
+     FROM curated_events WHERE featured = 1 AND is_passed = 0 AND tags != 'blocked'
+     ORDER BY date_start ASC LIMIT 6`
+  ).all();
+  return results;
 }
 
 /** Render a single event card HTML (server-side). */
@@ -277,6 +289,42 @@ function renderEventCards(events) {
   return parts.join('\n');
 }
 
+/** Render a single featured event card for the horizontal scroll section. */
+function renderFeaturedCard(event) {
+  const e = event;
+  const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
+  const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
+  const themeTags = tags.filter(t => THEME_KEYS.has(t));
+  const themeEmojis = themeTags.map(t => TAG_EMOJIS[t] || '📌').filter(Boolean);
+  const emojiHtml = themeEmojis.length > 0 ? escapeHtml(themeEmojis[0]) : '📌';
+
+  const titleEscaped = escapeHtml(e.title);
+  const locationEscaped = e.location ? escapeHtml(e.location) : (locTags.length > 0 ? locTags[0] : '');
+  const path = eventPath(e);
+  const eventUrl = e.event_url || '';
+  const badge = formatDateBadge(e.date_start);
+
+  return `<article class="featured-card" aria-label="${escapeHtml(e.title || 'Veranstaltung')}">
+    <div class="fc-badge"><span class="fc-badge-day">${badge.day}.</span><span class="fc-badge-month">${badge.month}</span></div>
+    <div class="fc-body">
+      <span class="fc-emoji">${emojiHtml}</span>
+      <h3 class="fc-title"><a href="${eventUrl ? escapeHtml(eventUrl) : escapeHtml(path)}"${eventUrl ? ' target="_blank" rel="noopener"' : ''}>${titleEscaped}${eventUrl ? '<span class="ext-link">↗</span>' : ''}</a></h3>
+      ${locationEscaped ? `<div class="fc-location">📍 ${escapeHtml(locationEscaped)}</div>` : ''}
+    </div>
+  </article>`;
+}
+
+/** Render the featured events horizontal scroll section. */
+function renderFeaturedSection(events) {
+  if (!events || events.length === 0) return '';
+  let html = '<section class="featured-section"><h2 class="featured-heading"><span class="featured-star">⭐</span> Empfohlen</h2><div class="featured-scroll">';
+  for (const e of events) {
+    html += renderFeaturedCard(e);
+  }
+  html += '</div></section>';
+  return html;
+}
+
 /** Render JSON-LD for an array of events. */
 function renderJsonLd(events) {
   if (!events || events.length === 0) return '';
@@ -374,11 +422,12 @@ function renderOgTags(title, description, url, type = 'website') {
 }
 
 /** Inject SSR content into the HTML template. */
-function injectIntoTemplate(template, { events, page, totalPages, jsonLd, breadcrumbJsonLd, paginationHtml, introHtml, initialData, ogTags }) {
+function injectIntoTemplate(template, { events, page, totalPages, jsonLd, breadcrumbJsonLd, paginationHtml, introHtml, featuredHtml, initialData, ogTags }) {
   return template
     .replace('<!--SSR_OG_TAGS-->', ogTags || '')
     .replace('<!--SSR_JSON_LD-->', jsonLd || '')
     .replace('<!--SSR_BREADCRUMB-->', breadcrumbJsonLd || '')
+    .replace('<!--SSR_FEATURED-->', featuredHtml || '')
     .replace('<!--SSR_INTRO-->', introHtml || '')
     .replace('<!--SSR_EVENTS-->', events || '')
     .replace('<!--SSR_PAGINATION-->', paginationHtml || '')
@@ -390,10 +439,22 @@ async function serveSsrPage(env, url) {
   try {
     const result = await fetchEventsForSsr(env, url);
 
+    // Fetch featured events (always — independent of pagination/filters)
+    let featuredEvents = [];
+    try {
+      featuredEvents = await fetchFeaturedEvents(env);
+    } catch (e) {
+      // Non-critical: featured section can fail silently
+      console.error('Featured events fetch error:', e.message);
+    }
+
     // Render event cards
     const eventCardsHtml = renderEventCards(result.events);
 
-    // Render JSON-LD
+    // Render featured section
+    const featuredHtml = renderFeaturedSection(featuredEvents);
+
+    // Render JSON-LD (include featured events)
     const jsonLdHtml = renderJsonLd(result.events);
 
     // Render pagination links
@@ -439,6 +500,21 @@ async function serveSsrPage(env, url) {
         recurring_group_id: e.recurring_group_id,
         featured: e.featured || 0,
       })),
+      featuredEvents: featuredEvents.map(e => ({
+        id: e.id,
+        title: decode(e.title),
+        date_start: e.date_start || '',
+        date_end: e.date_end,
+        time_raw: e.time_raw,
+        location: decode(e.location),
+        organizer: decode(e.organizer),
+        description: decode(e.description),
+        event_url: decode(e.event_url || ''),
+        sources: decode(e.sources || ''),
+        tags: e.tags || '',
+        recurring_group_id: e.recurring_group_id,
+        featured: e.featured || 0,
+      })),
       page: result.page,
       totalPages: result.totalPages,
       total: result.total,
@@ -454,9 +530,6 @@ async function serveSsrPage(env, url) {
       : 'https://hey-stutensee.de/';
     const ogTags = renderOgTags(ogTitle, ogDesc, ogUrl);
 
-    // Featured event CSS (injected via ogTags slot)
-    const featuredCss = `<style>.featured-badge{color:#fab800;font-size:14px;margin-left:4px;vertical-align:middle}.event.featured{border-left:3px solid #fab800}</style>`;
-
     // Inject into template
     const html = injectIntoTemplate(indexHtml, {
       events: eventCardsHtml,
@@ -466,8 +539,9 @@ async function serveSsrPage(env, url) {
       breadcrumbJsonLd: breadcrumbJsonLdHtml,
       paginationHtml,
       introHtml,
+      featuredHtml,
       initialData,
-      ogTags: ogTags + featuredCss,
+      ogTags,
     });
 
     return new Response(html, { headers: { 'content-type': 'text/html;charset=utf-8', 'cache-control': 'public, max-age=300' } });
@@ -972,6 +1046,22 @@ function json(data, status = 200) {
   });
 }
 
+async function serveFeatured(env) {
+  const db = env.STUTENSEE_DB;
+  const { results } = await db.prepare(
+    `SELECT id, title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags, recurring_group_id, featured
+     FROM curated_events WHERE featured = 1 AND is_passed = 0 AND tags != 'blocked'
+     ORDER BY date_start ASC LIMIT 6`
+  ).all();
+  return json(results.map(r => ({
+    id: r.id, title: decode(r.title), date_start: r.date_start || '', date_end: r.date_end,
+    time_raw: r.time_raw, location: decode(r.location), organizer: decode(r.organizer),
+    description: decode(r.description), event_url: decode(r.event_url || ''),
+    sources: decode(r.sources || ''), tags: r.tags || '', featured: r.featured || 0,
+    recurring_group_id: r.recurring_group_id,
+  })));
+}
+
 async function serveEvents(env, url) {
   const p = url.searchParams;
   const page = Math.max(1, parseInt(p.get('page') || '1'));
@@ -982,7 +1072,7 @@ async function serveEvents(env, url) {
   const organizer = p.get('organizer') || '';
 
   const db = env.STUTENSEE_DB;
-  const wheres = ["tags != 'blocked'", "is_passed = 0"];
+  const wheres = ["tags != 'blocked'", "is_passed = 0", "(featured = 0 OR featured IS NULL)"];
   const args = [];
 
   if (dateFrom) { wheres.push("date_start >= ?"); args.push(dateFrom); }
