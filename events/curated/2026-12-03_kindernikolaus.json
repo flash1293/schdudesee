@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tFesthalle Stutensee",
-  "organizer": "Erich Kästner Realschule",
+  "organizer": "Veranstalter:\n\t\tErich Kästner Realschule",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2327",
   "sources": [
@@ -14,6 +14,6 @@
     "Kinder"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

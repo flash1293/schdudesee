@@ -13,12 +13,11 @@
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Musik",
-    "Kinder",
-    "Friedrichstal",
-    "Blankenloch"
+    "Essen",
+    "Fest",
+    "Friedrichstal"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

@@ -13,7 +13,7 @@
   "tags": [
     "Neuthard"
   ],
-  "recurring_group_id": 370212298,
-  "is_passed": false,
+  "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }

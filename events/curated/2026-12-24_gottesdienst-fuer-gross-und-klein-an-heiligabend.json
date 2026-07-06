@@ -8,13 +8,17 @@
   "description": "Gottesdienst für Groß und Klein an Heiligabend",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1880",
   "sources": [
-    "https://www.egg-leo.de/Veranstaltungen"
+    "https://www.egg-leo.de/Veranstaltungen",
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
+    "Eggenstein",
+    "Kinder",
     "Kirche",
-    "Eggenstein"
+    "Leopoldshafen",
+    "Neuthard"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

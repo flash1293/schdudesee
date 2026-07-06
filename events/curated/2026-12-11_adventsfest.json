@@ -4,7 +4,7 @@
   "date_end": null,
   "time_raw": "",
   "location": "",
-  "organizer": "Büchig(Er)leben",
+  "organizer": "Veranstalter:\n\t\tBüchig(Er)leben",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2836",
   "sources": [
@@ -12,10 +12,10 @@
     "https://www.buechigerleben.de/"
   ],
   "tags": [
-    "Fest",
-    "Büchig"
+    "Büchig",
+    "Fest"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

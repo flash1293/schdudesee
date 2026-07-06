@@ -4,10 +4,11 @@
   "date_end": null,
   "time_raw": "",
   "location": "Veranstaltungsort:\n\t\tSpechaahalle Spöck",
-  "organizer": "Landfrauenverein Spöck",
+  "organizer": "Veranstalter:\n\t\tGesangverein &quot;Eintracht 1887&quot; Spöck e.V.",
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2832",
   "sources": [
+    "clubs_batch_all",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
@@ -15,6 +16,6 @@
     "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

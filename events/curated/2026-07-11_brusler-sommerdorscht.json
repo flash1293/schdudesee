@@ -6,7 +6,7 @@
   "location": "Belvedere Bruchsal, Adolf-Bieringer-Straße 18, 76646 Bruchsal",
   "organizer": "SV 62 Bruchsal e.V.",
   "description": "Sommerfest der TSG Bruchsal Handballer und des SV 62 Bruchsal auf dem schönsten Festplatz Bruchsals - dem Kastanienplatz am Belvedere",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8659201/index.html?nodeID=8659201",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8659201/BruslerSommerdorscht.html&nodeID=8659201",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -16,6 +16,6 @@
     "Bruchsal"
   ],
   "recurring_group_id": null,
-  "is_passed": false,
+  "is_passed": 0,
   "featured": 0
 }

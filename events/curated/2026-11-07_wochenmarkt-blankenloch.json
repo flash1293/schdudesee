@@ -14,7 +14,7 @@
     "Markt",
     "Blankenloch"
   ],
-  "recurring_group_id": 11069990,
-  "is_passed": false,
+  "recurring_group_id": null,
+  "is_passed": 0,
   "featured": 0
 }
