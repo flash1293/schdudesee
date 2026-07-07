@@ -254,7 +254,7 @@ header::after{content:'';position:absolute;top:-50%;right:-20%;width:300px;heigh
   .featured-card .fc-title{font-size:14px}
 }
 @media(max-width:400px){
-  .featured-grid{grid-template-columns:1fr}
+  .featured-grid{grid-template-columns:minmax(0,1fr)}
 }
 /* Keep legacy featured styles for any edge-case featured events in the main list */
 .featured-badge{color:#fab800;font-size:14px;margin-left:4px;vertical-align:middle}
