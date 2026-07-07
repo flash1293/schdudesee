@@ -252,6 +252,37 @@ def fix_sport_tag_garden_false_positive(event):
 
 
 @rule
+def fix_organizer_prefix_and_alias(event):
+    """Strip 'Veranstalter:' prefix junk and normalize known organizer aliases.
+    Fixes: 'Veranstalter:\\n\\t\\tSportverein Staffort e.V.' → 'Sportverein Staffort e.V.'
+    and 'SV Staffort e.V.' → 'Sportverein Staffort e.V.'"""
+    org = (event.get("organizer") or "").strip()
+    if not org:
+        return False
+
+    changed = False
+
+    # Strip "Veranstalter:" prefix (with optional whitespace/newlines/tabs after)
+    cleaned = re.sub(r'^Veranstalter:\s*', '', org, flags=re.IGNORECASE).strip()
+    if cleaned != org:
+        org = cleaned
+        changed = True
+
+    # Map known aliases
+    aliases = {
+        "SV Staffort e.V.": "Sportverein Staffort e.V.",
+    }
+    for alias, canonical in aliases.items():
+        if alias in org:
+            org = org.replace(alias, canonical)
+            changed = True
+
+    if changed:
+        event["organizer"] = org
+    return changed
+
+
+@rule
 def fix_tag_cheerleading_sport(event):
     """Add 'Sport' tag to cheerleading events.
     Cheerleading is a sport, but the auto-tagger may miss it."""

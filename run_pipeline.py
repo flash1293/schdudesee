@@ -794,10 +794,21 @@ def normalize_location_dedup(location):
     return loc[:idx].strip() if idx > 0 else loc
 
 
+ORGANIZER_ALIASES = {
+    "SV Staffort e.V.": "Sportverein Staffort e.V.",
+}
+
+
 def normalize_organizer(org):
-    """Normalize organizer string for dedup comparison: lowercase, strip whitespace/punctuation."""
+    """Normalize organizer string for dedup comparison: strip scraped prefixes,
+    map known aliases, lowercase, strip whitespace/punctuation."""
     if not org:
         return ""
+    # Strip scraped prefix junk like "Veranstalter:\n\t\t"
+    org = re.sub(r'^Veranstalter:\s*', '', org, flags=re.IGNORECASE).strip()
+    # Map known aliases to canonical form
+    for alias, canonical in ORGANIZER_ALIASES.items():
+        org = org.replace(alias, canonical)
     return re.sub(r'[\s\.,;:-]+', '', org.lower())
 
 

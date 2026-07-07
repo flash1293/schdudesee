@@ -449,6 +449,24 @@ def normalize_location_dedup(location):
     return loc[:idx].strip() if idx > 0 else loc
 
 
+ORGANIZER_ALIASES = {
+    "SV Staffort e.V.": "Sportverein Staffort e.V.",
+}
+
+
+def normalize_organizer(org):
+    """Normalize organizer string for dedup comparison: strip scraped prefixes,
+    map known aliases, lowercase, strip whitespace/punctuation."""
+    if not org:
+        return ""
+    # Strip scraped prefix junk like "Veranstalter:\n\t\t"
+    org = re.sub(r'^Veranstalter:\s*', '', org, flags=re.IGNORECASE).strip()
+    # Map known aliases to canonical form
+    for alias, canonical in ORGANIZER_ALIASES.items():
+        org = org.replace(alias, canonical)
+    return re.sub(r'[\s\.,;:-]+', '', org.lower())
+
+
 TITLE_EXCLUSIVE_TAGS = {
     "krabbelgruppe": "Kinder",
     "fit in der schwangerschaft": "Kinder",
@@ -665,8 +683,8 @@ def dedup_events(raw_events):
                     at = normalize_title(a.get("title", ""))
                     bt = normalize_title(b.get("title", ""))
                     if at == bt or (len(at) > 6 and len(bt) > 6 and (at in bt or bt in at or at.replace(' ','') in bt.replace(' ','') or bt.replace(' ','') in at.replace(' ',''))):
-                        a_org = re.sub(r'[\s\.,;:-]+', '', ((a.get("organizer") or "") or "").lower())
-                        b_org = re.sub(r'[\s\.,;:-]+', '', ((b.get("organizer") or "") or "").lower())
+                        a_org = normalize_organizer(a.get("organizer") or "")
+                        b_org = normalize_organizer(b.get("organizer") or "")
                         if a_org == b_org:
                             match = (a_idx, b_idx)
                             break
