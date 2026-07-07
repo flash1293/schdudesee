@@ -503,7 +503,8 @@ def dedup_sql():
         title, ds, de, tr, loc, org, desc, url, _ = row
         nt = normalize_title(title)
         src_agg = ", ".join(sorted(sources[key]))
-        insert_rows.append((title, nt, ds, de, tr, loc, org, desc, url, src_agg))
+        clean_org = clean_organizer_stored(org or "")
+        insert_rows.append((title, nt, ds, de, tr, loc, clean_org, desc, url, src_agg))
 
     if insert_rows:
         c.executemany(
@@ -803,6 +804,17 @@ def normalize_organizer(org):
     for alias, canonical in ORGANIZER_ALIASES.items():
         org = org.replace(alias, canonical)
     return re.sub(r'[\s\.,;:-]+', '', org.lower())
+
+
+def clean_organizer_stored(org):
+    """Clean organizer for storage: strip scraped prefixes, apply aliases,
+    but preserve original case and punctuation (unlike normalize_organizer)."""
+    if not org:
+        return org
+    org = re.sub(r'^Veranstalter:\s*', '', org, flags=re.IGNORECASE).strip()
+    for alias, canonical in ORGANIZER_ALIASES.items():
+        org = org.replace(alias, canonical)
+    return org
 
 
 def tag_untagged(force=False):

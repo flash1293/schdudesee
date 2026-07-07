@@ -341,7 +341,7 @@ MANUAL_EVENTS = [
 
 # Manual list: event IDs that are always featured (set after curation, IDs from curated_events).
 # Populate after pipeline runs: SELECT id FROM curated_events WHERE title LIKE '%Stadtfest%' etc.
-FEATURED_IDS = {544584, 544596, 544842, 544802}  # Hand-picked by Pferd, updated weekly
+FEATURED_IDS = {550368, 550380, 550587, 550627}  # Hand-picked by Pferd, updated weekly
 
 # Conservative auto-detection: events tagged 'Fest' AND title contains a major festival keyword.
 FEATURED_TITLE_KEYWORDS = [
@@ -465,6 +465,17 @@ def normalize_organizer(org):
     for alias, canonical in ORGANIZER_ALIASES.items():
         org = org.replace(alias, canonical)
     return re.sub(r'[\s\.,;:-]+', '', org.lower())
+
+
+def clean_organizer_stored(org):
+    """Clean organizer for storage: strip scraped prefixes, apply aliases,
+    but preserve original case and punctuation (unlike normalize_organizer)."""
+    if not org:
+        return org
+    org = re.sub(r'^Veranstalter:\s*', '', org, flags=re.IGNORECASE).strip()
+    for alias, canonical in ORGANIZER_ALIASES.items():
+        org = org.replace(alias, canonical)
+    return org
 
 
 TITLE_EXCLUSIVE_TAGS = {
@@ -651,6 +662,8 @@ def dedup_events(raw_events):
             s.strip() for ev in evs
             for s in (ev.get("_source_url", "") or "").split(",") if s.strip()
         ))
+        if merged.get("organizer"):
+            merged["organizer"] = clean_organizer_stored(merged["organizer"])
         curated.append(merged)
 
     curated.sort(key=lambda e: (e.get("date_start", "") or "", e.get("title", "") or ""))
