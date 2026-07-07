@@ -1,20 +1,18 @@
 {
   "title": "Hähnchenfest",
   "date_start": "2026-08-08",
-  "date_end": "2026-08-10",
-  "time_raw": "17:00",
-  "location": "Vereinsheim Kleintierzuchtverein 1933 e.V. Friedrichstal",
-  "organizer": "Kleintierzuchtverein C283 Friedrichstal e.V.",
-  "description": "Grillhähnchen (auch im Straßenverkauf), Kaffee und Kuchen   Sonntag, 18 Uhr: Musikverein Blankenloch   Montag, 19 Uhr: Hähnewettkrähen   Hüpfburg für Kinder   Samstag und Montag ab 17 Uhr, Sonntag ab 11 Uhr",
-  "event_url": "https://www.meinstutensee.de/veranstaltungen/haehnchenfest/",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Veranstaltungsort:\n\t\tVereinsheim/Vereinsgelände",
+  "organizer": "Veranstalter:\n\t\tKleintierzuchtverein Friedrichstal C 283 e.V.",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2650",
   "sources": [
-    "clubs_batch_all",
-    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Essen",
     "Fest",
+    "Essen",
     "Friedrichstal"
   ],
   "recurring_group_id": null,

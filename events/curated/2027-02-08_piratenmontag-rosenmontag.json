@@ -1,0 +1,20 @@
+{
+  "title": "Piratenmontag (Rosenmontag)",
+  "date_start": "2027-02-08",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Festhalle Blankenloch, Stutensee",
+  "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
+  "description": "Piratenmontag / Rosenmontagsveranstaltung.",
+  "event_url": "https://www.piraten-stutensee.de/category/veranstaltungen/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Kultur",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

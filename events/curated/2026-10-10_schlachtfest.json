@@ -1,0 +1,21 @@
+{
+  "title": "Schlachtfest",
+  "date_start": "2026-10-10",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Bürgerwaldhalle, 76297 Stutensee-Büchig",
+  "organizer": "Förderkreis Fußballjugend SV Kickers Büchig",
+  "description": "Traditionelles Schlachtfest des Förderkreises Fußballjugend.",
+  "event_url": "http://www.kickers-buechig.de",
+  "sources": [
+    "http://www.kickers-buechig.de"
+  ],
+  "tags": [
+    "Sport",
+    "Kinder",
+    "Büchig"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

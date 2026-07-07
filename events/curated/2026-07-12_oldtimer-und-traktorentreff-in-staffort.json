@@ -8,11 +8,12 @@
   "description": "Am Sonntag, den 12. Juli 2026, findet auf dem Sportgelände des SV Staffort ein Oldtimer- und Traktorentreff statt.\nIm Rahmen des Sportfestes sind Liebhaber historischer Fahrzeuge herzlich eingeladen, zahlreiche Oldtimer, Traktoren und weitere besondere Fahrzeuge zu bestaunen. Die Veranstaltung bietet die Gelegenheit, mit Fahrzeugbesitzern ins Gespräch zu kommen und Technik vergangener Jahrzehnte aus nächster Nähe zu erleben.\nWeitere Informationen zum Programm werden vom Veranstalter noch bekannt gegeben.",
   "event_url": "https://stutenseekinderkalender.de/event/oldtimer-und-traktorentreff-in-staffort/",
   "sources": [
-    "https://stutenseekinderkalender.de"
+    "https://stutenseekinderkalender.de",
+    "https://svstaffort.de/sv2/bin/index.php?c=Termine"
   ],
   "tags": [
-    "Sport",
     "Fest",
+    "Sport",
     "Staffort"
   ],
   "recurring_group_id": null,

@@ -1,0 +1,20 @@
+{
+  "title": "Connect01",
+  "date_start": "2026-07-16",
+  "date_end": "2026-07-16",
+  "time_raw": "17:00",
+  "location": "HubWerk01 – Digital Hub Region Bruchsal e.V.",
+  "organizer": "HubWerk01 - Digital Hub Region Bruchsal e.V.",
+  "description": "Am 16. Juli von 17:00 bis 19:00 Uhr lädt das HubWerk01 zum monatlichen After-Work-Event Connect01 ein. Freuen Sie sich auf: entspanntes Networking leckeres Fingerfood erfrischende Getränke Kostenlose Teilnahme, ganz ohne Anmeldung. Kommen Sie vorbei und verbringen Sie mit uns einen entspannten Abend – wir freuen uns auf Sie!",
+  "event_url": "https://landfunker.de/veranstaltung/connect01/",
+  "sources": [
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
+    "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
+  ],
+  "tags": [
+    "Bruchsal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

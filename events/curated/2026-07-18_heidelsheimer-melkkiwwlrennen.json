@@ -1,18 +1,19 @@
 {
   "title": "Heidelsheimer Melkkiwwlrennen",
   "date_start": "2026-07-18",
-  "date_end": null,
-  "time_raw": "",
-  "location": "Heidelsheim, 76646 Bruchsal",
-  "organizer": "Melkkiwwlreider Heidelsheim",
-  "description": "Melkkiwwlrennen auf der Saalbach mit Festbetrieb.",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8645710/HeidelsheimerMelkkiwwlrennen.html&nodeID=8645710",
+  "date_end": "2026-07-19",
+  "time_raw": "18:00",
+  "location": "Zehntgasse, Bruchsal",
+  "organizer": "",
+  "description": "Um den Heidelsheimer Utznamen „Melkkiwwlreider“ mit einem leichten Augenzwinkern in Erinnerung zu halten, wurde 2014 das Heidelsheimer Kiwwlrennen auf der Saalbach ins Leben gerufen. Mit selbstgebauten „Kiwwln“ gilt es, eine 150 m lange Wasser- und eine 150 m lange Landstrecke zu bewältigen. Bewertungskriterien sind neben Schnelligkeit auch Kreativität der Teams. Dem Einfallsreichtum der teilnehmenden Teams sind keine Grenze gesetzt. Dies verspricht einen spaßigen Nachmittag für Jung und Alt. In diesem Jahr wird das Rennen am 19.7. stattfinden, begleitet von einem reichhaltigen Rahmenprogramm. Die Feier beginnt am 18.7. um 18 Uhr mit Festbetrieb und Live-Musik. Das Rennen findet am Sonntag ab 14 Uhr statt. Ab 11 Uhr gibt es einen Frühschoppen, der von der Trachtenkapelle Obermettingen musikalisch beleitet wird, die Siegerehrung ist auf 17 Uhr terminiert. Für das leibliche Wohl der Besucherschar ist selbstverständlich bestens gesorgt. Aktuelle und weitere Informationen sind auf https://hmkr.de/kiwwlrennen zu finden. Interessierte Teilnehmer können sich unter https://hmkr.de/kiwwlanmeldung anmelden.",
+  "event_url": "https://landfunker.de/veranstaltung/heidelsheimer-melkkiwwlrennen-2/",
   "sources": [
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
   "tags": [
-    "Fest",
-    "Bruchsal"
+    "Bruchsal",
+    "Fest"
   ],
   "recurring_group_id": null,
   "is_passed": 0,

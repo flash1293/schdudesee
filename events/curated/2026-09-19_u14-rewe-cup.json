@@ -1,0 +1,21 @@
+{
+  "title": "U14-REWE-CUP",
+  "date_start": "2026-09-19",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Waldsportplatz, 76297 Stutensee-Büchig",
+  "organizer": "SV Kickers Büchig",
+  "description": "Jugendfußballturnier für U14-Mannschaften.",
+  "event_url": "http://www.kickers-buechig.de",
+  "sources": [
+    "http://www.kickers-buechig.de"
+  ],
+  "tags": [
+    "Sport",
+    "Kinder",
+    "Büchig"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

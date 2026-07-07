@@ -1,0 +1,20 @@
+{
+  "title": "Sommerfest TVF",
+  "date_start": "2026-07-18",
+  "date_end": "2026-07-19",
+  "time_raw": "",
+  "location": "TV Friedrichstal",
+  "organizer": "Turnverein Friedrichstal 1899 e.V.",
+  "description": "",
+  "event_url": "https://www.tv-friedrichstal.de",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Fest",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

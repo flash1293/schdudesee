@@ -1,0 +1,21 @@
+{
+  "title": "Prunksitzung",
+  "date_start": "2027-01-30",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Vereinsheim, Seegrabenweg 9, Blankenloch",
+  "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
+  "description": "Jährliche Prunksitzung des Karnevalsclub Die Piraten.",
+  "event_url": "https://www.piraten-stutensee.de/category/veranstaltungen/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Blankenloch",
+    "Karneval",
+    "Fest"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

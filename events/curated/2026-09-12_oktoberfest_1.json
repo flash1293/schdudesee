@@ -1,0 +1,20 @@
+{
+  "title": "Oktoberfest",
+  "date_start": "2026-09-12",
+  "date_end": "2026-09-14",
+  "time_raw": "",
+  "location": "Vereinsheim Alte Schule",
+  "organizer": "Musikverein Karlsdorf",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=462",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [
+    "Fest",
+    "Neuthard"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 1
+}

@@ -1,0 +1,20 @@
+{
+  "title": "Lesefrühstück",
+  "date_start": "2026-07-29",
+  "date_end": "2026-07-29",
+  "time_raw": "09:30",
+  "location": "Amalienstr. 2a, 76689 Karlsdorf-Neuthard",
+  "organizer": "Bibliothek am Mühlenplatz Karlsdorf-Neuthard",
+  "description": "Wer Lust auf ein zweites Frühstück und tolle Buchvorstellungen hat, ist herzlich willkommen! Schauen Sie einfach vorbei, wir freuen uns auf Ihren Besuch!",
+  "event_url": "https://landfunker.de/veranstaltung/lesefruehstueck/",
+  "sources": [
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+  ],
+  "tags": [
+    "Essen",
+    "Neuthard"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

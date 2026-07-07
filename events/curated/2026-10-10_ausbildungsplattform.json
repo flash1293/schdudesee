@@ -8,8 +8,7 @@
   "description": "",
   "event_url": "https://gewerbeverein-stutensee.org/veranstaltungen",
   "sources": [
-    "https://gewerbeverein-stutensee.org/veranstaltungen",
-    "https://stutensee.de/Veranstaltungen"
+    "https://gewerbeverein-stutensee.org/veranstaltungen"
   ],
   "tags": [
     "Bildung"

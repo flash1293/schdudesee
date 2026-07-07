@@ -1,0 +1,21 @@
+{
+  "title": "KSC Fußballcamp",
+  "date_start": "2026-08-04",
+  "date_end": "2026-08-07",
+  "time_raw": "",
+  "location": "Waldsportplatz, 76297 Stutensee-Büchig",
+  "organizer": "Förderkreis Fußballjugend SV Kickers Büchig",
+  "description": "Fußballcamp in Kooperation mit dem Karlsruher SC für Kinder und Jugendliche.",
+  "event_url": "http://www.kickers-buechig.de",
+  "sources": [
+    "http://www.kickers-buechig.de"
+  ],
+  "tags": [
+    "Sport",
+    "Kinder",
+    "Büchig"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

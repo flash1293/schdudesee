@@ -1,0 +1,20 @@
+{
+  "title": "Brunch-Gottesdienst am 12.7.26 ab 9 Uhr",
+  "date_start": "2026-07-12",
+  "date_end": null,
+  "time_raw": "9:00",
+  "location": "Karlsruhe-Rintheim",
+  "organizer": "Bürgerverein Rintheim",
+  "description": "Tagged Brunschgottesdienst , Ev. Kirche",
+  "event_url": "https://www.rintheim-bv.de/?p=5364",
+  "sources": [
+    "https://rintheim-bv.de"
+  ],
+  "tags": [
+    "Kirche",
+    "Rintheim"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

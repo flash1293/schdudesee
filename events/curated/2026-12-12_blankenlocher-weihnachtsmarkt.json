@@ -8,8 +8,7 @@
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2334",
   "sources": [
-    "https://stutensee.de/Veranstaltungen",
-    "https://tsg-blankenloch.de/Veranstaltungen/"
+    "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Blankenloch",

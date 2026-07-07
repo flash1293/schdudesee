@@ -8,8 +8,7 @@
   "description": "Konzert VOX NOVA - moderner Frauenchor des Sängerbundes Friedrichstal in der Sängerhalle Friedrichstal",
   "event_url": "https://saengerbund-friedrichstal.de/",
   "sources": [
-    "clubs_batch_all",
-    "https://stutensee.de/Veranstaltungen"
+    "clubs_batch_all"
   ],
   "tags": [
     "Friedrichstal",
