@@ -328,6 +328,8 @@ MANUAL_ORG_MERGE = {
 MANUAL_DUPES = {
     "H\u00e4hnchen Grillfest": ["H\u00e4hnchenfest"],
     "Sommerfest am Baggersee": ["Sommerfest"],
+    "Oldtimer- und Traktortreff": ["Oldtimer und Traktorentreff in Staffort"],
+    "Topibl\u00fctenlauf": ["Topibl\u00fcten-Lauf"],
 }
 
 MANUAL_EVENTS = [
@@ -418,6 +420,8 @@ def normalize_title(title):
     if not title:
         return ""
     t = title.lower().strip()
+    # Normalize punctuation that commonly appears inconsistently across sources
+    t = re.sub(r'[-–—/]', '', t)  # remove hyphens, dashes, slashes
     for suffix in [' in blankenloch', ' in b\u00fcchig', ' in friedrichstal', ' in sp\u00f6ck', ' in staffort',
                     ' blankenloch', ' b\u00fcchig', ' friedrichstal', ' sp\u00f6ck', ' staffort']:
         t = t.replace(suffix, '')

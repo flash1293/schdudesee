@@ -756,6 +756,8 @@ def normalize_title(title):
     if not title:
         return ""
     t = title.lower().strip()
+    # Normalize punctuation that commonly appears inconsistently across sources
+    t = re.sub(r'[-–—/]', '', t)  # remove hyphens, dashes, slashes
     for suffix in [' in blankenloch', ' in büchig', ' in friedrichstal', ' in spöck', ' in staffort',
                     ' blankenloch', ' büchig', ' friedrichstal', ' spöck', ' staffort']:
         t = t.replace(suffix, '')
