@@ -4,11 +4,12 @@
   "date_end": null,
   "time_raw": "08:00",
   "location": "Sportgelände des SV Staffort, Staffort",
-  "organizer": "SV Staffort e.V.",
+  "organizer": "Sportverein Staffort e.V.",
   "description": "Näheres wird noch bekannt gegeben",
   "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=97",
   "sources": [
     "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen",
     "https://svstaffort.de/sv2/bin/index.php?c=Termine"
   ],
   "tags": [
