@@ -1,0 +1,20 @@
+{
+  "title": "Open Air Kino Sommer Stutensee",
+  "date_start": "2026-08-28",
+  "date_end": null,
+  "time_raw": "ab 20:00 Uhr",
+  "location": "Veranstaltungsort:\n\t\tGrauBau/Jugendzentrum Stutensee",
+  "organizer": "Jugendzentrum GrauBau",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2855",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Kultur",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
