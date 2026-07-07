@@ -341,7 +341,7 @@ MANUAL_EVENTS = [
 
 # Manual list: event IDs that are always featured (set after curation, IDs from curated_events).
 # Populate after pipeline runs: SELECT id FROM curated_events WHERE title LIKE '%Stadtfest%' etc.
-FEATURED_IDS = set()
+FEATURED_IDS = {544584, 544596, 544842, 544802}  # Hand-picked by Pferd, updated weekly
 
 # Conservative auto-detection: events tagged 'Fest' AND title contains a major festival keyword.
 FEATURED_TITLE_KEYWORDS = [
@@ -588,17 +588,11 @@ def auto_tag(title, description="", location="", organizer=""):
 
 
 def compute_featured(event_id, title, tags):
-    """Determine if an event should be featured based on heuristics + manual list.
-    Conservative: requires tag-based signal + title keyword match, or manual override."""
+    """Determine if an event should be featured.
+    Only uses manual FEATURED_IDS list — set_featured.py is the sole source of truth.
+    No auto-detection."""
     if event_id in FEATURED_IDS:
         return 1
-    title_lower = (title or "").lower()
-    tags_lower = (tags or "").lower()
-    # Auto-detect: tagged 'Fest' AND title contains a major festival keyword
-    if "fest" in tags_lower:
-        for kw in FEATURED_TITLE_KEYWORDS:
-            if kw in title_lower:
-                return 1
     return 0
 
 

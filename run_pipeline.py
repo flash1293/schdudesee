@@ -394,38 +394,30 @@ def mark_passed_events():
 
 
 def compute_featured_sql():
-    """Set featured flag on curated_events based on heuristics + manual list.
-    Resets all featured flags first, then recomputes."""
+    """Preserve featured flags set by set_featured.py (sole source of truth).
+    Also applies hardcoded FEATURED_IDS for programmatic overrides.
+    No auto-detection — featured events are curated manually."""
     conn = sqlite3.connect(DB)
     c = conn.cursor()
+
+    # Save currently featured IDs (set by set_featured.py)
+    current_ids = set(row[0] for row in c.execute(
+        "SELECT id FROM curated_events WHERE featured = 1").fetchall())
 
     # Reset all featured flags
     c.execute("UPDATE curated_events SET featured = 0")
 
-    # 1. Manual IDs
-    if FEATURED_IDS:
-        placeholders = ",".join("?" for _ in FEATURED_IDS)
+    # Re-apply: manual IDs from DB (set_featured.py) + hardcoded overrides
+    all_ids = current_ids | FEATURED_IDS
+    if all_ids:
+        placeholders = ",".join("?" for _ in all_ids)
         c.execute(f"UPDATE curated_events SET featured = 1 WHERE id IN ({placeholders})",
-                  tuple(FEATURED_IDS))
-        manual_count = c.rowcount
-    else:
-        manual_count = 0
-
-    # 2. Auto-detection: tagged 'Fest' AND title contains a featured keyword
-    auto_count = 0
-    for kw in FEATURED_TITLE_KEYWORDS:
-        c.execute(
-            "UPDATE curated_events SET featured = 1 "
-            "WHERE featured = 0 AND tags LIKE '%Fest%' AND LOWER(title) LIKE ?",
-            (f"%{kw}%",)
-        )
-        auto_count += c.rowcount
+                  tuple(all_ids))
 
     conn.commit()
     conn.close()
-    total = manual_count + auto_count
-    print(f"  Featured: {manual_count} manual + {auto_count} auto = {total} total", flush=True)
-    return total
+    print(f"  Featured: {len(all_ids)} (preserved from set_featured.py)", flush=True)
+    return len(all_ids)
 
 
 def cleanup_malformed_dates():
