@@ -446,10 +446,10 @@ def dedup_sql():
     # Key by (normalized_title, date, location_prefix) to survive id changes
     old = {}
     try:
-        for r in c.execute("SELECT id, title, date_start, location, COALESCE(tags,''), recurring_group_id FROM curated_events").fetchall():
+        for r in c.execute("SELECT id, title, date_start, location, COALESCE(tags,''), recurring_group_id, COALESCE(featured,0) FROM curated_events").fetchall():
             nt = normalize_title(r[1])
             dl = normalize_location(r[3])
-            old[(nt, r[2] or "", dl)] = (r[4], r[5])
+            old[(nt, r[2] or "", dl)] = (r[4], r[5], r[6])
     except:
         pass
 
@@ -555,13 +555,15 @@ def dedup_sql():
         dl = normalize_location(r[3])
         key = (nt, r[2] or "", dl)
         if key in old:
-            tags, rec_id = old[key]
+            tags, rec_id, featured = old[key]
             if tags:
                 c.execute("UPDATE curated_events SET tags = ? WHERE id = ?", (tags, r[0]))
                 restored_tags += 1
             if rec_id:
                 c.execute("UPDATE curated_events SET recurring_group_id = ? WHERE id = ?", (rec_id, r[0]))
                 restored_rec += 1
+            if featured:
+                c.execute("UPDATE curated_events SET featured = ? WHERE id = ?", (featured, r[0]))
 
     conn.commit()
 
