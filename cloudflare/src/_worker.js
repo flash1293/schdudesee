@@ -440,20 +440,22 @@ async function serveSsrPage(env, url) {
   try {
     const result = await fetchEventsForSsr(env, url);
 
-    // Fetch featured events (always — independent of pagination/filters)
+    // Fetch featured events (only on page 1)
     let featuredEvents = [];
-    try {
-      featuredEvents = await fetchFeaturedEvents(env);
-    } catch (e) {
-      // Non-critical: featured section can fail silently
-      console.error('Featured events fetch error:', e.message);
+    if (result.page === 1) {
+      try {
+        featuredEvents = await fetchFeaturedEvents(env);
+      } catch (e) {
+        // Non-critical: featured section can fail silently
+        console.error('Featured events fetch error:', e.message);
+      }
     }
 
     // Render event cards
     const eventCardsHtml = renderEventCards(result.events);
 
-    // Render featured section
-    const featuredHtml = renderFeaturedSection(featuredEvents);
+    // Render featured section (only on page 1)
+    const featuredHtml = result.page === 1 ? renderFeaturedSection(featuredEvents) : '';
 
     // Render JSON-LD (include featured events)
     const jsonLdHtml = renderJsonLd(result.events);
