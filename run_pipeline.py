@@ -409,15 +409,22 @@ def compute_featured_sql():
 
     # Re-apply: manual IDs from DB (set_featured.py) + hardcoded overrides
     all_ids = current_ids | FEATURED_IDS
+    applied = 0
     if all_ids:
         placeholders = ",".join("?" for _ in all_ids)
         c.execute(f"UPDATE curated_events SET featured = 1 WHERE id IN ({placeholders})",
                   tuple(all_ids))
+        applied = c.rowcount
 
     conn.commit()
     conn.close()
-    print(f"  Featured: {len(all_ids)} (preserved from set_featured.py)", flush=True)
-    return len(all_ids)
+
+    missing = len(all_ids) - applied
+    if missing:
+        print(f"  Featured: {applied}/{len(all_ids)} applied ({missing} IDs not found in DB — may need re-curation)", flush=True)
+    else:
+        print(f"  Featured: {applied} (preserved from set_featured.py)", flush=True)
+    return applied
 
 
 def cleanup_malformed_dates():
