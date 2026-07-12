@@ -844,12 +844,18 @@ async function serveEventPage(env, url) {
         `SELECT new_id FROM id_redirects WHERE old_id = ?`
       ).bind(eventId).first();
       if (redirect) {
+        const urlSlug = parts[3] || '';
         const newRow = await env.STUTENSEE_DB.prepare(
           `SELECT id, title FROM curated_events WHERE id = ? AND tags != 'blocked'`
         ).bind(redirect.new_id).first();
         if (newRow) {
-          const newPath = eventPath(newRow);
-          return new Response(null, { status: 301, headers: { 'location': newPath + url.search, 'cache-control': 'public, max-age=31536000' } });
+          // Validate: only redirect if URL slug matches target's slug (or no slug in URL).
+          // Prevents stale redirect map entries from sending users to wrong events.
+          if (!urlSlug || eventSlug(newRow) === urlSlug) {
+            const newPath = eventPath(newRow);
+            return new Response(null, { status: 301, headers: { 'location': newPath + url.search, 'cache-control': 'public, max-age=31536000' } });
+          }
+          // Slug mismatch — fall through to slug-based lookup below
         }
       }
     } catch (e) {
