@@ -954,6 +954,7 @@ html.dark{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--c
 body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
 header{background:#0d3a71;color:#fff;padding:10px 24px}
 .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px}
+.header-logo-link{display:flex;align-items:center;text-decoration:none;color:inherit}
 .header-text h1{font-size:22px;font-weight:700}
 .container{max-width:700px;margin:40px auto;padding:0 20px}
 .card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:24px 28px;box-shadow:var(--shadow)}
@@ -980,7 +981,7 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
 </script>
 </head>
 <body>
-<header><div class="header-inner"><div class="header-text"><h1>Hey, Stutensee!</h1></div></div></header>
+<header><div class="header-inner"><a href="/" class="header-logo-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 100" class="schdudesee-logo" style="height:68px;width:auto"><defs><clipPath id="s-clip-detail"><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80">S</text></clipPath><clipPath id="tip-clip-detail"><rect x="52" y="8" width="24" height="32"/></clipPath></defs><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">S</text><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#fab800">S</text><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#dd291a" clip-path="url(#tip-clip-detail)">S</text><g clip-path="url(#s-clip-detail)"><path class="wave-inner" d="M-5 60 Q5 54 15 60 Q25 66 35 60 Q45 54 55 60 Q65 66 75 60 Q85 54 95 60" stroke="#0d3a71" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/><path class="wave-inner" d="M-5 69 Q5 63 15 69 Q25 75 35 69 Q45 63 55 69 Q65 75 75 69 Q85 63 95 69" stroke="#1a5299" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/><path class="wave-inner" d="M-5 78 Q5 72 15 78 Q25 84 35 78 Q45 72 55 78 Q65 84 75 78 Q85 72 95 78" stroke="#3a7bc8" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/></g><text x="140" y="60" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="26" fill="#ffffff">Hey, Stutensee!</text></svg></a></div></header>
 <div class="container">
   <a href="/" class="back-link">← Zurück zur Übersicht</a>
   <article class="card" aria-label="${escapeHtml(e.title)}">
