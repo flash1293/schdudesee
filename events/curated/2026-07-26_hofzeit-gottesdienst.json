@@ -1,6 +1,6 @@
 {
   "title": "Hofzeit-Gottesdienst",
-  "date_start": "2026-07-12",
+  "date_start": "2026-07-26",
   "date_end": null,
   "time_raw": ", 11:00 Uhr",
   "location": "CVJM-Marienhof",
@@ -12,9 +12,10 @@
   ],
   "tags": [
     "Kirche",
+    "Treff",
     "Weingarten"
   ],
   "recurring_group_id": 7878022629136532436,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }

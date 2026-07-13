@@ -1,6 +1,6 @@
 {
-  "title": "Kompass Gottesdienst",
-  "date_start": "2026-07-12",
+  "title": "Ballontag",
+  "date_start": "2026-07-19",
   "date_end": "2026-08-07",
   "time_raw": "",
   "location": "CVJM Spöck, Fröbelweg 1, 76297 Stutensee-Spöck",
@@ -11,10 +11,11 @@
     "clubs_batch_all"
   ],
   "tags": [
+    "Kinder",
     "Kirche",
     "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
