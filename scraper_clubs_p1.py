@@ -161,40 +161,10 @@ def scrape_cvjm_spoeck():
 
 
 def scrape_ev_kirche_friedrichstal():
-    """Ev. Kirche Friedrichstal — ekistuwei CMS (same as Michaelisgemeinde)."""
-    events = []
-    base = "https://www.ekistuwei.de"
-    urls_to_try = [
-        "/gemeinden/kirchengemeinde-friedrichstal/",
-        "/termine/",
-    ]
-    for path in urls_to_try:
-        try:
-            html_content = fetch_url(base + path, timeout=10)
-        except Exception:
-            continue
-        for block in re.findall(
-            r'<div[^>]*class="[^"]*termineintrag[^"]*"[^>]*>(.*?)</div>',
-            html_content, re.DOTALL
-        ):
-            date_m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{4})', block)
-            title_m = re.search(r'<h[1-6][^>]*>(.*?)</h[1-6]>', block)
-            if date_m and title_m:
-                iso = f"{date_m.group(3)}-{int(date_m.group(2)):02d}-{int(date_m.group(1)):02d}"
-                title = strip_html(title_m.group(1))
-                events.append({
-                    "title": title,
-                    "date_start": iso,
-                    "date_end": None,
-                    "time_raw": "",
-                    "location": "Friedrichstal",
-                    "organizer": "Evangelische Kirchengemeinde Friedrichstal",
-                    "description": "",
-                    "event_url": base + path,
-                })
-        if events:
-            break
-    return events
+    """Ev. Kirche Friedrichstal — ekistuwei.de (handled by scraper_ekistuwei.py)."""
+    # This source is now covered by scraper_ekistuwei.py which handles all 4
+    # Stutensee congregations. Returning empty to avoid duplicate scraping.
+    return []
 
 
 def scrape_blankenloch_dlrg():
@@ -402,40 +372,10 @@ def scrape_drk_staffort():
 
 
 def scrape_michaelisgemeinde():
-    """Michaelisgemeinde Blankenloch — ekistuwei CMS."""
-    events = []
-    base = "https://www.ekistuwei.de"
-    paths = [
-        "/gemeinden/michaelisgemeinde-blankenloch/",
-        "/termine/",
-    ]
-    for path in paths:
-        try:
-            html_content = fetch_url(base + path, timeout=10)
-        except Exception:
-            continue
-        for block in re.findall(
-            r'<div[^>]*class="[^"]*termineintrag[^"]*"[^>]*>(.*?)</div>',
-            html_content, re.DOTALL
-        ):
-            date_m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{4})', block)
-            title_m = re.search(r'<h[1-6][^>]*>(.*?)</h[1-6]>', block)
-            if date_m and title_m:
-                iso = f"{date_m.group(3)}-{int(date_m.group(2)):02d}-{int(date_m.group(1)):02d}"
-                title = strip_html(title_m.group(1))
-                events.append({
-                    "title": title,
-                    "date_start": iso,
-                    "date_end": None,
-                    "time_raw": "",
-                    "location": "Blankenloch",
-                    "organizer": "Michaelisgemeinde Blankenloch",
-                    "description": "",
-                    "event_url": base + path,
-                })
-        if events:
-            break
-    return events
+    """Michaelisgemeinde Blankenloch — ekistuwei.de (handled by scraper_ekistuwei.py)."""
+    # This source is now covered by scraper_ekistuwei.py which handles all 4
+    # Stutensee congregations. Returning empty to avoid duplicate scraping.
+    return []
 
 
 def scrape_clubs_p1():

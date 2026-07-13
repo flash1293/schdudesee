@@ -18,7 +18,7 @@ from datetime import datetime, timedelta
 from calendar import month_name
 import importlib.util
 
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_svstaffort", "scraper_kickers_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_tsg_blankenloch", "scraper_cvjm_graben_neudorf", "scraper_karlsdorf_neuthard", "scraper_karlsruhe", "scraper_kultcafe", "scraper_bretten", "scraper_landfunker"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_svstaffort", "scraper_kickers_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_tsg_blankenloch", "scraper_cvjm_graben_neudorf", "scraper_karlsdorf_neuthard", "scraper_karlsruhe", "scraper_kultcafe", "scraper_bretten", "scraper_landfunker", "scraper_ekistuwei"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -46,6 +46,7 @@ scrape_bretten = sys.modules["scraper_bretten"].scrape_bretten
 scrape_landfunker = sys.modules["scraper_landfunker"].scrape_landfunker
 scrape_svstaffort = sys.modules["scraper_svstaffort"].scrape_svstaffort
 scrape_kickers_buechig = sys.modules["scraper_kickers_buechig"].scrape_kickers_buechig
+scrape_ekistuwei = sys.modules["scraper_ekistuwei"].scrape_ekistuwei
 from scraper_clubs import scrape_clubs
 
 OUT_DIR = "events/curated"
@@ -1081,6 +1082,7 @@ def main():
         ("Landfunker Terminator (Bruchsal/Bretten/Region)", scrape_landfunker),
         ("Kult Café Friedrichstal", scrape_kultcafe),
         ("Bretten", scrape_bretten),
+        ("ekistuwei.de (evangelische Kirchengemeinden)", scrape_ekistuwei),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
