@@ -8,12 +8,13 @@
   "description": "Gottesdienst  mit Totengedenken mit verschiedenen Eggensteiner Gesangesvereinen und -vereinigungen",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1895",
   "sources": [
-    "https://www.egg-leo.de/Veranstaltungen"
+    "https://www.egg-leo.de/Veranstaltungen",
+    "https://www.ekistuwei.de/termine-und-nachrichten"
   ],
   "tags": [
-    "Musik",
+    "Eggenstein",
     "Kirche",
-    "Eggenstein"
+    "Musik"
   ],
   "recurring_group_id": null,
   "is_passed": 0,

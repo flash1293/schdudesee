@@ -1,0 +1,20 @@
+{
+  "title": "Gottesdienst",
+  "date_start": "2026-09-06",
+  "date_end": null,
+  "time_raw": "10:00",
+  "location": "ev. Kirche",
+  "organizer": "Evangelische Kirchengemeinde Friedrichstal",
+  "description": "",
+  "event_url": "https://www.ekistuwei.de/gemeinden/kirchengemeinde-friedrichstal-3/terminkalender/detail/termin/id/913811-gottesdienst/?vt=1&cb-id=224127",
+  "sources": [
+    "https://www.ekistuwei.de/termine-und-nachrichten"
+  ],
+  "tags": [
+    "Kirche",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
