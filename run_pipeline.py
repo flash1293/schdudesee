@@ -25,7 +25,7 @@ from scrape_and_merge import (
     compute_featured,
 )
 import importlib.util
-for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_kultcafe", "scraper_bretten", "scraper_karlsruhe", "scraper_landfunker", "scraper_svstaffort", "scraper_kickers_buechig"]:
+for mod in ["scraper_vhs", "scraper_gewerbeverein", "scraper_blutspende", "scraper_pestalozzi", "scraper_wochenmarkt", "scraper_waldstadt", "scraper_vsv_buechig", "scraper_eggenstein", "scraper_rintheim", "scraper_linkenheim", "scraper_graben_neudorf", "scraper_weingarten", "scraper_bruchsal", "scraper_kultcafe", "scraper_bretten", "scraper_karlsruhe", "scraper_landfunker", "scraper_svstaffort", "scraper_kickers_buechig", "scraper_ekistuwei"]:
     spec = importlib.util.spec_from_file_location(mod, f"{mod}.py")
     m = importlib.util.module_from_spec(spec)
     sys.modules[mod] = m
@@ -49,6 +49,7 @@ scrape_karlsruhe = sys.modules["scraper_karlsruhe"].scrape_karlsruhe
 scrape_landfunker = sys.modules["scraper_landfunker"].scrape_landfunker
 scrape_svstaffort = sys.modules["scraper_svstaffort"].scrape_svstaffort
 scrape_kickers_buechig = sys.modules["scraper_kickers_buechig"].scrape_kickers_buechig
+scrape_ekistuwei = sys.modules["scraper_ekistuwei"].scrape_ekistuwei
 from datetime import datetime
 from scraper_clubs import scrape_clubs
 
@@ -1099,6 +1100,7 @@ if __name__ == "__main__":
         ("Bretten", scrape_bretten),
         ("Karlsruhe (Hagsfeld/Neureut/Waldstadt/Rintheim/Innenstadt)", scrape_karlsruhe),
         ("Landfunker Terminator (Bruchsal/Bretten/Region)", scrape_landfunker),
+        ("ekistuwei.de (evangelische Kirchengemeinden)", scrape_ekistuwei),
     ]
     optional_sources = [
         ("Kath. Kirche", "https://www.kath-weistu.de/", "https://www.kath-stutensee-weingarten.de/"),
