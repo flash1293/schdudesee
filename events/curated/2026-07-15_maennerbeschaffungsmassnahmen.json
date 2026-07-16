@@ -2,11 +2,11 @@
   "title": "Männerbeschaffungsmaßnahmen",
   "date_start": "2026-07-15",
   "date_end": "2026-07-15",
-  "time_raw": "18:00",
+  "time_raw": "19:00",
   "location": "Kammertheater Karlsruhe",
   "organizer": "Kammertheater Karlsruhe",
   "description": "Die Welt dreht sich schneller denn je: Social Media, Dating-Apps und ständige Selbstoptimierung setzen uns unter Druck – und echte Nähe scheint oft komplizierter als je zuvor. Zwischen Tinder, Bumble und der Angst, verletzt zu werden, verlieren viele den Zugang zu ihren eigenen Gefühlen. Einsamkeit wird zum Lebensgefühl. Doch was, wenn genau darin die Chance auf einen Neuanfang liegt? In ihrem ebenso unkonventionellen wie mitreißenden Workshop „Männerbeschaffungsmaßnahmen – Ein Coaching zur Revitalisierung verlorener Emotionen“ verspricht die charismatische Psychologin Dr. Christiane Pschorauer die Lösung: Frauen sollen wieder lernen zu fühlen – mit Musik, Leidenschaft und jeder Menge Mut zur Wahrheit. Denn Singen, so ihre Überzeugung, führt direkt zu unseren verborgensten Sehnsüchten. Vier Frauen wagen das emotionale Experiment: Die toughe Anwältin Angela kämpft gegen ihre Einsamkeit, Laura sagt entschlossen „Keine Schokolade“ mehr, die verträumte Sabine schwebt „Over the Rainbow“ und Chantal sorgt mit „Schlampenfieber“ und einem mitreißenden „I Feel Good“ für ordentlich Wirbel. Zwischen pointierten Dialogen, musikalischen Highlights und überraschend ehrlichen Momenten öffnen sich nach und nach die Herzen der Teilnehmerinnen. Und dann ist da noch Franz, der geheimnisvolle Pianist, über den niemand so recht etwas weiß … Kann Christianes Methode tatsächlich funktionieren? Werden verdrängte Gefühle wiederentdeckt – und vielleicht sogar die Tür zu einer neuen Liebe geöffnet? „Männerbeschaffungsmaßnahmen“ ist eine herrlich komische, musikalische und zugleich berührende Reise durch die Irrungen moderner Beziehungen – voller Witz, Charme und großer Emotionen. Frei nach dem Motto: „Eins und eins das macht zwei. Drum küss und denk nicht dabei, denn Denken schadet der Illusion”.",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/mannerbeschaffungsmanahmen-1",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/mannerbeschaffungsmanahmen",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Theater"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }

@@ -1,21 +1,20 @@
 {
-  "title": "Event-Café",
-  "date_start": "2026-07-08",
+  "title": "Delegiertenversammlung",
+  "date_start": "2027-04-10",
   "date_end": null,
-  "time_raw": ", 14:30 Uhr",
-  "location": "CVJM-Lebenshaus",
+  "time_raw": "",
+  "location": "Wilferdingen",
   "organizer": "CVJM Weingarten e.V.",
   "description": "",
-  "event_url": "https://www.cvjm-lebenshaus.de/website/de/lh/angebote/regelmaessige_angebote/eventcafe",
+  "event_url": "",
   "sources": [
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
-    "Treff",
     "Kirche",
     "Weingarten"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
