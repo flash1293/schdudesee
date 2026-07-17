@@ -1,0 +1,20 @@
+{
+  "title": "Mittagstisch",
+  "date_start": "2026-11-05",
+  "date_end": null,
+  "time_raw": "12:00",
+  "location": "TV Friedrichstal",
+  "organizer": "Evangelische Kirchengemeinde Friedrichstal",
+  "description": "",
+  "event_url": "https://www.ekistuwei.de/gemeinden/kirchengemeinde-friedrichstal-3/terminkalender/detail/termin/id/1058220-mittagstisch/?vt=1&cb-id=224127",
+  "sources": [
+    "https://www.ekistuwei.de/termine-und-nachrichten"
+  ],
+  "tags": [
+    "Essen",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
