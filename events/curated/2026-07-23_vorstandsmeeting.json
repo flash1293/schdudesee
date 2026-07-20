@@ -1,0 +1,21 @@
+{
+  "title": "Vorstandsmeeting",
+  "date_start": "2026-07-23",
+  "date_end": "2026-08-07",
+  "time_raw": "",
+  "location": "CVJM Spöck, Fröbelweg 1, 76297 Stutensee-Spöck",
+  "organizer": "CVJM Spöck",
+  "description": "",
+  "event_url": "https://www.cvjm-spoeck.de/eventcalendar?calendar=16",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Verein",
+    "Kirche",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
