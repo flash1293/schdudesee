@@ -1,6 +1,6 @@
 {
-  "title": "Vorstandsmeeting",
-  "date_start": "2026-07-23",
+  "title": "Ferien ohne Koffer Woche 1",
+  "date_start": "2026-08-03",
   "date_end": "2026-08-07",
   "time_raw": "",
   "location": "CVJM Spöck, Fröbelweg 1, 76297 Stutensee-Spöck",
@@ -11,11 +11,11 @@
     "clubs_batch_all"
   ],
   "tags": [
-    "Verein",
+    "Kinder",
     "Kirche",
     "Spöck"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
