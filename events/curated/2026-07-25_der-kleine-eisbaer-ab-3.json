@@ -2,11 +2,11 @@
   "title": "Der kleine Eisbär (ab 3)",
   "date_start": "2026-07-25",
   "date_end": "2026-07-25",
-  "time_raw": "11:00",
+  "time_raw": "14:00",
   "location": "marotte Theater",
   "organizer": "marotte Theater",
   "description": "Hoch oben im Norden, wo Schnee und Eis ewig sind, wohnt Lars, der kleine Eisbär. Lars kann schon auf dem Rücken seines Vaters reiten und mit einer Pfote Fische fangen. Nur schwimmen, das kann er noch nicht so gut. Eines Tages passiert etwas Schreckliches. Lars treibt ganz allein auf einer Eisscholle hinaus aufs Meer. Und erlebt sein erstes großes Abenteuer. Ein Stück für die ganz Kleinen. Darüber, wie schön es ist, die Welt zu entdecken. Und über das schönste Wort, wenn man genug gesehen hat: Nach Hause... Spiel:Thomas Hänsel",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/der_kleine_eisbar_ab3n-57",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/der_kleine_eisbar_ab3n-58",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Theater"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
