@@ -1,9 +1,9 @@
 {
-  "title": "LeGo (Verabschiedung Simon Schuh + Jahresteam)",
-  "date_start": "2026-07-26",
+  "title": "Café Lebenshaus",
+  "date_start": "2026-09-20",
   "date_end": null,
-  "time_raw": ", 15:30 Uhr",
-  "location": "CVJM-Lebenshaus, Schloss Unteröwisheim",
+  "time_raw": ", 14:00 Uhr",
+  "location": "Schloss Unteröwisheim",
   "organizer": "CVJM Weingarten e.V.",
   "description": "",
   "event_url": "https://www.schloss-unteroewisheim.de/website/de/lh/angebote/regelmaessige_angebote",
@@ -11,10 +11,11 @@
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
+    "Treff",
     "Kirche",
     "Weingarten"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
