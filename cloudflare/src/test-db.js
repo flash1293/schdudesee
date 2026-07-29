@@ -1,83 +1,98 @@
 /**
  * Creates a real SQLite in-memory database with the curated_events schema
  * and sample data for integration testing.
+ *
+ * Test dates are computed dynamically to always be in the future,
+ * preventing date_from default filters from excluding all test data.
  */
 import Database from 'better-sqlite3';
 
-const SAMPLE_EVENTS = [
-  {
-    title: '10 Jahre Red Horse Festival',
-    date_start: '2026-05-16',
-    date_end: null,
-    time_raw: '13:30',
-    location: 'Jugendzentrum GrauBau',
-    organizer: 'Jugendzentrum GrauBau',
-    description: '',
-    event_url: 'https://www.meinstutensee.de/veranstaltungen/10-jahre-red-horse-festival-3/',
-    sources: 'https://meinstutensee.de/termine/',
-    tags: 'Fest,Blankenloch',
-  },
-  {
-    title: 'Hope is a dangerous thing mit der Saxofonistin Asy',
-    date_start: '2026-07-15',
-    date_end: null,
-    time_raw: '20:00',
-    location: 'Kulturhaus',
-    organizer: 'Kulturverein',
-    description: 'Ein besonderes Musikerlebnis',
-    event_url: '',
-    sources: 'test',
-    tags: 'Musik,Kultur',
-  },
-  {
-    title: 'Wochenmarkt Blankenloch',
-    date_start: '2026-05-16',
-    date_end: null,
-    time_raw: '07:00 – 13:00',
-    location: 'Blankenloch, Neuer Markt',
-    organizer: 'Stadt Stutensee',
-    description: 'Wochenmarkt in Blankenloch',
-    event_url: 'https://www.stutensee.de/',
-    sources: 'https://www.stutensee.de/',
-    tags: 'Markt,Blankenloch',
-  },
-  {
-    title: 'Internationaler Museumstag',
-    date_start: '2026-05-17',
-    date_end: null,
-    time_raw: '13:00',
-    location: 'Städtisches Museum, Bruchsal',
-    organizer: 'Stadt Bruchsal',
-    description: 'Eintritt in Schloss Bruchsal: 8 Euro, ermäßigt 4 Euro',
-    event_url: 'https://www.bruchsal.de/',
-    sources: 'https://www.bruchsal.de/',
-    tags: 'Kultur,Bruchsal',
-  },
-  {
-    title: 'Fußball WM 2026 – Gemeinsam Jubeln',
-    date_start: '2026-07-20',
-    date_end: null,
-    time_raw: '20:45',
-    location: 'Vereinsheim',
-    organizer: 'Fanclub',
-    description: 'Public Viewing zur WM',
-    event_url: '',
-    sources: 'test',
-    tags: 'Sport',
-  },
-  {
-    title: 'Test &amp; Demo &lt;Event&gt;',
-    date_start: '2026-07-01',
-    date_end: null,
-    time_raw: '',
-    location: 'Test Location &amp; Co',
-    organizer: 'Test Org',
-    description: '',
-    event_url: '',
-    sources: 'test',
-    tags: 'Sonstiges,Test',
-  },
-];
+/** Return ISO date string for N days from today. */
+function daysFromNow(n) {
+  const d = new Date();
+  d.setDate(d.getDate() + n);
+  return d.toISOString().slice(0, 10);
+}
+
+function buildSampleEvents() {
+  const t = daysFromNow;
+  return [
+    {
+      title: '10 Jahre Red Horse Festival',
+      date_start: t(5),
+      date_end: null,
+      time_raw: '13:30',
+      location: 'Jugendzentrum GrauBau',
+      organizer: 'Jugendzentrum GrauBau',
+      description: '',
+      event_url: 'https://www.meinstutensee.de/veranstaltungen/10-jahre-red-horse-festival-3/',
+      sources: 'https://meinstutensee.de/termine/',
+      tags: 'Fest,Blankenloch',
+    },
+    {
+      title: 'Hope is a dangerous thing mit der Saxofonistin Asy',
+      date_start: t(10),
+      date_end: null,
+      time_raw: '20:00',
+      location: 'Kulturhaus',
+      organizer: 'Kulturverein',
+      description: 'Ein besonderes Musikerlebnis',
+      event_url: '',
+      sources: 'test',
+      tags: 'Musik,Kultur',
+    },
+    {
+      title: 'Wochenmarkt Blankenloch',
+      date_start: t(3),
+      date_end: null,
+      time_raw: '07:00 – 13:00',
+      location: 'Blankenloch, Neuer Markt',
+      organizer: 'Stadt Stutensee',
+      description: 'Wochenmarkt in Blankenloch',
+      event_url: 'https://www.stutensee.de/',
+      sources: 'https://www.stutensee.de/',
+      tags: 'Markt,Blankenloch',
+    },
+    {
+      title: 'Internationaler Museumstag',
+      date_start: t(7),
+      date_end: null,
+      time_raw: '13:00',
+      location: 'Städtisches Museum, Bruchsal',
+      organizer: 'Stadt Bruchsal',
+      description: 'Eintritt in Schloss Bruchsal: 8 Euro, ermäßigt 4 Euro',
+      event_url: 'https://www.bruchsal.de/',
+      sources: 'https://www.bruchsal.de/',
+      tags: 'Kultur,Bruchsal',
+    },
+    {
+      title: 'Fußball WM 2026 – Gemeinsam Jubeln',
+      date_start: t(14),
+      date_end: null,
+      time_raw: '20:45',
+      location: 'Vereinsheim',
+      organizer: 'Fanclub',
+      description: 'Public Viewing zur WM',
+      event_url: '',
+      sources: 'test',
+      tags: 'Sport',
+    },
+    {
+      title: 'Test &amp; Demo &lt;Event&gt;',
+      date_start: t(2),
+      date_end: null,
+      time_raw: '',
+      location: 'Test Location &amp; Co',
+      organizer: 'Test Org',
+      description: '',
+      event_url: '',
+      sources: 'test',
+      tags: 'Sonstiges,Test',
+    },
+  ];
+}
+
+const SAMPLE_EVENTS = buildSampleEvents();
 
 export function createTestDb() {
   const db = new Database(':memory:');

@@ -28,6 +28,10 @@ let env;
 beforeAll(() => {
   db = createTestDb();
   // Add enough events to trigger pagination (SSR_PER_PAGE = 50)
+  // Use a future date so the default date_from filter doesn't exclude them
+  const futureDate = new Date();
+  futureDate.setDate(futureDate.getDate() + 30);
+  const dateStr = futureDate.toISOString().slice(0, 10);
   const insertExtra = db.prepare(`
     INSERT INTO curated_events (title, date_start, date_end, time_raw, location, organizer, description, event_url, sources, tags)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -35,7 +39,7 @@ beforeAll(() => {
   for (let i = 0; i < 55; i++) {
     insertExtra.run(
       `Extra Event ${i + 1}`,
-      '2026-07-01', null, '10:00',
+      dateStr, null, '10:00',
       'Test Location', 'Test Organizer',
       'Description for pagination test.', '', '',
       'Fest,Test'
