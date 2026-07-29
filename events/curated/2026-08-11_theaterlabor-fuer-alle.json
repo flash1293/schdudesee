@@ -1,12 +1,12 @@
 {
   "title": "Theaterlabor für alle",
-  "date_start": "2026-07-21",
-  "date_end": "2026-07-21",
+  "date_start": "2026-08-11",
+  "date_end": "2026-08-11",
   "time_raw": "18:00",
   "location": "Kaiserstraße 47, Kulturküche",
   "organizer": "Kulturküche Karlsruhe",
   "description": "Iba ist Schauspielerin und Theaterpädagogin. In ihrem Theater-Labor entdeckst du dein kreatives Inneres mit allen Mitteln der Theaterkunst. Wir schauen uns verschiedene Elemente an, die beim Theaterspielen wichtig sind. Zum Beispiel Atmung, Haltung, Gestik, Emotionen, Raumgefühl und mehr. Das Angebot ist für alle offen – ob Theater-Anfänger:innen oder Erfahrene. Keine Anmeldung nötig. Einzelne oder alle Termine möglich. Spenden willkommen. Ohne Anmeldung. Einfach vorbeikommen.",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/theaterlabor_fur_alle-5",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/theaterlabor_fur_alle-6",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Theater"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
