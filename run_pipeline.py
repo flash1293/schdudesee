@@ -380,12 +380,12 @@ def cleanup_past_events():
 
 
 def mark_passed_events():
-    """Mark curated_events where date_start is in the past as is_passed = 1."""
+    """Mark curated_events as passed when both date_start and date_end (if any) are in the past."""
     conn = sqlite3.connect(DB)
     c = conn.cursor()
     today = datetime.now().date().isoformat()
     updated = c.execute(
-        "UPDATE curated_events SET is_passed = 1 WHERE date_start IS NOT NULL AND date_start != '' AND date_start < ? AND is_passed = 0",
+        "UPDATE curated_events SET is_passed = 1 WHERE COALESCE(NULLIF(date_end,''), date_start) < ? AND is_passed = 0",
         (today,)
     ).rowcount
     conn.commit()

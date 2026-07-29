@@ -857,11 +857,11 @@ def dedup_events(raw_events):
 
     curated = compact(curated)
 
-    # Compute is_passed flag for each event
+    # Compute is_passed flag for each event (use date_end if available, else date_start)
     from datetime import datetime as dt
     today = dt.now().date().isoformat()
     for ev in curated:
-        ds = ev.get("date_start", "") or ""
+        ds = ev.get("date_end") or ev.get("date_start", "") or ""
         ev["is_passed"] = bool(ds and ds < today)
 
     return curated
