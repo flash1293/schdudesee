@@ -1,12 +1,12 @@
 {
   "title": "VORLESEZEIT in der Kinder- & Jugendbibliothek",
-  "date_start": "2026-07-29",
-  "date_end": "2026-07-29",
+  "date_start": "2026-08-12",
+  "date_end": "2026-08-12",
   "time_raw": "16:00",
   "location": "Stadtbibliothek Karlsruhe - Kinder- und Jugendbibliothek Karlsruhe im Prinz-Max-Palais",
   "organizer": "Stadtbibliothek Karlsruhe - Kinder- und Jugendbibliothek im Prinz-Max-Palais",
   "description": "\"Lies mir doch was vor!\" - Diesen Wunsch vieler Kinder wollen wir gerne erfüllen und bieten für Kinder von 3 bis 5 Jahren an jedem Mittwochnachmit­tag jeweils um 16 Uhr eine Vorleserunde an. Zielgruppe: von 3 bis 5 Jahren Anmeldung: ohne Anmeldung Eintritt: kostenfrei Ort: Kinder- und Jugendbibliothek Illustration: AdobeStock - GoodStudio",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/vorlesezeit_in_der_kinder_jugendbibliothek-43",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/vorlesezeit_in_der_kinder_jugendbibliothek-45",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Literatur"
   ],
   "recurring_group_id": 3208115958786238245,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
