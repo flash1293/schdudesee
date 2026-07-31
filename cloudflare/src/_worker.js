@@ -1219,7 +1219,7 @@ async function serveReqStats(env) {
         COUNT(CASE WHEN user_agent LIKE '%Mozilla%' AND user_agent NOT LIKE '%bot%' AND user_agent NOT LIKE '%Bot%' AND user_agent NOT LIKE '%crawler%' AND user_agent NOT LIKE '%spider%' AND user_agent NOT LIKE '%Googlebot%' AND user_agent NOT LIKE '%GoogleOther%' AND user_agent NOT LIKE '%curl%' AND user_agent NOT LIKE '%wget%' AND user_agent NOT LIKE '%python%' AND user_agent NOT LIKE '%Go-http%' AND user_agent NOT LIKE '%scanner%' AND user_agent NOT LIKE '%Cloudflare%' AND user_agent NOT LIKE '%crawling%' THEN 1 END) as browser,
         COUNT(CASE WHEN user_agent LIKE '%bot%' OR user_agent LIKE '%Bot%' OR user_agent LIKE '%crawler%' OR user_agent LIKE '%spider%' OR user_agent LIKE '%Googlebot%' OR user_agent LIKE '%GoogleOther%' OR user_agent LIKE '%curl%' OR user_agent LIKE '%wget%' OR user_agent LIKE '%python%' OR user_agent LIKE '%Go-http%' OR user_agent LIKE '%scanner%' OR user_agent LIKE '%Cloudflare%' OR user_agent LIKE '%crawling%' THEN 1 END) as bot,
         COUNT(CASE WHEN user_agent IS NULL OR user_agent = '' THEN 1 END) as empty
-       FROM request_log GROUP BY day ORDER BY day DESC LIMIT 30`
+       FROM request_log GROUP BY day ORDER BY day DESC`
     ).all();
     daily = dailyRows.results || [];
     // Compute 'unknown' for each day
