@@ -1215,14 +1215,25 @@ async function serveReqStats(env) {
     console.error('Lifetime UA breakdown failed:', err.message);
   }
 
-  // Daily breakdown: group by date, classify browser vs bot
+  // Daily breakdown: classify using same logic as classifyUserAgent (bot first, then browser)
   let daily = [];
   try {
     const dailyRows = await env.REQUEST_DB.prepare(
-      `SELECT DATE(timestamp) as day, COUNT(*) as total,
-        COUNT(CASE WHEN user_agent LIKE '%Mozilla%' AND user_agent NOT LIKE '%bot%' AND user_agent NOT LIKE '%Bot%' AND user_agent NOT LIKE '%crawler%' AND user_agent NOT LIKE '%spider%' AND user_agent NOT LIKE '%Googlebot%' AND user_agent NOT LIKE '%GoogleOther%' AND user_agent NOT LIKE '%curl%' AND user_agent NOT LIKE '%wget%' AND user_agent NOT LIKE '%python%' AND user_agent NOT LIKE '%Go-http%' AND user_agent NOT LIKE '%scanner%' AND user_agent NOT LIKE '%Cloudflare%' AND user_agent NOT LIKE '%crawling%' THEN 1 END) as browser,
-        COUNT(CASE WHEN user_agent LIKE '%bot%' OR user_agent LIKE '%Bot%' OR user_agent LIKE '%crawler%' OR user_agent LIKE '%spider%' OR user_agent LIKE '%Googlebot%' OR user_agent LIKE '%GoogleOther%' OR user_agent LIKE '%curl%' OR user_agent LIKE '%wget%' OR user_agent LIKE '%python%' OR user_agent LIKE '%Go-http%' OR user_agent LIKE '%scanner%' OR user_agent LIKE '%Cloudflare%' OR user_agent LIKE '%crawling%' THEN 1 END) as bot,
-        COUNT(CASE WHEN user_agent IS NULL OR user_agent = '' THEN 1 END) as empty
+      `SELECT DATE(timestamp) as day,
+        COUNT(*) as total,
+        COUNT(CASE WHEN path != '/api/stats' THEN 1 END) as total_no_self,
+        COUNT(CASE
+          WHEN user_agent IS NULL OR user_agent = '' THEN NULL
+          WHEN LOWER(user_agent) LIKE '%bot%' OR LOWER(user_agent) LIKE '%crawler%' OR LOWER(user_agent) LIKE '%spider%' OR LOWER(user_agent) LIKE '%scanner%' OR LOWER(user_agent) LIKE '%crawling%' OR LOWER(user_agent) LIKE '%curl%' OR LOWER(user_agent) LIKE '%wget%' OR LOWER(user_agent) LIKE '%python%' OR LOWER(user_agent) LIKE '%go-http%' OR LOWER(user_agent) LIKE '%okhttp%' OR LOWER(user_agent) LIKE '%googlebot%' OR LOWER(user_agent) LIKE '%googleother%' OR LOWER(user_agent) LIKE '%bingbot%' OR LOWER(user_agent) LIKE '%duckduckbot%' OR LOWER(user_agent) LIKE '%baiduspider%' OR LOWER(user_agent) LIKE '%yandexbot%' OR LOWER(user_agent) LIKE '%facebookexternalhit%' OR LOWER(user_agent) LIKE '%slackbot%' OR LOWER(user_agent) LIKE '%discordbot%' OR LOWER(user_agent) LIKE '%twitterbot%' OR LOWER(user_agent) LIKE '%ahrefsbot%' OR LOWER(user_agent) LIKE '%semrushbot%' OR LOWER(user_agent) LIKE '%mj12bot%' OR LOWER(user_agent) LIKE '%dotbot%' OR LOWER(user_agent) LIKE '%cloudflare%' THEN 1
+        END) as bot,
+        COUNT(CASE
+          WHEN LOWER(user_agent) LIKE '%bot%' OR LOWER(user_agent) LIKE '%crawler%' OR LOWER(user_agent) LIKE '%spider%' OR LOWER(user_agent) LIKE '%scanner%' OR LOWER(user_agent) LIKE '%crawling%' OR LOWER(user_agent) LIKE '%curl%' OR LOWER(user_agent) LIKE '%wget%' OR LOWER(user_agent) LIKE '%python%' OR LOWER(user_agent) LIKE '%go-http%' OR LOWER(user_agent) LIKE '%okhttp%' OR LOWER(user_agent) LIKE '%googlebot%' OR LOWER(user_agent) LIKE '%googleother%' OR LOWER(user_agent) LIKE '%bingbot%' OR LOWER(user_agent) LIKE '%duckduckbot%' OR LOWER(user_agent) LIKE '%baiduspider%' OR LOWER(user_agent) LIKE '%yandexbot%' OR LOWER(user_agent) LIKE '%facebookexternalhit%' OR LOWER(user_agent) LIKE '%slackbot%' OR LOWER(user_agent) LIKE '%discordbot%' OR LOWER(user_agent) LIKE '%twitterbot%' OR LOWER(user_agent) LIKE '%ahrefsbot%' OR LOWER(user_agent) LIKE '%semrushbot%' OR LOWER(user_agent) LIKE '%mj12bot%' OR LOWER(user_agent) LIKE '%dotbot%' OR LOWER(user_agent) LIKE '%cloudflare%' OR user_agent IS NULL OR user_agent = '' THEN NULL
+          WHEN LOWER(user_agent) LIKE '%mozilla%' OR LOWER(user_agent) LIKE '%chrome%' OR LOWER(user_agent) LIKE '%safari%' OR LOWER(user_agent) LIKE '%firefox%' OR LOWER(user_agent) LIKE '%edge%' OR LOWER(user_agent) LIKE '%opr/%' THEN 1
+        END) as browser,
+        COUNT(CASE WHEN user_agent IS NULL OR user_agent = '' THEN 1 END) as empty,
+        COUNT(CASE WHEN path = '/' AND (
+          LOWER(user_agent) LIKE '%mozilla%' OR LOWER(user_agent) LIKE '%chrome%' OR LOWER(user_agent) LIKE '%safari%' OR LOWER(user_agent) LIKE '%firefox%' OR LOWER(user_agent) LIKE '%edge%' OR LOWER(user_agent) LIKE '%opr/%'
+        ) AND NOT (LOWER(user_agent) LIKE '%bot%' OR LOWER(user_agent) LIKE '%crawler%' OR LOWER(user_agent) LIKE '%spider%' OR LOWER(user_agent) LIKE '%scanner%' OR LOWER(user_agent) LIKE '%crawling%' OR LOWER(user_agent) LIKE '%curl%' OR LOWER(user_agent) LIKE '%wget%' OR LOWER(user_agent) LIKE '%python%' OR LOWER(user_agent) LIKE '%go-http%' OR LOWER(user_agent) LIKE '%okhttp%' OR LOWER(user_agent) LIKE '%googlebot%' OR LOWER(user_agent) LIKE '%googleother%' OR LOWER(user_agent) LIKE '%cloudflare%') THEN 1 END) as homepage_browser
        FROM request_log GROUP BY day ORDER BY day DESC`
     ).all();
     daily = dailyRows.results || [];
