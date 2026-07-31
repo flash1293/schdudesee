@@ -1,12 +1,12 @@
 {
   "title": "Onleihe Sprechstunde",
-  "date_start": "2026-07-30",
-  "date_end": "2026-07-30",
+  "date_start": "2026-08-13",
+  "date_end": "2026-08-13",
   "time_raw": "18:00",
   "location": "Stadtbibliothek Karlsruhe - Zentralbibliothek im Neuen Ständehaus - Sprechstunde",
   "organizer": "Stadtbibliothek Karlsruhe - Zentralbibliothek im Neuen Ständehaus",
   "description": "Die kostenlose Sprech­stunde richtet sich an alle Inter­es­sier­ten mit indivi­du­el­len Fragen rund um die digitale Bibliothek \"Onleihe\" . Fachleute der Stadt­bi­blio­thek beant­wor­ten Fragen und zeigen die Handhabung an entspre­chen­den Lesege­rä­ten (E-Book-Reader oder Tablets). Es dürfen gerne eigene Geräte mitge­bracht werden. Eine Anmeldung ist nicht erfor­der­lich. Zielgruppe: Onleihe Nutzer*innen Anmeldung: ohne Anmeldung Eintritt: kostenfrei Ort: Stadtbibliothek im Neuen Ständehaus, Infotheke im 2. OG",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/onleihe_sprechstunde-162",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/onleihe_sprechstunde-164",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Literatur"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
