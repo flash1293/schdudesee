@@ -1018,15 +1018,17 @@ function toggleDark(){document.documentElement.classList.toggle('dark');var isDa
 async function serveSitemapXml(env) {
   // Fetch all event IDs for the sitemap. Google supports up to 50,000 URLs per sitemap,
   // so cap at 50,000 as a safety net.
-  let urls = '<url><loc>https://hey-stutensee.de/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>';
+  const today = new Date().toISOString().slice(0, 10);
+  let urls = `<url><loc>https://hey-stutensee.de/</loc><lastmod>${today}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>`;
 
   try {
     const { results } = await env.STUTENSEE_DB.prepare(
-      `SELECT id, title FROM curated_events WHERE tags != 'blocked' ORDER BY date_start DESC LIMIT 50000`
+      `SELECT id, title, updated_at FROM curated_events WHERE tags != 'blocked' ORDER BY date_start DESC LIMIT 50000`
     ).all();
 
     for (const row of results) {
-      urls += `<url><loc>https://hey-stutensee.de${eventPath(row)}</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>`;
+      const lastmod = row.updated_at ? row.updated_at.slice(0, 10) : today;
+      urls += `<url><loc>https://hey-stutensee.de${eventPath(row)}</loc><lastmod>${lastmod}</lastmod><changefreq>monthly</changefreq><priority>0.5</priority></url>`;
     }
   } catch (err) {
     console.error('Sitemap generation error:', err.message);
