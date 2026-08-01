@@ -1,0 +1,20 @@
+{
+  "title": "Gottesdienst",
+  "date_start": "2027-01-01",
+  "date_end": null,
+  "time_raw": "18:00",
+  "location": "Friedrichstal",
+  "organizer": "Evangelische Kirchengemeinde Friedrichstal",
+  "description": "",
+  "event_url": "https://www.ekistuwei.de/gemeinden/kirchengemeinde-friedrichstal-3/terminkalender/detail/termin/id/963305-gottesdienst/?vt=1&cb-id=224127",
+  "sources": [
+    "https://www.ekistuwei.de/termine-und-nachrichten"
+  ],
+  "tags": [
+    "Kirche",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
