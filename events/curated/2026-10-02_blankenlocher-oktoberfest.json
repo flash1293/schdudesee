@@ -1,0 +1,20 @@
+{
+  "title": "Blankenlocher Oktoberfest",
+  "date_start": "2026-10-02",
+  "date_end": "2026-10-05",
+  "time_raw": "",
+  "location": "Festplatz Blankenloch",
+  "organizer": "Karnevalsclub Die Piraten Stutensee e.V.",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/blankenlocher-oktoberfest/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Fest",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

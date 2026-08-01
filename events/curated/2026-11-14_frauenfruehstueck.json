@@ -1,0 +1,20 @@
+{
+  "title": "Frauenfrühstück",
+  "date_start": "2026-11-14",
+  "date_end": null,
+  "time_raw": "09:00",
+  "location": "Gemeindezentrum",
+  "organizer": "Bürgerkommission Hagsfeld e.V.",
+  "description": "",
+  "event_url": "https://www.hagsfeld.de/termine/frauenfr%C3%BChst%C3%BCck",
+  "sources": [
+    "https://www.hagsfeld.de/termine"
+  ],
+  "tags": [
+    "Essen",
+    "Hagsfeld"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

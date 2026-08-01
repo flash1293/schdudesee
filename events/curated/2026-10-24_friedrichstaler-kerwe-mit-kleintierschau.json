@@ -8,7 +8,8 @@
   "description": "",
   "event_url": "https://www.kleintierzuchtverein-friedrichstal.de/termine/",
   "sources": [
-    "clubs_batch_all"
+    "clubs_batch_all",
+    "https://meinstutensee.de/termine/"
   ],
   "tags": [
     "Fest",
