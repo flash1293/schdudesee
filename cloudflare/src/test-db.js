@@ -112,7 +112,8 @@ export function createTestDb() {
       tags TEXT,
       recurring_group_id INTEGER,
       is_passed INTEGER DEFAULT 0,
-      featured INTEGER DEFAULT 0
+      featured INTEGER DEFAULT 0,
+      updated_at TEXT DEFAULT (datetime('now'))
     );
     
     CREATE TABLE raw_events (
