@@ -138,11 +138,83 @@ def scrape_karlsdorf_neuthard():
 
         page += 1
 
-    print(f"  KN total: {len(all_events)} events", flush=True)
+    print(f"  KN town calendar: {len(all_events)} events", flush=True)
+
+    # Also scrape Bürgerstiftung Karlsdorf-Neuthard (WordPress Events Calendar API)
+    bs_events = scrape_buergerstiftung_kn()
+    seen_keys = set((e["date_start"], e["title"], e.get("location", "")) for e in all_events)
+    for e in bs_events:
+        key = (e["date_start"], e["title"], e.get("location", ""))
+        if key not in seen_keys:
+            seen_keys.add(key)
+            all_events.append(e)
+    print(f"  KN total (incl. Bürgerstiftung): {len(all_events)} events", flush=True)
+
     return {
         "source_url": CALENDAR_URL,
         "events": all_events,
     }
+
+
+def scrape_buergerstiftung_kn():
+    """Scrape Bürgerstiftung Karlsdorf-Neuthard events via WP REST API."""
+    import json
+    API_URL = "https://buergerstiftung-kn.de/wp-json/tribe/events/v1/events"
+    events = []
+    session = requests.Session()
+    session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; StutenseeBot/1.0)"})
+
+    try:
+        resp = session.get(API_URL, params={"per_page": 50, "page": 1}, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+        total_pages = data.get("total_pages", 1)
+
+        for page in range(1, total_pages + 1):
+            if page > 1:
+                resp = session.get(API_URL, params={"per_page": 50, "page": page}, timeout=30)
+                resp.raise_for_status()
+                data = resp.json()
+
+            for ev in data.get("events", []):
+                try:
+                    title = ev.get("title", "")
+                    start_date = ev.get("start_date", "")
+                    end_date = ev.get("end_date", "")
+                    date_start = start_date[:10] if start_date else None
+                    date_end = end_date[:10] if end_date else None
+                    time_raw = start_date[11:16] if start_date and len(start_date) >= 16 else ""
+
+                    venue = ev.get("venue") or {}
+                    location_parts = []
+                    if venue.get("venue"):
+                        location_parts.append(venue["venue"])
+                    if venue.get("address"):
+                        location_parts.append(venue["address"])
+                    if venue.get("city"):
+                        location_parts.append(venue["city"])
+                    location = ", ".join(location_parts) if location_parts else "Karlsdorf-Neuthard"
+
+                    desc_raw = ev.get("description", "") or ""
+                    description = re.sub(r"<[^>]+>", "", desc_raw).strip() if desc_raw else ""
+
+                    events.append({
+                        "title": title,
+                        "date_start": date_start,
+                        "date_end": date_end,
+                        "time_raw": time_raw,
+                        "location": location,
+                        "organizer": "Bürgerstiftung Karlsdorf-Neuthard",
+                        "description": description,
+                        "event_url": ev.get("url", ""),
+                    })
+                except Exception:
+                    continue
+    except Exception as e:
+        print(f"  Bürgerstiftung KN: API error ({e})", flush=True)
+
+    print(f"  Bürgerstiftung KN: {len(events)} events", flush=True)
+    return events
 
 
 if __name__ == "__main__":
