@@ -104,7 +104,7 @@ def scrape_karlsdorf_neuthard():
 
                 # Organizer and location
                 paragraphs = content.find_all("p")
-                organizer = ""
+                organizer = "Gemeinde Karlsdorf-Neuthard"
                 location = "Karlsdorf-Neuthard"
                 for p in paragraphs:
                     text = p.get_text(strip=True)
