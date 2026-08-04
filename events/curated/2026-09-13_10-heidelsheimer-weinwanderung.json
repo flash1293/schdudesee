@@ -8,12 +8,13 @@
   "description": "Der OWK und die Melkkiwwlreider laden am 13.9.2026 zum 10. Mal zur Weinwanderung an den Altenberg nach Heidelsheim. An insgesamt 5 Stationen wird ein abwechslungreiches Angebot an Getränken und Speisen geboten. Die etwa 1,5 km lange Strecke dürfte weder Jung noch Alt überfordern.   Beschilderungbeginn ist die Stadtbahn Haltestelle Heidelsheim Nord. Von dort aus führt der Weg entlang eines wundervollen Panoramas an den Verköstigungsstationen vorbei. Die Stationen sind von 11 Uhr bis 19 Uhr geöffnet. Weitere Informationen können auf unserer Webseite abgerufen werden: https://hmkr.de/weinwanderung",
   "event_url": "https://landfunker.de/veranstaltung/10-heidelsheimer-weinwanderung/",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
+    "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
   "tags": [
-    "Sport",
+    "Bruchsal",
     "Natur",
-    "Bruchsal"
+    "Sport"
   ],
   "recurring_group_id": null,
   "is_passed": 0,
