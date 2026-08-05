@@ -1,12 +1,12 @@
 {
   "title": "Kunstkurs",
-  "date_start": "2026-08-04",
-  "date_end": "2026-08-04",
+  "date_start": "2026-08-18",
+  "date_end": "2026-08-18",
   "time_raw": "18:30",
   "location": "Kulturküche Karlsruhe",
   "organizer": "Kulturküche Karlsruhe",
   "description": "In entspannter Runde kannst du dich frei entfalten, dich austauschen und neue Ideen entdecken. Wenn du möchtest, gebe ich dir gerne Tipps – der Rest ist deine ganz persönliche kreative Reise. Ab 2026: Ab dem 20.01 alle zwei Wochen dienstags, 18:30–20:30 Uhr Anmeldung: zukunftswelten@kraft-netz.de Teilnahme kostenfrei, kein Konsumzwang",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/ausstellungen/kunstkurs-8",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/ausstellungen/kunstkurs-9",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Ausstellungen"
   ],
   "recurring_group_id": 8508920154762940489,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
