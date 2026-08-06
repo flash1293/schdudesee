@@ -1,0 +1,20 @@
+{
+  "title": "Strickfrühstück",
+  "date_start": "2026-09-12",
+  "date_end": null,
+  "time_raw": "10:00 - 13:00 Uhr",
+  "location": "Veranstaltungsort:\n\t\tBegegnungszentrum Regenbogen",
+  "organizer": "Strickeria im BZ Regenbogen",
+  "description": "Offener Treff zum Handarbeiten",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2862",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Handwerk",
+    "Essen"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
