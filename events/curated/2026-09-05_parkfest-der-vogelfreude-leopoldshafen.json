@@ -3,17 +3,17 @@
   "date_start": "2026-09-05",
   "date_end": null,
   "time_raw": "",
-  "location": "Vogelpark",
+  "location": "VogelparkVogelpark Leopoldshafen",
   "organizer": "Vogelfreunde Leopoldshafen",
-  "description": "Parkfest der Vogelfreude Leopoldshafen",
+  "description": "Die Vogelfreunde Leopoldshafen laden auch in diesem Jahr wieder herzlich zu ihrem traditionellen Parkfest im Vogelpark ein, am Samstag, 05. September und Sonntag, 06. September ab 10.00 Uhr.",
   "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1827",
   "sources": [
     "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [
     "Fest",
-    "Natur",
-    "Leopoldshafen"
+    "Leopoldshafen",
+    "Natur"
   ],
   "recurring_group_id": null,
   "is_passed": 0,
