@@ -4,7 +4,7 @@
   "date_end": "2026-08-09",
   "time_raw": "20:30",
   "location": "Ev. Stadtkirche Karlsruhe",
-  "organizer": "Kantorat der Citykirche Karlsruhe",
+  "organizer": "Kantorat der Ev. Stadtkirche Karlsruhe",
   "description": "Johannes Skoog, Stockholm Werke von Bruhns, Bach, Franck, Alain, Scharin, Nyman Der Internationale Orgelsommer Karlsruhe – an sechs Sonntagen im Juli und August – ist seit Jahren ein Forum für herausragende Organistinnen und Organisten aus aller Welt. Die beiden hervorragenden Orgeln der Stadtkirche ermöglichen eine adäquate Umsetzung nahezu aller Stilbereiche. Vor jedem Orgelkonzert gibt es in der Talk-Runde „Das Blaue Sofa“ (19.30–20.00 Uhr) die Möglichkeit, mit dem Organisten des Abends ins Gespräch zu kommen und zugleich eine Einführung in das Konzertprogramm zu erhalten. 19. Juli 2026 Paolo Oreni, Mailand 26. Juli 2026 Anna Lapwood, London 2. August 2026 Isabelle Demers, Montreal 9. August 2026 Johannes Skoog, Stockholm 16. August 2026 Vincent Dubois, Paris 23. August 2026 Christian-Markus Raiser",
   "event_url": "https://kalender.karlsruhe.de/db/termine/musik/internationaler_orgelsommer_karlsruhe-4",
   "sources": [
@@ -15,6 +15,6 @@
     "Musik"
   ],
   "recurring_group_id": 593735065267613809,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
