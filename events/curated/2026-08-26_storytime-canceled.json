@@ -1,12 +1,12 @@
 {
   "title": "Storytime -- canceled --",
-  "date_start": "2026-08-12",
-  "date_end": "2026-08-12",
+  "date_start": "2026-08-26",
+  "date_end": "2026-08-26",
   "time_raw": "17:00",
   "location": "Stadtbibliothek Karlsruhe - Amerikanische Bibliothek",
   "organizer": "Stadtbibliothek Karlsruhe - Amerikanische Bibliothek",
   "description": "Stories are read out loud, sometimes followed by a small craft or activity or game. Every second Wednesday of the month starting at 4 pm and every fourth Wednesday of the month starting at 4 pm. Please call ahead and reserve a place. (0721) 7 27 52.",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/storytime_canceled_",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/storytime_canceled_-1",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Literatur"
   ],
   "recurring_group_id": 7292834954829428309,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }

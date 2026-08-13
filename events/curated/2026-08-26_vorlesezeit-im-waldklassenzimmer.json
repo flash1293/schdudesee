@@ -1,12 +1,12 @@
 {
   "title": "Vorlesezeit im Waldklassenzimmer",
-  "date_start": "2026-08-12",
-  "date_end": "2026-08-12",
+  "date_start": "2026-08-26",
+  "date_end": "2026-08-26",
   "time_raw": "17:00",
   "location": "Waldklassenzimmer",
   "organizer": "Stadtbibliothek Karlsruhe - Kinder- und Jugendbibliothek im Prinz-Max-Palais",
   "description": "Lauscht den Geschichten unserer Lesepat*innen im Waldklassenzimmer. Zielgruppe: alle Interessierten Treffpunkt: Waldklassenzimmer am Kanalweg zwischen Linkenheimer und Grabener Allee. Illustration: stock.adobe.com - Anna Syvak",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/vorlesezeit_im_waldklassenzimmer-1",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/vorlesezeit_im_waldklassenzimmer",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Literatur"
   ],
   "recurring_group_id": 3917250067472692649,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
