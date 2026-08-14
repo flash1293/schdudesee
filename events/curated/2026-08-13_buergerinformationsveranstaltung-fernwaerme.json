@@ -6,7 +6,7 @@
   "location": "H7, Hoheneggerstraße 7, 76646 Bruchsal",
   "organizer": "",
   "description": "Bürgerinfoveranstaltung Fernwärme",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9018708/BrgerinformationsveranstaltungFernwrme.html?nodeID=9018708",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9018708/index.html?nodeID=9018708",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -15,6 +15,6 @@
     "Bruchsal"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }

@@ -1,12 +1,12 @@
 {
   "title": "Kombiführung Karlsruhe City + Durlach Altstadt",
-  "date_start": "2026-08-01",
-  "date_end": "2026-08-01",
+  "date_start": "2026-08-15",
+  "date_end": "2026-08-15",
   "time_raw": "14:00",
   "location": "City Tour durch Karlsruhe",
   "organizer": "Boservice Stadtführungen Karlsruhe",
   "description": "Kombiführungen Karlsruhe und Durlach Zum richtigen und umfassenden Entdecken und Kennenlernen von Karlsruhe eignet sich besonders unsere preiswertes und attraktives bis zu 1,5-stündiges Kombi-Paket aus einer exklusiven Stadtrundfahrt mit der Tram von Karlsruhe nach Durlach. Eine großartige Entdeckungsreise durch Karlsruhe mit Geschichte(n) für kleine oder große Gruppen, Jung oder Alt, oder Karlsruhe-Besucher, Familien, Geschäftsgäste, Schulklassen und Betriebsausflüge – immer spannend und lebendig präsentiert – und immer nur exklusiv für Sie + Ihre Gruppe – für ALLE(!) Gruppen. Auf Wunsch auch auf Englisch und Französisch. Diese Tour eignet sich besonders auch für mobilitätseingeschränkte Personen Preise: Erwachsene: Euro 15,00 Kinder bis 16 Jahre: Euro 7,50 Ein gültiges Ticket von der KVV wird vorausgesetzt InfoTel.: mobil unter 0170/2935072 Um Anmeldung wird gebeten, Mindestteilnehmerzahl: 4 Personen Internet: www.stadtfuehrungen-karlsruhe.de",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/kombifuhrung_karlsruhe_city_durlach_altstadt-1",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/kombifuhrung_karlsruhe_city_durlach_altstadt-2",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Stadtleben"
   ],
   "recurring_group_id": 3559921037256502537,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
