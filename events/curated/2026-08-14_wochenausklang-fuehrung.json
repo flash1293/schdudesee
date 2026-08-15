@@ -5,8 +5,8 @@
   "time_raw": "16:30",
   "location": "Orangerie der Staatlichen Kunsthalle Karlsruhe",
   "organizer": "Staatliche Kunsthalle Karlsruhe",
-  "description": "Dialog-Führung mit der Künstlerin Nanne Meyer und der Kuratorin Dr. Dorit Schäfer durch die Sonderausstellung Nanne Meyer. Gezieltes Umherirren.",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/ausstellungen/wochenausklang_fuhrung-1",
+  "description": "Dialog-Führung mit der Künstlerin Nanne Meyer und der Kuratorin Dr. Dorit Schäfer durch die Sonderausstellung Nanne Meyer. Gezieltes Umherirren. 4 € (freitags ab 14.00 Uhr ist der Eintritt in die Ausstellung kostenfrei)",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/ausstellungen/wochenausklang_fuhrung-2",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Ausstellungen"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
