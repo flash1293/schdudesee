@@ -1,0 +1,20 @@
+{
+  "title": "FC Südstern - SV Staffort",
+  "date_start": "2026-08-16",
+  "date_end": null,
+  "time_raw": "17:00",
+  "location": "Staffort",
+  "organizer": "Sportverein Staffort e.V.",
+  "description": "Freundschaftsspiel",
+  "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=120",
+  "sources": [
+    "https://svstaffort.de/sv2/bin/index.php?c=Termine"
+  ],
+  "tags": [
+    "Kinder",
+    "Staffort"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

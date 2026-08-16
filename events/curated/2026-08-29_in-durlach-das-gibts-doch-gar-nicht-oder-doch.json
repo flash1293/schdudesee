@@ -1,12 +1,12 @@
 {
-  "title": "Hinterhofidylle in Durlach",
-  "date_start": "2026-08-15",
-  "date_end": "2026-08-15",
-  "time_raw": "16:00",
-  "location": "Denkmal vor Friedrich-Realschule",
+  "title": "In DURLACH: Das gibt's doch gar nicht, oder doch?",
+  "date_start": "2026-08-29",
+  "date_end": "2026-08-29",
+  "time_raw": "13:00",
+  "location": "Obelisk bei der Durlacher Straßenbahnhaltestelle Schlossplatz",
   "organizer": "stattreisen Karlsruhe e.V.",
   "description": "Stadtführungen einmal anders - spannend, informativ und immer überraschend! Die Führungen von stattreisen Karlsruhe e.V. ermöglichen neue Einblicke in Geschichte und Architektur, in das Alltagsleben früherer Zeiten - und in verborgene Ecken und Winkel der Stadt, die Einheimische und Gäste der Stadt gleichermaßen faszinieren. Anmeldung und Informationen zur Teilnahmegebühr auf der Website!",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/hinterhofidylle_in_durlach-14",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/in_durlach_das_gibts_doch_gar_nicht_oder_doch",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Stadtleben"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
