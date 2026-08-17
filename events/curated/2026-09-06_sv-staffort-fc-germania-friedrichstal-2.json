@@ -1,0 +1,20 @@
+{
+  "title": "SV Staffort - FC Germania Friedrichstal 2",
+  "date_start": "2026-09-06",
+  "date_end": null,
+  "time_raw": "15:00",
+  "location": "Staffort",
+  "organizer": "Sportverein Staffort e.V.",
+  "description": "Das erste Heimspiel in der neuen Saison!",
+  "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=123",
+  "sources": [
+    "https://svstaffort.de/sv2/bin/index.php?c=Termine"
+  ],
+  "tags": [
+    "Kinder",
+    "Staffort"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

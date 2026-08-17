@@ -1,0 +1,21 @@
+{
+  "title": "FV Hochstetten - SV Staffort",
+  "date_start": "2026-08-30",
+  "date_end": null,
+  "time_raw": "15:00",
+  "location": "Rasenplatz, FV Hochstetten, Waldstraße, 76351 Linkenheim-Hochstetten, Staffort",
+  "organizer": "Sportverein Staffort e.V.",
+  "description": "Rasenplatz, FV Hochstetten, Waldstraße, 76351 Linkenheim-Hochstetten",
+  "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=124",
+  "sources": [
+    "https://svstaffort.de/sv2/bin/index.php?c=Termine"
+  ],
+  "tags": [
+    "Natur",
+    "Staffort",
+    "Linkenheim"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

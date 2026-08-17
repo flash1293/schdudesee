@@ -1,12 +1,12 @@
 {
-  "title": "FC Südstern - SV Staffort",
-  "date_start": "2026-08-16",
+  "title": "SV Staffort - FC Germania Untergrombach 2",
+  "date_start": "2026-08-23",
   "date_end": null,
-  "time_raw": "17:00",
+  "time_raw": "12:00",
   "location": "Staffort",
   "organizer": "Sportverein Staffort e.V.",
-  "description": "Freundschaftsspiel",
-  "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=120",
+  "description": "Das nächste Testspiel!",
+  "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=125",
   "sources": [
     "https://svstaffort.de/sv2/bin/index.php?c=Termine"
   ],
@@ -15,6 +15,6 @@
     "Staffort"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }

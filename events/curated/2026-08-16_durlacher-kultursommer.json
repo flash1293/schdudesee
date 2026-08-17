@@ -2,11 +2,11 @@
   "title": "Durlacher Kultursommer",
   "date_start": "2026-08-16",
   "date_end": "2026-08-16",
-  "time_raw": "15:00",
+  "time_raw": "19:00",
   "location": "Schlossgarten Durlach",
   "organizer": "Stadtamt Durlach &amp; OrgelFabrik Kultur in Durlach e V.",
-  "description": "MärchenSpiel für kleine und große Kinder Marla Saris taucht die altbekannten Geschichten von tapferen Schneidern &amp; Co in ein neues Licht. Dabei schlüpft sie in die verschiedensten Rollen und Gewänder. Bei ihr kommt sogar ein Schutzengel zu Wort; und dann sorgen auch noch die beiden Handpuppen Coco und RatzFatz für witzige Wendungen. Ein Märchenspaß für die ganze Familie!",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/durlacher_kultursommer-11",
+  "description": "Mit Annie Gärtig und Thomas Sluiter. Im Gepäck mehrstimmige Vocals, eine akustische Gitarre und eine musikalische Zeitreise durch 5 Jahrzehnte Pop- und Rockgeschichte. Die Timeline der Tour beginnt in den 70ern und reicht bis in die aktuellen Charts. Gespielt werden bekannte und beliebte Songs, die unter die Haut gehen. Das musikalische Programm des Duos setzt Schwerpunkte auf Songs, deren Interpretation von filigranem Gitarrenspiel getragen wird und bei denen Annie´s einzigartige Stimme eindrucksvoll zur Geltung kommt. Annie und Thomas stehen seit Jahren auf der Bühne und man spürt, dass hier zwei erfahrene Profis am Werk sind, die es verstehen, ihr Publikum auf angenehme und sympathische Art zu unterhalten.",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/durlacher_kultursommer-12",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Stadtleben"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
