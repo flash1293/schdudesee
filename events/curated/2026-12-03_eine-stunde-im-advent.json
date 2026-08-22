@@ -1,0 +1,20 @@
+{
+  "title": "Eine Stunde im Advent",
+  "date_start": "2026-12-03",
+  "date_end": "2026-12-03",
+  "time_raw": "19:30",
+  "location": "Gemeindebücherei Forst",
+  "organizer": "Gemeindebücherei Forst",
+  "description": "Traditioneller Weihnachtsabend mit besinnlicher Musik, weihnachtlichen Texten, Glühwein, Tee und Lebkuchen.",
+  "event_url": "https://landfunker.de/veranstaltung/eine-stunde-im-advent/",
+  "sources": [
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+  ],
+  "tags": [
+    "Sport",
+    "Musik"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

@@ -1,7 +1,7 @@
 {
   "title": "Ferienspaß - Leben auf dem Bauernhof",
-  "date_start": "2026-08-18",
-  "date_end": "2026-08-21",
+  "date_start": "2026-10-27",
+  "date_end": "2026-10-30",
   "time_raw": ", 10:00 Uhr",
   "location": "CVJM-Marienhof",
   "organizer": "CVJM Weingarten e.V.",
@@ -12,10 +12,11 @@
   ],
   "tags": [
     "Kinder",
+    "Natur",
     "Kirche",
     "Weingarten"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
