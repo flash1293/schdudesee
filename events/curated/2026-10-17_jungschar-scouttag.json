@@ -1,9 +1,9 @@
 {
-  "title": "Gottesdienst (Ev. Kirche Graben)",
-  "date_start": "2026-08-23",
-  "date_end": "2026-08-23",
-  "time_raw": "10:00",
-  "location": "Ev. Kirche Graben",
+  "title": "Jungschar Scouttag",
+  "date_start": "2026-10-17",
+  "date_end": "2026-10-17",
+  "time_raw": "",
+  "location": "Graben-Neudorf",
   "organizer": "CVJM Graben-Neudorf",
   "description": "",
   "event_url": "https://www.cvjm-graben-neudorf.de/eventcalendar",
@@ -14,6 +14,6 @@
     "Kirche"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
