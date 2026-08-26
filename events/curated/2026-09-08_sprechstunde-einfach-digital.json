@@ -1,12 +1,12 @@
 {
   "title": "Sprechstunde: Einfach digital!",
-  "date_start": "2026-08-25",
-  "date_end": "2026-08-25",
+  "date_start": "2026-09-08",
+  "date_end": "2026-09-08",
   "time_raw": "12:00",
   "location": "Stadtbibliothek Karlsruhe - Zentralbibliothek im Neuen Ständehaus - Sprechstunde",
   "organizer": "Stadtbibliothek Karlsruhe - Zentralbibliothek im Neuen Ständehaus",
   "description": "Sie haben Fragen zu Ihrem Smartphone oder einer App? Ihr Tablet bereitet Ihnen Kopfzerbrechen? Das neue Update will einfach nicht funktionieren? In einer offenen Sprechstunde jeden Dienstag hilft ein*e Mitarbeiter*in der Stadtbibliothek bei Problemen rund um Ihre digitalen Endgeräte (Smartphone, Tablet oder Laptop) und deren Nutzung. Bei Fragen zu unserer Online-Bibliothek \"Onleihe\" oder der Nutzung von E-Book-Readern besuchen Sie bitte unsere Onleihe-Sprechstunde jeden Mittwoch und Donnerstag. Zielgruppe: alle Menschen mit Fragen rund ums Smartphone Anmeldung: ohne Anmeldung Eintritt: kostenfrei Ort: Stadtbibliothek im Neuen Ständehaus, Infotheke im 1. OG Foto: Adobestock - macrovector",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/sprechstunde_einfach_digital-46",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/sprechstunde_einfach_digital-48",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Literatur"
   ],
   "recurring_group_id": 6561346363214442799,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
