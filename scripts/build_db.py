@@ -36,14 +36,15 @@ CREATE TABLE curated_events (
     featured INTEGER DEFAULT 0
 );
 CREATE INDEX idx_curated_dates ON curated_events(date_start);
-CREATE INDEX idx_curated_title ON curated_events(normalized_title);
+CREATE INDEX idx_events_passed_featured_date ON curated_events(is_passed, featured, date_start);
+CREATE INDEX idx_events_featured ON curated_events(featured);
+CREATE INDEX idx_events_recurring ON curated_events(recurring_group_id);
 
 DROP TABLE IF EXISTS id_redirects;
 CREATE TABLE id_redirects (
     old_id INTEGER PRIMARY KEY,
     new_id INTEGER NOT NULL
 );
-CREATE INDEX idx_id_redirects_old ON id_redirects(old_id);
 """
 
 

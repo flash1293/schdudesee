@@ -33,4 +33,9 @@ for table in TABLES:
         vals = ', '.join(esc(v) for v in row)
         print(f'INSERT INTO {table} VALUES ({vals});')
 
+# Emit indexes AFTER tables + data (tables must exist first; faster for bulk import).
+# NOTE: this was previously missing entirely — the bug that left D1 with zero indexes.
+for sql, in c.execute("SELECT sql FROM sqlite_master WHERE type = 'index' AND sql IS NOT NULL AND name NOT LIKE 'sqlite_autoindex%'"):
+    print(sql + ';')
+
 conn.close()

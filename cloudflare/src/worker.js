@@ -26,7 +26,7 @@ export default {
     try { await ensureAnalyticsTable(env); } catch {}
     let response;
     try {
-      response = await routeRequest(request, env);
+      response = await routeRequest(request, env, ctx);
     } catch (err) {
       console.error('Worker error:', err.message);
       response = new Response('Internal error', { status: 500 });
@@ -37,7 +37,7 @@ export default {
 };
 
 // ── Router ────────────────────────────────────────────────────────────
-async function routeRequest(request, env) {
+async function routeRequest(request, env, ctx) {
   const url = new URL(request.url);
 
   // Serve SSR-enhanced HTML for the main page
@@ -67,21 +67,68 @@ async function routeRequest(request, env) {
   if (url.pathname === '/api/list') return serveEvents(env, url);
   if (url.pathname === '/api/featured') return serveFeatured(env);
   if (url.pathname === '/api/chat' && request.method === 'POST') return serveChat(request, env);
-  if (url.pathname === '/api/theme') return serveTags(env);
-  if (url.pathname === '/api/districts') return serveDistricts(env);
-  if (url.pathname === '/api/organizer') return serveOrganizers(env);
+  if (url.pathname === '/api/theme') return cachedResponse(env, ctx, url.toString(), CACHE_TTL_DAILY, () => serveTags(env));
+  if (url.pathname === '/api/districts') return cachedResponse(env, ctx, url.toString(), CACHE_TTL_DAILY, () => serveDistricts(env));
+  if (url.pathname === '/api/organizer') return cachedResponse(env, ctx, url.toString(), CACHE_TTL_DAILY, () => serveOrganizers(env));
   if (url.pathname === '/api/info') return serveStats(env);
   if (url.pathname === '/api/stats') return serveReqStats(env);
   if (url.pathname === '/robots.txt') return serveRobotsTxt();
   if (url.pathname.startsWith('/api/same/')) return serveRecurring(env, url.pathname.split('/').pop());
   if (url.pathname === '/llms.txt') return serveLlmTxt();
   if (url.pathname === '/.well-known/security.txt') return serveSecurityTxt();
-  if (url.pathname === '/sitemap.xml') return serveSitemapXml(env);
+  if (url.pathname === '/sitemap.xml') return cachedResponse(env, ctx, url.toString(), CACHE_TTL_DAILY, () => serveSitemapXml(env));
 
   // Event detail pages: /events/{id}/{slug}
-  if (url.pathname.startsWith('/events/')) return serveEventPage(env, url);
+  if (url.pathname.startsWith('/events/')) return serveEventPage(env, url, ctx);
 
   return serve404();
+}
+
+// ── Cache helpers (reduce full-table D1 scans on read-only data) ──────
+const CACHE_TTL_DAILY = 86400; // DB is rebuilt once daily by the pipeline
+const EVENT_INDEX_CACHE_KEY = 'https://hey-stutensee.de/__internal__/event-index-v1';
+
+/** Wrap a read-only producer in the Cache API. Falls back to direct production
+ *  when the Cache API is unavailable (e.g. in unit tests). */
+async function cachedResponse(env, ctx, key, ttlSeconds, producer) {
+  if (typeof caches === 'undefined' || !caches.default) {
+    return producer();
+  }
+  const cache = caches.default;
+  const cached = await cache.match(key);
+  if (cached) return cached;
+  const response = await producer();
+  if (response && response.ok) {
+    const copy = response.clone();
+    copy.headers.set('cache-control', `public, max-age=${ttlSeconds}`);
+    if (ctx && typeof ctx.waitUntil === 'function') ctx.waitUntil(cache.put(key, copy));
+    else await cache.put(key, copy);
+  }
+  return response;
+}
+
+/** Full {id,title} event list, cached daily. Lets the slug fallback do an
+ *  in-memory lookup instead of full-scanning curated_events on every old URL. */
+async function getEventIndex(env, ctx) {
+  const load = async () => {
+    const { results } = await env.STUTENSEE_DB.prepare(
+      `SELECT id, title FROM curated_events WHERE tags != 'blocked'`
+    ).all();
+    return results.map(r => ({ id: r.id, title: r.title }));
+  };
+  if (typeof caches === 'undefined' || !caches.default) {
+    return load();
+  }
+  const cache = caches.default;
+  const cached = await cache.match(EVENT_INDEX_CACHE_KEY);
+  if (cached) return await cached.json();
+  const list = await load();
+  const response = new Response(JSON.stringify(list), {
+    headers: { 'content-type': 'application/json', 'cache-control': `public, max-age=${CACHE_TTL_DAILY}` }
+  });
+  if (ctx && typeof ctx.waitUntil === 'function') ctx.waitUntil(cache.put(EVENT_INDEX_CACHE_KEY, response.clone()));
+  else await cache.put(EVENT_INDEX_CACHE_KEY, response);
+  return list;
 }
 
 // ── SSR Helpers ───────────────────────────────────────────────────────
@@ -827,7 +874,7 @@ async function getEventDetails(params, env) {
 }
 
 /** Serve an individual event page at /events/{id}/{slug}. */
-async function serveEventPage(env, url) {
+async function serveEventPage(env, url, ctx) {
   const parts = url.pathname.split('/'); // ['', 'events', '{id}', '{slug}']
   if (!/^[0-9]+$/.test(parts[2])) return serve404();
   const eventId = parseInt(parts[2]);
@@ -870,10 +917,8 @@ async function serveEventPage(env, url) {
     const urlSlug = parts[3] || '';
     if (urlSlug && eventId < 100000) {
       try {
-        const { results } = await env.STUTENSEE_DB.prepare(
-          `SELECT id, title FROM curated_events WHERE tags != 'blocked'`
-        ).all();
-        for (const r of results) {
+        const index = await getEventIndex(env, ctx);
+        for (const r of index) {
           if (eventSlug(r) === urlSlug) {
             const newPath = eventPath(r);
             return new Response(null, { status: 301, headers: { 'location': newPath + url.search, 'cache-control': 'public, max-age=31536000' } });
