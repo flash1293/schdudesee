@@ -1,6 +1,6 @@
 {
   "title": "Wochenmarkt Friedrichstal",
-  "date_start": "2026-08-26",
+  "date_start": "2027-02-24",
   "date_end": null,
   "time_raw": "14:00 – 18:00",
   "location": "Friedrichstal, Marktplatz (Oskar-Hornung-Haus)",
@@ -15,6 +15,6 @@
     "Friedrichstal"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }

@@ -1,12 +1,12 @@
 {
   "title": "Durlachs kühle Orte – unterwegs zu Brunnen, Parks und schattigen Plätzen",
-  "date_start": "2026-08-20",
-  "date_end": "2026-08-20",
+  "date_start": "2026-09-03",
+  "date_end": "2026-09-03",
   "time_raw": "17:00",
   "location": "Durlach",
   "organizer": "Stadt Karlsruhe, Umwelt- und Arbeitsschutz",
   "description": "Auf einem interaktiven Spaziergang führt Wasserkurator Thomas Frank zu Brunnen, Grünanlagen, schattigen Plätzen und öffentlich zugänglichen Innenräumen, wo sich die Sommerhitze gut aushalten lässt. Auf dem Weg begegnen die Teilnehmenden außerdem Menschen, die Durlach mitgestalten. So wird erlebbar, dass Klimaanpassung nicht nur städtebauliche Maßnahmen erfordert, sondern auch vom Engagement vor Ort lebt. Die Tour ist kostenfrei . Wer möchte, kann ein eigenes Trinkgefäß mitbringen. Für eine bessere Planbarkeit bitte Anmeldung per Mail an thomas@atiptap.org. Wer spontan dazukommen möchte, ist ebenfalls herzlich willkommen. Treffpunkt : „Liebesbrunnen“, Durlacher Marktplatz, Ende am Brunnen an der Friedrich-Realschule",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/durlachs_kuhle_orte_unterwegs_zu_brunnen-1",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/durlachs_kuhle_orte_unterwegs_zu_brunnen-2",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Stadtleben"
   ],
   "recurring_group_id": 8262249136053997056,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
