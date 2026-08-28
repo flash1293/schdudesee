@@ -1,12 +1,12 @@
 {
   "title": "ES WAR ZWANZIG VOR NEUN",
-  "date_start": "2026-08-27",
-  "date_end": "2026-08-27",
+  "date_start": "2026-09-10",
+  "date_end": "2026-09-10",
   "time_raw": "22:00",
   "location": "Orgelfabrik Halle",
   "organizer": "Theater in der Orgelfabrik e.V.",
   "description": "Das Stück Ein fast verfallenes Haus, bewohnt von einer reichen alten Frau und ihrer Adoptivtochter. Der Name der Frau: Miss Havisham. Warum lebt sie dort ganz allein mit Estella? Warum sind alle Uhren stehen geblieben? Was ist geschehen, damals, vor 50 Jahren um zwanzig vor neun? Einmal im Jahr, an ihrem Geburtstag, kommen ihre Verwandten zu Besuch: Die Pockets. Camilla und Raymond Pocket, beide in einen Prozess mit dem Rest der Familie verstrickt. Wobei Raymond herzlich wenig an Geld interessiert ist, ganz im Gegenteil zu seinem Cousin George, der dringend eine Geldspritze benötigt, um seine ehrgeizigen Pläne zu verwirklichen. Auch Sarah Pocket, die Witwe ihres Cousins, würde lieber heute als morgen das Erbe der reichen Miss Havisham antreten. Und dann ist da noch Philip, ein junger Mann aus dem Dorf. Als ihm von Mr. Jaggers, dem Advokaten von Miss Havisham, angekündigt wird, dass auf ihn eine große Erbschaft wartet, spitzt sich die Situation zu. Und plötzlich ist Miss Havisham verschwunden. Ist sie tot? Gibt es ein Testament? Was geschah damals um zwanzig vor neun? Fragen über Fragen. Sind Sie neugierig geworden? Wir freuen uns, wenn wir Ihre Fragen beantworten können - bei einer spannenden, sehr kuriosen Geburtstagsfeier. Eine Geschichte aus alten Zeiten, aber immer noch aktuell.",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/es_war_zwanzig_vor_neun-4",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/es_war_zwanzig_vor_neun-10",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Theater"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
