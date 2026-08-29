@@ -8,11 +8,12 @@
   "description": "Das  Antoine-Spranger-Session-Trio  bildet mit Piano/Bass/Drums die harmonische und rhythmische Grundlage für ein kreatives Zusammenspiel mit Gästen, die gerne jazzen und jammen. Sowohl Instrumentalisten/innen als auch Sänger/innen sind herzlich willkommen. Das Session-Trio wird den Abend musikalisch einleiten, das weitere Programm wird von den Gästen mitbestimmt und gestaltet. Neben den Solisten und Vokalisten kommen auch die Musiker an den Rhythmus-Instrumenten zum Zuge und können für zwei bis drei Stücke die Mitglieder der Session-Band ersetzen. Wie wird sich der Abend entwickeln? Wer kommt? Welche Songs werden gespielt? Was haben die Gastmusiker für Ideen? Das spontane Zusammenspiel hat seinen besonderen Reiz, man darf bei einer Jam-Session auf jeden Fall gespannt sein.",
   "event_url": "https://landfunker.de/veranstaltung/29-bruchsaler-jam-session/",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
+    "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
   "tags": [
-    "Kinder",
-    "Bruchsal"
+    "Bruchsal",
+    "Kinder"
   ],
   "recurring_group_id": null,
   "is_passed": 0,

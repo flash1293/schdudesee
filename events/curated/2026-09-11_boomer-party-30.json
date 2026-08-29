@@ -1,0 +1,20 @@
+{
+  "title": "Boomer-Party 3.0",
+  "date_start": "2026-09-11",
+  "date_end": "2026-09-11",
+  "time_raw": "22:00",
+  "location": "Kulturküche Karlsruhe",
+  "organizer": "Kulturküche Karlsruhe",
+  "description": "Ein Abend ganz nach altbewährtem Erfolgsrezept: gute Musik, ausgelassenes Tanzen, leckeres Essen und gute Gespräche. Hier ist jede und jeder willkommen. Wir freuen uns auf euch!",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/boomer_party30n",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
