@@ -1,6 +1,6 @@
 {
   "title": "Wochenmarkt Blankenloch",
-  "date_start": "2026-08-29",
+  "date_start": "2027-02-27",
   "date_end": null,
   "time_raw": "07:00 – 13:00",
   "location": "Blankenloch, Neuer Markt (Michaeliskirche)",
@@ -15,6 +15,6 @@
     "Blankenloch"
   ],
   "recurring_group_id": null,
-  "is_passed": 1,
+  "is_passed": 0,
   "featured": 0
 }
