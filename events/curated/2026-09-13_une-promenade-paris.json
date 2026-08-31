@@ -1,0 +1,20 @@
+{
+  "title": "Une promenade à Paris",
+  "date_start": "2026-09-13",
+  "date_end": "2026-09-13",
+  "time_raw": "16:00",
+  "location": "Kirche St. Bernhard",
+  "organizer": "Kantorat St. Bernhard",
+  "description": "Werke von Dupré, Vierne, Widor u.a. Im Anschluss an das Konzert findet eine Orgelführung statt. Eintritt frei",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/une_promenade_a_paris",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

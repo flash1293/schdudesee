@@ -1,18 +1,18 @@
 {
-  "title": "Eine Zeitreise der Musik",
+  "title": "&quot;Eine Zeitreise der Musik&quot;",
   "date_start": "2026-09-27",
   "date_end": "2026-09-27",
   "time_raw": "18:00",
   "location": "Sängerhalle Friedrichstal",
   "organizer": "Gesangverein Sängerbund Friedrichstal 1910 e.V.",
   "description": "",
-  "event_url": "https://www.meinstutensee.de/veranstaltungen/eine-zeitreise-der-musik/",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/eine-zeitreise-der-musik-2/",
   "sources": [
     "https://meinstutensee.de/termine/"
   ],
   "tags": [
-    "Musik",
-    "Friedrichstal"
+    "Friedrichstal",
+    "Musik"
   ],
   "recurring_group_id": null,
   "is_passed": 0,
