@@ -3,16 +3,16 @@
   "date_start": "2026-09-06",
   "date_end": "2026-09-06",
   "time_raw": "19:00",
-  "location": "",
+  "location": "Ravensburg Sulzfeld",
   "organizer": "",
-  "description": "Schlagerkonzert im historischen Burghof. Ort: Ravensburg · Mühlbacher Straße 84, 75056 Sulzfeld Zeit: 19:00 Uhr Weitere Informationen",
+  "description": "„Neuanfang“ – Schlagerkonzert im historischen Burghof. Ort: Ravensburg · Mühlbacher Straße 84, 75056 Sulzfeld Zeit: 19:00 Uhr Eintritt: 15 € bzw. 20 € (bar an der Abendkasse) Hinweis: Bei schlechtem Wetter findet das Konzert nicht statt. Weitere Informationen",
   "event_url": "https://landfunker.de/veranstaltung/bianca-app-neuanfang-schlager-im-herz/",
   "sources": [
     "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
   ],
   "tags": [
-    "Musik",
-    "Kinder"
+    "Kinder",
+    "Musik"
   ],
   "recurring_group_id": null,
   "is_passed": 0,

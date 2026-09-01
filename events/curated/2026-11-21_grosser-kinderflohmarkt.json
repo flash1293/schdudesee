@@ -1,0 +1,22 @@
+{
+  "title": "Großer Kinderflohmarkt",
+  "date_start": "2026-11-21",
+  "date_end": "2026-11-21",
+  "time_raw": "13:00",
+  "location": "Festhalle Stutensee",
+  "organizer": "Flohmarktteam Kindergärten Blankenloch-Büchig",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/grosser-kinderflohmarkt/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Kinder",
+    "Markt",
+    "Blankenloch",
+    "Büchig"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
