@@ -1,0 +1,20 @@
+{
+  "title": "Wochenmarkt Friedrichstal",
+  "date_start": "2027-03-03",
+  "date_end": null,
+  "time_raw": "14:00 – 18:00",
+  "location": "Friedrichstal, Marktplatz (Oskar-Hornung-Haus)",
+  "organizer": "Stadt Stutensee",
+  "description": "Wochenmarkt in Friedrichstal. Mittwochs 14:00–18:00 Uhr auf dem Marktplatz.",
+  "event_url": "https://www.stutensee.de/Buergerservice-A-Z/Dienstleistung?view=publish&item=service&id=4835",
+  "sources": [
+    "https://www.stutensee.de/Buergerservice-A-Z/Dienstleistung?view=publish&item=service&id=4835"
+  ],
+  "tags": [
+    "Markt",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
