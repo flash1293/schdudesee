@@ -1,0 +1,20 @@
+{
+  "title": "Weinfest",
+  "date_start": "2026-09-19",
+  "date_end": "2026-09-19",
+  "time_raw": "00:00",
+  "location": "Saumarkt Durlach",
+  "organizer": "Marktamt der Stadt Karlsruhe",
+  "description": "Das Weinfest auf dem Saumarkt Durlach findet – anlässlich der Durlacher Kerwe – vom 19. bis 20. September 2026 statt. Neben einem vielfältigen Weinangebot gibt es an beiden Tagen auch kulinarische Leckerbissen. Gönnen Sie sich in angenehmer Atmosphäre ein Glas Wein und lassen Sie das Wochenende gemütlich ausklingen. Öffnungs­zei­ten: Samstag 15 bis 24 Uhr Sonntag 12 bis 20 Uhr",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/stadtleben/weinfest",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Durlach",
+    "Stadtleben"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

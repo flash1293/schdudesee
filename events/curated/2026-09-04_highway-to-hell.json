@@ -2,11 +2,11 @@
   "title": "Highway to Hell",
   "date_start": "2026-09-04",
   "date_end": "2026-09-04",
-  "time_raw": "14:30",
+  "time_raw": "19:00",
   "location": "Kammertheater Karlsruhe",
   "organizer": "Kammertheater Karlsruhe",
   "description": "For those about to rock: Seid ihr bereit für eine Reise auf DEM Highway? Ingmar Otto bringt mit seiner neuesten Tribute-Show puren Rock-Spirit auf die Bühne. Mit krachenden Gitarrenriffs, donnernden Drums und der legendären Energie der australischen Rockgiganten bringen die Jungs von 90/DD die größten Hits von AC/DC auf die Bühne. In einer perfekten Symbiose aus Theater und Konzert trifft rohe Power auf emotionale Momente, explosive Performance auf echte Fan-Liebe. Es wird laut. Es wird wild. Es wird Rock or Bust.",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/highway_to_hell-1",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/highway_to_hell",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Theater"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
