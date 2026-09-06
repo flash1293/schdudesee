@@ -1,6 +1,6 @@
 {
-  "title": "Heimkampf des SV Germania Weingarten gegen SV Wacker Burghausen",
-  "date_start": "2026-10-03",
+  "title": "Heimkampf des SV Germania Weingarten gegen KV Riegelsberg",
+  "date_start": "2026-10-17",
   "date_end": null,
   "time_raw": "19:30",
   "location": "Mineralix-Arena, Ringstraße 67, 76356 Weingarten",
@@ -11,6 +11,8 @@
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
+    "Sport",
+    "Kultur",
     "Weingarten"
   ],
   "recurring_group_id": null,
