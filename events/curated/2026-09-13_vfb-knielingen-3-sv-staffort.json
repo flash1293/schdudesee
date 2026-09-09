@@ -1,0 +1,19 @@
+{
+  "title": "VfB Knielingen 3 - SV Staffort",
+  "date_start": "2026-09-13",
+  "date_end": null,
+  "time_raw": "13:00",
+  "location": "Staffort",
+  "organizer": "Sportverein Staffort e.V.",
+  "description": "",
+  "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=126",
+  "sources": [
+    "https://svstaffort.de/sv2/bin/index.php?c=Termine"
+  ],
+  "tags": [
+    "Staffort"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
