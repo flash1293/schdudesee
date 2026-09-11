@@ -1,0 +1,20 @@
+{
+  "title": "Karlsruhe spielt!",
+  "date_start": "2026-09-22",
+  "date_end": "2026-09-22",
+  "time_raw": "00:00",
+  "location": "Stadtweit an verschiedenen Standorten",
+  "organizer": "Kinderbüro -Fachbereich Kinderinteressenvertretung-",
+  "description": "Die beteiligungsorientierte Aktion lädt vom 22. bis 26. September an verschiedenen Standorten zum Mitmachen, Spielen und Begegnen ein. Alle Besucher*innen können die Stadt gemeinsam aus einer anderen Perspektive erleben und temporär gesperrte Straßen und Plätze als Spiel- und Begegnungsflächen nutzen. Weitere Informationen, alle Standorte und Termine sowie kurzfristige Änderungen, sind auf der Webseite zu finden.",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/karlsruhe_spielt",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
