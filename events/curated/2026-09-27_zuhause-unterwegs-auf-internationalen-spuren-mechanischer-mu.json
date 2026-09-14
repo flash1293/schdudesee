@@ -8,12 +8,13 @@
   "description": "Überblicksführung zur neuen Sonderpräsentation des Deutschen Musikautomaten-Museums im Schloss Bruchsal Firmengeschichten ausgewählter Objekte der Ausstellung skizzieren, wie im 19. Jhd lokale Werkstätten mit dem Bau von Orchestrien, Karussellorgeln oder mechanischen Klavieren zu „Global-Playern“ in Entwicklung und Handel mechanischer Musikinstrumente wurden. Durch die Ausstellung führt Kurator Andreas Seim. Ohne Anmeldung Teilnahmezahl begrenzt Eintritt 8 Euro, ermäßigt 4 Euro (inklusive Schloss und Stadtmuseum), Führung kostenfrei",
   "event_url": "https://landfunker.de/veranstaltung/zuhause-unterwegs-auf-internationalen-spuren-mechanischer-musik/",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
+    "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
   "tags": [
-    "Musik",
+    "Bruchsal",
     "Kultur",
-    "Bruchsal"
+    "Musik"
   ],
   "recurring_group_id": null,
   "is_passed": 0,

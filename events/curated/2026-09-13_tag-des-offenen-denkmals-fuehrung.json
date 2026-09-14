@@ -2,11 +2,11 @@
   "title": "Tag des offenen Denkmals | Führung",
   "date_start": "2026-09-13",
   "date_end": "2026-09-13",
-  "time_raw": "14:00",
+  "time_raw": "16:00",
   "location": "Junge Kunsthalle",
   "organizer": "Staatliche Kunsthalle Karlsruhe",
   "description": "Die Staatliche Kunsthalle Karlsruhe ist einer der ältesten Museumsbauten Deutschlands. Zu dem architektonischen Ensemble der Kunsthalle gehören neben dem Hauptgebäude, die Orangerie und die Junge Kunsthalle. Bei einem Spaziergang durch den Botanischen Garten erhalten Sie spannende Informationen zur Baugeschichte und zur baulichen Weiterentwicklung der Kunsthallengebäude. Die Rundgänge beginnen am Gebäude der Jungen Kunsthalle. Mit Silvia Stetter-Kalbus (Baubeauftragte)",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/architektur/tag_des_offenen_denkmals_fuhrung",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/architektur/tag_des_offenen_denkmals_fuhrung-1",
   "sources": [
     "https://kalender.karlsruhe.de",
     "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
@@ -20,6 +20,6 @@
     "Karlsruhe-Innenstadt"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
