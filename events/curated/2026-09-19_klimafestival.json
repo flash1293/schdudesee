@@ -1,0 +1,20 @@
+{
+  "title": "Klimafestival",
+  "date_start": "2026-09-19",
+  "date_end": "2026-09-19",
+  "time_raw": "23:00",
+  "location": "Naturfreundehaus Albhäusle, Knielingen",
+  "organizer": "Naturfreunde Karlsruhe",
+  "description": "Unter dem Motto „Gemeinsam feiern, entdecken und aktiv werden – für Klima, Natur und Gemeinschaft“ erwartet euch ein abwechslungsreiches Programm für die ganze Familie. Freut euch auf mehrere Live-Bands und Musik-Acts, spannende Mitmach- und Infostände von Verbänden und Organisationen, ein buntes Kinderprogramm sowie leckeres Essen und Getränke. Kommt vorbei genießt gemeinsam einen besonderen Tag in entspannter Festivalatmosphäre. Der Eintritt ist frei – wir freuen uns auf euch!",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/klimafestival",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
