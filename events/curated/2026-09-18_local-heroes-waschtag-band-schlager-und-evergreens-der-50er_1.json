@@ -6,7 +6,7 @@
   "location": "Jazzclub Bruchsal, Am Alten Schloss 22, 76646 Bruchsal",
   "organizer": "Jazzclub Bruchsal",
   "description": "Von Bill Ramsey bis Trude Herr In unserem Konzertformat „LOCAL HEROES“ präsentieren wir Amateurbands aus der Region. Wir bieten diese Konzerte bei freiem Eintritt „auf Hut“ an und vertrauen auch im Namen der Bands auf Ihre Großzügigkeit. Waschtag spielen Lieder, die sich gewaschen haben… Mit großer Spielfreude, Musikalität und Humor versetzen sie das Publikum zurück in eine schöne und noch nicht vergessene Zeit großer deutscher Hits und Evergreens.",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8846036/LOCALHEROESWaschtagBandSchlagerundEvergreensder50erund60er.html?nodeID=8846036",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_8846036/index.html?nodeID=8846036",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -16,6 +16,6 @@
     "Bruchsal"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
