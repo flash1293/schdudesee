@@ -1,16 +1,18 @@
 {
-  "title": "Musical Moments",
+  "title": "MUSICAL MOMENTS",
   "date_start": "2026-10-03",
-  "date_end": null,
-  "time_raw": "",
-  "location": "Badnerlandhalle",
+  "date_end": "2026-10-03",
+  "time_raw": "19:00",
+  "location": "Badnerlandhalle Neureut",
   "organizer": "Coro Accelerando 1993 Eggenstein e.V.",
-  "description": "Musical Moments",
-  "event_url": "https://www.egg-leo.de/willkommen/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=1837",
+  "description": "Erleben Sie einen fesselnden Abend voller Musik, Tanz und Emotionen! Unsere Musical-Show entführt Sie in eine Welt voller mitreißender Melodien und beeindruckender Darbietungen. Tauchen Sie ein in die Magie von Film &amp; Musical - ein unvergessliches Erlebnis erwartet Sie! Sichern Sie sich jetzt Ihre Tickets für eine Familien-Gala, die Ihre Sinne verzaubern wird. Mit Erwachsenen-Showchor, Kinder-&amp;Jugendchor sowie renommierten SolistInnen! TICKETS über ReserviX - https://coro-accelerando.reservix.de/p/reservix/group/513000 Sabine Neck, Künstlerische und Musikalische Gesamtleitung Sandra Danyella, Sopran Robin Neck, Tenor Witalij Kühne, Choreographie",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/musical_moments-2",
   "sources": [
+    "https://kalender.karlsruhe.de",
     "https://www.egg-leo.de/Veranstaltungen"
   ],
   "tags": [
+    "Musik",
     "Neureut"
   ],
   "recurring_group_id": null,

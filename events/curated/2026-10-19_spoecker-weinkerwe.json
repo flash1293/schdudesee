@@ -1,0 +1,20 @@
+{
+  "title": "Spöcker Weinkerwe",
+  "date_start": "2026-10-19",
+  "date_end": "2026-10-19",
+  "time_raw": "11:30",
+  "location": "Vereinsheim Gesangverein Eintracht Spöck",
+  "organizer": "Gesangverein Eintracht 1887 Spöck e.V.",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/spoecker-weinkerwe/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Fest",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

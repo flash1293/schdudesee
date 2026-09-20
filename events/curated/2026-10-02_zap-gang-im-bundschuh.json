@@ -1,0 +1,21 @@
+{
+  "title": "ZAP Gang im Bundschuh",
+  "date_start": "2026-10-02",
+  "date_end": "2026-10-02",
+  "time_raw": "21:00",
+  "location": "Bruchsal-Untergrombach",
+  "organizer": "Eventlokal Bundschuh",
+  "description": "Die Zap Gang eröffnet die Live Musik Saison im Bundschuh. Sie spielen mit ihrem „mit Strom“ Programm mit neuen und alten Songs.",
+  "event_url": "https://landfunker.de/veranstaltung/zap-gang-im-bundschuh/",
+  "sources": [
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+  ],
+  "tags": [
+    "Musik",
+    "Kinder",
+    "Bruchsal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
