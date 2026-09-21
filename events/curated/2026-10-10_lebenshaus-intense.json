@@ -1,0 +1,20 @@
+{
+  "title": "Lebenshaus INTENSE",
+  "date_start": "2026-10-10",
+  "date_end": null,
+  "time_raw": ", 08:00 Uhr",
+  "location": "CVJM-Lebenshaus",
+  "organizer": "CVJM Weingarten e.V.",
+  "description": "",
+  "event_url": "https://www.schloss-unteroewisheim.de/website/de/lh/angebote/regelmaessige_angebote",
+  "sources": [
+    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+  ],
+  "tags": [
+    "Kirche",
+    "Weingarten"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

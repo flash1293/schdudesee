@@ -2,11 +2,11 @@
   "title": "LA MULE CIRQUE (FR/D)",
   "date_start": "2026-09-20",
   "date_end": "2026-09-20",
-  "time_raw": "14:00",
+  "time_raw": "17:00",
   "location": "Kulturzentrum Tollhaus",
   "organizer": "Tollhaus Karlsruhe - Freier Kulturverein e.V.",
   "description": "Von einer Frau und ihrem Fischer, die einen verzauberten Fisch fangen. &gt; Mit einem zirzensischen Märchen kommt die deutsch-französische Zirkuskompanie zu ATOLL. \"meer Meer MEER\" ist eine zeitgenössische Version des Märchens „Der Fischer und seine Frau“ und thematisiert auf humorvolle und poetische Weise die Gier nach immer mehr. Das erzählerische Stück für die ganze Famile lädt ein zum Staunen, Lachen und Nachdenken.50 Minuten, ab 6 Jahren, in deutscher Sprache",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/la_mule_cirque_frd-1",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/la_mule_cirque_frd",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Musik"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }

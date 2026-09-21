@@ -2,11 +2,11 @@
   "title": "JURIBONKE (AT/ES/KG)",
   "date_start": "2026-09-20",
   "date_end": "2026-09-20",
-  "time_raw": "12:30",
+  "time_raw": "14:45",
   "location": "Kulturzentrum Tollhaus",
   "organizer": "Tollhaus Karlsruhe - Freier Kulturverein e.V.",
   "description": "Tief Luft holen: Drei vielseitige Künstler*innen aus Österreich, Kirgisistan und dem Baskenland verschmelzen Akrobatik und Musik in einer harmonischen Balance zwischen Stärke und Verletzlichkeit. Zusammen mit dem Publikum erkunden sie die Faszination des Fallens, stärken das Vertrauen, sich auffangen zu lassen. Das Publikum ist eingeladen tief Luft zu holen, wenn die Spannung der Vorstellung ihren Atem raubt. 35 Minuten, für alle",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/juribonke_ateskg",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/juribonke_ateskg-1",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Musik"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }

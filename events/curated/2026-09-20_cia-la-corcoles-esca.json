@@ -2,11 +2,11 @@
   "title": "CIA LA CORCOLES (ES/CA)",
   "date_start": "2026-09-20",
   "date_end": "2026-09-20",
-  "time_raw": "13:15",
+  "time_raw": "15:30",
   "location": "Kulturzentrum Tollhaus",
   "organizer": "Tollhaus Karlsruhe - Freier Kulturverein e.V.",
   "description": "„H“ ist ein Duett – ein Walzer für zwei, ein Tanz auf dem Hochseil, eine Balance stets am Rand des Abgrunds. Um auf auf dem hohen Seil das Gleichgewicht zu halten, braucht es eine Balancierstange. Mariona Moya aus Katalonien, die dem zeitgenössischen Seiltanz viele neue Farben verlieh, und Stücke voller Gefühl und menschlicher Wärme entwickelte, hat mit \"H\" ein Duett für die Tänzerin und ihre Balancierstange geschaffen, das international mit vielen Preisen ausgezeichnet wurde. An der Schnittstelle von Street Dance und Zirkuskunst vollführt sie einen riskanten Tanz zwischen Zuneigung und Poesie.25 Minuten, für alle,ohne Sprache",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/cia_la_corcoles_esca-1",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/cia_la_corcoles_esca",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Musik"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
