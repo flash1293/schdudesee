@@ -1,8 +1,8 @@
 {
-  "title": "Weihnachtsfeier",
-  "date_start": "2026-12-13",
+  "title": "Frühjahrskonzert",
+  "date_start": "2027-03-21",
   "date_end": null,
-  "time_raw": "16:00 - 18:00",
+  "time_raw": "19:00 - 21:00",
   "location": "",
   "organizer": "Musikverein Weingarten (Baden) e.V.",
   "description": "background_1\nKalender\n13. Dezember 2026\nWeihnachtsfeier\n13. Dezember 2026\n16:00\n-\n18:00\n24. Dezember 2026\nWeihnachtliche Klänge\n24. Dezember 2026\n17:30\n-\n18:00\nFriedhof Weingarten\n12. März 2027\nBlasorchester: Probenwochenende\n12. März 2027\n17:00\n-\n14. März 2027\n14:00\n13. März 2027\nBlasorchester: Probenwochenende\n12. März 2027\n17:00\n-\n14. März 2027\n14:00\n14. März 2027\nBlasorchester: Probenwochenende\n12. März 2027\n17:00\n-\n14. März 2027\n14:00\n21. März 2027\nFrühjahrskonzert\n21. März 2027\n18:00\n-\n21:00\nBei Darstellungsproblemen bitte den\ndirekten Link auf unseren Google-Kalender\nnutzen.",
@@ -11,6 +11,7 @@
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
+    "Musik",
     "Weingarten"
   ],
   "recurring_group_id": null,
