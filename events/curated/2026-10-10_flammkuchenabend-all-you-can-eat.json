@@ -1,0 +1,20 @@
+{
+  "title": "Flammkuchenabend-all you can eat",
+  "date_start": "2026-10-10",
+  "date_end": "2026-10-10",
+  "time_raw": "18:00",
+  "location": "Gesangverein Liederkranz Spöck",
+  "organizer": "Gesangverein Liederkranz Spöck 1900 e.V.",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/flammkuchenabend-all-you-can-eat/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Essen",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
