@@ -8,11 +8,12 @@
   "description": "Mit Teil 1 der Fantasy-Filmreihe  &quot;Phantastische Tierwesen&quot;",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2876",
   "sources": [
+    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Kultur",
-    "Blankenloch"
+    "Blankenloch",
+    "Kultur"
   ],
   "recurring_group_id": null,
   "is_passed": 0,
