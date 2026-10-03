@@ -80,7 +80,8 @@ CREATE TABLE IF NOT EXISTS curated_events (
 CREATE TABLE IF NOT EXISTS raw_to_curated (
     raw_id INTEGER NOT NULL,
     curated_id INTEGER NOT NULL,
-    dedup_round INTEGER NOT NULL,
+    -- default keeps inserts valid that only carry provenance (see dedup_sql)
+    dedup_round INTEGER NOT NULL DEFAULT 1,
     source TEXT DEFAULT '',
     PRIMARY KEY (raw_id, curated_id)
 );

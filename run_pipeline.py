@@ -547,10 +547,10 @@ def dedup_sql():
         if cid:
             batch.append((row[0], cid, row[4]))
         if len(batch) >= 500:
-            c.executemany("INSERT INTO raw_to_curated (raw_id, curated_id, source) VALUES (?, ?, ?)", batch)
+            c.executemany("INSERT INTO raw_to_curated (raw_id, curated_id, source, dedup_round) VALUES (?, ?, ?, 1)", batch)
             batch = []
     if batch:
-        c.executemany("INSERT INTO raw_to_curated (raw_id, curated_id, source) VALUES (?, ?, ?)", batch)
+        c.executemany("INSERT INTO raw_to_curated (raw_id, curated_id, source, dedup_round) VALUES (?, ?, ?, 1)", batch)
     conn.commit()
 
     # Restore old tags + recurring_group_id by matching on normalized key

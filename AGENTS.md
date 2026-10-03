@@ -9,6 +9,10 @@ All bots (Pferd, Hammer, Besen, Pinsel, Wobby) MUST read and follow this.
 
 ### Rules
 - **Never push/commit to main** — everything through PRs.
+- **Exception — event data only:** the daily data pipeline (section 2) publishes
+  its data-only commits (`events/curated/**`) directly to `main`, because the
+  automatic deployment is triggered by that push. No code, configuration or
+  documentation may ride along in such a commit.
 - **Human merges only** — bots do not merge PRs.
 - **No unrelated changes** — one fix/feature per PR. Keep PRs focused.
 - **Rebase on latest main** before opening a PR.
@@ -29,14 +33,24 @@ Before any PR is ready for human review:
 
 ---
 
-## 2. Daily Pipeline (Besen)
+## 2. Daily Pipeline
 
-Runs daily at ~06:00 UTC.
+Runs daily at ~06:00 UTC from the `hey_stutensee` workspace (scheduled job
+`daily-stutensee-pipeline`), which owns the pipeline working store
+(`stutensee_events.db`, not committed) and the login used to publish.
 
-1. **Scrape** raw event sources → raw JSON files
-2. **Merge & deduplicate** → curated event files in `events/curated/`
-3. **Quality loop** → run `scripts/run_quality_loop.py` on changed events
-4. **Create PR** with both code changes and new/updated event files
+1. **Seed if needed** — `scripts/seed_pipeline_db.py` guarantees the working
+   store holds the published catalogue before anything is rebuilt.
+2. **Scrape** all sources → `raw_events` (new events only; past events kept)
+3. **Merge & deduplicate** → `curated_events` (tags, recurring, passed flags)
+4. **Featured rotation** → keep exactly four upcoming highlighted events
+5. **Export** → one JSON file per event in `events/curated/`
+6. **Publish** — commit only `events/curated/**` and push to `main`; the push
+   triggers the automatic deployment (`.github/workflows/deploy.yml`)
+
+Code changes to the pipeline still go through PRs. The quality loop
+(`scripts/run_quality_loop.py`) needs an LLM API key and is not part of the
+daily run.
 
 ### Quality Loop Process
 
