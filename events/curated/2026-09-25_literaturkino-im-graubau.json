@@ -8,14 +8,13 @@
   "description": "Mit der Krimikomödie &quot;Kaiserschmarrndrama&quot;",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2875",
   "sources": [
-    "https://meinstutensee.de/termine/",
-    "https://stutensee.de/Veranstaltungen"
+    "https://meinstutensee.de/termine/"
   ],
   "tags": [
     "Blankenloch",
     "Kultur"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }

@@ -8,8 +8,7 @@
   "description": "",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/30-rotberzel-cup/",
   "sources": [
-    "https://meinstutensee.de/termine/",
-    "https://stutensee.de/Veranstaltungen"
+    "https://meinstutensee.de/termine/"
   ],
   "tags": [
     "Kinder"

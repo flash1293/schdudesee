@@ -8,9 +8,7 @@
   "description": "Karlsdorf, Musikerheim Tickets für die Eröffnungsparty unter https://reservation.ticketleo.com/event/36235/mvk-oktoberfest-2026  So. und Mo. Eintritt frei, Mo. grosse Hitparade",
   "event_url": "https://landfunker.de/veranstaltung/jubilaeums-oktoberfest/",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
-    "https://stutensee.de/Veranstaltungen",
-    "https://www.karlsdorf-neuthard.de/eventcalendar"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
   ],
   "tags": [
     "Fest",

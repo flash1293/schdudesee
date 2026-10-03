@@ -8,16 +8,13 @@
   "description": "Flohmarkt für Kinderkleidung, Spielzeug und Familienbedarf. Ort: Lußhardthalle · Pfarrer-Graf-Straße 6, 76707 Hambrücken Zeit: laut Veranstalter Weitere Informationen",
   "event_url": "https://landfunker.de/veranstaltung/herbstflohmarkt-des-kindergartens-st-josef/",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
-    "https://meinstutensee.de/termine/",
-    "https://stutensee.de/Veranstaltungen",
-    "https://www.karlsdorf-neuthard.de/eventcalendar"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
   ],
   "tags": [
     "Kinder",
     "Markt"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }

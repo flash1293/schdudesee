@@ -8,8 +8,7 @@
   "description": "Verschiedene Brett-, Karten- und Würfelspiele warten auf die Besucher. Gerne dürfen auch eigene Spiele mitgebracht werden.   Keine Anmeldung notwendig.",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/spieleabend/",
   "sources": [
-    "https://meinstutensee.de/termine/",
-    "https://stutensee.de/Veranstaltungen"
+    "https://meinstutensee.de/termine/"
   ],
   "tags": [
     "Kinder",

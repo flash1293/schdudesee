@@ -1,0 +1,20 @@
+{
+  "title": "TeenTime",
+  "date_start": "2026-10-09",
+  "date_end": "2026-10-09",
+  "time_raw": "16:30",
+  "location": "Stadtbibliothek Karlsruhe - Amerikanische Bibliothek",
+  "organizer": "Stadtbibliothek Karlsruhe - Amerikanische Bibliothek",
+  "description": "Calling all teens – grade 5 and up! Join us on select fridays for about an hour to make stuff, play games, chat and sometimes just hang out. Please call ahead (0721 7 27 52) or send an email to teentime@american-library.de or bibliothek-amerika@kultur.karlsruhe.de to reserve a place.",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/teentime-20",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Literatur"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

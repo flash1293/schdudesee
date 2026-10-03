@@ -8,8 +8,8 @@
   "description": "Orientierung und Empfehlungen zu Geräten, Betriebssystemen, Anwendungen und Diensten",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2881",
   "sources": [
-    "https://meinstutensee.de/termine/",
-    "https://stutensee.de/Veranstaltungen"
+    "https://stutensee.de/Veranstaltungen",
+    "https://meinstutensee.de/termine/"
   ],
   "tags": [
     "Blankenloch",
