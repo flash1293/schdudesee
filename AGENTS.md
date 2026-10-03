@@ -35,8 +35,8 @@ Before any PR is ready for human review:
 
 ## 2. Daily Pipeline
 
-Runs daily at ~06:00 UTC from the `hey_stutensee` workspace (scheduled job
-`daily-stutensee-pipeline`), which owns the pipeline working store
+Runs daily at 06:00 Europe/Berlin from the `hey_stutensee` workspace (scheduled
+job `daily-stutensee-pipeline`), which owns the pipeline working store
 (`stutensee_events.db`, not committed) and the login used to publish.
 
 1. **Seed if needed** — `scripts/seed_pipeline_db.py` guarantees the working
