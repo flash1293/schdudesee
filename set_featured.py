@@ -13,13 +13,15 @@ Safety checks:
     - Use --force to skip the district check (for manually verified edge cases)
     - Reports which events were previously featured and are being replaced
 
-DB path: /shared/work/stutensee_events.db
+DB path: stutensee_events.db in the repo root (override with STUTENSEE_DB).
 """
 
+import os
 import sqlite3
 import sys
 
-DB_PATH = "/shared/work/stutensee_events.db"
+REPO_ROOT = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.environ.get("STUTENSEE_DB") or os.path.join(REPO_ROOT, "stutensee_events.db")
 DISTRICTS = ["Blankenloch", "Friedrichstal", "Spöck", "Staffort", "Büchig"]
 
 

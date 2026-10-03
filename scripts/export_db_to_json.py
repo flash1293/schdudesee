@@ -9,8 +9,12 @@ import json, os, re, sqlite3
 from collections import defaultdict
 
 
-DB = "/shared/work/stutensee_events.db"
-OUT_DIR = "/shared/work/events/curated"
+# Repo-relative by default: the pipeline runs from a checkout of this repo.
+# Override with the STUTENSEE_DB / CURATED_DIR environment variables when running
+# from a different layout.
+REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB = os.environ.get("STUTENSEE_DB") or os.path.join(REPO_ROOT, "stutensee_events.db")
+OUT_DIR = os.environ.get("CURATED_DIR") or os.path.join(REPO_ROOT, "events", "curated")
 
 
 def slugify(title, max_len=60):

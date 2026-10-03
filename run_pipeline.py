@@ -931,22 +931,32 @@ def cleanup_raw_duplicates():
     return deleted_count
 
 
+# Columns the pipeline code relies on. Older DBs (and fresh bootstraps) may lack
+# some of them; ALTER TABLE is safe to skip when the column already exists.
+REQUIRED_COLUMNS = [
+    ("raw_events", "tags", "TEXT DEFAULT ''"),              # scraper-set tags carried into curated
+    ("raw_to_curated", "source", "TEXT DEFAULT ''"),        # per-source provenance written by dedup_sql
+    ("curated_events", "featured", "INTEGER DEFAULT 0"),    # Phase 2 #144
+    ("curated_events", "is_passed", "INTEGER DEFAULT 0"),   # Phase 2 #142
+]
+
+
 def migrate_db():
     """Add missing columns to existing DB (safe to run multiple times)."""
     conn = sqlite3.connect(DB)
     c = conn.cursor()
-    # Add tags column to raw_events if missing (for carrying scraper-set tags through pipeline)
-    try:
-        c.execute("ALTER TABLE raw_events ADD COLUMN tags TEXT DEFAULT ''")
-        print("  Migration: added tags column to raw_events", flush=True)
-    except Exception:
-        pass  # column already exists
-    # Add featured column to curated_events (Phase 2 #144)
-    try:
-        c.execute("ALTER TABLE curated_events ADD COLUMN featured INTEGER DEFAULT 0")
-        print("  Migration: added featured column to curated_events", flush=True)
-    except Exception:
-        pass  # column already exists
+    for table, column, ddl in REQUIRED_COLUMNS:
+        try:
+            existing = {row[1] for row in c.execute(f"PRAGMA table_info({table})")}
+        except Exception:
+            existing = set()
+        if column in existing:
+            continue
+        try:
+            c.execute(f"ALTER TABLE {table} ADD COLUMN {column} {ddl}")
+            print(f"  Migration: added {column} to {table}", flush=True)
+        except Exception as e:
+            print(f"  Migration skipped ({table}.{column}): {e}", flush=True)
     conn.commit()
     conn.close()
 
