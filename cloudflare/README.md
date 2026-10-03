@@ -16,8 +16,15 @@ python3 build.py && wrangler deploy
 ```bash
 wrangler d1 create was-geht-stutensee
 # Copy the database_id from output into wrangler.toml
-wrangler d1 execute was-geht-stutensee --file dump.sql
+
+# Load the current event data (built from the event files in this repo)
+python3 ../scripts/build_db.py
+python3 ../scripts/dump_d1.py > /tmp/dump_d1.sql
+wrangler d1 execute was-geht-stutensee --file /tmp/dump_d1.sql --remote
 ```
+
+The old `dump.sql` snapshot was removed in favour of this reproducible path —
+it was a stale April 2026 export and accounted for 12 MB of repository bloat.
 
 ## Custom Domain
 

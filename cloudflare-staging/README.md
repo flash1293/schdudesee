@@ -14,10 +14,17 @@ python3 build.py && wrangler deploy
 ## First-time setup
 
 ```bash
-wrangler d1 create was-geht-stutensee
+wrangler d1 create was-geht-stutensee-staging
 # Copy the database_id from output into wrangler.toml
-wrangler d1 execute was-geht-stutensee --file dump.sql
+
+# Load the current event data (built from the event files in this repo)
+python3 ../scripts/build_db.py
+python3 ../scripts/dump_d1.py > /tmp/dump_d1.sql
+wrangler d1 execute was-geht-stutensee-staging --file /tmp/dump_d1.sql --remote
 ```
+
+The old `dump.sql` snapshot was removed — `./deploy.sh` regenerates the dump from
+the repo data on every run, so a committed copy only goes stale.
 
 ## Custom Domain
 
