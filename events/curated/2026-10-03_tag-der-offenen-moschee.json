@@ -6,7 +6,7 @@
   "location": "",
   "organizer": "",
   "description": "Tag der offenen Moschee in Bruchsal Am 3. Oktober 2026 öffnet die Bait-ul-Ahad Moschee in Bruchsal ihre Türen. Besucherinnen und Besucher sind herzlich eingeladen, die Moschee und die Gemeinde kennenzulernen, an Führungen teilzunehmen, Fragen zu stellen und miteinander ins Gespräch zu kommen. Auch für Familien und Kinder gibt es ein abwechslungsreiches Angebot.",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9062352/index.html?nodeID=9062352",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9062352/TagderoffenenMoschee.html?nodeID=9062352",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -15,6 +15,6 @@
     "Bildung"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }

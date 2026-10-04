@@ -6,7 +6,7 @@
   "location": "Theater im Riff, Eggerten 47, 76646 Bruchsal",
   "organizer": "Amateurtheater Die Koralle e. V.",
   "description": "2.000 Jahre deutsche Geschichte in 100 kurzweiligen Minuten: Im Oktober 2026 nimmt Die Koralle Sie mit auf eine turbulente Zeitreise durch die spektakulärsten Momente der deutschen Historie.",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9037304/index.html?nodeID=9037304",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9037304/DiedeutscheGeschichteaneinemAbend.html?nodeID=9037304",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -14,6 +14,6 @@
     "Bruchsal"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
