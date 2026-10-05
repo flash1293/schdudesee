@@ -1,0 +1,19 @@
+{
+  "title": "SV Staffort - VSV Büchig 2",
+  "date_start": "2026-11-08",
+  "date_end": null,
+  "time_raw": "14:30",
+  "location": "Staffort",
+  "organizer": "Sportverein Staffort e.V.",
+  "description": "",
+  "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=136",
+  "sources": [
+    "https://svstaffort.de/sv2/bin/index.php?c=Termine"
+  ],
+  "tags": [
+    "Staffort"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

@@ -1,0 +1,19 @@
+{
+  "title": "FC Spöck 2 - SV Staffort",
+  "date_start": "2026-11-01",
+  "date_end": null,
+  "time_raw": "12:30",
+  "location": "Staffort",
+  "organizer": "Sportverein Staffort e.V.",
+  "description": "",
+  "event_url": "https://svstaffort.de/sv2/bin/index.php?c=Termine&id=135",
+  "sources": [
+    "https://svstaffort.de/sv2/bin/index.php?c=Termine"
+  ],
+  "tags": [
+    "Staffort"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
