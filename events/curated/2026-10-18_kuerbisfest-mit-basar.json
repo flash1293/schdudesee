@@ -1,0 +1,21 @@
+{
+  "title": "Kürbisfest mit Basar",
+  "date_start": "2026-10-18",
+  "date_end": "2026-10-18",
+  "time_raw": "12:00",
+  "location": "Vogelpark Blankenloch",
+  "organizer": "Verein der Vogelfreunde Blankenloch 1952 e.V.",
+  "description": "Die Vogelfreunde Blankenloch veranstallten ihr jährliches Kürbisfest.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/kuerbisfest/",
+  "sources": [
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Blankenloch",
+    "Fest"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 1
+}
