@@ -1,0 +1,21 @@
+{
+  "title": "Ausbildungsplattform",
+  "date_start": "2026-10-10",
+  "date_end": "2026-10-10",
+  "time_raw": "10:00",
+  "location": "Festplatz Blankenloch",
+  "organizer": "Stadtverwaltung Stutensee",
+  "description": "Die Ausbildungsplattform findet auf dem Festplatz Stutensee-Blankenloch statt. Der Gewerbeverein und die Stadt Stutensee richten die Veranstaltung aus. Ziel ist es, Informationen und Möglichkeiten im Bereich Ausbildung und Berufsorientierung anzubieten.   Von 12:00 bis 14:00 Uhr wird eine Jobmesse speziell für zugewanderte Frauen angeboten. Diese wird in Kooperation mit der Kreisintegrationsstelle des Landkreises Karlsruhe durchgeführt.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/ausbildungsplattform/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Kirche",
+    "Fest",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

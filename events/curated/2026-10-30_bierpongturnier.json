@@ -1,0 +1,21 @@
+{
+  "title": "Bierpongturnier",
+  "date_start": "2026-10-30",
+  "date_end": "2026-10-30",
+  "time_raw": "20:00",
+  "location": "Vereinsgelände SV Blankenloch",
+  "organizer": "Sportverein 1911 e.V. Blankenloch",
+  "description": "Der SV Blankenloch veranstaltet ein Bierpongturnier. Teilnehmer haben die Möglichkeit, in Verkleidung zu erscheinen. Jeder verkleidete Teilnehmer erhält einen kostenlosen Shot. Die Anmeldung erfolgt in Zweier-Teams, wobei ein Teamname anzugeben ist.   Eintritt / Kosten: 20 Euro pro Team   Anmeldung: Anmeldung in Zweier-Teams mit Teamname per E-Mail an svblankenlochfestvorstand@web.de oder telefonisch unter +49 160 8379684.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/bierpongturnier/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Sport",
+    "Fest",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

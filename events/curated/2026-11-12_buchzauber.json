@@ -1,0 +1,19 @@
+{
+  "title": "Buchzauber",
+  "date_start": "2026-11-12",
+  "date_end": "2026-11-12",
+  "time_raw": "19:30",
+  "location": "Amalienstr. 2a, 76689 Karlsdorf-Neuthard",
+  "organizer": "Bibliothek am Mühlenplatz Karlsdorf-Neuthard",
+  "description": "Das Team der Buchhandlung Carolin Wolf kommt in die Bibliothek und hat viele aktuelle Buch-Highlights im Gepäck. Freuen Sie sich auf besondere Bücher aus vielen Bereichen! Für eine bessere Planung sichern Sie sich Ihre kostenlose Eintrittskarte in der Bibliothek.",
+  "event_url": "https://landfunker.de/veranstaltung/buchzauber/",
+  "sources": [
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+  ],
+  "tags": [
+    "Neuthard"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

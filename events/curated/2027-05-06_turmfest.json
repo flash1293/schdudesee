@@ -1,0 +1,21 @@
+{
+  "title": "Turmfest",
+  "date_start": "2027-05-06",
+  "date_end": null,
+  "time_raw": "10:00 Uhr bis 20:00 Uhr",
+  "location": "Turmberg Weingarten (Baden)",
+  "organizer": "Gemeinde Weingarten (Baden)",
+  "description": "Datum\n06.05.2027\nUhrzeit\n10:00 Uhr bis 20:00 Uhr\nVeranstaltungsort\nTurmberg Weingarten (Baden)\n\nFest am Vatertag (Christi Himmelfahrt) zusammen mit dem SV Germania 04 Weingarten\n\nGemeinde Weingarten (Baden)\nMarktplatz 2\n76356 Weingarten (Baden)\nTelefonnummer:\n07244 70 20-0\nFaxnummer:\n07244 70 20-50\ngemeinde(@)weingarten-baden.de",
+  "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/993/turmfest",
+  "sources": [
+    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+  ],
+  "tags": [
+    "Fest",
+    "Markt",
+    "Weingarten"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
