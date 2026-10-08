@@ -459,9 +459,9 @@ def scrape_weingarten():
             detail_urls.append(e["event_url"])
     print(f"  Enriching {len(enrichable)} events from {len(detail_urls)} detail pages...", flush=True)
     try:
-        enrich_budget = float(os.environ.get("WEINGARTEN_ENRICH_TIMEOUT", "90"))
+        enrich_budget = float(os.environ.get("WEINGARTEN_ENRICH_TIMEOUT", "70"))
     except ValueError:
-        enrich_budget = 90.0
+        enrich_budget = 70.0
     descriptions = enrich_urls(detail_urls, session, budget=enrich_budget)
     enriched = 0
     for i, event in enumerate(all_events):

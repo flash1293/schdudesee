@@ -1145,9 +1145,9 @@ if __name__ == "__main__":
     # source that stopped responding used to keep the run busy until the
     # platform ended the job, which left the run marked "running".)
     try:
-        scrape_deadline = int(os.environ.get("SCRAPE_DEADLINE", "180"))
+        scrape_deadline = int(os.environ.get("SCRAPE_DEADLINE", "150"))
     except ValueError:
-        scrape_deadline = 180
+        scrape_deadline = 150
 
     todo = list(sources)
     todo_lock = threading.Lock()
@@ -1181,6 +1181,7 @@ if __name__ == "__main__":
         w.join(remaining)
 
     total_new = 0
+    timed_out = []
     for name, _scraper in sources:
         if name in results:
             fetched, new, err = results[name]
@@ -1190,7 +1191,12 @@ if __name__ == "__main__":
                 total_new += new
                 print(f"  {name}: {fetched} fetched, {new} new", flush=True)
         else:
+            timed_out.append(name)
             print(f"  {name}: TIMEOUT \u2014 no answer within {scrape_deadline}s, skipped", flush=True)
+    if timed_out:
+        # Column 0 so the run record keeps this as a note for later inspection.
+        print(f"WARNING: {len(timed_out)} source(s) did not answer within {scrape_deadline}s "
+              f"and were skipped: {', '.join(timed_out)}", flush=True)
 
     for name, url, src_url in optional_sources:
         print(f"  Scraping {name}...", end=" ", flush=True)
