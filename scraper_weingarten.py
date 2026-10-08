@@ -8,8 +8,11 @@ Sources:
 3. mineralix-arena.de — Landing page with upcoming wrestling matches
 """
 
+import os
 import re
 import sys
+import threading
+import time
 from datetime import datetime, timezone, timedelta
 from urllib.parse import urljoin
 
@@ -53,23 +56,9 @@ def parse_timestamp(ts):
     return dt_local.strftime("%Y-%m-%d"), dt_local.strftime("%H:%M")
 
 
-def enrich_event_detail(event, session):
-    """Fetch event detail page for full description."""
-    url = event.get("event_url", "")
-    if not url:
-        return event
-
-    try:
-        resp = session.get(url, timeout=30, headers={
-            "User-Agent": "Mozilla/5.0 (compatible; StutenseeBot/1.0)",
-            "Cookie": "ccm_consent=1",
-        })
-        resp.raise_for_status()
-    except requests.exceptions.RequestException as e:
-        print(f"  Error fetching detail {url}: {e}", flush=True)
-        return event
-
-    soup = BeautifulSoup(resp.text, "html.parser")
+def extract_description(html):
+    """Pull a readable description out of a TYPO3 event detail page."""
+    soup = BeautifulSoup(html, "html.parser")
 
     # Try common TYPO3/content containers for description text
     desc_parts = []
@@ -82,18 +71,83 @@ def enrich_event_detail(event, session):
                 desc_parts.append(text)
 
     if desc_parts:
-        event["description"] = "\n\n".join(desc_parts)
-    else:
-        # Fallback: grab all text from main/content area, excluding nav/header/footer
-        main = soup.find("main") or soup.find(id="content") or soup.find(class_="content")
-        if main:
-            for tag in main.select("nav, header, footer, .breadcrumb, .hw_record__title"):
-                tag.decompose()
-            text = main.get_text(separator="\n", strip=True)
-            if text and len(text) > 20:
-                event["description"] = text
+        return "\n\n".join(desc_parts)
 
+    # Fallback: grab all text from main/content area, excluding nav/header/footer
+    main = soup.find("main") or soup.find(id="content") or soup.find(class_="content")
+    if main:
+        for tag in main.select("nav, header, footer, .breadcrumb, .hw_record__title"):
+            tag.decompose()
+        text = main.get_text(separator="\n", strip=True)
+        if text and len(text) > 20:
+            return text
+    return ""
+
+
+def enrich_event_detail(event, session):
+    """Fetch event detail page for full description."""
+    url = event.get("event_url", "")
+    if not url:
+        return event
+
+    try:
+        resp = session.get(url, timeout=(10, 20), headers={
+            "User-Agent": "Mozilla/5.0 (compatible; StutenseeBot/1.0)",
+            "Cookie": "ccm_consent=1",
+        })
+        resp.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"  Error fetching detail {url}: {e}", flush=True)
+        return event
+
+    event["description"] = extract_description(resp.text)
     return event
+
+
+def enrich_urls(urls, session, max_workers=8, budget=90):
+    """Fetch the given detail pages once each and return {url: description}.
+
+    Almost all events share just a few detail URLs (every Musikverein event
+    points at the same calendar page, the Mineralix matches at the arena page),
+    so each distinct URL is fetched only once. The fetches run in a bounded
+    pool of daemon worker threads: the detail pages of weingarten-baden.de can
+    be slow or stop responding, and that used to block the whole daily run for
+    minutes. The workers are daemons, so the run always moves on after `budget`
+    seconds even if a request never comes back."""
+    results = {}
+    results_lock = threading.Lock()
+    queue = list(urls)
+    queue_lock = threading.Lock()
+
+    def worker():
+        while True:
+            with queue_lock:
+                if not queue:
+                    return
+                url = queue.pop(0)
+            try:
+                resp = session.get(url, timeout=(10, 20), headers={
+                    "User-Agent": "Mozilla/5.0 (compatible; StutenseeBot/1.0)",
+                    "Cookie": "ccm_consent=1",
+                })
+                resp.raise_for_status()
+                desc = extract_description(resp.text)
+            except Exception:
+                desc = ""
+            with results_lock:
+                results[url] = desc
+
+    workers = [threading.Thread(target=worker, daemon=True)
+               for _ in range(max(1, min(max_workers, len(urls))))]
+    started = time.monotonic()
+    for w in workers:
+        w.start()
+    for w in workers:
+        remaining = budget - (time.monotonic() - started)
+        if remaining <= 0:
+            break
+        w.join(remaining)
+    return results
 
 
 def scrape_official_events(session):
@@ -393,15 +447,30 @@ def scrape_weingarten():
         e["district"] = "Weingarten"
     all_events.extend(mineralix)
 
-    # Enrich events with descriptions from detail pages
+    # Enrich events with descriptions from detail pages. Each distinct detail
+    # URL is fetched once, in a bounded pool of daemon threads, so a slow or
+    # hanging detail page can no longer stall the daily run (see enrich_urls).
     enrichable = [e for e in all_events if not e.get("description") and e.get("event_url")]
-    print(f"  Enriching {len(enrichable)} events with detail pages...", flush=True)
+    detail_urls = []
+    seen_detail = set()
+    for e in enrichable:
+        if e["event_url"] not in seen_detail:
+            seen_detail.add(e["event_url"])
+            detail_urls.append(e["event_url"])
+    print(f"  Enriching {len(enrichable)} events from {len(detail_urls)} detail pages...", flush=True)
+    try:
+        enrich_budget = float(os.environ.get("WEINGARTEN_ENRICH_TIMEOUT", "90"))
+    except ValueError:
+        enrich_budget = 90.0
+    descriptions = enrich_urls(detail_urls, session, budget=enrich_budget)
     enriched = 0
     for i, event in enumerate(all_events):
-        if not event.get("description") and event.get("event_url"):
-            all_events[i] = enrich_event_detail(event, session)
-            if all_events[i].get("description"):
-                enriched += 1
+        if event.get("description") or not event.get("event_url"):
+            continue
+        desc = descriptions.get(event["event_url"], "")
+        if desc:
+            all_events[i]["description"] = desc
+            enriched += 1
     print(f"    Enriched {enriched}/{len(enrichable)} events with descriptions", flush=True)
 
     return {

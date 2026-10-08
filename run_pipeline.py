@@ -5,7 +5,7 @@ Scrapes all sources, loads new events, deduplicates, verifies.
 Usage:  python3 run_pipeline.py
 """
 
-import json, sys, os, sqlite3, urllib.request, re, html, hashlib
+import json, sys, os, sqlite3, urllib.request, re, html, hashlib, threading, time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from scrape_and_merge import (
     auto_tag,
@@ -1138,30 +1138,59 @@ if __name__ == "__main__":
             print(f"  Warning: sources not found: {', '.join(not_found)}", flush=True)
         sources = filtered
 
-    total_new = 0
+    # Run all sources concurrently, but never let a single slow or hanging
+    # source block the whole run. Each source runs in its own daemon worker
+    # thread; if the stage as a whole takes longer than SCRAPE_DEADLINE seconds,
+    # the sources that have not answered by then are given up and reported. (A
+    # source that stopped responding used to keep the run busy until the
+    # platform ended the job, which left the run marked "running".)
+    try:
+        scrape_deadline = int(os.environ.get("SCRAPE_DEADLINE", "180"))
+    except ValueError:
+        scrape_deadline = 180
 
-    def scrape_one(name_scraper):
-        name, scraper_func = name_scraper
-        try:
-            data = scraper_func()
-            n = insert_raw(data)
-            return name, len(data["events"]), n, None
-        except Exception as e:
-            return name, 0, 0, str(e)
+    todo = list(sources)
+    todo_lock = threading.Lock()
+    results = {}
+    results_lock = threading.Lock()
+    scrape_start = time.monotonic()
 
-    with ThreadPoolExecutor(max_workers=8) as executor:
-        futures = {executor.submit(scrape_one, s): s[0] for s in sources}
-        for future in as_completed(futures):
-            name = futures[future]
+    def scrape_worker():
+        while True:
+            with todo_lock:
+                if not todo:
+                    return
+                name, scraper_func = todo.pop(0)
             try:
-                name, fetched, new, err = future.result()
-                if err:
-                    print(f"  {name}: ERROR: {err}", flush=True)
-                else:
-                    total_new += new
-                    print(f"  {name}: {fetched} fetched, {new} new", flush=True)
-            except Exception as e:
-                print(f"  {name}: ERROR: {e}", flush=True)
+                data = scraper_func()
+                n = insert_raw(data)
+                outcome = (len(data["events"]), n, None)
+            except Exception as e:  # a broken source must not stop the run
+                outcome = (0, 0, str(e))
+            with results_lock:
+                results[name] = outcome
+
+    workers = [threading.Thread(target=scrape_worker, daemon=True)
+               for _ in range(max(1, min(8, len(sources))))]
+    for w in workers:
+        w.start()
+    for w in workers:
+        remaining = scrape_deadline - (time.monotonic() - scrape_start)
+        if remaining <= 0:
+            break
+        w.join(remaining)
+
+    total_new = 0
+    for name, _scraper in sources:
+        if name in results:
+            fetched, new, err = results[name]
+            if err:
+                print(f"  {name}: ERROR: {err}", flush=True)
+            else:
+                total_new += new
+                print(f"  {name}: {fetched} fetched, {new} new", flush=True)
+        else:
+            print(f"  {name}: TIMEOUT \u2014 no answer within {scrape_deadline}s, skipped", flush=True)
 
     for name, url, src_url in optional_sources:
         print(f"  Scraping {name}...", end=" ", flush=True)
