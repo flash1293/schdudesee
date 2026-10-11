@@ -1,0 +1,22 @@
+{
+  "title": "Café Lebenshaus",
+  "date_start": "2026-11-08",
+  "date_end": null,
+  "time_raw": ", 14:00 Uhr",
+  "location": "Schloss Unteröwisheim",
+  "organizer": "CVJM Weingarten e.V.",
+  "description": "21.10.2026\n,\n14:30 Uhr\nEvent-Café\nCVJM-Lebenshaus\n24.10.2026 –\n27.10.2026\nKraftwerk\nCVJM-Lebenshaus\n08.11.2026\n,\n14:00 Uhr\nCafé Lebenshaus\nSchloss Unteröwisheim\n08.11.2026\n,\n17:30 Uhr\nLeGo\nCVJM-Lebenshaus, Schloss Unteröwisheim\n11.11.2026\n,\n14:30 Uhr\nEvent-Café\nCVJM-Lebenshaus\n13.11.2026 –\n15.11.2026\nSUMMIT\nCVJM-Lebenshaus\n18.11.2026\n,\n14:30 Uhr\nEvent-Café\nCVJM-Lebenshaus\n19.11.2026\n,\n19:00 Uhr\nMännerabend\nCVJM-Lebenshaus\n20.11.2026 –\n22.11.2026\nTeam-f-Seminare im Schloss\nCVJM-Lebenshaus\n05.12.2026\n,\n15:00 Uhr\nUneroiser Schloss-Advent\nCVJM-Lebenshaus",
+  "event_url": "https://www.schloss-unteroewisheim.de/website/de/lh/angebote/regelmaessige_angebote",
+  "sources": [
+    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+  ],
+  "tags": [
+    "Workshop",
+    "Treff",
+    "Kirche",
+    "Weingarten"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
