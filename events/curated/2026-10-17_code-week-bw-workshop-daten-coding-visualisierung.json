@@ -1,0 +1,20 @@
+{
+  "title": "CODE WEEK BW: Workshop: Daten, Coding & Visualisierung",
+  "date_start": "2026-10-17",
+  "date_end": "2026-10-17",
+  "time_raw": "17:00",
+  "location": "Zentrum für Kunst und Medien (ZKM)",
+  "organizer": "OK Lab Karlsruhe",
+  "description": "Workshop: Daten, Coding &amp; Visualisierung – im Rahmen der BW CodeWeek Was: Einführung in Coding, Daten, Visualisierung, mit und ohne Vorkenntnisse Wer: Ab 12 Jahren Wann: 17. Oktober 2026, von 14 bis 17 Uhr Wo: ZKM Karlsruhe, Medienwerkstatt Wieviel: Kostenfrei, aber mit Anmeldung hier: https://pretix.eu/digital-codes/okl-cw26 Bei diesem Workshop zur Code Week Baden-Württemberg könnt ihr digitale Technologien selbst ausprobieren und gemeinsam erste oder neue Erfahrungen mit Programmieren sammeln. Dafür bieten wir zwei Tracks an, zwischen denen ihr wählen könnt: Track 1: Sensoren programmieren Wie kann ein Computer seine Umgebung wahrnehmen? Wir bauen gemeinsam ein kleines Messgerät mit Umweltsensoren auf und bringen ihm bei, Daten wie Temperatur, Luftdruck oder Luftqualität zu erfassen. Anschließend schauen wir uns an, was die gemessenen Werte bedeuten und wie wir sie nutzen können. Programmiert wird über eine leicht zugängliche grafische Oberfläche. Vorkenntnisse sind nicht erforderlich – der Track eignet sich für Anfänger*innen aller Altersstufen ab 12 Jahren. Track 2: Python, Daten &amp; Visualisierung Hier geht es um den Einstieg ins textbasierte Programmieren mit Python. Gemeinsam lernen wir grundlegende Konzepte kennen und probieren direkt aus, wie sich Daten mit Python einlesen, untersuchen und visualisieren lassen. Dafür arbeiten wir mit Jupyter Notebooks, in denen sich Programmcode, Ergebnisse, Grafiken und Erklärungen direkt miteinander verbinden lassen. Der Schwerpunkt liegt auf praktischem Ausprobieren: Code verändern, Ergebnisse ansehen, Fehler finden und Schritt für Schritt eigene Ideen umsetzen. In beiden Tracks geht es nicht darum, schon programmieren zu können. Vorkenntnisse können aber ausgebaut werden. Wir wollen gemeinsam ausprobieren, Fragen stellen, voneinander lernen und erleben, wie aus ein paar Zeilen Code ein funktionierendes kleines Projekt wird. Eine Kooperation des ZKM Karlsruhe mit dem OK Lab Karlsruhe",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/wirtschaft/code_week_bw_workshop_daten_coding_visualisierung",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Wirtschaft"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
