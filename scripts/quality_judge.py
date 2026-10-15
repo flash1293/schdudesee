@@ -100,11 +100,14 @@ AVAILABLE_TAGS = [
     "Workshop", "Ausstellungen",
 ]
 
+# The place tags the pipeline can produce — the same list the website offers
+# as districts (DISTRICT_KEYS). Without Bretten/Durlach/Karlsruhe-Innenstadt
+# the judge rated every downtown-Karlsruhe event as "missing a district".
 AVAILABLE_DISTRICTS = [
-    "Blankenloch", "Bruchsal", "Büchenau", "Büchig", "Eggenstein",
-    "Friedrichstal", "Graben-Neudorf", "Hagsfeld", "Leopoldshafen",
-    "Linkenheim", "Neureut", "Neuthard", "Rintheim", "Spöck",
-    "Staffort", "Waldstadt", "Weingarten",
+    "Blankenloch", "Bretten", "Bruchsal", "Büchenau", "Büchig", "Durlach",
+    "Eggenstein", "Friedrichstal", "Graben-Neudorf", "Hagsfeld",
+    "Karlsruhe-Innenstadt", "Leopoldshafen", "Linkenheim", "Neureut",
+    "Neuthard", "Rintheim", "Spöck", "Staffort", "Waldstadt", "Weingarten",
 ]
 
 
