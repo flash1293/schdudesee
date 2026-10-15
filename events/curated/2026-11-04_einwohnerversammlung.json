@@ -1,0 +1,20 @@
+{
+  "title": "Einwohnerversammlung",
+  "date_start": "2026-11-04",
+  "date_end": null,
+  "time_raw": "18:00 Uhr",
+  "location": "Veranstaltungsort:\n\t\tSängerhalle Friedrichstal",
+  "organizer": "Stadt Stutensee",
+  "description": "",
+  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2895",
+  "sources": [
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Politik",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
