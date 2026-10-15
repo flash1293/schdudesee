@@ -680,7 +680,8 @@ async function serveChat(request, env) {
     const today = new Date().toISOString().slice(0, 10);
     const systemPrompt = CHAT_SYSTEM_PROMPT + `\n\nHeutiges Datum: ${today}.`;
     const llmMessages = [{ role: 'system', content: systemPrompt }, ...messages];
-    let result = await callLLM(llmMessages, CHAT_TOOLS, env);
+    const sessionId = chatSessionId(request, messages);
+    let result = await callLLM(llmMessages, CHAT_TOOLS, env, sessionId);
     let collectedEvents = [];
     let totalUsage = { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 };
 
@@ -732,7 +733,7 @@ async function serveChat(request, env) {
         llmMessages.push({ role: 'tool', tool_call_id: tc.id, content: JSON.stringify(toolResult) });
       }
 
-      result = await callLLM(llmMessages, CHAT_TOOLS, env);
+      result = await callLLM(llmMessages, CHAT_TOOLS, env, sessionId);
       if (result.usage) {
         totalUsage.prompt_tokens += result.usage.prompt_tokens || 0;
         totalUsage.completion_tokens += result.usage.completion_tokens || 0;
@@ -752,8 +753,23 @@ async function serveChat(request, env) {
   }
 }
 
+/**
+ * A stable ID for one chat conversation. The model service asks for one so that
+ * it can route requests and reuse cached prompts; a conversation is identified
+ * by its first question (the client always sends the whole history).
+ */
+function chatSessionId(request, messages) {
+  const given = request.headers.get('x-opencode-session');
+  if (given) return given.slice(0, 64);
+  const first = messages.find(m => m && m.role === 'user' && typeof m.content === 'string');
+  const seed = `${new Date().toISOString().slice(0, 10)}|${(first && first.content) || 'anonym'}`;
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+  return `hs-${hash.toString(16)}`;
+}
+
 /** Call the LLM API (opencode.ai). Returns {choices, usage}. */
-async function callLLM(messages, tools, env) {
+async function callLLM(messages, tools, env, sessionId) {
   const apiKey = env.LLM_API_KEY;
   const baseUrl = env.LLM_BASE_URL || 'https://opencode.ai/zen/go/v1';
   if (!apiKey) {
@@ -765,7 +781,8 @@ async function callLLM(messages, tools, env) {
     headers: {
       'Authorization': `Bearer ${apiKey}`,
       'Content-Type': 'application/json',
-      'User-Agent': 'YEAP-Worker/1.0',
+      'User-Agent': 'HeyStutensee/1.0',
+      'x-opencode-session': sessionId || 'hs-anonym',
     },
     body: JSON.stringify({
       model: CHAT_MODEL,
