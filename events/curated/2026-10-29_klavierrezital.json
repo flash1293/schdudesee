@@ -1,0 +1,20 @@
+{
+  "title": "Klavierrezital",
+  "date_start": "2026-10-29",
+  "date_end": "2026-10-29",
+  "time_raw": "19:00",
+  "location": "Wohnstift Rüppurr",
+  "organizer": "Hochschule für Musik",
+  "description": "Werke von Ludwig van Beethoven , Johannes Brahms , Robert Schumann und Franz Liszt Mitwirkende Haruka Higashitsuji Klavier Programm Ludwig van Beethoven (1770-1827) Klaviersonate Nr. 30 E-Dur, op. 109 I. Vivace ma non troppo / Adagio espressivo II. Prestissimo III. Gesangvoll, mit innigster Empfindung Robert Schumann (1810-1856) / Franz Liszt (1811-1886) aus Myrthen, op. 25 Liebeslied - Widmung As-Dur S. 566/R. 25 Johannes Brahms (1833-1897) aus Klavierstücke, op.118 I. Intermezzo (Allegro non assai) II. Intermezzo (Andante teneramente) III. Ballade (Allegro energico) Robert Schumann (1810-1856) aus Klaviersonate Nr. 2 g-moll, op22 I. So rasch wie möglich",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/musik/klavierrezital",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Musik"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
