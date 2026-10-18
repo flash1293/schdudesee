@@ -8,12 +8,13 @@
   "description": "Connect01 ist zurück – diesmal als Halloween-Special. Am Donnerstag, den 29. Oktober 2026, laden wir Sie von 17:00 bis 19:00 Uhr herzlich zu unserem monatlichen Connect01 After-Work ins HubWerk01 ein. Freuen Sie sich auf: – entspanntes Networking – leckeres Fingerfood – erfrischende Getränke – spannende Gespräche in angenehmer Atmosphäre – eine stimmungsvolle Halloween-Deko Die Teilnahme ist kostenlos und die Veranstaltung ist offen für alle. Eine Anmeldung ist nicht erforderlich – kommen Sie einfach vorbei! Wir freuen uns auf Sie!",
   "event_url": "https://landfunker.de/veranstaltung/connect01-halloween-special-after-work-am-29-oktober-17-19-uhr-im-hubwerk01-kostenlos-offen-fuer-alle-ohne-anmeldung/",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
+    "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
   "tags": [
+    "Bruchsal",
     "Kinder",
-    "Treff",
-    "Bruchsal"
+    "Treff"
   ],
   "recurring_group_id": null,
   "is_passed": 0,
