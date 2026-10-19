@@ -1,0 +1,19 @@
+{
+  "title": "Gottesdienst mit Abendmahl (Buß- und Bettag)",
+  "date_start": "2026-11-18",
+  "date_end": "2026-11-18",
+  "time_raw": "19:30",
+  "location": "Ev. Kirche Graben",
+  "organizer": "CVJM Graben-Neudorf",
+  "description": "",
+  "event_url": "https://www.cvjm-graben-neudorf.de/eventcalendar",
+  "sources": [
+    "https://www.cvjm-graben-neudorf.de/eventcalendar"
+  ],
+  "tags": [
+    "Kirche"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
