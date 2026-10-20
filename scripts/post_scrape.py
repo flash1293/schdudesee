@@ -404,10 +404,14 @@ def fix_location_district_suffix(event):
         return False
 
     tags = event.get("tags", [])
-    known_districts = {"Büchig", "Weingarten", "Bruchsal", "Neuthard",
-                       "Karlsdorf", "Spöck", "Blankenloch", "Friedrichstal",
-                       "Staffort", "Linkenheim", "Graben-Neudorf",
-                       "Waldstadt", "Neureut", "Rintheim", "Hagsfeld"}
+    # Complete list of place tags the pipeline can produce (the districts the
+    # website offers) — see AVAILABLE_DISTRICTS in scripts/quality_judge.py and
+    # DISTRICT_KEYS in the website.
+    known_districts = {"Blankenloch", "Bretten", "Bruchsal", "Büchenau", "Büchig",
+                       "Durlach", "Eggenstein", "Friedrichstal", "Graben-Neudorf",
+                       "Hagsfeld", "Karlsruhe-Innenstadt", "Karlsdorf",
+                       "Leopoldshafen", "Linkenheim", "Neureut", "Neuthard",
+                       "Rintheim", "Spöck", "Staffort", "Waldstadt", "Weingarten"}
 
     if loc in known_districts:
         # If it looks like just a district name and there's a more specific
@@ -418,6 +422,52 @@ def fix_location_district_suffix(event):
             return True
 
     return False
+
+
+# Topic tags that are not part of the tag catalogue (see AVAILABLE_TAGS in
+# quality_judge.py and THEME_KEYS on the website). Such tags are invisible:
+# the theme pages, the theme filter and the quality check only know the
+# catalogue, so an event tagged only "Theater" showed up under no theme.
+NON_CANONICAL_TOPIC_TAGS = {
+    "Theater": "Kultur",
+    "Kunst": "Kultur",
+    "Architektur": "Kultur",
+    "Familie": "Kinder",
+    "Ausstellung": "Ausstellungen",
+    "Vortrag": "Bildung",
+    "Religion": "Kirche",
+    "Glaube": "Kirche",
+    "Kulinarik": "Essen",
+    "Brauchtum": "Fest",
+    "Karneval": "Fest",
+    "Wirtschaft": "Sonstiges",
+}
+
+
+@rule
+def fix_noncanonical_topic_tag(event):
+    """Replace topic tags outside the tag catalogue with the matching
+    catalogue tag (Theater -> Kultur, Karneval -> Fest, ...). Location tags
+    such as Karlsruhe-Innenstadt are left untouched. Idempotent: running it
+    twice changes nothing."""
+    tags = event.get("tags")
+    if not isinstance(tags, list):
+        return False
+
+    new_tags = []
+    changed = False
+    for tag in tags:
+        target = NON_CANONICAL_TOPIC_TAGS.get(tag)
+        if target is None:
+            new_tags.append(tag)
+            continue
+        changed = True
+        if target not in new_tags:
+            new_tags.append(target)
+
+    if changed:
+        event["tags"] = new_tags
+    return changed
 
 
 def apply_all_rules(event):

@@ -244,28 +244,37 @@ def extract_category_from_url(url):
     m = re.search(r'/db/termine/([a-z]+)/', url)
     if m:
         cat = m.group(1)
-        # Map German URL slugs to readable tags
+        # Map the German URL slugs onto the project's tag catalogue (see
+        # AVAILABLE_TAGS in scripts/quality_judge.py and THEME_KEYS in the
+        # website). Tags outside that catalogue are invisible on the site: the
+        # theme pages only know the catalogue, so an event tagged "Theater"
+        # appeared under no theme at all. Unknown slugs get no topic tag here —
+        # the merge step adds keyword-based tags afterwards.
         cat_map = {
             "musik": "Musik",
-            "theater": "Theater",
+            "theater": "Kultur",
             "literatur": "Literatur",
-            "kunst": "Kunst",
+            "kunst": "Kultur",
             "kinder": "Kinder",
             "stadtleben": "Stadtleben",
             "natur": "Natur",
-            "familie": "Familie",
-            "ausstellung": "Ausstellung",
-            "vortrag": "Vortrag",
+            "familie": "Kinder",
+            "ausstellung": "Ausstellungen",
+            "ausstellungen": "Ausstellungen",
+            "vortrag": "Bildung",
             "workshop": "Workshop",
             "markt": "Markt",
             "fest": "Fest",
             "sport": "Sport",
-            "religion": "Religion",
-            "glaube": "Glaube",
-            "kulinarik": "Kulinarik",
-            "brauchtum": "Brauchtum",
+            "sportveranstaltung": "Sport",
+            "religion": "Kirche",
+            "glaube": "Kirche",
+            "kulinarik": "Essen",
+            "brauchtum": "Fest",
+            "architektur": "Kultur",
+            "wirtschaft": "Sonstiges",
         }
-        return cat_map.get(cat, cat.capitalize())
+        return cat_map.get(cat, "")
     return ""
 
 
