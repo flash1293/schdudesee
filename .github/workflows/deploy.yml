@@ -1,7 +1,10 @@
 name: Deploy to Production
+# Cloudflare is no longer used: hey-stutensee.de is served entirely by Zeitlos
+# (project flash1293/hey-stutensee-zeitlos). The event data keeps being published
+# to main as before; this workflow no longer runs automatically and can only be
+# started by hand.
 on:
-  push:
-    branches: [main]
+  workflow_dispatch:
 
 env:
   PYTHON_VERSION: '3.11'
