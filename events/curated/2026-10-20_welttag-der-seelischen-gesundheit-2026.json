@@ -2,11 +2,11 @@
   "title": "Welttag der seelischen Gesundheit 2026",
   "date_start": "2026-10-20",
   "date_end": "2026-10-20",
-  "time_raw": "12:00",
-  "location": "HWK Südstadt, Werderstr. 9",
+  "time_raw": "16:00",
+  "location": "HWK Südstadt",
   "organizer": "Hagsfelder Werkstätten und Wohngemeinschaften Karlsruhe gGmbH",
   "description": "Kennenlernen der vielfältigen Angebote beruflicher Bildung und Arbeitsmöglichkeiten sowie der Möglichkeiten beruflicher Rehabilitation für Menschen mit psychischen Erkrankungen bei den Hagsfelder Werkstätten",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/welttag_der_seelischen_gesundheit2026n",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/welttag_der_seelischen_gesundheit2026n-1",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Literatur"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
