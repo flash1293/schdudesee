@@ -1,0 +1,20 @@
+{
+  "title": "ARTtoNight Spezial",
+  "date_start": "2026-11-05",
+  "date_end": "2026-11-05",
+  "time_raw": "23:00",
+  "location": "Kunstmuseum Karlsruhe",
+  "organizer": "Kunstmuseum Karlsruhe",
+  "description": "05.11.2026, 19 Uhr ARTtoNight Spezial In Kooperation mit den ARD Hörspieltagen präsentiert das Kunstmuseum Karlsruhe am Donnerstag, den 5. November, eine Sonderausgabe der beliebten ARTtoNight. Kurzführungen, Drinks und DJ-Sets schaffen eine entspannte Atmosphäre, in der Kunst neu entdeckt und bei Liveacts miteinander ins Gespräch gekommen werden kann. Der Eintritt ist frei.",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/ausstellungen/arttonight_spezial",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Ausstellungen"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
