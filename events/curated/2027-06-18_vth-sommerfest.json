@@ -1,0 +1,20 @@
+{
+  "title": "VTH Sommerfest",
+  "date_start": "2027-06-18",
+  "date_end": "2027-06-20",
+  "time_raw": null,
+  "location": "VTH Gelände",
+  "organizer": "Bürgerkommission Hagsfeld e.V.",
+  "description": "",
+  "event_url": "https://www.hagsfeld.de/termine/vth-sommerfest",
+  "sources": [
+    "https://www.hagsfeld.de/termine"
+  ],
+  "tags": [
+    "Fest",
+    "Hagsfeld"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
