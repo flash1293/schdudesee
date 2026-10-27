@@ -1,0 +1,21 @@
+{
+  "title": "Blankenlocher Weihnachtsmarkt",
+  "date_start": "2026-12-12",
+  "date_end": "2026-12-13",
+  "time_raw": "14:00",
+  "location": "Neuer Markt Blankenloch",
+  "organizer": "Stadtverwaltung Stutensee",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/blankenlocher-weihnachtsmarkt/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Fest",
+    "Markt",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

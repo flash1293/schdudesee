@@ -8,6 +8,7 @@
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2836",
   "sources": [
+    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen",
     "https://www.buechigerleben.de/"
   ],

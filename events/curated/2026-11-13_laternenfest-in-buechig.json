@@ -1,0 +1,21 @@
+{
+  "title": "Laternenfest in Büchig",
+  "date_start": "2026-11-13",
+  "date_end": "2026-11-13",
+  "time_raw": "18:00",
+  "location": "Kindergarten Märchenwald",
+  "organizer": "Büchig(er)leben",
+  "description": "Start am Kindergarten Märchenwald   Verpflegung im Anschluss: Waldstr. 106",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/laternenfest-in-buechig/",
+  "sources": [
+    "https://meinstutensee.de/termine/",
+    "https://www.buechigerleben.de/"
+  ],
+  "tags": [
+    "Büchig",
+    "Fest"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 1
+}
