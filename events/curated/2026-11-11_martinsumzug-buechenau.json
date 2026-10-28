@@ -1,0 +1,19 @@
+{
+  "title": "Martinsumzug Büchenau",
+  "date_start": "2026-11-11",
+  "date_end": null,
+  "time_raw": "18:00 Uhr",
+  "location": "Büchenau",
+  "organizer": "Musikverein 1898 Büchenau e.V.",
+  "description": "",
+  "event_url": "https://musikverein-buechenau.de/de/termine",
+  "sources": [
+    "https://freie-waehler-buechenau.de/pages/was-wann-wo/kalender.php"
+  ],
+  "tags": [
+    "Büchenau"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

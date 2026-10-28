@@ -1,0 +1,20 @@
+{
+  "title": "Kerwe Untergrombach",
+  "date_start": "2026-11-08",
+  "date_end": null,
+  "time_raw": "17:00 Uhr",
+  "location": "Bundschuhhalle Untergrombach",
+  "organizer": "Musikverein 1898 Büchenau e.V.",
+  "description": "",
+  "event_url": "https://musikverein-buechenau.de/de/termine",
+  "sources": [
+    "https://freie-waehler-buechenau.de/pages/was-wann-wo/kalender.php"
+  ],
+  "tags": [
+    "Fest",
+    "Büchenau"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

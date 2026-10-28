@@ -1,0 +1,20 @@
+{
+  "title": "Lokalschau Spöck",
+  "date_start": "2026-11-07",
+  "date_end": "2026-11-07",
+  "time_raw": "11:00",
+  "location": "Vereinsheim Kleintierzuchtverein C 317 Spöck e.V.",
+  "organizer": "Kleintierzuchtverein C 317 Spöck e.V.",
+  "description": "Der Kleintierzuchtverein C317 Spöck veranstaltet seine Lokalschau. Besucher können verschiedene Kleintiere besichtigen und erhalten ein gastronomisches Angebot mit Hähnchen, Schnitzel und Spanferkel.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/lokalschau-spoeck/",
+  "sources": [
+    "https://meinstutensee.de/termine/",
+    "https://stutensee.de/Veranstaltungen"
+  ],
+  "tags": [
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

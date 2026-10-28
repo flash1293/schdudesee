@@ -1,0 +1,21 @@
+{
+  "title": "Weihnachtsmarkt FSV Büchenau",
+  "date_start": "2026-12-04",
+  "date_end": null,
+  "time_raw": "19:30 Uhr",
+  "location": "FSV Büchenau",
+  "organizer": "Musikverein 1898 Büchenau e.V.",
+  "description": "",
+  "event_url": "https://musikverein-buechenau.de/de/termine",
+  "sources": [
+    "https://freie-waehler-buechenau.de/pages/was-wann-wo/kalender.php"
+  ],
+  "tags": [
+    "Fest",
+    "Markt",
+    "Büchenau"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
