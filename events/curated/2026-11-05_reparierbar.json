@@ -8,11 +8,12 @@
   "description": "Ihr Toaster streikt, der Stuhl wackelt oder Ihre Kaffeemaschine tropft? Dann kommen Sie damit zur reparierbar Karlsdorf-Neuthard. Ehrenamtliche Helfer unterstützen Sie bei der Reparatur und leisten Hilfe zur Selbsthilfe. Die ehrenamtlichen Helfer freuen sich über jede freiwillige Spende. Karten mit Zeitfenstern gibt es in der Bibliothek am Mühlenplatz.",
   "event_url": "https://landfunker.de/veranstaltung/reparierbar-2/",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
-    "Handwerk",
     "Essen",
+    "Handwerk",
     "Neuthard"
   ],
   "recurring_group_id": null,

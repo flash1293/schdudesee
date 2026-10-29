@@ -2,11 +2,11 @@
   "title": "Lesepatenschaften in Karlsruhe",
   "date_start": "2026-10-28",
   "date_end": "2026-10-28",
-  "time_raw": "13:00",
+  "time_raw": "17:00",
   "location": "Stadtbibliothek Karlsruhe - Zentralbibliothek im Neuen Ständehaus - offerta",
   "organizer": "Stadtbibliothek Karlsruhe - Zentralbibliothek im Neuen Ständehaus",
   "description": "Warum ist (Vor-) lesen wichtig? Was macht ein Lesepate? Und wie kann ich mich selbst als Lesepatin engagieren? Diese Fragen werden im Rahmen der interaktiven Gesprächsrunde auf der offerta aus unterschiedlichen Perspektiven beantwortet. Beteiligte der Gesprächsrunde sind koordinierende Stellen bei der Stadtverwaltung, aktive Lesepat*innen und Lehrkräfte. Eintritt: über die offerta https://www.offerta.de/tickets/?srsltid=AfmBOoq1FOkeIXdBDppVAzPujtgYTvRbdQD8NWAdBsEcDToqyjjEMU3D Ort: Messe Karlsruhe, Halle 3, Forum Lesen Illustration: stock.adobe.com - Anna Syvak",
-  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/lesepatenschaften_in_karlsruhe",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/literatur/lesepatenschaften_in_karlsruhe-1",
   "sources": [
     "https://kalender.karlsruhe.de"
   ],
@@ -15,6 +15,6 @@
     "Literatur"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
