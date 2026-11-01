@@ -1,0 +1,20 @@
+{
+  "title": "47. Große Prunksitzung",
+  "date_start": "2027-01-16",
+  "date_end": "2027-01-16",
+  "time_raw": "18:00",
+  "location": "Sängerhalle Friedrichstal",
+  "organizer": "Elferrat Liederkranz Friedrichstal",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/47-grosse-prunksitzung/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Kultur",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

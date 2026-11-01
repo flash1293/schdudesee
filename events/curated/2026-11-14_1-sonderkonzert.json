@@ -1,0 +1,20 @@
+{
+  "title": "1. Sonderkonzert",
+  "date_start": "2026-11-14",
+  "date_end": "2026-11-14",
+  "time_raw": "19:00",
+  "location": "Badisches Staatstheater, Großes Haus",
+  "organizer": "Badisches Staatstheater Karlsruhe",
+  "description": "Vor 150 Jahren, am 4. November 1876, stellte Johannes Brahms in Karlsruhe der Musikwelt seine erste, seit langem und mit großer Spannung erwartete Sinfonie vor. Anlässlich dieses besonderen Stadtjubiläums wiederholen wir das damalige Konzertprogramm.",
+  "event_url": "https://kalender.karlsruhe.de/db/termine/theater/1_sonderkonzert",
+  "sources": [
+    "https://kalender.karlsruhe.de"
+  ],
+  "tags": [
+    "Karlsruhe-Innenstadt",
+    "Theater"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
