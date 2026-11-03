@@ -8,11 +8,12 @@
   "description": "",
   "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2337",
   "sources": [
+    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
-    "Musik",
     "Kirche",
+    "Musik",
     "Spöck"
   ],
   "recurring_group_id": null,
