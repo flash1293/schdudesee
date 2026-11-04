@@ -1,0 +1,20 @@
+{
+  "title": "Glühweinfest",
+  "date_start": "2027-01-09",
+  "date_end": "2027-01-09",
+  "time_raw": "18:00",
+  "location": "Vereinsheim VSV Büchig",
+  "organizer": "VSV Büchig",
+  "description": "Der VSV Büchig veranstaltet ein Glühweinfest. Die Veranstaltung beginnt am 9. Januar 2027 um 18:00 Uhr.    ",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/gluehweinfest/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Fest",
+    "Büchig"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

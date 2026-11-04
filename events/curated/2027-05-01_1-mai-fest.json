@@ -1,19 +1,18 @@
 {
-  "title": "1. Mai-Fest",
+  "title": "1. Mai Fest",
   "date_start": "2027-05-01",
   "date_end": null,
-  "time_raw": "Ganztägig",
-  "location": "Rathausplatz",
-  "organizer": "TSV Weingarten",
-  "description": "Datum\n01.05.2027\nUhrzeit\nGanztägig\nVeranstalter\nTSV Weingarten\nTelefonnummer\n0176-31361119\nVeranstaltungsort\nRathausplatz\nE-Mail schreiben\nE-Mail\nZur Website\nWebsite\n\nFamilien- und Wandertag mit Bewirtung auf dem Rathausplatz\n\nGemeinde Weingarten (Baden)\nMarktplatz 2\n76356 Weingarten (Baden)\nTelefonnummer:\n07244 70 20-0\nFaxnummer:\n07244 70 20-50\ngemeinde(@)weingarten-baden.de",
-  "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/972/1-mai-fest",
+  "time_raw": "",
+  "location": "Feuerwehrhaus Graben",
+  "organizer": "Freiwillige Feuerwehr Graben-Neudorf",
+  "description": "Datum\n01.05.2027\nVeranstalter\nFreiwillige Feuerwehr Graben-Neudorf\nicon.place.event\nFeuerwehrhaus Graben\nSofienstraße 34a\n76676 Graben-Neudorf\nE-Mail schreiben\nZur Website\nicon.map\nAuf Karte anzeigen\nKarte\nicon.map\nAuf Karte anzeigen\nKarte\n\nGemeinde Graben-Neudorf\nWerner-Juchler-Platz 1\n76676 Graben-Neudorf\nPostfach 10\n76673 Graben-Neudorf\nTelefonnummer:\n07255 901-0\nFaxnummer:\n07255 901-350\nE-Mail schreiben",
+  "event_url": "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender/145478/1-mai-fest",
   "sources": [
-    "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
+    "https://www.graben-neudorf.de/freizeit-kultur/veranstaltungen/veranstaltungskalender"
   ],
   "tags": [
-    "Kinder",
     "Fest",
-    "Weingarten"
+    "Graben-Neudorf"
   ],
   "recurring_group_id": null,
   "is_passed": 0,
