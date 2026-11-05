@@ -8,12 +8,13 @@
   "description": "",
   "event_url": "https://www.meinstutensee.de/veranstaltungen/tag-des-kinderturnens-beim-tv-friedrichstal/",
   "sources": [
+    "clubs_batch_all",
     "https://meinstutensee.de/termine/"
   ],
   "tags": [
-    "Sport",
+    "Friedrichstal",
     "Kinder",
-    "Friedrichstal"
+    "Sport"
   ],
   "recurring_group_id": null,
   "is_passed": 0,
