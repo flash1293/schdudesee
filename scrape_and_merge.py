@@ -331,6 +331,13 @@ MANUAL_DUPES = {
     "Sommerfest am Baggersee": ["Sommerfest"],
     "Oldtimer- und Traktortreff": ["Oldtimer und Traktorentreff in Staffort"],
     "Topibl\u00fctenlauf": ["Topibl\u00fcten-Lauf"],
+    # Captured twice with different wording: the club page calls it "Tag des
+    # Kinderturnens", meinstutensee adds the club name.
+    "Tag des Kinderturnens beim TV Friedrichstal": ["Tag des Kinderturnens"],
+    # The town calendar and the choir's own page both list the Sp\u00f6ck concert;
+    # entries are only merged when the date matches, so different concerts on
+    # other days stay separate.
+    "Weihnachtskonzert": ["Weihnachtskonzert"],
 }
 
 MANUAL_EVENTS = [
