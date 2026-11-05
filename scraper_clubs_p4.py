@@ -381,125 +381,60 @@ def scrape_tsg_blankenloch():
 
 
 def scrape_tv_friedrichstal():
-    """Joomla — parse Veranstaltungskalender HTML table on homepage."""
+    """TV Friedrichstal — the Veranstaltungskalender is an Elementor list.
+
+    Each entry is a paragraph holding the date ("07.11.2026"), followed by
+    the title, optionally the time ("20:00 Uhr") and the venue. The old
+    static table (used until autumn 2026) no longer exists on the page.
+    """
     url = "https://www.tv-friedrichstal.de"
     try:
         html = fetch_url(url)
-    except Exception:
+    except Exception as e:
+        print(f"  TV Friedrichstal: fetch failed ({type(e).__name__})", flush=True)
         return []
 
+    date_marks = list(re.finditer(r'<p[^>]*>\s*(\d{1,2})\.(\d{1,2})\.(\d{4})\s*</p>', html))
     events = []
-    table_m = re.search(
-        r'<h3>Veranstaltungskalender 2026</h3>\s*<table[^>]*class="uk-table uk-table-striped"[^>]*>(.*?)</table>',
-        html, re.DOTALL
-    )
-    if not table_m:
-        table_m = re.search(
-            r'Veranstaltungskalender 2026.*?<table[^>]*>(.*?)</table>',
-            html, re.DOTALL
-        )
-    if not table_m:
-        return []
-
-    table_html = table_m.group(1)
-    rows = re.findall(r'<tr>(.*?)</tr>', table_html, re.DOTALL)
-    for row in rows:
-        cells = re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', row, re.DOTALL)
-        if len(cells) < 2:
+    seen = set()
+    for idx, mark in enumerate(date_marks):
+        end = date_marks[idx + 1].start() if idx + 1 < len(date_marks) else mark.start() + 3000
+        paragraphs = [
+            re.sub(r'\s+', ' ', strip_html(block)).strip()
+            for block in re.findall(r'<p[^>]*>(.*?)</p>', html[mark.end():end], re.DOTALL)
+        ]
+        paragraphs = [p for p in paragraphs if p]
+        if not paragraphs:
             continue
-
-        date_text = strip_html(cells[0])
-        title = strip_html(cells[1])
-        if not title:
+        title = paragraphs[0]
+        if len(title) < 3 or title.startswith("Details"):
             continue
 
         time_raw = ""
-        time_m = re.search(r'(\d{1,2}):(\d{2})\s*Uhr', title)
-        if time_m:
-            time_raw = f"{int(time_m.group(1)):02d}:{time_m.group(2)} Uhr"
-            title = re.sub(r'\s*\d{1,2}:\d{2}\s*Uhr', '', title).strip()
+        location = ""
+        for extra in paragraphs[1:5]:
+            if not time_raw and re.fullmatch(r'\d{1,2}[:.]\d{2}\s*Uhr', extra):
+                time_raw = extra
+            elif not location and not extra.startswith("Details"):
+                location = extra
 
-        date_range_full = re.search(
-            r'(\d{1,2})\.(\d{1,2})\.(\d{4})\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})',
-            date_text
-        )
-        date_range_abbrev = re.search(
-            r'(\d{1,2})\.(\d{1,2})\.\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})',
-            date_text
-        )
-        date_range_simple = re.search(
-            r'(\d{1,2})\.\s*[-–]\s*(\d{1,2})\.(\d{1,2})\.(\d{4})',
-            date_text
-        )
+        iso = to_iso(int(mark.group(1)), int(mark.group(2)), int(mark.group(3)))
+        key = (title, iso)
+        if key in seen:
+            continue
+        seen.add(key)
+        events.append({
+            "title": title,
+            "date_start": iso,
+            "date_end": None,
+            "time_raw": time_raw,
+            "location": location or "TV Friedrichstal",
+            "organizer": "Turnverein Friedrichstal 1899 e.V.",
+            "description": "",
+            "event_url": url,
+        })
 
-        if date_range_full:
-            start_d, start_m, start_y = date_range_full.group(1), date_range_full.group(2), date_range_full.group(3)
-            end_d, end_m, end_y = date_range_full.group(4), date_range_full.group(5), date_range_full.group(6)
-            events.append({
-                "title": title,
-                "date_start": to_iso(int(start_d), int(start_m), int(start_y)),
-                "date_end": to_iso(int(end_d), int(end_m), int(end_y)),
-                "time_raw": time_raw,
-                "location": "TV Friedrichstal",
-                "organizer": "Turnverein Friedrichstal 1899 e.V.",
-                "description": "",
-                "event_url": url,
-            })
-        elif date_range_abbrev:
-            start_d, start_m = date_range_abbrev.group(1), date_range_abbrev.group(2)
-            end_d, end_m, end_y = date_range_abbrev.group(3), date_range_abbrev.group(4), date_range_abbrev.group(5)
-            events.append({
-                "title": title,
-                "date_start": to_iso(int(start_d), int(start_m), int(end_y)),
-                "date_end": to_iso(int(end_d), int(end_m), int(end_y)),
-                "time_raw": time_raw,
-                "location": "TV Friedrichstal",
-                "organizer": "Turnverein Friedrichstal 1899 e.V.",
-                "description": "",
-                "event_url": url,
-            })
-        elif date_range_simple:
-            start_d = date_range_simple.group(1)
-            end_d, end_m, end_y = date_range_simple.group(2), date_range_simple.group(3), date_range_simple.group(4)
-            events.append({
-                "title": title,
-                "date_start": to_iso(int(start_d), int(end_m), int(end_y)),
-                "date_end": to_iso(int(end_d), int(end_m), int(end_y)),
-                "time_raw": time_raw,
-                "location": "TV Friedrichstal",
-                "organizer": "Turnverein Friedrichstal 1899 e.V.",
-                "description": "",
-                "event_url": url,
-            })
-        else:
-            date_m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{4})', date_text)
-            if not date_m:
-                date_m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{2})', date_text)
-                if date_m:
-                    y = "20" + date_m.group(3)
-                    d, m = date_m.group(1), date_m.group(2)
-                    events.append({
-                        "title": title,
-                        "date_start": to_iso(int(d), int(m), int(y)),
-                        "date_end": None,
-                        "time_raw": time_raw,
-                        "location": "TV Friedrichstal",
-                        "organizer": "Turnverein Friedrichstal 1899 e.V.",
-                        "description": "",
-                        "event_url": url,
-                    })
-            else:
-                d, m, y = date_m.group(1), date_m.group(2), date_m.group(3)
-                events.append({
-                    "title": title,
-                    "date_start": to_iso(int(d), int(m), int(y)),
-                    "date_end": None,
-                    "time_raw": time_raw,
-                    "location": "TV Friedrichstal",
-                    "organizer": "Turnverein Friedrichstal 1899 e.V.",
-                    "description": "",
-                    "event_url": url,
-                })
+    print(f"  TV Friedrichstal: {len(events)} events", flush=True)
     return events
 
 

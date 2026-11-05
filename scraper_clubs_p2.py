@@ -61,12 +61,14 @@ def parse_german_date(day, month_name, year="2026"):
 # ─── Site 1: Kirchengemeinde Staffort-Büchenau ──────────────────────────────
 # Events loaded dynamically via Edith CMS API. No reliable static HTML extraction.
 
+
 def scrape_kg_staffort():
     return []
 
 
 # ─── Site 2: Posaunenchor Blankenloch ──────────────────────────────────────
 # Uses embedded Google Calendar iframe. No static event data.
+
 
 def scrape_posaunenchor_blankenloch():
     return []
@@ -75,59 +77,72 @@ def scrape_posaunenchor_blankenloch():
 # ─── Site 3: Evangelische Kirche Spöck ──────────────────────────────────────
 # Events loaded dynamically via Edith CMS API.
 
+
 def scrape_ek_spoeck():
     return []
 
 
 # ─── Site 4: GVL Spöck (clubdesk.com) ──────────────────────────────────────
 
+
 def scrape_gvl_spoeck():
-    """Scrape from gvl-spoeck.clubdesk.com homepage."""
+    """Scrape from gvl-spoeck.clubdesk.com homepage (clubdesk news tiles).
+
+    Since the clubdesk relaunch the tiles only carry a heading like
+    "Weihnachtskonzert am 13.12.2026" — the year is numeric, which the old
+    name-based date parsing could not read.
+    """
     url = "https://gvl-spoeck.clubdesk.com"
     try:
         html = fetch_url(url)
-    except Exception:
+    except Exception as e:
+        print(f"  GVL Spöck: fetch failed ({type(e).__name__})", flush=True)
         return []
     events = []
     seen = set()
 
-    for item_m in re.finditer(
-        r'cd-tile-v-main-heading[^>]*>(.*?)</div>.*?cd-tile-v-detail-value[^>]*>(.*?)</div>',
-        html, re.DOTALL
-    ):
-        heading = strip_html(item_m.group(1))
-        detail = strip_html(item_m.group(2))
-        date_m = re.search(r'am\s+(\d{1,2})\.(\w+)\s*(\d{4})', heading)
-        if not date_m:
-            date_m = re.search(r'am\s+(\d{1,2})\.(\w+)', heading)
-        if not date_m:
-            date_m = re.search(r'(\d{1,2})\.(\w+)\s*(\d{4})', heading)
-        if not date_m:
-            continue
-        day = date_m.group(1)
-        month_name = date_m.group(2)
-        year = date_m.group(3) if date_m.lastindex >= 3 else "2026"
-        iso = parse_german_date(day, month_name, year)
+    for tile in re.finditer(r'cd-tile-v-main-heading"[^>]*>(.*?)</div>', html, re.DOTALL):
+        heading = strip_html(tile.group(1))
+        iso = ""
+        numeric = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{4})', heading)
+        if numeric:
+            iso = f"{numeric.group(3)}-{int(numeric.group(2)):02d}-{int(numeric.group(1)):02d}"
+        else:
+            named = re.search(r'am\s+(\d{1,2})\.\s*(\w+)\s*(\d{4})', heading)
+            if named:
+                iso = parse_german_date(named.group(1), named.group(2), named.group(3)) or ""
         if not iso:
             continue
-        if iso not in seen:
-            seen.add(iso)
-            title = heading.split("am")[0].strip() if "am" in heading else heading
-            title = title.rstrip(',;:')
-            events.append({
-                "title": title if title else "Waldfest",
-                "date_start": iso,
-                "date_end": None,
-                "time_raw": "",
-                "location": "Spöck",
-                "organizer": "Gesangverein Liederkranz Spöck",
-                "description": detail,
-                "event_url": url,
-            })
+
+        window = html[tile.end():tile.end() + 2500]
+        detail_m = re.search(r'cd-tile-v-detail-value"[^>]*>(.*?)</div>', window, re.DOTALL)
+        detail = strip_html(detail_m.group(1)) if detail_m else ""
+
+        time_m = re.search(r'\bab\s+(\d{1,2})\s*Uhr', detail) or re.search(r'\bab\s+(\d{1,2})\s*Uhr', heading)
+        time_raw = f"{int(time_m.group(1)):02d}:00 Uhr" if time_m else ""
+
+        title = re.split(r'\sam\s+\d{1,2}\.', heading)[0].strip(" ,;:") or "Veranstaltung"
+        key = (title, iso)
+        if key in seen:
+            continue
+        seen.add(key)
+        events.append({
+            "title": title,
+            "date_start": iso,
+            "date_end": None,
+            "time_raw": time_raw,
+            "location": "Spöck",
+            "organizer": "Gesangverein Liederkranz Spöck",
+            "description": detail,
+            "event_url": url,
+        })
+
+    print(f"  GVL Spöck: {len(events)} events", flush=True)
     return events
 
 
 # ─── Site 5: TTF Spöck ──────────────────────────────────────────────────────
+
 
 def scrape_ttf_spoeck():
     """Scrape from ttf-spoeck.de (single static page)."""
@@ -168,11 +183,13 @@ def scrape_ttf_spoeck():
 # ─── Site 6: Friedrichstaler Backhaus ──────────────────────────────────────
 # WordPress blog - all event posts found were from 2025, none in 2026.
 
+
 def scrape_friedrichstaler_backhaus():
     return []
 
 
 # ─── Site 7: FC Friedrichstal ──────────────────────────────────────────────
+
 
 def scrape_fcfriedrichstal():
     """Scrape match events from fcfriedrichstal.de homepage."""
@@ -231,11 +248,13 @@ def scrape_fcfriedrichstal():
 # ─── Site 8: Concordia Blankenloch ──────────────────────────────────────────
 # Complex WPBakery site. No structured event data found.
 
+
 def scrape_gv_concordia_blankenloch():
     return []
 
 
 # ─── Site 9: Sängerbund Friedrichstal ──────────────────────────────────────
+
 
 def scrape_saengerbund_friedrichstal():
     """Scrape from saengerbund-friedrichstal.de homepage event table."""
@@ -306,6 +325,7 @@ def scrape_saengerbund_friedrichstal():
 
 # ─── Site 10: Gospel Unlimited ──────────────────────────────────────────────
 
+
 def scrape_gospel_unlimited():
     """Scrape from gospel-unlimited.de /termine Drupal page."""
     url = "https://www.gospel-unlimited.de/termine"
@@ -361,6 +381,7 @@ def scrape_gospel_unlimited():
 
 
 # ─── Main ────────────────────────────────────────────────────────────────────
+
 
 def scrape_clubs_p2():
     """Scrape all batch 2 club sites and return aggregated results."""

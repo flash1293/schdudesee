@@ -168,33 +168,60 @@ def scrape_ev_kirche_friedrichstal():
 
 
 def scrape_blankenloch_dlrg():
-    """DLRG Ortsgruppe Blankenloch — TYPO3 site. Check termines JSON and iCal."""
+    """DLRG Ortsgruppe Blankenloch — TYPO3 "dlrgterminkalender" cards.
+
+    The term list renders as bootstrap cards: the header carries the date
+    ("Do, 05.11.26"), the body the title, time and venue, the footer links
+    to the detail page. (Until autumn 2026 the page used news blocks with
+    four-digit years — that markup is gone.)
+    """
     events = []
+    url = "https://blankenloch.dlrg.de/die-ortsgruppe/termine/"
     try:
-        html_content = fetch_url(
-            "https://blankenloch.dlrg.de/die-ortsgruppe/termine/", timeout=10
-        )
-    except Exception:
+        html_content = fetch_url(url, timeout=15)
+    except Exception as e:
+        print(f"  DLRG Blankenloch: fetch failed ({type(e).__name__})", flush=True)
         return events
-    for block in re.findall(
-        r'<div[^>]*class="[^"]*news[^"]*"[^>]*>(.*?)</div>',
-        html_content, re.DOTALL
+
+    seen = set()
+    for card in re.finditer(
+        r'<div class="card-header">\s*([^<]*?)\s*</div>\s*'
+        r'<div class="card-body">\s*<h5 class="card-title">\s*(.*?)\s*</h5>\s*'
+        r'<p class="card-text">(.*?)</p>',
+        html_content, re.DOTALL,
     ):
-        date_m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{4})', block)
-        title_m = re.search(r'<h[1-6][^>]*>(.*?)</h[1-6]>', block)
-        if date_m and title_m:
-            iso = f"{date_m.group(3)}-{int(date_m.group(2)):02d}-{int(date_m.group(1)):02d}"
-            title = strip_html(title_m.group(1))
-            events.append({
-                "title": title,
-                "date_start": iso,
-                "date_end": None,
-                "time_raw": "",
-                "location": "Blankenloch",
-                "organizer": "DLRG Ortsgruppe Blankenloch",
-                "description": "",
-                "event_url": "https://blankenloch.dlrg.de/die-ortsgruppe/termine/",
-            })
+        header, title_html, text_html = card.groups()
+        date_m = re.search(r'(\d{1,2})\.(\d{1,2})\.(\d{2,4})', header)
+        if not date_m:
+            continue
+        year = date_m.group(3) if len(date_m.group(3)) == 4 else "20" + date_m.group(3)
+        iso = f"{year}-{int(date_m.group(2)):02d}-{int(date_m.group(1)):02d}"
+
+        title = strip_html(title_html)
+        if len(title) < 3:
+            continue
+
+        plain = strip_html(text_html)
+        time_m = re.search(r'\d{1,2}:\d{2}\s*-\s*\d{1,2}:\d{2}\s*Uhr', plain)
+        loc_m = re.search(r'Ort:\s*(.+)$', plain)
+        detail_m = re.search(r'href="(/termindetails/[^"]+)"', html_content[card.end():card.end() + 600])
+
+        key = (title, iso)
+        if key in seen:
+            continue
+        seen.add(key)
+        events.append({
+            "title": title,
+            "date_start": iso,
+            "date_end": None,
+            "time_raw": time_m.group(0) if time_m else "",
+            "location": (loc_m.group(1).strip() if loc_m else "") or "Blankenloch",
+            "organizer": "DLRG Ortsgruppe Blankenloch",
+            "description": "",
+            "event_url": ("https://blankenloch.dlrg.de" + detail_m.group(1)) if detail_m else url,
+        })
+
+    print(f"  DLRG Blankenloch: {len(events)} events", flush=True)
     return events
 
 

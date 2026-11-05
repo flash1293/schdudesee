@@ -110,8 +110,25 @@ def scrape_kinderkalender():
     events = []
     base = "https://stutenseekinderkalender.de/wp-json/tribe/events/v1/events/?per_page=50&start_date=2025-01-01+00%3A00%3A00&end_date=2029-12-31+23%3A59%3A59&status=publish&page={}"
     page = 1
+    failed_pages = []
+    last_error = None
     while True:
-        data = json.loads(fetch_url(base.format(page)))
+        data = None
+        # The calendar answers with ~115 pages of 50 events. A single hiccup on
+        # the way used to throw away everything collected so far, so each page
+        # is retried a few times and the pages already read are kept.
+        for attempt in range(3):
+            try:
+                data = json.loads(fetch_url(base.format(page)))
+                break
+            except Exception as e:
+                last_error = e
+                if attempt < 2:
+                    time.sleep(2 * (attempt + 1))
+        if data is None:
+            failed_pages.append(page)
+            print(f"  Kinderkalender page {page} failed: {last_error}", flush=True)
+            break
         for e in data.get("events", []):
             title = html.unescape(e.get("title", ""))
             start = e.get("start_date", "")
@@ -131,6 +148,10 @@ def scrape_kinderkalender():
         if not data.get("next_rest_url"):
             break
         page += 1
+    if not events:
+        raise RuntimeError(f"Kinderkalender: no page could be read ({last_error})")
+    if failed_pages:
+        print(f"  WARNING: Kinderkalender incomplete \u2014 page(s) {failed_pages} could not be read", flush=True)
     return {"source_url": "https://stutenseekinderkalender.de", "events": events}
 
 
@@ -1145,9 +1166,9 @@ if __name__ == "__main__":
     # source that stopped responding used to keep the run busy until the
     # platform ended the job, which left the run marked "running".)
     try:
-        scrape_deadline = int(os.environ.get("SCRAPE_DEADLINE", "150"))
+        scrape_deadline = int(os.environ.get("SCRAPE_DEADLINE", "180"))
     except ValueError:
-        scrape_deadline = 150
+        scrape_deadline = 180
 
     todo = list(sources)
     todo_lock = threading.Lock()
@@ -1161,12 +1182,26 @@ if __name__ == "__main__":
                 if not todo:
                     return
                 name, scraper_func = todo.pop(0)
+            started = time.monotonic()
             try:
                 data = scraper_func()
                 n = insert_raw(data)
                 outcome = (len(data["events"]), n, None)
             except Exception as e:  # a broken source must not stop the run
-                outcome = (0, 0, str(e))
+                # The workspace gateway occasionally answers 502 for a few
+                # seconds. A fast source gets one quick second attempt before
+                # it is written off; slow sources are not retried, because
+                # doubling them would eat the stage deadline.
+                if time.monotonic() - started < 30:
+                    time.sleep(3)
+                    try:
+                        data = scraper_func()
+                        n = insert_raw(data)
+                        outcome = (len(data["events"]), n, None)
+                    except Exception as retry_error:
+                        outcome = (0, 0, str(retry_error))
+                else:
+                    outcome = (0, 0, str(e))
             with results_lock:
                 results[name] = outcome
 
