@@ -1,0 +1,21 @@
+{
+  "title": "Kuchenverkauf Kita Regenbogen",
+  "date_start": "2026-11-07",
+  "date_end": "2026-11-07",
+  "time_raw": "09:00",
+  "location": "Hagebaumarkt",
+  "organizer": "Evang. Kindergarten Regenbogen Friedrichstal",
+  "description": "Beim Kuchenverkauf werden Kuchen, Torten und Plätzchen zum Mitnehmen angeboten. Der Erlös kommt dem Förderverein des Kindergartens Regenbogen in Friedrichstal zugute.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/kuchenverkauf-kita-regenbogen/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Kinder",
+    "Essen",
+    "Friedrichstal"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Buchzauber",
+  "date_start": "2026-11-12",
+  "date_end": "2026-11-12",
+  "time_raw": "19:30",
+  "location": "Haus am Mühlenplatz",
+  "organizer": "Bibliothek am Mühlenplatz mit der Buchhandlung Carolin Wolf",
+  "description": "",
+  "event_url": "https://www.karlsdorf-neuthard.de/eventcalendar?calendar=1&action=view_event&event_id=549",
+  "sources": [
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
+  ],
+  "tags": [],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
