@@ -1,19 +1,20 @@
 {
-  "title": "Vortrag Betrügereien in der digitalen Welt",
+  "title": "Vortrag: Betrügereien in der digitalen Welt",
   "date_start": "2026-11-12",
-  "date_end": null,
-  "time_raw": "18:00 - 19:30 Uhr",
-  "location": "Veranstaltungsort:\n\t\tZukunftshaus",
+  "date_end": "2026-11-12",
+  "time_raw": "18:00",
+  "location": "Begegnungszentrum Regenbogen Spöck",
   "organizer": "Zukunftshaus Stutensee",
-  "description": "Betrügereien im Internet nehmen leider immer mehr zu. Das Polizeipräsidium Karlsruhe kommt daher ins Zukunftshaus, um über die aktuellen Betrugsmaschen aufzuklären.",
-  "event_url": "https://www.stutensee.de/de/Aktuelles/Veranstaltungskalender/Veranstaltung?view=publish&item=eventDate&id=2715",
+  "description": "Das Polizeipräsidium klärt in einem Vortrag im Zukunftshaus über Tricks und Kniffe von Betrügern im digitalen Alltag auf. Es wird aufgezeigt, wie man sich effektiv dagegen schützen kann. Auch jüngere Generationen fallen zunehmend auf die gut gemachten und immer echter wirkenden Tricks herein. Wer sich auskennt und regelmäßig informiert, geht den Betrügern nicht so leicht auf den Leim.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/vortrag-betruegereien-in-der-digitalen-welt/",
   "sources": [
+    "https://meinstutensee.de/termine/",
     "https://stutensee.de/Veranstaltungen"
   ],
   "tags": [
     "Bildung",
-    "Digital",
-    "Blankenloch"
+    "Blankenloch",
+    "Digital"
   ],
   "recurring_group_id": null,
   "is_passed": 0,

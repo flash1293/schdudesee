@@ -1,0 +1,21 @@
+{
+  "title": "BesuchBar",
+  "date_start": "2026-12-10",
+  "date_end": "2026-12-10",
+  "time_raw": "18:00",
+  "location": "Amalienstr. 2a, 76689 Karlsdorf-Neuthard",
+  "organizer": "Bibliothek am Mühlenplatz Karlsdorf-Neuthard",
+  "description": "Die After-Work-Party mit Cocktails und Musik Lassen Sie den Tag entspannt ausklingen, mit der BesuchBar! Es erwartet Sie ein wundervoller Abend mit leckeren Cocktails und Musik. Genießen Sie die Zeit und feiern Sie mit uns eine After-Work-Party! Schauen Sie einfach vorbei, wir freuen uns auf Ihren Besuch!",
+  "event_url": "https://landfunker.de/veranstaltung/besuchbar/",
+  "sources": [
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+  ],
+  "tags": [
+    "Musik",
+    "Fest",
+    "Neuthard"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
