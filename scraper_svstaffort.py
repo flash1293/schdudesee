@@ -47,11 +47,18 @@ def parse_date_time(raw):
     return "", ""
 
 
-def fetch_page(url, timeout=30):
-    """Fetch a URL and return decoded HTML."""
-    req = urllib.request.Request(url, headers={"User-Agent": "StutenseeEvents/1.0"})
-    resp = urllib.request.urlopen(req, timeout=timeout)
-    return resp.read().decode("utf-8", errors="replace")
+def fetch_page(url, timeout=30, attempts=4):
+    """Fetch a URL with retries — the server occasionally answers 502."""
+    import time
+    for attempt in range(attempts):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "StutenseeEvents/1.0"})
+            resp = urllib.request.urlopen(req, timeout=timeout)
+            return resp.read().decode("utf-8", errors="replace")
+        except Exception:
+            if attempt == attempts - 1:
+                raise
+            time.sleep(5 * (attempt + 1))
 
 
 def scrape_svstaffort():
