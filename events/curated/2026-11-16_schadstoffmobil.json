@@ -1,0 +1,20 @@
+{
+  "title": "Schadstoffmobil",
+  "date_start": "2026-11-16",
+  "date_end": "2026-11-16",
+  "time_raw": "08:00",
+  "location": "Parkplatz Spechaahalle Spöck",
+  "organizer": "Abfallwirtschaftsbetrieb Landkreis Karlsruhe",
+  "description": "",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/schadstoffmobil/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Natur",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}

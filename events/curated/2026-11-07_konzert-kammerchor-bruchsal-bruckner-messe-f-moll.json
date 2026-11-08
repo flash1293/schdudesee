@@ -6,7 +6,7 @@
   "location": "Kath. Kirche St. Paul Bruchsal, Parkplatz, neben Hagelkreuz 18, 76646 Bruchsal",
   "organizer": "Kammerchor Bruchsal e. V.",
   "description": "Bruckners berührende Messe in F-Moll -Aufführung zusammen mit dem Konzertchor Ludwigshafen und dem Orchester Concerto Camerata",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9101705/index.html?nodeID=9101705",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9101705/KonzertKammerchorBruchsalBrucknerMessefMoll.html?nodeID=9101705",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -16,6 +16,6 @@
     "Bruchsal"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }

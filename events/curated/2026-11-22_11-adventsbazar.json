@@ -1,0 +1,21 @@
+{
+  "title": "11. Adventsbazar",
+  "date_start": "2026-11-22",
+  "date_end": "2026-11-22",
+  "time_raw": "11:00",
+  "location": "Spechaahalle Spöck",
+  "organizer": "Motorradfreunde Spöck",
+  "description": "Der 11. Adventsbazar bietet Handarbeiten, Produkte von Hobbykünstlern, Liköre und weihnachtliche Gestecke an. Für adventliche Stimmung sorgen Kaffee, Kuchen, Kaltgetränke sowie Linsen, Spätzle und Wiener. Der Erlös kommt dem SOS Kinderdorf in Eisenberg zugute.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/11-adventsbazar/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Kinder",
+    "Handwerk",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
