@@ -60,10 +60,21 @@ from scraper_clubs import scrape_clubs
 
 DB = "stutensee_events.db"
 
-def fetch_url(url, timeout=30):
-    req = urllib.request.Request(url, headers={"User-Agent": "StutenseeEvents/1.0"})
-    resp = urllib.request.urlopen(req, timeout=timeout)
-    return resp.read().decode("utf-8", errors="replace")
+def fetch_url(url, timeout=30, attempts=3):
+    # The workspace gateway and slow websites occasionally answer 502 or drop
+    # out for a few seconds. Small waits in between usually clear it up without
+    # making the scrape noticeably slower.
+    last_error = None
+    for attempt in range(attempts):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "StutenseeEvents/1.0"})
+            resp = urllib.request.urlopen(req, timeout=timeout)
+            return resp.read().decode("utf-8", errors="replace")
+        except Exception as e:
+            last_error = e
+            if attempt + 1 < attempts:
+                time.sleep(2 * (attempt + 1))
+    raise last_error
 
 
 def scrape_official():

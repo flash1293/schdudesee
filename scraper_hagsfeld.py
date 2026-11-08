@@ -14,10 +14,11 @@ Structure (Contao):
 
 import re
 import sys
+import time
 from datetime import datetime, date
 from urllib.parse import urljoin
 
-import requests
+import urllib.request
 from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.hagsfeld.de"
@@ -25,22 +26,37 @@ LIST_URL = BASE_URL + "/termine"
 ORGANIZER = "Bürgerkommission Hagsfeld e.V."
 
 
-def fetch_url(url: str, session: requests.Session) -> str | None:
-    try:
-        resp = session.get(url, timeout=30)
-        resp.raise_for_status()
-        return resp.text
-    except Exception:
-        return None
+def fetch_url(url: str, attempts: int = 3) -> str:
+    """Fetch a URL, retrying on transient network errors (timeouts, 502s).
+
+    The site is occasionally slow and briefly unavailable — fetching used to
+    fail silently and the run recorded "0 fetched" even though the website had
+    plenty of events, which tripped the health check as if the source had gone
+    dark. Failures now retry and, if they persist, propagate so the run reports
+    them as an ERROR instead of an empty result.
+    """
+    last_error: Exception | None = None
+    for attempt in range(attempts):
+        try:
+            req = urllib.request.Request(
+                url, headers={"User-Agent": "Mozilla/5.0 (compatible; StutenseeEvents/1.0)"}
+            )
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                return resp.read().decode("utf-8", errors="replace")
+        except Exception as e:
+            last_error = e
+            if attempt + 1 < attempts:
+                time.sleep(2 * (attempt + 1))
+    raise last_error
 
 
 def parse_datetime_attr(dt_value: str) -> tuple[str | None, str | None]:
-    """Parse a datetime attribute value from Contao's <time> element.
+    """
+    Parse a datetime attribute value from Contao's <time> element.
     Returns (date_start, time_raw).
     Examples:
       '2026-05-01' -> ('2026-05-01', None)
       '2026-05-01T11:00:00+02:00' -> ('2026-05-01', '11:00')
-      '2026-06-11T14:00:00+01:00' -> ('2026-06-11', '14:00')
     """
     m = re.match(r"(\d{4}-\d{2}-\d{2})", dt_value)
     if not m:
@@ -54,7 +70,8 @@ def parse_datetime_attr(dt_value: str) -> tuple[str | None, str | None]:
 
 
 def parse_date_range(text: str) -> tuple[str | None, str | None]:
-    """Parse a German date range text like '11.06.2026–14.06.2026'.
+    """
+    Parse a German date range text like '11.06.2026–14.06.2026'.
     Returns (date_start, date_end).
     """
     dates = re.findall(r"(\d{2})\.(\d{2})\.(\d{4})", text)
@@ -67,7 +84,7 @@ def parse_date_range(text: str) -> tuple[str | None, str | None]:
     return (None, None)
 
 
-def parse_event_list(html: str, session: requests.Session) -> list[dict]:
+def parse_event_list(html: str) -> list[dict]:
     """Parse events from a list page, then enrich with detail page data."""
     soup = BeautifulSoup(html, "html.parser")
     events = []
@@ -103,13 +120,13 @@ def parse_event_list(html: str, session: requests.Session) -> list[dict]:
                     date_start = s
                 if e:
                     date_end = e
-                # Also check if datetime attribute has date_end in detail page
 
-            # Fetch detail page for more info
+            # Fetch detail page for more info. A transient failure on one detail
+            # page must not lose the event: fall back to the list-page data.
             location = ""
             description = ""
-            detail_html = fetch_url(detail_url, session)
-            if detail_html:
+            try:
+                detail_html = fetch_url(detail_url, attempts=2)
                 detail_soup = BeautifulSoup(detail_html, "html.parser")
                 # Try JSON-LD first (most reliable)
                 for script in detail_soup.find_all("script", type="application/ld+json"):
@@ -131,15 +148,13 @@ def parse_event_list(html: str, session: requests.Session) -> list[dict]:
                                 if not description:
                                     desc = item.get("description", "")
                                     if desc:
-                                        # Strip HTML tags
-                                        desc_clean = re.sub(r"<[^>]+>", "", desc).strip()
-                                        description = desc_clean
+                                        description = re.sub(r"<[^>]+>", "", desc).strip()
                                 if not date_end:
                                     ed = item.get("endDate")
                                     if ed and ed != item.get("startDate"):
                                         date_end = ed[:10]
                                 break
-                    except (json.JSONDecodeError, AttributeError):
+                    except Exception:
                         continue
 
                 # Fallback: parse HTML
@@ -156,6 +171,8 @@ def parse_event_list(html: str, session: requests.Session) -> list[dict]:
                             if t:
                                 desc_parts.append(t)
                         description = "\n\n".join(desc_parts) if desc_parts else ""
+            except Exception:
+                pass  # keep the (title, date) from the list page
 
             events.append({
                 "title": title,
@@ -174,23 +191,13 @@ def parse_event_list(html: str, session: requests.Session) -> list[dict]:
 
 
 def scrape_hagsfeld() -> dict:
-    session = requests.Session()
-    session.headers.update({"User-Agent": "Mozilla/5.0 (compatible; StutenseeBot/1.0)"})
-
-    all_events = []
-    seen_urls = set()
+    all_events: list[dict] = []
+    seen_urls: set[str] = set()
 
     for page_num in range(1, 3):  # 2 pages
-        if page_num == 1:
-            url = LIST_URL
-        else:
-            url = f"{LIST_URL}?page_e103={page_num}"
-
-        html = fetch_url(url, session)
-        if not html:
-            continue
-
-        events = parse_event_list(html, session)
+        url = LIST_URL if page_num == 1 else f"{LIST_URL}?page_e103={page_num}"
+        html = fetch_url(url)
+        events = parse_event_list(html)
         for e in events:
             if e["event_url"] not in seen_urls:
                 seen_urls.add(e["event_url"])
@@ -204,8 +211,4 @@ def scrape_hagsfeld() -> dict:
 
 if __name__ == "__main__":
     result = scrape_hagsfeld()
-    print(f"Found {len(result['events'])} events from Hagsfeld")
-    for e in result["events"]:
-        loc = e["location"] or "—"
-        desc = e["description"][:60] + "..." if len(e.get("description", "")) > 60 else e.get("description", "")
-        print(f"  {e['date_start']} {e['time_raw'] or '':>5} | {e['title'][:40]:40} | {loc[:25]:25} | {desc[:40]}")
+    print(f"fetched {len(result['events'])} events from {result['source_url']}")
