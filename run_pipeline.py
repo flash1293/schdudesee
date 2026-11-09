@@ -230,7 +230,9 @@ def scrape_meinstutensee():
 
 def scrape_buergerwerkstatt():
     events = []
-    html_content = fetch_url("https://buergerwerkstatt-stutensee.de/veranstaltungen/")
+    # The host has been answering 502 bursts that outlast the default fetch
+    # retries; give it more attempts (waits grow to ~30 s in total).
+    html_content = fetch_url("https://buergerwerkstatt-stutensee.de/veranstaltungen/", timeout=15, attempts=6)
     for art in re.findall(r'<article[^>]*class="teaser[^"]*"[^>]*>(.*?)</article>', html_content, re.DOTALL):
         title_m = re.search(r'<h5[^>]*class="entry-header-teaser"[^>]*>([^<]+)</h5>', art)
         link_m = re.search(r'<a[^>]*class="read-more"[^>]*href="([^"]+)"', art)
@@ -261,7 +263,7 @@ def scrape_buechigerleben():
     from bs4 import BeautifulSoup
     events = []
     try:
-        html = fetch_url("https://www.buechigerleben.de/", timeout=10)
+        html = fetch_url("https://www.buechigerleben.de/", timeout=10, attempts=4)
     except Exception as e:
         print(f"  Error: {e}", flush=True)
         return {"source_url": "https://www.buechigerleben.de/", "events": []}
