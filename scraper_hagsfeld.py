@@ -194,10 +194,22 @@ def scrape_hagsfeld() -> dict:
     all_events: list[dict] = []
     seen_urls: set[str] = set()
 
-    for page_num in range(1, 3):  # 2 pages
+    for page_num in range(1, 3):  # up to 2 pages
         url = LIST_URL if page_num == 1 else f"{LIST_URL}?page_e103={page_num}"
-        html = fetch_url(url)
+        try:
+            html = fetch_url(url)
+        except urllib.error.HTTPError as e:
+            # The site answers 404 (instead of an empty page) when the requested
+            # calendar page does not exist — e.g. after the pagination param name
+            # changed or the upcoming list shrank to less than a full page. This
+            # simply means there are no more pages; stop instead of failing the
+            # whole source.
+            if e.code == 404 and page_num > 1:
+                break
+            raise
         events = parse_event_list(html)
+        if not events:
+            break
         for e in events:
             if e["event_url"] not in seen_urls:
                 seen_urls.add(e["event_url"])
