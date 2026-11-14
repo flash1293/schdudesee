@@ -3,6 +3,13 @@
 This document defines how YEAP bots operate within the schdudesee repository.
 All bots (Pferd, Hammer, Besen, Pinsel, Wobby) MUST read and follow this.
 
+> **Status 2026-11-14:** The website is served entirely by Zeitlos
+> (flash1293/hey-stutensee-zeitlos). The Cloudflare stack (worker, D1 dump,
+> preview/deploy workflows, `index.html` template) was removed from this
+> repository — it only lives in git history now. `main` contains the scrapers,
+> the curation pipeline and the event data; the daily pipeline still publishes
+> data-only commits to `main`.
+
 ---
 
 ## 1. Git & PR Workflow
