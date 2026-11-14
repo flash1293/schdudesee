@@ -1,0 +1,20 @@
+{
+  "title": "Theateraufführung",
+  "date_start": "2027-11-06",
+  "date_end": null,
+  "time_raw": "",
+  "location": "Festhalle Stutensee-Blankenloch",
+  "organizer": "Theatergruppe Hoffmann e.V.",
+  "description": "",
+  "event_url": "https://www.theatergruppehoffmann.de/veranstaltungen/",
+  "sources": [
+    "clubs_batch_all"
+  ],
+  "tags": [
+    "Kultur",
+    "Blankenloch"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
