@@ -7,51 +7,59 @@ function injectChat() {
   // Inject chat CSS
   const style = document.createElement('style');
   style.textContent =
-    '.chat-sidebar{width:50%;max-width:520px;min-width:340px;display:none;flex-direction:column;background:var(--card-bg);border-left:1px solid var(--border);overflow:hidden}' +
+    '.chat-sidebar{width:min(440px,46vw);min-width:340px;display:none;flex-direction:column;background:var(--surface);border-left:1px solid var(--border);overflow:hidden}' +
     '.chat-sidebar.open{display:flex}' +
-    '@media(min-width:901px){.chat-open{display:flex;flex-direction:row;height:100vh;overflow:hidden}.chat-open .page-left{overflow-y:auto;height:100vh}.chat-open .chat-sidebar{height:100vh}.chat-open header{padding:6px 16px}.chat-open .schdudesee-logo{height:44px}}' +
-    '.chat-sidebar .chat-header{background:var(--primary);color:#fff;padding:12px 16px;font-weight:600;font-size:15px;display:flex;align-items:center;gap:8px;flex-shrink:0}' +
-    '.chat-sidebar .chat-header span{flex:1}' +
-    '.chat-sidebar .chat-close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0 4px;opacity:0.8}' +
-    '.chat-sidebar .chat-close:hover{opacity:1}' +
-    '.chat-sidebar .chat-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}' +
-    '.chat-sidebar .chat-msg{max-width:85%;padding:8px 12px;border-radius:12px;font-size:13px;line-height:1.5;word-wrap:break-word;animation:fadeInUp 0.2s ease}' +
-    '.chat-sidebar .chat-msg.user{background:var(--primary);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}' +
-    '.chat-sidebar .chat-msg.assistant{background:var(--primary-light);color:var(--text);align-self:flex-start;border-bottom-left-radius:4px}' +
-    '.chat-sidebar .chat-msg.system{background:var(--gold-light);color:var(--tag-org-text);align-self:center;font-size:12px;padding:4px 10px;border-radius:8px}' +
-    '.chat-sidebar .chat-msg .event-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:8px 10px;margin-top:6px;cursor:pointer;transition:box-shadow 0.2s}' +
-    '.chat-sidebar .chat-msg .event-card:hover{box-shadow:0 2px 8px rgba(0,0,0,0.1)}' +
-    '.chat-sidebar .chat-msg .event-card .ev-title{font-weight:600;font-size:13px;color:var(--text)}' +
-    '.chat-sidebar .chat-msg .event-card .ev-meta{font-size:11px;color:var(--text-muted);margin-top:2px}' +
-    '.chat-sidebar .chat-msg .event-card .ev-desc{font-size:11px;color:var(--desc-text);margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}' +
-    '.chat-sidebar .chat-input-wrap{display:flex;gap:8px;padding:10px 12px;border-top:1px solid var(--border);flex-shrink:0}' +
-    '.chat-sidebar .chat-input{flex:1;border:1.5px solid var(--border);border-radius:20px;padding:8px 14px;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text);outline:none;transition:border-color 0.2s}' +
-    '.chat-sidebar .chat-input:focus{border-color:var(--primary)}' +
-    '.chat-sidebar .chat-send{width:36px;height:36px;border-radius:50%;background:var(--primary);color:#fff;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s}' +
-    '.chat-sidebar .chat-send:hover{background:var(--primary-dark,var(--primary))}' +
-    '.chat-sidebar .chat-send:disabled{opacity:0.5;cursor:default}' +
-    '.chat-sidebar .chat-loading{display:flex;align-items:center;gap:6px;padding:8px 12px;font-size:12px;color:var(--text-muted)}' +
+    '@media(min-width:961px){.chat-open .chat-sidebar{height:100vh}}' +
+    '.chat-sidebar .chat-header{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--navy,#0d3a71);color:#fff;flex-shrink:0}' +
+    '.chat-sidebar .chat-header-icon{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:rgba(255,255,255,.14);flex:none}' +
+    '.chat-sidebar .chat-header-icon svg{width:17px;height:17px}' +
+    '.chat-sidebar .chat-header-copy{display:flex;flex-direction:column;line-height:1.2;flex:1;min-width:0}' +
+    '.chat-sidebar .chat-header-title{font-size:14px;font-weight:700;letter-spacing:-.1px}' +
+    '.chat-sidebar .chat-header-sub{font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.6)}' +
+    '.chat-sidebar .chat-close{display:grid;place-items:center;width:30px;height:30px;padding:0;border:1px solid rgba(255,255,255,.2);border-radius:8px;background:rgba(255,255,255,.08);color:#fff;cursor:pointer;transition:background .18s}' +
+    '.chat-sidebar .chat-close:hover{background:rgba(255,255,255,.2)}' +
+    '.chat-sidebar .chat-close svg{width:14px;height:14px}' +
+    '.chat-sidebar .chat-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg);scroll-behavior:smooth}' +
+    '.chat-sidebar .chat-msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:13.5px;line-height:1.55;word-wrap:break-word}' +
+    '.chat-sidebar .chat-msg.user{background:var(--navy,#0d3a71);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}' +
+    '.chat-sidebar .chat-msg.assistant{background:var(--surface);color:var(--text);border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:5px}' +
+    '.chat-sidebar .chat-msg.system{background:var(--gold-light);color:var(--gold-ink);align-self:center;font-size:12px;padding:5px 11px;border-radius:9px}' +
+    '.chat-sidebar .chat-msg .event-card{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:9px 11px;margin-top:7px;cursor:pointer;transition:border-color .18s,box-shadow .18s}' +
+    '.chat-sidebar .chat-msg .event-card:hover{border-color:var(--border-strong);box-shadow:var(--shadow-sm)}' +
+    '.chat-sidebar .chat-msg .event-card .ev-title{font-weight:650;font-size:13px;color:var(--text)}' +
+    '.chat-sidebar .chat-msg .event-card .ev-meta{font-size:11.5px;color:var(--text-muted);margin-top:2px}' +
+    '.chat-sidebar .chat-msg .event-card .ev-desc{font-size:11.5px;color:var(--text-muted);margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}' +
+    '.chat-sidebar .chat-input-wrap{display:flex;align-items:center;gap:8px;padding:12px;border-top:1px solid var(--border);background:var(--surface);flex-shrink:0}' +
+    '.chat-sidebar .chat-input{flex:1;height:40px;border:1px solid var(--border);border-radius:11px;padding:0 13px;font-size:13.5px;font-family:inherit;background:var(--surface-2);color:var(--text);outline:none;transition:border-color .18s,box-shadow .18s}' +
+    '.chat-sidebar .chat-input:focus{border-color:var(--navy,#0d3a71);box-shadow:var(--ring);background:var(--surface)}' +
+    '.chat-sidebar .chat-send{width:40px;height:40px;border-radius:11px;background:var(--navy,#0d3a71);color:#fff;border:none;cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:background .18s,transform .18s}' +
+    '.chat-sidebar .chat-send svg{width:16px;height:16px}' +
+    '.chat-sidebar .chat-send:hover{background:var(--navy-deep,#0a2c56)}' +
+    '.chat-sidebar .chat-send:active{transform:scale(.96)}' +
+    '.chat-sidebar .chat-send:disabled{opacity:.45;cursor:default}' +
+    '.chat-sidebar .chat-loading{display:flex;align-items:center;gap:7px;padding:8px 12px;font-size:12px;color:var(--text-muted)}' +
     '.chat-sidebar .chat-loading .dots{display:flex;gap:3px}' +
-    '.chat-sidebar .chat-loading .dots span{width:6px;height:6px;border-radius:50%;background:var(--text-muted);animation:bounce 1.4s ease-in-out infinite}' +
-    '.chat-sidebar .chat-loading .dots span:nth-child(2){animation-delay:0.16s}' +
-    '.chat-sidebar .chat-loading .dots span:nth-child(3){animation-delay:0.32s}' +
+    '.chat-sidebar .chat-loading .dots span{width:6px;height:6px;border-radius:50%;background:var(--text-faint);animation:bounce 1.4s ease-in-out infinite}' +
+    '.chat-sidebar .chat-loading .dots span:nth-child(2){animation-delay:.16s}' +
+    '.chat-sidebar .chat-loading .dots span:nth-child(3){animation-delay:.32s}' +
     '@keyframes bounce{0%,80%,100%{transform:scale(0)}40%{transform:scale(1)}}' +
-    '@media(max-width:900px){.chat-sidebar{position:fixed;top:0;left:0;right:auto;width:100%;max-width:none;height:100%;z-index:999;border-left:none;border-radius:0;animation:slideUp 0.25s ease}@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}}';
+    '@media(max-width:960px){.chat-sidebar{position:fixed;inset:0;width:100%;min-width:0;max-width:none;height:100%;z-index:999;border-left:none}}';
   document.head.appendChild(style);
   const mount = document.getElementById('chat-mount');
   if (!mount) return;
   mount.innerHTML =
-    '<aside class="chat-sidebar" id="chat-sidebar">' +
+    '<aside class="chat-sidebar" id="chat-sidebar" aria-label="KI-Chat">' +
       '<div class="chat-header">' +
-        '<span>🤖 Veranstaltungs-Chat</span>' +
-        '<button type="button" class="chat-close" aria-label="Chat schließen" onclick="toggleChat()">✕</button>' +
+        '<span class="chat-header-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 9 9 0 0 1-3.8-.9L3 21l1.9-5.7A8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg></span>' +
+        '<span class="chat-header-copy"><span class="chat-header-title">Termine-Chat</span><span class="chat-header-sub">KI-Assistent</span></span>' +
+        '<button type="button" class="chat-close" aria-label="Chat schließen" onclick="toggleChat()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button>' +
       '</div>' +
       '<div class="chat-messages" id="chat-messages">' +
-        '<div class="chat-msg assistant">Hallo! Ich bin der KI-Assistent für "Hey, Stutensee!". Du kannst mich nach Veranstaltungen fragen, z.B. "Was ist am Wochenende los?" oder "Gibt es Sportevents im Juni?".</div>' +
+        '<div class="chat-msg assistant">Hallo! Ich bin der KI-Assistent für „Hey, Stutensee!“. Frag mich nach Veranstaltungen – zum Beispiel „Was ist am Wochenende los?“ oder „Gibt es Sportevents im Juni?“.</div>' +
       '</div>' +
       '<div class="chat-input-wrap">' +
-        '<input class="chat-input" id="chat-input" type="text" placeholder="Frage nach Veranstaltungen..." aria-label="Nachricht eingeben" onkeydown="if(event.key===\'Enter\')sendChat()">' +
-        '<button type="button" class="chat-send" id="chat-send" aria-label="Nachricht senden" onclick="sendChat()">➤</button>' +
+        '<input class="chat-input" id="chat-input" type="text" placeholder="Frage nach Veranstaltungen…" aria-label="Nachricht eingeben" onkeydown="if(event.key===\'Enter\')sendChat()">' +
+        '<button type="button" class="chat-send" id="chat-send" aria-label="Nachricht senden" onclick="sendChat()"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></button>' +
       '</div>' +
     '</aside>';
 }

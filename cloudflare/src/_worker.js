@@ -6,14 +6,15 @@ const THEME_KEYS = new Set(['Sport','Musik','Kultur','Kirche','Kinder','Fest','M
 const DISTRICT_KEYS = new Set(['Blankenloch','Bruchsal','Bretten','Büchenau','Büchig','Durlach','Eggenstein','Friedrichstal','Graben-Neudorf','Hagsfeld','Karlsruhe-Innenstadt','Leopoldshafen','Linkenheim','Neureut','Neuthard','Rintheim','Spöck','Staffort','Waldstadt','Weingarten']);
 const DISTRICT_LIST_STR = [...DISTRICT_KEYS].sort().join(', ');
 
-const TAG_EMOJIS = {
-  'Sport':'⚽','Musik':'🎵','Kultur':'🎭','Kirche':'⛪','Kinder':'🧒','Fest':'🎉',
-  'Markt':'🛒','Workshop':'🔧','Bildung':'📚','Natur':'🌿','Senioren':'👴','Digital':'💻',
-  'Handwerk':'✂️','Essen':'🍽️','Treff':'☕','Politik':'🗳️','Verein':'🤝','Wohltätigkeit':'❤️',
-  'Sonstiges':'📌'
-};
-
 const SSR_PER_PAGE = 12;
+
+// Inline stroke icons (no emoji, consistent weight across platforms).
+const ICON = {
+  clock: '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
+  pin: '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+  arrow: '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  star: '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9z"/></svg>',
+};
 
 // ── Exports ───────────────────────────────────────────────────────────
 export default {
@@ -150,6 +151,25 @@ function escapeHtml(s) {
     .replace(/"/g, '&quot;');
 }
 
+/** Inline brand mark (S + waves). `suffix` keeps SVG clip-path ids unique per page. */
+function brandMarkSvg(suffix = 'x') {
+  const id = escapeHtml(String(suffix).replace(/[^a-z0-9_-]/gi, ''));
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 4 100 96" focusable="false" aria-hidden="true">
+      <defs>
+        <clipPath id="s-clip-${id}"><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80">S</text></clipPath>
+        <clipPath id="tip-clip-${id}"><rect x="52" y="8" width="24" height="32"/></clipPath>
+      </defs>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#fab800">S</text>
+      <text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#dd291a" clip-path="url(#tip-clip-${id})">S</text>
+      <g clip-path="url(#s-clip-${id})">
+        <path d="M-5 60 Q5 54 15 60 Q25 66 35 60 Q45 54 55 60 Q65 66 75 60 Q85 54 95 60" stroke="#0d3a71" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M-5 69 Q5 63 15 69 Q25 75 35 69 Q45 63 55 69 Q65 75 75 69 Q85 63 95 69" stroke="#1a5299" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M-5 78 Q5 72 15 78 Q25 84 35 78 Q45 72 55 78 Q65 84 75 78 Q85 72 95 78" stroke="#3a7bc8" stroke-width="10" fill="none" stroke-linecap="round"/>
+      </g>
+    </svg>`;
+}
+
 /** Safely serialize a value for embedding in a <script> tag (prevents XSS via </script>). */
 function jsonForScriptTag(value) {
   return JSON.stringify(value)
@@ -167,7 +187,7 @@ function fmtDate(iso) {
 
 /** Build a URL slug from an event title (without the ID prefix). */
 function eventSlug(event) {
-  return slugify(event.title);
+  return slugify(decode(event.title || ''));
 }
 
 /** Build the full event URL path: /events/{id}/{slug}. */
@@ -222,68 +242,127 @@ async function fetchFeaturedEvents(env) {
   return results;
 }
 
+// ── Card presentation helpers ─────────────────────────────────────────
+
+// Description cleanup: scraped pages often carry icon rows, contact blocks and
+// metadata labels ("Datum", "Veranstalter", "Auf Karte anzeigen"). We keep only
+// prose-like lines and drop the rest so cards don't show machine noise.
+const DESC_JUNK_LINE = /^(?:icon\.[\w.]+|auf karte anzeigen|karte|zur website|website|e-?mail(?: schreiben)?|telefonnummer:?|faxnummer:?|veranstalter|veranstaltungsort|datum|uhrzeit|beschreibung|anfahrt|öffnungszeiten|kontakt)$/i;
+const DESC_CONTACT_LINE = /^(?:postfach\b|tel\.?:?\s|\+?\(?\d[\d\s()\/-]{8,}$|.*@.*\.[a-z]{2,}$)/i;
+const DESC_WEEKDAY_RE = /\b(?:montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag)\b/gi;
+
+function normalizeText(raw) {
+  return String(raw || '').replace(/\u00a0/g, ' ').replace(/\r/g, '').replace(/[ \t]+/g, ' ').trim();
+}
+
+/** Split a scraped description into blocks that still contain readable prose. */
+function descriptionBlocks(raw) {
+  if (!raw) return [];
+  const text = normalizeText(raw);
+  const blocks = [];
+  for (const chunk of text.split(/\n\s*\n/)) {
+    const kept = [];
+    for (const rawLine of chunk.split('\n')) {
+      const line = rawLine.trim();
+      if (!line) continue;
+      if (DESC_JUNK_LINE.test(line) || DESC_CONTACT_LINE.test(line)) continue;
+      if (line.split(/\s+/).length < 7 && !/[.!?]$/.test(line)) continue;
+      kept.push(line);
+    }
+    const joined = kept.join(' ').replace(/\s{2,}/g, ' ').trim();
+    if (joined.length < 40) continue;
+    if ((joined.match(DESC_WEEKDAY_RE) || []).length >= 3 && joined.length < 400) continue;
+    blocks.push(joined);
+  }
+  return blocks;
+}
+
+function cleanDescription(raw) {
+  const blocks = descriptionBlocks(raw);
+  if (blocks.length) return blocks.join('\n\n');
+  const text = normalizeText(raw);
+  const looksScraped = /(?:icon\.|Auf Karte anzeigen|Zur Website|Telefonnummer|Faxnummer|E-Mail schreiben)/i.test(text) || /^Datum$/m.test(text);
+  return looksScraped ? '' : text.replace(/\s+/g, ' ');
+}
+
+function summarizeDescription(raw) {
+  const blocks = descriptionBlocks(raw);
+  if (!blocks.length) return cleanDescription(raw);
+  return blocks.reduce((a, b) => (b.length > a.length ? b : a));
+}
+
+/** Human time label: "19:00 Uhr", "Ganztägig", or empty when unknown. */
+function timeLabel(raw) {
+  const t = (raw || '').trim();
+  if (!t) return '';
+  if (/^0?0[:.]00(\s*(–|-|bis)\s*0?0[:.]00)?$/.test(t)) return 'Ganztägig';
+  return t;
+}
+
+/** First meaningful category tag of an event. */
+function categoryOf(tags) {
+  return tags.find(t => THEME_KEYS.has(t) && t !== 'Sonstiges') || '';
+}
+
+/** German weekday for an ISO date string. */
+function weekdayDe(iso) {
+  if (!iso) return '';
+  const names = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'];
+  const d = new Date(`${iso}T00:00:00`);
+  return isNaN(d.getTime()) ? '' : names[d.getDay()];
+}
+
+/** Format an integer with German thousands separators. */
+function formatCount(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+/** Relative day label, only when it is meaningful ("Heute", "Morgen", "In 5 Tagen"). */
+function relativeDayLabel(iso) {
+  const rel = relativeDate(iso);
+  return /^(Heute|Morgen|In \d)/.test(rel) ? rel : '';
+}
+
 /** Render a single event card HTML (server-side). */
 function renderEventCard(event, condensedMode = false) {
   const e = event;
   const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
-  const themeTags = tags.filter(t => THEME_KEYS.has(t));
   const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
+  const category = categoryOf(tags);
 
-  // Build emoji HTML
-  const themeEmojis = themeTags.map(t => TAG_EMOJIS[t] || '📌').filter(Boolean);
-  let emojiHtml = '';
-  const hasTwo = themeEmojis.length === 2;
-  if (themeEmojis.length === 0) {
-    emojiHtml = '<span class="ce">📌</span>';
-  } else if (themeEmojis.length === 1) {
-    emojiHtml = `<span class="ce">${escapeHtml(themeEmojis[0])}</span>`;
-  } else {
-    emojiHtml = `<span class="ce ce-tl">${escapeHtml(themeEmojis[0])}</span><span class="ce ce-br ce-double">${escapeHtml(themeEmojis[1])}</span>`;
-  }
-
-  const titleEscaped = escapeHtml(e.title);
-  const locationEscaped = e.location ? escapeHtml(e.location) : '';
-  const organizerEscaped = e.organizer ? escapeHtml(e.organizer) : '';
-  const descEscaped = e.description ? escapeHtml(e.description) : '';
-  const eventUrl = e.event_url || '';
+  const title = decode(e.title || '');
+  const location = decode(e.location || '');
+  const organizer = decode(e.organizer || '');
+  const description = summarizeDescription(decode(e.description || ''));
+  const time = timeLabel(e.time_raw);
   const path = eventPath(e);
-  const eventDetailPath = path;
+  const place = location || locTags[0] || '';
 
-  // Build the detail link (visible link emoji for events that have an external URL)
-  const detailLink = eventUrl
-    ? `<a href="${escapeHtml(eventDetailPath)}" class="detail-link" title="Details">🔗</a>`
+  const titleEscaped = escapeHtml(title);
+  const titleAria = escapeHtml(title || 'Veranstaltung');
+  const condensedLoc = place ? `<span class="condensed-location">${escapeHtml(place)}</span>` : '';
+
+  const recur = e.recurring_group_id
+    ? `<button type="button" class="recurring-toggle" onclick="event.stopPropagation();toggleRecurring(${e.id}, ${e.recurring_group_id}, this)">▸ Alle Termine</button><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>`
     : '';
 
-  // Title with link
-  let titleHtml;
-  if (eventUrl) {
-    titleHtml = `<a href="${escapeHtml(eventUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${titleEscaped}<span class="ext-link">↗</span></a>`;
-  } else {
-    titleHtml = `<a href="${escapeHtml(eventDetailPath)}">${titleEscaped}</a>`;
-  }
-
-  // Condensed location hint
-  const condensedLocHtml = locTags.length > 0
-    ? locTags.map(t => ` 📍 ${escapeHtml(t)}`).join('')
-    : (locationEscaped ? ` 📍 ${locationEscaped}` : '');
-
-  // Build the card
-  const titleAria = escapeHtml(e.title || 'Veranstaltung');
-  const featuredBadge = e.featured ? ' <span class="featured-badge" title="Empfohlen">⭐</span>' : '';
-  let html = `<article class="event${e.featured ? ' featured' : ''}" id="event-${e.id}" aria-label="${titleAria}">
+  return `<article class="event${condensedMode ? ' condensed' : ''}" id="event-${e.id}" aria-label="${titleAria}">
       <div class="event-body">
-        <h2><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span><span class="cat-title">${titleHtml}${detailLink}${featuredBadge}<span class="condensed-location">${condensedLocHtml}</span></span></h2>
-        <div class="event-meta">
-          ${e.date_start ? `<span>📅 ${fmtDate(e.date_start)}${e.date_end && e.date_end !== e.date_start ? ` – ${fmtDate(e.date_end)}` : ''}</span>` : ''}
-          ${e.time_raw ? `<span>🕐 ${escapeHtml(e.time_raw)}</span>` : ''}
-          ${locationEscaped ? `<span>📍 ${locationEscaped}</span>` : ''}
+        <div class="event-top${category ? '' : ' no-cat'}">
+          ${category ? `<span class="event-cat">${escapeHtml(category)}</span>` : ''}
+          ${time ? `<span class="event-time">${ICON.clock}${escapeHtml(time)}</span>` : ''}
         </div>
-        ${descEscaped ? `<div class="event-desc">${descEscaped}</div>` : ''}
-        ${organizerEscaped || locTags.length > 0 ? `<div class="event-tags">${organizerEscaped ? `<span class="tag tag-organizer">${organizerEscaped}</span>` : ''}${locTags.map(t => `<span class="tag tag-location">📍 ${escapeHtml(t)}</span>`).join('')}</div>` : ''}
-        ${e.recurring_group_id ? `<span class="recurring-toggle" onclick="event.stopPropagation();toggleRecurring(${e.id}, ${e.recurring_group_id}, this)">▸ Alle Termine</span><div id="recurring-${e.id}" class="recurring-list" style="display:none"></div>` : ''}
+        <h2><a href="${escapeHtml(path)}">${titleEscaped}</a>${condensedLoc}</h2>
+        ${place ? `<p class="event-where">${ICON.pin}<span>${escapeHtml(place)}</span></p>` : ''}
+        ${description ? `<p class="event-desc">${escapeHtml(description)}</p>` : ''}
+        <div class="event-tags">
+          ${organizer ? `<span class="tag tag-organizer" title="Veranstalter">${escapeHtml(organizer)}</span>` : ''}
+          ${locTags.slice(0, 2).map(t => `<span class="tag tag-location">${escapeHtml(t)}</span>`).join('')}
+          <a class="event-more" href="${escapeHtml(path)}" aria-label="Details zu ${titleAria}">Details${ICON.arrow}</a>
+        </div>
+        ${recur}
       </div>
     </article>`;
-  return html;
 }
 
 /** Format a date string into a badge object { day, month }. */
@@ -319,7 +398,7 @@ function relativeDate(iso) {
   return `In ${diffMonths} Monaten`;
 }
 
-/** Render multiple event cards with date separators. Skips events without a date. */
+/** Render multiple event cards with sticky date separators. */
 function renderEventCards(events) {
   if (!events || events.length === 0) return '';
   const dated = events.filter(e => e.date_start);
@@ -330,42 +409,53 @@ function renderEventCards(events) {
     if (e.date_start !== lastDate) {
       lastDate = e.date_start;
       const badge = formatDateBadge(e.date_start);
-      parts.push(`<div class="date-separator"><span class="date-sep-day">${badge.day}.</span><span class="date-sep-month"> ${badge.month}</span><span class="date-sep-date"> ${relativeDate(e.date_start)}</span></div>`);
+      const rel = relativeDayLabel(e.date_start);
+      parts.push(`<div class="date-separator" role="separator" aria-label="${escapeHtml(fmtDate(e.date_start))}">
+        <span class="ds-day">${badge.day}</span>
+        <span class="ds-month">${badge.month}</span>
+        <span class="ds-weekday">${weekdayDe(e.date_start)}</span>
+        ${rel ? `<span class="ds-rel${rel === 'Heute' ? ' today' : ''}">${escapeHtml(rel)}</span>` : ''}
+      </div>`);
     }
     parts.push(renderEventCard(e));
   }
   return parts.join('\n');
 }
 
-/** Render a single featured event card for the horizontal scroll section. */
+/** Render a single featured event card. */
 function renderFeaturedCard(event) {
   const e = event;
   const tags = (e.tags || '').split(',').map(t => t.trim()).filter(Boolean);
   const locTags = tags.filter(t => DISTRICT_KEYS.has(t));
-  const themeTags = tags.filter(t => THEME_KEYS.has(t));
-  const themeEmojis = themeTags.map(t => TAG_EMOJIS[t] || '📌').filter(Boolean);
-  const emojiHtml = themeEmojis.length > 0 ? escapeHtml(themeEmojis[0]) : '📌';
-
-  const titleEscaped = escapeHtml(e.title);
-  const locationEscaped = locTags.length > 0 ? locTags[0] : (e.location ? escapeHtml(e.location) : '');
-  const path = eventPath(e);
-  const eventUrl = e.event_url || '';
+  const category = categoryOf(tags) || 'Empfohlen';
   const badge = formatDateBadge(e.date_start);
+  const path = eventPath(e);
+  const title = decode(e.title || '');
+  const place = decode(e.location || '') || locTags[0] || '';
+  const time = timeLabel(e.time_raw);
 
-  return `<article class="featured-card" aria-label="${escapeHtml(e.title || 'Veranstaltung')}">
-    <div class="fc-badge"><span class="fc-badge-day">${badge.day}.</span><span class="fc-badge-month">${badge.month}</span></div>
+  return `<article class="featured-card" aria-label="${escapeHtml(title || 'Veranstaltung')}">
+    <div class="fc-badge"><span class="fc-day">${badge.day}</span><span class="fc-month">${badge.month}</span></div>
     <div class="fc-body">
-      <span class="fc-emoji">${emojiHtml}</span>
-      <h3 class="fc-title"><a href="${eventUrl ? escapeHtml(eventUrl) : escapeHtml(path)}"${eventUrl ? ' target="_blank" rel="noopener"' : ''}>${titleEscaped}${eventUrl ? '<span class="ext-link">↗</span>' : ''}</a></h3>
-      ${locationEscaped ? `<div class="fc-location">📍 ${escapeHtml(locationEscaped)}</div>` : ''}
+      <span class="fc-kicker">${escapeHtml(category)}</span>
+      <h3 class="fc-title"><a href="${escapeHtml(path)}">${escapeHtml(title)}</a></h3>
+      <div class="fc-meta">
+        ${time ? `<span>${ICON.clock}<span>${escapeHtml(time)}</span></span>` : ''}
+        ${place ? `<span>${ICON.pin}<span>${escapeHtml(place)}</span></span>` : ''}
+      </div>
     </div>
   </article>`;
 }
 
-/** Render the featured events horizontal scroll section. */
+/** Render the featured events section. */
 function renderFeaturedSection(events) {
   if (!events || events.length === 0) return '';
-  let html = '<section class="featured-section"><h2 class="featured-heading"><span class="featured-star">⭐</span> Empfohlen</h2><div class="featured-grid">';
+  let html = `<section class="featured" aria-labelledby="featured-heading">
+    <div class="featured-head">
+      <h2 class="featured-heading" id="featured-heading">${ICON.star} Empfohlen</h2>
+      <span class="featured-sub">Handverlesene Termine</span>
+    </div>
+    <div class="featured-grid">`;
   for (const e of events) {
     html += renderFeaturedCard(e);
   }
@@ -423,7 +513,24 @@ function renderBreadcrumbJsonLd(items) {
   })}</script>`;
 }
 
-/** Render pagination as <a> links for crawlers. */
+/** Build the list of page numbers to show (with null markers for ellipses). */
+function pageWindow(current, total) {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const pages = new Set([1, total, current, current - 1, current + 1]);
+  if (current <= 3) [2, 3, 4].forEach(p => pages.add(p));
+  if (current >= total - 2) [total - 1, total - 2, total - 3].forEach(p => pages.add(p));
+  const sorted = [...pages].filter(p => p >= 1 && p <= total).sort((a, b) => a - b);
+  const out = [];
+  let prev = 0;
+  for (const p of sorted) {
+    if (prev && p - prev > 1) out.push(null);
+    out.push(p);
+    prev = p;
+  }
+  return out;
+}
+
+/** Render pagination as <a> links for crawlers (JS upgrades it to buttons). */
 function renderPaginationLinks(page, totalPages, params) {
   if (totalPages <= 1) return '';
 
@@ -438,19 +545,39 @@ function renderPaginationLinks(page, totalPages, params) {
     return u.pathname + u.search;
   }
 
+  const prevIcon = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>';
+  const nextIcon = '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>';
+
   let html = '<nav aria-label="Seitennavigation">';
-  if (page > 1) html += `<a href="${buildUrl(1)}" class="page-link">« Erste</a> <a href="${buildUrl(page - 1)}" class="page-link" rel="prev">‹ Zurück</a> `;
-  html += `<span class="page-info" aria-current="page">Seite ${page} von ${totalPages}</span> `;
-  if (page < totalPages) html += `<a href="${buildUrl(page + 1)}" class="page-link" rel="next">Weiter ›</a> <a href="${buildUrl(totalPages)}" class="page-link">Letzte »</a>`;
+  if (page > 1) {
+    html += `<a href="${buildUrl(page - 1)}" class="page-link" rel="prev" aria-label="Vorherige Seite">${prevIcon}</a>`;
+  } else {
+    html += `<span class="page-btn" aria-hidden="true">${prevIcon}</span>`;
+  }
+
+  for (const p of pageWindow(page, totalPages)) {
+    if (p === null) {
+      html += '<span class="page-ellipsis" aria-hidden="true">…</span>';
+    } else if (p === page) {
+      html += `<span class="page-link current" aria-current="page">${p}</span>`;
+    } else {
+      html += `<a href="${buildUrl(p)}" class="page-link">${p}</a>`;
+    }
+  }
+
+  if (page < totalPages) {
+    html += `<a href="${buildUrl(page + 1)}" class="page-link" rel="next" aria-label="Nächste Seite">${nextIcon}</a>`;
+  } else {
+    html += `<span class="page-btn" aria-hidden="true">${nextIcon}</span>`;
+  }
+  html += `<span class="page-info">Seite ${page} von ${totalPages}</span>`;
   html += '</nav>';
   return html;
 }
 
-/** Render the intro paragraph. */
+/** Render the hero intro paragraph (page 1 only). */
 function renderIntro() {
-  return `<div class="intro-text" style="margin-bottom:12px;padding:8px 0;font-size:14px;color:var(--text-muted);line-height:1.6">
-    <p>Hey, Stutensee! Der Veranstaltungskalender für Stutensee und Umgebung. Entdecke Feste, Märkte, Konzerte, Sportevents, kirchliche Termine, Kinderangebote und mehr in <strong>Blankenloch</strong>, <strong>Büchig</strong>, <strong>Friedrichstal</strong>, <strong>Spöck</strong>, <strong>Staffort</strong> und allen anderen Ortsteilen. Gefiltert nach Kategorie, Ort und Datum.</p>
-  </div>`;
+  return `<p class="hero-intro">Der Veranstaltungskalender für Stutensee und Umgebung – Feste, Märkte, Konzerte, Sport und Kinderangebote aus <strong>Blankenloch</strong>, <strong>Büchig</strong>, <strong>Friedrichstal</strong>, <strong>Spöck</strong> und <strong>Staffort</strong>.</p>`;
 }
 
 /** Render OG meta tags and Twitter Card tags. */
@@ -470,8 +597,9 @@ function renderOgTags(title, description, url, type = 'website') {
 }
 
 /** Inject SSR content into the HTML template. */
-function injectIntoTemplate(template, { events, page, totalPages, jsonLd, breadcrumbJsonLd, paginationHtml, introHtml, featuredHtml, initialData, ogTags }) {
+function injectIntoTemplate(template, { events, page, totalPages, jsonLd, breadcrumbJsonLd, paginationHtml, introHtml, featuredHtml, countHtml, initialData, ogTags }) {
   return template
+    .replace('<!--SSR_COUNT-->', countHtml || '')
     .replace('<!--SSR_OG_TAGS-->', ogTags || '')
     .replace('<!--SSR_JSON_LD-->', jsonLd || '')
     .replace('<!--SSR_BREADCRUMB-->', breadcrumbJsonLd || '')
@@ -581,8 +709,13 @@ async function serveSsrPage(env, url) {
     const ogTags = renderOgTags(ogTitle, ogDesc, ogUrl);
 
     // Inject into template
+    const countHtml = result.total > 0
+      ? `${formatCount(result.total)} ${result.total === 1 ? 'Termin' : 'Termine'}`
+      : '';
+
     const html = injectIntoTemplate(indexHtml, {
       events: eventCardsHtml,
+      countHtml,
       page: result.page,
       totalPages: result.totalPages,
       jsonLd: jsonLdHtml,
@@ -950,7 +1083,7 @@ async function serveEventPage(env, url, ctx) {
 
   // Build page title and meta
   const pageTitle = `${e.title} – Hey, Stutensee!`;
-  const metaDesc = `${e.title} am ${fmtDate(e.date_start)}${e.location ? ' in ' + e.location : ' in ' + locationName}. ${e.description ? e.description.substring(0, 150) : 'Alle Veranstaltungen in Stutensee auf einen Blick.'}`;
+  const metaDesc = `${e.title} am ${fmtDate(e.date_start)}${e.location ? ' in ' + e.location : ' in ' + locationName}. ${e.description ? summarizeDescription(e.description).substring(0, 150) : 'Alle Veranstaltungen in Stutensee auf einen Blick.'}`;
 
   // JSON-LD — use the hey-stutensee.de canonical URL, not external source
   const jsonLd = renderJsonLd([{ ...e, title: row.title, description: row.description, event_url: null }]);
@@ -968,16 +1101,29 @@ async function serveEventPage(env, url, ctx) {
 
   // Build HTML
   const themeTags = tags.filter(t => THEME_KEYS.has(t));
-  const themeEmojis = themeTags.map(t => TAG_EMOJIS[t] || '📌').filter(Boolean);
-  let emojiHtml = '';
-  const hasTwo = themeEmojis.length === 2;
-  if (themeEmojis.length === 0) {
-    emojiHtml = '<span class="ce">📌</span>';
-  } else if (themeEmojis.length === 1) {
-    emojiHtml = `<span class="ce">${escapeHtml(themeEmojis[0])}</span>`;
-  } else {
-    emojiHtml = `<span class="ce ce-tl">${escapeHtml(themeEmojis[0])}</span><span class="ce ce-br ce-double">${escapeHtml(themeEmojis[1])}</span>`;
+  const category = categoryOf(tags);
+  const detailTime = timeLabel(e.time_raw);
+  const description = cleanDescription(e.description || '');
+  const badge = formatDateBadge(e.date_start);
+  const place = e.location || locTags[0] || '';
+  const relDay = relativeDayLabel(e.date_start);
+
+  let sourceLink = '';
+  if (e.event_url) {
+    let host = 'Zur Veranstaltungsseite';
+    try { host = new URL(e.event_url).hostname.replace(/^www\./, ''); } catch {}
+    sourceLink = `<a class="detail-cta" href="${escapeHtml(e.event_url)}" target="_blank" rel="noopener">
+      <span>Zur Veranstaltungsseite</span>
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>
+    </a>
+    <p class="detail-source">Quelle: <a href="${escapeHtml(e.event_url)}" target="_blank" rel="noopener">${escapeHtml(host)}</a></p>`;
   }
+
+  const facts = [
+    e.date_start ? { label: 'Datum', value: fmtDate(e.date_start) + (e.date_end && e.date_end !== e.date_start ? ' – ' + fmtDate(e.date_end) : '') } : null,
+    detailTime ? { label: 'Uhrzeit', value: detailTime } : null,
+    e.organizer ? { label: 'Veranstalter', value: e.organizer } : null,
+  ].filter(Boolean);
 
   const body = `<!DOCTYPE html>
 <html lang="de">
@@ -987,68 +1133,161 @@ async function serveEventPage(env, url, ctx) {
 <title>${escapeHtml(pageTitle)}</title>
 <meta name="description" content="${escapeHtml(metaDesc)}">
 <meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0d3a71">
 <link rel="canonical" href="https://hey-stutensee.de${eventPath(row)}">
 <link rel="icon" type="image/png" href="/favicon.png">
 ${ogTagsHtml}
 ${jsonLd}
 ${breadcrumbJsonLd}
-<style>
-:root{--bg:#f4f6f8;--text:#111827;--text-muted:#4b5563;--card-bg:#fff;--card-border:#e2e8f0;--primary:#0d3a71;--desc:#4a5568;--tag-org-bg:#fef3c7;--tag-org-text:#92400e;--tag-loc-bg:#ede9fe;--tag-loc-text:#5b21b6;--tag-bg:#fef3c7;--tag-text:#92400e;--footer-text:#4b5563;--imprint-text:#374151;--shadow:0 2px 8px rgba(13,124,102,0.06)}
-html.dark{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--card-border:#334155;--primary:#1e40af;--link:#60a5fa;--link-hover:#93c5fd;--desc:#cbd5e1;--tag-org-bg:#422006;--tag-org-text:#fbbf24;--tag-loc-bg:#1e1b4b;--tag-loc-text:#a78bfa;--tag-bg:#422006;--tag-text:#fbbf24;--footer-text:#94a3b8;--imprint-text:#94a3b8;--shadow:0 2px 8px rgba(0,0,0,0.3)}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
-header{background:#0d3a71;color:#fff;padding:10px 24px}
-.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:14px}
-.header-logo-link{display:flex;align-items:center;text-decoration:none;color:inherit}
-.header-text h1{font-size:22px;font-weight:700}
-.container{max-width:700px;margin:40px auto;padding:0 20px}
-.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:24px 28px;box-shadow:var(--shadow)}
-.card h1{font-size:24px;font-weight:700;margin-bottom:16px;display:flex;align-items:flex-start;gap:8px}
-.meta{font-size:14px;color:var(--text-muted);margin-bottom:12px;display:flex;flex-wrap:wrap;gap:8px 16px}
-.meta .label{font-weight:600;color:var(--text)}
-.desc{font-size:15px;color:var(--desc);line-height:1.7;margin-top:16px}
-.tags{margin-top:16px;display:flex;flex-wrap:wrap;gap:6px}
-.tag{display:inline-block;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px}
-.tag-organizer{background:var(--tag-org-bg);color:var(--tag-org-text)}
-.tag-location{background:var(--tag-loc-bg);color:var(--tag-loc-text)}
-.tag-tag{background:var(--tag-bg);color:var(--tag-text)}
-.featured-badge{color:#fab800;font-size:18px;margin-left:6px;vertical-align:middle}
-a{color:var(--link,var(--primary));overflow-wrap:anywhere}
-a:hover{color:var(--link-hover,var(--primary))}
-.back-link{display:inline-block;margin-bottom:24px;color:var(--link,var(--primary));text-decoration:none;font-size:14px;font-weight:600}
-.back-link:hover{text-decoration:underline}
-footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
-@media(max-width:700px){.container{padding:0 12px}.card{padding:16px 18px}.card h1{font-size:20px}}
-</style>
 <script>
-function toggleDark(){document.documentElement.classList.toggle('dark');var isDark=document.documentElement.classList.contains('dark');localStorage.setItem('dark',isDark?'1':'0');document.getElementById('dark-toggle').textContent=isDark?'☀️':'🌙'}
-(function(){var d=document.documentElement,s=localStorage.getItem('dark');if(s!==null){if(s==='1')d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){d.classList.add('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙';window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(e){if(localStorage.getItem('dark')!==null)return;if(e.matches){d.classList.add('dark')}else{d.classList.remove('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙'})})()
+(function(){try{var s=localStorage.getItem('dark');var d=s===null?window.matchMedia('(prefers-color-scheme: dark)').matches:s==='1';if(d)document.documentElement.classList.add('dark');}catch(e){}})();
 </script>
+<style>
+:root{--bg:#f6f4ef;--surface:#fff;--surface-2:#fbfaf7;--text:#16212e;--text-muted:#5b6979;--text-faint:#8593a2;--border:#e5e0d6;--border-strong:#d3ccbe;--navy:#0d3a71;--navy-deep:#0a2c56;--primary-light:#edf2f9;--gold:#fab800;--gold-ink:#7a5200;--gold-light:#fff6dd;--tag-org-bg:#efeae1;--tag-org-text:#5b6979;--radius:14px;--radius-sm:10px;--shadow:0 10px 28px -22px rgba(18,35,58,.45),0 1px 2px rgba(18,35,58,.05);--transition:180ms cubic-bezier(.2,.7,.3,1)}
+html.dark{--bg:#0b1524;--surface:#122134;--surface-2:#0f1c2d;--text:#e9eff7;--text-muted:#a2b3c6;--text-faint:#7f92a8;--border:#203149;--border-strong:#2c415e;--primary-light:#17293f;--gold-ink:#f7c948;--gold-light:#2a2415;--tag-org-bg:#182a3f;--tag-org-text:#a2b3c6;--shadow:0 12px 30px -20px rgba(0,0,0,.9),0 1px 2px rgba(0,0,0,.4)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+a{color:var(--navy);overflow-wrap:anywhere}
+html.dark a{color:#8ab4f0}
+h1{font-weight:800;letter-spacing:-.7px;line-height:1.15}
+.icon{width:18px;height:18px;flex:none}
+:focus-visible{outline:2px solid var(--navy);outline-offset:2px;border-radius:4px}
+.site-header{background:radial-gradient(120% 220% at 88% -40%,rgba(250,184,0,.16) 0,rgba(250,184,0,0) 55%),linear-gradient(180deg,#104380 0,#0c3567 100%);color:#fff}
+.header-inner{max-width:808px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;min-width:0}
+.brand-mark{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:12px;background:#fff;box-shadow:0 4px 12px rgba(4,18,38,.28)}
+.brand-mark svg{width:32px;height:32px}
+.brand-copy{display:flex;flex-direction:column;line-height:1.15}
+.brand-title{font-size:19px;font-weight:750;letter-spacing:-.3px}
+.brand-sub{margin-top:2px;font-size:10.5px;font-weight:650;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+.header-actions{display:flex;align-items:center;gap:8px;flex:none}
+.icon-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;min-width:38px;padding:0 12px;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(255,255,255,.07);color:#fff;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer;transition:background var(--transition),border-color var(--transition)}
+.icon-btn:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.32);color:#fff}
+#dark-toggle .icon-moon{display:none}
+html.dark #dark-toggle .icon-sun{display:none}
+html.dark #dark-toggle .icon-moon{display:block}
+.detail-wrap{flex:1;width:100%;max-width:760px;margin:0 auto;padding:26px 24px 48px}
+.back-link{display:inline-flex;align-items:center;gap:5px;margin-bottom:16px;color:var(--text-muted);text-decoration:none;font-size:13px;font-weight:600}
+.back-link:hover{color:var(--text)}
+.detail-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:30px 32px 28px;box-shadow:var(--shadow)}
+.detail-head{display:flex;gap:18px;align-items:flex-start}
+.detail-date{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:64px;height:70px;flex:none;border-radius:14px;background:var(--navy);color:#fff;line-height:1}
+.dd-day{font-size:26px;font-weight:800;letter-spacing:-.7px}
+.dd-month{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.dd-weekday{margin-top:3px;font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.detail-kicker{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;background:var(--primary-light);color:var(--navy);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+html.dark .pill{color:#b6d0f7}
+.pill.gold{background:var(--gold-light);color:var(--gold-ink)}
+.detail-card h1{font-size:clamp(22px,3.2vw,29px);margin-bottom:8px}
+.detail-place{display:flex;align-items:flex-start;gap:5px;font-size:14px;color:var(--text-muted)}
+.detail-place .icon{width:14px;height:14px;margin-top:3px;color:var(--text-faint)}
+.banner{margin:18px 0 0;padding:10px 14px;border-radius:10px;background:var(--gold-light);color:var(--gold-ink);font-size:13px;font-weight:600;border:1px solid rgba(250,184,0,.35)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;margin:22px 0 0;border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--border)}
+.fact{background:var(--surface-2);padding:12px 14px}
+.fact dt{font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--text-faint);margin-bottom:2px}
+.fact dd{font-size:14px;font-weight:600;color:var(--text)}
+.desc{margin-top:22px;font-size:15px;line-height:1.75;color:var(--text-muted);white-space:pre-line}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px;padding-top:18px;border-top:1px solid var(--border)}
+.tag{display:inline-block;padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:600}
+.tag-organizer{background:var(--tag-org-bg);color:var(--tag-org-text)}
+.tag-location{background:var(--primary-light);color:var(--navy)}
+html.dark .tag-location{color:#b6d0f7}
+.tag-tag{background:var(--gold-light);color:var(--gold-ink)}
+.detail-cta{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:11px 18px;border-radius:11px;background:var(--navy);color:#fff;text-decoration:none;font-size:14px;font-weight:650;transition:background var(--transition),transform var(--transition)}
+.detail-cta:hover{background:var(--navy-deep);color:#fff;transform:translateY(-1px)}
+.detail-cta .icon{width:15px;height:15px}
+.detail-source{margin-top:8px;font-size:12px;color:var(--text-faint)}
+.detail-source a{color:var(--text-muted)}
+.site-footer{border-top:1px solid var(--border);background:var(--surface-2);padding:22px 24px;text-align:center;font-size:12.5px;color:var(--text-muted)}
+.site-footer .linklike{border:0;background:none;padding:0;color:var(--text-muted);font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.imprint{max-width:62ch;margin:14px auto 0;padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:12.5px;line-height:1.65;text-align:left;color:var(--text-muted)}
+.imprint strong{color:var(--text)}
+@media(max-width:640px){
+  .header-inner{padding:11px 14px}
+  .brand-sub{display:none}
+  .brand-title{font-size:17px}
+  .brand-mark{width:38px;height:38px;border-radius:11px}
+  .brand-mark svg{width:29px;height:29px}
+  .detail-wrap{padding:18px 14px 36px}
+  .detail-card{padding:20px 18px 22px;border-radius:16px}
+  .detail-head{gap:13px}
+  .detail-date{width:54px;height:60px;border-radius:12px}
+  .dd-day{font-size:22px}
+  .dd-weekday{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+</style>
 </head>
 <body>
-<header><div class="header-inner"><a href="/" class="header-logo-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 100" class="schdudesee-logo" style="height:68px;width:auto"><defs><clipPath id="s-clip-detail"><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80">S</text></clipPath><clipPath id="tip-clip-detail"><rect x="52" y="8" width="24" height="32"/></clipPath></defs><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round">S</text><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#fab800">S</text><text x="54" y="78" text-anchor="middle" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="80" fill="#dd291a" clip-path="url(#tip-clip-detail)">S</text><g clip-path="url(#s-clip-detail)"><path class="wave-inner" d="M-5 60 Q5 54 15 60 Q25 66 35 60 Q45 54 55 60 Q65 66 75 60 Q85 54 95 60" stroke="#0d3a71" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/><path class="wave-inner" d="M-5 69 Q5 63 15 69 Q25 75 35 69 Q45 63 55 69 Q65 75 75 69 Q85 63 95 69" stroke="#1a5299" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/><path class="wave-inner" d="M-5 78 Q5 72 15 78 Q25 84 35 78 Q45 72 55 78 Q65 84 75 78 Q85 72 95 78" stroke="#3a7bc8" stroke-width="10" fill="none" stroke-linecap="round" opacity="1"/></g><text x="140" y="60" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="26" fill="#ffffff">Hey, Stutensee!</text></svg></a></div></header>
-<div class="container">
-  <a href="/" class="back-link">← Zurück zur Übersicht</a>
-  <article class="card" aria-label="${escapeHtml(e.title)}">
-    <h1><span class="cat-emojis${hasTwo ? ' has-two' : ''}">${emojiHtml}</span>${escapeHtml(e.title)}${e.featured ? '<span class="featured-badge" title="Empfohlen">⭐</span>' : ''}</h1>
-    ${e.is_passed ? '<div style="background:#fef3c7;color:#92400e;padding:8px 16px;border-radius:8px;margin-bottom:16px;font-weight:600;font-size:14px">✅ Diese Veranstaltung hat bereits stattgefunden.</div>' : ''}
-    <div class="meta">
-      ${e.date_start ? '<div><span class="label">Datum:</span> ' + fmtDate(e.date_start) + (e.date_end && e.date_end !== e.date_start ? ' – ' + fmtDate(e.date_end) : '') + '</div>' : ''}
-      ${e.time_raw ? '<div><span class="label">Zeit:</span> ' + escapeHtml(e.time_raw) + '</div>' : ''}
-      ${e.location ? '<div><span class="label">Ort:</span> ' + escapeHtml(e.location) + '</div>' : ''}
-      ${e.organizer ? '<div><span class="label">Veranstalter:</span> ' + escapeHtml(e.organizer) + '</div>' : ''}
-      ${e.event_url ? '<div><span class="label">Link:</span> <a href="' + escapeHtml(e.event_url) + '" target="_blank" rel="noopener">' + escapeHtml(e.event_url) + '</a></div>' : ''}
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Hey, Stutensee! – Startseite">
+      <span class="brand-mark" aria-hidden="true">${brandMarkSvg('detail')}</span>
+      <span class="brand-copy"><span class="brand-title">Hey, Stutensee!</span><span class="brand-sub">Veranstaltungen &amp; Termine</span></span>
+    </a>
+    <div class="header-actions">
+      <button type="button" id="dark-toggle" class="icon-btn" onclick="toggleDark()" aria-label="Dunkles Design umschalten" title="Hell / Dunkel">
+        <svg class="icon icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <a class="icon-btn" href="/">Alle Termine</a>
     </div>
-    ${e.description ? '<div class="desc">' + escapeHtml(e.description) + '</div>' : ''}
+  </div>
+</header>
+
+<main class="detail-wrap">
+  <a href="/" class="back-link">← Zurück zur Übersicht</a>
+  <article class="detail-card" aria-label="${escapeHtml(e.title)}">
+    <div class="detail-head">
+      <div class="detail-date" aria-hidden="true">
+        <span class="dd-day">${badge.day}</span>
+        <span class="dd-month">${badge.month}</span>
+        <span class="dd-weekday">${weekdayDe(e.date_start)}</span>
+      </div>
+      <div>
+        <div class="detail-kicker">
+          ${category ? `<span class="pill">${escapeHtml(category)}</span>` : ''}
+          ${e.featured ? '<span class="pill gold">Empfohlen</span>' : ''}
+          ${relDay === 'Heute' ? '<span class="pill gold">Heute</span>' : relDay === 'Morgen' ? '<span class="pill gold">Morgen</span>' : ''}
+        </div>
+        <h1>${escapeHtml(e.title)}</h1>
+        ${place ? `<p class="detail-place">${ICON.pin}<span>${escapeHtml(place)}</span></p>` : ''}
+      </div>
+    </div>
+
+    ${e.is_passed ? '<p class="banner">Diese Veranstaltung hat bereits stattgefunden.</p>' : ''}
+
+    <dl class="facts">
+      ${facts.map(f => `<div class="fact"><dt>${f.label}</dt><dd>${escapeHtml(f.value)}</dd></div>`).join('')}
+    </dl>
+
+    ${description ? `<div class="desc">${escapeHtml(description)}</div>` : ''}
+
+    ${sourceLink}
+
     <div class="tags">
-      ${tags.filter(t => THEME_KEYS.has(t)).map(t => '<span class="tag tag-tag">' + escapeHtml(t) + '</span>').join('')}
-      ${locTags.map(t => '<span class="tag tag-location">📍 ' + escapeHtml(t) + '</span>').join('')}
-      ${e.organizer ? '<span class="tag tag-organizer">' + escapeHtml(e.organizer) + '</span>' : ''}
+      ${themeTags.map(t => `<span class="tag tag-tag">${escapeHtml(t)}</span>`).join('')}
+      ${locTags.map(t => `<span class="tag tag-location">${escapeHtml(t)}</span>`).join('')}
+      ${e.organizer ? `<span class="tag tag-organizer">${escapeHtml(e.organizer)}</span>` : ''}
     </div>
   </article>
-</div>
-<footer><a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="color:var(--footer-text);text-decoration:underline">Impressum</a><span style="margin:0 8px">·</span><span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span><div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6"><strong>Angaben gemäß §5 TMG</strong><br>Johannes Reuter<br>E-Mail: <span id="imprint-email"></span><br><br><strong>Haftung für Inhalte</strong><br>Als Diensteanbieter sind wir für eigene Inhalte auf dieser Seite verantwortlich.<br><strong>Datenschutz</strong><br>Diese Seite erhebt keinerlei personenbezogene Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Analysedienste genutzt.</div></footer>
-<script>document.getElementById('imprint-email').textContent='email@johannes-reuter.de';</script>
+</main>
+
+<footer class="site-footer">
+  <button type="button" class="linklike" onclick="document.getElementById('imprint').hidden = !document.getElementById('imprint').hidden">Impressum</button>
+  <span aria-hidden="true"> · </span>
+  <span>Keine Cookies, kein Tracking</span>
+  <div id="imprint" class="imprint" hidden>
+    <strong>Angaben gemäß § 5 TMG</strong><br>
+    Johannes Reuter · E-Mail: <span id="imprint-email"></span>
+    <div style="margin-top:8px"><strong>Datenschutz</strong><br>Diese Seite erhebt keine personenbezogenen Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Analysedienste genutzt.</div>
+  </div>
+</footer>
+<script>
+function toggleDark(){var d=document.documentElement.classList.toggle('dark');localStorage.setItem('dark',d?'1':'0');var b=document.getElementById('dark-toggle');b.setAttribute('aria-pressed',String(d));}
+document.getElementById('imprint-email').textContent='email@johannes-reuter.de';
+</script>
 </body>
 </html>`;
 
@@ -1432,46 +1671,64 @@ function serve404() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Seite nicht gefunden — Hey, Stutensee!</title>
+<title>Seite nicht gefunden – Hey, Stutensee!</title>
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#0d3a71">
+<link rel="icon" type="image/png" href="/favicon.png">
+<script>(function(){try{var s=localStorage.getItem('dark');var d=s===null?window.matchMedia('(prefers-color-scheme: dark)').matches:s==='1';if(d)document.documentElement.classList.add('dark');}catch(e){}})();</script>
 <style>
-:root{--bg:#f4f6f8;--text:#111827;--text-muted:#4b5563;--card-bg:#fff;--card-border:#e2e8f0;--primary:#0d3a71;--footer-text:#4b5563;--imprint-text:#374151;--shadow:0 2px 8px rgba(13,124,102,0.06)}
-html.dark{--bg:#0f172a;--text:#e2e8f0;--text-muted:#94a3b8;--card-bg:#1e293b;--card-border:#334155;--primary:#1e40af;--footer-text:#94a3b8;--imprint-text:#94a3b8;--shadow:0 2px 8px rgba(0,0,0,0.3)}
+:root{--bg:#f6f4ef;--surface:#fff;--surface-2:#fbfaf7;--text:#16212e;--text-muted:#5b6979;--text-faint:#8593a2;--border:#e5e0d6;--navy:#0d3a71;--navy-deep:#0a2c56;--gold:#fab800;--shadow:0 20px 50px -30px rgba(18,35,58,.5),0 1px 2px rgba(18,35,58,.05)}
+html.dark{--bg:#0b1524;--surface:#122134;--surface-2:#0f1c2d;--text:#e9eff7;--text-muted:#a2b3c6;--text-faint:#7f92a8;--border:#203149;--shadow:0 24px 60px -30px rgba(0,0,0,.9)}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
-main{flex:1;display:flex;align-items:center;justify-content:center}
-.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:48px 40px;max-width:480px;text-align:center;box-shadow:var(--shadow);margin:20px}
-.code{font-size:72px;font-weight:800;color:var(--primary);line-height:1;margin-bottom:8px}
-h1{font-size:20px;font-weight:600;margin-bottom:12px}
-p{color:var(--text-muted);font-size:15px;line-height:1.6;margin-bottom:24px}
-.btn{display:inline-block;background:var(--primary);color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-size:14px;font-weight:600}
-.btn:hover{opacity:0.9}
-footer{text-align:center;padding:24px;font-size:12px;color:var(--footer-text)}
-footer a{color:var(--footer-text);text-decoration:underline}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.site-header{background:radial-gradient(120% 220% at 88% -40%,rgba(250,184,0,.16) 0,rgba(250,184,0,0) 55%),linear-gradient(180deg,#104380 0,#0c3567 100%);color:#fff}
+.header-inner{max-width:808px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none}
+.brand-mark{display:grid;place-items:center;width:42px;height:42px;flex:none;border-radius:12px;background:#fff;box-shadow:0 4px 12px rgba(4,18,38,.28)}
+.brand-mark svg{width:32px;height:32px}
+.brand-copy{display:flex;flex-direction:column;line-height:1.15}
+.brand-title{font-size:19px;font-weight:750;letter-spacing:-.3px}
+.brand-sub{margin-top:2px;font-size:10.5px;font-weight:650;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+main{flex:1;display:flex;align-items:center;justify-content:center;padding:32px 20px}
+.card{width:100%;max-width:460px;padding:44px 38px;border:1px solid var(--border);border-radius:18px;background:var(--surface);box-shadow:var(--shadow);text-align:center}
+.code{font-size:64px;font-weight:800;line-height:1;letter-spacing:-3px;color:var(--navy)}
+html.dark .code{color:#8ab4f0}
+h1{font-size:20px;font-weight:750;letter-spacing:-.3px;margin:10px 0 8px}
+p{font-size:14.5px;line-height:1.65;color:var(--text-muted);margin-bottom:22px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:11px 20px;border-radius:11px;background:var(--navy);color:#fff;text-decoration:none;font-size:14px;font-weight:650}
+.btn:hover{background:var(--navy-deep)}
+.site-footer{border-top:1px solid var(--border);background:var(--surface-2);padding:20px 24px;text-align:center;font-size:12.5px;color:var(--text-muted)}
+.site-footer button{border:0;background:none;padding:0;color:var(--text-muted);font:inherit;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
+.imprint{max-width:60ch;margin:12px auto 0;padding:14px 16px;border:1px solid var(--border);border-radius:10px;background:var(--surface);font-size:12.5px;line-height:1.65;text-align:left;color:var(--text-muted)}
+.imprint strong{color:var(--text)}
+@media(max-width:520px){.card{padding:32px 22px}.header-inner{padding:11px 14px}.brand-sub{display:none}.brand-title{font-size:17px}}
 </style>
-<script>
-function toggleDark(){document.documentElement.classList.toggle('dark');var isDark=document.documentElement.classList.contains('dark');localStorage.setItem('dark',isDark?'1':'0');document.getElementById('dark-toggle').textContent=isDark?'☀️':'🌙'}
-(function(){var d=document.documentElement,s=localStorage.getItem('dark');if(s!==null){if(s==='1')d.classList.add('dark')}else if(window.matchMedia('(prefers-color-scheme:dark)').matches){d.classList.add('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙';window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(e){if(localStorage.getItem('dark')!==null)return;if(e.matches){d.classList.add('dark')}else{d.classList.remove('dark')}document.getElementById('dark-toggle').textContent=d.classList.contains('dark')?'☀️':'🌙'})})()
-</script>
 </head>
 <body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Hey, Stutensee! – Startseite">
+      <span class="brand-mark" aria-hidden="true">${brandMarkSvg('404')}</span>
+      <span class="brand-copy"><span class="brand-title">Hey, Stutensee!</span><span class="brand-sub">Veranstaltungen &amp; Termine</span></span>
+    </a>
+  </div>
+</header>
 <main>
-<div class="card">
-  <div class="code">404</div>
-  <h1>Seite nicht gefunden</h1>
-  <p>Die aufgerufene Seite existiert nicht. Vielleicht wurde der Veranstaltungskalender aktualisiert und der Link ist veraltet.</p>
-  <a href="/" class="btn">Zurück zum Kalender</a>
-</div>
+  <div class="card">
+    <div class="code">404</div>
+    <h1>Seite nicht gefunden</h1>
+    <p>Diese Seite existiert nicht mehr. Vielleicht wurde der Veranstaltungskalender aktualisiert und der Link ist veraltet.</p>
+    <a href="/" class="btn">Zurück zum Kalender</a>
+  </div>
 </main>
-<footer>
-  <a href="#" onclick="event.preventDefault();document.getElementById('imprint').style.display='block'" style="text-decoration:underline">Impressum</a>
-  <span style="margin:0 8px">·</span>
-  Keine Cookies, kein Tracking, keine Datenspeicherung
-  <span style="margin:0 8px">·</span>
-  <span id="dark-toggle" onclick="toggleDark()" style="cursor:pointer;font-size:16px" title="Dark Mode umschalten">🌙</span>
-  <div id="imprint" style="display:none;margin-top:12px;color:var(--imprint-text);line-height:1.6">
-    <strong>Angaben gemäß §5 TMG</strong><br>Johannes Reuter<br>E-Mail: <span id="imprint-email"></span><br><br>
-    <strong>Haftung für Inhalte</strong><br>Als Diensteanbieter sind wir für eigene Inhalte auf dieser Seite verantwortlich.<br>
-    <strong>Datenschutz</strong><br>Diese Seite erhebt keinerlei personenbezogene Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Analysedienste genutzt.
+<footer class="site-footer">
+  <button type="button" onclick="document.getElementById('imprint').hidden = !document.getElementById('imprint').hidden">Impressum</button>
+  <span aria-hidden="true"> · </span>
+  <span>Keine Cookies, kein Tracking</span>
+  <div id="imprint" class="imprint" hidden>
+    <strong>Angaben gemäß § 5 TMG</strong><br>Johannes Reuter · E-Mail: <span id="imprint-email"></span>
+    <div style="margin-top:8px"><strong>Datenschutz</strong><br>Diese Seite erhebt keine personenbezogenen Daten. Es werden keine Cookies gesetzt, kein Tracking durchgeführt und keine Analysedienste genutzt.</div>
   </div>
 </footer>
 <script>document.getElementById('imprint-email').textContent='email@johannes-reuter.de';</script>
