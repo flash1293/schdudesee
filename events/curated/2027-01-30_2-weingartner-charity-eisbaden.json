@@ -1,19 +1,20 @@
 {
   "title": "2. Weingartner Charity Eisbaden",
   "date_start": "2027-01-30",
-  "date_end": null,
-  "time_raw": "14:00 Uhr bis 16:00 Uhr",
-  "location": "Baggersee Weingarten",
-  "organizer": "blut.eV",
-  "description": "Datum\n30.01.2027\nUhrzeit\n14:00 Uhr bis 16:00 Uhr\nVeranstalter\nblut.eV\nVeranstaltungsort\nBaggersee Weingarten\n\nGemeinde Weingarten (Baden)\nMarktplatz 2\n76356 Weingarten (Baden)\nTelefonnummer:\n07244 70 20-0\nFaxnummer:\n07244 70 20-50\ngemeinde(@)weingarten-baden.de",
-  "event_url": "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen/925/2-weingartner-charity-eisbaden",
+  "date_end": "2027-01-30",
+  "time_raw": "14:00",
+  "location": "",
+  "organizer": "",
+  "description": "Am 30.01.2027 findet das 2. Weingartner Charity Eisbaden von blut.eV statt. Tapfere Menschen gehen für den guten Zweck ins kalte Wasser und sammeln Spendengelder ein, um Krebspatientinnen und -patienten sowie ihre Familien in unserer Region zu unterstützen. Die einen bekommen kalte Füße, die anderen warme Herzen! Sind Sie dabei? Für die Teilnahme am Eisbaden wird kein Startgeld erhoben. Jede:r Eisbadende sucht unter Freunden, Bekannten, Verwandten, etc. nach Personen oder Firmen, die bereit sind, einen fest vereinbarten Betrag an blut.eV zu spenden. Für Mutige besteht die Möglichkeit alle Teilnehmer:innen zu unterstützen (x Euro pro Teilnehmer:in). Weitere Informationen finden Sie auf www.blutev.de/eisbaden/ Dort können Sie sich auch direkt anmelden. Am Tag selbst ist ab 13.00 Uhr auch noch vor Ort eine Anmeldung möglich. Der gemeinsame Start findet um 14.00 Uhr statt und die Veranstaltung endet um 14:45 Uhr. Schirmherr des 2.Weingartner Eisbadens ist der Weingartner Bürgermeister Herr Eric Bänziger. Die DLRG ist unser sicherer Partner vor Ort und versorgt alle mit Heißgetränken. Egal ob im Wasser, zum Anfeuern oder als Sponsor, wir freuen uns auf jede Menge Unterstützung vor Ort und ein super Event für den guten Zweck! Folgen Sie der Veranstaltung auch auf facebook und instagram! #blutev Veranstalter: blut.eV Veranstaltungsort: Baggersee Weingarten, Am Baggersee, 76356 Weingarten",
+  "event_url": "https://landfunker.de/veranstaltung/2-weingartner-charity-eisbaden/",
   "sources": [
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
     "https://www.weingarten-baden.de/freizeit-tourismus/veranstaltungen"
   ],
   "tags": [
     "Markt",
-    "Wohltätigkeit",
-    "Weingarten"
+    "Weingarten",
+    "Wohltätigkeit"
   ],
   "recurring_group_id": null,
   "is_passed": 0,
