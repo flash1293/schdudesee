@@ -8,11 +8,12 @@
   "description": "Am 1. Advent, Sonntag,  29.11.2026 um 18.30 lädt ChorUnity zu einer besinnlichen Stunde in die von Kerzen stimmungsvoll erleuchtete Pfarrkirche St. Sebastian Neuthard ein.  Im Anschluss gibt es Glühwein und heiße Würstchen vor dem Pfarrheim gegenüber.",
   "event_url": "https://landfunker.de/veranstaltung/lichterstunde-chorunity-am-1-advent/",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
+    "https://www.karlsdorf-neuthard.de/eventcalendar"
   ],
   "tags": [
-    "Musik",
     "Kirche",
+    "Musik",
     "Neuthard"
   ],
   "recurring_group_id": null,
