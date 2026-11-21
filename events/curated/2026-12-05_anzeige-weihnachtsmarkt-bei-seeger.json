@@ -1,0 +1,20 @@
+{
+  "title": "[Anzeige] Weihnachtsmarkt bei Seeger",
+  "date_start": "2026-12-05",
+  "date_end": "2026-12-05",
+  "time_raw": "15:00",
+  "location": "Bäckerei Seeger",
+  "organizer": "Bäckerei Seeger",
+  "description": "Der Weihnachtsmarkt bietet Winzerglühwein, Kinderpunsch, Bratwurst, Waffeln und süße Köstlichkeiten. Kinder können von 15 bis 17 Uhr Kekse verzieren, ab 17 Uhr gibt es Live-Musik mit Justin Nova bei Feuerschein. Eintritt / Kosten: Eintritt frei",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/anzeige-weihnachtsmarkt-bei-seeger/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Musik",
+    "Kinder"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
