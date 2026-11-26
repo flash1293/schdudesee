@@ -1,0 +1,20 @@
+{
+  "title": "element-i Winterzauber",
+  "date_start": "2026-12-07",
+  "date_end": "2026-12-07",
+  "time_raw": "16:00",
+  "location": "element-i Kinderhaus See-Pferdchen",
+  "organizer": "element-i Kinderhaus Seepferdchen",
+  "description": "Das element-i Kinderhaus See-Pferdchen veranstaltet einen Weihnachtsmarkt von Kindern für Kinder. Besucher erwarten kreativer Bastelspaß, verschiedene Aktionen und kulinarische Angebote.",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/element-i-winterzauber/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Sport",
+    "Kinder"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
