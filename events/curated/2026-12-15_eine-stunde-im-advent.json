@@ -1,7 +1,7 @@
 {
-  "title": "„Eine Stunde im Advent“",
+  "title": "Eine Stunde im Advent",
   "date_start": "2026-12-15",
-  "date_end": "2027-12-15",
+  "date_end": "2026-12-15",
   "time_raw": "19:30",
   "location": "Am Alten Schloss 4, Bruchsal",
   "organizer": "Stadtbibliothek Bruchsal",
@@ -11,9 +11,9 @@
     "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
   ],
   "tags": [
-    "Musik",
+    "Bruchsal",
     "Fest",
-    "Bruchsal"
+    "Musik"
   ],
   "recurring_group_id": null,
   "is_passed": 0,

@@ -6,7 +6,7 @@
   "location": "Stadtbibliothek Bruchsal, Am alten Schloss 4, 76646 Bruchsal",
   "organizer": "Ambulante Hospizgruppe Bruchsal und Umgebung",
   "description": "Am Donnerstag, 26. November um 19 Uhr findet wieder die Lesereihe und Gespräch mit Texten über Trauer, Abschied und Sterben statt. Mit Anette Föllmer, Peter Holzer und Anna-Maria Mayer, Ambulante Hospizgruppe Bruchsal und Umgebung. Musikalische Begleitung: Wolfgang Köbler Der Eintritt ist frei. Keine Anmeldung erforderlich",
-  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9085505/index.html?nodeID=9085505",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9085505/LesereiheberTrauerAbschiedSterben.html?nodeID=9085505",
   "sources": [
     "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
@@ -16,6 +16,6 @@
     "Bruchsal"
   ],
   "recurring_group_id": null,
-  "is_passed": 0,
+  "is_passed": 1,
   "featured": 0
 }
