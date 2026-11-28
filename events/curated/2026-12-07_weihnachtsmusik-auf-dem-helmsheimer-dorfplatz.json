@@ -1,14 +1,15 @@
 {
   "title": "Weihnachtsmusik auf dem Helmsheimer Dorfplatz",
   "date_start": "2026-12-07",
-  "date_end": "2026-12-07",
+  "date_end": null,
   "time_raw": "19:00",
-  "location": "Dorfplatz Helmsheim",
+  "location": "Dorfplatz Helmsheim, Dorfplatz, 76646 Bruchsal",
   "organizer": "Musikverein Helmsheim e. V.",
-  "description": "Die MusikerInnen des Musikverein Helmsheim e. V. möchten die Bevölkerung auf die Weihnachtszeit einstimmen. Am 7. Dezember spielt das Orchester des Vereins ab 19 Uhr auf dem Dorfplatz in Helmsheim beim Tannenbaum neben der Verwaltungsstelle weihnachtliche Lieder. Bereits das vierte Jahr in Folge hat der Verein ein kleines musikalisches Programm zusammengestellt. Mittlerweile ist die Veranstaltung ein fester Termin im Kalender. Der Musikverein Helmsheim e. V. freut sich auf seine ZuhörerInnen. Bei schlechtem Wetter findet die Veranstaltung in der nahegelegenen Alten Kelter statt.",
-  "event_url": "https://landfunker.de/veranstaltung/weihnachtsmusik-auf-dem-helmsheimer-dorfplatz/",
+  "description": "Der Musikverein Helmsheim e. V. lädt das vierte Jahr in Folge zu einem kleinen weihnachtlichen Konzert.",
+  "event_url": "https://www.bruchsal.de/site/Bruchsal-Internet-2023/node/4614028/zmdetail_9252352/WeihnachtsmusikaufdemHelmsheimerDorfplatz.html?nodeID=9252352",
   "sources": [
-    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe"
+    "https://landfunker.de/terminkalender-events-veranstaltungen-bruchsal-bretten-kraichtal-waghaeusel-philippsburg-noerdl-lkr-karlsruhe",
+    "https://www.bruchsal.de/erleben/freizeit/veranstaltungen"
   ],
   "tags": [
     "Musik",

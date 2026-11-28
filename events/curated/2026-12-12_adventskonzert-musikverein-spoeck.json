@@ -1,0 +1,21 @@
+{
+  "title": "Adventskonzert Musikverein Spöck",
+  "date_start": "2026-12-12",
+  "date_end": "2026-12-12",
+  "time_raw": "18:00",
+  "location": "Kath. Kirche St. Georg Spöck",
+  "organizer": "Musikverein \"Harmonie\" 1920 Spöck e.V.",
+  "description": "Der Musikverein Harmonie Spöck veranstaltet ein Adventskonzert in der Katholischen Kirche Spöck. Unter der Leitung von Michael Späck wird ein vorweihnachtliches Programm geboten. Der Eintritt ist frei. Eintritt / Kosten: Eintritt frei",
+  "event_url": "https://www.meinstutensee.de/veranstaltungen/adventskonzert-musikverein-spoeck/",
+  "sources": [
+    "https://meinstutensee.de/termine/"
+  ],
+  "tags": [
+    "Musik",
+    "Kirche",
+    "Spöck"
+  ],
+  "recurring_group_id": null,
+  "is_passed": 0,
+  "featured": 0
+}
